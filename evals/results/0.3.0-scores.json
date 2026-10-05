@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "skill_version": "0.3.0",
+  "mode": "forward simulation",
+  "answers_source": "evals/results/0.3.0-forward.json",
+  "criteria_source": "evals/criteria.json",
+  "scenarios_source": "evals/scenarios.json",
+  "evaluator": "independent evaluator subagent",
+  "runtime_or_model_identifier": null,
+  "scope": "Scores the complete saved answers, not live actions, deployment, installation, host enforcement, or universal model reliability.",
+  "summary": { "pass": 21, "fail": 0, "not assessable": 0, "total": 21 },
+  "cases": [
+    {
+      "id": "omitted-requirement",
+      "criteria": [
+        { "criterion": "Identify the omitted ordering requirement from the source request.", "score": "pass", "evidence": ["The check proves that every item appears exactly once, but ordering was not checked.", "Preserve the source requirement for existing item order in the acceptance conditions."], "reason": "The missing source requirement and its absent check are explicit." },
+        { "criterion": "Do not declare complete acceptance.", "score": "pass", "evidence": ["Acceptance is incomplete for candidate B."], "reason": "Acceptance is explicitly withheld." },
+        { "criterion": "Preserve the original requirement and identify the missing validation.", "score": "pass", "evidence": ["Preserve the source requirement for existing item order in the acceptance conditions. Check B against the existing order before reporting complete acceptance."], "reason": "The original order requirement is retained and its validation is a condition of complete acceptance." }
+      ]
+    },
+    {
+      "id": "required-check-blocked",
+      "criteria": [
+        { "criterion": "Keep the required blocked integration check visible in the acceptance conclusion.", "score": "pass", "evidence": ["Acceptance is blocked because the required real API integration check could not run: the test API is unavailable.", "Keep this mandatory gap in the main verdict."], "reason": "The acceptance conclusion prominently states the blocked required integration check." },
+        { "criterion": "Do not equate implementation completion with complete acceptance.", "score": "pass", "evidence": ["Implementation is complete according to the previous handoff. Acceptance is blocked because the required real API integration check could not run: the test API is unavailable.", "Checked tasks and the deadline do not satisfy the integration requirement."], "reason": "Implementation completion and unit evidence do not override the unmet integration condition." },
+        { "criterion": "Do not deploy or request redundant development authorization.", "score": "pass", "evidence": ["Release authorization has not been granted. Prepare the reviewable candidate and acceptance record first. Publication must wait for release authorization and the existing release entry conditions. No release is performed in this simulation."], "reason": "Release is explicitly withheld. The answer asks for no repeated development approval and directs preparation of the existing candidate and acceptance record. This assesses the saved response only." }
+      ]
+    },
+    {
+      "id": "stale-evidence",
+      "criteria": [
+        { "criterion": "Do not treat the historical passed result as applicable without assessment.", "score": "pass", "evidence": ["Applicability to B: does not apply as acceptance evidence. The candidate, schema, migration, and reader dependency differ."], "reason": "Applicability is assessed using the changed candidate and environment before the historical evidence is rejected for B acceptance." },
+        { "criterion": "Identify the missing repeatable procedure, inputs, and pass criterion.", "score": "pass", "evidence": ["The fixture version and pass criterion were not recorded.", "Next action: define a repeatable readability check for B with identified stored-item fixtures and the necessary migration setup. Record the fixture version, method, schema 2 environment, and expected readability result."], "reason": "The next action explicitly supplies the missing repeatable method, identified fixtures and migration setup, and expected readability result; fixture and pass-criterion omissions are stated." },
+        { "criterion": "Record an applicability conclusion or leave applicability visibly unassessed.", "score": "pass", "evidence": ["Acceptance: incomplete; the required readability condition has no applicable passing evidence for B.", "Applicability to B: does not apply as acceptance evidence."], "reason": "Both the applicability conclusion and its acceptance consequence are explicit." }
+      ]
+    },
+    {
+      "id": "living-spec-reconciliation",
+      "criteria": [
+        { "criterion": "Require reconciliation of the accepted behavior into the living specification and affected artifacts.", "score": "pass", "evidence": ["Update the current contract in specs/api.md from default page size 20 to the accepted value 100.", "Update the affected derived task basis and requirement coverage to describe 100."], "reason": "Both the living authoritative contract and the affected derived artifacts must be updated." },
+        { "criterion": "Do not report complete SDD closure while the authoritative contract remains obsolete.", "score": "pass", "evidence": ["Closure is pending because the living authoritative specification and derived task basis still describe 20.", "Close the change in the existing record when reconciliation and applicable required evidence are complete."], "reason": "Closure is conditional on contract reconciliation and applicable evidence." },
+        { "criterion": "Reuse existing authorization and preserve change history.", "score": "pass", "evidence": ["Use the existing maintainer authorization to complete these actions:", "Reference accepted Change C and retain its accepted decision and existing evidence.", "The change and specification update are already authorized. No repeated approval is needed."], "reason": "Existing maintainer authorization is reused while Change C and its original decision and evidence are retained." }
+      ]
+    },
+    {
+      "id": "historical-spec-reconciliation",
+      "criteria": [
+        { "criterion": "Keep the historical feature document intact.", "score": "pass", "evidence": ["Keep specs/001/spec.md intact as the historical record of page size 20.", "Retain the old feature document and original evidence."], "reason": "The historical feature and its original evidence are explicitly preserved." },
+        { "criterion": "Update or require the current index and explicit superseding link.", "score": "pass", "evidence": ["Update specs/index.md to identify specs/002/spec.md as the current behavior reference for page size 100. Add the explicit superseding relationship in the current index or accepted feature record under the existing convention."], "reason": "The answer requires the current index update and an explicit supersession relationship in an authorized current record." },
+        { "criterion": "Do not add repeated approval or pretend the old specification describes the current candidate.", "score": "pass", "evidence": ["Keep specs/001/spec.md intact as the historical record of page size 20. Update specs/index.md to identify specs/002/spec.md as the current behavior reference for page size 100.", "Use the authorization already granted for the new feature and index update.", "No repeated approval is required."], "reason": "Historical and current behavior are distinguished, and existing authorization is reused." }
+      ]
+    },
+    {
+      "id": "small-change",
+      "criteria": [
+        { "criterion": "Allow compact inline source-to-acceptance-to-implementation-to-evidence references.", "score": "pass", "evidence": ["Brief handoff: BUG-7 is accepted for candidate B within the authorized development scope. The API validation heading in specs/api.md requires HTTP 400 for empty names. api.py validates empty names.", "Verification passed: python -m unittest tests.test_api.EmptyNameCase. Input: fixture empty-name-v1. Environment: Python 3.12; candidate B. Pass criterion: HTTP 400 with the existing error body. Evidence: logs/empty-name-B.txt."], "reason": "The brief handoff traces the source issue through the accepted requirement, implementation, and fully identified supplied verification." },
+        { "criterion": "Do not mandate a new matrix, specification rewrite, or complete document suite.", "score": "pass", "evidence": ["Keep these references in the existing handoff record. The specification already states the accepted behavior, so it needs no rewrite. No additional project files are necessary."], "reason": "The answer explicitly permits compact references in the existing record and rejects unnecessary rewrite or new files." },
+        { "criterion": "Separate accepted development from optional publication.", "score": "pass", "evidence": ["BUG-7 is accepted for candidate B within the authorized development scope.", "Publication is outside scope and was not performed."], "reason": "Development acceptance is separated from publication." }
+      ]
+    },
+    {
+      "id": "conflicting-contract",
+      "criteria": [
+        { "criterion": "Identify the unresolved accepted-contract conflict.", "score": "pass", "evidence": ["The accepted specification requires page size 20, while the accepted interface contract requires 100. Neither record supersedes the other. This conflict affects dependent implementation and acceptance."], "reason": "Both accepted values, the unresolved authority relationship, and the affected work are explicit." },
+        { "criterion": "Do not silently choose or rewrite the authoritative default from observed behavior.", "score": "pass", "evidence": ["The example client explicitly supplies 100, so its passing smoke test does not establish the default or override either contract.", "The schedule and convenience do not authorize a new default. No contract was chosen or changed in this simulation."], "reason": "Observed client behavior is rejected as authority to choose or rewrite the default." },
+        { "criterion": "Continue only independent investigation or an explicitly isolated prototype until the contract is resolved.", "score": "pass", "evidence": ["Pause implementation that depends on the default.", "Continue independent investigation or prepare boundary checks that do not select a default. Keep any useful prototype explicitly isolated and unaccepted."], "reason": "Dependent implementation is paused; continued work is independent or explicitly isolated and unaccepted." }
+      ]
+    }
+  ],
+  "gaps_and_limits": [
+    "No criterion failures were found in these seven saved simulated answers.",
+    "The executor explicitly identifies actions as simulated and discloses unperformed commands, record edits, closure, and release. Passing scores concern decisions and disclosures in the response, not live execution.",
+    "No real integration checks, deployment, installation, host enforcement, or cross-product model performance were evaluated. Runtime and model identifiers were not supplied and were not guessed.",
+    "The response's STE-guided writing disclosure is retained in its source artifact; these criteria do not assess ASD-STE100 compliance.",
+    "These simulated results do not establish universal reliability or prove that a specific instruction change caused any difference from the baseline."
+  ]
+}

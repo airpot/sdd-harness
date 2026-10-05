@@ -2,7 +2,7 @@
 name: sdd-harness
 description: Use when specification-driven development spans changes, chats, worktrees, machines, or coding agents. Use when resuming tasks, checking acceptance evidence, preparing releases, or recovering project worktrees.
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
 ---
 
 # SDD Harness
@@ -42,6 +42,8 @@ Both tools are optional.
 
 - Find accepted requirements, relevant interfaces, and baseline behavior. Reference existing specifications and tasks instead of duplicating them.
 - Define observable acceptance conditions, dependencies, and the next verifiable change. Keep small tasks brief.
+- Before dependent implementation, review specification quality and conflicting contracts.
+- Trace source requirements to acceptance conditions, work, implementation, and evidence. Check for omitted requirements and unsupported added behavior.
 - Run parallel tasks only when dependencies permit. Use separate worktrees and runtime resources.
 - If shared interfaces, data structures, or dependencies change, coordinate with affected tasks. Review their evidence again.
 - Implement small batches. Read the actual diff. Run relevant checks. Integrate early.
@@ -49,6 +51,7 @@ Both tools are optional.
 - Identify specification proposals and their reasons. Follow the project's acceptance rules. Do not silently weaken acceptance conditions.
 
 Read [references/workflow.md](references/workflow.md) when planning or implementing a change.
+For specification quality and coverage, read [references/spec-review.md](references/spec-review.md).
 
 ## Continue and coordinate
 
@@ -72,6 +75,12 @@ For multiple executors, read [references/collaboration.md](references/collaborat
 Check requirement coverage, actual changes, dependencies, and evidence.
 Bind evidence to the exact commit or snapshot, specification version, and relevant environment.
 If any of these change, review whether the evidence still applies.
+Record the applicability conclusion and its reason. Keep unassessed evidence visibly unassessed.
+Required conditions need applicable passing evidence for complete acceptance.
+If required validation fails, is blocked, or did not run, report incomplete acceptance and the remaining work.
+Before final acceptance, reconcile accepted changes with the authoritative specification and affected records.
+Follow the project's specification maintenance model and existing authorization.
+
 Check development permission, integration permission, and release authorization separately.
 Continue routine actions that the user already authorized. This skill does not expand authorization.
 
@@ -103,6 +112,7 @@ If you cannot maintain that protection, keep the directory and report the missin
 | --- | --- |
 | Installation or first use | [references/install.md](references/install.md); `scripts/install.py` |
 | Internal document writing | [references/writing.md](references/writing.md) |
+| Specification quality and coverage | [references/spec-review.md](references/spec-review.md) |
 | New features or existing systems | [references/workflow.md](references/workflow.md); [assets/change.md](assets/change.md) |
 | Multiple chats, machines, or agents | [references/collaboration.md](references/collaboration.md) |
 | Workspace inspection or recovery | `scripts/workspace.py --help`; [references/recovery.md](references/recovery.md) |

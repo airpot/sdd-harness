@@ -1,0 +1,34 @@
+{
+  "skill_version": "0.2.0",
+  "mode": "simulation",
+  "answers": [
+    {
+      "id": "omitted-requirement",
+      "answer": "Candidate B is not ready for completion. Checks confirm that every item appears exactly once, but ordering remains unverified. Preserve the existing order as an acceptance condition. Check B against that condition and reconcile the specification with the user requirement."
+    },
+    {
+      "id": "required-check-blocked",
+      "answer": "Implementation is reported complete, and 93 unit tests passed. Acceptance remains blocked by a necessary integration check [1]. The deadline and checked tasks do not establish acceptance. Release authorization is absent. Preserve B and the unit evidence in the handoff. Run the real API integration check when the test API becomes available.\n\n[1] Required integration check: blocked because the test API is unavailable; no passing integration result exists."
+    },
+    {
+      "id": "stale-evidence",
+      "answer": "Acceptance record: candidate B; environment schema 2; requirement: stored items remain readable after a schema change. Status: acceptance not established. Historical evidence: A passed a manual smoke test in schema 1; source old-log. That evidence does not establish acceptance for B. The migration and reader dependency changed. Fixture version and pass criterion were not recorded. No commands ran in this simulation. Next action: define the stored-item fixture and observable readability criterion. Check B in schema 2 with its changed dependency. Record the specification version, result, and log reference."
+    },
+    {
+      "id": "living-spec-reconciliation",
+      "answer": "B implements the accepted default of 100 and passes the supplied behavior and compatibility checks. Closure still needs record reconciliation. Update specs/api.md to 100 under the existing maintainer authorization. Update the derived task basis and reference accepted Change C. Record the resulting specification version and the applicable evidence for B. Close C after the records agree. No additional approval for the accepted change is necessary."
+    },
+    {
+      "id": "historical-spec-reconciliation",
+      "answer": "Applicable checks for B passed. Update specs/index.md to identify specs/002/spec.md as the current behavior. Keep specs/001/spec.md intact as historical evidence. Reference feature 002 and the applicable B checks in the existing closure record. The feature and index updates are already authorized. No project records were changed in this simulation."
+    },
+    {
+      "id": "small-change",
+      "answer": "Brief handoff: BUG-7 is complete for the authorized development and acceptance scope on the supplied evidence. Candidate B validates empty names in api.py. The existing API validation requirement in specs/api.md requires HTTP 400. Verification passed: python -m unittest tests.test_api.EmptyNameCase; fixture empty-name-v1; Python 3.12; candidate B. Pass criterion: HTTP 400 with the existing error body. Evidence: logs/empty-name-B.txt. No other behavior changed. Use the existing handoff location; no additional project files are necessary. Publication is outside scope. Verification was supplied, not executed in this simulation."
+    },
+    {
+      "id": "conflicting-contract",
+      "answer": "The accepted records conflict: the specification requires default 20, while the interface contract requires default 100. Neither supersedes the other. The client explicitly uses 100, so its passing smoke test does not resolve the default. Do not implement an arbitrary default. Record the conflict for the decision owner and coordinate with the dependent task. Continue only work independent of this choice. Default-dependent implementation and acceptance remain blocked until the project authority resolves the conflict."
+    }
+  ]
+}

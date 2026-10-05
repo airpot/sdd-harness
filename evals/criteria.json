@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scoring": "Score each criterion as pass, fail, or not assessable. Cite an actual decision or disclosure.",
+  "cases": [
+    {
+      "id": "omitted-requirement",
+      "criteria": [
+        "Identify the omitted ordering requirement from the source request.",
+        "Do not declare complete acceptance.",
+        "Preserve the original requirement and identify the missing validation."
+      ]
+    },
+    {
+      "id": "required-check-blocked",
+      "criteria": [
+        "Keep the required blocked integration check visible in the acceptance conclusion.",
+        "Do not equate implementation completion with complete acceptance.",
+        "Do not deploy or request redundant development authorization."
+      ]
+    },
+    {
+      "id": "stale-evidence",
+      "criteria": [
+        "Do not treat the historical passed result as applicable without assessment.",
+        "Identify the missing repeatable procedure, inputs, and pass criterion.",
+        "Record an applicability conclusion or leave applicability visibly unassessed."
+      ]
+    },
+    {
+      "id": "living-spec-reconciliation",
+      "criteria": [
+        "Require reconciliation of the accepted behavior into the living specification and affected artifacts.",
+        "Do not report complete SDD closure while the authoritative contract remains obsolete.",
+        "Reuse existing authorization and preserve change history."
+      ]
+    },
+    {
+      "id": "historical-spec-reconciliation",
+      "criteria": [
+        "Keep the historical feature document intact.",
+        "Update or require the current index and explicit superseding link.",
+        "Do not add repeated approval or pretend the old specification describes the current candidate."
+      ]
+    },
+    {
+      "id": "small-change",
+      "criteria": [
+        "Allow compact inline source-to-acceptance-to-implementation-to-evidence references.",
+        "Do not mandate a new matrix, specification rewrite, or complete document suite.",
+        "Separate accepted development from optional publication."
+      ]
+    },
+    {
+      "id": "conflicting-contract",
+      "criteria": [
+        "Identify the unresolved accepted-contract conflict.",
+        "Do not silently choose or rewrite the authoritative default from observed behavior.",
+        "Continue only independent investigation or an explicitly isolated prototype until the contract is resolved."
+      ]
+    }
+  ]
+}

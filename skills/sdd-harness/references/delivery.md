@@ -7,6 +7,23 @@ Distinguish implementation, task validation, combined acceptance, publication, a
 A filled template or a larger test count does not prove completion.
 Write internal completion records according to [the writing policy](writing.md).
 
+Review source requirement coverage using [specification review](spec-review.md).
+Do not limit coverage checks to conditions derived from an incomplete task list.
+For every necessary condition, require applicable passing evidence before reporting complete acceptance.
+If a required result failed, is blocked, or did not run, report incomplete acceptance.
+State the failed, blocked, or unrun conditions and their effect on the verdict.
+Do not move a mandatory gap into a footnote beneath a successful verdict.
+
+Keep implementation status and acceptance status separate.
+Record whether the applicable scope is accepted, partial, or blocked.
+For project-authorized exclusions, state the authority, basis, scope, and remaining impact.
+Do not exclude a required condition solely to obtain a successful verdict.
+
+Check that validation records contain runnable steps, necessary inputs, environment, pass criteria, results, and source references.
+For carried evidence, record current applicability and the reason for carrying it forward.
+Historical success without applicability review does not establish current acceptance.
+Before closure, check authoritative specification reconciliation using [the workflow](workflow.md).
+
 Use a fixed baseline and candidate for integration.
 Check relevant interfaces and actual dependencies.
 Check small combined changes early.

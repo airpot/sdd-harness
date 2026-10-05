@@ -2,7 +2,7 @@
 
 A portable skill for specification-driven development across chats, worktrees, machines, and coding agents.
 
-Current version: **0.2.0**.
+Current version: **0.3.0**.
 
 The skill combines accepted specifications and incremental changes from OpenSpec with clarification and consistency checks from Spec Kit.
 Use the project's existing specifications and tools. Neither framework is a required dependency.
@@ -12,6 +12,9 @@ Use the project's existing specifications and tools. Neither framework is a requ
 - Continue development from a task handoff.
 - Coordinate separate tasks across chats, worktrees, machines, and harnesses.
 - Check acceptance evidence against exact code and specification versions.
+- Review specification quality and trace source requirements to implementation and evidence.
+- Keep mandatory validation gaps visible in acceptance verdicts.
+- Reconcile accepted behavior with the project's authoritative specification.
 - Prepare releases through the project's existing publication entry.
 - Preserve results before authorized worktree removal.
 - Write internal development documents in English with ASD-STE100 writing rules.
@@ -43,7 +46,7 @@ Before updating, preserve the existing installation outside discovered skills di
 
 ## Install from the package
 
-Download [sdd-harness-0.2.0.zip](dist/sdd-harness-0.2.0.zip) and its [SHA-256 file](dist/sdd-harness-0.2.0.sha256).
+Download [sdd-harness-0.3.0.zip](dist/sdd-harness-0.3.0.zip) and its [SHA-256 file](dist/sdd-harness-0.3.0.sha256).
 Extract the ZIP into a local directory.
 From that directory, run:
 
@@ -119,3 +122,7 @@ The builder checks relative references and ZIP integrity. It refuses to overwrit
 Its output includes the archive SHA-256 hash.
 The tests cover workspace preservation and recovery, installation, and packaging.
 They do not establish full runtime compatibility across products, machines, or operating systems.
+
+Read the [behavior specification](specs/sdd-harness.md) for the skill's accepted requirements.
+Use the [saved instruction evaluations](evals/README.md) to compare executor decisions across revisions.
+Evaluation criteria and complete outputs remain separate from executor inputs.

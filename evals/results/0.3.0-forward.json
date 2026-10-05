@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "skill": "sdd-harness",
+  "version": "0.3.0",
+  "mode": "forward",
+  "evaluation_scope": "Isolated simulated instruction evaluation; no live external actions.",
+  "runtime_model": null,
+  "writing_review": "STE-guided English. Complete dictionary and domain-term review was not performed; ASD-STE100 compliance is not claimed.",
+  "cases": [
+    {
+      "id": "omitted-requirement",
+      "answer": "Acceptance is incomplete for candidate B. The check proves that every item appears exactly once, but ordering was not checked. Preserve the source requirement for existing item order in the acceptance conditions. Check B against the existing order before reporting complete acceptance. Implementation completion is not established by the supplied facts."
+    },
+    {
+      "id": "required-check-blocked",
+      "answer": "Implementation is complete according to the previous handoff. Acceptance is blocked because the required real API integration check could not run: the test API is unavailable. The 93 passing unit tests cover only their examined behavior. Checked tasks and the deadline do not satisfy the integration requirement. Keep this mandatory gap in the main verdict.\n\nRetain candidate B, the passing unit result, and the blocked integration result in the existing acceptance or handoff record. When the test API becomes available, run the required integration check for B. Record its method, necessary inputs, environment, pass criterion, result, and evidence reference. Complete acceptance only after applicable required checks pass.\n\nRelease authorization has not been granted. Prepare the reviewable candidate and acceptance record first. Publication must wait for release authorization and the existing release entry conditions. No release is performed in this simulation."
+    },
+    {
+      "id": "stale-evidence",
+      "answer": "Acceptance record for candidate B:\n\nRequirement: Stored items remain readable after a schema change. Candidate environment: schema 2. Changed scope: schema migration and reader dependency. Acceptance: incomplete; the required readability condition has no applicable passing evidence for B.\n\nHistorical evidence: object A; manual smoke test; environment schema 1; result passed; logs old-log. Applicability to B: does not apply as acceptance evidence. The candidate, schema, migration, and reader dependency differ. The fixture version and pass criterion were not recorded. Preserve this historical result without relabeling it as a check of B.\n\nNext action: define a repeatable readability check for B with identified stored-item fixtures and the necessary migration setup. Record the fixture version, method, schema 2 environment, and expected readability result. Run the check and retain its result and logs. Review authoritative specification consistency before complete acceptance. No commands were run; no new validation result or record location is invented."
+    },
+    {
+      "id": "living-spec-reconciliation",
+      "answer": "B implements the accepted default page size of 100 and passes behavior and compatibility checks. Closure is pending because the living authoritative specification and derived task basis still describe 20.\n\nUse the existing maintainer authorization to complete these actions:\n1. Update the current contract in specs/api.md from default page size 20 to the accepted value 100.\n2. Reference accepted Change C and retain its accepted decision and existing evidence.\n3. Update the affected derived task basis and requirement coverage to describe 100.\n4. Record the check evidence for B and its applicability to the reconciled specification. The accepted behavior remains 100, but applicability still needs an explicit conclusion.\n5. Check that the contract, Change C, task basis, and candidate describe the same accepted behavior.\n6. Close the change in the existing record when reconciliation and applicable required evidence are complete.\n\nThe change and specification update are already authorized. No repeated approval is needed. These are remaining simulated actions; no project records were changed here."
+    },
+    {
+      "id": "historical-spec-reconciliation",
+      "answer": "The applicable checks for B passed. Closure is pending because specs/index.md still identifies feature 001 as current.\n\nKeep specs/001/spec.md intact as the historical record of page size 20. Update specs/index.md to identify specs/002/spec.md as the current behavior reference for page size 100. Add the explicit superseding relationship in the current index or accepted feature record under the existing convention. Retain the old feature document and original evidence.\n\nUse the authorization already granted for the new feature and index update. Confirm that the index, accepted feature, B, and applicable passing checks agree. Then record complete acceptance and close the change in the existing handoff or change record. No repeated approval is required. No index update or closure was actually executed in this simulation."
+    },
+    {
+      "id": "small-change",
+      "answer": "Brief handoff: BUG-7 is accepted for candidate B within the authorized development scope. The API validation heading in specs/api.md requires HTTP 400 for empty names. api.py validates empty names.\n\nVerification passed: python -m unittest tests.test_api.EmptyNameCase. Input: fixture empty-name-v1. Environment: Python 3.12; candidate B. Pass criterion: HTTP 400 with the existing error body. Evidence: logs/empty-name-B.txt. This evidence applies to the stated requirement and candidate. No behavior beyond the existing requirement changed.\n\nKeep these references in the existing handoff record. The specification already states the accepted behavior, so it needs no rewrite. No additional project files are necessary. Publication is outside scope and was not performed. The supplied facts do not identify an existing handoff path; this response provides the brief simulated handoff without inventing one."
+    },
+    {
+      "id": "conflicting-contract",
+      "answer": "The default cannot be selected from the supplied facts. The accepted specification requires page size 20, while the accepted interface contract requires 100. Neither record supersedes the other. This conflict affects dependent implementation and acceptance.\n\nPause implementation that depends on the default. Record the exact conflict and its impact on the dependent API task. Seek the responsible decision owner's resolution when that owner becomes available. The example client explicitly supplies 100, so its passing smoke test does not establish the default or override either contract.\n\nContinue independent investigation or prepare boundary checks that do not select a default. Keep any useful prototype explicitly isolated and unaccepted. After an authorized decision resolves the conflict, reconcile the affected contracts and task basis before dependent implementation. The schedule and convenience do not authorize a new default. No contract was chosen or changed in this simulation."
+    }
+  ]
+}

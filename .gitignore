@@ -1,0 +1,13 @@
+# Python and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local development records and recoverable installation backups
+/docs/
+/backups/
+/.sdd-harness/
+
+# Disposable local package builds
+/dist/sdd-harness-local.zip

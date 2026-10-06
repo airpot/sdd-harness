@@ -9,6 +9,10 @@ If records are missing, keep a short goal, acceptance conditions, and a handoff 
 For a change with multiple steps, use the [change template](../assets/change.md) at the project's existing location.
 If the project has no location, use `.sdd-harness/changes/<change-id>.md`.
 Remove fields that do not apply.
+Templates are optional. Keep the project's existing format when it already supplies the necessary record.
+Before saving a copied template, complete its policy placeholder for the record's actual destination.
+Use the project's policy reference or an accessible installed skill policy.
+Check local links from the saved record's directory. Do not copy a second authoritative policy.
 
 Independent development is the default. A small task needs no collaboration setup.
 For new or changed internal prose, follow [the writing policy](writing.md).

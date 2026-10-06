@@ -1,0 +1,65 @@
+{
+  "version": "0.7.1",
+  "date": "2026-10-06",
+  "implementation_base_commit": "d92ee047535d392c6d6f46096dda55060777ff2e",
+  "binding": "Exact raw candidate bytes after specification-review F1 repair, before final independent recheck and Git newline conversion. This is correction evidence, not final release/installation provenance.",
+  "portable_source": {
+    "SKILL.md": "09b13e3016fbdd4e9d3c19696d20cf33d20d88f83a9d5f6af0e41f1847a462c3",
+    "assets/change.md": "da13204796df87ea9405216f5b85dc7a9d35aff09969f7b44946fcd223880292",
+    "assets/handoff.md": "4da71c505cc6730ddbd86fcc1491f4ff9544564c4cd1167a3f50df012c495b73",
+    "assets/release.md": "2dd28a051622ecf6c42074ad8b6787e1ddfd39027dd32781f7ed86a8a0b42ab5",
+    "references/collaboration.md": "90780d83facbfb5bf7b0c5d1f14eecc30e3a34753abf5d6af2c5a74a85552661",
+    "references/delivery.md": "95566a3aab43d1c29cc06c395bbe8150a1bedf73576ae8caa59c86cf05151468",
+    "references/install.md": "8f801581c4f8fe82e1cc1a65f9b423bb9517dd2f9b19efa808a9c623064f3353",
+    "references/recovery.md": "2f567a7ff1d337bb379e2c7705b9d230b1866013347c060bb3981624e52d05c4",
+    "references/spec-review.md": "99af55f4a2873b0e0540e792486f51f83cddcaa13316dbbbf4d70329a372fccc",
+    "references/subagents.md": "4b3380e3b609700dae1a793767818b7c9496f2224afdf50fd25cf0b0fd03eb5c",
+    "references/workflow.md": "24b728f039169939beb272efc24a2e78e4b5ed54e5678030b5cba4634e71cafc",
+    "references/writing.md": "38fd8563663da1c1e21de6a4c6b9f7ae5dc605794876e9e5eab2e36d794623c7",
+    "scripts/install.py": "e12bcdcb1e18ff64b8a26de12c14d0a6a2ec04462cd13f68c9343bd452dc1cb4",
+    "scripts/workspace.py": "f042e27a5cce0031f59c93f72de0c01dd066e27b5db75e4a8559a4d6c0bca225"
+  },
+  "portable_files": 14,
+  "changed_development_source": {
+    "tools/package_skill.py": "8f86ca2910557cb00998d407a2b32d60f11c7aefb093b4dfdc9a785113155916",
+    "tests/test_skill_tools.py": "7f757fdc787110cf45bc4489cba9cb574c68d2cbafe9d99953162b78f9407308",
+    "tests/test_followup_corrections.py": "47a94d8851a4289d2f2c2dc5a97804ef1c96a6393ed97d9da37513be6b442986",
+    "specs/sdd-harness.md": "8189c5995fca78c807dfac51e29a1ca176d3fc3cddbfb03e2868df1e137a0b22",
+    "README.md": "0abab648e576830f631d764ac6d94ef13f6737a3f22f9ee64474ef680ab5f771",
+    "evals/README.md": "42a38f6421a05b3ef7f8c5fb16948a3943415c43d73fd92cf7976a8f985a07fb"
+  },
+  "records": {
+    "evals/results/0.7.1-native-applicability.json": "f31d76e78f683a3513bf03e3e6184fcd3bf7f36b74a3f482582f148b875cb9e2",
+    "evals/results/0.7.1-native-requests.json": "36a296cf72c45e9a28cb1f1eba515b264d9aa257a15915229334f1842d4fbb8e",
+    "evals/results/0.7.1-regression.json": "9f500cd6a61334201e1ba8910c74e33b05f37d72ddf5bfb93a24722e72bbe325",
+    "evals/results/0.7.1-review-correction.json": "9eea01bcae86042c4af89924d4363de7841b9e9f5c0e655a3b5c13856e869238",
+    "evals/results/0.7.1-validation.md": "9917782dfe4cac13e33e32d0a2d061df91503286446357d2a209ea1a4c85693a",
+    "evals/results/0.7.0-invocation-errata.json": "02618dbdd4dcd1db8bd8b3f98281d23fb9352eec468a8b31bd04ad63f60dcc1a",
+    "evals/results/0.7.0-invocation-errata.md": "547079ec2b0b8d1b88bcfbc9f4db90e97983b95631b07bb5009926c4dde5b814",
+    "evals/results/0.7.1-template-results.json": "57029a080287014629d4b7a11d9606ff8767df322e8ac50a346891949a9de579"
+  },
+  "historical_binding": "Dated additive errata preserves raw 0.7.0 responses, observations, validation and provenance.",
+  "native_binding": "Original native request record retains exact evaluated 14-file hashes. Only installer script changed after native assessment. Additive applicability record binds unchanged entry/reference routing evidence without claiming the changed script was read or executed.",
+  "remaining_parent_work": [
+    "Independent specification F1 recheck and code-quality review.",
+    "Final package/link validation, old-install preservation, install verification, immutable ZIP and release provenance.",
+    "Commit, intended-file staging only, main integration and push."
+  ],
+  "limits": [
+    "Python 3.12.8 on Windows only; legacy API branch tested with real junctions and Path.is_junction removed.",
+    "Three explicitly adapted native requests; no exact literal corpus input coverage, writable task completion, cost comparison or efficiency claim.",
+    "All prior coding baselines, initial instruction misses and retries retain original scope."
+  ],
+  "pre_review_provenance": {
+    "path": "docs/validation/0.7.1-pre-review-correction-provenance.json",
+    "sha256": "4567baf0577211255bbe5bc8c7741c59d6cc186b755a9c396af3d7e032cfed7e",
+    "original_installer_sha256": "39a17cb41e868125a689997d09dcca001047b11fa3f40be02daa4be3cbe40a8f",
+    "original_record_sha256": {
+      "evals/results/0.7.1-native-requests.json": "36a296cf72c45e9a28cb1f1eba515b264d9aa257a15915229334f1842d4fbb8e",
+      "evals/results/0.7.1-regression.json": "9f500cd6a61334201e1ba8910c74e33b05f37d72ddf5bfb93a24722e72bbe325",
+      "evals/results/0.7.1-validation.md": "de98c1088507c3a8009d6ec3dd99034ed3633321fadad5cb6a6a522986b8a1b5",
+      "evals/results/0.7.0-invocation-errata.json": "02618dbdd4dcd1db8bd8b3f98281d23fb9352eec468a8b31bd04ad63f60dcc1a",
+      "evals/results/0.7.0-invocation-errata.md": "547079ec2b0b8d1b88bcfbc9f4db90e97983b95631b07bb5009926c4dde5b814"
+    }
+  }
+}

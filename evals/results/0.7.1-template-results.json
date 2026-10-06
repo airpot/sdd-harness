@@ -1,0 +1,279 @@
+{
+  "version": "0.7.1",
+  "date": "2026-10-06",
+  "request_kind": "Fresh independent executor prepares an optional change record against existing project policy in an arbitrary project record directory.",
+  "parent_independent_outcomes": {
+    "conditions": [
+      {
+        "condition": "released-0.7.0",
+        "artifact": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-template-baseline-071-ho6piqwr\\.sdd-harness\\changes\\pagination.md",
+        "sha256": "8fa6132e869c105e3ed8af788b99012cff68d083fc8b505d275f75ff3bafe28a",
+        "links": [
+          {
+            "target": "../../TASK.md",
+            "resolved": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-template-baseline-071-ho6piqwr\\TASK.md",
+            "exists": true
+          },
+          {
+            "target": "../../docs/standards/development-writing.md",
+            "resolved": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-template-baseline-071-ho6piqwr\\docs\\standards\\development-writing.md",
+            "exists": true
+          }
+        ],
+        "source_inputs": {
+          "TASK.md": "20119bc116aa19f734287f597df4344094a3d20cdb8a3c892e374b98c3d70382",
+          "docs/standards/development-writing.md": "1e6155c81471ff5b221fea2f91f30850127dbf942146c3cc2b5a4157b732dda3"
+        },
+        "actual_saved_record": "# Change Record\n\n- Change and task ID: `pagination`; [assigned task](../../TASK.md).\n- Goal and scope: Prepare the accepted two-step pagination repair. This assignment changes the record only.\n- Accepted basis: Filter active rows before offset. Then verify preserved ordering. The code baseline is unknown.\n- Writing policy: Follow the [existing project policy](../../docs/standards/development-writing.md). Use STE-guided English. Dictionary review remains unverified.\n- Current structure: Entry points and existing tests are unknown. Preserve the existing row order.\n- Acceptance conditions: Pagination selects the requested range from active rows. Selected rows retain their existing relative order.\n- Coverage and tasks:\n  1. Filter active rows before applying offset and page size. Check inactive rows before the requested page.\n  2. Verify preserved ordering. Compare the selected rows with the same range of the ordered active rows.\n- Assertion basis and validation recipe: Use ordered rows `A(active), B(inactive), C(active), D(active)`. Offset `1` and page size `2` must return `C, D`. An implementation check must use the actual pagination entry point.\n- Execution: The assigned agent prepared this record in the isolated fixture. Git reports no repository at the fixture path.\n- Results and evidence: Read the assigned task, frozen skill, change template, and existing writing policy. No code changed. No pagination checks ran.\n- Acceptance: Record preparation is complete. Pagination behavior remains unverified.\n- Unverified work: The implementation, code version, baseline failure, actual test command, and test results are unknown.\n- Next action: Identify the pagination entry point and code version. Execute both steps and record actual baseline and corrected results.\n"
+      },
+      {
+        "condition": "candidate-0.7.1",
+        "artifact": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-template-forward-071-04iotycw\\.sdd-harness\\changes\\pagination.md",
+        "sha256": "3a930a039033accaeb302681c90a4a2f38c4fe3762eaf9152cb608d06c055abb",
+        "links": [
+          {
+            "target": "../../docs/standards/development-writing.md",
+            "resolved": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-template-forward-071-04iotycw\\docs\\standards\\development-writing.md",
+            "exists": true
+          },
+          {
+            "target": "../../TASK.md",
+            "resolved": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-template-forward-071-04iotycw\\TASK.md",
+            "exists": true
+          }
+        ],
+        "source_inputs": {
+          "TASK.md": "20119bc116aa19f734287f597df4344094a3d20cdb8a3c892e374b98c3d70382",
+          "docs/standards/development-writing.md": "1e6155c81471ff5b221fea2f91f30850127dbf942146c3cc2b5a4157b732dda3"
+        },
+        "actual_saved_record": "# Change Record: Pagination\n\nWriting policy: [Accepted project writing policy](../../docs/standards/development-writing.md).\n\n- Change and task ID: `pagination`; [assigned task](../../TASK.md).\n- Goal and scope: Prepare this record for the accepted two-step repair. Code changes are outside this assignment.\n- Accepted basis: `TASK.md` requires filtering active rows before offset, then verifying preserved ordering. Skill version: `0.7.1`.\n- Current structure: No application code or tests were supplied. The fixture is not a Git repository; code baseline and branch are unknown.\n- Acceptance conditions: Pagination applies offset to active rows. Returned active rows retain the established ordering.\n- Tasks and coverage: Step 1 repairs filtering before offset. Step 2 verifies ordering. Both implementation steps remain pending.\n- Assertion basis: Planned input order is `[I0 inactive, A1 active, I2 inactive, A3 active, A4 active]`.\n- Validation recipe: At offset `1` and limit `2`, expect `[A3, A4]`. Compare returned order with the established ordering rule.\n- Results and evidence: Read the assigned task, skill entry, required references, template, and existing project policy. Checked fixture Git availability.\n- Execution: The assigned agent prepared this record in the isolated fixture. Other writer activity was not independently observed.\n- Acceptance: Record preparation only. Defect reproduction, corrected behavior, and ordering tests were not run. Actual test results remain unknown.\n- Specification reconciliation: `TASK.md` remains the accepted behavior reference. No requirement change is proposed.\n- Unverified work: Entry points, ordering rule details, code baseline, and executable test command are unavailable. No behavior evidence supports repair acceptance.\n- Next action: Obtain the implementation and established ordering rule. Reproduce the defect, perform both steps, and record exact commands and results.\n"
+      }
+    ],
+    "limits": [
+      "Both executors completed usable records. No performance or general reliability gain established.",
+      "Underlying pagination implementation and tests were not executed."
+    ]
+  },
+  "raw_executor_reports": {
+    "released-0.7.0": {
+      "scenario": "Fresh isolated actual template-use baseline",
+      "skill_version": "0.7.0",
+      "fixture_path": "C:/Users/airpot/AppData/Local/Temp/sdd-template-baseline-071-ho6piqwr",
+      "loaded_paths": [
+        "D:/code/project_skill/docs/validation/baseline-0.7.0/SKILL.md",
+        "D:/code/project_skill/docs/validation/baseline-0.7.0/references/install.md",
+        "D:/code/project_skill/docs/validation/baseline-0.7.0/references/workflow.md",
+        "D:/code/project_skill/docs/validation/baseline-0.7.0/references/writing.md",
+        "D:/code/project_skill/docs/validation/baseline-0.7.0/assets/change.md",
+        "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-template-baseline-071-ho6piqwr\\TASK.md",
+        "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-template-baseline-071-ho6piqwr\\docs\\standards\\development-writing.md"
+      ],
+      "loaded_file_sha256": [
+        {
+          "path": "D:/code/project_skill/docs/validation/baseline-0.7.0/SKILL.md",
+          "sha256": "aff955a4b6ccaf19cd7fe8325d9c8cc68f9b6639f61138090148ce8eeb03bc23"
+        },
+        {
+          "path": "D:/code/project_skill/docs/validation/baseline-0.7.0/references/install.md",
+          "sha256": "010d5c9d363c4114a2504a4692f8cbe7547bc160c3f686a71319f7c97c21a115"
+        },
+        {
+          "path": "D:/code/project_skill/docs/validation/baseline-0.7.0/references/workflow.md",
+          "sha256": "c75fab7cd7d660f0eb5f217e6d3be6be534054fc55826bd5740d10487dab47d2"
+        },
+        {
+          "path": "D:/code/project_skill/docs/validation/baseline-0.7.0/references/writing.md",
+          "sha256": "9cfcb0cfcd0bdf669f54ff2720a0c91d2b03934b82778a8c94871d44db723892"
+        },
+        {
+          "path": "D:/code/project_skill/docs/validation/baseline-0.7.0/assets/change.md",
+          "sha256": "c35a35e6d43fdd68c1e69a57224bc87d5ee5bf0740d296efb191ceb10488b746"
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-template-baseline-071-ho6piqwr\\TASK.md",
+          "sha256": "20119bc116aa19f734287f597df4344094a3d20cdb8a3c892e374b98c3d70382"
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-template-baseline-071-ho6piqwr\\docs\\standards\\development-writing.md",
+          "sha256": "1e6155c81471ff5b221fea2f91f30850127dbf942146c3cc2b5a4157b732dda3"
+        }
+      ],
+      "artifact": {
+        "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-template-baseline-071-ho6piqwr\\.sdd-harness\\changes\\pagination.md",
+        "sha256": "8fa6132e869c105e3ed8af788b99012cff68d083fc8b505d275f75ff3bafe28a"
+      },
+      "actual_actions": [
+        "Read the frozen skill entry and task-relevant references and change template.",
+        "Read TASK.md and the existing project writing policy.",
+        "Listed the frozen assets and fixture root without reading audit content.",
+        "Checked fixture Git identity with git rev-parse --show-toplevel.",
+        "Prepared the assigned record using applicable change-template fields.",
+        "Read the saved artifact and calculated SHA256.",
+        "Checked both artifact Markdown link targets on the filesystem."
+      ],
+      "actual_checks": [
+        {
+          "method": "git -C <fixture> rev-parse --show-toplevel",
+          "result": "failed",
+          "observation": "Fixture is not a Git repository."
+        },
+        {
+          "method": "Read saved artifact",
+          "result": "passed",
+          "observation": "Record includes both accepted steps, a repeatable example, unknown code basis, and unrun behavioral checks."
+        },
+        {
+          "method": "Resolve local Markdown links and Test-Path",
+          "result": "passed",
+          "links": [
+            {
+              "target": "../../TASK.md",
+              "resolved_path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-template-baseline-071-ho6piqwr\\TASK.md",
+              "exists": true
+            },
+            {
+              "target": "../../docs/standards/development-writing.md",
+              "resolved_path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-template-baseline-071-ho6piqwr\\docs\\standards\\development-writing.md",
+              "exists": true
+            }
+          ]
+        },
+        {
+          "method": "Pagination implementation tests",
+          "result": "not run",
+          "observation": "Assignment authorizes a record only; no implementation was inspected or changed."
+        }
+      ],
+      "unknowns": [
+        "Actual pagination entry point and source version.",
+        "Actual baseline failure and corrected implementation.",
+        "Actual pagination test command and results.",
+        "Complete STE vocabulary compliance.",
+        "Other writer activity was not observed; the assignment supplied isolated fixture scope."
+      ],
+      "completion": {
+        "record_prepared": true,
+        "underlying_pagination_fix_executed": false,
+        "code_changes": false,
+        "pagination_acceptance": "unverified"
+      }
+    },
+    "candidate-0.7.1": {
+      "skill_version": "0.7.1",
+      "fixture": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-template-forward-071-04iotycw",
+      "loaded_paths": [
+        "D:\\code\\project_skill\\docs\\validation\\template-candidate-0.7.1\\SKILL.md",
+        "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-template-forward-071-04iotycw\\TASK.md",
+        "D:\\code\\project_skill\\docs\\validation\\template-candidate-0.7.1\\references\\install.md",
+        "D:\\code\\project_skill\\docs\\validation\\template-candidate-0.7.1\\references\\workflow.md",
+        "D:\\code\\project_skill\\docs\\validation\\template-candidate-0.7.1\\references\\writing.md",
+        "D:\\code\\project_skill\\docs\\validation\\template-candidate-0.7.1\\assets\\change.md",
+        "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-template-forward-071-04iotycw\\docs\\standards\\development-writing.md"
+      ],
+      "loaded_file_sha256": [
+        {
+          "path": "D:\\code\\project_skill\\docs\\validation\\template-candidate-0.7.1\\SKILL.md",
+          "sha256": "09b13e3016fbdd4e9d3c19696d20cf33d20d88f83a9d5f6af0e41f1847a462c3"
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-template-forward-071-04iotycw\\TASK.md",
+          "sha256": "20119bc116aa19f734287f597df4344094a3d20cdb8a3c892e374b98c3d70382"
+        },
+        {
+          "path": "D:\\code\\project_skill\\docs\\validation\\template-candidate-0.7.1\\references\\install.md",
+          "sha256": "8f801581c4f8fe82e1cc1a65f9b423bb9517dd2f9b19efa808a9c623064f3353"
+        },
+        {
+          "path": "D:\\code\\project_skill\\docs\\validation\\template-candidate-0.7.1\\references\\workflow.md",
+          "sha256": "24b728f039169939beb272efc24a2e78e4b5ed54e5678030b5cba4634e71cafc"
+        },
+        {
+          "path": "D:\\code\\project_skill\\docs\\validation\\template-candidate-0.7.1\\references\\writing.md",
+          "sha256": "38fd8563663da1c1e21de6a4c6b9f7ae5dc605794876e9e5eab2e36d794623c7"
+        },
+        {
+          "path": "D:\\code\\project_skill\\docs\\validation\\template-candidate-0.7.1\\assets\\change.md",
+          "sha256": "da13204796df87ea9405216f5b85dc7a9d35aff09969f7b44946fcd223880292"
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-template-forward-071-04iotycw\\docs\\standards\\development-writing.md",
+          "sha256": "1e6155c81471ff5b221fea2f91f30850127dbf942146c3cc2b5a4157b732dda3"
+        }
+      ],
+      "artifact": {
+        "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-template-forward-071-04iotycw\\.sdd-harness\\changes\\pagination.md",
+        "sha256": "3a930a039033accaeb302681c90a4a2f38c4fe3762eaf9152cb608d06c055abb",
+        "bytes": 1937
+      },
+      "actual_actions": [
+        "Read the assigned skill entry and TASK.md.",
+        "Enumerated only candidate references/assets and fixture file paths; did not read AUDIT_FIXTURE.json.",
+        "Read install, workflow, writing, change template, and existing project writing policy.",
+        "Ran fixture Git identification; Git reported that the fixture is not a repository.",
+        "Prepared only the assigned pagination change record using relevant template fields.",
+        "Reopened the saved record and checked its local links and policy placeholder.",
+        "Computed exact saved artifact and loaded-source SHA-256 hashes."
+      ],
+      "actual_checks": [
+        {
+          "check": "Local links from saved record directory",
+          "result": "passed",
+          "details": [
+            {
+              "reference": "../../docs/standards/development-writing.md",
+              "resolved_path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-template-forward-071-04iotycw\\docs\\standards\\development-writing.md",
+              "accessible": true
+            },
+            {
+              "reference": "../../TASK.md",
+              "resolved_path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-template-forward-071-04iotycw\\TASK.md",
+              "accessible": true
+            }
+          ]
+        },
+        {
+          "check": "Policy placeholder absent",
+          "result": "passed"
+        },
+        {
+          "check": "Behavior tests",
+          "result": "not run",
+          "actual_test_results": null
+        },
+        {
+          "check": "Git repository identification",
+          "result": "unavailable",
+          "observation": "fatal: not a git repository (or any of the parent directories): .git"
+        }
+      ],
+      "capabilities": {
+        "authorized_direct_skill_read": "verified",
+        "required_resource_access": "verified",
+        "artifact_write_and_read": "verified",
+        "scripts": "untested and not needed",
+        "native_skill_discovery": "untested",
+        "other_writer_observation": "untested"
+      },
+      "unknowns": [
+        "Application entry points and code baseline.",
+        "Repository branch and implementation diff.",
+        "Details of the established ordering rule.",
+        "Executable test command, baseline defect result, corrected result, and ordering test result.",
+        "Other writer activity and full STE dictionary review."
+      ],
+      "completion": "Assigned change record prepared and artifact checks completed. Underlying pagination repair and behavior acceptance remain unexecuted and unverified."
+    }
+  },
+  "original_report_sha256": {
+    "docs/validation/0.7.1-template-baseline.json": "d4277044b562acc9796110e008fe3dc4bc9723de3f0469cd73e5389555203e1f",
+    "docs/validation/0.7.1-template-forward.json": "d9a373a93ed839dd7c35a8b3e39a682b5068b8370a3535e70fd97344c11a5360",
+    "docs/validation/0.7.1-template-outcomes.json": "842be6f554bd89a0148f2c9d337c3e55b2a8cd1a0ebd72e162fe8c4fbd520762"
+  },
+  "writer_verification": "Rechecked both saved artifact hashes, accessible resolved links, absence of policy placeholder, identical project inputs, and all forward loaded-resource hashes.",
+  "post_review_applicability": "Only scripts/install.py changed after the forward resource snapshot. The executor did not read or use scripts. All entry, policy, workflow and template bytes actually read match the repaired candidate.",
+  "limits": [
+    "Both baseline and candidate passed the bounded record task; no measured improvement is claimed.",
+    "Fresh executor task exercised change.md. All three templates have separate mechanical relocation tests.",
+    "Underlying pagination code and tests were not executed, and native discovery was not measured by these template trials."
+  ]
+}

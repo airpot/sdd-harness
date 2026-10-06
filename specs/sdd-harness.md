@@ -1,6 +1,6 @@
 # SDD Harness Behavior Specification
 
-Specification version: 0.7.0.
+Specification version: 0.7.1.
 Status: accepted intent for portable development guidance, optional cooperation, and observable skill effectiveness checks.
 This specification defines observable skill behavior. It does not establish host enforcement.
 
@@ -57,8 +57,20 @@ Keep routine actions within existing user authorization.
 | HOST-1 | Observe full entry and resource access separately from installation and catalog visibility. Record verified, unavailable, and untested capabilities. | `capability-observation`; native loading checks. |
 | EVAL-2 | Compare actual editable task outcomes under matched skill conditions. Bind reports to candidate, accepted inputs, grader, and environment. | Repository-only coding tasks and tests. |
 | EVAL-3 | Evaluate explicit, implicit, and negative skill invocation separately from output correctness. Distinguish native traces from selection simulations. | `invocation-0.7.0.json`; native smoke traces. |
+| RECOVER-1 | Reject shallow repositories before archive creation. Preserve the source and do not fetch history automatically. | Shallow-source regression in `tests/test_skill_tools.py`. |
+| PACK-2 | Reject symbolic links and Windows reparse points before source or target traversal and final-target installation. Keep Python 3.10 support. | Real junction fallback regressions in `tests/test_followup_corrections.py`; builder and installer. |
+| DOC-2 | Before saving an optional copied template, complete its policy reference for the actual record destination. Keep project policy authoritative. | All three templates; relocated project and installed-policy link checks; fresh template smoke. |
+| EVAL-4 | Bind actual request identity and input hash to source case, adaptation, expected route, observed route, and trace. Preserve historical raw evidence. | Dated 0.7.0 invocation errata; 0.7.1 native request records. |
 
 ## Acceptance rules
+
+For 0.7.1, run affected runtime, relocation, and invocation-binding regressions before final package acceptance.
+Keep actual red failures and passing repeats. Preserve the fourteen-file portable payload and independent default.
+When older Python interpreters are unavailable, identify fallback tests on the current interpreter separately from native compatibility trials.
+Record read-only invocation adaptations explicitly. Do not perform publication or removal merely to test routing.
+Keep historical worker-assessment observations separate from canonical solo-route coverage.
+Retain passing coding and template baselines, first instruction misses, and their original provenance.
+These corrections do not establish general performance or efficiency gains.
 
 For 0.7.0, evaluate the four additional instruction cases and their sixteen hidden criteria.
 Use isolated editable tasks for defect repair, existing-system feature work, and handoff with removed or renamed behavior.
@@ -99,6 +111,8 @@ Retain original failures, corrections, and repeat-run evidence.
 ## Specification maintenance
 
 Maintain this file as the living contract for the skill.
+The accepted 0.7.1 revision adds shallow-source rejection, legacy reparse guards, relocated policy references, and exact invocation attribution.
+Historical 0.7.0 observations remain bound to their original commit and hashes through additive dated errata.
 The 0.5.1 revision changed distribution layout and installer filtering only.
 The accepted 0.6.0 revision adds optional subagent delegation, parent verification, bounded execution, and recovery rules.
 Independent development remains the default. Existing scripts and release authority remain unchanged.

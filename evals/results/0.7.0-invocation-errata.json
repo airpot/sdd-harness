@@ -1,0 +1,87 @@
+{
+  "version": "0.7.0",
+  "correction_date": "2026-10-06",
+  "original_commit": "d92ee047535d392c6d6f46096dda55060777ff2e",
+  "original_validation_base_commit": "acd9dd3acf3e431fc077021fde5a2d640bcac231",
+  "binding": "This additive errata binds unchanged original records. Historical provenance hashes remain original; release or newline rebinding belongs to new provenance.",
+  "original_artifact_sha256": {
+    "evals/results/0.7.0-native-prompts.json": "e0d77c4136551076b6368190dafd13afdcdb8752de759c7d9f67a95eb9cd5d3c",
+    "evals/results/0.7.0-host-observations.json": "3e0b74fb37ba462c99548c9e93f47075b457317040599007d5b6c3d771d2eb8e",
+    "evals/results/0.7.0-validation.md": "8ac5e06cd74e0eae2c6eb5244edbd0f62e015cf6e4cabee7efa1ecbf84d37c0e",
+    "evals/results/0.7.0-provenance.json": "0fa65be0d8ed7927e517cfa9f87a770bbb7c28beb82fcd9b35817baf3c35fea3",
+    "evals/invocation-0.7.0.json": "980b293efa38f77c4d665c51b55685b39e6f91447668ba07aa1e7f0691a4c6aa"
+  },
+  "executions": [
+    {
+      "request_id": "070-custom-worker-explicit",
+      "original_prompt_key": "explicit",
+      "actual_input": "Use $sdd-harness for a read-only capability check. Read the actual full entry and the reference for assessing an outstanding worker result. Report the exact version, entry path, reference read, and the main agent's next verification action from TASK.md and HANDOFF.md. Do not modify files, invoke recovery, install software, start workers, or publish anything. Do not claim unavailable worker control.\n",
+      "input_sha256": "6138d10ece2ab7aefbf0a69feaf1d67ddb8c2e6f46f759055db3f4c7a03cab4a",
+      "hash_encoding": "UTF-8, exact stored string including final newline",
+      "source_case_id": null,
+      "exact_corpus_coverage": false,
+      "adaptation": {
+        "status": "retrospective classification; no original adaptation mapping was saved",
+        "changed_facts": "Positive requests concern outstanding worker assessment under read-only permissions; canonical explicit and solo-change requests concern an independent change.",
+        "canonical_coverage": "No exact reusable-case coverage credited."
+      },
+      "expected_route": "subagents",
+      "observed_route": "subagents",
+      "observation_basis": "Full entry and subagents.md output in original trace.",
+      "trace_sha256": "40c9790c7a09f5c7e62b604fe3ece7babc233e3db93eae0022db97d24fb736a8",
+      "original_failed_commands": []
+    },
+    {
+      "request_id": "070-custom-worker-implicit",
+      "original_prompt_key": "implicit",
+      "actual_input": "Resume the project task in TASK.md from HANDOFF.md. A worker's result is ready but unverified. Review the accepted task and identify the next evidence and acceptance action. Use relevant available project workflow guidance. This run is read-only: do not modify files, start workers, install software, publish anything, or perform recovery. Report unavailable native controls honestly.\n",
+      "input_sha256": "3706231a056b8b6aa18cba835176a283df5893c0420f26072bfab05fc56ad6d1",
+      "hash_encoding": "UTF-8, exact stored string including final newline",
+      "source_case_id": null,
+      "exact_corpus_coverage": false,
+      "adaptation": {
+        "status": "retrospective classification; no original adaptation mapping was saved",
+        "changed_facts": "Positive requests concern outstanding worker assessment under read-only permissions; canonical explicit and solo-change requests concern an independent change.",
+        "canonical_coverage": "No exact reusable-case coverage credited."
+      },
+      "expected_route": "subagents",
+      "observed_route": "subagents",
+      "observation_basis": "Full entry and subagents.md output in original trace.",
+      "trace_sha256": "a64163edd23624fe99057cc689a0e39c95b67aaaa8c2030ad67b774c09e7fae7",
+      "original_failed_commands": [
+        {
+          "command": "\"C:\\\\Users\\\\airpot\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"rtk rg -n -i 'sdd-native|sdd-harness|accepted task|worker.*result' 'C:\\\\Users\\\\airpot\\\\.codex\\\\memories\\\\MEMORY.md'\"",
+          "exit_code": 1
+        },
+        {
+          "command": "\"C:\\\\Users\\\\airpot\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '.agents\\\\skills\\\\sdd-harness\\\\references\\\\install.md'; Get-Content -LiteralPath '.agents\\\\skills\\\\sdd-harness\\\\references\\\\workflow.md'; Get-Content -LiteralPath '.agents\\\\skills\\\\sdd-harness\\\\references\\\\subagents.md'; Get-Content -LiteralPath '.agents\\\\skills\\\\sdd-harness\\\\references\\\\delivery.md'; Get-Content -LiteralPath '.agents\\\\skills\\\\sdd-harness\\\\references\\\\spec-review.md'; Get-Content -LiteralPath 'C:\\\\Users\\\\airpot\\\\.codex\\\\skills\\\\verification-before-completion\\\\SKILL.md'; Get-ChildItem -Force | Select-Object Mode,Name; rtk rg --files --hidden -g '\"'!.git'\"' -g '\"'!node_modules'\"'; git --no-optional-locks rev-parse --show-toplevel; rtk git --no-optional-locks status --short --branch\"",
+          "exit_code": 1
+        }
+      ]
+    },
+    {
+      "request_id": "070-custom-negative-git",
+      "original_prompt_key": "negative",
+      "actual_input": "Explain the difference between Git branches and worktrees in two sentences. Do not inspect files, use tools, or start a project workflow.\n",
+      "input_sha256": "34ccaab9b30168f2629b123706241795f368e828f685dcb3590883cba555f731",
+      "hash_encoding": "UTF-8, exact stored string including final newline",
+      "source_case_id": null,
+      "exact_corpus_coverage": false,
+      "adaptation": {
+        "status": "retrospective classification; no original adaptation mapping was saved",
+        "changed_facts": "The custom negative request adds two-sentence and no-tools constraints to a Git explanation.",
+        "canonical_coverage": "No exact reusable-case coverage credited."
+      },
+      "expected_route": null,
+      "observed_route": null,
+      "observation_basis": "No tool commands and no entry read in original trace.",
+      "trace_sha256": "524a2a8be626d7f46fb1883df5cc1ee335567da715858bb39c8b9fa8279fce87",
+      "original_failed_commands": []
+    }
+  ],
+  "corrected_conclusion": "Two native positive executions covered custom worker-assessment requests, plus one custom negative Git control. Neither positive execution covers canonical solo routing. Three observed invocation classes are not three exact reusable cases.",
+  "preserved_limits": [
+    "Raw responses, observations, instruction misses, retries, coding baselines and their provenance remain unchanged.",
+    "No coding improvement, efficiency gain, general reliability, or untested host compatibility follows from this correction."
+  ]
+}

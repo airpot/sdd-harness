@@ -1,0 +1,32 @@
+{
+  "version": "0.7.1",
+  "date": "2026-10-06",
+  "review_finding": "Specification review F1 / PACK-2: resolving the source root concealed its junction.",
+  "independent_review_path": "docs/validation/0.7.1-spec-review.md",
+  "independent_review_sha256": "edea2e04630e558288ea072b7fa7128a4fb99a96944636b46700d4e8102f11ae",
+  "actual_red": "Legacy installer through a real source-root junction incorrectly copied 14 files. Builder source-root rejection already passed.",
+  "minimal_fix": "Check the lexical Path(__file__).absolute().parents[1] with is_link before source.resolve().",
+  "affected_green": {
+    "followup_tests": 10,
+    "ordinary_install_tests": 3,
+    "full_tests": 86,
+    "full_passed": 85,
+    "full_skipped": 1,
+    "full_elapsed_seconds": 66.298,
+    "full_result": "OK"
+  },
+  "log_sha256": {
+    "docs/validation/0.7.1-source-root-red.txt": "a2c1721ece72d0be57fea3b0e2672988dc5bdd425c0bdc99b163d0a1475af677",
+    "docs/validation/0.7.1-source-root-green.txt": "e670bfc6a7b8529ab7878c9c0dff6c30c481e3df9371f3775c9a2f2de17209e4",
+    "docs/validation/0.7.1-source-root-install-green.txt": "cd6a09fdfc28efca6b5254d41f8ed7e0a36c5015741815790cd6e5d89494f443",
+    "docs/validation/0.7.1-tests-post-review.txt": "fe6dd3b3dca00daf77a55d987ae57e774ee3d9d112de2bca1caf4416c32545b2"
+  },
+  "candidate_installer_sha256": "e12bcdcb1e18ff64b8a26de12c14d0a6a2ec04462cd13f68c9343bd452dc1cb4",
+  "native_applicability_record": "evals/results/0.7.1-native-applicability.json",
+  "native_applicability_sha256": "f31d76e78f683a3513bf03e3e6184fcd3bf7f36b74a3f482582f148b875cb9e2",
+  "limits": [
+    "Actual Python 3.12.8 on Windows; older API branch tests are not native 3.10/3.11 trials.",
+    "Unchanged native traces prove instruction invocation; the updated installer script was not loaded by the CLI.",
+    "Independent review recheck, forward template evidence and release steps belong to the parent."
+  ]
+}

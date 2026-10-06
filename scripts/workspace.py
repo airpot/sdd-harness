@@ -143,6 +143,8 @@ def snapshot(repo: Path, output: Path, includes: list[str]) -> dict:
         raise ValueError('Snapshot output must be outside the source worktree')
     if output.exists():
         raise ValueError('Refusing to overwrite an existing snapshot')
+    if text(git(root, 'rev-parse', '--is-shallow-repository')) == 'true':
+        raise ValueError('Shallow repositories require complete history or a native preservation tool; preserve the source')
     before = inspect(root)
     paths, missing = inventory(root, includes)
     manifest = {'format': 1, 'source': before, 'files': [], 'deleted': missing,

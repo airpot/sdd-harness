@@ -52,6 +52,21 @@ class SkillToolsTests(unittest.TestCase):
         self.assertFalse(result['safe_to_remove'])
         return archive
 
+    def test_shallow_source_is_rejected_before_archive_creation(self):
+        (self.repo / '代码.txt').write_text('second commit\n', encoding='utf-8')
+        self.git('add', '.')
+        self.git('commit', '--quiet', '-m', 'second')
+        shallow = self.base / 'shallow'
+        self.git('clone', '--quiet', '--depth=1', self.repo.as_uri(), str(shallow))
+        self.assertEqual(self.git('rev-parse', '--is-shallow-repository', cwd=shallow).strip(), b'true')
+        before = self.git('status', '--porcelain', cwd=shallow)
+        archive = self.base / 'new-output' / 'snapshot.zip'
+        result = self.cli(WORKSPACE, 'snapshot', '--repo', shallow, '--output', archive, ok=False)
+        self.assertIn('shallow', result.stderr.lower())
+        self.assertFalse(archive.parent.exists())
+        self.assertEqual(self.git('status', '--porcelain', cwd=shallow), before)
+        self.assertEqual(self.git('rev-parse', '--is-shallow-repository', cwd=shallow).strip(), b'true')
+
     def test_clean_repository_does_not_grant_write_or_delete(self):
         result = self.cli(WORKSPACE, 'inspect', '--repo', self.repo)
         self.assertFalse(result['dirty'])

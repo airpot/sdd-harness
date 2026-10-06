@@ -37,6 +37,9 @@ python <skill-dir>/scripts/workspace.py restore --archive <outside-worktree>/tas
 - Ignored files or directories that you select with `--include`.
 
 Save the archive outside the worktree. Do not overwrite an existing file.
+The script rejects shallow repositories before archive creation. It does not fetch missing history.
+Keep the source. Obtain complete history through separately authorized Git work, or use a verified native preservation tool.
+Then repeat preservation and restoration checks.
 The script records hashes and source state. It checks for observable changes during copying.
 These checks do not replace stopped writers.
 

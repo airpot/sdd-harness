@@ -18,6 +18,10 @@ Do not use this policy to change program behavior, evidence, authorization, or a
 Keep the policy reference in the project's existing development instructions or policy location when creating those records.
 If no location exists, use `.sdd-harness/project.md`.
 Do not create duplicate policy documents or edit global agent configuration.
+Asset templates contain a policy placeholder because project destinations vary.
+Before saving a record, replace it with an accessible project policy reference or an installed skill policy reference.
+Resolve local links from the saved record's directory. Check access for the intended reader.
+Keep the project's policy authoritative. Templates remain optional.
 
 ## Use ASD-STE100 writing rules
 

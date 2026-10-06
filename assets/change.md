@@ -1,7 +1,9 @@
 # Change Record
 
 Keep the project's format. Remove fields that do not apply.
-Write internal prose according to [the writing policy](../references/writing.md).
+Writing policy: <accessible-writing-policy-reference>.
+Before saving, replace this placeholder with the project's policy reference or an accessible installed skill policy.
+Resolve local links from this record's destination. Check that the next reader can open the policy.
 Keep identifiers and raw evidence unchanged.
 Independent tasks need no collaboration fields or setup.
 

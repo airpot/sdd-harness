@@ -5,11 +5,29 @@ import hashlib
 import json
 from pathlib import Path
 import re
+import stat
 import sys
 import zipfile
 
 
+def checked_entries(root):
+    try:
+        info = root.lstat()
+    except FileNotFoundError:
+        return
+    if stat.S_ISLNK(info.st_mode) or (
+            getattr(info, 'st_file_attributes', 0) & getattr(stat, 'FILE_ATTRIBUTE_REPARSE_POINT', 0x400)):
+        raise ValueError('Distribution cannot contain linked files')
+    yield root
+    if root.is_dir():
+        for entry in root.iterdir():
+            yield from checked_entries(entry)
+
+
 def package(source, output):
+    source_path = Path(source)
+    # Check the root before resolve() can hide a linked source.
+    next(checked_entries(source_path), None)
     source, output = Path(source).resolve(), Path(output).resolve()
     if not (source / 'SKILL.md').is_file():
         raise ValueError('Source must contain SKILL.md')
@@ -21,16 +39,11 @@ def package(source, output):
         raise ValueError('Skill frontmatter must contain a valid name')
     name = match.group(1)
     files = []
-    entries = [source / 'SKILL.md']
+    entries = list(checked_entries(source / 'SKILL.md'))
     for directory in ('scripts', 'references', 'assets', 'agents'):
         entry = source / directory
-        if entry.is_symlink() or (hasattr(entry, 'is_junction') and entry.is_junction()):
-            raise ValueError('Distribution cannot contain linked files')
-        if entry.exists():
-            entries.extend(entry.rglob('*'))
+        entries.extend(checked_entries(entry))
     for path in sorted(entries):
-        if path.is_symlink() or (hasattr(path, 'is_junction') and path.is_junction()):
-            raise ValueError('Distribution cannot contain linked files')
         if path.is_file() and '__pycache__' not in path.parts and path.suffix != '.pyc':
             files.append(path)
     included = set(files)

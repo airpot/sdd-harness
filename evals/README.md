@@ -14,10 +14,18 @@ Report actual environment metadata when available. Do not infer model identity o
 These small tasks are capability observations, not production or statistical guarantees.
 
 Use `invocation-0.7.0.json` for explicit, implicit, and negative requests.
+The [dated 0.7.0 errata](results/0.7.0-invocation-errata.md) corrects attribution without changing original evidence.
 Use the host's actual skill catalog and loader when available.
 Do not supply the full skill or explicitly name it for implicit or negative cases.
 Record full entry loading and applicable reference selection from actual traces.
 Skill mention alone does not prove a full load. Keep task correctness separate from correct invocation.
+Give each execution an actual request ID and SHA-256 of its exact UTF-8 input, including final newlines.
+Record the source corpus hash and case ID only with an explicit adaptation mapping.
+Keep changed facts, permissions, expected route, observed route, and raw trace hashes in that mapping.
+Separate exact corpus coverage from adapted requests and observed invocation classes.
+Read-only changes can test routing when recorded explicitly. Do not publish or remove resources for these checks.
+Preserve first errors and failed commands. Add dated errata instead of rewriting historical raw records.
+Bind errata to the original commit and unchanged artifact hashes. Keep later release provenance separate.
 Keep catalog-choice simulations separate from native discovery evidence.
 
 If loading fails, keep the error and test the supported project-local installation procedure.

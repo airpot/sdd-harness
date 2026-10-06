@@ -1,0 +1,26 @@
+{
+  "version": "0.7.1",
+  "date": "2026-10-06",
+  "correction": "Independent specification review F1: reject lexical installer source root before resolve can hide a junction.",
+  "native_record_sha256": "36a296cf72c45e9a28cb1f1eba515b264d9aa257a15915229334f1842d4fbb8e",
+  "native_trace_sha256": {
+    "071-solo-explicit-readonly": "c025ed083f2cc2ea61acc8e4d8ae74efeaa3a1c8e81bedef461c3852dd521bef",
+    "071-solo-implicit-readonly": "548e364b6be288b6d3ccfb432cc8d21dd2921db1d5abb6d5db724abcea1840b8",
+    "071-negative-git": "a202cad36fee1505a56efc72c4aec9d5b991a6e63fb4f696e0263720fa53bf63"
+  },
+  "portable_changes_after_native_runs": {
+    "scripts/install.py": {
+      "native_snapshot_sha256": "39a17cb41e868125a689997d09dcca001047b11fa3f40be02daa4be3cbe40a8f",
+      "reviewed_candidate_sha256": "e12bcdcb1e18ff64b8a26de12c14d0a6a2ec04462cd13f68c9343bd452dc1cb4"
+    }
+  },
+  "applicability": "The native CLI read the unchanged full entry and unchanged installation/specification-review references. It did not read scripts/install.py. The new root guard does not change selection or the solo procedure. Invocation routing evidence therefore applies to those unchanged instructions; no native execution or loading of the changed installer script is claimed.",
+  "setup_boundary": "The original fixture copy was produced by the pre-review installer from a normal nonlinked source. The updated guard is exercised separately by actual junction and ordinary install regressions.",
+  "read_only_limits_retained": [
+    "Read-only adaptations exercise canonical solo request intent, not writable task completion or literal unadapted corpus input.",
+    "The negative input differs only by final newline and is therefore recorded as adapted, not exact byte coverage.",
+    "CLI token fields are accumulated counters. No cost comparison or gain follows.",
+    "Python 3.10/3.11, other operating systems, ZCode, DeepSeek Harness, native worker cancellation, live publication, and real removal remain untested.",
+    "Raw traces and stderr remain in ignored docs/validation; complete command outputs and responses are preserved in this public record."
+  ]
+}

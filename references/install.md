@@ -7,6 +7,8 @@ For direct installation, clone the repository into the target agent's `sdd-harne
 Extract the release ZIP. Copy the complete directory into the target agent's skills directory.
 The scripts need Python 3.10 or later. Workspace commands also need Git 2.29 or later.
 Instructions and templates do not need Python.
+The installer rejects symbolic links and Windows reparse points before directory traversal, including existing target inventories.
+This check uses `lstat` file attributes and does not depend on Python 3.12's `Path.is_junction`.
 
 ## Install
 

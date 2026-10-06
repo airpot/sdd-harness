@@ -1,0 +1,127 @@
+{
+  "version": "0.7.1",
+  "base_commit": "d92ee047535d392c6d6f46096dda55060777ff2e",
+  "hash_binding": "raw evaluated bytes; Git checkout newline conversion can alter text bytes",
+  "portable_source": {
+    "assets/change.md": "da13204796df87ea9405216f5b85dc7a9d35aff09969f7b44946fcd223880292",
+    "assets/handoff.md": "4da71c505cc6730ddbd86fcc1491f4ff9544564c4cd1167a3f50df012c495b73",
+    "assets/release.md": "2dd28a051622ecf6c42074ad8b6787e1ddfd39027dd32781f7ed86a8a0b42ab5",
+    "references/collaboration.md": "90780d83facbfb5bf7b0c5d1f14eecc30e3a34753abf5d6af2c5a74a85552661",
+    "references/delivery.md": "95566a3aab43d1c29cc06c395bbe8150a1bedf73576ae8caa59c86cf05151468",
+    "references/install.md": "8f801581c4f8fe82e1cc1a65f9b423bb9517dd2f9b19efa808a9c623064f3353",
+    "references/recovery.md": "2f567a7ff1d337bb379e2c7705b9d230b1866013347c060bb3981624e52d05c4",
+    "references/spec-review.md": "99af55f4a2873b0e0540e792486f51f83cddcaa13316dbbbf4d70329a372fccc",
+    "references/subagents.md": "4b3380e3b609700dae1a793767818b7c9496f2224afdf50fd25cf0b0fd03eb5c",
+    "references/workflow.md": "24b728f039169939beb272efc24a2e78e4b5ed54e5678030b5cba4634e71cafc",
+    "references/writing.md": "38fd8563663da1c1e21de6a4c6b9f7ae5dc605794876e9e5eab2e36d794623c7",
+    "scripts/install.py": "e12bcdcb1e18ff64b8a26de12c14d0a6a2ec04462cd13f68c9343bd452dc1cb4",
+    "scripts/workspace.py": "f042e27a5cce0031f59c93f72de0c01dd066e27b5db75e4a8559a4d6c0bca225",
+    "SKILL.md": "09b13e3016fbdd4e9d3c19696d20cf33d20d88f83a9d5f6af0e41f1847a462c3"
+  },
+  "portable_files": 14,
+  "archive": {
+    "path": "dist/sdd-harness-0.7.1.zip",
+    "sha256": "62a522a1c5ed97d27d1cc5a5f0584d96bee64a553d93bbac2428d742b6739420"
+  },
+  "records": {
+    "evals/results/0.7.1-correction-provenance.json": "de4e78e7d13528f19893d87b4834e1004a42654e5ffc259d3f1b570052140d0f",
+    "evals/results/0.7.1-native-applicability.json": "f31d76e78f683a3513bf03e3e6184fcd3bf7f36b74a3f482582f148b875cb9e2",
+    "evals/results/0.7.1-native-requests.json": "36a296cf72c45e9a28cb1f1eba515b264d9aa257a15915229334f1842d4fbb8e",
+    "evals/results/0.7.1-quality-review.md": "899859d651687bfebde15d82ce58c1a7bd787510c133e897c0f3260cd3ac8c36",
+    "evals/results/0.7.1-regression.json": "9f500cd6a61334201e1ba8910c74e33b05f37d72ddf5bfb93a24722e72bbe325",
+    "evals/results/0.7.1-release-validation.md": "2468f13772e9b652d4859a915b72dd162c777e478fd66a7502b0d58e47488e0e",
+    "evals/results/0.7.1-review-correction.json": "9eea01bcae86042c4af89924d4363de7841b9e9f5c0e655a3b5c13856e869238",
+    "evals/results/0.7.1-spec-review.md": "9bb17ad870bd6efc253d1ab736c55fcb157dc33e6b9a1d351c9ac13b47762d36",
+    "evals/results/0.7.1-template-results.json": "57029a080287014629d4b7a11d9606ff8767df322e8ac50a346891949a9de579",
+    "evals/results/0.7.1-tests-release.txt": "97ea83df24b723611f805e64df6757690f992cb034177ae28bb86d6889527bdc",
+    "evals/results/0.7.1-validation.md": "9917782dfe4cac13e33e32d0a2d061df91503286446357d2a209ea1a4c85693a"
+  },
+  "repository_code_and_docs": {
+    "README.md": "20d9d13bd04d745ec0b4a418811e4d29873416f541f9633c229312e6f9b1b031",
+    "specs/sdd-harness.md": "8189c5995fca78c807dfac51e29a1ca176d3fc3cddbfb03e2868df1e137a0b22",
+    "tools/package_skill.py": "8f86ca2910557cb00998d407a2b32d60f11c7aefb093b4dfdc9a785113155916",
+    "tests/test_followup_corrections.py": "47a94d8851a4289d2f2c2dc5a97804ef1c96a6393ed97d9da37513be6b442986",
+    "tests/test_skill_tools.py": "7f757fdc787110cf45bc4489cba9cb574c68d2cbafe9d99953162b78f9407308",
+    "evals/README.md": "42a38f6421a05b3ef7f8c5fb16948a3943415c43d73fd92cf7976a8f985a07fb"
+  },
+  "installation": {
+    "version": "0.7.1",
+    "installed": "C:\\Users\\airpot\\.agents\\skills\\sdd-harness",
+    "old_version_preserved": "0.7.0",
+    "backup": "C:\\Users\\airpot\\.agents\\skill-backups\\sdd-harness-0.7.0-20261006T0645366599066Z",
+    "source_zip_install_equal": true,
+    "portable_files": 14,
+    "repeat_install_status": "already-installed",
+    "help_check": {
+      "command": [
+        "C:\\Program Files\\Python\\python.exe",
+        "-B",
+        "C:\\Users\\airpot\\.agents\\skills\\sdd-harness\\scripts\\workspace.py",
+        "--help"
+      ],
+      "returncode": 0,
+      "stdout": "usage: workspace.py [-h] {inspect,snapshot,verify,restore} ...\n\nObserve Git workspaces and preserve portable file snapshots. Never delete\nsources.\n\npositional arguments:\n  {inspect,snapshot,verify,restore}\n    inspect             Read-only Git facts; does not establish activity or\n                        authority\n    snapshot            Save HEAD history and current regular files, without\n                        removing source\n    verify              Check snapshot inventory and content hashes\n    restore             Restore files and HEAD into a new directory\n\noptions:\n  -h, --help            show this help message and exit\n"
+    }
+  },
+  "isolated_install_checks": [
+    {
+      "command": [
+        "C:\\Program Files\\Python\\python.exe",
+        "-B",
+        "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-package-071-9g30ufme\\unpacked\\sdd-harness\\scripts\\install.py",
+        "--into",
+        "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-package-071-9g30ufme\\installed"
+      ],
+      "returncode": 0,
+      "stdout": "{\"status\": \"installed\", \"installed\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-package-071-9g30ufme\\\\installed\\\\sdd-harness\", \"files\": 14}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python\\python.exe",
+        "-B",
+        "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-package-071-9g30ufme\\unpacked\\sdd-harness\\scripts\\install.py",
+        "--into",
+        "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-package-071-9g30ufme\\installed"
+      ],
+      "returncode": 0,
+      "stdout": "{\"status\": \"already-installed\", \"installed\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-package-071-9g30ufme\\\\installed\\\\sdd-harness\"}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python\\python.exe",
+        "-B",
+        "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-package-071-9g30ufme\\installed\\sdd-harness\\scripts\\workspace.py",
+        "--help"
+      ],
+      "returncode": 0,
+      "stdout": "usage: workspace.py [-h] {inspect,snapshot,verify,restore} ...\n\nObserve Git workspaces and preserve portable file snapshots. Never delete\nsources.\n\npositional arguments:\n  {inspect,snapshot,verify,restore}\n    inspect             Read-only Git facts; does not establish activity or\n                        authority\n    snapshot            Save HEAD history and current regular files, without\n                        removing source\n    verify              Check snapshot inventory and content hashes\n    restore             Restore files and HEAD into a new directory\n\noptions:\n  -h, --help            show this help message and exit\n",
+      "stderr": ""
+    }
+  ],
+  "final_suite": {
+    "command": "python -B -m unittest discover -s tests -v",
+    "exit_code": 0,
+    "ran": 86,
+    "passed": 85,
+    "skipped": 1,
+    "skip_reason": "Windows symlink privilege unavailable"
+  },
+  "reviews": {
+    "specification": "evals/results/0.7.1-spec-review.md",
+    "quality": "evals/results/0.7.1-quality-review.md",
+    "verdict": "all four fixes satisfied; no material issues remain"
+  },
+  "historical_errata": {
+    "path": "evals/results/0.7.0-invocation-errata.json",
+    "sha256": "02618dbdd4dcd1db8bd8b3f98281d23fb9352eec468a8b31bd04ad63f60dcc1a",
+    "original_records_preserved": true
+  },
+  "limits": [
+    "Python3.10/3.11 fallback verified on3.12, not native older-interpreter execution.",
+    "Native invocation applies to unchanged loaded instructions after installer-only repair, not changed installer native execution.",
+    "Both template baseline and forward passed; no general gain.",
+    "Other hosts, live deployment, real removal, enforced worker scopes and native cancellation untested."
+  ]
+}

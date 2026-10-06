@@ -1,0 +1,52 @@
+{
+  "version": "0.7.1",
+  "date": "2026-10-06",
+  "base_commit": "d92ee047535d392c6d6f46096dda55060777ff2e",
+  "environment": {
+    "host": "Windows",
+    "python": "3.12.8",
+    "native_3.10": "not installed; untested",
+    "native_3.11": "not installed; untested"
+  },
+  "red_observations": [
+    "Shallow clone snapshot succeeded and created output instead of rejecting it.",
+    "Old API branch copied junction content or gave a generic mismatch instead of link rejection.",
+    "Three assets retained bundled-only policy links.",
+    "No dated exact historical invocation binding existed."
+  ],
+  "green_observations": [
+    "Six runtime/template tests passed; one historical binding test passed; shallow test passed.",
+    "Complete regression ran 83 tests in 62.194 seconds; 82 passed and one symlink-privilege test skipped."
+  ],
+  "command": "python -B -m unittest discover -s tests -v",
+  "log_sha256": {
+    "docs/validation/0.7.1-followup-red.txt": "b359e51b544a421da3a537ed305cf831365be0898d10f1111b9f2d9e0df66463",
+    "docs/validation/0.7.1-shallow-red.txt": "2eabb44d6b9e20f794035028957371c92d875738ea811630d6741c0fe30a30fd",
+    "docs/validation/0.7.1-invocation-red.txt": "6013d8b6e405490851b8d3880efebfe92b50ee0411f0fa69bcaa2659843112fe",
+    "docs/validation/0.7.1-followup-green.txt": "dd8d06ea414c8c1810a7923604f282dfad0f480baec61fd15c9c5999439d9699",
+    "docs/validation/0.7.1-shallow-green.txt": "1daca9bb5f8253573625e08d540e0a41be03d8748b92bae3bf1b0ee9d03a007e",
+    "docs/validation/0.7.1-followup-all-green.txt": "c60808a1a87f8351c2fb0ff720aeeb3102cba809cd40a349b56f6eebb3a1b861",
+    "docs/validation/0.7.1-tests-first.txt": "6234335a9d0372b4db1dccae2523fd13a9dd703fe6778cf9d0f85ca18bbf5c2e",
+    "docs/validation/0.7.1-native-binding-red.txt": "a1fbee2af6a669c2e4a197daafdf71d54008cfce714c61a70e92bda8271699f4",
+    "docs/validation/0.7.1-followup-final-green.txt": "02bf421a73592c01dac468ea160db33089d14e547d0be628360ac0281578ea82",
+    "docs/validation/0.7.1-followup-final-green-2.txt": "b52683a999c29c3c9e488585221b773d12e02251d73d5fbe465c8c66c5be8fd5",
+    "docs/validation/0.7.1-tests-final.txt": "d0ac70fdc03e0b77badd8721f7bee246e621ba8f59852821e1ff66e7a243d08b"
+  },
+  "limits": [
+    "Real Windows junctions were tested on 3.12.8 with Path.is_junction removed; this is not native 3.10/3.11 compatibility evidence.",
+    "Earlier coding baselines and instruction misses remain unchanged. No performance or efficiency gain follows."
+  ],
+  "additional_checks": {
+    "native_binding_first_assessment": "One false-positive subagent flag failed the binding test. Native trace bytes did not change.",
+    "native_binding_corrected": "Exact reference content plus direct command review; eight follow-up tests passed in 0.904 seconds."
+  },
+  "final_full_regression": {
+    "command": "python -B -m unittest discover -s tests -v",
+    "tests": 84,
+    "passed": 83,
+    "skipped": 1,
+    "elapsed_seconds": 60.36,
+    "result": "OK",
+    "skip_reason": "Windows symlink creation privilege unavailable; actual junction tests ran and passed."
+  }
+}

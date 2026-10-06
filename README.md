@@ -2,7 +2,7 @@
 
 一个可跨对话、worktree 和编码 agent 使用的规格驱动开发（SDD）技能包。
 
-当前版本：**0.7.0**。
+当前版本：**0.7.1**。
 
 **默认独立开发，按需启用协作。**小任务沿用现有项目记录，保持简短；日常独立开发无需拆分前后端任务，也无需新增角色配置、接口格式、mock 服务或团队 CI。
 
@@ -55,7 +55,7 @@ ZCode 可将安装父目录设为 `~/.zcode/skills`。DeepSeek Harness 可使用
 
 ## 从安装包安装
 
-下载 [sdd-harness-0.7.0.zip](dist/sdd-harness-0.7.0.zip) 及其 [SHA-256 校验文件](dist/sdd-harness-0.7.0.sha256)，解压到本地目录，然后在该目录执行：
+下载 [sdd-harness-0.7.1.zip](dist/sdd-harness-0.7.1.zip) 及其 [SHA-256 校验文件](dist/sdd-harness-0.7.1.sha256)，解压到本地目录，然后在该目录执行：
 
 ```text
 python sdd-harness/scripts/install.py --into "~/.agents/skills"
@@ -134,6 +134,11 @@ python tools/package_skill.py --source . --output dist/sdd-harness-local.zip
 
 新增[真实编码评测](evals/coding-tasks-README.md)允许 agent 修改实际代码，再由独立断言检查修复、增量开发和需求变更。
 另有[调用测试请求](evals/invocation-0.7.0.json)，分别检查显式、隐式及不应调用的情况。
+0.7.1 会在创建归档前拒绝浅克隆，不会自动补取历史；请保留源目录，再选择获授权的恢复方式。
+安装器与打包器以 `lstat` 属性在遍历前拒绝 Windows junction/reparse point，最低版本仍为 Python 3.10。
+三个可选模板改用明确的写作政策占位符；保存前须替换为项目政策或可读取的技能政策，并按记录所在目录核验链接。
+每次原生调用须记录实际请求 ID、输入哈希、源案例、适配内容及预期/观察路径。
+旧版显式与隐式原生请求均为 worker 结果评估，不能计作标准独立开发路径覆盖，详见[日期勘误](evals/results/0.7.0-invocation-errata.md)。
 评测工具与开发记录留在仓库中，不增加技能安装文件；通过小型任务不等于已证明普遍提效。
 
 已接受的需求见[行为规格](specs/sdd-harness.md)，版本间的执行决策比较见[指令评测](evals/README.md)。评分标准与完整评测结果不提供给执行者作为输入。
@@ -145,3 +150,6 @@ python tools/package_skill.py --source . --output dist/sdd-harness-local.zip
 - [0.6.0 验证记录](evals/results/0.6.0-validation.md)：subagent 场景、实际成果检查、修正与验证边界。
 
 - [0.7.0 验证记录](evals/results/0.7.0-validation.md)：六项通用修正、实际编码比较、原生调用检查及验证边界。
+- [0.7.1 验证记录](evals/results/0.7.1-validation.md)：四项后续修正、原始失败与修正检查、调用归属及兼容性边界。
+
+- [0.7.1 发布验证记录](evals/results/0.7.1-release-validation.md)：独立复核、86 项最终回归、14 文件安装包与本机安装哈希。

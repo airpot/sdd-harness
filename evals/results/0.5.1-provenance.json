@@ -1,0 +1,90 @@
+{
+  "version": "0.5.1",
+  "baseline_commit": "8296bf7f4b0d11139d61cbd82b4054c32f767656",
+  "reference_repository": "https://github.com/airpot/concise-wenyan",
+  "repository_layout": "Root SKILL.md with scripts/, references/, assets/, and optional agents/.",
+  "distribution": {
+    "version": "0.5.1",
+    "package_sha256": "eea350b1ad87a78415642d8bfe260188f32d4c85f74d4e8fb477f7b9b2fcabb2",
+    "files": 13,
+    "payload_sha256": {
+      "assets/change.md": "f3691a4495663500cebd8cab5ef274471a08aff6f0771e3f38dcacc8b1284377",
+      "assets/handoff.md": "0fe262b4b5b883154fe20cecde65f5b51bea75728f68df73bd012aa7b30422f2",
+      "assets/release.md": "b89de08a9cde9908d55733f31857ea72b7f4bcfcbf06a32d66c1e8b7408ba491",
+      "references/collaboration.md": "6d820b3e7d245bc3481ca111748cfd868c0d21999acdbfcef3919bf345d68021",
+      "references/delivery.md": "95566a3aab43d1c29cc06c395bbe8150a1bedf73576ae8caa59c86cf05151468",
+      "references/install.md": "476c1bf1d26f329d71097c54d51acfe7599f5184a384183933e4de979b91fd11",
+      "references/recovery.md": "ed02b97b754fbf95fc5f45df449d8d868c47315bb356d4d255e793dc7ae3136a",
+      "references/spec-review.md": "6731a432c481cd7ed6d8dbfd45d6486acdd0a290e611055c15c8ce784f16f9a1",
+      "references/workflow.md": "1526865eae235e8f790a9936a71ee43dd4f42727eaa7c4b049c7ccd8959645d3",
+      "references/writing.md": "87c76bf40be5e7a883ca36ad5d25bdb711c9815168be0f8b8d43eb7b82e097f2",
+      "scripts/install.py": "408e22a0734cd32691b58c0f84ec29d2342ffe90efa86692a6ff9e34fc6d396f",
+      "scripts/workspace.py": "9e14fd84b918c318f225a224650ae1be72d6f6fc0d4588ab1d33c7dcb4d18896",
+      "SKILL.md": "2a1fe1c92cc65a0d22842907c4bbe999b716424d20dfca7779399a269bbed6cf"
+    },
+    "source_zip_extracted_and_codex_hashes_match": true,
+    "extracted_install": {
+      "status": "installed",
+      "installed": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-root-distribution-tj0nv1na\\agent-skills\\sdd-harness",
+      "files": 13
+    },
+    "workspace_help_exit": 0,
+    "installed": "C:\\Users\\airpot\\.agents\\skills\\sdd-harness",
+    "backup": "C:\\Users\\airpot\\.agents\\skill-backups\\sdd-harness-0.5.0-20261006T035249536486Z",
+    "backup_matches_0_5_0": true,
+    "first_install": {
+      "status": "installed",
+      "installed": "C:\\Users\\airpot\\.agents\\skills\\sdd-harness",
+      "files": 13
+    },
+    "repeat_install": {
+      "status": "already-installed",
+      "installed": "C:\\Users\\airpot\\.agents\\skills\\sdd-harness"
+    }
+  },
+  "changed_payload_files": [
+    "references/install.md",
+    "scripts/install.py",
+    "SKILL.md"
+  ],
+  "regression_tests": {
+    "command": "python -m unittest discover -s tests -q",
+    "tests": 44,
+    "exit_code": 0,
+    "elapsed_seconds": 41.884
+  },
+  "format_and_prose_checks": {
+    "source_quick_validate": "passed",
+    "installed_quick_validate": "passed",
+    "sentence_paragraph_screen": "passed",
+    "portable_links": "passed"
+  },
+  "review": {
+    "status": "No blocking findings.",
+    "private_report_sha256": "ccfe90ab31730f3fc0d1a536792319b38b10f40fd3ed6a9997b3a9174514c710",
+    "limits": "Windows symbolic-link fixture creation unavailable; Python 3.10/3.11 junction behavior unverified."
+  },
+  "development_file_sha256": {
+    "tools/package_skill.py": "f778b139ea48cfd859920ae26deb3f5d1446b89a719a1735f30678333db92585",
+    "tests/test_package.py": "7d6cd229da13cd983db103c41ac8a89594d4f5f44a15639b7928076bbe41515f",
+    "tests/test_skill_tools.py": "afab9f60876b2fb527bef06c4867007ea4de1afe9927775085c52d4fb1a0a75c",
+    "README.md": "3eac53b0266865bf7f980149848e72f31e6cae18c2b489cb910ad68a96873093",
+    "specs/sdd-harness.md": "4d37207a1398fa62db8dbf212a294d850dccd7f7373bc4eb139a51903faf8df3"
+  },
+  "evidence_applicability": "0.5.0 text and host evaluation remains historical evidence for unchanged SDD workflow only. 0.5.1 distribution logic received new local tests and independent review. Hashes describe raw build-workspace and ZIP bytes, not all Git checkout line-ending variants.",
+  "unrelated_work": "Existing untracked concise-wenyan source, evals and specification were not modified or included in the revision.",
+  "limits": "No universal automatic discovery, all-product runtime behavior, full ASD-STE100 compliance, or cross-platform junction handling claim.",
+  "git_tree_installation": {
+    "source": "Actual staged Git tree exported with checkout-index",
+    "root_entry_present": true,
+    "old_nested_entry_absent": true,
+    "unrelated_skill_absent": true,
+    "filtered_install": {
+      "status": "installed",
+      "installed": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-git-root-install-c3iilfnh\\agent-skills\\sdd-harness",
+      "files": 13
+    },
+    "workspace_help_exit": 0,
+    "scope": "Git tree and installation tested locally before publication; native model skill discovery is outside scope."
+  }
+}

@@ -10,7 +10,7 @@ import zipfile
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILL = ROOT / 'skills' / 'sdd-harness'
+SKILL = ROOT
 WORKSPACE = SKILL / 'scripts' / 'workspace.py'
 INSTALL = SKILL / 'scripts' / 'install.py'
 

@@ -13,29 +13,39 @@ def package(source, output):
     source, output = Path(source).resolve(), Path(output).resolve()
     if not (source / 'SKILL.md').is_file():
         raise ValueError('Source must contain SKILL.md')
-    if output.is_relative_to(source):
-        raise ValueError('Distribution output must be outside the source skill')
+    if output.is_relative_to(source) and not output.is_relative_to(source / 'dist'):
+        raise ValueError('Output inside the repository must be under dist')
     body = (source / 'SKILL.md').read_text(encoding='utf-8')
     match = re.search(r'^name:\s*([a-z0-9-]+)\s*$', body, re.MULTILINE)
-    if not match or match.group(1) != source.name:
-        raise ValueError('Skill folder and frontmatter name must match')
+    if not match:
+        raise ValueError('Skill frontmatter must contain a valid name')
+    name = match.group(1)
     files = []
-    for path in sorted(source.rglob('*')):
+    entries = [source / 'SKILL.md']
+    for directory in ('scripts', 'references', 'assets', 'agents'):
+        entry = source / directory
+        if entry.is_symlink() or (hasattr(entry, 'is_junction') and entry.is_junction()):
+            raise ValueError('Distribution cannot contain linked files')
+        if entry.exists():
+            entries.extend(entry.rglob('*'))
+    for path in sorted(entries):
         if path.is_symlink() or (hasattr(path, 'is_junction') and path.is_junction()):
             raise ValueError('Distribution cannot contain linked files')
         if path.is_file() and '__pycache__' not in path.parts and path.suffix != '.pyc':
             files.append(path)
-            if path.suffix == '.md':
-                for target in re.findall(r'\]\(([^)]+)\)', path.read_text(encoding='utf-8')):
-                    if target.startswith(('https://', 'http://', '#')):
-                        continue
-                    resolved = (path.parent / target.split('#', 1)[0]).resolve()
-                    if not resolved.is_relative_to(source) or not resolved.is_file():
-                        raise ValueError(f'Invalid portable link in {path.name}: {target}')
+    included = set(files)
+    for path in files:
+        if path.suffix == '.md':
+            for target in re.findall(r'\]\(([^)]+)\)', path.read_text(encoding='utf-8')):
+                if target.startswith(('https://', 'http://', '#')):
+                    continue
+                resolved = (path.parent / target.split('#', 1)[0]).resolve()
+                if resolved not in included:
+                    raise ValueError(f'Invalid portable link in {path.name}: {target}')
     output.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(output, 'x', compression=zipfile.ZIP_DEFLATED) as z:
         for path in files:
-            z.write(path, source.name + '/' + path.relative_to(source).as_posix())
+            z.write(path, name + '/' + path.relative_to(source).as_posix())
     with zipfile.ZipFile(output) as z:
         if z.testzip() is not None:
             raise ValueError('Distribution integrity check failed')

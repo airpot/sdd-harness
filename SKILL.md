@@ -2,7 +2,7 @@
 name: sdd-harness
 description: Use when specification-driven development spans changes, chats, worktrees, developers, or coding agents. Use when resuming tasks, checking acceptance evidence, preparing releases, or recovering project worktrees.
 metadata:
-  version: "0.5.0"
+  version: "0.5.1"
 ---
 
 # SDD Harness

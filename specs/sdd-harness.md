@@ -1,7 +1,7 @@
 # SDD Harness Behavior Specification
 
-Specification version: 0.5.0.
-Status: accepted intent for independent development and optional same-repository interface collaboration.
+Specification version: 0.5.1.
+Status: accepted intent for the root-installable distribution and unchanged 0.5.0 development workflow.
 This specification defines observable skill behavior. It does not establish host enforcement.
 
 ## Scope
@@ -33,7 +33,7 @@ Keep routine actions within existing user authorization.
 | GUARD-1 | Keep unknown activity distinct from idle state. Preserve active worktrees and unresolved ownership. | Existing collaboration rules; inspect regression tests. |
 | GUARD-2 | Keep development, acceptance, publication, removal, and chat archives distinct. | Delivery and recovery review; source-preservation tests. |
 | DOC-1 | Use English and STE-guided writing for internal prose. Preserve language exceptions and exact source strings. | Writing reference; prior 0.2.0 language evaluations. |
-| PACK-1 | Install the complete package without overwriting different content. Preserve portable links and checked distributions. | Installer and package tests. |
+| PACK-1 | Put SKILL.md and its resources at the repository root for direct installation. Filter development files from scripted installation and ZIPs. Preserve local changes, portable links, and checked distributions. | Installer and root-repository package tests. |
 | DEFAULT-1 | Keep independent development the default. Require no collaboration roles, contract formats, mocks, or team CI setup for ordinary independent work. | `solo-default-lightweight`; `small-team-existing-layout`; `small-change`. |
 | TEAM-1 | Link cooperating component tasks and acceptance to the complete business outcome. Reuse existing integration duties. | `split-business-acceptance`. |
 | TEAM-2 | Use the existing accepted versioned contract. Align examples, mocks, clients, and relevant field, error, time, and unit semantics. | `contract-source-drift`. |
@@ -60,6 +60,7 @@ Do not infer full-standard STE compliance from sentence counts.
 ## Specification maintenance
 
 Maintain this file as the living contract for the skill.
+The 0.5.1 revision changes distribution layout and installer filtering only. The accepted development workflow remains unchanged.
 Record accepted behavior changes here before final acceptance.
 Keep released packages and versioned evaluation results for historical comparison.
 If evaluation exposes an implementation gap, correct the instructions or record incomplete acceptance.

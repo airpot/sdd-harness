@@ -9,6 +9,23 @@ import sys
 import tempfile
 
 
+def skill_files(root):
+    files = [root / 'SKILL.md']
+    for name in ('scripts', 'references', 'assets', 'agents'):
+        entry = root / name
+        if entry.is_symlink() or (hasattr(entry, 'is_junction') and entry.is_junction()):
+            raise ValueError('Skill directories must not contain links')
+        if entry.exists():
+            files.extend(entry.rglob('*'))
+    result = []
+    for path in files:
+        if path.is_symlink() or (hasattr(path, 'is_junction') and path.is_junction()):
+            raise ValueError('Skill directories must not contain links')
+        if path.is_file() and '__pycache__' not in path.parts and path.suffix != '.pyc':
+            result.append(path)
+    return sorted(result)
+
+
 def contents(root):
     result = {}
     for path in root.rglob('*'):
@@ -27,7 +44,8 @@ def install(parent):
         raise ValueError('Installation directory must be outside the source skill')
     if not (source / 'SKILL.md').is_file():
         raise ValueError('Missing SKILL.md; copy the complete distribution')
-    expected = contents(source)
+    files = skill_files(source)
+    expected = {p.relative_to(source).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
     if target.is_symlink() or (hasattr(target, 'is_junction') and target.is_junction()):
         raise ValueError('Refusing to replace a linked skill')
     if target.exists():
@@ -37,7 +55,10 @@ def install(parent):
     parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='.sdd-install-', dir=parent) as temporary:
         staged = Path(temporary) / 'sdd-harness'
-        shutil.copytree(source, staged, ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
+        for path in files:
+            copied = staged / path.relative_to(source)
+            copied.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(path, copied)
         if contents(staged) != expected:
             raise ValueError('Source changed or copy verification failed')
         if target.exists():

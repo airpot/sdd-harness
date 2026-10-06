@@ -2,7 +2,7 @@
 
 A portable skill for specification-driven development across chats, worktrees, and coding agents.
 
-Current version: **0.5.0**.
+Current version: **0.5.1**.
 
 Independent development is the default. Keep small tasks brief in existing project records.
 Use collaboration procedures only when work needs cooperation.
@@ -33,32 +33,37 @@ Use the project's existing specifications and tools. Neither framework is a requ
 
 ## Install for Codex
 
-Clone the repository:
+The repository root is the skill directory. It contains `SKILL.md`, `scripts/`, `references/`, and `assets/`.
+Clone it directly into a discovered skills directory.
+For example, use PowerShell on Windows:
+
+```powershell
+git clone https://github.com/airpot/sdd-harness.git "$HOME/.agents/skills/sdd-harness"
+```
+
+Then invoke `$sdd-harness` in Codex.
+If unavailable, refresh skill discovery or start a new chat.
+If the destination exists, preserve the old installation before replacing it.
+
+Direct cloning also retains repository development records.
+For an installation with only the thirteen skill files, use the installer:
 
 ```text
 git clone https://github.com/airpot/sdd-harness.git
 cd sdd-harness
+python scripts/install.py --into "~/.agents/skills"
 ```
-
-Install the complete skill:
-
-```text
-python skills/sdd-harness/scripts/install.py --into "~/.agents/skills"
-```
-
-Then invoke `$sdd-harness` in Codex.
-If the skill is unavailable, refresh or restart the session.
 
 For ZCode, use `~/.zcode/skills` as the installation parent.
 For DeepSeek Harness, use the project's `.dsh/skills` or its configured user skills directory.
-Read [installation instructions](skills/sdd-harness/references/install.md) for discovery, updates, and alternative paths.
+Read [installation instructions](references/install.md) for discovery, updates, and alternative paths.
 
 The installer refuses to overwrite different content.
 Before updating, preserve the existing installation outside discovered skills directories.
 
 ## Install from the package
 
-Download [sdd-harness-0.5.0.zip](dist/sdd-harness-0.5.0.zip) and its [SHA-256 file](dist/sdd-harness-0.5.0.sha256).
+Download [sdd-harness-0.5.1.zip](dist/sdd-harness-0.5.1.zip) and its [SHA-256 file](dist/sdd-harness-0.5.1.sha256).
 Extract the ZIP into a local directory.
 From that directory, run:
 
@@ -75,14 +80,14 @@ Give the agent this instruction:
 
 > Use sdd-harness to continue from the task handoff. Check results, ownership, and evidence before the next action.
 
-Read the [skill entry](skills/sdd-harness/SKILL.md) for the workflow and relevant resources.
+Read the [skill entry](SKILL.md) for the workflow and relevant resources.
 Project records belong in the target project. Keep them separate from the skill installation.
 Use existing project records before adding new files.
 
 ## Internal document policy
 
 New or changed internal development prose defaults to English.
-Apply the [writing policy](skills/sdd-harness/references/writing.md) to specifications, plans, decisions, validation records, and handoff records.
+Apply the [writing policy](references/writing.md) to specifications, plans, decisions, validation records, and handoff records.
 The policy uses short instructions, active voice, explicit conditions, and consistent software terms.
 Explicit user language requests and mandatory project formats take precedence.
 Keep code identifiers, commands, paths, quotations, and raw evidence unchanged.
@@ -98,7 +103,7 @@ Workspace commands also need Git 2.29 or later.
 There are no third-party Python dependencies.
 
 ```text
-python skills/sdd-harness/scripts/workspace.py --help
+python scripts/workspace.py --help
 ```
 
 Available commands:
@@ -111,7 +116,7 @@ Available commands:
 | `restore` | Restore preserved results into a new directory. |
 
 These commands do not delete source worktrees.
-For removal conditions and supported recovery scope, read [recovery instructions](skills/sdd-harness/references/recovery.md).
+For removal conditions and supported recovery scope, read [recovery instructions](references/recovery.md).
 
 Cooperating developers can use ordinary assigned tasks, branches, and independent checkouts in one repository.
 The workflow requires no cross-machine execution claims, heartbeat leases, or coordination service.
@@ -129,7 +134,7 @@ python -m unittest discover -s tests -q
 Build a new package at an unused output path:
 
 ```text
-python tools/package_skill.py --source skills/sdd-harness --output dist/sdd-harness-local.zip
+python tools/package_skill.py --source . --output dist/sdd-harness-local.zip
 ```
 
 The builder checks relative references and ZIP integrity. It refuses to overwrite an existing output.
@@ -143,4 +148,6 @@ Evaluation criteria and complete outputs remain separate from executor inputs.
 The current instruction suite contains 28 cases and 84 criteria, including independent and optional collaboration workflows.
 Isolated host evaluations exercise actual fixture actions in repeated fresh trials.
 The repository-only host simulator checks files, hashes, behavior, and attempted actions. It is not included in the skill package.
-Read the [0.5.0 validation record](evals/results/0.5.0-validation.md) for results, source-review repairs, and applicability limits.
+Read the [0.5.0 workflow validation record](evals/results/0.5.0-validation.md) for results, source-review repairs, and applicability limits.
+
+The [0.5.1 distribution record](evals/results/0.5.1-validation.md) covers the root layout, installer filtering, and package validation.

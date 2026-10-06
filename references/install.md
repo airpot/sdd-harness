@@ -1,6 +1,9 @@
 # Installation and Use
 
 This portable skill uses `sdd-harness/SKILL.md` as its entry.
+The Git repository root contains `SKILL.md` and its resources.
+For direct installation, clone the repository into the target agent's `sdd-harness` skills directory.
+
 Extract the release ZIP. Copy the complete directory into the target agent's skills directory.
 The scripts need Python 3.10 or later. Workspace commands also need Git 2.29 or later.
 Instructions and templates do not need Python.
@@ -8,7 +11,9 @@ Instructions and templates do not need Python.
 ## Install
 
 Run one command from the extracted package location.
-The installer copies files only. It does not change global configuration, connect services, or install dependencies.
+The installer copies `SKILL.md`, scripts, references, assets, and optional agent metadata only.
+It excludes repository documentation, tests, evaluation records, Git metadata, and distributions.
+It does not change global configuration, connect services, or install dependencies.
 
 ```text
 # Codex user installation

@@ -39,7 +39,7 @@ def skill_files(root):
     for path in files:
         if is_link(path):
             raise ValueError('Skill directories must not contain links')
-        if path.is_file() and '__pycache__' not in path.parts and path.suffix != '.pyc':
+        if path.is_file() and '__pycache__' not in path.relative_to(root).parts and path.suffix != '.pyc':
             result.append(path)
     return sorted(result)
 
@@ -47,7 +47,7 @@ def skill_files(root):
 def contents(root):
     result = {}
     for path in checked_entries(root):
-        if path.is_file() and '__pycache__' not in path.parts and path.suffix != '.pyc':
+        if path.is_file() and '__pycache__' not in path.relative_to(root).parts and path.suffix != '.pyc':
             result[path.relative_to(root).as_posix()] = hashlib.sha256(path.read_bytes()).hexdigest()
     return result
 
@@ -64,6 +64,8 @@ def install(parent):
     if not (source / 'SKILL.md').is_file():
         raise ValueError('Missing SKILL.md; copy the complete distribution')
     files = skill_files(source)
+    if not files:
+        raise ValueError('Cannot install an empty skill inventory')
     expected = {p.relative_to(source).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
     if is_link(target):
         raise ValueError('Refusing to replace a linked skill')

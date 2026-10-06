@@ -1,0 +1,121 @@
+test_cache_named_source_ancestor_preserves_portable_inventory (test_072_corrections.CorrectionTests.test_cache_named_source_ancestor_preserves_portable_inventory) ... FAIL
+test_cache_named_target_ancestor_preserves_portable_inventory (test_072_corrections.CorrectionTests.test_cache_named_target_ancestor_preserves_portable_inventory) ... FAIL
+test_empty_install_inventory_is_rejected_before_parent_creation (test_072_corrections.CorrectionTests.test_empty_install_inventory_is_rejected_before_parent_creation) ... ERROR
+test_empty_package_inventory_is_rejected_before_output_creation (test_072_corrections.CorrectionTests.test_empty_package_inventory_is_rejected_before_output_creation) ... FAIL
+test_restore_isolates_foreign_common_and_object_directories (test_072_corrections.CorrectionTests.test_restore_isolates_foreign_common_and_object_directories) ... FAIL
+test_restore_preserves_caller_environment_and_unrelated_settings (test_072_corrections.CorrectionTests.test_restore_preserves_caller_environment_and_unrelated_settings) ... FAIL
+test_restore_preserves_foreign_head_and_branch (test_072_corrections.CorrectionTests.test_restore_preserves_foreign_head_and_branch) ... FAIL
+test_restore_preserves_foreign_staged_index (test_072_corrections.CorrectionTests.test_restore_preserves_foreign_staged_index) ... FAIL
+test_unborn_restore_has_own_empty_index_under_foreign_overrides (test_072_corrections.CorrectionTests.test_unborn_restore_has_own_empty_index_under_foreign_overrides) ... FAIL
+
+======================================================================
+ERROR: test_empty_install_inventory_is_rejected_before_parent_creation (test_072_corrections.CorrectionTests.test_empty_install_inventory_is_rejected_before_parent_creation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-072\project_skill\tests\test_072_corrections.py", line 191, in test_empty_install_inventory_is_rejected_before_parent_creation
+    module.install(parent)
+  File "C:\Users\airpot\AppData\Local\Temp\sdd-072-test-jo980ffq\download\sdd-harness\scripts\install.py", line 85, in install
+    staged.rename(target)
+  File "C:\Program Files\Python\Lib\pathlib.py", line 1363, in rename
+    os.rename(self, target)
+FileNotFoundError: [WinError 2] ϵͳ�Ҳ���ָ�����ļ���: 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-072-test-jo980ffq\\not-created\\.sdd-install-5851qbiu\\sdd-harness' -> 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-072-test-jo980ffq\\not-created\\sdd-harness'
+
+======================================================================
+FAIL: test_cache_named_source_ancestor_preserves_portable_inventory (test_072_corrections.CorrectionTests.test_cache_named_source_ancestor_preserves_portable_inventory)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-072\project_skill\tests\test_072_corrections.py", line 170, in test_cache_named_source_ancestor_preserves_portable_inventory
+    self.assert_package_and_install(source, self.base / 'installed')
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-072\project_skill\tests\test_072_corrections.py", line 150, in assert_package_and_install
+    self.assertEqual(package['files'], 14)
+AssertionError: 0 != 14
+
+======================================================================
+FAIL: test_cache_named_target_ancestor_preserves_portable_inventory (test_072_corrections.CorrectionTests.test_cache_named_target_ancestor_preserves_portable_inventory)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-072\project_skill\tests\test_072_corrections.py", line 174, in test_cache_named_target_ancestor_preserves_portable_inventory
+    self.assert_package_and_install(source, self.base / '__pycache__' / 'project' / '.dsh/skills')
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-072\project_skill\tests\test_072_corrections.py", line 155, in assert_package_and_install
+    installed = self.cli(source / 'scripts/install.py', '--into', parent)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-072\project_skill\tests\test_072_corrections.py", line 48, in cli
+    return json.loads(self.run_command([sys.executable, '-B', script, *args], env=env))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-072\project_skill\tests\test_072_corrections.py", line 41, in run_command
+    self.assertEqual(result.returncode, 0, result.stderr.decode('utf-8', 'replace'))
+AssertionError: 1 != 0 : {"error": "Source changed or copy verification failed"}
+
+
+
+======================================================================
+FAIL: test_empty_package_inventory_is_rejected_before_output_creation (test_072_corrections.CorrectionTests.test_empty_package_inventory_is_rejected_before_output_creation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-072\project_skill\tests\test_072_corrections.py", line 181, in test_empty_package_inventory_is_rejected_before_output_creation
+    with self.assertRaisesRegex(ValueError, 'empty|Empty'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_restore_isolates_foreign_common_and_object_directories (test_072_corrections.CorrectionTests.test_restore_isolates_foreign_common_and_object_directories)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-072\project_skill\tests\test_072_corrections.py", line 107, in test_restore_isolates_foreign_common_and_object_directories
+    self.assert_restore_isolated(lambda source: {
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-072\project_skill\tests\test_072_corrections.py", line 85, in assert_restore_isolated
+    self.assertEqual(Path(self.git(target, 'rev-parse', '--absolute-git-dir').decode().strip()),
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-072\project_skill\tests\test_072_corrections.py", line 45, in git
+    return self.run_command(['git', '-C', repo, *args])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-072\project_skill\tests\test_072_corrections.py", line 41, in run_command
+    self.assertEqual(result.returncode, 0, result.stderr.decode('utf-8', 'replace'))
+AssertionError: 128 != 0 : fatal: not a git repository (or any of the parent directories): .git
+
+
+======================================================================
+FAIL: test_restore_preserves_caller_environment_and_unrelated_settings (test_072_corrections.CorrectionTests.test_restore_preserves_caller_environment_and_unrelated_settings)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-072\project_skill\tests\test_072_corrections.py", line 127, in test_restore_preserves_caller_environment_and_unrelated_settings
+    self.assertEqual(hashes(source), before)
+AssertionError: {'acc[433 chars]x': 'b3fb484eaa62a61fcdfe1d90605425385df316b50[2710 chars]c08'} != {'acc[433 chars]x': '3e2e2581678d8611c87f83010526f1a49a8711819[2710 chars]c08'}
+Diff is 3377 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_restore_preserves_foreign_head_and_branch (test_072_corrections.CorrectionTests.test_restore_preserves_foreign_head_and_branch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-072\project_skill\tests\test_072_corrections.py", line 103, in test_restore_preserves_foreign_head_and_branch
+    self.assert_restore_isolated(lambda source: {
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-072\project_skill\tests\test_072_corrections.py", line 79, in assert_restore_isolated
+    self.assertEqual(hashes(source), before, 'Restore changed the existing source')
+AssertionError: {'acc[343 chars].git/FETCH_HEAD': '4952f6f31f038490c6da1f1e1db[2887 chars]4f1'} != {'acc[343 chars].git/HEAD': 'f6f2b945f6c411b02ba3da9c7ace88dcf[2800 chars]4f1'}
+Diff is 3640 characters long. Set self.maxDiff to None to see it. : Restore changed the existing source
+
+======================================================================
+FAIL: test_restore_preserves_foreign_staged_index (test_072_corrections.CorrectionTests.test_restore_preserves_foreign_staged_index)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-072\project_skill\tests\test_072_corrections.py", line 100, in test_restore_preserves_foreign_staged_index
+    self.assert_restore_isolated(lambda source: {'GIT_INDEX_FILE': str(source / '.git/index')})
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-072\project_skill\tests\test_072_corrections.py", line 79, in assert_restore_isolated
+    self.assertEqual(hashes(source), before, 'Restore changed the existing source')
+AssertionError: {'acc[433 chars]x': 'b3fb484eaa62a61fcdfe1d90605425385df316b50[2710 chars]2e8'} != {'acc[433 chars]x': '71162dca25984df4c7f7a5ebf582845cd24b032f1[2710 chars]2e8'}
+Diff is 3377 characters long. Set self.maxDiff to None to see it. : Restore changed the existing source
+
+======================================================================
+FAIL: test_unborn_restore_has_own_empty_index_under_foreign_overrides (test_072_corrections.CorrectionTests.test_unborn_restore_has_own_empty_index_under_foreign_overrides)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-072\project_skill\tests\test_072_corrections.py", line 113, in test_unborn_restore_has_own_empty_index_under_foreign_overrides
+    self.assert_restore_isolated(lambda source: {
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-072\project_skill\tests\test_072_corrections.py", line 84, in assert_restore_isolated
+    self.assertTrue((target / '.git').is_dir(), 'Restore omitted its own Git directory')
+AssertionError: False is not true : Restore omitted its own Git directory
+
+----------------------------------------------------------------------
+Ran 9 tests in 12.084s
+
+FAILED (failures=8, errors=1)

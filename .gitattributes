@@ -1,0 +1,8 @@
+# Keep recorded historical evidence bytes unchanged in every checkout.
+evals/results/0.7.0-native-prompts.json -text
+evals/results/0.7.0-host-observations.json -text
+evals/results/0.7.0-validation.md -text
+evals/results/0.7.0-provenance.json -text
+evals/invocation-0.7.0.json -text
+# Preserve this release's exported evidence bytes.
+evals/results/0.7.2-* -text

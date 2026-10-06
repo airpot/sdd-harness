@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path, PurePosixPath
 import re
 import shutil
@@ -15,11 +16,35 @@ import tempfile
 import zipfile
 
 
-def git(root: Path, *args: str, optional: bool = False) -> bytes:
-    result = subprocess.run(['git', '-C', str(root), *args], capture_output=True)
+def git(root: Path, *args: str, optional: bool = False, env: dict | None = None) -> bytes:
+    result = subprocess.run(['git', '-C', str(root), *args], capture_output=True, env=env)
     if result.returncode and not optional:
         raise ValueError(result.stderr.decode('utf-8', 'replace').strip())
     return result.stdout if not result.returncode else b''
+
+
+def restore_environment() -> dict:
+    env = os.environ.copy()
+    # Git documents clearing this list when commands target a foreign repository.
+    result = subprocess.run(['git', 'rev-parse', '--local-env-vars'], capture_output=True, env=env)
+    if result.returncode:
+        raise ValueError('Cannot determine Git repository-local environment variables')
+    local = set(result.stdout.decode('ascii').split())
+    return {name: value for name, value in env.items() if name.upper() not in local}
+
+
+def restore_index(root: Path, env: dict) -> Path:
+    metadata = root / '.git'
+    actual = Path(text(git(root, 'rev-parse', '--absolute-git-dir', env=env))).resolve()
+    common = Path(text(git(root, 'rev-parse', '--git-common-dir', env=env)))
+    index = Path(text(git(root, 'rev-parse', '--git-path', 'index', env=env)))
+    common = common if common.is_absolute() else root / common
+    index = index if index.is_absolute() else root / index
+    top = Path(text(git(root, 'rev-parse', '--show-toplevel', env=env))).resolve()
+    if (not metadata.is_dir() or metadata.is_symlink() or actual != metadata or
+            common.resolve() != metadata or top != root or index.resolve() != metadata / 'index'):
+        raise ValueError('Restore Git metadata must belong to the new output directory')
+    return index
 
 
 def text(data: bytes) -> str:
@@ -237,18 +262,22 @@ def restore(archive: Path, output: Path) -> dict:
     output = output.expanduser().resolve()
     if output.exists():
         raise ValueError('Restore requires a new, nonexistent directory')
+    env = restore_environment()
     output.mkdir(parents=True)
-    git(output, 'init', '--quiet', '--object-format=' + manifest['source']['object_format'])
+    git(output, 'init', '--quiet', '--object-format=' + manifest['source']['object_format'], env=env)
+    restore_index(output, env)
     with zipfile.ZipFile(archive) as z, tempfile.TemporaryDirectory(prefix='sdd-restore-') as staging:
         if manifest['source']['head']:
             bundle = Path(staging) / 'history.bundle'
             with z.open('history.bundle') as src, bundle.open('wb') as dst:
                 shutil.copyfileobj(src, dst)
-            git(output, 'fetch', '--quiet', str(bundle), 'HEAD')
+            git(output, 'fetch', '--quiet', str(bundle), 'HEAD', env=env)
             head = manifest['source']['head']
-            git(output, 'update-ref', '--no-deref', 'HEAD', head)
+            git(output, 'update-ref', '--no-deref', 'HEAD', head, env=env)
             # Load the original index without checking out potentially historical links.
-            git(output, 'read-tree', head)
+            git(output, 'read-tree', head, env=env)
+        else:
+            git(output, 'read-tree', '--empty', env=env)
         for entry in manifest['files']:
             target = local_file(output, entry['path'])
             target.parent.mkdir(parents=True, exist_ok=True)
@@ -258,6 +287,15 @@ def restore(archive: Path, output: Path) -> dict:
             with target.open('rb') as restored:
                 if digest(restored) != (entry['sha256'], entry['size']):
                     raise ValueError(f'Restored file mismatch: {entry["path"]}')
+    if not restore_index(output, env).is_file():
+        raise ValueError('Restore did not create the output repository index')
+    head = text(git(output, 'rev-parse', '--verify', 'HEAD', optional=True, env=env)) or None
+    if head != manifest['source']['head']:
+        raise ValueError('Restored HEAD does not match the snapshot')
+    if head:
+        git(output, 'diff-index', '--cached', '--quiet', head, '--', env=env)
+    elif git(output, 'ls-files', '--stage', '-z', env=env):
+        raise ValueError('Unborn restore requires an empty index')
     return {'restored': str(output), 'head': manifest['source']['head'],
             'files': len(manifest['files']), 'verified': True, 'write_authorized': False}
 

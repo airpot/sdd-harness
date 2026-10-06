@@ -1,0 +1,15 @@
+test_historical_correction_binds_actual_prompts_without_solo_coverage (test_followup_corrections.InvocationBindingTests.test_historical_correction_binds_actual_prompts_without_solo_coverage) ... ok
+test_new_native_inputs_bind_adaptation_and_observed_route (test_followup_corrections.InvocationBindingTests.test_new_native_inputs_bind_adaptation_and_observed_route) ... ok
+test_legacy_builder_rejects_lexical_source_root_junction (test_followup_corrections.LegacyJunctionTests.test_legacy_builder_rejects_lexical_source_root_junction) ... ok
+test_legacy_builder_rejects_nested_junction_before_output (test_followup_corrections.LegacyJunctionTests.test_legacy_builder_rejects_nested_junction_before_output) ... ok
+test_legacy_installer_rejects_existing_target_inventory_junction (test_followup_corrections.LegacyJunctionTests.test_legacy_installer_rejects_existing_target_inventory_junction) ... ok
+test_legacy_installer_rejects_final_target_junction (test_followup_corrections.LegacyJunctionTests.test_legacy_installer_rejects_final_target_junction) ... ok
+test_legacy_installer_rejects_lexical_source_root_junction (test_followup_corrections.LegacyJunctionTests.test_legacy_installer_rejects_lexical_source_root_junction) ... ok
+test_legacy_installer_rejects_nested_source_junction (test_followup_corrections.LegacyJunctionTests.test_legacy_installer_rejects_nested_source_junction) ... ok
+test_legacy_installer_rejects_top_level_source_junction (test_followup_corrections.LegacyJunctionTests.test_legacy_installer_rejects_top_level_source_junction) ... ok
+test_all_templates_require_resolved_policy_before_save (test_followup_corrections.RelocatedTemplateTests.test_all_templates_require_resolved_policy_before_save) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 2.602s
+
+OK

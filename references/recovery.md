@@ -49,6 +49,12 @@ The script does not synchronize remote storage or collect all ignored directorie
 
 `verify` checks the complete archive member set and content hashes.
 `restore` writes to a new directory only. It restores HEAD and current file state.
+Before creating the output, restore copies the process environment and clears the repository-local variables reported by `git rev-parse --local-env-vars`.
+It uses that same environment for every restore Git command. It does not change the caller's environment or unrelated settings.
+This includes repository, worktree, index, object-store, and repository-local configuration overrides.
+Git documents this procedure for commands that target another repository in its [hook guidance](https://git-scm.com/docs/githooks).
+Restore checks the output's actual Git directory, common directory, worktree root, HEAD, and own index before it reports success.
+An unborn repository remains unborn and receives an empty index in the output.
 It does not restore native chats, exact staging state, other branches, original paths, processes, credentials, or external databases.
 After recovery, check the environment and evidence again.
 Old ownership records do not grant permission.

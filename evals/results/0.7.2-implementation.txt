@@ -1,0 +1,120 @@
+# 0.7.2 Implementation Report
+
+Writing policy: [project policy](../../references/writing.md).
+This report uses STE-guided English. Dictionary compliance was not checked.
+
+## Candidate
+
+Base: `3e29c1da6415aa07203be173eea9138f8c6517ad`.
+Branch: `codex/fix-recovery-distribution-072`.
+Checkout: `C:/Users/airpot/.codex/worktrees/sdd-fix-072/project_skill`.
+Runtime: Windows, Python 3.12.8, Git 2.55.0.windows.5.
+
+The two accepted audit defects are corrected in the isolated checkout.
+The entry, Chinese README, references, and accepted specification identify version 0.7.2 and the corrected behavior.
+No new services, locks, collaboration defaults, or dependencies were added.
+The portable inventory contains fourteen files.
+
+## Changed Paths
+
+- `scripts/workspace.py`
+- `scripts/install.py`
+- `tools/package_skill.py`
+- `tests/test_072_corrections.py` (new repository-only tests)
+- `references/recovery.md`
+- `references/install.md`
+- `SKILL.md`
+- `README.md`
+- `specs/sdd-harness.md`
+
+No old release or evaluation evidence was edited.
+All implementation logs, this report, and the handoff are outside the managed checkout, under the parent workspace's `docs` directory.
+
+## Restore Environment
+
+Restore obtains a copy of `os.environ` and asks the installed Git for `rev-parse --local-env-vars` before creating output.
+If discovery fails, restore raises an error before output creation.
+It removes the reported repository-local names from the copy, using case-insensitive name comparison for Windows.
+It passes the resulting single dictionary to initialization, target-path checks, fetch, HEAD update, index construction, and final checks.
+The helper's default remains unchanged for inspect and snapshot.
+
+This procedure follows Git's [foreign-repository hook guidance](https://git-scm.com/docs/githooks) and [local variable definition](https://git-scm.com/docs/git-rev-parse#Documentation/git-rev-parse.txt---local-env-vars).
+It uses Git's current list rather than a hard-coded list of three overrides.
+The recorded local list contains fifteen names:
+
+`GIT_ALTERNATE_OBJECT_DIRECTORIES`, `GIT_CONFIG`, `GIT_CONFIG_PARAMETERS`, `GIT_CONFIG_COUNT`, `GIT_OBJECT_DIRECTORY`, `GIT_DIR`, `GIT_WORK_TREE`, `GIT_IMPLICIT_WORK_TREE`, `GIT_GRAFT_FILE`, `GIT_INDEX_FILE`, `GIT_NO_REPLACE_OBJECTS`, `GIT_REPLACE_REF_BASE`, `GIT_PREFIX`, `GIT_SHALLOW_FILE`, and `GIT_COMMON_DIR`.
+
+Repository-local configuration overrides are removed because Git includes them in that list.
+Configuration key/value slots have no active count after `GIT_CONFIG_COUNT` is removed.
+Other settings are retained, including `GIT_TRACE`, `GIT_EDITOR`, and global/system configuration selectors.
+The code does not assign to `os.environ` or change host settings.
+A real trace-file regression confirms that `GIT_TRACE` remains active, and a direct API regression checks the caller environment before and after restore.
+
+Before fetching, restore checks the actual Git directory, common directory, worktree root, and index path against the new output.
+Before success, it repeats those checks, requires the output's own index file, checks HEAD against the archive, and checks the index against HEAD.
+For an unborn source, `read-tree --empty` creates the output's own empty index; HEAD remains unborn.
+Working-file hashes remain checked independently of the index, so dirty and deleted file recovery retains its existing behavior.
+
+## Distribution Inventory
+
+The two installer inventories use `path.relative_to(root).parts`.
+The builder uses `path.relative_to(source).parts`.
+They retain internal `__pycache__` and `.pyc` exclusions.
+The installer and builder reject an empty inventory before creating a destination parent or output.
+The guards use controlled empty-inventory fault tests, because a valid complete source always includes `SKILL.md` after the path correction.
+The source/target ancestor tests use complete real fourteen-file fixtures, compare every packaged and installed hash, repeat installation, and verify refusal to overwrite local edits.
+
+## Tests and Evidence
+
+| Run | Result | Log |
+| --- | --- | --- |
+| Initial new tests, before production edits | 9 tests: 8 assertion failures and 1 missing-guard exception | `0.7.2-red-corrections.log` |
+| Confirmed red run, after classifying the expected missing-guard exception as an assertion | 9 tests: 9 failures, 0 errors | `0.7.2-red-corrections-confirmed.log` |
+| Existing workspace baseline | 23 passed | `0.7.2-baseline-skill-tools.log` |
+| Existing package baseline | 7 passed | `0.7.2-baseline-package.log` |
+| New correction regressions after code changes | 9 passed | `0.7.2-green-corrections.log` |
+| New correction regressions with final documentation | 9 passed | `0.7.2-green-final-corrections.log` |
+| Existing workspace regressions after code changes | 23 passed | `0.7.2-green-skill-tools.log` |
+| Existing package regressions with final documentation | 7 passed | `0.7.2-green-package.log` |
+| Existing followup file | 8 passed; 2 historical-byte checks failed | `0.7.2-green-followup.log` |
+| Base-source invocation tests against untouched checkout artifacts | Same 2 historical-byte failures | `0.7.2-baseline-invocation.log` |
+| Skill creator validator | Passed | `0.7.2-skill-validation.log` |
+| Final diff check | Exit 0 | `0.7.2-diff-check.log` |
+
+Thus 47 relevant runtime, package, junction, and template regressions passed on the candidate (9 + 23 + 7 + 8).
+This is affected-check evidence, not a full-suite acceptance claim.
+Each CLI exit code is saved in a corresponding `-exit.txt` file.
+The original red output remains unchanged.
+
+### Existing Historical-byte Failure
+
+The two invocation-binding checks fail at the raw SHA-256 of `evals/invocation-0.7.0.json`.
+The accepted base blob hash is `980b293efa38f77c4d665c51b55685b39e6f91447668ba07aa1e7f0691a4c6aa`.
+The managed checkout's CRLF bytes hash to `7a9245fd72a6634b1cf544a5df1cde970de348f60ba3f540a44ce28dc557c72f`.
+Replacing CRLF with LF yields exact equality with the base blob for all four checked historical input/record artifacts.
+`0.7.2-baseline-invocation-check.py` executes the original base test code without changing those artifacts and reproduces both failures.
+The measured byte differences are saved in `0.7.2-baseline-invocation-bytes.json`.
+Neither historical evidence nor these existing assertions were changed to obtain a pass.
+Parent release normalization and full-suite validation remain required.
+
+## Code Hashes
+
+These are raw final checkout SHA-256 values:
+
+| Path | SHA-256 |
+| --- | --- |
+| `scripts/workspace.py` | `f991f02bb64c3a1d22be697ec89ac7140cc4bc6005a9f2a60f6c0838269365b4` |
+| `scripts/install.py` | `801f47bf1aa2508a5fd46d07e182bce649f05b2d9c7a177da15cf3cdc2c4ca42` |
+| `tools/package_skill.py` | `eef8f60a8b61cda19527d06924803001d3d90a1056f42285e002edcd190005dd` |
+| `tests/test_072_corrections.py` | `ea1b2f7fabe07bb5c3086e343fb5294266d9a71e25f38df78c7378c336a184ee` |
+
+`0.7.2-candidate-evidence.json` records every changed file, raw and LF-normalized hashes, byte counts, all fourteen portable hashes, branch, base, status, and diff-check result.
+
+## Remaining Work and Execution State
+
+Parent must complete independent specification and quality reviews, integration, the full final suite, release packaging, installation, and authorized publication.
+This worker did not stage, commit, push, globally install, change configuration, remove a real worktree, or spawn agents.
+All test subprocesses completed and their disposable fixtures were cleaned by the test harness.
+No background execution was started; no test session remains running.
+The managed checkout is left intact with eight modified tracked files and one new test file for parent review.
+Python 3.10/3.11 execution, other operating systems, new native routing coverage, and performance effects were not tested or claimed.

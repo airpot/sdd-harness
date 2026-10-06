@@ -1,0 +1,183 @@
+{
+  "version": "0.7.2",
+  "base_commit": "3e29c1da6415aa07203be173eea9138f8c6517ad",
+  "hash_binding": "Raw frozen release bytes. ZIP reproduces portable bytes. Git can convert unprotected text; historical and 0.7.2 evidence paths use -text.",
+  "portable_source": {
+    "assets/change.md": "da13204796df87ea9405216f5b85dc7a9d35aff09969f7b44946fcd223880292",
+    "assets/handoff.md": "4da71c505cc6730ddbd86fcc1491f4ff9544564c4cd1167a3f50df012c495b73",
+    "assets/release.md": "2dd28a051622ecf6c42074ad8b6787e1ddfd39027dd32781f7ed86a8a0b42ab5",
+    "references/collaboration.md": "85522f2d07ac2381be00db1b21d381aebdfcb019218ae67ba40e14b371e84264",
+    "references/delivery.md": "95566a3aab43d1c29cc06c395bbe8150a1bedf73576ae8caa59c86cf05151468",
+    "references/install.md": "84ff3d78af05891d5b06c81ddee237f6a91a8f0586a9474543a4d033d89a73be",
+    "references/recovery.md": "788db3cc3b72b3f40f63ec183e0e447fe22b6da175cc0daa280d1cb8f15cfea9",
+    "references/spec-review.md": "99af55f4a2873b0e0540e792486f51f83cddcaa13316dbbbf4d70329a372fccc",
+    "references/subagents.md": "4b3380e3b609700dae1a793767818b7c9496f2224afdf50fd25cf0b0fd03eb5c",
+    "references/workflow.md": "24b728f039169939beb272efc24a2e78e4b5ed54e5678030b5cba4634e71cafc",
+    "references/writing.md": "38fd8563663da1c1e21de6a4c6b9f7ae5dc605794876e9e5eab2e36d794623c7",
+    "scripts/install.py": "29c82baeea48d96e3121584b50c1efed583a58dc41d317cf1f354df788be85b6",
+    "scripts/workspace.py": "48b3e30d25a450fd3997a8d9deab30ccda93cd1e6427ee48045a4c44368ee9d6",
+    "SKILL.md": "366fe7b7dfeac5f52177d767ddd665f15ab5847ce075ad381ef2f81300afe267"
+  },
+  "portable_files": 14,
+  "archive": {
+    "path": "dist/sdd-harness-0.7.2.zip",
+    "sha256": "78d1c80d7805b48adfe31a243fcf95307fb1a6ed915b88fea5a6d4c77b685df6"
+  },
+  "repository_code_and_docs": {
+    ".gitattributes": "552a42aa1ae90a06595e0af03b0e3260759b95c1df84db31d619d8b633d66317",
+    "README.md": "830f1244272281c426ec699476ae03592f90d41a999d441609a41c0bfac397e3",
+    "specs/sdd-harness.md": "493789948fa6ce5306affdc61e17c6a806d5d8f67a8aa2151c2e502cba43423a",
+    "tools/package_skill.py": "2bc1de2af069bf6d169ab4fec62f9080e65da13000fa2b92bccd073a8ff6c84f",
+    "tests/test_072_corrections.py": "ea1b2f7fabe07bb5c3086e343fb5294266d9a71e25f38df78c7378c336a184ee"
+  },
+  "git_blob_bindings": {
+    "assets/change.md": "e22029ca705c2655c02a5f3a842b786089d30ef6",
+    "assets/handoff.md": "65463c71ff3671df00e3bc9ae9b0ade38c5de980",
+    "assets/release.md": "1f1ff4a391751f1ffd739792ed17cba002c90078",
+    "references/collaboration.md": "6d7de682557014a06f2bde6c6558703de3a6f20c",
+    "references/delivery.md": "4d530a52f96cecc8f089a6fbbf88f23bef9fd6b7",
+    "references/install.md": "9a73d632969b54161ea03a08dec453afa4034ff4",
+    "references/recovery.md": "a2b9fb69c6a7103381714835c5d2399bc5a75890",
+    "references/spec-review.md": "caa33367ed5bde74c4c4af42a2221c476ece638d",
+    "references/subagents.md": "1f3465e63543edb8f4bde6f78b76d700a063c96b",
+    "references/workflow.md": "3825c53a7457322f4de9ea9df02293d1ec418b66",
+    "references/writing.md": "adb9fd370e223d25f53118f335fe3c11d6260b6e",
+    "scripts/install.py": "53105651c22acbdac0a521049982704ce7f6e2eb",
+    "scripts/workspace.py": "fa1e62b30dfd7e8d0332d79c74e8fd159a6e7323",
+    "SKILL.md": "82868898bc096fed3fea5397de17202b6acbc82b",
+    ".gitattributes": "5966828dfbb5b72a34df50d2ab350bf154297ed8",
+    "README.md": "6c3d1391e2d7514b777a79a8f756ccf585fb6193",
+    "specs/sdd-harness.md": "1a7e4f48822beb1f9743e8e139c87dfcdb969a8c",
+    "tools/package_skill.py": "457417838f41d12960bab4d0edb65b6f37bfeafb",
+    "tests/test_072_corrections.py": "68c08e58dc9894ae67cc6160fda14506eab59c27"
+  },
+  "records": {
+    "evals/results/0.7.2-first-red.log": "26c589c606776498cc0914120a4962d881fb163a5a8a52cd8d8ad3ac32d73c28",
+    "evals/results/0.7.2-green.log": "f858f9beb8d188e9cc3561d928c5c4b97ac5a80c47633cbcaf54c789ccc787e7",
+    "evals/results/0.7.2-historical-baseline.log": "0f209cedf722e90dfd4e92365684223cd4c87d47e919026c04ed021fb5990c7f",
+    "evals/results/0.7.2-historical-byte-preservation.json": "3fb90b3d211e713475eaa081d868deb3c6f71b081268af307b3f92a9ac7621a8",
+    "evals/results/0.7.2-historical-green.log": "c1ed7aca53a1393b8365f2267245b88e2348d58b72e8730f86e9f27107fcff95",
+    "evals/results/0.7.2-implementation.txt": "8717cf14a7b600c3466416ca9de0e491cfa0bc31f8f4af1aa6915a52cfd459b4",
+    "evals/results/0.7.2-installation.json": "34ba7b5874a04a83ac058288c866444be9587648c483b7f4045617f66b0dccda",
+    "evals/results/0.7.2-package.json": "71ede1e54031b0b92fd91d393847545826e6922da6e11f150209c056841f6472",
+    "evals/results/0.7.2-quality-probes.json": "5dc9dcad11c4d333ed95a08ce8cf4dc8fa1a3da3299af03500b713ceb8c29535",
+    "evals/results/0.7.2-quality-review.txt": "a84408c32a8c5fd247cfc5a5871569f7d1b0a7015c4fc4fcb6c4a10364024a9e",
+    "evals/results/0.7.2-red.log": "7b4b3df565e809633065c180853f7dfa2cd06d6376a919af60ec131fdff70f04",
+    "evals/results/0.7.2-spec-review.txt": "e8fb16fc36fa7bd4fbddeacfdc1582d4493e30e3543b6c22b8d38e025eeb55a9",
+    "evals/results/0.7.2-tests.log": "e905d950a6f397fb155c8ab26e482518d3fe53a7612d5f4edb8741e06e2322e8",
+    "evals/results/0.7.2-validation.md": "a58b98e794b87918a30abd48d9250d935be6cf6164b61528c07b57961b055448"
+  },
+  "original_exports": {
+    "evals/results/0.7.2-implementation.txt": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.2-implementation-report.md",
+      "raw_sha256": "8717cf14a7b600c3466416ca9de0e491cfa0bc31f8f4af1aa6915a52cfd459b4",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.2-spec-review.txt": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.2-spec-review.md",
+      "raw_sha256": "e8fb16fc36fa7bd4fbddeacfdc1582d4493e30e3543b6c22b8d38e025eeb55a9",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.2-quality-review.txt": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.2-quality-review.md",
+      "raw_sha256": "a84408c32a8c5fd247cfc5a5871569f7d1b0a7015c4fc4fcb6c4a10364024a9e",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.2-tests.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.2-tests-final.log",
+      "raw_sha256": "e905d950a6f397fb155c8ab26e482518d3fe53a7612d5f4edb8741e06e2322e8",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.2-red.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.2-red-corrections-confirmed.log",
+      "raw_sha256": "7b4b3df565e809633065c180853f7dfa2cd06d6376a919af60ec131fdff70f04",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.2-first-red.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.2-red-corrections.log",
+      "raw_sha256": "26c589c606776498cc0914120a4962d881fb163a5a8a52cd8d8ad3ac32d73c28",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.2-green.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.2-green-final-corrections.log",
+      "raw_sha256": "f858f9beb8d188e9cc3561d928c5c4b97ac5a80c47633cbcaf54c789ccc787e7",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.2-historical-baseline.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.2-baseline-invocation.log",
+      "raw_sha256": "0f209cedf722e90dfd4e92365684223cd4c87d47e919026c04ed021fb5990c7f",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.2-historical-green.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.2-historical-and-junction-green.log",
+      "raw_sha256": "c1ed7aca53a1393b8365f2267245b88e2348d58b72e8730f86e9f27107fcff95",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.2-historical-byte-preservation.json": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.2-historical-byte-preservation.json",
+      "raw_sha256": "3fb90b3d211e713475eaa081d868deb3c6f71b081268af307b3f92a9ac7621a8",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.2-quality-probes.json": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.2-quality-review-probes.json",
+      "raw_sha256": "5dc9dcad11c4d333ed95a08ce8cf4dc8fa1a3da3299af03500b713ceb8c29535",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.2-package.json": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.2-package.json",
+      "raw_sha256": "71ede1e54031b0b92fd91d393847545826e6922da6e11f150209c056841f6472",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.2-installation.json": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.2-installation.json",
+      "raw_sha256": "34ba7b5874a04a83ac058288c866444be9587648c483b7f4045617f66b0dccda",
+      "verbatim_export": true
+    }
+  },
+  "installation": {
+    "installed": "C:\\Users\\airpot\\.agents\\skills\\sdd-harness",
+    "backup": "C:\\Users\\airpot\\.agents\\skill-backups\\sdd-harness-0.7.1-20261006T1429076038927Z",
+    "source_zip_install_equal": true,
+    "old_backup_raw_equal": true,
+    "portable_files": 14,
+    "checks": [
+      {
+        "command": [
+          "C:\\Program Files\\Python\\python.exe",
+          "-B",
+          "C:\\Users\\airpot\\.codex\\worktrees\\sdd-fix-072\\project_skill\\scripts\\install.py",
+          "--into",
+          "C:\\Users\\airpot\\.agents\\skills"
+        ],
+        "exit_code": 0,
+        "stdout": "{\"status\": \"already-installed\", \"installed\": \"C:\\\\Users\\\\airpot\\\\.agents\\\\skills\\\\sdd-harness\"}\n",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "C:\\Program Files\\Python\\python.exe",
+          "-B",
+          "C:\\Users\\airpot\\.agents\\skills\\sdd-harness\\scripts\\workspace.py",
+          "--help"
+        ],
+        "exit_code": 0,
+        "stdout": "usage: workspace.py [-h] {inspect,snapshot,verify,restore} ...\n\nObserve Git workspaces and preserve portable file snapshots. Never delete\nsources.\n\npositional arguments:\n  {inspect,snapshot,verify,restore}\n    inspect             Read-only Git facts; does not establish activity or\n                        authority\n    snapshot            Save HEAD history and current regular files, without\n                        removing source\n    verify              Check snapshot inventory and content hashes\n    restore             Restore files and HEAD into a new directory\n\noptions:\n  -h, --help            show this help message and exit\n",
+        "stderr": ""
+      }
+    ]
+  },
+  "final_suite": {
+    "command": "python -B -m unittest discover -s tests -v",
+    "exit_code": 0,
+    "ran": 95,
+    "passed": 94,
+    "skipped": 1,
+    "seconds": 84.3,
+    "skip": "Windows symlink privilege unavailable"
+  },
+  "reviews": "Specification and quality approved; narrow exported-evidence attribute addition rechecked.",
+  "limits": [
+    "Native older Python, Git2.29 and other hosts not tested.",
+    "No new native routing, writable completion or production recovery trial."
+  ]
+}

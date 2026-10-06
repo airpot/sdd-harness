@@ -2,7 +2,7 @@
 
 一个可跨对话、worktree 和编码 agent 使用的规格驱动开发（SDD）技能包。
 
-当前版本：**0.7.1**。
+当前版本：**0.7.2**。
 
 **默认独立开发，按需启用协作。**小任务沿用现有项目记录，保持简短；日常独立开发无需拆分前后端任务，也无需新增角色配置、接口格式、mock 服务或团队 CI。
 
@@ -52,6 +52,7 @@ python scripts/install.py --into "~/.agents/skills"
 ZCode 可将安装父目录设为 `~/.zcode/skills`。DeepSeek Harness 可使用项目的 `.dsh/skills`，或其实际配置的用户技能目录。技能发现、更新与其他路径详见[安装说明](references/install.md)。
 
 安装脚本拒绝覆盖不同内容。更新前，应将旧安装保存到技能发现目录之外。
+0.7.2 按技能目录内的相对路径排除缓存；源目录或安装目标的外部祖先名为 `__pycache__` 时，仍保留完整的 14 文件库存。空库存会在创建目标前被拒绝。
 
 ## 从安装包安装
 
@@ -134,6 +135,7 @@ python tools/package_skill.py --source . --output dist/sdd-harness-local.zip
 
 新增[真实编码评测](evals/coding-tasks-README.md)允许 agent 修改实际代码，再由独立断言检查修复、增量开发和需求变更。
 另有[调用测试请求](evals/invocation-0.7.0.json)，分别检查显式、隐式及不应调用的情况。
+0.7.2 恢复前会在子进程环境副本中清除 Git 所列的仓库局部变量，并贯穿使用该环境；调用者环境与其他设置保持不变。报告成功前会核验目标自身的 Git 目录、HEAD 与 index，未提交过的仓库仍可恢复。详见[恢复说明](references/recovery.md)。
 0.7.1 会在创建归档前拒绝浅克隆，不会自动补取历史；请保留源目录，再选择获授权的恢复方式。
 安装器与打包器以 `lstat` 属性在遍历前拒绝 Windows junction/reparse point，最低版本仍为 Python 3.10。
 三个可选模板改用明确的写作政策占位符；保存前须替换为项目政策或可读取的技能政策，并按记录所在目录核验链接。

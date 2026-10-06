@@ -1,0 +1,29 @@
+test_historical_correction_binds_actual_prompts_without_solo_coverage (base_followup_checks.InvocationBindingTests.test_historical_correction_binds_actual_prompts_without_solo_coverage) ... FAIL
+test_new_native_inputs_bind_adaptation_and_observed_route (base_followup_checks.InvocationBindingTests.test_new_native_inputs_bind_adaptation_and_observed_route) ... FAIL
+
+======================================================================
+FAIL: test_historical_correction_binds_actual_prompts_without_solo_coverage (base_followup_checks.InvocationBindingTests.test_historical_correction_binds_actual_prompts_without_solo_coverage)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-072\project_skill\tests\test_followup_corrections.py", line 170, in test_historical_correction_binds_actual_prompts_without_solo_coverage
+    self.assertEqual(hashlib.sha256((ROOT / path).read_bytes()).hexdigest(), expected, path)
+AssertionError: '7a9245fd72a6634b1cf544a5df1cde970de348f60ba3f540a44ce28dc557c72f' != '980b293efa38f77c4d665c51b55685b39e6f91447668ba07aa1e7f0691a4c6aa'
+- 7a9245fd72a6634b1cf544a5df1cde970de348f60ba3f540a44ce28dc557c72f
++ 980b293efa38f77c4d665c51b55685b39e6f91447668ba07aa1e7f0691a4c6aa
+ : evals/invocation-0.7.0.json
+
+======================================================================
+FAIL: test_new_native_inputs_bind_adaptation_and_observed_route (base_followup_checks.InvocationBindingTests.test_new_native_inputs_bind_adaptation_and_observed_route)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-072\project_skill\tests\test_followup_corrections.py", line 142, in test_new_native_inputs_bind_adaptation_and_observed_route
+    self.assertEqual(hashlib.sha256(corpus.read_bytes()).hexdigest(), saved['corpus_sha256'])
+AssertionError: '7a9245fd72a6634b1cf544a5df1cde970de348f60ba3f540a44ce28dc557c72f' != '980b293efa38f77c4d665c51b55685b39e6f91447668ba07aa1e7f0691a4c6aa'
+- 7a9245fd72a6634b1cf544a5df1cde970de348f60ba3f540a44ce28dc557c72f
++ 980b293efa38f77c4d665c51b55685b39e6f91447668ba07aa1e7f0691a4c6aa
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.002s
+
+FAILED (failures=2)

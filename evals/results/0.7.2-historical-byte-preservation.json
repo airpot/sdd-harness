@@ -1,0 +1,38 @@
+{
+  "reason": "Existing strict historical evidence tests fail after ordinary CRLF checkout conversion. Preserve original raw bytes through selective -text attributes instead of changing old evidence or weakening checks.",
+  "base_commit": "3e29c1da6415aa07203be173eea9138f8c6517ad",
+  "files": [
+    {
+      "path": "evals/results/0.7.0-native-prompts.json",
+      "immutable_raw_sha256": "e0d77c4136551076b6368190dafd13afdcdb8752de759c7d9f67a95eb9cd5d3c",
+      "checkout_before_sha256": "e0d77c4136551076b6368190dafd13afdcdb8752de759c7d9f67a95eb9cd5d3c",
+      "restored_original_raw": false
+    },
+    {
+      "path": "evals/results/0.7.0-host-observations.json",
+      "immutable_raw_sha256": "3e0b74fb37ba462c99548c9e93f47075b457317040599007d5b6c3d771d2eb8e",
+      "checkout_before_sha256": "3e0b74fb37ba462c99548c9e93f47075b457317040599007d5b6c3d771d2eb8e",
+      "restored_original_raw": false
+    },
+    {
+      "path": "evals/results/0.7.0-validation.md",
+      "immutable_raw_sha256": "8ac5e06cd74e0eae2c6eb5244edbd0f62e015cf6e4cabee7efa1ecbf84d37c0e",
+      "checkout_before_sha256": "8ac5e06cd74e0eae2c6eb5244edbd0f62e015cf6e4cabee7efa1ecbf84d37c0e",
+      "restored_original_raw": false
+    },
+    {
+      "path": "evals/results/0.7.0-provenance.json",
+      "immutable_raw_sha256": "0fa65be0d8ed7927e517cfa9f87a770bbb7c28beb82fcd9b35817baf3c35fea3",
+      "checkout_before_sha256": "0fa65be0d8ed7927e517cfa9f87a770bbb7c28beb82fcd9b35817baf3c35fea3",
+      "restored_original_raw": false
+    },
+    {
+      "path": "evals/invocation-0.7.0.json",
+      "immutable_raw_sha256": "980b293efa38f77c4d665c51b55685b39e6f91447668ba07aa1e7f0691a4c6aa",
+      "checkout_before_sha256": "7a9245fd72a6634b1cf544a5df1cde970de348f60ba3f540a44ce28dc557c72f",
+      "restored_original_raw": true
+    }
+  ],
+  "historical_fields_unchanged": true,
+  "only_git_transport_representation_corrected": true
+}

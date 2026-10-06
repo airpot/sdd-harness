@@ -1,0 +1,75 @@
+{
+  "version": "0.7.2",
+  "archive": "C:\\Users\\airpot\\.codex\\worktrees\\sdd-fix-072\\project_skill\\dist\\sdd-harness-0.7.2.zip",
+  "archive_sha256": "78d1c80d7805b48adfe31a243fcf95307fb1a6ed915b88fea5a6d4c77b685df6",
+  "portable_files": 14,
+  "portable_source": {
+    "assets/change.md": "da13204796df87ea9405216f5b85dc7a9d35aff09969f7b44946fcd223880292",
+    "assets/handoff.md": "4da71c505cc6730ddbd86fcc1491f4ff9544564c4cd1167a3f50df012c495b73",
+    "assets/release.md": "2dd28a051622ecf6c42074ad8b6787e1ddfd39027dd32781f7ed86a8a0b42ab5",
+    "references/collaboration.md": "85522f2d07ac2381be00db1b21d381aebdfcb019218ae67ba40e14b371e84264",
+    "references/delivery.md": "95566a3aab43d1c29cc06c395bbe8150a1bedf73576ae8caa59c86cf05151468",
+    "references/install.md": "84ff3d78af05891d5b06c81ddee237f6a91a8f0586a9474543a4d033d89a73be",
+    "references/recovery.md": "788db3cc3b72b3f40f63ec183e0e447fe22b6da175cc0daa280d1cb8f15cfea9",
+    "references/spec-review.md": "99af55f4a2873b0e0540e792486f51f83cddcaa13316dbbbf4d70329a372fccc",
+    "references/subagents.md": "4b3380e3b609700dae1a793767818b7c9496f2224afdf50fd25cf0b0fd03eb5c",
+    "references/workflow.md": "24b728f039169939beb272efc24a2e78e4b5ed54e5678030b5cba4634e71cafc",
+    "references/writing.md": "38fd8563663da1c1e21de6a4c6b9f7ae5dc605794876e9e5eab2e36d794623c7",
+    "scripts/install.py": "29c82baeea48d96e3121584b50c1efed583a58dc41d317cf1f354df788be85b6",
+    "scripts/workspace.py": "48b3e30d25a450fd3997a8d9deab30ccda93cd1e6427ee48045a4c44368ee9d6",
+    "SKILL.md": "366fe7b7dfeac5f52177d767ddd665f15ab5847ce075ad381ef2f81300afe267"
+  },
+  "checks": [
+    {
+      "command": [
+        "C:\\Program Files\\Python\\python.exe",
+        "-B",
+        "C:\\Users\\airpot\\.codex\\worktrees\\sdd-fix-072\\project_skill\\tools\\package_skill.py",
+        "--source",
+        "C:\\Users\\airpot\\.codex\\worktrees\\sdd-fix-072\\project_skill",
+        "--output",
+        "C:\\Users\\airpot\\.codex\\worktrees\\sdd-fix-072\\project_skill\\dist\\sdd-harness-0.7.2.zip"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"archive\": \"C:\\\\Users\\\\airpot\\\\.codex\\\\worktrees\\\\sdd-fix-072\\\\project_skill\\\\dist\\\\sdd-harness-0.7.2.zip\", \"files\": 14, \"sha256\": \"78d1c80d7805b48adfe31a243fcf95307fb1a6ed915b88fea5a6d4c77b685df6\"}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python\\python.exe",
+        "-B",
+        "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-release-072-u6atxjj6\\unpacked\\sdd-harness\\scripts\\install.py",
+        "--into",
+        "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-release-072-u6atxjj6\\installed"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status\": \"installed\", \"installed\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-release-072-u6atxjj6\\\\installed\\\\sdd-harness\", \"files\": 14}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python\\python.exe",
+        "-B",
+        "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-release-072-u6atxjj6\\unpacked\\sdd-harness\\scripts\\install.py",
+        "--into",
+        "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-release-072-u6atxjj6\\installed"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status\": \"already-installed\", \"installed\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-release-072-u6atxjj6\\\\installed\\\\sdd-harness\"}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python\\python.exe",
+        "-B",
+        "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-release-072-u6atxjj6\\installed\\sdd-harness\\scripts\\workspace.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: workspace.py [-h] {inspect,snapshot,verify,restore} ...\n\nObserve Git workspaces and preserve portable file snapshots. Never delete\nsources.\n\npositional arguments:\n  {inspect,snapshot,verify,restore}\n    inspect             Read-only Git facts; does not establish activity or\n                        authority\n    snapshot            Save HEAD history and current regular files, without\n                        removing source\n    verify              Check snapshot inventory and content hashes\n    restore             Restore files and HEAD into a new directory\n\noptions:\n  -h, --help            show this help message and exit\n",
+      "stderr": ""
+    }
+  ],
+  "source_archive_extraction_isolated_install_equal": true,
+  "fixture_lifetime": "Disposable isolated fixture removed after checks; exact commands and outputs retained."
+}

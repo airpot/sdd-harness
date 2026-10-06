@@ -1,0 +1,128 @@
+# 0.7.2 Independent Code Quality Review
+
+Date: 2026-10-06.
+Writing policy: [project policy](../../references/writing.md).
+This report uses STE-guided English. Full dictionary compliance was not checked.
+
+**Verified no material correctness or code quality issue in the reviewed scope.**
+No corrective change is required by this review.
+This verdict covers the accepted RECOVER-2 and PACK-3 changes and historical byte preservation.
+It does not establish final release acceptance or publication.
+The parent retains responsibility for the complete suite and package, installation, and publication checks.
+
+Reviewed checkout: `C:/Users/airpot/.codex/worktrees/sdd-fix-072/project_skill`.
+Base: `3e29c1da6415aa07203be173eea9138f8c6517ad`.
+The candidate was uncommitted during this review.
+Environment: Windows, Python 3.12.8, Git 2.55.0.windows.5.
+
+## Review Basis
+
+I read the actual runtime diff, complete affected scripts, new tests, and `.gitattributes`.
+I read the current accepted specification and affected recovery and installation references.
+I also read the writing, specification review, and delivery policies.
+The [authorized audit](../research/2026-10-06-sdd-harness-071-continued-audit.md) supplied the original counterexamples.
+The [approved specification review](0.7.2-spec-review.md) supplied requirement context, not an automatic quality approval.
+
+The independent [probe record](0.7.2-quality-review-probes.json) binds this review to current file hashes.
+Its implementation, test, attribute, entry, and specification hashes match the approved specification review.
+
+## Findings and Reasoning
+
+No material finding was identified.
+
+`scripts/workspace.py:26-33` copies the caller environment and clears the names reported by Git.
+Discovery precedes output creation at `:265-266`.
+All restore Git calls use the same environment, including initialization, fetch, reference updates, and verification.
+The source-state assertions inspect every source file hash, branch association, HEAD, and staged content.
+These assertions detect the original foreign-index and foreign-repository failures.
+The caller-environment assertion and active Git trace detect unintended removal of unrelated settings.
+
+`scripts/workspace.py:36-47` checks the actual Git directory, common directory, worktree root, and index path.
+It runs after initialization and again before success.
+The final checks at `:290-298` require an actual output index and matching HEAD and index content.
+Unborn restoration creates an empty index and requires absent HEAD and empty staged content.
+Existing restore tests also pass with SHA256 history, deleted files, dirty files, ignored files, and unpushed commits.
+These checks support the accepted target-verification boundary.
+They do not establish protection against arbitrary global configuration, hostile templates, or concurrent external writers.
+
+`scripts/install.py:42,50` and `tools/package_skill.py:47` filter relative inventory paths.
+The correction removes dependence on unrelated external ancestor names.
+Source and target cache-ancestor tests assert all fourteen hashes, repeated installation, and refusal of local changes.
+Internal cache directories and `.pyc` files remain excluded.
+Existing real junction regressions pass, including rejection before traversal and destination creation.
+Empty-inventory checks precede output creation in both scripts.
+Their tests inject an empty enumeration and verify absent destination parents.
+
+The implementation uses the existing subprocess helper and existing traversal functions.
+The new environment and metadata helpers have one purpose each.
+No new runtime dependency, service, shared lock, mandatory workflow, or portable file was added.
+Runtime imports remain in the Python standard library.
+All changed runtime scripts and the new test module parse with Python 3.10 syntax rules.
+That syntax check does not establish native Python 3.10 execution.
+
+## Independent Validation
+
+The [test log](0.7.2-quality-review-tests.log) records these commands and results:
+
+| Command | Result |
+| --- | --- |
+| `python -B -m unittest discover -s tests -p test_072_corrections.py -v` | 9 passed in 19.104 seconds; exit 0. |
+| `python -B -m unittest discover -s tests -p test_skill_tools.py -k restore -v` | 8 passed in 21.997 seconds; exit 0. |
+| `python -B -m unittest discover -s tests -p test_followup_corrections.py -v` | 10 passed in 1.024 seconds; exit 0. |
+
+The [reproducible probe script](0.7.2-quality-review-probes.py) passed with exit 0.
+It uses the current real disposable fixture and implementation.
+One restore combined repository, worktree, index, config, shallow-file, prefix, and implicit-worktree overrides.
+It also supplied two configuration-count entries that route the worktree to the source and mark the repository bare.
+The probe asserted unchanged source hashes, branch, and HEAD, plus ordinary-environment target checks.
+It passed.
+
+The same probe independently checked all five historical hashes and their normalized equality with base content.
+It checked selective `text: unset` attributes, the fourteen-file inventory, changed-path scope, and current candidate fingerprints.
+`git -c core.whitespace=cr-at-eol diff --check <base>` passed with exit 0.
+Git emitted existing checkout-conversion warnings. No Git setting was changed.
+
+The ordinary whitespace command was not repeated here.
+The approved specification review records its exit 2 from retained CRLF evidence bytes.
+This review does not describe that ordinary command as passing.
+
+## Historical Evidence and Scope
+
+`.gitattributes:2-6` assigns `-text` to exactly the five immutable evidence paths.
+Current hashes match the [historical byte-preservation record](0.7.2-historical-byte-preservation.json).
+All five current files equal their base content after CRLF-to-LF normalization.
+The strict historical assertion remains unchanged and passes.
+The probe found eight existing paths with semantic changes, all within accepted correction and version documentation scope.
+The additional existing evidence differences are newline representation only.
+The two new files are the targeted regression module and selective attributes.
+
+The complete suite, final distribution artifact, real installed update, and publication were not performed by this reviewer.
+Other operating systems, native older Python versions, performance, and new native routing remain untested here.
+
+## Execution and Handoff State
+
+All reviewer test and probe processes exited successfully.
+Disposable fixtures completed their cleanup.
+No reviewer process or descendant execution remains active.
+No further agent was created.
+The reviewer changed no candidate source, tests, evidence, installation, index, branch, commit, or Git configuration.
+Only `0.7.2-quality-review*` records were created in the authorized validation directory.
+The stable checkout remains available for the parent's final combined validation and release work.
+
+## Bounded Release Metadata Follow-up
+
+The parent subsequently added `.gitattributes:7-8` to preserve exported 0.7.2 release evidence bytes.
+The added pattern is `evals/results/0.7.2-* -text`.
+I inspected the complete eight-line file and checked representative matching and nonmatching paths with `git check-attr text`.
+The 0.7.2 review and provenance paths report `text: unset`.
+The 0.7.1 review, runtime script, and new test module report `text: unspecified`.
+The rule is limited to this release's exported evidence paths.
+It leaves the five existing historical rules intact and does not change runtime behavior or the portable inventory.
+No material issue was found in this narrow addition.
+
+The updated attribute-file SHA256 is `552a42aa1ae90a06595e0af03b0e3260759b95c1df84db31d619d8b633d66317`.
+This hash supersedes the earlier attribute fingerprint for the follow-up only.
+The original implementation and test results remain applicable because the parent reports those bytes unchanged.
+No tests were repeated for this metadata-only review.
+The parent's final suite, package checks, and fresh CRLF-enabled clone check remain separate release conditions.
+The attribute inspection exited 0. No reviewer execution remains active.

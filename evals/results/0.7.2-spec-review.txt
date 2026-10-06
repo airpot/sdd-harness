@@ -1,0 +1,127 @@
+# 0.7.2 Independent Specification Review
+
+Date: 2026-10-06.
+Writing policy: [project policy](../../references/writing.md).
+This report uses STE-guided English. Full dictionary compliance was not checked.
+
+## Verdict and Basis
+
+**Verified complete for the two authorized correction requirements. No material specification gap was found.**
+This verdict covers RECOVER-2 and PACK-3, their affected documentation, and the historical byte-preservation correction.
+It does not establish complete release acceptance, publication, native host enforcement, or performance gains.
+The parent must complete the final combined suite and its existing release checks.
+
+Reviewed checkout: `C:/Users/airpot/.codex/worktrees/sdd-fix-072/project_skill`.
+Base HEAD: `3e29c1da6415aa07203be173eea9138f8c6517ad`.
+The candidate was uncommitted during review.
+Runtime: Windows, Python 3.12.8, Git 2.55.0.windows.5.
+
+Sources reviewed include the [authorized audit](../research/2026-10-06-sdd-harness-071-continued-audit.md), actual candidate diff, and accepted specification.
+The review read current recovery, installation, specification-review, writing, and delivery references, plus the skill entry.
+Worker and parent logs were evidence inputs. They were not the sole basis for the verdict.
+
+## Requirement Coverage
+
+Locations below are relative to the reviewed checkout. Line numbers refer to the reviewed candidate.
+
+| Requirement | Actual implementation and assertions | Independent result |
+| --- | --- | --- |
+| Isolate Git routing before output mutation | `scripts/workspace.py:26-33` copies the environment and removes Git-reported local names. `:265` precedes directory creation at `:266`. | Real foreign-index and foreign-repository regressions passed. A discovery-failure probe confirmed no output creation. |
+| Use one environment throughout restore | `scripts/workspace.py:267-298` passes the same `env` to initialization, fetch, reference updates, index construction, and checks. | Foreign common/object-directory regression passed. An additional real configuration-count routing probe passed. |
+| Preserve source and caller state | `tests/test_072_corrections.py:68-98` compares all source file hashes, branch association, and HEAD. `:118-129` checks caller environment equality and active `GIT_TRACE`. | Source index, HEAD, branch, and other source files remained unchanged. Caller-environment regression passed. |
+| Verify the actual target before success | `scripts/workspace.py:36-47` checks Git directory, common directory, worktree root, and index path. `:290-298` requires its own index and compares HEAD and index content. | Ordinary-environment target checks passed. An injected foreign metadata response was rejected before fetch. |
+| Preserve unborn repositories | `scripts/workspace.py:280` creates an empty index. `:292-298` requires absent HEAD and empty staged content. | Real unborn source under foreign overrides passed. Its restored working file remained present. |
+| Filter cache paths within inventories | `scripts/install.py:42`, `:50`, and `tools/package_skill.py:47` use paths relative to their inventory root. | Both source and target cache-named external ancestors passed actual packaging and installation. |
+| Preserve complete payload and local changes | `tests/test_072_corrections.py:132-166` checks fourteen file hashes in source, ZIP, and installation. It repeats installation and checks refusal after a local edit. | Both ancestor variants passed. Internal cache directories and `.pyc` files remained excluded. |
+| Reject empty inventory before destination creation | `scripts/install.py:67-68` precedes parent creation. `tools/package_skill.py:49-50` precedes output creation. | Both controlled empty-inventory fault tests passed and asserted absent destination parents. |
+
+The empty-inventory tests inject an empty enumeration. They do not claim an ordinary complete source naturally has no entry file.
+The additional metadata probe injects a foreign Git-directory response. It tests rejection, not an actual filesystem race.
+The configuration probe uses real Git with `GIT_CONFIG_COUNT=2`, `core.worktree` pointing to the source, and `core.bare=true`.
+Restoration succeeds after clearing the local override count. Source hashes and ordinary-environment target checks pass.
+
+## Independent Checks
+
+Commands ran from the reviewed checkout:
+
+```text
+python -B -m unittest discover -s tests -p test_072_corrections.py -v
+python -B -m unittest discover -s tests -p test_followup_corrections.py -k InvocationBindingTests -v
+git check-attr text -- <the five historical evidence paths>
+git diff --check
+git -c core.whitespace=cr-at-eol diff --check
+```
+
+The nine correction tests passed in 17.174 seconds. The two unchanged invocation-binding tests passed in 0.002 seconds.
+Three additional disposable probes passed: repository-local configuration routing, discovery failure before output creation, and foreign metadata rejection before fetch.
+These probes imported the current test fixture and implementation without changing their source files.
+
+The three affected runtime scripts and new test module passed `ast.parse(..., feature_version=(3, 10))`.
+This is a syntax check on Python 3.12.8, not native Python 3.10 execution.
+Runtime imports remain in the standard library.
+
+The current portable inventory has fourteen files.
+Its sorted name-to-SHA256 manifest digest is `4cf8d0dac69405161058139be0e5c299dec41cc5e569139c04e5d013de557176`.
+The digest uses UTF-8 JSON with sorted keys and separators `(',', ':')`.
+The inventory contains the entry, three templates, eight references, and two runtime scripts.
+The builder and tests remain outside the payload.
+
+The retained [red log](0.7.2-red-corrections-confirmed.log) records nine valid failures against the old behavior.
+The retained [green log](0.7.2-green-final-corrections.log) records nine passes.
+These are carried fail-first records, not new baseline executions by this reviewer.
+Existing affected tool, package, and follow-up logs record 23, seven, and ten passing tests respectively.
+The complete suite was intentionally left to the parent.
+
+## Historical Evidence and Whitespace
+
+All five current historical files match both the original errata hashes and the [byte-preservation record](0.7.2-historical-byte-preservation.json).
+Each file equals its base content after CRLF-to-LF normalization. No historical fields or assertion meaning changed.
+`tests/test_followup_corrections.py` is unchanged against the base after newline normalization.
+Its strict raw-byte assertion remains at `:170`; both invocation-binding tests pass independently.
+
+`.gitattributes:2-6` assigns `-text` to exactly those five evidence paths.
+`git check-attr text` reports `unset` for all five.
+This preserves the original byte representation instead of weakening hash checks.
+
+The ordinary `git diff --check` exits 2 because four original evidence files contain retained CRLF bytes.
+It reports only these files: host observations, native prompts, provenance, and historical validation.
+The check reports 83, five, 153, and 121 CR-at-EOL diagnostics respectively.
+The one-command `core.whitespace=cr-at-eol` check exits 0. It does not change Git configuration.
+This is a disclosed transport-byte condition, not a required implementation fix.
+Do not describe the ordinary check as passing or normalize those immutable files to remove its diagnostics.
+
+The worker's earlier candidate-evidence record predates the parent's LF normalization and byte-preservation correction.
+Its original raw hashes do not describe the final reviewed candidate.
+Current runtime hashes equal that record's LF-normalized hashes, so the implementation content remains applicable.
+The independent checks and fingerprints below bind this review to the current bytes.
+
+| Current path | SHA256 |
+| --- | --- |
+| `scripts/workspace.py` | `48b3e30d25a450fd3997a8d9deab30ccda93cd1e6427ee48045a4c44368ee9d6` |
+| `scripts/install.py` | `29c82baeea48d96e3121584b50c1efed583a58dc41d317cf1f354df788be85b6` |
+| `tools/package_skill.py` | `2bc1de2af069bf6d169ab4fec62f9080e65da13000fa2b92bccd073a8ff6c84f` |
+| `tests/test_072_corrections.py` | `ea1b2f7fabe07bb5c3086e343fb5294266d9a71e25f38df78c7378c336a184ee` |
+| `SKILL.md` | `366fe7b7dfeac5f52177d767ddd665f15ab5847ce075ad381ef2f81300afe267` |
+| `specs/sdd-harness.md` | `493789948fa6ce5306affdc61e17c6a806d5d8f67a8aa2151c2e502cba43423a` |
+| `.gitattributes` | `a9a4493efba3b83f893f6f51c10e0eb92f23646a2c86954495887716ea3c88ba` |
+
+## Scope and Declared Limits
+
+`SKILL.md:5` and `specs/sdd-harness.md:3` identify 0.7.2. The independent default remains at `SKILL.md:11`.
+The new requirements are at `specs/sdd-harness.md:64-65`, with explicit acceptance conditions starting at `:69`.
+`references/recovery.md:52-58` accurately describes isolation, checks, unborn restoration, and preservation exclusions.
+`references/install.md:18-20` accurately describes relative cache filtering and pre-creation rejection.
+Unrelated references and templates differ only by newline representation against the base.
+No new service, shared lock, team setup, runtime dependency, or additional portable file was introduced.
+
+Isolation is scoped to restore. Inspect and snapshot retain their existing environment behavior.
+The recovery contract still excludes exact staging state, other branches, native chats, processes, credentials, and external databases.
+The fix clears Git-reported local variables and preserves unrelated settings.
+It does not claim enforcement against arbitrary global configuration, hostile templates, concurrent external writers, or all host behavior.
+Native Python 3.10/3.11, other operating systems, new native routing, performance, and full host enforcement remain untested here.
+These are declared limits, not additional proven failures of the two authorized corrections.
+
+Required corrective changes from this review: **none**.
+Pending release conditions: the parent's final combined validation and existing publication checks.
+This reviewer changed no source, tests, historical evidence, installation, Git configuration, index, branch, or commit.
+The only durable output created by this reviewer is this report.

@@ -15,6 +15,9 @@ This check uses `lstat` file attributes and does not depend on Python 3.12's `Pa
 Run one command from the extracted package location.
 The installer copies `SKILL.md`, scripts, references, assets, and optional agent metadata only.
 It excludes repository documentation, tests, evaluation records, Git metadata, and distributions.
+Installation and ZIP building exclude internal `__pycache__` directories and `.pyc` files using paths relative to each inventory root.
+An ancestor named `__pycache__` outside the source or target skill does not exclude skill files.
+Both scripts reject an empty portable inventory before creating the destination.
 It does not change global configuration, connect services, or install dependencies.
 
 ```text

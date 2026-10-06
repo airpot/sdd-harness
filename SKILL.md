@@ -2,7 +2,7 @@
 name: sdd-harness
 description: Use when implementing or resuming project changes against specifications, checking acceptance evidence, integrating worker results, preparing releases, or preserving worktrees.
 metadata:
-  version: "0.7.1"
+  version: "0.7.2"
 ---
 
 # SDD Harness

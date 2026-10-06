@@ -44,8 +44,10 @@ def package(source, output):
         entry = source / directory
         entries.extend(checked_entries(entry))
     for path in sorted(entries):
-        if path.is_file() and '__pycache__' not in path.parts and path.suffix != '.pyc':
+        if path.is_file() and '__pycache__' not in path.relative_to(source).parts and path.suffix != '.pyc':
             files.append(path)
+    if not files:
+        raise ValueError('Cannot package an empty skill inventory')
     included = set(files)
     for path in files:
         if path.suffix == '.md':

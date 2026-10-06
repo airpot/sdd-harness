@@ -1,0 +1,68 @@
+{
+  "combined_local_overrides": "passed; source hashes, branch, HEAD and ordinary target checks asserted",
+  "python_310_syntax": [
+    "scripts/workspace.py",
+    "scripts/install.py",
+    "tools/package_skill.py",
+    "tests/test_072_corrections.py"
+  ],
+  "historical_sha256": {
+    "evals/results/0.7.0-native-prompts.json": "e0d77c4136551076b6368190dafd13afdcdb8752de759c7d9f67a95eb9cd5d3c",
+    "evals/results/0.7.0-host-observations.json": "3e0b74fb37ba462c99548c9e93f47075b457317040599007d5b6c3d771d2eb8e",
+    "evals/results/0.7.0-validation.md": "8ac5e06cd74e0eae2c6eb5244edbd0f62e015cf6e4cabee7efa1ecbf84d37c0e",
+    "evals/results/0.7.0-provenance.json": "0fa65be0d8ed7927e517cfa9f87a770bbb7c28beb82fcd9b35817baf3c35fea3",
+    "evals/invocation-0.7.0.json": "980b293efa38f77c4d665c51b55685b39e6f91447668ba07aa1e7f0691a4c6aa"
+  },
+  "portable_inventory": {
+    "assets/change.md": "da13204796df87ea9405216f5b85dc7a9d35aff09969f7b44946fcd223880292",
+    "assets/handoff.md": "4da71c505cc6730ddbd86fcc1491f4ff9544564c4cd1167a3f50df012c495b73",
+    "assets/release.md": "2dd28a051622ecf6c42074ad8b6787e1ddfd39027dd32781f7ed86a8a0b42ab5",
+    "references/collaboration.md": "85522f2d07ac2381be00db1b21d381aebdfcb019218ae67ba40e14b371e84264",
+    "references/delivery.md": "95566a3aab43d1c29cc06c395bbe8150a1bedf73576ae8caa59c86cf05151468",
+    "references/install.md": "84ff3d78af05891d5b06c81ddee237f6a91a8f0586a9474543a4d033d89a73be",
+    "references/recovery.md": "788db3cc3b72b3f40f63ec183e0e447fe22b6da175cc0daa280d1cb8f15cfea9",
+    "references/spec-review.md": "99af55f4a2873b0e0540e792486f51f83cddcaa13316dbbbf4d70329a372fccc",
+    "references/subagents.md": "4b3380e3b609700dae1a793767818b7c9496f2224afdf50fd25cf0b0fd03eb5c",
+    "references/workflow.md": "24b728f039169939beb272efc24a2e78e4b5ed54e5678030b5cba4634e71cafc",
+    "references/writing.md": "38fd8563663da1c1e21de6a4c6b9f7ae5dc605794876e9e5eab2e36d794623c7",
+    "scripts/install.py": "29c82baeea48d96e3121584b50c1efed583a58dc41d317cf1f354df788be85b6",
+    "scripts/workspace.py": "48b3e30d25a450fd3997a8d9deab30ccda93cd1e6427ee48045a4c44368ee9d6",
+    "SKILL.md": "366fe7b7dfeac5f52177d767ddd665f15ab5847ce075ad381ef2f81300afe267"
+  },
+  "semantic_changed_paths": [
+    "README.md",
+    "SKILL.md",
+    "references/install.md",
+    "references/recovery.md",
+    "scripts/install.py",
+    "scripts/workspace.py",
+    "specs/sdd-harness.md",
+    "tools/package_skill.py"
+  ],
+  "newline_only_changed_paths": [
+    "evals/results/0.7.0-host-observations.json",
+    "evals/results/0.7.0-native-prompts.json",
+    "evals/results/0.7.0-provenance.json",
+    "evals/results/0.7.0-validation.md"
+  ],
+  "whitespace_with_cr_at_eol": {
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'SKILL.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'assets/change.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'assets/handoff.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'assets/release.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'references/collaboration.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'references/delivery.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'references/install.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'references/recovery.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'references/spec-review.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'references/subagents.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'references/workflow.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'references/writing.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'scripts/install.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'scripts/workspace.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'specs/sdd-harness.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tools/package_skill.py', LF will be replaced by CRLF the next time Git touches it\n"
+  },
+  "basis": {
+    "root": "C:\\Users\\airpot\\.codex\\worktrees\\sdd-fix-072\\project_skill",
+    "base": "3e29c1da6415aa07203be173eea9138f8c6517ad",
+    "python": "3.12.8 (tags/v3.12.8:2dc476b, Dec  3 2024, 19:30:04) [MSC v.1942 64 bit (AMD64)]",
+    "git": "git version 2.55.0.windows.5",
+    "sha256": {
+      "scripts/workspace.py": "48b3e30d25a450fd3997a8d9deab30ccda93cd1e6427ee48045a4c44368ee9d6",
+      "scripts/install.py": "29c82baeea48d96e3121584b50c1efed583a58dc41d317cf1f354df788be85b6",
+      "tools/package_skill.py": "2bc1de2af069bf6d169ab4fec62f9080e65da13000fa2b92bccd073a8ff6c84f",
+      "tests/test_072_corrections.py": "ea1b2f7fabe07bb5c3086e343fb5294266d9a71e25f38df78c7378c336a184ee",
+      ".gitattributes": "a9a4493efba3b83f893f6f51c10e0eb92f23646a2c86954495887716ea3c88ba",
+      "SKILL.md": "366fe7b7dfeac5f52177d767ddd665f15ab5847ce075ad381ef2f81300afe267",
+      "specs/sdd-harness.md": "493789948fa6ce5306affdc61e17c6a806d5d8f67a8aa2151c2e502cba43423a"
+    }
+  }
+}

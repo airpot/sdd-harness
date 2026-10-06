@@ -1,6 +1,6 @@
 # SDD Harness Behavior Specification
 
-Specification version: 0.7.1.
+Specification version: 0.7.2.
 Status: accepted intent for portable development guidance, optional cooperation, and observable skill effectiveness checks.
 This specification defines observable skill behavior. It does not establish host enforcement.
 
@@ -61,8 +61,17 @@ Keep routine actions within existing user authorization.
 | PACK-2 | Reject symbolic links and Windows reparse points before source or target traversal and final-target installation. Keep Python 3.10 support. | Real junction fallback regressions in `tests/test_followup_corrections.py`; builder and installer. |
 | DOC-2 | Before saving an optional copied template, complete its policy reference for the actual record destination. Keep project policy authoritative. | All three templates; relocated project and installed-policy link checks; fresh template smoke. |
 | EVAL-4 | Bind actual request identity and input hash to source case, adaptation, expected route, observed route, and trace. Preserve historical raw evidence. | Dated 0.7.0 invocation errata; 0.7.1 native request records. |
+| RECOVER-2 | Before creating restore output, clear Git's reported repository-local variables in a copied subprocess environment. Use that environment throughout restore. Preserve existing source repositories and unrelated caller settings. Verify the target's actual Git directory, HEAD, and own index, including unborn restoration. | Foreign index, repository, common/object-directory, caller-environment, and unborn regressions in `tests/test_072_corrections.py`. |
+| PACK-3 | Filter cache directories against paths relative to the source or target inventory. Preserve the complete portable payload below cache-named external ancestors. Reject empty output inventories before destination creation. | Source/target ancestor, internal-cache exclusion, inventory/hash, idempotency, and empty-inventory regressions in `tests/test_072_corrections.py`. |
 
 ## Acceptance rules
+
+For 0.7.2, retain actual fail-first restore and distribution counterexamples and passing affected regressions.
+Check that foreign Git environment settings do not change source index content, HEAD, branch association, or other source files.
+Check the output repository and its own index with an ordinary Git environment.
+Check all fourteen portable file hashes below source and target cache-named ancestors, including repeated installation and local-change refusal.
+Keep internal cache exclusion, the independent default, and the existing preservation boundaries.
+These checks do not establish new native routing, performance, or older-interpreter results.
 
 For 0.7.1, run affected runtime, relocation, and invocation-binding regressions before final package acceptance.
 Keep actual red failures and passing repeats. Preserve the fourteen-file portable payload and independent default.
@@ -111,6 +120,7 @@ Retain original failures, corrections, and repeat-run evidence.
 ## Specification maintenance
 
 Maintain this file as the living contract for the skill.
+The accepted 0.7.2 revision isolates restore Git environment settings and corrects cache filtering within portable inventories.
 The accepted 0.7.1 revision adds shallow-source rejection, legacy reparse guards, relocated policy references, and exact invocation attribution.
 Historical 0.7.0 observations remain bound to their original commit and hashes through additive dated errata.
 The 0.5.1 revision changed distribution layout and installer filtering only.

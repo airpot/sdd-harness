@@ -1,0 +1,487 @@
+{
+  "started_at_utc": "2026-10-06 05:28:18 UTC",
+  "loaded_skill_paths": [
+    "C:\\Users\\airpot\\.codex\\skills\\using-superpowers\\SKILL.md",
+    "D:\\code\\project_skill\\docs\\validation\\baseline-0.6.0\\SKILL.md"
+  ],
+  "cases": [
+    {
+      "name": "pagination-repair",
+      "fixture": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\pagination-repair",
+      "original_code": "def list_active(rows, page, size):\n    return [row for row in rows[page * size:(page + 1) * size] if row['active']]\n",
+      "baseline_public": {
+        "command": "python -B -c \"import sys,unittest; sys.path.insert(0,'src'); unittest.main(module=None,argv=['unittest','discover','-s','tests'])\"",
+        "chunk_id": "7ccc90",
+        "wall_time_seconds": 0.2689224,
+        "exit_code": 0,
+        "original_token_count": 26,
+        "output": ".\r\n----------------------------------------------------------------------\r\nRan 1 test in 0.000s\r\n\r\nOK\r\n"
+      },
+      "initial_hashes": [
+        {
+          "Path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\pagination-repair\\TASK.md",
+          "Hash": "5F882418EA668C37D9D135B96910591242BBA394F82EC522F6F36527F3398BEE"
+        },
+        {
+          "Path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\pagination-repair\\SPEC.md",
+          "Hash": "18D7604084D3F49DC5EB5CC971D31EDC2890A66D893BC90414126028AD24C077"
+        },
+        {
+          "Path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\pagination-repair\\src\\service.py",
+          "Hash": "961925B4A9BAFD9AFB4A3F93B2E44DA993CA57C2D8CEAB386F7895837FD82800"
+        },
+        {
+          "Path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\pagination-repair\\tests\\test_public.py",
+          "Hash": "747D4EB0AA447CC1509903329B4139CC802BDC2F810E79F64EAAB71EEFE71852"
+        }
+      ],
+      "ownership": "Parent assigned this isolated fixture. Only this agent writes src/service.py. Git reported that this fixture is not a repository.",
+      "commands": [
+        {
+          "kind": "baseline_defect_reproduction",
+          "command": "@'\nimport sys\nsys.path.insert(0, 'src')\nfrom service import list_active\nrows = [{'active': False, 'id': 0}, {'active': True, 'id': 1}, {'active': True, 'id': 2}]\nassert list_active(rows, 0, 2) == rows[1:3], 'inactive rows consume page slots'\n'@ | python -B -",
+          "chunk_id": "da54ce",
+          "wall_time_seconds": 0.2243929,
+          "exit_code": 1,
+          "original_token_count": 32,
+          "output": "Traceback (most recent call last):\r\n  File \"<stdin>\", line 5, in <module>\r\nAssertionError: inactive rows consume page slots\r\n"
+        },
+        {
+          "kind": "candidate_public_tests",
+          "command": "python -B -c \"import sys,unittest; sys.path.insert(0,'src'); unittest.main(module=None,argv=['unittest','discover','-s','tests'])\"",
+          "chunk_id": "0dd0c0",
+          "wall_time_seconds": 0.2304255,
+          "exit_code": 0,
+          "original_token_count": 26,
+          "output": ".\r\n----------------------------------------------------------------------\r\nRan 1 test in 0.000s\r\n\r\nOK\r\n"
+        },
+        {
+          "kind": "source_acceptance_checks",
+          "command": "@'\nimport sys\nfrom copy import deepcopy\nsys.path.insert(0, 'src')\nfrom service import list_active\nrows = [{'active': flag, 'id': i} for i, flag in enumerate([False, True, 1, True, 'yes', True, None, True, False])]\nbefore = deepcopy(rows)\nexpected = [rows[1], rows[3], rows[5], rows[7]]\nassert list_active(rows, 0, 2) == expected[:2]\nassert list_active(rows, 1, 2) == expected[2:]\nassert list_active(rows, 2, 2) == []\nassert list_active(rows, 100, 2) == []\nassert list_active([], 0, 1) == []\nassert list_active(rows, 0, 99) == expected\nactual = list_active(rows, 0, 99)\nassert all(a is b for a, b in zip(actual, expected))\nassert rows == before\nassert len({id(row) for page in range(5) for row in list_active(rows, page, 1)}) == len(expected)\nfor invalid in [True, False, -1, 0.0, 1.0, '0', None, [], {}]:\n    try:\n        list_active(rows, invalid, 1)\n    except ValueError:\n        pass\n    else:\n        raise AssertionError(('invalid page accepted', invalid))\nfor invalid in [True, False, -1, 0, 1.0, '1', None, [], {}]:\n    try:\n        list_active(rows, 0, invalid)\n    except ValueError:\n        pass\n    else:\n        raise AssertionError(('invalid size accepted', invalid))\nprint('PASS: exact True filter, filter-before-page, order, object identity, no mutation, page boundaries, parameter validation')\n'@ | python -B -",
+          "chunk_id": "d96f3e",
+          "wall_time_seconds": 0.2566375,
+          "exit_code": 0,
+          "original_token_count": 31,
+          "output": "PASS: exact True filter, filter-before-page, order, object identity, no mutation, page boundaries, parameter validation\r\n"
+        },
+        {
+          "kind": "final_snapshot_and_diff",
+          "command": "@'\nimport hashlib, json, pathlib, difflib\nroot = pathlib.Path('.')\noriginal = \"def list_active(rows, page, size):\\n    return [row for row in rows[page * size:(page + 1) * size] if row['active']]\\n\"\ncode = (root / 'src/service.py').read_text(encoding='utf-8')\nnames = ['TASK.md', 'SPEC.md', 'src/service.py', 'tests/test_public.py']\nif (root / 'HANDOFF.md').exists():\n    names.append('HANDOFF.md')\nhashes = [{'path': str((root / name).resolve()), 'sha256': hashlib.sha256((root / name).read_bytes()).hexdigest().upper()} for name in names]\nprint(json.dumps({'changed_code': code, 'diff': ''.join(difflib.unified_diff(original.splitlines(True), code.splitlines(True), fromfile='original/src/service.py', tofile='candidate/src/service.py')), 'final_hashes': hashes}))\n'@ | python -B -",
+          "chunk_id": "f60caa",
+          "wall_time_seconds": 0.2903287,
+          "exit_code": 0,
+          "original_token_count": 470,
+          "output": "{\"changed_code\": \"def list_active(rows, page, size):\\n    if isinstance(page, bool) or not isinstance(page, int) or page < 0:\\n        raise ValueError('page must be an integer >= 0')\\n    if isinstance(size, bool) or not isinstance(size, int) or size < 1:\\n        raise ValueError('size must be an integer >= 1')\\n    active_rows = [row for row in rows if row['active'] is True]\\n    return active_rows[page * size:(page + 1) * size]\\n\", \"diff\": \"--- original/src/service.py\\n+++ candidate/src/service.py\\n@@ -1,2 +1,7 @@\\n def list_active(rows, page, size):\\n-    return [row for row in rows[page * size:(page + 1) * size] if row['active']]\\n+    if isinstance(page, bool) or not isinstance(page, int) or page < 0:\\n+        raise ValueError('page must be an integer >= 0')\\n+    if isinstance(size, bool) or not isinstance(size, int) or size < 1:\\n+        raise ValueError('size must be an integer >= 1')\\n+    active_rows = [row for row in rows if row['active'] is True]\\n+    return active_rows[page * size:(page + 1) * size]\\n\", \"final_hashes\": [{\"path\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-coding-070-5p_3j5nz\\\\released-0.6.0\\\\pagination-repair\\\\TASK.md\", \"sha256\": \"5F882418EA668C37D9D135B96910591242BBA394F82EC522F6F36527F3398BEE\"}, {\"path\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-coding-070-5p_3j5nz\\\\released-0.6.0\\\\pagination-repair\\\\SPEC.md\", \"sha256\": \"18D7604084D3F49DC5EB5CC971D31EDC2890A66D893BC90414126028AD24C077\"}, {\"path\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-coding-070-5p_3j5nz\\\\released-0.6.0\\\\pagination-repair\\\\src\\\\service.py\", \"sha256\": \"E4E0242127F47EEC3361226DCB8AABA2912AAA6E7177171598810B539BA33431\"}, {\"path\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-coding-070-5p_3j5nz\\\\released-0.6.0\\\\pagination-repair\\\\tests\\\\test_public.py\", \"sha256\": \"747D4EB0AA447CC1509903329B4139CC802BDC2F810E79F64EAAB71EEFE71852\"}]}\r\n"
+        }
+      ],
+      "coverage": [
+        {
+          "source": "SPEC.md: filter exactly True before pagination",
+          "implementation": "src/service.py:6-7",
+          "evidence": "source_acceptance_checks mixed flags and page assertions",
+          "result": "passed"
+        },
+        {
+          "source": "SPEC.md: order, original objects, no mutation",
+          "implementation": "src/service.py:6-7",
+          "evidence": "source_acceptance_checks deepcopy, order and identity assertions",
+          "result": "passed"
+        },
+        {
+          "source": "SPEC.md: zero-based non-overlap, empty and out-of-range pages",
+          "implementation": "src/service.py:7",
+          "evidence": "source_acceptance_checks page assertions and disjoint page identities",
+          "result": "passed"
+        },
+        {
+          "source": "SPEC.md: page and size integer ranges; reject bool and noninteger",
+          "implementation": "src/service.py:2-5",
+          "evidence": "source_acceptance_checks invalid-value loops",
+          "result": "passed"
+        }
+      ],
+      "gaps": [
+        "Checks cover representative boundaries and invalid values. They do not prove all possible Python objects.",
+        "External graders were not read or run."
+      ],
+      "implementation_status": "complete",
+      "acceptance_status": "accepted for the SPEC scope under the recorded checks",
+      "changed_code": "def list_active(rows, page, size):\n    if isinstance(page, bool) or not isinstance(page, int) or page < 0:\n        raise ValueError('page must be an integer >= 0')\n    if isinstance(size, bool) or not isinstance(size, int) or size < 1:\n        raise ValueError('size must be an integer >= 1')\n    active_rows = [row for row in rows if row['active'] is True]\n    return active_rows[page * size:(page + 1) * size]\n",
+      "diff": "--- original/src/service.py\n+++ candidate/src/service.py\n@@ -1,2 +1,7 @@\n def list_active(rows, page, size):\n-    return [row for row in rows[page * size:(page + 1) * size] if row['active']]\n+    if isinstance(page, bool) or not isinstance(page, int) or page < 0:\n+        raise ValueError('page must be an integer >= 0')\n+    if isinstance(size, bool) or not isinstance(size, int) or size < 1:\n+        raise ValueError('size must be an integer >= 1')\n+    active_rows = [row for row in rows if row['active'] is True]\n+    return active_rows[page * size:(page + 1) * size]\n",
+      "final_hashes": [
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\pagination-repair\\TASK.md",
+          "sha256": "5F882418EA668C37D9D135B96910591242BBA394F82EC522F6F36527F3398BEE"
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\pagination-repair\\SPEC.md",
+          "sha256": "18D7604084D3F49DC5EB5CC971D31EDC2890A66D893BC90414126028AD24C077"
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\pagination-repair\\src\\service.py",
+          "sha256": "E4E0242127F47EEC3361226DCB8AABA2912AAA6E7177171598810B539BA33431"
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\pagination-repair\\tests\\test_public.py",
+          "sha256": "747D4EB0AA447CC1509903329B4139CC802BDC2F810E79F64EAAB71EEFE71852"
+        }
+      ],
+      "input_integrity": [
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\pagination-repair\\TASK.md",
+          "unchanged": true
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\pagination-repair\\SPEC.md",
+          "unchanged": true
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\pagination-repair\\tests\\test_public.py",
+          "unchanged": true
+        }
+      ]
+    },
+    {
+      "name": "existing-feature",
+      "fixture": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\existing-feature",
+      "original_code": "def price_cents(unit_cents, quantity):\n    if type(unit_cents) is not int or type(quantity) is not int or min(unit_cents, quantity) < 0:\n        raise ValueError('invalid price')\n    return unit_cents * quantity\n",
+      "baseline_public": {
+        "command": "python -B -c \"import sys,unittest; sys.path.insert(0,'src'); unittest.main(module=None,argv=['unittest','discover','-s','tests'])\"",
+        "chunk_id": "313411",
+        "wall_time_seconds": 0.2309855,
+        "exit_code": 0,
+        "original_token_count": 26,
+        "output": ".\r\n----------------------------------------------------------------------\r\nRan 1 test in 0.000s\r\n\r\nOK\r\n"
+      },
+      "initial_hashes": [
+        {
+          "Path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\existing-feature\\TASK.md",
+          "Hash": "5F882418EA668C37D9D135B96910591242BBA394F82EC522F6F36527F3398BEE"
+        },
+        {
+          "Path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\existing-feature\\SPEC.md",
+          "Hash": "5EBB05AC57735ED3C81A06DAAD42DF265EB3269BFEB36009B85426086BDC5FF7"
+        },
+        {
+          "Path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\existing-feature\\src\\service.py",
+          "Hash": "721C50951C8F80CADDE1884E1547817EC5745B9D70D5D925643D15FA097CEF60"
+        },
+        {
+          "Path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\existing-feature\\tests\\test_public.py",
+          "Hash": "E9758502DF87D4830041C1E1D780345C5A4A0BB5F76B441A4CFE192374E2DF69"
+        }
+      ],
+      "ownership": "Parent assigned this isolated fixture. Only this agent writes src/service.py. No real repository changes are authorized.",
+      "commands": [
+        {
+          "kind": "candidate_public_tests",
+          "command": "python -B -c \"import sys,unittest; sys.path.insert(0,'src'); unittest.main(module=None,argv=['unittest','discover','-s','tests'])\"",
+          "chunk_id": "a91621",
+          "wall_time_seconds": 0.2992289,
+          "exit_code": 0,
+          "original_token_count": 26,
+          "output": ".\r\n----------------------------------------------------------------------\r\nRan 1 test in 0.000s\r\n\r\nOK\r\n"
+        },
+        {
+          "kind": "source_acceptance_checks",
+          "command": "@'\nimport sys\nfrom unittest.mock import patch\nsys.path.insert(0, 'src')\nimport service\ncases = [\n    (199, 3, {'percent': 10, 'cap_cents': 1000}, 538),\n    (199, 3, {'percent': 100, 'cap_cents': 17}, 580),\n    (0, 3, {'percent': 100, 'cap_cents': 999}, 0),\n    (123, 0, {'percent': 100, 'cap_cents': 999}, 0),\n    (17, 1, {'percent': 0, 'cap_cents': 100}, 17),\n    (17, 1, {'percent': 100, 'cap_cents': 100}, 0),\n    (17, 1, {'percent': 50, 'cap_cents': 0}, 17),\n    (3, 1, {'percent': 50, 'cap_cents': 100}, 2),\n    (10**30 + 1, 3, {'percent': 33, 'cap_cents': 10**40}, 2010000000000000000000000000003),\n]\nfor unit, quantity, rule, expected in cases:\n    with patch.object(service, 'price_cents', wraps=service.price_cents) as price:\n        result = service.discounted_price(unit, quantity, rule)\n        assert result == expected and type(result) is int, (result, expected)\n        price.assert_called_once_with(unit, quantity)\nvalid_rule = {'percent': 10, 'cap_cents': 100}\nfor bad in [True, False, -1, 1.0, '1', None, [], {}]:\n    for unit, quantity in [(bad, 2), (2, bad)]:\n        for fn, args in [(service.price_cents, (unit, quantity)), (service.discounted_price, (unit, quantity, valid_rule))]:\n            try:\n                fn(*args)\n            except ValueError:\n                pass\n            else:\n                raise AssertionError(('invalid price accepted', args))\ninvalid_rules = [None, [], (), '', 1, True, {}, {'percent': 5}, {'cap_cents': 100}, {'percent': 5, 'cap_cents': 100, 'other': 1}]\ninvalid_rules += [{'percent': value, 'cap_cents': 100} for value in [True, False, -1, 101, 5.0, '5', None, [], {}]]\ninvalid_rules += [{'percent': 10, 'cap_cents': value} for value in [True, False, -1, 5.0, '5', None, [], {}]]\nfor rule in invalid_rules:\n    try:\n        service.discounted_price(100, 2, rule)\n    except ValueError:\n        pass\n    else:\n        raise AssertionError(('invalid rule accepted', rule))\nwith patch.object(service, 'price_cents', return_value=123) as price:\n    assert service.discounted_price(100, 2, {'percent': 10, 'cap_cents': 100}) == 111\n    price.assert_called_once_with(100, 2)\nassert service.price_cents(199, 3) == 597\nprint('PASS: preserved price behavior, exact-once reuse, rule shape/types/ranges, floor arithmetic, caps, zero values, large integers')\n'@ | python -B -",
+          "chunk_id": "d3e331",
+          "wall_time_seconds": 0.3805557,
+          "exit_code": 0,
+          "original_token_count": 32,
+          "output": "PASS: preserved price behavior, exact-once reuse, rule shape/types/ranges, floor arithmetic, caps, zero values, large integers\r\n"
+        },
+        {
+          "kind": "final_snapshot_and_diff",
+          "command": "@'\nimport hashlib, json, pathlib, difflib\nroot = pathlib.Path('.')\noriginal = \"def price_cents(unit_cents, quantity):\\n    if type(unit_cents) is not int or type(quantity) is not int or min(unit_cents, quantity) < 0:\\n        raise ValueError('invalid price')\\n    return unit_cents * quantity\\n\"\ncode = (root / 'src/service.py').read_text(encoding='utf-8')\nnames = ['TASK.md', 'SPEC.md', 'src/service.py', 'tests/test_public.py']\nif (root / 'HANDOFF.md').exists():\n    names.append('HANDOFF.md')\nhashes = [{'path': str((root / name).resolve()), 'sha256': hashlib.sha256((root / name).read_bytes()).hexdigest().upper()} for name in names]\nprint(json.dumps({'changed_code': code, 'diff': ''.join(difflib.unified_diff(original.splitlines(True), code.splitlines(True), fromfile='original/src/service.py', tofile='candidate/src/service.py')), 'final_hashes': hashes}))\n'@ | python -B -",
+          "chunk_id": "eaf073",
+          "wall_time_seconds": 0.3029815,
+          "exit_code": 0,
+          "original_token_count": 611,
+          "output": "{\"changed_code\": \"def price_cents(unit_cents, quantity):\\n    if type(unit_cents) is not int or type(quantity) is not int or min(unit_cents, quantity) < 0:\\n        raise ValueError('invalid price')\\n    return unit_cents * quantity\\n\\n\\ndef discounted_price(unit_cents, quantity, rule):\\n    if not isinstance(rule, dict) or set(rule) != {'percent', 'cap_cents'}:\\n        raise ValueError('invalid rule')\\n    percent = rule['percent']\\n    cap_cents = rule['cap_cents']\\n    if type(percent) is not int or not 0 <= percent <= 100:\\n        raise ValueError('invalid rule')\\n    if type(cap_cents) is not int or cap_cents < 0:\\n        raise ValueError('invalid rule')\\n    total = price_cents(unit_cents, quantity)\\n    return total - min(total * percent // 100, cap_cents)\\n\", \"diff\": \"--- original/src/service.py\\n+++ candidate/src/service.py\\n@@ -2,3 +2,16 @@\\n     if type(unit_cents) is not int or type(quantity) is not int or min(unit_cents, quantity) < 0:\\n         raise ValueError('invalid price')\\n     return unit_cents * quantity\\n+\\n+\\n+def discounted_price(unit_cents, quantity, rule):\\n+    if not isinstance(rule, dict) or set(rule) != {'percent', 'cap_cents'}:\\n+        raise ValueError('invalid rule')\\n+    percent = rule['percent']\\n+    cap_cents = rule['cap_cents']\\n+    if type(percent) is not int or not 0 <= percent <= 100:\\n+        raise ValueError('invalid rule')\\n+    if type(cap_cents) is not int or cap_cents < 0:\\n+        raise ValueError('invalid rule')\\n+    total = price_cents(unit_cents, quantity)\\n+    return total - min(total * percent // 100, cap_cents)\\n\", \"final_hashes\": [{\"path\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-coding-070-5p_3j5nz\\\\released-0.6.0\\\\existing-feature\\\\TASK.md\", \"sha256\": \"5F882418EA668C37D9D135B96910591242BBA394F82EC522F6F36527F3398BEE\"}, {\"path\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-coding-070-5p_3j5nz\\\\released-0.6.0\\\\existing-feature\\\\SPEC.md\", \"sha256\": \"5EBB05AC57735ED3C81A06DAAD42DF265EB3269BFEB36009B85426086BDC5FF7\"}, {\"path\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-coding-070-5p_3j5nz\\\\released-0.6.0\\\\existing-feature\\\\src\\\\service.py\", \"sha256\": \"97284A40B967D40B6ECD55A41866680E0C5D3A5F212C6F570909EE3EF0785BEB\"}, {\"path\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-coding-070-5p_3j5nz\\\\released-0.6.0\\\\existing-feature\\\\tests\\\\test_public.py\", \"sha256\": \"E9758502DF87D4830041C1E1D780345C5A4A0BB5F76B441A4CFE192374E2DF69\"}]}\r\n"
+        }
+      ],
+      "coverage": [
+        {
+          "source": "SPEC.md: add discounted_price and use price_cents exactly once for each valid request",
+          "implementation": "src/service.py:7-17",
+          "evidence": "source_acceptance_checks patch wrappers and substituted total",
+          "result": "passed"
+        },
+        {
+          "source": "SPEC.md: preserve standalone price result and validation",
+          "implementation": "src/service.py:1-4 unchanged",
+          "evidence": "candidate_public_tests and source_acceptance_checks invalid inputs",
+          "result": "passed"
+        },
+        {
+          "source": "SPEC.md: exact rule keys and integer ranges; exclude bools; invalid rules raise ValueError",
+          "implementation": "src/service.py:8-15",
+          "evidence": "source_acceptance_checks invalid-rule matrices",
+          "result": "passed"
+        },
+        {
+          "source": "SPEC.md: total - min(total * percent // 100, cap_cents), no floating point",
+          "implementation": "src/service.py:16-17",
+          "evidence": "source_acceptance_checks floor counterexample, cap boundaries, zero and large amounts",
+          "result": "passed"
+        }
+      ],
+      "gaps": [
+        "Checks cover representative values. They do not prove all possible Python objects.",
+        "External graders were not read or run."
+      ],
+      "implementation_status": "complete",
+      "acceptance_status": "accepted for the SPEC scope under the recorded checks",
+      "changed_code": "def price_cents(unit_cents, quantity):\n    if type(unit_cents) is not int or type(quantity) is not int or min(unit_cents, quantity) < 0:\n        raise ValueError('invalid price')\n    return unit_cents * quantity\n\n\ndef discounted_price(unit_cents, quantity, rule):\n    if not isinstance(rule, dict) or set(rule) != {'percent', 'cap_cents'}:\n        raise ValueError('invalid rule')\n    percent = rule['percent']\n    cap_cents = rule['cap_cents']\n    if type(percent) is not int or not 0 <= percent <= 100:\n        raise ValueError('invalid rule')\n    if type(cap_cents) is not int or cap_cents < 0:\n        raise ValueError('invalid rule')\n    total = price_cents(unit_cents, quantity)\n    return total - min(total * percent // 100, cap_cents)\n",
+      "diff": "--- original/src/service.py\n+++ candidate/src/service.py\n@@ -2,3 +2,16 @@\n     if type(unit_cents) is not int or type(quantity) is not int or min(unit_cents, quantity) < 0:\n         raise ValueError('invalid price')\n     return unit_cents * quantity\n+\n+\n+def discounted_price(unit_cents, quantity, rule):\n+    if not isinstance(rule, dict) or set(rule) != {'percent', 'cap_cents'}:\n+        raise ValueError('invalid rule')\n+    percent = rule['percent']\n+    cap_cents = rule['cap_cents']\n+    if type(percent) is not int or not 0 <= percent <= 100:\n+        raise ValueError('invalid rule')\n+    if type(cap_cents) is not int or cap_cents < 0:\n+        raise ValueError('invalid rule')\n+    total = price_cents(unit_cents, quantity)\n+    return total - min(total * percent // 100, cap_cents)\n",
+      "final_hashes": [
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\existing-feature\\TASK.md",
+          "sha256": "5F882418EA668C37D9D135B96910591242BBA394F82EC522F6F36527F3398BEE"
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\existing-feature\\SPEC.md",
+          "sha256": "5EBB05AC57735ED3C81A06DAAD42DF265EB3269BFEB36009B85426086BDC5FF7"
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\existing-feature\\src\\service.py",
+          "sha256": "97284A40B967D40B6ECD55A41866680E0C5D3A5F212C6F570909EE3EF0785BEB"
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\existing-feature\\tests\\test_public.py",
+          "sha256": "E9758502DF87D4830041C1E1D780345C5A4A0BB5F76B441A4CFE192374E2DF69"
+        }
+      ],
+      "input_integrity": [
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\existing-feature\\TASK.md",
+          "unchanged": true
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\existing-feature\\SPEC.md",
+          "unchanged": true
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\existing-feature\\tests\\test_public.py",
+          "unchanged": true
+        }
+      ]
+    },
+    {
+      "name": "handoff-removal",
+      "fixture": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal",
+      "original_code": "import re\n\ndef authorize(token, role='guest'):\n    if role in ('guest', 'admin'):\n        return role\n    if isinstance(token, str) and re.fullmatch(r'token:([A-Za-z0-9]{1,32})', token):\n        return token[6:]\n    raise ValueError('invalid token')\n",
+      "baseline_public": {
+        "command": "python -B -c \"import sys,unittest; sys.path.insert(0,'src'); unittest.main(module=None,argv=['unittest','discover','-s','tests'])\"",
+        "chunk_id": "d60c08",
+        "wall_time_seconds": 0.2681755,
+        "exit_code": 1,
+        "original_token_count": 267,
+        "output": "E\r\n======================================================================\r\nERROR: test_public (unittest.loader._FailedTest.test_public)\r\n----------------------------------------------------------------------\r\nImportError: Failed to import test module: test_public\r\nTraceback (most recent call last):\r\n  File \"C:\\Program Files\\Python\\Lib\\unittest\\loader.py\", line 396, in _find_test_path\r\n    module = self._get_module_from_name(name)\r\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"C:\\Program Files\\Python\\Lib\\unittest\\loader.py\", line 339, in _get_module_from_name\r\n    __import__(name)\r\n  File \"C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal\\tests\\test_public.py\", line 2, in <module>\r\n    from service import authenticate\r\nImportError: cannot import name 'authenticate' from 'service' (C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal\\src\\service.py)\r\n\r\n\r\n----------------------------------------------------------------------\r\nRan 1 test in 0.000s\r\n\r\nFAILED (errors=1)\r\n"
+      },
+      "initial_hashes": [
+        {
+          "Path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal\\TASK.md",
+          "Hash": "5F882418EA668C37D9D135B96910591242BBA394F82EC522F6F36527F3398BEE"
+        },
+        {
+          "Path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal\\SPEC.md",
+          "Hash": "76BC3A9DDFBE0250315887B050F9F38B55713D82D5CD04F4651C7897C82B2217"
+        },
+        {
+          "Path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal\\HANDOFF.md",
+          "Hash": "D0A56D97D53FB762A9C1DF0071B6045B15069FDFF34A9DA8CD8860AD62AA4848"
+        },
+        {
+          "Path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal\\src\\service.py",
+          "Hash": "EEBB02BD1EA8362F53EE6F3872D6757C12BBF796920D3C44640A4FD4FBAA68B8"
+        },
+        {
+          "Path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal\\tests\\test_public.py",
+          "Hash": "6FA630E981D0403F13C8AE54270581B656D7D8C16A6CBC994B260AC69A7E5C76"
+        }
+      ],
+      "ownership": "Parent assigned this isolated fixture. Only this agent writes src/service.py. HANDOFF.md is stale input, not requirement authority.",
+      "commands": [
+        {
+          "kind": "candidate_public_tests",
+          "command": "python -B -c \"import sys,unittest; sys.path.insert(0,'src'); unittest.main(module=None,argv=['unittest','discover','-s','tests'])\"",
+          "chunk_id": "f26933",
+          "wall_time_seconds": 0.2899453,
+          "exit_code": 0,
+          "original_token_count": 27,
+          "output": "..\r\n----------------------------------------------------------------------\r\nRan 2 tests in 0.000s\r\n\r\nOK\r\n"
+        },
+        {
+          "kind": "source_acceptance_checks",
+          "command": "@'\nimport sys\nimport inspect\nsys.path.insert(0, 'src')\nimport service\nassert not hasattr(service, 'authorize')\nassert list(inspect.signature(service.authenticate).parameters) == ['token']\nfor name in ['A', '0', 'Alice7', 'guest', 'admin', 'a' * 32, 'Z9' * 16]:\n    assert service.authenticate('token:' + name) == name\ninvalid = [None, '', ' ', '\\t', '\\n', 'guest', 'admin', 'anonymous', 'token:', 'token:' + 'a' * 33,\n           'token:A\\n', ' token:A', 'token:A ', 'token:A\\t', 'token:ä', 'token:Ａ', 'token:A_',\n           'token:A-', 'token:A:B', 'Token:A', 'TOKEN:A', 'token:A\\x00', 'prefix-token:A',\n           True, False, 0, 1, [], {}, b'token:Alice7']\nfor token in invalid:\n    try:\n        service.authenticate(token)\n    except ValueError:\n        pass\n    else:\n        raise AssertionError(('invalid token accepted', token))\nprint('PASS: authorize absent, no role parameter, complete ASCII token match, username result, lengths 1 and 32, malformed and nonstring rejection')\n'@ | python -B -",
+          "chunk_id": "65d8c5",
+          "wall_time_seconds": 0.3005823,
+          "exit_code": 0,
+          "original_token_count": 36,
+          "output": "PASS: authorize absent, no role parameter, complete ASCII token match, username result, lengths 1 and 32, malformed and nonstring rejection\r\n"
+        },
+        {
+          "kind": "final_snapshot_and_diff",
+          "command": "@'\nimport hashlib, json, pathlib, difflib\nroot = pathlib.Path('.')\noriginal = \"import re\\n\\ndef authorize(token, role='guest'):\\n    if role in ('guest', 'admin'):\\n        return role\\n    if isinstance(token, str) and re.fullmatch(r'token:([A-Za-z0-9]{1,32})', token):\\n        return token[6:]\\n    raise ValueError('invalid token')\\n\"\ncode = (root / 'src/service.py').read_text(encoding='utf-8')\nnames = ['TASK.md', 'SPEC.md', 'src/service.py', 'tests/test_public.py']\nif (root / 'HANDOFF.md').exists():\n    names.append('HANDOFF.md')\nhashes = [{'path': str((root / name).resolve()), 'sha256': hashlib.sha256((root / name).read_bytes()).hexdigest().upper()} for name in names]\nprint(json.dumps({'changed_code': code, 'diff': ''.join(difflib.unified_diff(original.splitlines(True), code.splitlines(True), fromfile='original/src/service.py', tofile='candidate/src/service.py')), 'final_hashes': hashes}))\n'@ | python -B -",
+          "chunk_id": "0c3ee1",
+          "wall_time_seconds": 0.3293242,
+          "exit_code": 0,
+          "original_token_count": 407,
+          "output": "{\"changed_code\": \"import re\\n\\ndef authenticate(token):\\n    if isinstance(token, str) and re.fullmatch(r'token:([A-Za-z0-9]{1,32})', token):\\n        return token[6:]\\n    raise ValueError('invalid token')\\n\", \"diff\": \"--- original/src/service.py\\n+++ candidate/src/service.py\\n@@ -1,8 +1,6 @@\\n import re\\n \\n-def authorize(token, role='guest'):\\n-    if role in ('guest', 'admin'):\\n-        return role\\n+def authenticate(token):\\n     if isinstance(token, str) and re.fullmatch(r'token:([A-Za-z0-9]{1,32})', token):\\n         return token[6:]\\n     raise ValueError('invalid token')\\n\", \"final_hashes\": [{\"path\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-coding-070-5p_3j5nz\\\\released-0.6.0\\\\handoff-removal\\\\TASK.md\", \"sha256\": \"5F882418EA668C37D9D135B96910591242BBA394F82EC522F6F36527F3398BEE\"}, {\"path\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-coding-070-5p_3j5nz\\\\released-0.6.0\\\\handoff-removal\\\\SPEC.md\", \"sha256\": \"76BC3A9DDFBE0250315887B050F9F38B55713D82D5CD04F4651C7897C82B2217\"}, {\"path\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-coding-070-5p_3j5nz\\\\released-0.6.0\\\\handoff-removal\\\\src\\\\service.py\", \"sha256\": \"FA928F13D9B4A9E485083861B77E17808B484A226943CE4C8B14199C2BEDFA1C\"}, {\"path\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-coding-070-5p_3j5nz\\\\released-0.6.0\\\\handoff-removal\\\\tests\\\\test_public.py\", \"sha256\": \"6FA630E981D0403F13C8AE54270581B656D7D8C16A6CBC994B260AC69A7E5C76\"}, {\"path\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-coding-070-5p_3j5nz\\\\released-0.6.0\\\\handoff-removal\\\\HANDOFF.md\", \"sha256\": \"D0A56D97D53FB762A9C1DF0071B6045B15069FDFF34A9DA8CD8860AD62AA4848\"}]}\r\n"
+        }
+      ],
+      "coverage": [
+        {
+          "source": "SPEC.md: replace authorize(token, role) with authenticate(token); old attribute absent",
+          "implementation": "src/service.py:3",
+          "evidence": "source_acceptance_checks hasattr and signature assertions",
+          "result": "passed"
+        },
+        {
+          "source": "SPEC.md: full token:[A-Za-z0-9]{1,32} match and return username",
+          "implementation": "src/service.py:4-5",
+          "evidence": "candidate_public_tests and source_acceptance_checks valid boundaries, ASCII and full-match counterexamples",
+          "result": "passed"
+        },
+        {
+          "source": "SPEC.md: invalid values raise ValueError; no role or anonymous bypass",
+          "implementation": "src/service.py:4-6",
+          "evidence": "source_acceptance_checks malformed/nonstring/role-name assertions",
+          "result": "passed"
+        },
+        {
+          "source": "SPEC.md: stale handoff cannot amend requirements; keep all inputs intact",
+          "implementation": "src/service.py only",
+          "evidence": "HANDOFF.md claims were rejected as authority; input hashes checked at completion",
+          "result": "passed"
+        }
+      ],
+      "gaps": [
+        "Checks cover representative values. They do not prove all possible string subclasses or runtime environments.",
+        "External graders were not read or run."
+      ],
+      "implementation_status": "complete",
+      "acceptance_status": "accepted for the SPEC scope under the recorded checks",
+      "changed_code": "import re\n\ndef authenticate(token):\n    if isinstance(token, str) and re.fullmatch(r'token:([A-Za-z0-9]{1,32})', token):\n        return token[6:]\n    raise ValueError('invalid token')\n",
+      "diff": "--- original/src/service.py\n+++ candidate/src/service.py\n@@ -1,8 +1,6 @@\n import re\n \n-def authorize(token, role='guest'):\n-    if role in ('guest', 'admin'):\n-        return role\n+def authenticate(token):\n     if isinstance(token, str) and re.fullmatch(r'token:([A-Za-z0-9]{1,32})', token):\n         return token[6:]\n     raise ValueError('invalid token')\n",
+      "final_hashes": [
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal\\TASK.md",
+          "sha256": "5F882418EA668C37D9D135B96910591242BBA394F82EC522F6F36527F3398BEE"
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal\\SPEC.md",
+          "sha256": "76BC3A9DDFBE0250315887B050F9F38B55713D82D5CD04F4651C7897C82B2217"
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal\\src\\service.py",
+          "sha256": "FA928F13D9B4A9E485083861B77E17808B484A226943CE4C8B14199C2BEDFA1C"
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal\\tests\\test_public.py",
+          "sha256": "6FA630E981D0403F13C8AE54270581B656D7D8C16A6CBC994B260AC69A7E5C76"
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal\\HANDOFF.md",
+          "sha256": "D0A56D97D53FB762A9C1DF0071B6045B15069FDFF34A9DA8CD8860AD62AA4848"
+        }
+      ],
+      "input_integrity": [
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal\\TASK.md",
+          "unchanged": true
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal\\SPEC.md",
+          "unchanged": true
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal\\tests\\test_public.py",
+          "unchanged": true
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal\\HANDOFF.md",
+          "unchanged": true
+        }
+      ]
+    }
+  ],
+  "commands": [
+    {
+      "kind": "environment",
+      "command": "python -B -c \"import sys,platform,json; print(json.dumps({'python_executable':sys.executable,'python_version':sys.version,'platform':platform.platform()}))\"",
+      "chunk_id": "3ffd09",
+      "wall_time_seconds": 0.3198518,
+      "exit_code": 0,
+      "original_token_count": 52,
+      "output": "{\"python_executable\": \"C:\\\\Program Files\\\\Python\\\\python.exe\", \"python_version\": \"3.12.8 (tags/v3.12.8:2dc476b, Dec  3 2024, 19:30:04) [MSC v.1942 64 bit (AMD64)]\", \"platform\": \"Windows-11-10.0.26100-SP0\"}\r\n"
+    }
+  ],
+  "environment": {
+    "python_executable": "C:\\Program Files\\Python\\python.exe",
+    "python_version": "3.12.8 (tags/v3.12.8:2dc476b, Dec  3 2024, 19:30:04) [MSC v.1942 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26100-SP0"
+  },
+  "finished_at_utc": "2026-10-06 05:31:30 UTC",
+  "loaded_reference_paths": [
+    "D:\\code\\project_skill\\docs\\validation\\baseline-0.6.0\\references\\workflow.md",
+    "D:\\code\\project_skill\\docs\\validation\\baseline-0.6.0\\references\\spec-review.md",
+    "D:\\code\\project_skill\\docs\\validation\\baseline-0.6.0\\references\\writing.md",
+    "D:\\code\\project_skill\\docs\\validation\\baseline-0.6.0\\references\\delivery.md",
+    "D:\\code\\project_skill\\docs\\validation\\baseline-0.6.0\\references\\recovery.md"
+  ],
+  "bootstrap_disposition": "The using-superpowers skill was read because the user requested its bootstrap. Its SUBAGENT-STOP instruction exempted dispatched workers.",
+  "loaded_instruction_paths": [
+    "C:\\Users\\airpot\\.codex\\RTK.md"
+  ],
+  "skill_group": "released-0.6.0",
+  "fixture_order": [
+    "pagination-repair",
+    "existing-feature",
+    "handoff-removal"
+  ],
+  "scope": {
+    "attempts_per_case": 1,
+    "changed_fixture_files": [
+      "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\pagination-repair\\src\\service.py",
+      "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\existing-feature\\src\\service.py",
+      "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal\\src\\service.py"
+    ],
+    "optional_reports_created": false,
+    "external_network_used": false,
+    "dependencies_installed": false,
+    "deployments": false,
+    "new_agents_spawned": false,
+    "commits_created": false,
+    "real_repository_changes": false,
+    "external_graders_read_or_run": false,
+    "existing_report_contents_read": false,
+    "current_root_skill_read": false,
+    "current_audit_or_eval_implementation_read": false
+  },
+  "summary": {
+    "implementation": "complete for all three fixtures",
+    "public_tests": "4 candidate tests passed across three fixture commands",
+    "source_acceptance_checks": "All three supplementary source-derived scripts passed.",
+    "input_integrity": "All observed protected inputs have unchanged SHA256 hashes.",
+    "acceptance": "All specified conditions have passing evidence from the recorded checks. Coverage remains limited to the observed local environment.",
+    "statistical_limit": "This small paired trial does not establish statistical differences."
+  },
+  "runtime_metadata": {
+    "elapsed_seconds": 192,
+    "timing_basis": "UTC clock tool observations recorded before fixture inspection and after verification.",
+    "model_token_usage": null,
+    "token_usage_reason": "No observable model token usage counter was provided.",
+    "model_id": null,
+    "model_reason": "No model override was requested or applied. The exact active model identity was not exposed through the worker tools.",
+    "catalog": "Existing native tools were used. No catalog or host configuration was changed."
+  },
+  "document_style": {
+    "language": "English",
+    "policy": "STE-guided English",
+    "dictionary_review": "Not run. No ASD-STE100 compliance claim."
+  },
+  "handoff_record": "D:\\code\\project_skill\\docs\\validation\\0.7.0-coding-060.json"
+}

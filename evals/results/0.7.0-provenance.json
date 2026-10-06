@@ -1,0 +1,153 @@
+{
+  "version": "0.7.0",
+  "base_commit": "acd9dd3acf3e431fc077021fde5a2d640bcac231",
+  "binding": "raw SHA-256 at evaluation and installation; Git checkout newline policies can change text bytes",
+  "portable_source": {
+    "assets/change.md": "c35a35e6d43fdd68c1e69a57224bc87d5ee5bf0740d296efb191ceb10488b746",
+    "assets/handoff.md": "c8dc39f44bc69461bb8e82cfb106ba4517fca926affe6a1b29cb92b0717e60e4",
+    "assets/release.md": "b89de08a9cde9908d55733f31857ea72b7f4bcfcbf06a32d66c1e8b7408ba491",
+    "references/collaboration.md": "90780d83facbfb5bf7b0c5d1f14eecc30e3a34753abf5d6af2c5a74a85552661",
+    "references/delivery.md": "95566a3aab43d1c29cc06c395bbe8150a1bedf73576ae8caa59c86cf05151468",
+    "references/install.md": "010d5c9d363c4114a2504a4692f8cbe7547bc160c3f686a71319f7c97c21a115",
+    "references/recovery.md": "ed02b97b754fbf95fc5f45df449d8d868c47315bb356d4d255e793dc7ae3136a",
+    "references/spec-review.md": "99af55f4a2873b0e0540e792486f51f83cddcaa13316dbbbf4d70329a372fccc",
+    "references/subagents.md": "4b3380e3b609700dae1a793767818b7c9496f2224afdf50fd25cf0b0fd03eb5c",
+    "references/workflow.md": "c75fab7cd7d660f0eb5f217e6d3be6be534054fc55826bd5740d10487dab47d2",
+    "references/writing.md": "9cfcb0cfcd0bdf669f54ff2720a0c91d2b03934b82778a8c94871d44db723892",
+    "scripts/install.py": "408e22a0734cd32691b58c0f84ec29d2342ffe90efa86692a6ff9e34fc6d396f",
+    "scripts/workspace.py": "9e14fd84b918c318f225a224650ae1be72d6f6fc0d4588ab1d33c7dcb4d18896",
+    "SKILL.md": "aff955a4b6ccaf19cd7fe8325d9c8cc68f9b6639f61138090148ce8eeb03bc23"
+  },
+  "portable_files": 14,
+  "archive": {
+    "path": "dist/sdd-harness-0.7.0.zip",
+    "sha256": "d85dd9006400c32046c3033a370a11af6c28c5dd79e626f27ff9c7a4135ab806"
+  },
+  "evaluation_inputs_and_grader": {
+    "evals/coding_tasks.py": "5bba8a7490c5bcb48d080d8d065a242a88d7ce7dca3dbf427379b62d7117363b",
+    "evals/criteria-0.4.0.json": "b1524f1fbf618fbea78f725b8212ef0246ec27fc37563631b04165cf2e617f84",
+    "evals/criteria-0.5.0.json": "d7f4549052b36cfa987a73f074f10f198c2325c18b0a235963fc4f7cce70c544",
+    "evals/criteria-0.6.0.json": "97a30bd445392d484c2e28b3cf0a77b1d3a454830a2a94f6ad1c5ad78e111b44",
+    "evals/criteria-0.7.0.json": "8ecc24d89933e4e2d3e3554322ed208be161ab59db37fe9c2f1a06aaee7fa2cd",
+    "evals/criteria.json": "74678b6dd089dbf2d24ea78a46b915fca0d4aeeab59050e044c446d37297262b",
+    "evals/invocation-0.7.0.json": "980b293efa38f77c4d665c51b55685b39e6f91447668ba07aa1e7f0691a4c6aa",
+    "evals/scenarios-0.4.0.json": "af77066a4c1a375cdffc786929c9b405e6010914c3deaf0b25b0c891311020f8",
+    "evals/scenarios-0.5.0.json": "301b81aee786251f017a0000b47c86926527bcecf30c1251f90507137060aa27",
+    "evals/scenarios-0.6.0.json": "8a5eb57fd57571115801ff93c24675dbe332b949afc0f2f12bca873d6fee3bf2",
+    "evals/scenarios-0.7.0.json": "f3dd684fb9035ee6f147e3a08a146c1e7c2528883451bd22bd3150dba9430fa2",
+    "evals/scenarios.json": "582d6b677765fdbbcb690fb7659c279a827c7b76797b855b865487e7498d7fc0"
+  },
+  "records": {
+    "evals/results/0.7.0-coding-060.json": "045416aff2df740feb557296d50b82de395ffe363e0ed3c4a46d40ee43e25f4a",
+    "evals/results/0.7.0-coding-forward.json": "e59c4fbc6662e0006e7af50ea57fbe0a826aa204176a65aa156a59d2f9ca643e",
+    "evals/results/0.7.0-coding-no-skill.json": "e0a61b406e8ec409836aff9d0cb79ceebd90159928bac22c8f36ca298b7f23f8",
+    "evals/results/0.7.0-coding-originals.json": "55abf34bdaa56a9dc1757e8806729e016fa80c7ae5fa0fcf2523a70f9c5607a2",
+    "evals/results/0.7.0-coding-outcomes.json": "339effaaba4ce117429222d221ff96823db1466f64469896d06f368471d34b0e",
+    "evals/results/0.7.0-early-exit-green.txt": "b7ea85036154ed88f55257038d639359f8b8d04815e5a833fefed277ccbff432",
+    "evals/results/0.7.0-early-exit-red.txt": "e26d7f0ffac7a3b231a409226dd19e2ef1caa03678cc8818b3c3b6c2d7576110",
+    "evals/results/0.7.0-grader-provenance-green.txt": "804b9f653fa92e9d9361bf4a2f88bf3a93420600a8cb1f68f5c04352c999f8b6",
+    "evals/results/0.7.0-grader-provenance-red.txt": "92f2672497b184f46667b616fec3226ed406b8657b70021cee6cede27af62fb8",
+    "evals/results/0.7.0-host-observations.json": "3e0b74fb37ba462c99548c9e93f47075b457317040599007d5b6c3d771d2eb8e",
+    "evals/results/0.7.0-instruction-baseline.json": "58f761f3f958db567d947366bc1f2174bd7233dad595c05b236deaee06e57fe1",
+    "evals/results/0.7.0-instruction-forward.json": "4aee57a590c532e7e265d6056463a54b88f172c0874b97c83f2d4bf638f98b57",
+    "evals/results/0.7.0-instruction-recheck-input.json": "51ee2cd6c954a133afb822f4dd854b7b3c6e661ed29e1ad559ddd5f7ad3ca545",
+    "evals/results/0.7.0-instruction-recheck-scores.json": "6bb8ee365e4750ed3dcf9b321203a19ef93d5525c32b3c9a98337bb05ba425a9",
+    "evals/results/0.7.0-instruction-recheck.json": "52e4e439241bef2bfc914617316156a36bebf94fd66aa16ff45ef9f655535a45",
+    "evals/results/0.7.0-instruction-regression.json": "d4e8fa369ba0972e4f0e7d3834bcf89b1be294d1ff21c0ebbafcdaab88e1a9a5",
+    "evals/results/0.7.0-instruction-scores.json": "78cd931466c4a69bd0ff085a6a02f87e78b0a52c2a1cf6923acff225cf3e24a5",
+    "evals/results/0.7.0-native-prompts.json": "e0d77c4136551076b6368190dafd13afdcdb8752de759c7d9f67a95eb9cd5d3c",
+    "evals/results/0.7.0-tests.txt": "11ea0be75cd507e6d9d4f13a96ec382fbd33197d2d72c29ff06f6f2f285de58b",
+    "evals/results/0.7.0-validation.md": "8ac5e06cd74e0eae2c6eb5244edbd0f62e015cf6e4cabee7efa1ecbf84d37c0e"
+  },
+  "installation": {
+    "installed": "C:\\Users\\airpot\\.agents\\skills\\sdd-harness",
+    "preserved_release": "0.6.0",
+    "backup": "C:\\Users\\airpot\\.agents\\skill-backups\\sdd-harness-0.6.0-20261006T0544326383419Z",
+    "source_package_install_hashes_match": true,
+    "files": 14,
+    "help_check": {
+      "command": [
+        "C:\\Program Files\\Python\\python.exe",
+        "C:\\Users\\airpot\\.agents\\skills\\sdd-harness\\scripts\\workspace.py",
+        "--help"
+      ],
+      "returncode": 0,
+      "stdout": "usage: workspace.py [-h] {inspect,snapshot,verify,restore} ...\n\nObserve Git workspaces and preserve portable file snapshots. Never delete\nsources.\n\npositional arguments:\n  {inspect,snapshot,verify,restore}\n    inspect             Read-only Git facts; does not establish activity or\n                        authority\n    snapshot            Save HEAD history and current regular files, without\n                        removing source\n    verify              Check snapshot inventory and content hashes\n    restore             Restore files and HEAD into a new directory\n\noptions:\n  -h, --help            show this help message and exit\n"
+    }
+  },
+  "package_checks": [
+    {
+      "command": [
+        "C:\\Program Files\\Python\\python.exe",
+        "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-package-070-s5bm9hjl\\unpacked\\sdd-harness\\scripts\\install.py",
+        "--into",
+        "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-package-070-s5bm9hjl\\installed"
+      ],
+      "returncode": 0,
+      "stdout": "{\"status\": \"installed\", \"installed\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-package-070-s5bm9hjl\\\\installed\\\\sdd-harness\", \"files\": 14}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python\\python.exe",
+        "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-package-070-s5bm9hjl\\unpacked\\sdd-harness\\scripts\\install.py",
+        "--into",
+        "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-package-070-s5bm9hjl\\installed"
+      ],
+      "returncode": 0,
+      "stdout": "{\"status\": \"already-installed\", \"installed\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-package-070-s5bm9hjl\\\\installed\\\\sdd-harness\"}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python\\python.exe",
+        "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-package-070-s5bm9hjl\\installed\\sdd-harness\\scripts\\workspace.py",
+        "--help"
+      ],
+      "returncode": 0,
+      "stdout": "usage: workspace.py [-h] {inspect,snapshot,verify,restore} ...\n\nObserve Git workspaces and preserve portable file snapshots. Never delete\nsources.\n\npositional arguments:\n  {inspect,snapshot,verify,restore}\n    inspect             Read-only Git facts; does not establish activity or\n                        authority\n    snapshot            Save HEAD history and current regular files, without\n                        removing source\n    verify              Check snapshot inventory and content hashes\n    restore             Restore files and HEAD into a new directory\n\noptions:\n  -h, --help            show this help message and exit\n",
+      "stderr": ""
+    }
+  ],
+  "repository_tests": {
+    "command": "python -m unittest discover -s tests -v",
+    "ran": 75,
+    "passed": 74,
+    "skipped": 1,
+    "skip_reason": "Windows symlink privilege unavailable",
+    "exit_code": 0
+  },
+  "coding_outcomes": {
+    "final_original_replays_failed": 3,
+    "no_loaded_skill_passed": 3,
+    "released_060_passed": 3,
+    "revised_070_passed": 3
+  },
+  "instruction_outcomes": {
+    "historical_first": {
+      "pass": 131,
+      "fail": 1
+    },
+    "new_baseline_first": {
+      "pass": 16,
+      "fail": 0
+    },
+    "new_forward_first": {
+      "pass": 13,
+      "fail": 3
+    },
+    "two_case_retry": {
+      "pass": 8,
+      "fail": 0
+    },
+    "first_misses_retained": true
+  },
+  "native_scope": "three selected requests with identical permitted project-local payload; other dataset requests and other hosts untested",
+  "limits": [
+    "One small actual coding trial per instruction condition; no measured general gain.",
+    "Executor model identity and token totals unavailable.",
+    "Assertions withheld by instruction, not an enforced sandbox.",
+    "First new forward judgment answers followed coding tasks; not a fresh matched judgment comparison.",
+    "No live deployment, archive removal, enforced worker scope, or native stopped-descendant control checked."
+  ]
+}

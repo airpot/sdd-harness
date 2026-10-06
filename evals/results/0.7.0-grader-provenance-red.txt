@@ -1,0 +1,13 @@
+======================================================================
+ERROR: test_report_binds_candidate_hash_and_runtime (test_coding_tasks.CodingTasksTest.test_report_binds_candidate_hash_and_runtime)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\code\project_skill\tests\test_coding_tasks.py", line 140, in test_report_binds_candidate_hash_and_runtime
+    self.assertEqual(result['grader_sha256'], expected_grader)
+                     ~~~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'grader_sha256'
+
+----------------------------------------------------------------------
+Ran 15 tests in 5.412s
+
+FAILED (errors=1, skipped=1)

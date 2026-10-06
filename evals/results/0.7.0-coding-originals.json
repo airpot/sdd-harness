@@ -1,0 +1,356 @@
+{
+  "fixture_parent": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz",
+  "groups": {
+    "no-loaded-skill": [
+      {
+        "case": "pagination-repair",
+        "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\pagination-repair",
+        "initial": {
+          "case": "pagination-repair",
+          "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\pagination-repair",
+          "passed": false,
+          "checks": {
+            "input_integrity": {
+              "passed": true,
+              "errors": []
+            },
+            "code_scope": {
+              "passed": true,
+              "errors": []
+            },
+            "public_tests": {
+              "passed": true,
+              "returncode": 0,
+              "stdout": "",
+              "error": ".\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+            },
+            "behavior": {
+              "passed": false,
+              "returncode": 1,
+              "stdout": "",
+              "error": "Traceback (most recent call last):\n  File \"<string>\", line 14, in <module>\nAssertionError: filter before pagination; no overlap\n"
+            }
+          },
+          "report": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\pagination-repair\\reports\\score-98dbbd00549e41d48daf9fd4f65e0e0b.json",
+          "original": {
+            "SPEC.md": "18d7604084d3f49dc5eb5cc971d31edc2890a66d893bc90414126028ad24c077",
+            "TASK.md": "5f882418ea668c37d9d135b96910591242bba394f82ec522f6f36527f3398bee",
+            "tests/test_public.py": "747d4eb0aa447cc1509903329b4139cc802bdc2f810e79f64eaab71eefe71852",
+            "src/service.py": "961925b4a9bafd9afb4a3f93b2e44da993ca57c2d8ceab386f7895837fd82800"
+          }
+        }
+      },
+      {
+        "case": "existing-feature",
+        "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\existing-feature",
+        "initial": {
+          "case": "existing-feature",
+          "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\existing-feature",
+          "passed": false,
+          "checks": {
+            "input_integrity": {
+              "passed": true,
+              "errors": []
+            },
+            "code_scope": {
+              "passed": true,
+              "errors": []
+            },
+            "public_tests": {
+              "passed": true,
+              "returncode": 0,
+              "stdout": "",
+              "error": ".\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+            },
+            "behavior": {
+              "passed": false,
+              "returncode": 1,
+              "stdout": "",
+              "error": "Traceback (most recent call last):\n  File \"<string>\", line 14, in <module>\nAttributeError: module 'service' has no attribute 'discounted_price'\n"
+            }
+          },
+          "report": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\existing-feature\\reports\\score-75de29dec8664fcda2b807dfb19131ff.json",
+          "original": {
+            "SPEC.md": "5ebb05ac57735ed3c81a06daad42df265eb3269bfeb36009b85426086bdc5ff7",
+            "TASK.md": "5f882418ea668c37d9d135b96910591242bba394f82ec522f6f36527f3398bee",
+            "tests/test_public.py": "e9758502df87d4830041c1e1d780345c5a4a0bb5f76b441a4cfe192374e2df69",
+            "src/service.py": "721c50951c8f80cadde1884e1547817ec5745b9d70d5d925643d15fa097cef60"
+          }
+        }
+      },
+      {
+        "case": "handoff-removal",
+        "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\handoff-removal",
+        "initial": {
+          "case": "handoff-removal",
+          "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\handoff-removal",
+          "passed": false,
+          "checks": {
+            "input_integrity": {
+              "passed": true,
+              "errors": []
+            },
+            "code_scope": {
+              "passed": true,
+              "errors": []
+            },
+            "public_tests": {
+              "passed": false,
+              "returncode": 1,
+              "stdout": "",
+              "error": "E\n======================================================================\nERROR: test_public (unittest.loader._FailedTest.test_public)\n----------------------------------------------------------------------\nImportError: Failed to import test module: test_public\nTraceback (most recent call last):\n  File \"C:\\Program Files\\Python\\Lib\\unittest\\loader.py\", line 396, in _find_test_path\n    module = self._get_module_from_name(name)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Program Files\\Python\\Lib\\unittest\\loader.py\", line 339, in _get_module_from_name\n    __import__(name)\n  File \"C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\handoff-removal\\tests\\test_public.py\", line 2, in <module>\n    from service import authenticate\nImportError: cannot import name 'authenticate' from 'service' (C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\handoff-removal\\src\\service.py)\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (errors=1)\n"
+            },
+            "behavior": {
+              "passed": false,
+              "returncode": 1,
+              "stdout": "",
+              "error": "Traceback (most recent call last):\n  File \"<string>\", line 10, in <module>\nAssertionError: remove old public helper and bypass\n"
+            }
+          },
+          "report": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\handoff-removal\\reports\\score-142b972036f24958b2f26c0816b3eb30.json",
+          "original": {
+            "SPEC.md": "76bc3a9ddfbe0250315887b050f9f38b55713d82d5cd04f4651c7897c82b2217",
+            "TASK.md": "5f882418ea668c37d9d135b96910591242bba394f82ec522f6f36527f3398bee",
+            "tests/test_public.py": "6fa630e981d0403f13c8ae54270581b656d7d8c16a6cbc994b260ac69a7e5c76",
+            "src/service.py": "eebb02bd1ea8362f53ee6f3872d6757c12bbf796920d3c44640a4fd4fbaa68b8",
+            "HANDOFF.md": "d0a56d97d53fb762a9c1df0071b6045b15069fdff34a9da8cd8860ad62aa4848"
+          }
+        }
+      }
+    ],
+    "released-0.6.0": [
+      {
+        "case": "pagination-repair",
+        "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\pagination-repair",
+        "initial": {
+          "case": "pagination-repair",
+          "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\pagination-repair",
+          "passed": false,
+          "checks": {
+            "input_integrity": {
+              "passed": true,
+              "errors": []
+            },
+            "code_scope": {
+              "passed": true,
+              "errors": []
+            },
+            "public_tests": {
+              "passed": true,
+              "returncode": 0,
+              "stdout": "",
+              "error": ".\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+            },
+            "behavior": {
+              "passed": false,
+              "returncode": 1,
+              "stdout": "",
+              "error": "Traceback (most recent call last):\n  File \"<string>\", line 14, in <module>\nAssertionError: filter before pagination; no overlap\n"
+            }
+          },
+          "report": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\pagination-repair\\reports\\score-9f419f33c66f4212a7f303881c12040f.json",
+          "original": {
+            "SPEC.md": "18d7604084d3f49dc5eb5cc971d31edc2890a66d893bc90414126028ad24c077",
+            "TASK.md": "5f882418ea668c37d9d135b96910591242bba394f82ec522f6f36527f3398bee",
+            "tests/test_public.py": "747d4eb0aa447cc1509903329b4139cc802bdc2f810e79f64eaab71eefe71852",
+            "src/service.py": "961925b4a9bafd9afb4a3f93b2e44da993ca57c2d8ceab386f7895837fd82800"
+          }
+        }
+      },
+      {
+        "case": "existing-feature",
+        "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\existing-feature",
+        "initial": {
+          "case": "existing-feature",
+          "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\existing-feature",
+          "passed": false,
+          "checks": {
+            "input_integrity": {
+              "passed": true,
+              "errors": []
+            },
+            "code_scope": {
+              "passed": true,
+              "errors": []
+            },
+            "public_tests": {
+              "passed": true,
+              "returncode": 0,
+              "stdout": "",
+              "error": ".\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+            },
+            "behavior": {
+              "passed": false,
+              "returncode": 1,
+              "stdout": "",
+              "error": "Traceback (most recent call last):\n  File \"<string>\", line 14, in <module>\nAttributeError: module 'service' has no attribute 'discounted_price'\n"
+            }
+          },
+          "report": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\existing-feature\\reports\\score-bbf69cf85750470f850907962cd95928.json",
+          "original": {
+            "SPEC.md": "5ebb05ac57735ed3c81a06daad42df265eb3269bfeb36009b85426086bdc5ff7",
+            "TASK.md": "5f882418ea668c37d9d135b96910591242bba394f82ec522f6f36527f3398bee",
+            "tests/test_public.py": "e9758502df87d4830041c1e1d780345c5a4a0bb5f76b441a4cfe192374e2df69",
+            "src/service.py": "721c50951c8f80cadde1884e1547817ec5745b9d70d5d925643d15fa097cef60"
+          }
+        }
+      },
+      {
+        "case": "handoff-removal",
+        "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal",
+        "initial": {
+          "case": "handoff-removal",
+          "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal",
+          "passed": false,
+          "checks": {
+            "input_integrity": {
+              "passed": true,
+              "errors": []
+            },
+            "code_scope": {
+              "passed": true,
+              "errors": []
+            },
+            "public_tests": {
+              "passed": false,
+              "returncode": 1,
+              "stdout": "",
+              "error": "E\n======================================================================\nERROR: test_public (unittest.loader._FailedTest.test_public)\n----------------------------------------------------------------------\nImportError: Failed to import test module: test_public\nTraceback (most recent call last):\n  File \"C:\\Program Files\\Python\\Lib\\unittest\\loader.py\", line 396, in _find_test_path\n    module = self._get_module_from_name(name)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Program Files\\Python\\Lib\\unittest\\loader.py\", line 339, in _get_module_from_name\n    __import__(name)\n  File \"C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal\\tests\\test_public.py\", line 2, in <module>\n    from service import authenticate\nImportError: cannot import name 'authenticate' from 'service' (C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal\\src\\service.py)\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (errors=1)\n"
+            },
+            "behavior": {
+              "passed": false,
+              "returncode": 1,
+              "stdout": "",
+              "error": "Traceback (most recent call last):\n  File \"<string>\", line 10, in <module>\nAssertionError: remove old public helper and bypass\n"
+            }
+          },
+          "report": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal\\reports\\score-2ca0ab4872af42b4890adea553781ab3.json",
+          "original": {
+            "SPEC.md": "76bc3a9ddfbe0250315887b050f9f38b55713d82d5cd04f4651c7897c82b2217",
+            "TASK.md": "5f882418ea668c37d9d135b96910591242bba394f82ec522f6f36527f3398bee",
+            "tests/test_public.py": "6fa630e981d0403f13c8ae54270581b656d7d8c16a6cbc994b260ac69a7e5c76",
+            "src/service.py": "eebb02bd1ea8362f53ee6f3872d6757c12bbf796920d3c44640a4fd4fbaa68b8",
+            "HANDOFF.md": "d0a56d97d53fb762a9c1df0071b6045b15069fdff34a9da8cd8860ad62aa4848"
+          }
+        }
+      }
+    ],
+    "revised-0.7.0": [
+      {
+        "case": "pagination-repair",
+        "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\revised-0.7.0\\pagination-repair",
+        "initial": {
+          "case": "pagination-repair",
+          "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\revised-0.7.0\\pagination-repair",
+          "passed": false,
+          "checks": {
+            "input_integrity": {
+              "passed": true,
+              "errors": []
+            },
+            "code_scope": {
+              "passed": true,
+              "errors": []
+            },
+            "public_tests": {
+              "passed": true,
+              "returncode": 0,
+              "stdout": "",
+              "error": ".\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+            },
+            "behavior": {
+              "passed": false,
+              "returncode": 1,
+              "stdout": "",
+              "error": "Traceback (most recent call last):\n  File \"<string>\", line 14, in <module>\nAssertionError: filter before pagination; no overlap\n"
+            }
+          },
+          "report": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\revised-0.7.0\\pagination-repair\\reports\\score-aa0fc36b28bc4cfb9ee67462164fa765.json",
+          "original": {
+            "SPEC.md": "18d7604084d3f49dc5eb5cc971d31edc2890a66d893bc90414126028ad24c077",
+            "TASK.md": "5f882418ea668c37d9d135b96910591242bba394f82ec522f6f36527f3398bee",
+            "tests/test_public.py": "747d4eb0aa447cc1509903329b4139cc802bdc2f810e79f64eaab71eefe71852",
+            "src/service.py": "961925b4a9bafd9afb4a3f93b2e44da993ca57c2d8ceab386f7895837fd82800"
+          }
+        }
+      },
+      {
+        "case": "existing-feature",
+        "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\revised-0.7.0\\existing-feature",
+        "initial": {
+          "case": "existing-feature",
+          "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\revised-0.7.0\\existing-feature",
+          "passed": false,
+          "checks": {
+            "input_integrity": {
+              "passed": true,
+              "errors": []
+            },
+            "code_scope": {
+              "passed": true,
+              "errors": []
+            },
+            "public_tests": {
+              "passed": true,
+              "returncode": 0,
+              "stdout": "",
+              "error": ".\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+            },
+            "behavior": {
+              "passed": false,
+              "returncode": 1,
+              "stdout": "",
+              "error": "Traceback (most recent call last):\n  File \"<string>\", line 14, in <module>\nAttributeError: module 'service' has no attribute 'discounted_price'\n"
+            }
+          },
+          "report": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\revised-0.7.0\\existing-feature\\reports\\score-47d4af4c97a044c99b065dbe52bcbd98.json",
+          "original": {
+            "SPEC.md": "5ebb05ac57735ed3c81a06daad42df265eb3269bfeb36009b85426086bdc5ff7",
+            "TASK.md": "5f882418ea668c37d9d135b96910591242bba394f82ec522f6f36527f3398bee",
+            "tests/test_public.py": "e9758502df87d4830041c1e1d780345c5a4a0bb5f76b441a4cfe192374e2df69",
+            "src/service.py": "721c50951c8f80cadde1884e1547817ec5745b9d70d5d925643d15fa097cef60"
+          }
+        }
+      },
+      {
+        "case": "handoff-removal",
+        "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\revised-0.7.0\\handoff-removal",
+        "initial": {
+          "case": "handoff-removal",
+          "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\revised-0.7.0\\handoff-removal",
+          "passed": false,
+          "checks": {
+            "input_integrity": {
+              "passed": true,
+              "errors": []
+            },
+            "code_scope": {
+              "passed": true,
+              "errors": []
+            },
+            "public_tests": {
+              "passed": false,
+              "returncode": 1,
+              "stdout": "",
+              "error": "E\n======================================================================\nERROR: test_public (unittest.loader._FailedTest.test_public)\n----------------------------------------------------------------------\nImportError: Failed to import test module: test_public\nTraceback (most recent call last):\n  File \"C:\\Program Files\\Python\\Lib\\unittest\\loader.py\", line 396, in _find_test_path\n    module = self._get_module_from_name(name)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Program Files\\Python\\Lib\\unittest\\loader.py\", line 339, in _get_module_from_name\n    __import__(name)\n  File \"C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\revised-0.7.0\\handoff-removal\\tests\\test_public.py\", line 2, in <module>\n    from service import authenticate\nImportError: cannot import name 'authenticate' from 'service' (C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\revised-0.7.0\\handoff-removal\\src\\service.py)\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (errors=1)\n"
+            },
+            "behavior": {
+              "passed": false,
+              "returncode": 1,
+              "stdout": "",
+              "error": "Traceback (most recent call last):\n  File \"<string>\", line 10, in <module>\nAssertionError: remove old public helper and bypass\n"
+            }
+          },
+          "report": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\revised-0.7.0\\handoff-removal\\reports\\score-bf60aaf899a0487fbc722b49c7cba227.json",
+          "original": {
+            "SPEC.md": "76bc3a9ddfbe0250315887b050f9f38b55713d82d5cd04f4651c7897c82b2217",
+            "TASK.md": "5f882418ea668c37d9d135b96910591242bba394f82ec522f6f36527f3398bee",
+            "tests/test_public.py": "6fa630e981d0403f13c8ae54270581b656d7d8c16a6cbc994b260ac69a7e5c76",
+            "src/service.py": "eebb02bd1ea8362f53ee6f3872d6757c12bbf796920d3c44640a4fd4fbaa68b8",
+            "HANDOFF.md": "d0a56d97d53fb762a9c1df0071b6045b15069fdff34a9da8cd8860ad62aa4848"
+          }
+        }
+      }
+    ]
+  }
+}

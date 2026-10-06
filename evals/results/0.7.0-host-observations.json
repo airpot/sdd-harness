@@ -1,0 +1,83 @@
+{
+  "version": "0.7.0",
+  "host": "codex-cli 0.160.1 on Windows",
+  "sandbox": "read-only",
+  "configured_model_observation": "CLI warning reported gpt-5.6-luna; resolved server model not independently verified",
+  "global_installation_precheck": {
+    "trace_sha256": "424030ce7ea1d425a63c06fea172b541f78d9699c68479071153c6883a1070c5",
+    "result": "global installation could not be read in native read-only sandbox",
+    "access_denial_observed": true,
+    "installed_file_version_from_independent_filesystem_check": "0.6.0",
+    "native_loaded_version": "unverified: entry access denied"
+  },
+  "project_local_checks": [
+    {
+      "case": "explicit",
+      "trace_sha256": "40c9790c7a09f5c7e62b604fe3ece7babc233e3db93eae0022db97d24fb736a8",
+      "completed_commands": 4,
+      "full_entry_output_observed": true,
+      "subagent_reference_output_observed": true,
+      "failed_commands": [],
+      "final_response": "- **Version:** `0.7.0`.\n- **Full entry read:** [SKILL.md](C:/Users/airpot/AppData/Local/Temp/sdd-native-070-yh_w6vng/.agents/skills/sdd-harness/SKILL.md).\n- **Assessment reference read:** [references/subagents.md](C:/Users/airpot/AppData/Local/Temp/sdd-native-070-yh_w6vng/.agents/skills/sdd-harness/references/subagents.md), including “Return and assess results.” Also read `references/install.md` for capability checks.\n- **Next verification action:** [TASK.md](C:/Users/airpot/AppData/Local/Temp/sdd-native-070-yh_w6vng/TASK.md) requires rejection of empty authentication tokens. [HANDOFF.md](C:/Users/airpot/AppData/Local/Temp/sdd-native-070-yh_w6vng/HANDOFF.md) marks the candidate ready but unverified. The main agent must identify requirement evidence, inspect the actual result, independently verify empty-token rejection, and record its disposition. Claimed public-test passes do not establish acceptance.\n- **Capabilities:** Direct entry/reference reads verified. Native worker control unavailable in this fixture. No files modified, recovery invoked, software installed, workers started, or results published.",
+      "reported_usage": {
+        "input_tokens": 96702,
+        "cached_input_tokens": 81792,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 696,
+        "reasoning_output_tokens": 20
+      }
+    },
+    {
+      "case": "implicit",
+      "trace_sha256": "a64163edd23624fe99057cc689a0e39c95b67aaaa8c2030ad67b774c09e7fae7",
+      "completed_commands": 5,
+      "full_entry_output_observed": true,
+      "subagent_reference_output_observed": true,
+      "failed_commands": [
+        {
+          "command": "\"C:\\\\Users\\\\airpot\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"rtk rg -n -i 'sdd-native|sdd-harness|accepted task|worker.*result' 'C:\\\\Users\\\\airpot\\\\.codex\\\\memories\\\\MEMORY.md'\"",
+          "exit_code": 1
+        },
+        {
+          "command": "\"C:\\\\Users\\\\airpot\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '.agents\\\\skills\\\\sdd-harness\\\\references\\\\install.md'; Get-Content -LiteralPath '.agents\\\\skills\\\\sdd-harness\\\\references\\\\workflow.md'; Get-Content -LiteralPath '.agents\\\\skills\\\\sdd-harness\\\\references\\\\subagents.md'; Get-Content -LiteralPath '.agents\\\\skills\\\\sdd-harness\\\\references\\\\delivery.md'; Get-Content -LiteralPath '.agents\\\\skills\\\\sdd-harness\\\\references\\\\spec-review.md'; Get-Content -LiteralPath 'C:\\\\Users\\\\airpot\\\\.codex\\\\skills\\\\verification-before-completion\\\\SKILL.md'; Get-ChildItem -Force | Select-Object Mode,Name; rtk rg --files --hidden -g '\"'!.git'\"' -g '\"'!node_modules'\"'; git --no-optional-locks rev-parse --show-toplevel; rtk git --no-optional-locks status --short --branch\"",
+          "exit_code": 1
+        }
+      ],
+      "final_response": "Acceptance remains pending. [TASK.md](C:/Users/airpot/AppData/Local/Temp/sdd-native-070-yh_w6vng/TASK.md) requires authentication to reject empty tokens; the worker’s public-test pass is an unverified claim.\n\nUsing the project-local `sdd-harness` guidance, the next steps are:\n\n1. **Obtain evidence:** the exact candidate snapshot or commit, baseline, actual diff, tests, and reproducible check commands with environment and logs. None are present in this fixture, which is not a Git checkout.\n2. **Verify the requirement:** inspect the assertions and independently demonstrate that an empty token is rejected without granting authentication. Check relevant existing authentication behavior; retain a failing baseline reproduction where feasible.\n3. **Make the acceptance decision:** accept only when applicable evidence covers the required behavior. Current worker disposition: **defer pending evidence**.\n\n[HANDOFF.md](C:/Users/airpot/AppData/Local/Temp/sdd-native-070-yh_w6vng/HANDOFF.md) reports native worker control unavailable. I cannot observe or stop the original worker or confirm stopped execution; generic agent tools do not establish control over it.\n\nNo files were modified, tests run, workers started, software installed, publication performed, or recovery attempted.",
+      "reported_usage": {
+        "input_tokens": 168066,
+        "cached_input_tokens": 129408,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1189,
+        "reasoning_output_tokens": 41
+      }
+    },
+    {
+      "case": "negative",
+      "trace_sha256": "524a2a8be626d7f46fb1883df5cc1ee335567da715858bb39c8b9fa8279fce87",
+      "completed_commands": 0,
+      "full_entry_output_observed": false,
+      "subagent_reference_output_observed": false,
+      "failed_commands": [],
+      "final_response": "A Git branch is a named line of development that tracks commits within a repository. A Git worktree is a separate working directory linked to that repository, letting you work on different branches simultaneously without switching your current checkout.",
+      "reported_usage": {
+        "input_tokens": 20319,
+        "cached_input_tokens": 7296,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 80,
+        "reasoning_output_tokens": 31
+      }
+    }
+  ],
+  "other_hosts": {
+    "ZCode": "untested",
+    "DeepSeek Harness": "untested"
+  },
+  "limits": [
+    "Three selected native requests; remaining invocation dataset cases are not native-tested.",
+    "No native cancellation, real concurrent writers, enforced worker scopes, deployment or archive removal tested.",
+    "Project-local read-only observation differs from the global installation access-denial case. No efficiency or skill-gain inference.",
+    "Input and output token fields are accumulated CLI counters, not independent correctness evidence.",
+    "The global native precheck occurred before the 0.7.0 installation update. New-version native reads used the identical permitted project-local payload."
+  ]
+}

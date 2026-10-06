@@ -1,0 +1,740 @@
+{
+  "version": "0.7.0",
+  "evaluation": "independent actual file scoring after executor completion",
+  "grader_sha256": "5bba8a7490c5bcb48d080d8d065a242a88d7ce7dca3dbf427379b62d7117363b",
+  "original_control_replay": [
+    {
+      "case": "pagination-repair",
+      "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-original-final-070-ko019fms\\pagination-repair",
+      "passed": false,
+      "checks": {
+        "input_integrity": {
+          "passed": true,
+          "errors": []
+        },
+        "code_scope": {
+          "passed": true,
+          "errors": []
+        },
+        "public_tests": {
+          "passed": true,
+          "completed": true,
+          "returncode": 0,
+          "stdout": "\nsdd-check-complete:65ba380d63154d2ca30e393acd2f5b16\n",
+          "error": ".\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+        },
+        "behavior": {
+          "passed": false,
+          "completed": false,
+          "returncode": 1,
+          "stdout": "",
+          "error": "Traceback (most recent call last):\n  File \"<string>\", line 2, in <module>\n  File \"<string>\", line 14, in <module>\nAssertionError: filter before pagination; no overlap\n\ncheck did not reach completion marker"
+        },
+        "candidate_identity": {
+          "passed": true,
+          "observed_sha256": [
+            "961925b4a9bafd9afb4a3f93b2e44da993ca57c2d8ceab386f7895837fd82800",
+            "961925b4a9bafd9afb4a3f93b2e44da993ca57c2d8ceab386f7895837fd82800",
+            "961925b4a9bafd9afb4a3f93b2e44da993ca57c2d8ceab386f7895837fd82800"
+          ]
+        }
+      },
+      "report": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-original-final-070-ko019fms\\pagination-repair\\reports\\score-c9f2ee4a675a41019526603ed05b721f.json",
+      "original": {
+        "SPEC.md": "18d7604084d3f49dc5eb5cc971d31edc2890a66d893bc90414126028ad24c077",
+        "TASK.md": "5f882418ea668c37d9d135b96910591242bba394f82ec522f6f36527f3398bee",
+        "tests/test_public.py": "747d4eb0aa447cc1509903329b4139cc802bdc2f810e79f64eaab71eefe71852",
+        "src/service.py": "961925b4a9bafd9afb4a3f93b2e44da993ca57c2d8ceab386f7895837fd82800"
+      },
+      "grader_sha256": "5bba8a7490c5bcb48d080d8d065a242a88d7ce7dca3dbf427379b62d7117363b",
+      "candidate_sha256": "961925b4a9bafd9afb4a3f93b2e44da993ca57c2d8ceab386f7895837fd82800",
+      "candidate_sha256_after": "961925b4a9bafd9afb4a3f93b2e44da993ca57c2d8ceab386f7895837fd82800",
+      "runtime": {
+        "python": "3.12.8 (tags/v3.12.8:2dc476b, Dec  3 2024, 19:30:04) [MSC v.1942 64 bit (AMD64)]",
+        "executable": "C:\\Program Files\\Python\\python.exe",
+        "platform": "Windows-11-10.0.26100-SP0",
+        "implementation": "CPython",
+        "subprocess_flags": [
+          "-I",
+          "-B"
+        ],
+        "timeout_seconds": 5
+      }
+    },
+    {
+      "case": "existing-feature",
+      "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-original-final-070-ko019fms\\existing-feature",
+      "passed": false,
+      "checks": {
+        "input_integrity": {
+          "passed": true,
+          "errors": []
+        },
+        "code_scope": {
+          "passed": true,
+          "errors": []
+        },
+        "public_tests": {
+          "passed": true,
+          "completed": true,
+          "returncode": 0,
+          "stdout": "\nsdd-check-complete:de87771d7ab64ff79b0f52a5032a6c66\n",
+          "error": ".\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+        },
+        "behavior": {
+          "passed": false,
+          "completed": false,
+          "returncode": 1,
+          "stdout": "",
+          "error": "Traceback (most recent call last):\n  File \"<string>\", line 2, in <module>\n  File \"<string>\", line 14, in <module>\nAttributeError: module 'service' has no attribute 'discounted_price'\n\ncheck did not reach completion marker"
+        },
+        "candidate_identity": {
+          "passed": true,
+          "observed_sha256": [
+            "721c50951c8f80cadde1884e1547817ec5745b9d70d5d925643d15fa097cef60",
+            "721c50951c8f80cadde1884e1547817ec5745b9d70d5d925643d15fa097cef60",
+            "721c50951c8f80cadde1884e1547817ec5745b9d70d5d925643d15fa097cef60"
+          ]
+        }
+      },
+      "report": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-original-final-070-ko019fms\\existing-feature\\reports\\score-aabf1d092de140ac818d1c122f39c14d.json",
+      "original": {
+        "SPEC.md": "5ebb05ac57735ed3c81a06daad42df265eb3269bfeb36009b85426086bdc5ff7",
+        "TASK.md": "5f882418ea668c37d9d135b96910591242bba394f82ec522f6f36527f3398bee",
+        "tests/test_public.py": "e9758502df87d4830041c1e1d780345c5a4a0bb5f76b441a4cfe192374e2df69",
+        "src/service.py": "721c50951c8f80cadde1884e1547817ec5745b9d70d5d925643d15fa097cef60"
+      },
+      "grader_sha256": "5bba8a7490c5bcb48d080d8d065a242a88d7ce7dca3dbf427379b62d7117363b",
+      "candidate_sha256": "721c50951c8f80cadde1884e1547817ec5745b9d70d5d925643d15fa097cef60",
+      "candidate_sha256_after": "721c50951c8f80cadde1884e1547817ec5745b9d70d5d925643d15fa097cef60",
+      "runtime": {
+        "python": "3.12.8 (tags/v3.12.8:2dc476b, Dec  3 2024, 19:30:04) [MSC v.1942 64 bit (AMD64)]",
+        "executable": "C:\\Program Files\\Python\\python.exe",
+        "platform": "Windows-11-10.0.26100-SP0",
+        "implementation": "CPython",
+        "subprocess_flags": [
+          "-I",
+          "-B"
+        ],
+        "timeout_seconds": 5
+      }
+    },
+    {
+      "case": "handoff-removal",
+      "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-original-final-070-ko019fms\\handoff-removal",
+      "passed": false,
+      "checks": {
+        "input_integrity": {
+          "passed": true,
+          "errors": []
+        },
+        "code_scope": {
+          "passed": true,
+          "errors": []
+        },
+        "public_tests": {
+          "passed": false,
+          "completed": false,
+          "returncode": 1,
+          "stdout": "",
+          "error": "E\n======================================================================\nERROR: test_public (unittest.loader._FailedTest.test_public)\n----------------------------------------------------------------------\nImportError: Failed to import test module: test_public\nTraceback (most recent call last):\n  File \"C:\\Program Files\\Python\\Lib\\unittest\\loader.py\", line 396, in _find_test_path\n    module = self._get_module_from_name(name)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Program Files\\Python\\Lib\\unittest\\loader.py\", line 339, in _get_module_from_name\n    __import__(name)\n  File \"C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-original-final-070-ko019fms\\handoff-removal\\tests\\test_public.py\", line 2, in <module>\n    from service import authenticate\nImportError: cannot import name 'authenticate' from 'service' (C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-original-final-070-ko019fms\\handoff-removal\\src\\service.py)\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (errors=1)\nTraceback (most recent call last):\n  File \"<string>\", line 2, in <module>\n  File \"<string>\", line 6, in <module>\nAssertionError: public tests failed or none ran\n\ncheck did not reach completion marker"
+        },
+        "behavior": {
+          "passed": false,
+          "completed": false,
+          "returncode": 1,
+          "stdout": "",
+          "error": "Traceback (most recent call last):\n  File \"<string>\", line 2, in <module>\n  File \"<string>\", line 10, in <module>\nAssertionError: remove old public helper and bypass\n\ncheck did not reach completion marker"
+        },
+        "candidate_identity": {
+          "passed": true,
+          "observed_sha256": [
+            "eebb02bd1ea8362f53ee6f3872d6757c12bbf796920d3c44640a4fd4fbaa68b8",
+            "eebb02bd1ea8362f53ee6f3872d6757c12bbf796920d3c44640a4fd4fbaa68b8",
+            "eebb02bd1ea8362f53ee6f3872d6757c12bbf796920d3c44640a4fd4fbaa68b8"
+          ]
+        }
+      },
+      "report": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-original-final-070-ko019fms\\handoff-removal\\reports\\score-209d167410b0474aaec1a90bd9c794aa.json",
+      "original": {
+        "SPEC.md": "76bc3a9ddfbe0250315887b050f9f38b55713d82d5cd04f4651c7897c82b2217",
+        "TASK.md": "5f882418ea668c37d9d135b96910591242bba394f82ec522f6f36527f3398bee",
+        "tests/test_public.py": "6fa630e981d0403f13c8ae54270581b656d7d8c16a6cbc994b260ac69a7e5c76",
+        "src/service.py": "eebb02bd1ea8362f53ee6f3872d6757c12bbf796920d3c44640a4fd4fbaa68b8",
+        "HANDOFF.md": "d0a56d97d53fb762a9c1df0071b6045b15069fdff34a9da8cd8860ad62aa4848"
+      },
+      "grader_sha256": "5bba8a7490c5bcb48d080d8d065a242a88d7ce7dca3dbf427379b62d7117363b",
+      "candidate_sha256": "eebb02bd1ea8362f53ee6f3872d6757c12bbf796920d3c44640a4fd4fbaa68b8",
+      "candidate_sha256_after": "eebb02bd1ea8362f53ee6f3872d6757c12bbf796920d3c44640a4fd4fbaa68b8",
+      "runtime": {
+        "python": "3.12.8 (tags/v3.12.8:2dc476b, Dec  3 2024, 19:30:04) [MSC v.1942 64 bit (AMD64)]",
+        "executable": "C:\\Program Files\\Python\\python.exe",
+        "platform": "Windows-11-10.0.26100-SP0",
+        "implementation": "CPython",
+        "subprocess_flags": [
+          "-I",
+          "-B"
+        ],
+        "timeout_seconds": 5
+      }
+    }
+  ],
+  "conditions": {
+    "no-loaded-skill": [
+      {
+        "case": "pagination-repair",
+        "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\pagination-repair",
+        "passed": true,
+        "checks": {
+          "input_integrity": {
+            "passed": true,
+            "errors": []
+          },
+          "code_scope": {
+            "passed": true,
+            "errors": []
+          },
+          "public_tests": {
+            "passed": true,
+            "completed": true,
+            "returncode": 0,
+            "stdout": "\nsdd-check-complete:c46df9b7a76a4e5eaf5eb01df03aab2e\n",
+            "error": ".\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+          },
+          "behavior": {
+            "passed": true,
+            "completed": true,
+            "returncode": 0,
+            "stdout": "\nsdd-check-complete:b986713ffdc1479f92d6bdd57c64c5d8\n",
+            "error": ""
+          },
+          "candidate_identity": {
+            "passed": true,
+            "observed_sha256": [
+              "e4e0242127f47eec3361226dcb8aaba2912aaa6e7177171598810b539ba33431",
+              "e4e0242127f47eec3361226dcb8aaba2912aaa6e7177171598810b539ba33431",
+              "e4e0242127f47eec3361226dcb8aaba2912aaa6e7177171598810b539ba33431"
+            ]
+          }
+        },
+        "report": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\pagination-repair\\reports\\score-a35eae34e87944e48ff8dc4616751e66.json",
+        "original": {
+          "SPEC.md": "18d7604084d3f49dc5eb5cc971d31edc2890a66d893bc90414126028ad24c077",
+          "TASK.md": "5f882418ea668c37d9d135b96910591242bba394f82ec522f6f36527f3398bee",
+          "tests/test_public.py": "747d4eb0aa447cc1509903329b4139cc802bdc2f810e79f64eaab71eefe71852",
+          "src/service.py": "961925b4a9bafd9afb4a3f93b2e44da993ca57c2d8ceab386f7895837fd82800"
+        },
+        "grader_sha256": "5bba8a7490c5bcb48d080d8d065a242a88d7ce7dca3dbf427379b62d7117363b",
+        "candidate_sha256": "e4e0242127f47eec3361226dcb8aaba2912aaa6e7177171598810b539ba33431",
+        "candidate_sha256_after": "e4e0242127f47eec3361226dcb8aaba2912aaa6e7177171598810b539ba33431",
+        "runtime": {
+          "python": "3.12.8 (tags/v3.12.8:2dc476b, Dec  3 2024, 19:30:04) [MSC v.1942 64 bit (AMD64)]",
+          "executable": "C:\\Program Files\\Python\\python.exe",
+          "platform": "Windows-11-10.0.26100-SP0",
+          "implementation": "CPython",
+          "subprocess_flags": [
+            "-I",
+            "-B"
+          ],
+          "timeout_seconds": 5
+        },
+        "candidate_source": "def list_active(rows, page, size):\n    if isinstance(page, bool) or not isinstance(page, int) or page < 0:\n        raise ValueError('page must be an integer >= 0')\n    if isinstance(size, bool) or not isinstance(size, int) or size < 1:\n        raise ValueError('size must be an integer >= 1')\n    active_rows = [row for row in rows if row['active'] is True]\n    return active_rows[page * size:(page + 1) * size]\n",
+        "candidate_report": null
+      },
+      {
+        "case": "existing-feature",
+        "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\existing-feature",
+        "passed": true,
+        "checks": {
+          "input_integrity": {
+            "passed": true,
+            "errors": []
+          },
+          "code_scope": {
+            "passed": true,
+            "errors": []
+          },
+          "public_tests": {
+            "passed": true,
+            "completed": true,
+            "returncode": 0,
+            "stdout": "\nsdd-check-complete:a0b9b95b73e641849ad2496e6bc0c9e5\n",
+            "error": ".\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+          },
+          "behavior": {
+            "passed": true,
+            "completed": true,
+            "returncode": 0,
+            "stdout": "\nsdd-check-complete:2a4680b9d20d41fbb6d20ebb933e9414\n",
+            "error": ""
+          },
+          "candidate_identity": {
+            "passed": true,
+            "observed_sha256": [
+              "6b03896df52566ca1727d43d74750c6a36340f3a8caaaf27f595153cf812e168",
+              "6b03896df52566ca1727d43d74750c6a36340f3a8caaaf27f595153cf812e168",
+              "6b03896df52566ca1727d43d74750c6a36340f3a8caaaf27f595153cf812e168"
+            ]
+          }
+        },
+        "report": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\existing-feature\\reports\\score-5d651a493ade43fd91f6be29110c9de7.json",
+        "original": {
+          "SPEC.md": "5ebb05ac57735ed3c81a06daad42df265eb3269bfeb36009b85426086bdc5ff7",
+          "TASK.md": "5f882418ea668c37d9d135b96910591242bba394f82ec522f6f36527f3398bee",
+          "tests/test_public.py": "e9758502df87d4830041c1e1d780345c5a4a0bb5f76b441a4cfe192374e2df69",
+          "src/service.py": "721c50951c8f80cadde1884e1547817ec5745b9d70d5d925643d15fa097cef60"
+        },
+        "grader_sha256": "5bba8a7490c5bcb48d080d8d065a242a88d7ce7dca3dbf427379b62d7117363b",
+        "candidate_sha256": "6b03896df52566ca1727d43d74750c6a36340f3a8caaaf27f595153cf812e168",
+        "candidate_sha256_after": "6b03896df52566ca1727d43d74750c6a36340f3a8caaaf27f595153cf812e168",
+        "runtime": {
+          "python": "3.12.8 (tags/v3.12.8:2dc476b, Dec  3 2024, 19:30:04) [MSC v.1942 64 bit (AMD64)]",
+          "executable": "C:\\Program Files\\Python\\python.exe",
+          "platform": "Windows-11-10.0.26100-SP0",
+          "implementation": "CPython",
+          "subprocess_flags": [
+            "-I",
+            "-B"
+          ],
+          "timeout_seconds": 5
+        },
+        "candidate_source": "def price_cents(unit_cents, quantity):\n    if type(unit_cents) is not int or type(quantity) is not int or min(unit_cents, quantity) < 0:\n        raise ValueError('invalid price')\n    return unit_cents * quantity\n\n\ndef discounted_price(unit_cents, quantity, rule):\n    if not isinstance(rule, dict) or set(rule) != {'percent', 'cap_cents'}:\n        raise ValueError('invalid discount rule')\n    percent, cap_cents = rule['percent'], rule['cap_cents']\n    if (isinstance(percent, bool) or not isinstance(percent, int)\n            or not 0 <= percent <= 100\n            or isinstance(cap_cents, bool) or not isinstance(cap_cents, int)\n            or cap_cents < 0):\n        raise ValueError('invalid discount rule')\n    total = price_cents(unit_cents, quantity)\n    return total - min(total * percent // 100, cap_cents)\n",
+        "candidate_report": null
+      },
+      {
+        "case": "handoff-removal",
+        "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\handoff-removal",
+        "passed": true,
+        "checks": {
+          "input_integrity": {
+            "passed": true,
+            "errors": []
+          },
+          "code_scope": {
+            "passed": true,
+            "errors": []
+          },
+          "public_tests": {
+            "passed": true,
+            "completed": true,
+            "returncode": 0,
+            "stdout": "\nsdd-check-complete:7a7d990b9a57426cbff232a13f3e337c\n",
+            "error": "..\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n"
+          },
+          "behavior": {
+            "passed": true,
+            "completed": true,
+            "returncode": 0,
+            "stdout": "\nsdd-check-complete:44d26ac6c91f497283a25c75cfb47639\n",
+            "error": ""
+          },
+          "candidate_identity": {
+            "passed": true,
+            "observed_sha256": [
+              "fa928f13d9b4a9e485083861b77e17808b484a226943ce4c8b14199c2bedfa1c",
+              "fa928f13d9b4a9e485083861b77e17808b484a226943ce4c8b14199c2bedfa1c",
+              "fa928f13d9b4a9e485083861b77e17808b484a226943ce4c8b14199c2bedfa1c"
+            ]
+          }
+        },
+        "report": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\handoff-removal\\reports\\score-c7abeb8720374e2ab0eb7fc8ad7612be.json",
+        "original": {
+          "SPEC.md": "76bc3a9ddfbe0250315887b050f9f38b55713d82d5cd04f4651c7897c82b2217",
+          "TASK.md": "5f882418ea668c37d9d135b96910591242bba394f82ec522f6f36527f3398bee",
+          "tests/test_public.py": "6fa630e981d0403f13c8ae54270581b656d7d8c16a6cbc994b260ac69a7e5c76",
+          "src/service.py": "eebb02bd1ea8362f53ee6f3872d6757c12bbf796920d3c44640a4fd4fbaa68b8",
+          "HANDOFF.md": "d0a56d97d53fb762a9c1df0071b6045b15069fdff34a9da8cd8860ad62aa4848"
+        },
+        "grader_sha256": "5bba8a7490c5bcb48d080d8d065a242a88d7ce7dca3dbf427379b62d7117363b",
+        "candidate_sha256": "fa928f13d9b4a9e485083861b77e17808b484a226943ce4c8b14199c2bedfa1c",
+        "candidate_sha256_after": "fa928f13d9b4a9e485083861b77e17808b484a226943ce4c8b14199c2bedfa1c",
+        "runtime": {
+          "python": "3.12.8 (tags/v3.12.8:2dc476b, Dec  3 2024, 19:30:04) [MSC v.1942 64 bit (AMD64)]",
+          "executable": "C:\\Program Files\\Python\\python.exe",
+          "platform": "Windows-11-10.0.26100-SP0",
+          "implementation": "CPython",
+          "subprocess_flags": [
+            "-I",
+            "-B"
+          ],
+          "timeout_seconds": 5
+        },
+        "candidate_source": "import re\n\ndef authenticate(token):\n    if isinstance(token, str) and re.fullmatch(r'token:([A-Za-z0-9]{1,32})', token):\n        return token[6:]\n    raise ValueError('invalid token')\n",
+        "candidate_report": null
+      }
+    ],
+    "released-0.6.0": [
+      {
+        "case": "pagination-repair",
+        "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\pagination-repair",
+        "passed": true,
+        "checks": {
+          "input_integrity": {
+            "passed": true,
+            "errors": []
+          },
+          "code_scope": {
+            "passed": true,
+            "errors": []
+          },
+          "public_tests": {
+            "passed": true,
+            "completed": true,
+            "returncode": 0,
+            "stdout": "\nsdd-check-complete:4c74bf42f7f14c5ab0b9e1660577a1b4\n",
+            "error": ".\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+          },
+          "behavior": {
+            "passed": true,
+            "completed": true,
+            "returncode": 0,
+            "stdout": "\nsdd-check-complete:4b6dcbeae49c48d788396632eae2af92\n",
+            "error": ""
+          },
+          "candidate_identity": {
+            "passed": true,
+            "observed_sha256": [
+              "e4e0242127f47eec3361226dcb8aaba2912aaa6e7177171598810b539ba33431",
+              "e4e0242127f47eec3361226dcb8aaba2912aaa6e7177171598810b539ba33431",
+              "e4e0242127f47eec3361226dcb8aaba2912aaa6e7177171598810b539ba33431"
+            ]
+          }
+        },
+        "report": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\pagination-repair\\reports\\score-5f4d2f30ef8d4c7d827399e5e17baddd.json",
+        "original": {
+          "SPEC.md": "18d7604084d3f49dc5eb5cc971d31edc2890a66d893bc90414126028ad24c077",
+          "TASK.md": "5f882418ea668c37d9d135b96910591242bba394f82ec522f6f36527f3398bee",
+          "tests/test_public.py": "747d4eb0aa447cc1509903329b4139cc802bdc2f810e79f64eaab71eefe71852",
+          "src/service.py": "961925b4a9bafd9afb4a3f93b2e44da993ca57c2d8ceab386f7895837fd82800"
+        },
+        "grader_sha256": "5bba8a7490c5bcb48d080d8d065a242a88d7ce7dca3dbf427379b62d7117363b",
+        "candidate_sha256": "e4e0242127f47eec3361226dcb8aaba2912aaa6e7177171598810b539ba33431",
+        "candidate_sha256_after": "e4e0242127f47eec3361226dcb8aaba2912aaa6e7177171598810b539ba33431",
+        "runtime": {
+          "python": "3.12.8 (tags/v3.12.8:2dc476b, Dec  3 2024, 19:30:04) [MSC v.1942 64 bit (AMD64)]",
+          "executable": "C:\\Program Files\\Python\\python.exe",
+          "platform": "Windows-11-10.0.26100-SP0",
+          "implementation": "CPython",
+          "subprocess_flags": [
+            "-I",
+            "-B"
+          ],
+          "timeout_seconds": 5
+        },
+        "candidate_source": "def list_active(rows, page, size):\n    if isinstance(page, bool) or not isinstance(page, int) or page < 0:\n        raise ValueError('page must be an integer >= 0')\n    if isinstance(size, bool) or not isinstance(size, int) or size < 1:\n        raise ValueError('size must be an integer >= 1')\n    active_rows = [row for row in rows if row['active'] is True]\n    return active_rows[page * size:(page + 1) * size]\n",
+        "candidate_report": null
+      },
+      {
+        "case": "existing-feature",
+        "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\existing-feature",
+        "passed": true,
+        "checks": {
+          "input_integrity": {
+            "passed": true,
+            "errors": []
+          },
+          "code_scope": {
+            "passed": true,
+            "errors": []
+          },
+          "public_tests": {
+            "passed": true,
+            "completed": true,
+            "returncode": 0,
+            "stdout": "\nsdd-check-complete:05b9b466474840aea319805e2d034c14\n",
+            "error": ".\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+          },
+          "behavior": {
+            "passed": true,
+            "completed": true,
+            "returncode": 0,
+            "stdout": "\nsdd-check-complete:b666794afee2448e9633c23428313eb9\n",
+            "error": ""
+          },
+          "candidate_identity": {
+            "passed": true,
+            "observed_sha256": [
+              "97284a40b967d40b6ecd55a41866680e0c5d3a5f212c6f570909ee3ef0785beb",
+              "97284a40b967d40b6ecd55a41866680e0c5d3a5f212c6f570909ee3ef0785beb",
+              "97284a40b967d40b6ecd55a41866680e0c5d3a5f212c6f570909ee3ef0785beb"
+            ]
+          }
+        },
+        "report": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\existing-feature\\reports\\score-afd63ffc2aee4a93b18e671adbfe434a.json",
+        "original": {
+          "SPEC.md": "5ebb05ac57735ed3c81a06daad42df265eb3269bfeb36009b85426086bdc5ff7",
+          "TASK.md": "5f882418ea668c37d9d135b96910591242bba394f82ec522f6f36527f3398bee",
+          "tests/test_public.py": "e9758502df87d4830041c1e1d780345c5a4a0bb5f76b441a4cfe192374e2df69",
+          "src/service.py": "721c50951c8f80cadde1884e1547817ec5745b9d70d5d925643d15fa097cef60"
+        },
+        "grader_sha256": "5bba8a7490c5bcb48d080d8d065a242a88d7ce7dca3dbf427379b62d7117363b",
+        "candidate_sha256": "97284a40b967d40b6ecd55a41866680e0c5d3a5f212c6f570909ee3ef0785beb",
+        "candidate_sha256_after": "97284a40b967d40b6ecd55a41866680e0c5d3a5f212c6f570909ee3ef0785beb",
+        "runtime": {
+          "python": "3.12.8 (tags/v3.12.8:2dc476b, Dec  3 2024, 19:30:04) [MSC v.1942 64 bit (AMD64)]",
+          "executable": "C:\\Program Files\\Python\\python.exe",
+          "platform": "Windows-11-10.0.26100-SP0",
+          "implementation": "CPython",
+          "subprocess_flags": [
+            "-I",
+            "-B"
+          ],
+          "timeout_seconds": 5
+        },
+        "candidate_source": "def price_cents(unit_cents, quantity):\n    if type(unit_cents) is not int or type(quantity) is not int or min(unit_cents, quantity) < 0:\n        raise ValueError('invalid price')\n    return unit_cents * quantity\n\n\ndef discounted_price(unit_cents, quantity, rule):\n    if not isinstance(rule, dict) or set(rule) != {'percent', 'cap_cents'}:\n        raise ValueError('invalid rule')\n    percent = rule['percent']\n    cap_cents = rule['cap_cents']\n    if type(percent) is not int or not 0 <= percent <= 100:\n        raise ValueError('invalid rule')\n    if type(cap_cents) is not int or cap_cents < 0:\n        raise ValueError('invalid rule')\n    total = price_cents(unit_cents, quantity)\n    return total - min(total * percent // 100, cap_cents)\n",
+        "candidate_report": null
+      },
+      {
+        "case": "handoff-removal",
+        "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal",
+        "passed": true,
+        "checks": {
+          "input_integrity": {
+            "passed": true,
+            "errors": []
+          },
+          "code_scope": {
+            "passed": true,
+            "errors": []
+          },
+          "public_tests": {
+            "passed": true,
+            "completed": true,
+            "returncode": 0,
+            "stdout": "\nsdd-check-complete:c401c54735f747b2916aac7a64c9d80e\n",
+            "error": "..\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n"
+          },
+          "behavior": {
+            "passed": true,
+            "completed": true,
+            "returncode": 0,
+            "stdout": "\nsdd-check-complete:6e0b2c0ce29b410b95e866797af94ec8\n",
+            "error": ""
+          },
+          "candidate_identity": {
+            "passed": true,
+            "observed_sha256": [
+              "fa928f13d9b4a9e485083861b77e17808b484a226943ce4c8b14199c2bedfa1c",
+              "fa928f13d9b4a9e485083861b77e17808b484a226943ce4c8b14199c2bedfa1c",
+              "fa928f13d9b4a9e485083861b77e17808b484a226943ce4c8b14199c2bedfa1c"
+            ]
+          }
+        },
+        "report": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\released-0.6.0\\handoff-removal\\reports\\score-bdfc57c2ea6d4937bc2d5ed857604c8e.json",
+        "original": {
+          "SPEC.md": "76bc3a9ddfbe0250315887b050f9f38b55713d82d5cd04f4651c7897c82b2217",
+          "TASK.md": "5f882418ea668c37d9d135b96910591242bba394f82ec522f6f36527f3398bee",
+          "tests/test_public.py": "6fa630e981d0403f13c8ae54270581b656d7d8c16a6cbc994b260ac69a7e5c76",
+          "src/service.py": "eebb02bd1ea8362f53ee6f3872d6757c12bbf796920d3c44640a4fd4fbaa68b8",
+          "HANDOFF.md": "d0a56d97d53fb762a9c1df0071b6045b15069fdff34a9da8cd8860ad62aa4848"
+        },
+        "grader_sha256": "5bba8a7490c5bcb48d080d8d065a242a88d7ce7dca3dbf427379b62d7117363b",
+        "candidate_sha256": "fa928f13d9b4a9e485083861b77e17808b484a226943ce4c8b14199c2bedfa1c",
+        "candidate_sha256_after": "fa928f13d9b4a9e485083861b77e17808b484a226943ce4c8b14199c2bedfa1c",
+        "runtime": {
+          "python": "3.12.8 (tags/v3.12.8:2dc476b, Dec  3 2024, 19:30:04) [MSC v.1942 64 bit (AMD64)]",
+          "executable": "C:\\Program Files\\Python\\python.exe",
+          "platform": "Windows-11-10.0.26100-SP0",
+          "implementation": "CPython",
+          "subprocess_flags": [
+            "-I",
+            "-B"
+          ],
+          "timeout_seconds": 5
+        },
+        "candidate_source": "import re\n\ndef authenticate(token):\n    if isinstance(token, str) and re.fullmatch(r'token:([A-Za-z0-9]{1,32})', token):\n        return token[6:]\n    raise ValueError('invalid token')\n",
+        "candidate_report": null
+      }
+    ],
+    "revised-0.7.0": [
+      {
+        "case": "pagination-repair",
+        "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\revised-0.7.0\\pagination-repair",
+        "passed": true,
+        "checks": {
+          "input_integrity": {
+            "passed": true,
+            "errors": []
+          },
+          "code_scope": {
+            "passed": true,
+            "errors": []
+          },
+          "public_tests": {
+            "passed": true,
+            "completed": true,
+            "returncode": 0,
+            "stdout": "\nsdd-check-complete:32d7ee22caa64f9fbc08ef3c1c207787\n",
+            "error": ".\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+          },
+          "behavior": {
+            "passed": true,
+            "completed": true,
+            "returncode": 0,
+            "stdout": "\nsdd-check-complete:2b350871ee6e487e94ed116873f4c9d7\n",
+            "error": ""
+          },
+          "candidate_identity": {
+            "passed": true,
+            "observed_sha256": [
+              "e4e0242127f47eec3361226dcb8aaba2912aaa6e7177171598810b539ba33431",
+              "e4e0242127f47eec3361226dcb8aaba2912aaa6e7177171598810b539ba33431",
+              "e4e0242127f47eec3361226dcb8aaba2912aaa6e7177171598810b539ba33431"
+            ]
+          }
+        },
+        "report": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\revised-0.7.0\\pagination-repair\\reports\\score-4a0376dc45284c80ad9229a864e466f7.json",
+        "original": {
+          "SPEC.md": "18d7604084d3f49dc5eb5cc971d31edc2890a66d893bc90414126028ad24c077",
+          "TASK.md": "5f882418ea668c37d9d135b96910591242bba394f82ec522f6f36527f3398bee",
+          "tests/test_public.py": "747d4eb0aa447cc1509903329b4139cc802bdc2f810e79f64eaab71eefe71852",
+          "src/service.py": "961925b4a9bafd9afb4a3f93b2e44da993ca57c2d8ceab386f7895837fd82800"
+        },
+        "grader_sha256": "5bba8a7490c5bcb48d080d8d065a242a88d7ce7dca3dbf427379b62d7117363b",
+        "candidate_sha256": "e4e0242127f47eec3361226dcb8aaba2912aaa6e7177171598810b539ba33431",
+        "candidate_sha256_after": "e4e0242127f47eec3361226dcb8aaba2912aaa6e7177171598810b539ba33431",
+        "runtime": {
+          "python": "3.12.8 (tags/v3.12.8:2dc476b, Dec  3 2024, 19:30:04) [MSC v.1942 64 bit (AMD64)]",
+          "executable": "C:\\Program Files\\Python\\python.exe",
+          "platform": "Windows-11-10.0.26100-SP0",
+          "implementation": "CPython",
+          "subprocess_flags": [
+            "-I",
+            "-B"
+          ],
+          "timeout_seconds": 5
+        },
+        "candidate_source": "def list_active(rows, page, size):\n    if isinstance(page, bool) or not isinstance(page, int) or page < 0:\n        raise ValueError('page must be an integer >= 0')\n    if isinstance(size, bool) or not isinstance(size, int) or size < 1:\n        raise ValueError('size must be an integer >= 1')\n    active_rows = [row for row in rows if row['active'] is True]\n    return active_rows[page * size:(page + 1) * size]\n",
+        "candidate_report": null
+      },
+      {
+        "case": "existing-feature",
+        "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\revised-0.7.0\\existing-feature",
+        "passed": true,
+        "checks": {
+          "input_integrity": {
+            "passed": true,
+            "errors": []
+          },
+          "code_scope": {
+            "passed": true,
+            "errors": []
+          },
+          "public_tests": {
+            "passed": true,
+            "completed": true,
+            "returncode": 0,
+            "stdout": "\nsdd-check-complete:57cebcd4865c4a23aef0441c495ca018\n",
+            "error": ".\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+          },
+          "behavior": {
+            "passed": true,
+            "completed": true,
+            "returncode": 0,
+            "stdout": "\nsdd-check-complete:1fee20b865a04ab8abd8b89dcf78598c\n",
+            "error": ""
+          },
+          "candidate_identity": {
+            "passed": true,
+            "observed_sha256": [
+              "1a4ccd5017580d931516af286145ec8a2c59692035324a8397662222579e7706",
+              "1a4ccd5017580d931516af286145ec8a2c59692035324a8397662222579e7706",
+              "1a4ccd5017580d931516af286145ec8a2c59692035324a8397662222579e7706"
+            ]
+          }
+        },
+        "report": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\revised-0.7.0\\existing-feature\\reports\\score-be8c0b3d283a4a4995e0464398167695.json",
+        "original": {
+          "SPEC.md": "5ebb05ac57735ed3c81a06daad42df265eb3269bfeb36009b85426086bdc5ff7",
+          "TASK.md": "5f882418ea668c37d9d135b96910591242bba394f82ec522f6f36527f3398bee",
+          "tests/test_public.py": "e9758502df87d4830041c1e1d780345c5a4a0bb5f76b441a4cfe192374e2df69",
+          "src/service.py": "721c50951c8f80cadde1884e1547817ec5745b9d70d5d925643d15fa097cef60"
+        },
+        "grader_sha256": "5bba8a7490c5bcb48d080d8d065a242a88d7ce7dca3dbf427379b62d7117363b",
+        "candidate_sha256": "1a4ccd5017580d931516af286145ec8a2c59692035324a8397662222579e7706",
+        "candidate_sha256_after": "1a4ccd5017580d931516af286145ec8a2c59692035324a8397662222579e7706",
+        "runtime": {
+          "python": "3.12.8 (tags/v3.12.8:2dc476b, Dec  3 2024, 19:30:04) [MSC v.1942 64 bit (AMD64)]",
+          "executable": "C:\\Program Files\\Python\\python.exe",
+          "platform": "Windows-11-10.0.26100-SP0",
+          "implementation": "CPython",
+          "subprocess_flags": [
+            "-I",
+            "-B"
+          ],
+          "timeout_seconds": 5
+        },
+        "candidate_source": "def price_cents(unit_cents, quantity):\n    if type(unit_cents) is not int or type(quantity) is not int or min(unit_cents, quantity) < 0:\n        raise ValueError('invalid price')\n    return unit_cents * quantity\n\n\ndef discounted_price(unit_cents, quantity, rule):\n    if not isinstance(rule, dict) or set(rule) != {'percent', 'cap_cents'}:\n        raise ValueError('invalid discount rule')\n    percent, cap_cents = rule['percent'], rule['cap_cents']\n    if type(percent) is not int or not 0 <= percent <= 100:\n        raise ValueError('invalid discount rule')\n    if type(cap_cents) is not int or cap_cents < 0:\n        raise ValueError('invalid discount rule')\n    total = price_cents(unit_cents, quantity)\n    return total - min(total * percent // 100, cap_cents)\n",
+        "candidate_report": null
+      },
+      {
+        "case": "handoff-removal",
+        "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\revised-0.7.0\\handoff-removal",
+        "passed": true,
+        "checks": {
+          "input_integrity": {
+            "passed": true,
+            "errors": []
+          },
+          "code_scope": {
+            "passed": true,
+            "errors": []
+          },
+          "public_tests": {
+            "passed": true,
+            "completed": true,
+            "returncode": 0,
+            "stdout": "\nsdd-check-complete:ddef5279d70c4a39a02d25c7a4be6b41\n",
+            "error": "..\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n"
+          },
+          "behavior": {
+            "passed": true,
+            "completed": true,
+            "returncode": 0,
+            "stdout": "\nsdd-check-complete:f2afa50d89a94cc4a79872004a98a4ba\n",
+            "error": ""
+          },
+          "candidate_identity": {
+            "passed": true,
+            "observed_sha256": [
+              "fa928f13d9b4a9e485083861b77e17808b484a226943ce4c8b14199c2bedfa1c",
+              "fa928f13d9b4a9e485083861b77e17808b484a226943ce4c8b14199c2bedfa1c",
+              "fa928f13d9b4a9e485083861b77e17808b484a226943ce4c8b14199c2bedfa1c"
+            ]
+          }
+        },
+        "report": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\revised-0.7.0\\handoff-removal\\reports\\score-e9c6d1eb7ffd42f19e38861272eb567d.json",
+        "original": {
+          "SPEC.md": "76bc3a9ddfbe0250315887b050f9f38b55713d82d5cd04f4651c7897c82b2217",
+          "TASK.md": "5f882418ea668c37d9d135b96910591242bba394f82ec522f6f36527f3398bee",
+          "tests/test_public.py": "6fa630e981d0403f13c8ae54270581b656d7d8c16a6cbc994b260ac69a7e5c76",
+          "src/service.py": "eebb02bd1ea8362f53ee6f3872d6757c12bbf796920d3c44640a4fd4fbaa68b8",
+          "HANDOFF.md": "d0a56d97d53fb762a9c1df0071b6045b15069fdff34a9da8cd8860ad62aa4848"
+        },
+        "grader_sha256": "5bba8a7490c5bcb48d080d8d065a242a88d7ce7dca3dbf427379b62d7117363b",
+        "candidate_sha256": "fa928f13d9b4a9e485083861b77e17808b484a226943ce4c8b14199c2bedfa1c",
+        "candidate_sha256_after": "fa928f13d9b4a9e485083861b77e17808b484a226943ce4c8b14199c2bedfa1c",
+        "runtime": {
+          "python": "3.12.8 (tags/v3.12.8:2dc476b, Dec  3 2024, 19:30:04) [MSC v.1942 64 bit (AMD64)]",
+          "executable": "C:\\Program Files\\Python\\python.exe",
+          "platform": "Windows-11-10.0.26100-SP0",
+          "implementation": "CPython",
+          "subprocess_flags": [
+            "-I",
+            "-B"
+          ],
+          "timeout_seconds": 5
+        },
+        "candidate_source": "import re\n\ndef authenticate(token):\n    if isinstance(token, str) and re.fullmatch(r'token:([A-Za-z0-9]{1,32})', token):\n        return token[6:]\n    raise ValueError('invalid token')\n",
+        "candidate_report": null
+      }
+    ]
+  },
+  "limits": [
+    "One fresh executor per condition, three tasks sequentially in each context.",
+    "No-loaded-skill condition retained host catalog metadata and applicable bootstrap instructions.",
+    "Requested inherited default model was unchanged; resolved model identity and executor tokens were not observable.",
+    "External assertions were withheld by task instruction, not enforced access controls.",
+    "All conditions passed these small fixtures; no observed superiority or general efficiency gain."
+  ]
+}

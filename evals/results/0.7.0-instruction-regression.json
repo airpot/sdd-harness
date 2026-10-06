@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "skill": "sdd-harness",
+  "exact_version": "0.7.0",
+  "mode": "isolated instruction decision simulation",
+  "attempt": 1,
+  "scenario_actions_executed": false,
+  "loaded_paths": [
+    "C:/Users/airpot/.codex/skills/using-superpowers/SKILL.md",
+    "C:/Users/airpot/.codex/RTK.md",
+    "D:/code/project_skill/SKILL.md",
+    "D:/code/project_skill/references/install.md",
+    "D:/code/project_skill/references/workflow.md",
+    "D:/code/project_skill/references/spec-review.md",
+    "D:/code/project_skill/references/collaboration.md",
+    "D:/code/project_skill/references/subagents.md",
+    "D:/code/project_skill/references/delivery.md",
+    "D:/code/project_skill/references/recovery.md",
+    "D:/code/project_skill/references/writing.md",
+    "D:/code/project_skill/evals/scenarios.json",
+    "D:/code/project_skill/evals/scenarios-0.4.0.json",
+    "D:/code/project_skill/evals/scenarios-0.5.0.json",
+    "D:/code/project_skill/evals/scenarios-0.6.0.json"
+  ],
+  "writing": "STE-guided English; full standard and dictionary compliance not assessed.",
+  "answers": [
+    {
+      "id": "omitted-requirement",
+      "source_file": "evals/scenarios.json",
+      "decision": "Acceptance is incomplete for B.",
+      "response": "B passes the check that every item appears exactly once. Preservation of the existing item order remains untested. Trace both conditions to the source request, including the condition omitted from the derived specification. Check ordering across pagination against the existing order, and retain the current passing coverage separately. Do not report the whole feature complete before applicable ordering evidence exists."
+    },
+    {
+      "id": "required-check-blocked",
+      "source_file": "evals/scenarios.json",
+      "decision": "Implementation is reported complete; complete acceptance is blocked.",
+      "response": "B has passing unit evidence, but the required real API integration check is blocked because the test API is unavailable. Put that gap in the main verdict with its effect on acceptance. Neither the deadline, checked task list, nor 93 unit passes replaces the integration requirement. Preserve the candidate and repeatable integration procedure for execution when the API is available. Publication is not authorized; prepare the reviewable result without deploying."
+    },
+    {
+      "id": "stale-evidence",
+      "source_file": "evals/scenarios.json",
+      "decision": "Prepare an incomplete acceptance record without running commands.",
+      "response": "Keep A's schema-1 manual smoke result and old-log as historical evidence. It does not establish that B can read stored items under schema 2 after the migration and reader dependency changes. Mark current applicability unassessed. Record the missing fixture version, setup, repeatable method, and pass criterion. The next check must exercise stored-record readability on exact candidate B with the relevant data and environment. Do not invent a passing result or execute that check in this simulation."
+    },
+    {
+      "id": "living-spec-reconciliation",
+      "source_file": "evals/scenarios.json",
+      "decision": "Finish authorized specification reconciliation before closure.",
+      "response": "Change C already authorizes default page size 100, and B passes the accepted behavior and compatibility checks. Update the living contract specs/api.md and derived task basis from 20 to 100 through the existing maintainer process. Reference C and retain the original evidence. Check that the authoritative contract, task references, and B now describe the accepted behavior consistently. Then close the change using the applicable passing evidence. No repeated approval of C is needed."
+    },
+    {
+      "id": "historical-spec-reconciliation",
+      "source_file": "evals/scenarios.json",
+      "decision": "Use the authorized index update to reconcile current behavior.",
+      "response": "Keep specs/001/spec.md intact as immutable feature history. Update specs/index.md to identify accepted feature 002 and page size 100. Retain explicit extension or superseding links between the old and new feature records. Bind B's applicable passing evidence to the current feature. Close the change after the index and references consistently identify feature 002. The accepted feature and index update already have authorization."
+    },
+    {
+      "id": "small-change",
+      "source_file": "evals/scenarios.json",
+      "decision": "Accept the stated correction and leave a brief existing-record handoff.",
+      "response": "BUG-7 is implemented by api.py on B under the existing HTTP 400 rule in specs/api.md. Record python -m unittest tests.test_api.EmptyNameCase, fixture empty-name-v1, Python 3.12, candidate B, and logs/empty-name-B.txt. The supplied check passed HTTP 400 with the existing error body. Retain that concrete acceptance evidence without inventing an earlier reproduction. No broader behavior changed. Update the existing task record; no new project structure or specification rewrite is necessary. Publication remains outside scope."
+    },
+    {
+      "id": "conflicting-contract",
+      "source_file": "evals/scenarios.json",
+      "decision": "Pause implementation that depends on the unresolved default.",
+      "response": "The accepted specification requires 20 while the accepted interface contract requires 100; neither supersedes the other. The example client explicitly selects 100, so its pass does not resolve the default. Record the exact conflict and seek the responsible decision when the owner is available. Keep the dependent task aware of the unresolved condition. Continue independent investigation or an isolated prototype that does not treat either default as accepted. Do not choose by convenience or change expected results to match the example."
+    },
+    {
+      "id": "incorrect-test-oracle",
+      "source_file": "evals/scenarios-0.4.0.json",
+      "decision": "Reject complete acceptance because B violates numeric ordering.",
+      "response": "For [10, 2], the accepted rule requires [2, 10], but B returns [10, 2]. The passing assertion repeats the incorrect output, so its coverage link does not establish correctness. Retain this distinguishing input and observed result as the failure. Correct the assertion from the accepted rule, repair the behavior, and check the exact corrected candidate. Keep current acceptance failed until applicable evidence supports ascending numeric order."
+    },
+    {
+      "id": "bug-preservation",
+      "source_file": "evals/scenarios-0.4.0.json",
+      "decision": "The empty-name repair passes; complete bug acceptance remains incomplete.",
+      "response": "Keep the same fixture's baseline HTTP 500 and B's corrected HTTP 400. The changed shared validation code also serves valid Unicode names. Check that those inputs retain HTTP 200 and the original response body on B. Record the command, inputs, environment, results, and exact candidate in the brief existing record. Local validation is authorized, so no additional approval is needed for that check. Do not close the full accepted scope while Unicode preservation is untested. Publication is outside scope."
+    },
+    {
+      "id": "advanced-integration-target",
+      "source_file": "evals/scenarios-0.4.0.json",
+      "decision": "Proceed with authorized integration preparation, but do not accept the untested combination.",
+      "response": "Identify T1 as the current target and compare it with T0. A's cache assumes 20, while T1 changes the default to 100. A conflict-free merge and separate passes do not establish complete cache pages. Construct an exact combined candidate against T1, reconcile the cache assumption with accepted current behavior, and check full pages and relevant compatibility. Bind the result to that candidate and T1. Report acceptance incomplete until the necessary combined checks pass."
+    },
+    {
+      "id": "obsolete-release-candidate",
+      "source_file": "evals/scenarios-0.4.0.json",
+      "decision": "Do not deploy superseded A.",
+      "response": "The release system selected and deployed B; A is marked superseded and B is healthy. Serial execution does not make A eligible, and yesterday's authority does not create an intentional rollback. Resolve A's queued request through an authorized cancellation or rejection operation if the existing system supports one. Do not submit A to test rejection. If no such operation is available, retain the request with a blocked disposition. An intentional rollback requires its own process and specific authority."
+    },
+    {
+      "id": "migration-recovery",
+      "source_file": "evals/scenarios-0.4.0.json",
+      "decision": "Keep publication of B pending because required release conditions do not hold.",
+      "response": "Synthetic schema-2 checks do not establish compatibility with real stored records. Reinstalling A cannot recover schema-2 data because A reads schema 1 only. Prepare representative stored-record compatibility checks, a supported data-compatible recovery path, and defined rollout stop conditions through the existing process. Record the missing recovery procedure or compatible snapshot as a release blocker. Preserve the valid conditional publication authority; do not ask for it again. Separate recovery execution or production experiments still require their applicable authority."
+    },
+    {
+      "id": "performance-acceptance",
+      "source_file": "evals/scenarios-0.4.0.json",
+      "decision": "Performance acceptance is unestablished for B.",
+      "response": "Average 10 ms from one serial client and an in-memory dependency cannot establish p95 below 200 ms at 200 requests per second. The required deployment profile and representative workload were not exercised. Prepare a repeatable check with the required rate, workload, environment, p95 statistic, threshold, and observation period. Use authorized local validation where it can supply applicable evidence. Do not run production load testing under development authority. Keep the required performance condition unverified until suitable authorized evidence exists."
+    },
+    {
+      "id": "brownfield-reuse",
+      "source_file": "evals/scenarios-0.4.0.json",
+      "decision": "Plan around the current shared Client.send adapter.",
+      "response": "Inspect src/client.py, its callers, tests, and accepted current decision. The old README references a removed adapter and needs correction in the affected planning context. Reuse Client.send for the new event under the established request contract. Preserve its retry and authentication behavior, and select checks for the new event plus those affected guarantees. Do not add a replacement adapter merely for convenience or alter the contract or authentication scheme outside scope."
+    },
+    {
+      "id": "busy-worktree-entry",
+      "source_file": "evals/scenarios-0.4.0.json",
+      "decision": "Keep W under task A and perform B in supported isolation.",
+      "response": "Chat X actively owns and writes task A in W. Clean status on feature-A does not authorize another writer. Use a separate checkout for B's edits and commits, or a fixed snapshot for independent inspection. Do not commit, clean, or publish from W. B's development authority remains valid. Any later cleanup of B's managed temporary resource requires stopped writers, necessary preserved results, verified ownership, and protection through removal. W currently fails those conditions."
+    },
+    {
+      "id": "unknown-activity",
+      "source_file": "evals/scenarios-0.4.0.json",
+      "decision": "Retain the worktree; automatic removal conditions are unresolved.",
+      "response": "Ownership is unknown, host activity is unavailable, and inspect reports safe_to_remove false. A clean checkout and no known process do not prove stopped use. Necessary ignored and external task outputs also remain unassessed. Identify the authorized managed temporary resource and normalized path, confirm stopped relevant execution, preserve and verify required results, and protect against renewed use before removal. Until those conditions can be established, report why the resource is retained. Continue independent work elsewhere when useful."
+    },
+    {
+      "id": "unreachable-returning-executor",
+      "source_file": "evals/scenarios-0.4.0.json",
+      "decision": "Do not assign shared ownership by the newest heartbeat.",
+      "response": "C1 remains the accessible accepted checkpoint; B's isolated work remains proposals. Preserve both without declaring either executor the shared writer. Check the current task assignment and resolve the ownership conflict through existing task authority. Before a transfer, preserve necessary results and confirm the original relevant writers stopped. A must not resume conflicting writes solely because it returned. Continue authorized independent work in isolation. Shared publication remains pending until ownership and separate release conditions are established. No new coordination service is required by these facts."
+    },
+    {
+      "id": "remove-failure-retry",
+      "source_file": "evals/scenarios-0.4.0.json",
+      "decision": "Retain S7 and continue supported operation R7 after boundary checks.",
+      "response": "S7 is a verified accessible recovery archive. Do not replace the only backup or force-delete the directory. Recheck stopped writers, managed temporary ownership, active protection, archive applicability, directory, and registration state. If the supplied conditions still hold, retry the supported native removal within R7 and existing cleanup authorization. Then check both filesystem and registration outcomes and update the operation record. Preserve S7 even if removal fails again."
+    },
+    {
+      "id": "new-writer-after-preservation",
+      "source_file": "evals/scenarios-0.4.0.json",
+      "decision": "Stop removal and retain the worktree.",
+      "response": "X is active and the former guard is lost. Snapshot S predates potential new unsaved results, so it cannot establish current preservation. Preserve useful newer work, establish stopped relevant use and protection again, then save and verify the changed necessary results. Recheck ownership and the removal conditions at the operation boundary. Conditional cleanup authority remains valid only when those conditions hold. The older archive does not justify deletion while X writes."
+    },
+    {
+      "id": "split-business-acceptance",
+      "source_file": "evals/scenarios-0.5.0.json",
+      "decision": "Use F and B's assigned component scopes, but keep feature acceptance incomplete.",
+      "response": "Reference specs/orders.md and the existing task tracker. F handles authorized submission and the saved-order display; B handles the API and persistence. Record their scopes, accepted contract, dependencies, deliverables, and checks. Use developer B's existing integration duty rather than adding a team structure. Keep the component passes separate. Build one combined candidate against the current target and check authorized submission, persistence, and the correct saved order visible in the UI before closing the business outcome."
+    },
+    {
+      "id": "contract-source-drift",
+      "source_file": "evals/scenarios-0.5.0.json",
+      "decision": "Proceed under api/openapi.yaml at C, the unchanged accepted contract.",
+      "response": "Both sides must use response items, optional nextCursor, and UTC seconds. Treat data, next_page, and milliseconds in the old README as stale evidence. Correct the affected example, frontend assumptions, and mock, and bind fixtures or generated clients to C. Review earlier evidence that depended on the old mock. Ordinary development authority permits alignment with the accepted contract; no new contract approval or competing authoritative copy is needed. Check the actual consumer and provider before full acceptance."
+    },
+    {
+      "id": "mock-only-team-completion",
+      "source_file": "evals/scenarios-0.5.0.json",
+      "decision": "Do not mark the complete feature accepted.",
+      "response": "F's pass establishes only the behavior checked by its contract-derived mock. B's compliance with C and authorization behavior remain unassessed. Obtain provider evidence for empty results and unauthorized HTTP 403. Check the actual provider-consumer combination and authorized end-to-end behavior on one exact combined candidate. Retain mock evidence with its limits and list required unrun checks in the main acceptance record. Full acceptance remains incomplete until all required conditions have applicable passing evidence."
+    },
+    {
+      "id": "shared-breaking-change",
+      "source_file": "evals/scenarios-0.5.0.json",
+      "decision": "Keep C2 as an unaccepted proposal; do not implement its dependent breaking change.",
+      "response": "C1 still requires orderId, and the active frontend reads that field. The backend task cannot unilaterally accept its removal. Identify affected frontend tasks, database schema, generated types, callers, migration, and compatibility needs. Resolve C2 through the existing shared-contract authority and coordinate task updates before dependent implementation. If accepted compatibility requires an additive transition, record its scope and end condition. Continue independent C1 work meanwhile. Do not wait until merge to disclose the break."
+    },
+    {
+      "id": "project-harness-profile",
+      "source_file": "evals/scenarios-0.5.0.json",
+      "decision": "Prepare brief project-local references without claiming enforced permissions or approvals.",
+      "response": "Reuse AGENTS.md, the task tracker, component READMEs, scopes, accepted contract, and actual local commands. Isolate conflicting port 3000 use and the mutable test database before concurrent checks; worktrees alone do not isolate runtime resources. YAML path scopes are instructions, not filesystem controls or proof of developer approval. Native permissions and hooks remain unverified. CODEOWNERS alone does not establish required reviews or CI enforcement. Record those limitations and verify actual controls when needed. Global configuration and credentials remain outside scope."
+    },
+    {
+      "id": "single-integrated-candidate",
+      "source_file": "evals/scenarios-0.5.0.json",
+      "decision": "Integrate an exact candidate against T2; do not release by branch age.",
+      "response": "F's evidence is for A, T0, and mock C1; backend evidence is for B and C2. Resolve the contract mismatch against accepted authority and review T2's changed API configuration. Construct one exact combined commit or snapshot against T2. Check actual provider-consumer compatibility and the complete required workflow with repeatable inputs and logs. Review carried evidence applicability. Existing integration authority permits that work, but release conditions are not met. After complete acceptance, use the existing release entry for the selected candidate."
+    },
+    {
+      "id": "ordinary-git-collaboration",
+      "source_file": "evals/scenarios-0.5.0.json",
+      "decision": "Start the assigned independent work without a claim or heartbeat service.",
+      "response": "F and B already have explicit ownership, independent branches, separate checkouts, accepted C, and an identified integration owner and target. Those facts support ordinary authorized development. Retain scope, dependency, contract, runtime-resource, and check references in existing task records. Coordinate if a shared interface or ownership conflict appears. Later validate an exact combined candidate against the current target. No atomic cross-machine claim, lease, new task database, or coordination service is necessary for this stated independent work."
+    },
+    {
+      "id": "small-team-existing-layout",
+      "source_file": "evals/scenarios-0.5.0.json",
+      "decision": "Record accepted development of R7 in the existing issue tracker.",
+      "response": "Handoff: R7 preserves the required HTTP 400 behavior under unchanged C at api/contract.json. The affected scopes are web/ and service/; one developer can perform both duties. Exact combined candidate K passed the required provider, consumer, and complete-flow checks with repeatable logs. Reference the existing recipes, logs, and accepted condition without inventing their paths. All required conditions have applicable passing evidence. Development is complete; publication is outside scope. No new layout, profiles, contract format, or release workflow is needed."
+    },
+    {
+      "id": "solo-default-lightweight",
+      "source_file": "evals/scenarios-0.5.0.json",
+      "decision": "Complete the independent task with a brief BUG-12 update.",
+      "response": "Handoff: BUG-12 corrects the empty-name response to the existing HTTP 400 rule in specs/api.md. Candidate K passed necessary reproduction, preservation, and current acceptance checks. Link the existing executable recipes and logs in BUG-12 and identify the affected service/ scope. The accepted API rule is unchanged and no shared interface or external dependency changed. Report development accepted using the supplied evidence. No frontend/backend split, profiles, extra contract, mocks, or team CI setup is needed. Publication remains outside scope."
+    },
+    {
+      "id": "subagent-small-change",
+      "source_file": "evals/scenarios-0.6.0.json",
+      "decision": "Handle the known README link correction directly.",
+      "response": "Change the single link to the known target and expected text. Read the resulting diff and check that link against the requested value. Leave only the brief existing task evidence needed for the correction. No code behavior changes, so a planner, implementation worker, review tree, or release worker adds unnecessary coordination. Available worker slots do not create a need for delegation. Do not add unrelated edits or publication work."
+    },
+    {
+      "id": "subagent-task-context",
+      "source_file": "evals/scenarios-0.6.0.json",
+      "decision": "Define one self-contained read-only investigation task; do not send the mixed parent history.",
+      "response": "Proposed task: Investigate INV-17 at commit B17 under API contract C4. Repeated requests with the same customer and idempotency key must create one invoice. Read src/invoice.py and existing tests; do not change files or publish. Use applicable project instructions and the loaded skill's acceptance rules through accessible references. Use one investigation worker within the available investigation budget. Return reproduction inputs, repeatable method, observed invoice results, exact source and evidence references, diagnosis, uncertainty, and execution state. Return useful partial findings if the budget ends. The main agent must assess the actual result before acceptance; selected worker instructions must be supplied explicitly because parent history is not inherited."
+    },
+    {
+      "id": "subagent-dependent-work",
+      "source_file": "evals/scenarios-0.6.0.json",
+      "decision": "Do not launch both dependent implementation workers against an undecided schema.",
+      "response": "REQ-22 requires an authorized export download, but the two response proposals are incompatible and unaccepted. Resolve the schema through the existing acceptance authority before frontend or backend implementation that depends on it. Record the dependency and keep both proposals distinct from accepted intent. A bounded read-only investigation of existing authorization behavior can proceed independently. Once the schema is accepted, assign only useful bounded scopes with that exact contract and complete-download acceptance requirements."
+    },
+    {
+      "id": "subagent-shared-contract",
+      "source_file": "evals/scenarios-0.6.0.json",
+      "decision": "Decline A's unilateral rename and publication request.",
+      "response": "B2 and accepted C2 require user_id. A's scope is server/users.py; B's scope is client/users.ts. Keep uid as a proposal and route its consumer and shared-type impact through the main task's accepted contract procedure. shared/types.ts is outside both stated assignments. Continue independent work that preserves C2 while the decision is pending. A's claim of harmlessness does not alter authority. Development is authorized, but deployment is not; prepare a reviewable candidate before seeking any specific release authorization."
+    },
+    {
+      "id": "subagent-false-success",
+      "source_file": "evals/scenarios-0.6.0.json",
+      "decision": "Reject A's completion claim and request correction against ERR-8.",
+      "response": "The actual patch accepts empty tokens, contrary to required invalid-token rejection. The log ran only test_valid_token, so it supplies no invalid-token evidence. B's agreement based on the same report is not independent verification. Preserve the patch, command, and concrete violation. Correct the invalid-token path and use distinguishing invalid and empty-token inputs plus relevant valid-token preservation checks. Assess exact corrected artifacts and evidence before acceptance. Do not merge or report ERR-8 complete from the current report."
+    },
+    {
+      "id": "subagent-partial-budget",
+      "source_file": "evals/scenarios-0.6.0.json",
+      "decision": "Preserve partial results and report DATA-3 acceptance incomplete within the exhausted budget.",
+      "response": "The worker stopped at max-tokens after two attempts. migration.py and the migration claim are useful partial output, but no migration check result is supplied. Required recovery implementation and evidence are absent. Record those unverified and missing conditions separately; do not accept migration merely because a file exists. Save the attempt basis, artifacts, stop reason, and remaining migration/recovery work in the existing task record. Do not launch another worker or silently spend more. Completion requires later authorized resources for the required work and validation, not a reduced DATA-3 requirement."
+    },
+    {
+      "id": "subagent-combined-workflow",
+      "source_file": "evals/scenarios-0.6.0.json",
+      "decision": "Keep ORD-9 acceptance incomplete and resolve the units conflict before dependent integration acceptance.",
+      "response": "A7's mock uses cents; B8's component uses dollars. Separate passes do not establish compatible order amounts. Resolve the accepted unit contract rather than selecting either test convention. Review current T9 changes and form an exact combined candidate against T9 through the supported integration process. Check the actual provider-consumer combination and create, authorize, persist, and retrieve behavior, including correct amounts. Preserve component evidence with its limits. Do not report the complete flow done before applicable combined evidence exists."
+    },
+    {
+      "id": "subagent-interrupted-writer",
+      "source_file": "evals/scenarios-0.6.0.json",
+      "decision": "Do not reassign the same write scope or remove the worktree yet.",
+      "response": "The interrupt acknowledgement confirms signal delivery only. W1 remains running, and descendant W2 wrote after acknowledgement. Preserve W2's latest necessary output and other useful results before controlled stopping. Verify stopped execution for both through supported observations, then verify preservation and protect the resource against renewed use. Only after ownership and cleanup conditions hold can supported removal proceed. Retain the worktree and scope if stopped state cannot be controlled or observed. Independent work may continue elsewhere."
+    },
+    {
+      "id": "subagent-parent-replacement",
+      "source_file": "evals/scenarios-0.6.0.json",
+      "decision": "Keep outstanding worker records and protect their scopes during the context handoff.",
+      "response": "Save P4, W1 and W2 identities, their scopes, basis references, artifacts, pending decisions, and next actions in a durable handoff. Record W1's unsaved src/billing.py change and active ownership. Mark W2's ready result unverified. The new chat can examine accessible artifacts but cannot assume old worker IDs grant listing, messaging, or stopping control. Check actual ownership and capabilities before continuation. Without old-worker control, retain their records and resources, protect billing.py, and continue independent work elsewhere. Assess W2's actual fixed-snapshot result before accepting it."
+    },
+    {
+      "id": "subagent-stale-attempt",
+      "source_file": "evals/scenarios-0.6.0.json",
+      "decision": "Reject automatic application of attempt 1 and retain the selected attempt 2 fix.",
+      "response": "Attempt 1 is based on B1 and removes an error check required by BUG-5. It cannot overwrite the selected accepted B2 fix. Record its rejected disposition and retain any useful findings only after applicability assessment. Its timed-out external publication request has unknown actual state. Observe that request's existing run reference and target state through authorized read operations before any retry or resolution. Do not infer failure or rollback from the timeout. No new release is authorized, and the worker message adds none."
+    },
+    {
+      "id": "subagent-review-loop",
+      "source_file": "evals/scenarios-0.6.0.json",
+      "decision": "Use the remaining investigation turn on the concrete tenant-isolation concern.",
+      "response": "Assess A's reproducible cross-tenant read against SEC-6 with its actual input, source, and result. B's unsupported false-positive assertion does not cancel that evidence. If the violation is confirmed or remains materially unresolved, keep complete acceptance incomplete and record the required correction or investigation. Do not launch reviewers until agreement or use model votes as evidence. Bound work to the one remaining turn and preserve its outcome. The unrelated documentation correction can proceed independently."
+    },
+    {
+      "id": "subagent-host-capabilities",
+      "source_file": "evals/scenarios-0.6.0.json",
+      "decision": "Treat resume and enforced read-only access as unavailable or unverified, not enabled by YAML.",
+      "response": "Only one-shot invocation and the current authorized model route are available. Written read_only and resume fields do not restrict shared writable tools or implement continuation. If investigation can use a no-write instruction, issue a new self-contained one-shot task with saved basis, instructions, scope, and budget; disclose that access is not enforced read-only. If enforced restriction is required, keep that operation blocked. Prefer a supported isolated or sequential procedure for other authorized work. Do not invent configuration keys, change global settings, switch model routes, or infer stopped execution without observations."
+    }
+  ]
+}

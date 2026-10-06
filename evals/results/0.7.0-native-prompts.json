@@ -1,0 +1,5 @@
+{
+  "explicit": "Use $sdd-harness for a read-only capability check. Read the actual full entry and the reference for assessing an outstanding worker result. Report the exact version, entry path, reference read, and the main agent's next verification action from TASK.md and HANDOFF.md. Do not modify files, invoke recovery, install software, start workers, or publish anything. Do not claim unavailable worker control.\n",
+  "implicit": "Resume the project task in TASK.md from HANDOFF.md. A worker's result is ready but unverified. Review the accepted task and identify the next evidence and acceptance action. Use relevant available project workflow guidance. This run is read-only: do not modify files, start workers, install software, publish anything, or perform recovery. Report unavailable native controls honestly.\n",
+  "negative": "Explain the difference between Git branches and worktrees in two sentences. Do not inspect files, use tools, or start a project workflow.\n"
+}

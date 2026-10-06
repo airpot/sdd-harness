@@ -1,0 +1,15 @@
+{
+  "version": "0.7.0",
+  "purpose": "Observe skill selection and conditional loading separately from task correctness.",
+  "cases": [
+    {"id":"solo-change","should_trigger":true,"prompt":"Fix this project's pagination defect against its accepted specification and show the actual validation result.","expected_route":"solo"},
+    {"id":"handoff","should_trigger":true,"prompt":"Continue the project from its task handoff. Check which results remain applicable before changing code.","expected_route":"continuation"},
+    {"id":"worker-result","should_trigger":true,"prompt":"A worker returned a patch and passing-test report. Assess it against the project requirement and integrate it if acceptable.","expected_route":"subagents"},
+    {"id":"release","should_trigger":true,"prompt":"Prepare the authorized release of this project's selected candidate. Verify current eligibility and necessary evidence.","expected_route":"delivery"},
+    {"id":"recovery","should_trigger":true,"prompt":"Assess this completed project's worktree for authorized recoverable removal. Check ownership and preserved results first.","expected_route":"recovery"},
+    {"id":"explicit","should_trigger":true,"prompt":"Use $sdd-harness to make a small change against this project's accepted requirements.","expected_route":"solo"},
+    {"id":"explanation","should_trigger":false,"prompt":"Explain the difference between Git branches and worktrees. Do not inspect or modify a project.","expected_route":null},
+    {"id":"translation","should_trigger":false,"prompt":"Translate this sentence into English: 今天的会议推迟到下午。", "expected_route":null},
+    {"id":"general-question","should_trigger":false,"prompt":"What does specification-driven development mean? Give a brief explanation, without starting a project workflow.","expected_route":null}
+  ]
+}

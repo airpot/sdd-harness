@@ -87,6 +87,26 @@ Flag added behavior that lacks an accepted basis.
 For excluded or deferred scope, record the source, impact, and project-authorized disposition.
 Do not hide a required condition by removing its coverage row.
 
+## Check requirement change operations
+
+Use the project's existing delta format, identity links, or explicit accepted change description.
+Do not require another schema or requirement catalog.
+
+| Accepted operation | Necessary behavior check |
+| --- | --- |
+| Add | Check the new behavior and relevant interactions with existing behavior. |
+| Modify | Check the changed conditions and behavior that remains required. |
+| Remove | Check absence of the obsolete behavior, including remaining executable paths. |
+| Rename | Follow the old and new identity. Check preserved behavior unless an accepted modification changes it. |
+
+For removal, inspect affected callers, tests, configuration, generated files, and persisted data when relevant.
+Accepted deprecation or migration can require a temporary compatibility path.
+Record its accepted scope and end condition. Do not invent a transition to retain removed behavior.
+An old positive test can be obsolete evidence after accepted removal.
+Update affected assertions through the accepted change, rather than preserving a contradictory expectation.
+Renaming a requirement does not require renaming implementation symbols unless the accepted contract specifies that change.
+Check transitions and migration by risk. Do not require a migration document for a harmless name change.
+
 ## Review before acceptance
 
 Check completeness, correctness, and consistency against the current candidate.

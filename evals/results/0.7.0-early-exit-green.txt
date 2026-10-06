@@ -1,0 +1,26 @@
+Command: C:\Program Files\Python\python.exe -B -m unittest discover -s tests -p test_coding_tasks.py -v
+Exit code: 0
+
+test_candidate_side_effects_cannot_pass_a_stale_snapshot (test_coding_tasks.CodingTasksTest.test_candidate_side_effects_cannot_pass_a_stale_snapshot) ... ok
+test_cli_returns_json_and_nonzero_failed_score (test_coding_tasks.CodingTasksTest.test_cli_returns_json_and_nonzero_failed_score) ... ok
+test_discount_must_reuse_existing_price_function (test_coding_tasks.CodingTasksTest.test_discount_must_reuse_existing_price_function) ... ok
+test_early_successful_behavior_exit_fails_all_cases (test_coding_tasks.CodingTasksTest.test_early_successful_behavior_exit_fails_all_cases) ... ok
+test_execute_distinguishes_completion_from_successful_exit (test_coding_tasks.CodingTasksTest.test_execute_distinguishes_completion_from_successful_exit) ... ok
+test_links_are_rejected_before_execution (test_coding_tasks.CodingTasksTest.test_links_are_rejected_before_execution) ... skipped "host does not permit symlink creation: [WinError 1314] 客户端没有所需的特权。: 'C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-coding-test-211oyjj7\\\\fixture\\\\src\\\\service.py' -> 'C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-coding-test-211oyjj7\\\\fixture\\\\linked.py'"
+test_malformed_marker_cases_return_value_error_and_cli_two (test_coding_tasks.CodingTasksTest.test_malformed_marker_cases_return_value_error_and_cli_two) ... ok
+test_marker_cannot_rebase_original_input_hashes (test_coding_tasks.CodingTasksTest.test_marker_cannot_rebase_original_input_hashes) ... ok
+test_originals_fail_and_correct_solutions_pass_without_losing_baselines (test_coding_tasks.CodingTasksTest.test_originals_fail_and_correct_solutions_pass_without_losing_baselines) ... ok
+test_public_and_behavior_checks_require_completion (test_coding_tasks.CodingTasksTest.test_public_and_behavior_checks_require_completion) ... ok
+test_public_tests_alone_do_not_prove_pagination_correctness (test_coding_tasks.CodingTasksTest.test_public_tests_alone_do_not_prove_pagination_correctness) ... ok
+test_report_binds_candidate_hash_and_runtime (test_coding_tasks.CodingTasksTest.test_report_binds_candidate_hash_and_runtime) ... ok
+test_spec_or_public_test_weakening_fails_even_with_correct_code (test_coding_tasks.CodingTasksTest.test_spec_or_public_test_weakening_fails_even_with_correct_code) ... ok
+test_timeout_is_a_behavior_failure_and_keeps_report (test_coding_tasks.CodingTasksTest.test_timeout_is_a_behavior_failure_and_keeps_report) ... ok
+test_unexpected_code_scope_fails (test_coding_tasks.CodingTasksTest.test_unexpected_code_scope_fails) ... ok
+test_unused_temp_path_and_valid_marker_required (test_coding_tasks.CodingTasksTest.test_unused_temp_path_and_valid_marker_required) ... ok
+test_windows_junction_is_rejected_before_execution (test_coding_tasks.CodingTasksTest.test_windows_junction_is_rejected_before_execution) ... ok
+test_wrong_discount_and_handoff_bypass_are_rejected (test_coding_tasks.CodingTasksTest.test_wrong_discount_and_handoff_bypass_are_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 7.308s
+
+OK (skipped=1)

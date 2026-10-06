@@ -1,0 +1,246 @@
+{
+  "label": "0.7.0 actual coding baseline with no sdd-harness skill loaded",
+  "started_utc": "2026-10-06 05:27:58 UTC",
+  "host_model": "Existing host/default model; model identifier not observable through task tools",
+  "loaded_skill_names": [
+    {
+      "name": "superpowers:using-superpowers",
+      "path": "C:/Users/airpot/.codex/skills/using-superpowers/SKILL.md",
+      "disposition": "Read bootstrap; its SUBAGENT-STOP directs dispatched subagents to skip this skill. No workflow skill selected."
+    }
+  ],
+  "sdd_harness_loaded": false,
+  "isolation_limit": "Host supplied skill catalog includes sdd-harness metadata; its instructions, audit, eval implementation, criteria, prior reports, results, coding_tasks.py, grader/tests/test_coding_tasks.py, and solutions were not read.",
+  "commands": [
+    {
+      "case": "pagination-repair",
+      "phase": "before",
+      "command": "python -B -c \"import sys,unittest; sys.path.insert(0,'src'); unittest.main(module=None,argv=['unittest','discover','-s','tests'])\"",
+      "working_directory": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\pagination-repair",
+      "result": {
+        "chunk_id": "3c1f5a",
+        "wall_time_seconds": 0.2197694,
+        "exit_code": 0,
+        "original_token_count": 26,
+        "output": ".\r\n----------------------------------------------------------------------\r\nRan 1 test in 0.000s\r\n\r\nOK\r\n"
+      }
+    },
+    {
+      "case": "pagination-repair",
+      "phase": "before_spec_probe",
+      "command": "python -B -c \"import sys; sys.path.insert(0,'src'); from service import list_active; rows=[{'active':False},{'active':True},{'active':True}]; assert list_active(rows,0,1)==[rows[1]], 'filter before pagination'\"",
+      "result": {
+        "chunk_id": "ff5253",
+        "wall_time_seconds": 0.1987314,
+        "exit_code": 1,
+        "original_token_count": 30,
+        "output": "Traceback (most recent call last):\r\n  File \"<string>\", line 1, in <module>\r\nAssertionError: filter before pagination\r\n"
+      }
+    },
+    {
+      "case": "pagination-repair",
+      "phase": "after_public",
+      "command": "python -B -c \"import sys,unittest; sys.path.insert(0,'src'); unittest.main(module=None,argv=['unittest','discover','-s','tests'])\"",
+      "working_directory": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\pagination-repair",
+      "result": {
+        "chunk_id": "cb9254",
+        "wall_time_seconds": 0.2299321,
+        "exit_code": 0,
+        "original_token_count": 26,
+        "output": ".\r\n----------------------------------------------------------------------\r\nRan 1 test in 0.000s\r\n\r\nOK\r\n"
+      }
+    },
+    {
+      "case": "pagination-repair",
+      "phase": "after_spec_probes",
+      "command": "@'\nimport copy\nimport sys\nsys.path.insert(0, 'src')\nfrom service import list_active\n\nrows = [{'active': False}, {'active': True, 'id': 1}, {'active': 1},\n        {'active': True, 'id': 2}, {'active': 'yes'},\n        {'active': True, 'id': 3}, {'active': None}]\nbefore = copy.deepcopy(rows)\nexpected = [rows[1], rows[3], rows[5]]\nchecks = 0\nfor size in range(1, 6):\n    collected = []\n    for page in range(0, 6):\n        result = list_active(rows, page, size)\n        wanted = expected[page * size:(page + 1) * size]\n        assert len(result) == len(wanted)\n        assert all(a is b for a, b in zip(result, wanted))\n        collected.extend(result)\n        checks += 1\n    assert all(a is b for a, b in zip(collected, expected))\n    assert len(collected) == len(expected)\nassert rows == before\nassert list_active([], 0, 1) == []\nassert list_active(rows, 100, 2) == []\nfor value in [True, False, -1, 1.0, '1', None, [], object()]:\n    try:\n        list_active(rows, value, 1)\n    except ValueError:\n        checks += 1\n    else:\n        raise AssertionError(('invalid page accepted', value))\nfor value in [True, False, -1, 0, 1.0, '1', None, [], object()]:\n    try:\n        list_active(rows, 0, value)\n    except ValueError:\n        checks += 1\n    else:\n        raise AssertionError(('invalid size accepted', value))\nprint('PASS:', checks, 'pagination and validation probes; order, identity, exact True, nonmutation, empty and out-of-range verified')\n'@ | python -B -",
+      "working_directory": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\pagination-repair",
+      "result": {
+        "chunk_id": "9416b6",
+        "wall_time_seconds": 0.2955405,
+        "exit_code": 0,
+        "original_token_count": 30,
+        "output": "PASS: 47 pagination and validation probes; order, identity, exact True, nonmutation, empty and out-of-range verified\r\n"
+      }
+    },
+    {
+      "case": "existing-feature",
+      "phase": "before_public",
+      "command": "python -B -c \"import sys,unittest; sys.path.insert(0,'src'); unittest.main(module=None,argv=['unittest','discover','-s','tests'])\"",
+      "working_directory": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\existing-feature",
+      "result": {
+        "chunk_id": "9a5305",
+        "wall_time_seconds": 0.2646266,
+        "exit_code": 0,
+        "original_token_count": 26,
+        "output": ".\r\n----------------------------------------------------------------------\r\nRan 1 test in 0.000s\r\n\r\nOK\r\n"
+      }
+    },
+    {
+      "case": "existing-feature",
+      "phase": "after_public",
+      "command": "python -B -c \"import sys,unittest; sys.path.insert(0,'src'); unittest.main(module=None,argv=['unittest','discover','-s','tests'])\"",
+      "working_directory": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\existing-feature",
+      "result": {
+        "chunk_id": "b23425",
+        "wall_time_seconds": 0.2175314,
+        "exit_code": 0,
+        "original_token_count": 26,
+        "output": ".\r\n----------------------------------------------------------------------\r\nRan 1 test in 0.000s\r\n\r\nOK\r\n"
+      }
+    },
+    {
+      "case": "existing-feature",
+      "phase": "after_spec_probes",
+      "command": "@'\nimport sys\nsys.path.insert(0, 'src')\nimport service\nfrom unittest.mock import patch\nfrom itertools import product\n\noriginal = service.price_cents\nchecks = 0\nfor unit, quantity, percent, cap in product([0, 1, 101, 10**25], [0, 1, 3], [0, 1, 33, 99, 100], [0, 1, 25, 10**30]):\n    rule = {'percent': percent, 'cap_cents': cap}\n    snapshot = dict(rule)\n    with patch.object(service, 'price_cents', wraps=original) as counted:\n        result = service.discounted_price(unit, quantity, rule)\n        counted.assert_called_once_with(unit, quantity)\n    total = unit * quantity\n    assert result == total - min(total * percent // 100, cap)\n    assert type(result) is int\n    assert rule == snapshot\n    assert original(unit, quantity) == total\n    checks += 1\nassert service.discounted_price(101, 1, {'percent':33, 'cap_cents':100}) == 68\nwith patch.object(service, 'price_cents', return_value=103) as counted:\n    assert service.discounted_price(1, 1, {'percent':50, 'cap_cents':100}) == 52\n    counted.assert_called_once_with(1, 1)\n\ninvalid_rules = [None, [], 'rule', {}, {'percent':10}, {'cap_cents':10},\n                 {'percent':10, 'cap_cents':10, 'extra':0}]\nfor bad in [True, False, -1, 101, 10.5, '10', None, [], object()]:\n    invalid_rules.append({'percent':bad, 'cap_cents':10})\nfor bad in [True, False, -1, 10.5, '10', None, [], object()]:\n    invalid_rules.append({'percent':10, 'cap_cents':bad})\nfor rule in invalid_rules:\n    try:\n        service.discounted_price(100, 2, rule)\n    except ValueError:\n        checks += 1\n    else:\n        raise AssertionError(('invalid rule accepted', rule))\nfor bad in [True, False, -1, 1.0, '1', None, [], object()]:\n    for pair in [(bad, 1), (1, bad)]:\n        for function, args in [(original, pair), (service.discounted_price, (*pair, {'percent':10, 'cap_cents':100}))]:\n            try:\n                function(*args)\n            except ValueError:\n                checks += 1\n            else:\n                raise AssertionError(('invalid price accepted', pair))\nprint('PASS:', checks, 'price and discount probes; exactly-once reuse, reused result, integer floor, bounds, cap, validation, and existing standalone behavior verified')\n'@ | python -B -",
+      "working_directory": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\existing-feature",
+      "result": {
+        "chunk_id": "6b1716",
+        "wall_time_seconds": 0.3689232,
+        "exit_code": 0,
+        "original_token_count": 39,
+        "output": "PASS: 296 price and discount probes; exactly-once reuse, reused result, integer floor, bounds, cap, validation, and existing standalone behavior verified\r\n"
+      }
+    },
+    {
+      "case": "handoff-removal",
+      "phase": "before_public",
+      "command": "python -B -c \"import sys,unittest; sys.path.insert(0,'src'); unittest.main(module=None,argv=['unittest','discover','-s','tests'])\"",
+      "working_directory": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\handoff-removal",
+      "result": {
+        "chunk_id": "85d667",
+        "wall_time_seconds": 0.2771262,
+        "exit_code": 1,
+        "original_token_count": 267,
+        "output": "E\r\n======================================================================\r\nERROR: test_public (unittest.loader._FailedTest.test_public)\r\n----------------------------------------------------------------------\r\nImportError: Failed to import test module: test_public\r\nTraceback (most recent call last):\r\n  File \"C:\\Program Files\\Python\\Lib\\unittest\\loader.py\", line 396, in _find_test_path\r\n    module = self._get_module_from_name(name)\r\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"C:\\Program Files\\Python\\Lib\\unittest\\loader.py\", line 339, in _get_module_from_name\r\n    __import__(name)\r\n  File \"C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\handoff-removal\\tests\\test_public.py\", line 2, in <module>\r\n    from service import authenticate\r\nImportError: cannot import name 'authenticate' from 'service' (C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\handoff-removal\\src\\service.py)\r\n\r\n\r\n----------------------------------------------------------------------\r\nRan 1 test in 0.000s\r\n\r\nFAILED (errors=1)\r\n"
+      }
+    },
+    {
+      "case": "handoff-removal",
+      "phase": "before_spec_probe",
+      "command": "python -B -c \"import sys; sys.path.insert(0,'src'); import service; assert not hasattr(service,'authorize'), 'legacy authorize attribute must be absent'\"",
+      "working_directory": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\handoff-removal",
+      "result": {
+        "chunk_id": "0f5b61",
+        "wall_time_seconds": 0.212411,
+        "exit_code": 1,
+        "original_token_count": 34,
+        "output": "Traceback (most recent call last):\r\n  File \"<string>\", line 1, in <module>\r\nAssertionError: legacy authorize attribute must be absent\r\n"
+      }
+    },
+    {
+      "case": "handoff-removal",
+      "phase": "after_public",
+      "command": "python -B -c \"import sys,unittest; sys.path.insert(0,'src'); unittest.main(module=None,argv=['unittest','discover','-s','tests'])\"",
+      "working_directory": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\handoff-removal",
+      "result": {
+        "chunk_id": "62e5dd",
+        "wall_time_seconds": 0.2607486,
+        "exit_code": 0,
+        "original_token_count": 27,
+        "output": "..\r\n----------------------------------------------------------------------\r\nRan 2 tests in 0.000s\r\n\r\nOK\r\n"
+      }
+    },
+    {
+      "case": "handoff-removal",
+      "phase": "after_spec_probes",
+      "command": "@'\nimport inspect\nimport string\nimport sys\nsys.path.insert(0, 'src')\nimport service\n\nassert not hasattr(service, 'authorize')\nassert list(inspect.signature(service.authenticate).parameters) == ['token']\nvalid_names = list(string.ascii_letters + string.digits)\nvalid_names += ['A0z'[:length] for length in (1, 2, 3)]\nvalid_names += ['a' * length for length in (1, 2, 31, 32)]\nvalid_names += ['0' * 32, 'Z9a' * 10 + 'bC', 'admin', 'guest']\nchecks = 0\nfor username in valid_names:\n    assert service.authenticate('token:' + username) == username\n    checks += 1\ninvalid = [None, '', ' ', '\\t', '\\n', 'guest', 'admin', 'user',\n           True, False, 0, 1, 1.0, b'token:user', [], {}, object(),\n           'token:', 'token:' + 'a' * 33, 'Token:a', 'TOKEN:a',\n           ' token:a', 'token:a ', 'token:a\\n', 'token:a\\r\\n',\n           'token:a\\tb', 'x token:a', 'token:a:suffix', 'token:a-b',\n           'token:a_b', 'token:a.b', 'token:a/b', 'token:a+',\n           'token:é', 'token:用户', 'token:Ａ', 'token:１２',\n           'token:a\\x00', 'token:guest\\n', 'admin:token:a']\nfor token in invalid:\n    try:\n        service.authenticate(token)\n    except ValueError:\n        checks += 1\n    else:\n        raise AssertionError(('invalid token accepted', token))\nprint('PASS:', checks, 'authentication probes; legacy attribute absent, single token argument, ASCII names, 1/32 bounds, full match and invalid-type/whitespace/role rejection verified')\n'@ | python -B -",
+      "working_directory": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\handoff-removal",
+      "result": {
+        "chunk_id": "2f4e30",
+        "wall_time_seconds": 0.3060087,
+        "exit_code": 0,
+        "original_token_count": 43,
+        "output": "PASS: 113 authentication probes; legacy attribute absent, single token argument, ASCII names, 1/32 bounds, full match and invalid-type/whitespace/role rejection verified\r\n"
+      }
+    }
+  ],
+  "cases": [
+    {
+      "case": "pagination-repair",
+      "directory": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\pagination-repair",
+      "status": "completed",
+      "spec_checks": [
+        "Filter active is exactly True before pagination",
+        "Zero-based nonoverlapping pagination and input order",
+        "Original row identity and nonmutation",
+        "Empty and out-of-range produce []",
+        "Integer bounds validated; bool and nonintegers rejected with ValueError"
+      ],
+      "remaining_gaps": [
+        "External grading is parent-owned and was not inspected; inputs outside specified row contract were not defined or tested."
+      ],
+      "changed_code": "def list_active(rows, page, size):\n    if isinstance(page, bool) or not isinstance(page, int) or page < 0:\n        raise ValueError('page must be an integer >= 0')\n    if isinstance(size, bool) or not isinstance(size, int) or size < 1:\n        raise ValueError('size must be an integer >= 1')\n    active_rows = [row for row in rows if row['active'] is True]\n    return active_rows[page * size:(page + 1) * size]\n",
+      "changed_file": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\pagination-repair\\src\\service.py",
+      "sha256": "E4E0242127F47EEC3361226DCB8AABA2912AAA6E7177171598810B539BA33431",
+      "edit_method": "functions.exec/tools.apply_patch, one implementation patch per case"
+    },
+    {
+      "case": "existing-feature",
+      "directory": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\existing-feature",
+      "status": "completed",
+      "spec_checks": [
+        "Existing price_cents implementation preserved",
+        "price_cents called exactly once per valid discounted request; its returned total used",
+        "Rule must be dict with precisely percent and cap_cents keys",
+        "Rule integer bounds checked and bools rejected",
+        "Integer cents arithmetic with floor discount and cap",
+        "Standalone and discounted input validation"
+      ],
+      "remaining_gaps": [
+        "External grading is parent-owned and was not inspected."
+      ],
+      "changed_code": "def price_cents(unit_cents, quantity):\n    if type(unit_cents) is not int or type(quantity) is not int or min(unit_cents, quantity) < 0:\n        raise ValueError('invalid price')\n    return unit_cents * quantity\n\n\ndef discounted_price(unit_cents, quantity, rule):\n    if not isinstance(rule, dict) or set(rule) != {'percent', 'cap_cents'}:\n        raise ValueError('invalid discount rule')\n    percent, cap_cents = rule['percent'], rule['cap_cents']\n    if (isinstance(percent, bool) or not isinstance(percent, int)\n            or not 0 <= percent <= 100\n            or isinstance(cap_cents, bool) or not isinstance(cap_cents, int)\n            or cap_cents < 0):\n        raise ValueError('invalid discount rule')\n    total = price_cents(unit_cents, quantity)\n    return total - min(total * percent // 100, cap_cents)\n",
+      "changed_file": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\existing-feature\\src\\service.py",
+      "sha256": "6B03896DF52566CA1727D43D74750C6A36340F3A8CAAAF27F595153CF812E168",
+      "edit_method": "functions.exec/tools.apply_patch, one implementation patch per case"
+    },
+    {
+      "case": "handoff-removal",
+      "directory": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\handoff-removal",
+      "status": "completed",
+      "spec_checks": [
+        "Removed authorize public attribute and both guest/admin bypasses",
+        "authenticate(token) only API; no role parameter",
+        "Full token:[A-Za-z0-9]{1,32} match and username return",
+        "ValueError for invalid types, whitespace, role names, malformed tokens, non-ASCII names, 0/33 username length",
+        "Stale handoff examined as source; accepted SPEC.md followed"
+      ],
+      "remaining_gaps": [
+        "External grading is parent-owned and was not inspected."
+      ],
+      "changed_code": "import re\n\ndef authenticate(token):\n    if isinstance(token, str) and re.fullmatch(r'token:([A-Za-z0-9]{1,32})', token):\n        return token[6:]\n    raise ValueError('invalid token')\n",
+      "changed_file": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-coding-070-5p_3j5nz\\no-loaded-skill\\handoff-removal\\src\\service.py",
+      "sha256": "FA928F13D9B4A9E485083861B77E17808B484A226943CE4C8B14199C2BEDFA1C",
+      "edit_method": "functions.exec/tools.apply_patch, one implementation patch per case"
+    }
+  ],
+  "additional_loaded_instructions": [
+    {
+      "path": "C:/Users/airpot/.codex/RTK.md",
+      "description": "User-supplied output-condensation instructions"
+    }
+  ],
+  "skills_applied": [],
+  "scope_compliance": {
+    "writes": [
+      "Each fixture src/service.py",
+      "D:/code/project_skill/docs/validation/0.7.0-coding-no-skill.json"
+    ],
+    "optional_reports_written": false,
+    "network_used": false,
+    "dependencies_installed": false,
+    "deployments": false,
+    "additional_agents_spawned": false,
+    "commits": false,
+    "grading_sources_or_prior_reports_read": false
+  },
+  "completed_utc": "2026-10-06 05:30:37 UTC",
+  "elapsed_seconds_between_observed_start_and_completed_clock": 159,
+  "elapsed_measurement_note": "UTC clock interval starts at first fixture inspection, after bootstrap and RTK instruction read; ends at final evidence preparation. Tool command wall times are recorded individually.",
+  "token_metadata": {
+    "available": false,
+    "note": "Task tool interfaces do not expose complete input/output token usage; no token usage estimated."
+  },
+  "overall_status": "All three implementations edited and completed; all after-change public suites and independent specification probes passed. External grading not performed."
+}

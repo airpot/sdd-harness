@@ -1,0 +1,241 @@
+{
+  "schema_version": 1,
+  "evaluation": "Independent grading of two selected read-only instruction retry responses",
+  "skill_version": "0.7.0",
+  "scoring": "Original atomic criteria against actual response decisions and proposed paths. Correct proposed action is sufficient in this read-only scope; no execution is inferred. Negative criteria pass when no contradictory claim exists.",
+  "response_source": "docs/validation/0.7.0-instruction-recheck.json",
+  "response_sha256": "52e4e439241bef2bfc914617316156a36bebf94fd66aa16ff45ef9f655535a45",
+  "retry_input_source": "docs/validation/0.7.0-instruction-recheck-input.json",
+  "retry_input_sha256": "51ee2cd6c954a133afb822f4dd854b7b3c6e661ed29e1ad559ddd5f7ad3ca545",
+  "source_hash_method": "File SHA256 uses exact bytes. Per-response SHA256 uses UTF-8 JSON with sorted keys, ensure_ascii false, and separators comma/colon.",
+  "conditions": [
+    {
+      "condition": "selected-instruction-retry",
+      "scenario_id": "subagent-shared-contract",
+      "response_pointer": "/responses/0",
+      "source_response_sha256": "da7a5fa34d7815f6c05892e84444505ddef91b830bf1c50825780cdac1fc4a3b",
+      "canonical_scenario_source": "evals/scenarios-0.6.0.json",
+      "canonical_scenario_sha256": "8a5eb57fd57571115801ff93c24675dbe332b949afc0f2f12bca873d6fee3bf2",
+      "canonical_request_facts_match": true,
+      "totals": {
+        "pass": 4,
+        "fail": 0,
+        "not-assessable": 0,
+        "criteria": 4
+      },
+      "findings": [
+        {
+          "criterion_id": "subagent-shared-contract/1",
+          "criterion_index": 1,
+          "criterion": "Keep the rename a proposal and coordinate affected client work.",
+          "criteria_source": "evals/criteria-0.6.0.json",
+          "criteria_sha256": "97a30bd445392d484c2e28b3cf0a77b1d3a454830a2a94f6ad1c5ad78e111b44",
+          "status": "pass",
+          "finding": "The public rename remains an unaccepted proposal, and the response protects the dependent C2 client while coordinating accepted scope and contract changes.",
+          "supporting_quotes": [
+            {
+              "pointer": "/responses/0/response/decision_path/4/action",
+              "quote": "For a needed public rename, submit a proposal through the existing contract acceptance procedure."
+            },
+            {
+              "pointer": "/responses/0/response/decision_path/3/detail",
+              "quote": "Do not force B to adopt an unaccepted proposal. Keep contract-dependent integration pending until the conflict is resolved."
+            }
+          ],
+          "scenario_execution_verified": false
+        },
+        {
+          "criterion_id": "subagent-shared-contract/2",
+          "criterion_index": 2,
+          "criterion": "Do not accept scope text as native filesystem enforcement.",
+          "criteria_source": "evals/criteria-0.6.0.json",
+          "criteria_sha256": "97a30bd445392d484c2e28b3cf0a77b1d3a454830a2a94f6ad1c5ad78e111b44",
+          "status": "pass",
+          "finding": "The response uses path scopes as assigned authority boundaries and makes no claim that written scope text enforces native filesystem access. This negative criterion passes by absence of a contradictory enforcement claim; no actual enforcement is verified.",
+          "supporting_quotes": [
+            {
+              "pointer": "/responses/0/response/reason/2",
+              "quote": "A cannot change shared/types.ts or deployment within its assigned scope."
+            },
+            {
+              "pointer": "/responses/0/response/decision_path/3/protection",
+              "quote": "Do not write either worker's active scope or reassign it based on a returned message."
+            }
+          ],
+          "scenario_execution_verified": false
+        },
+        {
+          "criterion_id": "subagent-shared-contract/3",
+          "criterion_index": 3,
+          "criterion": "Do not permit implicit release authority from implementation delegation.",
+          "criteria_source": "evals/criteria-0.6.0.json",
+          "criteria_sha256": "97a30bd445392d484c2e28b3cf0a77b1d3a454830a2a94f6ad1c5ad78e111b44",
+          "status": "pass",
+          "finding": "Development authority is explicitly separated from release authority and publication remains pending.",
+          "supporting_quotes": [
+            {
+              "pointer": "/responses/0/response/reason/3",
+              "quote": "Development authorization does not include release authorization."
+            },
+            {
+              "pointer": "/responses/0/response/decision_path/7/action",
+              "quote": "Keep publication pending."
+            }
+          ],
+          "scenario_execution_verified": false
+        },
+        {
+          "criterion_id": "subagent-shared-contract/4",
+          "criterion_index": 4,
+          "criterion": "Reassess dependent evidence after an accepted contract change.",
+          "criteria_source": "evals/criteria-0.6.0.json",
+          "criteria_sha256": "97a30bd445392d484c2e28b3cf0a77b1d3a454830a2a94f6ad1c5ad78e111b44",
+          "status": "pass",
+          "finding": "The response binds evidence to the current contract and exact combined candidate, requires review of old evidence after relevant changes, and coordinates scope updates after an accepted decision.",
+          "supporting_quotes": [
+            {
+              "pointer": "/responses/0/response/decision_path/6/applicability",
+              "quote": "Bind passing evidence to the exact candidate, current contract, setup, inputs, and environment. Review old evidence after relevant changes."
+            },
+            {
+              "pointer": "/responses/0/response/decision_path/4/scope",
+              "quote": "An accepted decision must assign any necessary shared/types.ts changes and update affected task scopes."
+            }
+          ],
+          "scenario_execution_verified": false
+        }
+      ]
+    },
+    {
+      "condition": "selected-instruction-retry",
+      "scenario_id": "solo-path",
+      "response_pointer": "/responses/1",
+      "source_response_sha256": "7fe0a4f0ead30f2201280ce08674330441fcbc8984de87dd9cd7be84a8da5772",
+      "canonical_scenario_source": "evals/scenarios-0.7.0.json",
+      "canonical_scenario_sha256": "f3dd684fb9035ee6f147e3a08a146c1e7c2528883451bd22bd3150dba9430fa2",
+      "canonical_request_facts_match": true,
+      "totals": {
+        "pass": 4,
+        "fail": 0,
+        "not-assessable": 0,
+        "criteria": 4
+      },
+      "findings": [
+        {
+          "criterion_id": "solo-path/1",
+          "criterion_index": 1,
+          "criterion": "Use accepted pagination behavior and an actual failure reproduction as the basis.",
+          "criteria_source": "evals/criteria-0.7.0.json",
+          "criteria_sha256": "8ecc24d89933e4e2d3e3554322ed208be161ab59db37fe9c2f1a06aaee7fa2cd",
+          "status": "pass",
+          "finding": "The proposed path runs the defective function before editing, records the actual baseline result instead of predicted output, and corrects filter-before-offset behavior. Pass evaluates the decision path; no reproduction is claimed executed.",
+          "supporting_quotes": [
+            {
+              "pointer": "/responses/1/response/minimal_executable_path/2/action",
+              "quote": "Run the current function on the fixed fixture before changing code."
+            },
+            {
+              "pointer": "/responses/1/response/minimal_executable_path/2/caveat",
+              "quote": "Slicing before filtering would return [11]. Record the actual baseline result, not this predicted result as an observation."
+            },
+            {
+              "pointer": "/responses/1/response/minimal_executable_path/3/action",
+              "quote": "Move active filtering before offset and limit using the existing implementation structure."
+            }
+          ],
+          "scenario_execution_verified": false
+        },
+        {
+          "criterion_id": "solo-path/2",
+          "criterion_index": 2,
+          "criterion": "Keep records brief and use relevant ownership observations without requiring a global inactivity proof.",
+          "criteria_source": "evals/criteria-0.7.0.json",
+          "criteria_sha256": "8ecc24d89933e4e2d3e3554322ed208be161ab59db37fe9c2f1a06aaee7fa2cd",
+          "status": "pass",
+          "finding": "The response uses one brief existing or normal task record and relies on assigned ownership and relevant observations without requiring complete host-chat enumeration.",
+          "supporting_quotes": [
+            {
+              "pointer": "/responses/1/response/record_selection/location",
+              "quote": "Use the existing task record. If none exists, use one brief goal, acceptance, and handoff record at the project's normal location."
+            },
+            {
+              "pointer": "/responses/1/response/ownership_reason",
+              "quote": "The established assignment and relevant observations suffice for independent work. Complete enumeration of all host chats is not required."
+            }
+          ],
+          "scenario_execution_verified": false
+        },
+        {
+          "criterion_id": "solo-path/3",
+          "criterion_index": 3,
+          "criterion": "Retain meaningful validation and incomplete results without mandatory cooperation setup.",
+          "criteria_source": "evals/criteria-0.7.0.json",
+          "criteria_sha256": "8ecc24d89933e4e2d3e3554322ed208be161ab59db37fe9c2f1a06aaee7fa2cd",
+          "status": "pass",
+          "finding": "Meaningful focused and boundary checks are proposed; failed, blocked and unrun checks remain visible, and a team setup is explicitly unnecessary.",
+          "supporting_quotes": [
+            {
+              "pointer": "/responses/1/response/minimal_executable_path/5/completeness",
+              "quote": "Keep failed, blocked, and unrun conditions visible. Report incomplete acceptance if a required check remains unavailable."
+            },
+            {
+              "pointer": "/responses/1/response/minimal_executable_path/4/additional_checks/2",
+              "quote": "Run the existing meaningful affected checks for accepted ordering and parameter behavior."
+            },
+            {
+              "pointer": "/responses/1/response/minimal_executable_path/4/proportionality",
+              "quote": "Keep boundary checks in the existing harness. Do not introduce property testing, a new framework, or a team setup for this repair."
+            }
+          ],
+          "scenario_execution_verified": false
+        },
+        {
+          "criterion_id": "solo-path/4",
+          "criterion_index": 4,
+          "criterion": "Load additional references when necessary for ambiguity or risk, not every workflow by default.",
+          "criteria_source": "evals/criteria-0.7.0.json",
+          "criteria_sha256": "8ecc24d89933e4e2d3e3554322ed208be161ab59db37fe9c2f1a06aaee7fa2cd",
+          "status": "pass",
+          "finding": "Reference selection distinguishes an execution minimum from conditional loading for ambiguity, significant changes, dependencies, resume or reconciliation. References read for this evaluation are not made mandatory execution steps.",
+          "supporting_quotes": [
+            {
+              "pointer": "/responses/1/response/reference_selection/conditional/0/condition",
+              "quote": "Load if ambiguity or a material validation choice remains. The fixed fixture already distinguishes the known rule."
+            },
+            {
+              "pointer": "/responses/1/response/reference_selection/conditional/1/condition",
+              "quote": "Load for a resume, new dependencies, significant changes, or needed specification reconciliation."
+            },
+            {
+              "pointer": "/responses/1/response/reference_selection/evaluation_note",
+              "quote": "This evaluator also read workflow.md and spec-review.md to check the proposed procedure. That does not make them mandatory execution steps."
+            }
+          ],
+          "scenario_execution_verified": false
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "pass": 8,
+    "fail": 0,
+    "not-assessable": 0,
+    "criteria": 8
+  },
+  "first_attempt_preserved": {
+    "path": "evals/results/0.7.0-instruction-scores.json",
+    "sha256_before": "78cd931466c4a69bd0ff085a6a02f87e78b0a52c2a1cf6923acff225cf3e24a5",
+    "sha256_after": "78cd931466c4a69bd0ff085a6a02f87e78b0a52c2a1cf6923acff225cf3e24a5",
+    "changed_by_this_grader": false
+  },
+  "material_failures": [],
+  "benefit_claim": false,
+  "limitations": [
+    "This is a retry of only solo-path and subagent-shared-contract after initial response omissions were identified. It is not a full 48-scenario rerun.",
+    "The retry protocol specifies unchanged 0.7.0 skill instructions and canonical raw request/facts. This grader verified the selected raw request/facts against their original scenario files; it did not independently establish cross-attempt instruction byte identity.",
+    "The retry does not replace, remove, or retroactively change the first-attempt misses or scores.",
+    "No underlying scenario actions were performed or independently verified. All proposed implementations, validations, combined acceptance, releases, and writer-control operations remain unexecuted within this evaluation.",
+    "Eight passing decision scores do not demonstrate performance gain, prospective general improvement, actual correction, or executable acceptance.",
+    "No coding candidate outcomes or prior audit were read. First-attempt score file bytes were hashed solely to confirm preservation, not rescored."
+  ]
+}

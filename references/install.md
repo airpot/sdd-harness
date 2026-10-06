@@ -71,6 +71,38 @@ Independent development is the default. Collaboration setup is optional.
 For necessary project references and actual permission checks, read [collaboration instructions](collaboration.md).
 Read [the writing policy](writing.md) before creating internal project documents.
 
+## Observe actual host capabilities
+
+Before first use, check the capabilities necessary for the current task.
+Repeat relevant checks after host, profile, permission, or skill-source changes.
+Reuse a short existing environment or task record. Do not create a capability service.
+
+1. Check that the host presents the skill name and actual entry path.
+2. Load the full entry through the supported native invocation or an authorized direct read.
+3. Read one reference required for the task. Check access to its actual contents.
+4. If scripts are needed, run `scripts/workspace.py --help` from the resolved skill directory.
+5. If delegation is needed, observe one bounded result and the main agent's disposition.
+6. Before sensitive resource changes, check the current native state and necessary control.
+
+For each relevant capability, record `verified`, `unavailable`, or `untested` with its version and observation.
+Catalog visibility alone does not establish resource access.
+Copied files alone do not establish invocation, native interruption, enforced permissions, or release control.
+Do not run deployment or removal merely to test whether a control rejects it.
+
+If the sandbox cannot read a user-level installation, use an authorized project-local copy of the same portable payload.
+Use a discovery location supported by the actual host and permitted workspace.
+Check the copied version and contents. Refresh discovery and repeat the necessary read.
+Do not disable permissions or change global configuration to make the check pass.
+If loading remains unavailable, report that limitation. Continue supported independent work when possible.
+
+For DeepSeek Harness, check both filesystem discovery and the model-facing skill loader in the actual profile.
+The registry and provider can exist without a visible catalog or loader tool.
+For any worker, check its actual skill and resource access rather than assuming parent inheritance.
+
+Native cancellation acknowledgement does not establish stopped descendants.
+If execution cannot be observed or controlled, protect the affected scope and continue in supported isolation.
+Check current writer state and candidate eligibility at their operation boundaries, even after a successful earlier smoke check.
+
 ## Verification limits
 
 All agents use the same instruction and resource set.

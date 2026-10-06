@@ -1,0 +1,371 @@
+{
+  "schema": "sdd-harness-instruction-decision-response",
+  "revision": "0.7.0",
+  "skill": {
+    "name": "sdd-harness",
+    "exact_version": "0.7.0",
+    "source": "D:/code/project_skill/SKILL.md"
+  },
+  "mode": "read-only decision recheck",
+  "grading": "ungraded",
+  "input_path": "D:/code/project_skill/docs/validation/0.7.0-instruction-recheck-input.json",
+  "decision_only_limits": [
+    "This record answers the supplied requests from their raw facts and the loaded skill instructions.",
+    "No underlying scenario repository, worker state, implementation, test command, release entry, or runtime was examined.",
+    "No scenario implementation, validation, delegation, integration, publication, installation, or resource removal was performed.",
+    "Only this response record was written. No instruction file was changed. No commit was created.",
+    "Evaluator criteria, prior responses, audits, scores, and coding graders were not read.",
+    "All implementation and validation steps below describe the proposed path. They do not report executed work.",
+    "Unknown paths, commands, owners, candidate commits, and check results remain unknown."
+  ],
+  "loaded_paths": [
+    "C:/Users/airpot/.codex/skills/using-superpowers/SKILL.md",
+    "C:/Users/airpot/.codex/RTK.md",
+    "D:/code/project_skill/SKILL.md",
+    "D:/code/project_skill/docs/validation/0.7.0-instruction-recheck-input.json",
+    "D:/code/project_skill/references/install.md",
+    "D:/code/project_skill/references/spec-review.md",
+    "D:/code/project_skill/references/collaboration.md",
+    "D:/code/project_skill/references/subagents.md",
+    "D:/code/project_skill/references/delivery.md",
+    "D:/code/project_skill/references/workflow.md",
+    "D:/code/project_skill/references/writing.md"
+  ],
+  "bootstrap_disposition": "The loaded using-superpowers entry tells dispatched subagents to skip its workflow. This bounded decision task did not activate implementation workflows.",
+  "capability_record": {
+    "skill_entry": {
+      "status": "verified",
+      "version": "0.7.0",
+      "observation": "An authorized direct read returned the full entry and its metadata."
+    },
+    "required_references": {
+      "status": "verified",
+      "observation": "Authorized reads returned the complete task-relevant references. Truncated combined output was recovered."
+    },
+    "scenario_execution_controls": {
+      "status": "untested",
+      "observation": "Decision-only scope does not require worker, Git, release, or removal controls."
+    },
+    "scripts": {
+      "status": "untested",
+      "observation": "No script is necessary for this decision task."
+    }
+  },
+  "writing": {
+    "policy_path": "D:/code/project_skill/references/writing.md",
+    "method": "STE-guided English",
+    "vocabulary_compliance": "Unverified. The standard dictionary was not loaded.",
+    "note": "The response retains raw scenario identifiers, requests, and facts."
+  },
+  "responses": [
+    {
+      "scenario_id": "subagent-shared-contract",
+      "raw_request": "Worker A asks to rename user_id to uid while Worker B is implementing the accepted client. Worker A says the rename is harmless and wants to publish its branch.",
+      "raw_facts": {
+        "basis": "Both started from commit B2 and accepted contract C2 with user_id.",
+        "scope": "A may edit server/users.py; B may edit client/users.ts. shared/types.ts and deployment are outside their assigned scopes.",
+        "authorization": "Development is authorized; no release is authorized."
+      },
+      "response": {
+        "decision": "Keep C2 as the accepted contract. Do not accept an externally visible rename to uid or permit publication of A's branch.",
+        "reason": [
+          "C2 requires user_id. A's harmlessness claim is evidence to examine, not authority to replace C2.",
+          "Separate server and client files still depend on one shared interface.",
+          "A cannot change shared/types.ts or deployment within its assigned scope.",
+          "Development authorization does not include release authorization."
+        ],
+        "decision_path": [
+          {
+            "step": 1,
+            "action": "Read the existing task assignments, C2, and A's exact diff against B2.",
+            "detail": "Identify the changed field's observable use. Distinguish a private variable rename from a request, response, schema, or shared-type change.",
+            "limitation": "Neither A's branch commit nor its diff was supplied. Do not assume that the proposed rename is already implemented."
+          },
+          {
+            "step": 2,
+            "action": "Compare the proposal with B's C2 client assumptions and affected callers.",
+            "detail": "For a public field change, show the concrete mismatch: C2 consumers read user_id; a provider returning only uid fails that expectation.",
+            "limitation": "This mismatch is a contract-derived check condition. No actual failure was observed here."
+          },
+          {
+            "step": 3,
+            "action": "Record a request-correction disposition for A's proposed public rename.",
+            "detail": "Keep user_id at the accepted interface. A may continue authorized work in server/users.py that preserves C2.",
+            "condition": "If the diff proves a private rename preserves all C2 behavior, assess that bounded change on its actual evidence."
+          },
+          {
+            "step": 4,
+            "action": "Keep B's independent C2 client work within client/users.ts.",
+            "detail": "Do not force B to adopt an unaccepted proposal. Keep contract-dependent integration pending until the conflict is resolved.",
+            "protection": "Do not write either worker's active scope or reassign it based on a returned message."
+          },
+          {
+            "step": 5,
+            "action": "For a needed public rename, submit a proposal through the existing contract acceptance procedure.",
+            "detail": "Record the old and proposed fields, affected consumers, shared types, generated artifacts, compatibility impact, and transition need.",
+            "authority": "Identify the existing responsible authority. Its identity is not supplied. Obtain an accepted decision before dependent changes.",
+            "scope": "An accepted decision must assign any necessary shared/types.ts changes and update affected task scopes.",
+            "transition": "Use an additive transition only if compatibility requires it and the transition is accepted."
+          },
+          {
+            "step": 6,
+            "action": "Assess returned worker results against source requirements and exact artifacts.",
+            "detail": "Retain changed paths, commits, methods, results, gaps, and execution state. Read actual evidence before accepting a result.",
+            "protection": "A result message does not establish acceptance or stopped execution. Confirm relevant writers stopped before transferring their scope."
+          },
+          {
+            "step": 7,
+            "action": "Identify the current integration target before constructing a combined candidate.",
+            "detail": "B2 is the starting basis, not proof of the current target. Review relevant target changes and combine compatible provider and consumer results.",
+            "checks": "Check the actual provider and consumer together for the accepted identifier field and the affected user workflow.",
+            "applicability": "Bind passing evidence to the exact candidate, current contract, setup, inputs, and environment. Review old evidence after relevant changes.",
+            "limitation": "Component tests, schema checks, mocks, and a clean merge do not alone establish the complete workflow."
+          },
+          {
+            "step": 8,
+            "action": "Keep publication pending.",
+            "detail": "First prepare a reviewable candidate and its applicable evidence. Then obtain specific release authorization through the existing release process.",
+            "release_conditions": "Before authorized execution, verify the release entry, selected candidate, current eligibility, target, and necessary controls.",
+            "prohibition": "Do not publish A's branch merely because it is newer, passes component tests, or is called harmless."
+          }
+        ],
+        "records": {
+          "location": "Use the existing parent task and worker task records. Their actual locations are not supplied.",
+          "accepted_basis": {
+            "commit": "B2",
+            "contract": "C2",
+            "field": "user_id"
+          },
+          "assignment": {
+            "A": {
+              "allowed_path": "server/users.py",
+              "excluded_paths_or_actions": [
+                "shared/types.ts",
+                "deployment"
+              ]
+            },
+            "B": {
+              "allowed_path": "client/users.ts",
+              "excluded_paths_or_actions": [
+                "shared/types.ts",
+                "deployment"
+              ]
+            }
+          },
+          "proposal_record": [
+            "A's proposed user_id to uid change and its claim of harmlessness.",
+            "Observable interface impact, affected C2 consumers, and any necessary compatibility transition.",
+            "Existing decision authority, decision result, and updated task scopes if the proposal is accepted."
+          ],
+          "disposition": {
+            "public_rename": "Request correction or retain as an unaccepted proposal.",
+            "private_rename": "Unassessed pending the actual diff and applicable behavior evidence.",
+            "publication_request": "Blocked by missing release authorization and excluded deployment scope."
+          },
+          "evidence_fields": [
+            "Worker artifact or commit and changed paths.",
+            "Accepted contract and exact code basis.",
+            "Repeatable check command or procedure, input, setup, environment, expected result, actual result, and log reference.",
+            "Current integration target and exact combined candidate.",
+            "Evidence applicability, remaining gaps, next action, and actual execution state."
+          ],
+          "current_status": {
+            "implementation": "Not assessed.",
+            "component_checks": "Not run.",
+            "combined_acceptance": "Not assessed; actual candidate and required passing evidence are absent.",
+            "publication": "Not authorized.",
+            "next_action": "Inspect A's diff against C2, retain assigned scopes, and resolve the public contract proposal through existing authority."
+          }
+        },
+        "reference_selection": [
+          {
+            "path": "SKILL.md",
+            "reason": "Select authority, ownership, independent progress, acceptance, and operation boundaries."
+          },
+          {
+            "path": "references/install.md",
+            "reason": "Check necessary first-use access. Do not install or test release controls by publication."
+          },
+          {
+            "path": "references/collaboration.md",
+            "reason": "Two tasks share one accepted interface and require an actual combined candidate."
+          },
+          {
+            "path": "references/subagents.md",
+            "reason": "Assess bounded worker outputs, preserve scopes, and record main-agent dispositions."
+          },
+          {
+            "path": "references/spec-review.md",
+            "reason": "Resolve C2 compatibility and distinguish accepted behavior from an unaccepted field proposal."
+          },
+          {
+            "path": "references/workflow.md",
+            "reason": "Reconcile accepted contract changes and integrate against the current target."
+          },
+          {
+            "path": "references/delivery.md",
+            "reason": "Separate combined acceptance from release authority and candidate eligibility."
+          },
+          {
+            "path": "references/writing.md",
+            "reason": "Write the decision record without changing source identifiers or evidence."
+          }
+        ],
+        "references_not_needed": "No recovery procedure or release template is needed to decide this request. No worktree removal or release is authorized."
+      }
+    },
+    {
+      "scenario_id": "solo-path",
+      "raw_request": "Describe the smallest executable path, records, and reference selection for this independent defect repair.",
+      "raw_facts": {
+        "accepted": "Pagination filters active rows before offset and limit.",
+        "basis": "The defective implementation is identified in the assigned checkout.",
+        "ownership": "Only this checkout is assigned to the executor; no evidence of shared writers is present.",
+        "host": "The host cannot enumerate all other chats."
+      },
+      "response": {
+        "decision": "Proceed with the small repair in the assigned checkout. Use its existing task record and checks.",
+        "ownership_reason": "The established assignment and relevant observations suffice for independent work. Complete enumeration of all host chats is not required.",
+        "ownership_limit": "Missing activity observations and clean Git status do not prove stopped writers. New evidence of a relevant conflict changes the path.",
+        "minimal_executable_path": [
+          {
+            "step": 1,
+            "action": "Read the accepted pagination rule, existing task record, affected function, callers, and relevant checks.",
+            "detail": "Identify the repository, assigned checkout, branch, current changes, and exact baseline commit or snapshot.",
+            "scope": "Keep the change in its assigned scope. Preserve changes with unknown ownership."
+          },
+          {
+            "step": 2,
+            "action": "Add one observable acceptance condition to the existing task record.",
+            "condition": "For the ordered input fixture below, offset 1 and limit 2 return active row IDs 13 and 14.",
+            "meaning": "Offset and limit apply to the active sequence. They do not apply to the original sequence."
+          },
+          {
+            "step": 3,
+            "action": "Run the current function on the fixed fixture before changing code.",
+            "fixture": [
+              {
+                "id": 10,
+                "active": false
+              },
+              {
+                "id": 11,
+                "active": true
+              },
+              {
+                "id": 12,
+                "active": false
+              },
+              {
+                "id": 13,
+                "active": true
+              },
+              {
+                "id": 14,
+                "active": true
+              }
+            ],
+            "request": {
+              "offset": 1,
+              "limit": 2
+            },
+            "accepted_result": [
+              13,
+              14
+            ],
+            "diagnostic_incorrect_result": [
+              11
+            ],
+            "procedure": "Supply this ordered fixture through the existing function or check harness. Compare the returned ID sequence with [13, 14].",
+            "baseline_record": "Keep the exact invocation, actual returned IDs, code basis, environment, and output reference.",
+            "caveat": "Slicing before filtering would return [11]. Record the actual baseline result, not this predicted result as an observation."
+          },
+          {
+            "step": 4,
+            "action": "Move active filtering before offset and limit using the existing implementation structure.",
+            "detail": "Preserve accepted ordering, parameter handling, and unaffected caller behavior. Read the actual diff."
+          },
+          {
+            "step": 5,
+            "action": "Repeat the same fixture check on the exact changed code.",
+            "pass_condition": "The returned ordered IDs equal [13, 14]. Existing positive tests alone do not prove this failure was corrected.",
+            "additional_checks": [
+              "Use the same fixture with offset 0 and limit 2. Expect [11, 13].",
+              "Use the same fixture with offset 3 and limit 2. Expect an empty result.",
+              "Run the existing meaningful affected checks for accepted ordering and parameter behavior."
+            ],
+            "proportionality": "Keep boundary checks in the existing harness. Do not introduce property testing, a new framework, or a team setup for this repair.",
+            "command_limit": "The project runner is not supplied. Discover and record its real command; do not invent a path or a passing result."
+          },
+          {
+            "step": 6,
+            "action": "Update the same task record with the correction and evidence.",
+            "detail": "Bind results to the exact code or snapshot, accepted rule reference, repeatable method, fixture, setup, environment, and output.",
+            "completeness": "Keep failed, blocked, and unrun conditions visible. Report incomplete acceptance if a required check remains unavailable.",
+            "reconciliation": "The accepted rule is unchanged. Do not rewrite its specification solely to close the defect.",
+            "next_action": "When required applicable checks pass, report the repair and its limitations. Otherwise name the remaining check and next action."
+          }
+        ],
+        "record_selection": {
+          "location": "Use the existing task record. If none exists, use one brief goal, acceptance, and handoff record at the project's normal location.",
+          "required_content": [
+            "Assigned checkout, branch, task scope, and exact baseline.",
+            "Source reference for filtering active rows before offset and limit.",
+            "Fixed fixture, parameters, expected IDs, baseline method, and actual failing result.",
+            "Actual implementation location and exact changed code or snapshot.",
+            "Corrected method and result, relevant preserved-behavior checks, environment, and evidence references.",
+            "Acceptance status, limitations, and next action."
+          ],
+          "minimal_example": {
+            "source": "Accepted pagination rule; resolve its existing reference during execution.",
+            "baseline": "Resolve the assigned checkout commit or snapshot during execution.",
+            "condition": "Fixture [10 inactive, 11 active, 12 inactive, 13 active, 14 active], offset=1, limit=2 -> [13, 14].",
+            "reproduction": "Not run in this decision evaluation.",
+            "change": "Proposed: filter active rows before applying offset and limit.",
+            "corrected_evidence": "Not run in this decision evaluation.",
+            "acceptance": "Not assessed. No repair or passing evidence was produced.",
+            "next_action": "Run the baseline fixture in the assigned checkout, then make and check the narrow correction."
+          },
+          "unnecessary_records": [
+            "No collaboration profile, team task split, separate contract catalog, or coordination service.",
+            "No separate release record, recovery record, or mandatory handoff template.",
+            "No proof that every host chat is idle."
+          ]
+        },
+        "reference_selection": {
+          "execution_minimum": [
+            {
+              "path": "SKILL.md",
+              "reason": "Its small independent change procedure covers this unambiguous repair."
+            },
+            {
+              "path": "references/install.md",
+              "reason": "Read for first use or changed capabilities. Check only necessary skill and resource access."
+            },
+            {
+              "path": "references/writing.md",
+              "reason": "Apply to the brief internal task record."
+            }
+          ],
+          "conditional": [
+            {
+              "path": "references/spec-review.md",
+              "condition": "Load if ambiguity or a material validation choice remains. The fixed fixture already distinguishes the known rule."
+            },
+            {
+              "path": "references/workflow.md",
+              "condition": "Load for a resume, new dependencies, significant changes, or needed specification reconciliation."
+            }
+          ],
+          "evaluation_note": "This evaluator also read workflow.md and spec-review.md to check the proposed procedure. That does not make them mandatory execution steps.",
+          "excluded": [
+            "collaboration.md and subagents.md: no cooperation or delegation is needed.",
+            "delivery.md and the release template: no formal combined integration or publication is requested.",
+            "recovery.md and the handoff template: no transfer, archive, or removal is requested."
+          ]
+        },
+        "conflict_fallback": "If a relevant writer or unresolved ownership later affects the scope, protect that scope and use a fixed snapshot or separate checkout."
+      }
+    }
+  ]
+}

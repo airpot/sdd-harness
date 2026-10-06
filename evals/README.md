@@ -6,6 +6,28 @@ They do not prove host enforcement, deployment success, or model performance acr
 
 ## Files
 
+For actual editable tasks, use [coding trials](coding-tasks-README.md).
+Retain independent behavior grading separately from scenario answers and parent assessment.
+Use the same accepted inputs, host, model route, permissions, task order, and available effort across compared conditions.
+Start each condition with fresh context and original files. Preserve the original failure before editing.
+Report actual environment metadata when available. Do not infer model identity or missing token totals.
+These small tasks are capability observations, not production or statistical guarantees.
+
+Use `invocation-0.7.0.json` for explicit, implicit, and negative requests.
+Use the host's actual skill catalog and loader when available.
+Do not supply the full skill or explicitly name it for implicit or negative cases.
+Record full entry loading and applicable reference selection from actual traces.
+Skill mention alone does not prove a full load. Keep task correctness separate from correct invocation.
+Keep catalog-choice simulations separate from native discovery evidence.
+
+If loading fails, keep the error and test the supported project-local installation procedure.
+Do not change global permissions to force success.
+For untested hosts, retain their smoke procedure and explicit untested status.
+Compare reference reads, unnecessary records, rework, timing, and token cost when observable.
+Do not manufacture a baseline failure or infer improvement from passing both conditions.
+Give executors only `scenarios-0.7.0.json` for the four added instruction cases.
+Use `criteria-0.7.0.json` only in an independent grader.
+
 - `scenarios.json`: executor requests and raw facts.
 - `criteria.json`: evaluator-only criteria.
 - `scenarios-0.4.0.json`: twelve additional executor scenarios for the six approved improvements.
@@ -14,6 +36,9 @@ They do not prove host enforcement, deployment success, or model performance acr
 - `criteria-0.5.0.json`: 27 evaluator-only atomic criteria for those cases.
 - `scenarios-0.6.0.json`: twelve additional subagent delegation, verification, and recovery cases.
 - `criteria-0.6.0.json`: 48 evaluator-only atomic criteria for those cases.
+- `scenarios-0.7.0.json`: four additional cases for solo routing, trust, requirement operations, and host observation.
+- `criteria-0.7.0.json`: sixteen evaluator-only criteria for those cases.
+- `invocation-0.7.0.json`: nine native invocation requests; record which requests were actually run.
 - `results/`: complete versioned answers and evaluation records.
 
 ## Run an evaluation

@@ -24,5 +24,6 @@ Independent tasks need no collaboration fields or setup.
 - Evidence applicability: record the current conclusion and reason for carrying historical evidence forward.
 - Acceptance: record accepted, partial, or blocked scope. Keep mandatory failed, blocked, and unrun conditions visible.
 - Specification reconciliation: identify the authoritative record, maintenance model, accepted updates, and remaining gaps.
+- Requirement operations: identify relevant additions, modifications, removals, renames, and accepted transition conditions.
 - Unverified, blocked, or deferred work: state impacts, reasons, recovery conditions, and follow-up tasks.
 - Next action: specify the action and necessary inputs.

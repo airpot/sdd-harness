@@ -1,0 +1,63 @@
+{
+  "version": "0.4.0",
+  "baseline_commit": "1ae0d77d9aac819b6ac64e3cedb7470eb5ca4459",
+  "runner": "Fresh isolated Codex subagents; model identifier was not supplied by the runner.",
+  "baseline_package_sha256": "7820b985ecd72174589d221c9582dbad9e0586eea0a86517c2bd87085560f445",
+  "baseline_instruction_sha256": {
+    "assets/change.md": "447db360ccc4fd0def49a94d71243440b33daf1627b384fcabe438bd2e87098d",
+    "assets/handoff.md": "ce519e82bfad8ba0efcfd592022bcebb29944a231da8ef4bd6214b0c8cc36f89",
+    "assets/release.md": "848c13ad22a10620b490dd52c547e6b83c786889fdb977e61fad3c3459836526",
+    "references/collaboration.md": "5594b1e2c68e5bc7841404156629e47e755c856feb4ee5da9b7782aac5c66b47",
+    "references/delivery.md": "430854c857f9fbf25a4597567e4d7e182251dd0d131b681e3b182e8cffe096d4",
+    "references/install.md": "d874a96627f9959499c583dbc7e8f606a27116a629cb3fb21335a12c287aaf63",
+    "references/recovery.md": "0ee920b3e60f8acf5dbb386212d61e052bf99f7bab8a9da84403b984dffe0273",
+    "references/spec-review.md": "82c96f026738b11cc3e332f512aede268757f6297ca35f9947f9adcaaacf80d6",
+    "references/workflow.md": "47a8f8e97599c40252482e889d0f15a77064ad6bb52b6a3377b86d5029f76e1b",
+    "references/writing.md": "9e4df9570f6f230d5451c0c66b503cb3d051744085df697c7a228dfdc1f9cab5",
+    "scripts/install.py": "adbf6991005fe8e688562903f823a8f9310d00c59792a0cc44723b0a0331bbf3",
+    "scripts/workspace.py": "9e14fd84b918c318f225a224650ae1be72d6f6fc0d4588ab1d33c7dcb4d18896",
+    "SKILL.md": "6ce51bde035461ef128da12b4f13e001ce421c52c75499077d6646e0e09da119"
+  },
+  "final_package_sha256": "65ecea4a9ef633469f2cb09ad6f2845f4583449929ef83cf1918c01f3dc2a368",
+  "final_instruction_sha256": {
+    "SKILL.md": "a28cf9971b75086e69fac0dbffd376cfa602095c098dc216ad2aa308443d0154",
+    "assets/change.md": "271c3db3641e8934c9213a5a15c8052bacad5ab40310efe211f713825482511b",
+    "assets/handoff.md": "009b5b5c97214c087ca6ed6f7ae0e0ee2fd2ec48e6c423be13a7ac343db7e712",
+    "assets/release.md": "a7bf4bbd3ec8b28be2523cbb2205db23c60c9700e4dda2302465ef0a960d300a",
+    "references/collaboration.md": "4b836cef3305bc5348bab44acb7181bdbb4cc9d7dc2983be88d9d7c0ea0704d7",
+    "references/delivery.md": "95566a3aab43d1c29cc06c395bbe8150a1bedf73576ae8caa59c86cf05151468",
+    "references/install.md": "d874a96627f9959499c583dbc7e8f606a27116a629cb3fb21335a12c287aaf63",
+    "references/recovery.md": "ed02b97b754fbf95fc5f45df449d8d868c47315bb356d4d255e793dc7ae3136a",
+    "references/spec-review.md": "6731a432c481cd7ed6d8dbfd45d6486acdd0a290e611055c15c8ce784f16f9a1",
+    "references/workflow.md": "18326afaf1a4417b363708017ea9f035dec324ff2afabc7a795238cc68a0e3ea",
+    "references/writing.md": "ea09ecd141d138f3c679632a49a9335e73932ec3df72b66b3990e45f3a22a2e1",
+    "scripts/install.py": "adbf6991005fe8e688562903f823a8f9310d00c59792a0cc44723b0a0331bbf3",
+    "scripts/workspace.py": "9e14fd84b918c318f225a224650ae1be72d6f6fc0d4588ab1d33c7dcb4d18896"
+  },
+  "input_and_host_sha256": {
+    "evals/scenarios.json": "582d6b677765fdbbcb690fb7659c279a827c7b76797b855b865487e7498d7fc0",
+    "evals/criteria.json": "74678b6dd089dbf2d24ea78a46b915fca0d4aeeab59050e044c446d37297262b",
+    "evals/scenarios-0.4.0.json": "af77066a4c1a375cdffc786929c9b405e6010914c3deaf0b25b0c891311020f8",
+    "evals/criteria-0.4.0.json": "b1524f1fbf618fbea78f725b8212ef0246ec27fc37563631b04165cf2e617f84",
+    "evals/results/0.4.0-initial-scenarios.json": "22da8a35ed2140a02d255ebc54b34a39592303b4663231568c133ec59d4f0ae8",
+    "evals/host.py": "dcb44724c88fbf2d6e314ab3d6b31dfd998f2dd0fa70e67c3a3ba439a778baf8",
+    "evals/host-README.md": "458e51a433cb6f8ec090774a2a8c7cdb9a558440d51e2d8c00a2367d27f7f31d"
+  },
+  "initial_instruction_sha256": {
+    "assets/change.md": "271c3db3641e8934c9213a5a15c8052bacad5ab40310efe211f713825482511b",
+    "assets/handoff.md": "009b5b5c97214c087ca6ed6f7ae0e0ee2fd2ec48e6c423be13a7ac343db7e712",
+    "assets/release.md": "a7bf4bbd3ec8b28be2523cbb2205db23c60c9700e4dda2302465ef0a960d300a",
+    "references/collaboration.md": "4b836cef3305bc5348bab44acb7181bdbb4cc9d7dc2983be88d9d7c0ea0704d7",
+    "references/delivery.md": "0f8d7446249dae5eda0e0d3927807745f1c18e303d7c68050eb536ca6da69304",
+    "references/install.md": "d874a96627f9959499c583dbc7e8f606a27116a629cb3fb21335a12c287aaf63",
+    "references/recovery.md": "ed02b97b754fbf95fc5f45df449d8d868c47315bb356d4d255e793dc7ae3136a",
+    "references/spec-review.md": "6731a432c481cd7ed6d8dbfd45d6486acdd0a290e611055c15c8ce784f16f9a1",
+    "references/workflow.md": "18326afaf1a4417b363708017ea9f035dec324ff2afabc7a795238cc68a0e3ea",
+    "references/writing.md": "ea09ecd141d138f3c679632a49a9335e73932ec3df72b66b3990e45f3a22a2e1",
+    "scripts/install.py": "adbf6991005fe8e688562903f823a8f9310d00c59792a0cc44723b0a0331bbf3",
+    "scripts/workspace.py": "9e14fd84b918c318f225a224650ae1be72d6f6fc0d4588ab1d33c7dcb4d18896",
+    "SKILL.md": "a28cf9971b75086e69fac0dbffd376cfa602095c098dc216ad2aa308443d0154"
+  },
+  "applicability": "Initial answers used the preserved initial scenario inputs. Final answers use the clarified inputs. Final host trials use the delivery clarification and repaired host. Initial failures and pre-clarification outputs remain preserved. Baseline host and initial forward host used ordinary environment settings; later environment fixes do not change their recorded default operation semantics.",
+  "limits": "Host ownership, selection and authorization are simulated. Local files, hashes, assertions and journals are actual. These small trials do not prove cross-machine enforcement, all-product compatibility or statistical superiority."
+}

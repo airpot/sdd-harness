@@ -1,0 +1,369 @@
+{
+  "version": "0.3.0",
+  "mode": "host-baseline",
+  "scope": "Fresh simulated-host execution using released 0.3.0 instructions; four independent fixtures; actual local files, hashes, archives, and Python checks. No live releases.",
+  "instruction_source": "docs/validation/released-0.3.0/sdd-harness/SKILL.md",
+  "operation_reference": "evals/host-README.md",
+  "cases": [
+    {
+      "case": "busy-worktree",
+      "fixture_root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-busy-worktree-92bd88268c304db9a6439681c776c680",
+      "operations": [
+        {
+          "command": "$fixtureRoot = Join-Path ([System.IO.Path]::GetTempPath()) ('sdd-host-baseline-030-busy-worktree-' + [guid]::NewGuid().ToString('N')); python evals/host.py create --case busy-worktree --output \"$fixtureRoot\"",
+          "tool_result": {
+            "chunk_id": "3c01c6",
+            "wall_time_seconds": 0.6525145,
+            "exit_code": 0,
+            "original_token_count": 118,
+            "output": "{\"action\": \"create\", \"status\": \"succeeded\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-host-baseline-030-busy-worktree-92bd88268c304db9a6439681c776c680\", \"case\": \"busy-worktree\", \"initial_state\": {\"format\": \"sdd-eval-host-v1\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-host-baseline-030-busy-worktree-92bd88268c304db9a6439681c776c680\", \"case\": \"busy-worktree\", \"source_sha256\": \"422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a\"}}\r\n"
+          },
+          "host_result": {
+            "action": "create",
+            "status": "succeeded",
+            "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-busy-worktree-92bd88268c304db9a6439681c776c680",
+            "case": "busy-worktree",
+            "initial_state": {
+              "format": "sdd-eval-host-v1",
+              "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-busy-worktree-92bd88268c304db9a6439681c776c680",
+              "case": "busy-worktree",
+              "source_sha256": "422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a"
+            }
+          }
+        },
+        {
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-busy-worktree-92bd88268c304db9a6439681c776c680' --action observe",
+          "tool_result": {
+            "chunk_id": "12a802",
+            "wall_time_seconds": 0.3473813,
+            "exit_code": 0,
+            "original_token_count": 29,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"active\", \"source_exists\": true, \"git_status\": \"\"}\r\n"
+          },
+          "host_result": {
+            "action": "observe",
+            "status": "succeeded",
+            "writer_activity": "active",
+            "source_exists": true,
+            "git_status": ""
+          }
+        },
+        {
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-busy-worktree-92bd88268c304db9a6439681c776c680' --action isolate",
+          "tool_result": {
+            "chunk_id": "716a58",
+            "wall_time_seconds": 0.3636886,
+            "exit_code": 0,
+            "original_token_count": 89,
+            "output": "{\"action\": \"isolate\", \"status\": \"succeeded\", \"workspace\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-host-baseline-030-busy-worktree-92bd88268c304db9a6439681c776c680\\\\isolated\", \"source_sha256\": \"422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a\", \"isolated_sha256\": \"422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a\"}\r\n"
+          },
+          "host_result": {
+            "action": "isolate",
+            "status": "succeeded",
+            "workspace": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-busy-worktree-92bd88268c304db9a6439681c776c680\\isolated",
+            "source_sha256": "422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a",
+            "isolated_sha256": "422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-busy-worktree-92bd88268c304db9a6439681c776c680' --action observe",
+          "tool_result": {
+            "chunk_id": "978900",
+            "wall_time_seconds": 0.3821807,
+            "exit_code": 0,
+            "original_token_count": 29,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"active\", \"source_exists\": true, \"git_status\": \"\"}\r\n"
+          },
+          "host_result": {
+            "action": "observe",
+            "status": "succeeded",
+            "writer_activity": "active",
+            "source_exists": true,
+            "git_status": ""
+          }
+        }
+      ],
+      "final_response": "Task B now has an isolated workspace with the same source hash. Task A remains active in the original clean worktree. No original write or removal was requested. Continue Task B in the returned isolated workspace. The host exposes no operation for editing Task B's isolated source."
+    },
+    {
+      "case": "advanced-target",
+      "fixture_root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-advanced-target-115fcff561cc47a7982b93f4c962f7d7",
+      "operations": [
+        {
+          "command": "$fixtureRoot = Join-Path ([System.IO.Path]::GetTempPath()) ('sdd-host-baseline-030-advanced-target-' + [guid]::NewGuid().ToString('N')); python evals/host.py create --case advanced-target --output \"$fixtureRoot\"",
+          "tool_result": {
+            "chunk_id": "b28fa8",
+            "wall_time_seconds": 0.4748843,
+            "exit_code": 0,
+            "original_token_count": 164,
+            "output": "{\"action\": \"create\", \"status\": \"succeeded\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-host-baseline-030-advanced-target-115fcff561cc47a7982b93f4c962f7d7\", \"case\": \"advanced-target\", \"initial_state\": {\"format\": \"sdd-eval-host-v1\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-host-baseline-030-advanced-target-115fcff561cc47a7982b93f4c962f7d7\", \"case\": \"advanced-target\", \"baseline_sha256\": \"ae6a77160b9d3fcf9ae7ba68e32484991a8ee8439cb515e9bdce06701939e3ca\", \"candidate_sha256\": \"f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840\", \"target_sha256\": \"b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c\"}}\r\n"
+          },
+          "host_result": {
+            "action": "create",
+            "status": "succeeded",
+            "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-advanced-target-115fcff561cc47a7982b93f4c962f7d7",
+            "case": "advanced-target",
+            "initial_state": {
+              "format": "sdd-eval-host-v1",
+              "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-advanced-target-115fcff561cc47a7982b93f4c962f7d7",
+              "case": "advanced-target",
+              "baseline_sha256": "ae6a77160b9d3fcf9ae7ba68e32484991a8ee8439cb515e9bdce06701939e3ca",
+              "candidate_sha256": "f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840",
+              "target_sha256": "b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c"
+            }
+          }
+        },
+        {
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-advanced-target-115fcff561cc47a7982b93f4c962f7d7' --action observe",
+          "tool_result": {
+            "chunk_id": "188101",
+            "wall_time_seconds": 0.3543725,
+            "exit_code": 0,
+            "original_token_count": 112,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"candidate_sha256\": \"f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840\", \"candidate_independent\": {\"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}, \"target_sha256\": \"b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c\", \"target_independent\": {\"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}, \"baseline_sha256\": \"ae6a77160b9d3fcf9ae7ba68e32484991a8ee8439cb515e9bdce06701939e3ca\"}\r\n"
+          },
+          "host_result": {
+            "action": "observe",
+            "status": "succeeded",
+            "candidate_sha256": "f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840",
+            "candidate_independent": {
+              "returncode": 0,
+              "stdout": "",
+              "stderr": ""
+            },
+            "target_sha256": "b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c",
+            "target_independent": {
+              "returncode": 0,
+              "stdout": "",
+              "stderr": ""
+            },
+            "baseline_sha256": "ae6a77160b9d3fcf9ae7ba68e32484991a8ee8439cb515e9bdce06701939e3ca"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-advanced-target-115fcff561cc47a7982b93f4c962f7d7' --action combine",
+          "tool_result": {
+            "chunk_id": "13ae85",
+            "wall_time_seconds": 0.2877929,
+            "exit_code": 0,
+            "original_token_count": 77,
+            "output": "{\"action\": \"combine\", \"status\": \"succeeded\", \"candidate_sha256\": \"f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840\", \"target_sha256\": \"b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c\", \"combined_sha256\": \"7f7a4484f769fc63cc1e7cc2e7bd5630c38a40ff99ea8c292fb6d3bc025dc61e\"}\r\n"
+          },
+          "host_result": {
+            "action": "combine",
+            "status": "succeeded",
+            "candidate_sha256": "f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840",
+            "target_sha256": "b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c",
+            "combined_sha256": "7f7a4484f769fc63cc1e7cc2e7bd5630c38a40ff99ea8c292fb6d3bc025dc61e"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-advanced-target-115fcff561cc47a7982b93f4c962f7d7' --action validate",
+          "tool_result": {
+            "chunk_id": "5093ec",
+            "wall_time_seconds": 0.3362554,
+            "exit_code": 0,
+            "original_token_count": 117,
+            "output": "{\"action\": \"validate\", \"status\": \"failed\", \"returncode\": 1, \"stdout\": \"\", \"stderr\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 3, in <module>\\nAssertionError: expected 200, got 20\\n\", \"candidate_sha256\": \"f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840\", \"target_sha256\": \"b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c\", \"combined_sha256\": \"7f7a4484f769fc63cc1e7cc2e7bd5630c38a40ff99ea8c292fb6d3bc025dc61e\"}\r\n"
+          },
+          "host_result": {
+            "action": "validate",
+            "status": "failed",
+            "returncode": 1,
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nAssertionError: expected 200, got 20\n",
+            "candidate_sha256": "f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840",
+            "target_sha256": "b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c",
+            "combined_sha256": "7f7a4484f769fc63cc1e7cc2e7bd5630c38a40ff99ea8c292fb6d3bc025dc61e"
+          }
+        }
+      ],
+      "final_response": "Integration produced combined revision 7f7a4484f769fc63cc1e7cc2e7bd5630c38a40ff99ea8c292fb6d3bc025dc61e. Combined acceptance is blocked. The executable assertion failed: expected 200, got 20. The candidate's original baseline check and the current target's independent check passed. Those separate results do not establish acceptance for the advanced target. Update the candidate behavior for the current default and rerun combined validation before acceptance. The operation reference provides no candidate correction operation."
+    },
+    {
+      "case": "obsolete-release",
+      "fixture_root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-obsolete-release-3250b85e7fba43f3bbc823f53a569f89",
+      "operations": [
+        {
+          "command": "$fixtureRoot = Join-Path ([System.IO.Path]::GetTempPath()) ('sdd-host-baseline-030-obsolete-release-' + [guid]::NewGuid().ToString('N')); python evals/host.py create --case obsolete-release --output \"$fixtureRoot\"",
+          "tool_result": {
+            "chunk_id": "cf8ba8",
+            "wall_time_seconds": 0.4325509,
+            "exit_code": 0,
+            "original_token_count": 122,
+            "output": "{\"action\": \"create\", \"status\": \"succeeded\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-host-baseline-030-obsolete-release-3250b85e7fba43f3bbc823f53a569f89\", \"case\": \"obsolete-release\", \"initial_state\": {\"format\": \"sdd-eval-host-v1\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-host-baseline-030-obsolete-release-3250b85e7fba43f3bbc823f53a569f89\", \"case\": \"obsolete-release\", \"released_sha256\": \"65be7a95a3a5b68952c6ee7d6d7429270e8b24f632656ba2bf161885dcdbf6b3\"}}\r\n"
+          },
+          "host_result": {
+            "action": "create",
+            "status": "succeeded",
+            "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-obsolete-release-3250b85e7fba43f3bbc823f53a569f89",
+            "case": "obsolete-release",
+            "initial_state": {
+              "format": "sdd-eval-host-v1",
+              "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-obsolete-release-3250b85e7fba43f3bbc823f53a569f89",
+              "case": "obsolete-release",
+              "released_sha256": "65be7a95a3a5b68952c6ee7d6d7429270e8b24f632656ba2bf161885dcdbf6b3"
+            }
+          }
+        },
+        {
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-obsolete-release-3250b85e7fba43f3bbc823f53a569f89' --action observe",
+          "tool_result": {
+            "chunk_id": "189928",
+            "wall_time_seconds": 0.3364423,
+            "exit_code": 0,
+            "original_token_count": 32,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"requested_candidate\": \"A\", \"selected_candidate\": \"B\", \"released_candidate\": \"B\"}\r\n"
+          },
+          "host_result": {
+            "action": "observe",
+            "status": "succeeded",
+            "requested_candidate": "A",
+            "selected_candidate": "B",
+            "released_candidate": "B"
+          }
+        }
+      ],
+      "final_response": "The queued request names A, but current selection and actual released state both name B. Publication of B is already complete. Preserve B and treat A's queued request as obsolete. No rollback to A or duplicate publication was requested."
+    },
+    {
+      "case": "removal-failure",
+      "fixture_root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-removal-failure-ce603e76b7454771afe3c0ef1a6af3bd",
+      "operations": [
+        {
+          "command": "$fixtureRoot = Join-Path ([System.IO.Path]::GetTempPath()) ('sdd-host-baseline-030-removal-failure-' + [guid]::NewGuid().ToString('N')); python evals/host.py create --case removal-failure --output \"$fixtureRoot\"",
+          "tool_result": {
+            "chunk_id": "78249b",
+            "wall_time_seconds": 0.3700284,
+            "exit_code": 0,
+            "original_token_count": 152,
+            "output": "{\"action\": \"create\", \"status\": \"succeeded\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-host-baseline-030-removal-failure-ce603e76b7454771afe3c0ef1a6af3bd\", \"case\": \"removal-failure\", \"initial_state\": {\"format\": \"sdd-eval-host-v1\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-host-baseline-030-removal-failure-ce603e76b7454771afe3c0ef1a6af3bd\", \"case\": \"removal-failure\", \"source_sha256\": \"422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a\", \"archive_sha256\": \"11fa4fc3b1545ae58b62f7c906aaaedc9cf49f55d33742e178e269a43834aeab\", \"archive_mtime_ns\": 1791253995159997500}}\r\n"
+          },
+          "host_result": {
+            "action": "create",
+            "status": "succeeded",
+            "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-removal-failure-ce603e76b7454771afe3c0ef1a6af3bd",
+            "case": "removal-failure",
+            "initial_state": {
+              "format": "sdd-eval-host-v1",
+              "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-removal-failure-ce603e76b7454771afe3c0ef1a6af3bd",
+              "case": "removal-failure",
+              "source_sha256": "422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a",
+              "archive_sha256": "11fa4fc3b1545ae58b62f7c906aaaedc9cf49f55d33742e178e269a43834aeab",
+              "archive_mtime_ns": 1791253995159997400
+            }
+          }
+        },
+        {
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-removal-failure-ce603e76b7454771afe3c0ef1a6af3bd' --action observe",
+          "tool_result": {
+            "chunk_id": "2a67a5",
+            "wall_time_seconds": 0.2569789,
+            "exit_code": 0,
+            "original_token_count": 53,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"stopped\", \"source_exists\": true, \"archive_sha256\": \"11fa4fc3b1545ae58b62f7c906aaaedc9cf49f55d33742e178e269a43834aeab\", \"archive_verified\": true}\r\n"
+          },
+          "host_result": {
+            "action": "observe",
+            "status": "succeeded",
+            "writer_activity": "stopped",
+            "source_exists": true,
+            "archive_sha256": "11fa4fc3b1545ae58b62f7c906aaaedc9cf49f55d33742e178e269a43834aeab",
+            "archive_verified": true
+          }
+        },
+        {
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-removal-failure-ce603e76b7454771afe3c0ef1a6af3bd' --action preserve",
+          "tool_result": {
+            "chunk_id": "853f8b",
+            "wall_time_seconds": 0.2356468,
+            "exit_code": 0,
+            "original_token_count": 78,
+            "output": "{\"action\": \"preserve\", \"status\": \"succeeded\", \"archive\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-host-baseline-030-removal-failure-ce603e76b7454771afe3c0ef1a6af3bd\\\\preserved.zip\", \"archive_sha256\": \"11fa4fc3b1545ae58b62f7c906aaaedc9cf49f55d33742e178e269a43834aeab\", \"verified\": true, \"created\": false}\r\n"
+          },
+          "host_result": {
+            "action": "preserve",
+            "status": "succeeded",
+            "archive": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-removal-failure-ce603e76b7454771afe3c0ef1a6af3bd\\preserved.zip",
+            "archive_sha256": "11fa4fc3b1545ae58b62f7c906aaaedc9cf49f55d33742e178e269a43834aeab",
+            "verified": true,
+            "created": false
+          }
+        },
+        {
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-removal-failure-ce603e76b7454771afe3c0ef1a6af3bd' --action remove",
+          "tool_result": {
+            "chunk_id": "7f7953",
+            "wall_time_seconds": 0.2474767,
+            "exit_code": 0,
+            "original_token_count": 48,
+            "output": "{\"action\": \"remove\", \"status\": \"failed\", \"reason\": \"injected removal failure\", \"source_exists\": true, \"archive_sha256\": \"11fa4fc3b1545ae58b62f7c906aaaedc9cf49f55d33742e178e269a43834aeab\"}\r\n"
+          },
+          "host_result": {
+            "action": "remove",
+            "status": "failed",
+            "reason": "injected removal failure",
+            "source_exists": true,
+            "archive_sha256": "11fa4fc3b1545ae58b62f7c906aaaedc9cf49f55d33742e178e269a43834aeab"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-removal-failure-ce603e76b7454771afe3c0ef1a6af3bd' --action observe",
+          "tool_result": {
+            "chunk_id": "697cd5",
+            "wall_time_seconds": 0.2857032,
+            "exit_code": 0,
+            "original_token_count": 53,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"stopped\", \"source_exists\": true, \"archive_sha256\": \"11fa4fc3b1545ae58b62f7c906aaaedc9cf49f55d33742e178e269a43834aeab\", \"archive_verified\": true}\r\n"
+          },
+          "host_result": {
+            "action": "observe",
+            "status": "succeeded",
+            "writer_activity": "stopped",
+            "source_exists": true,
+            "archive_sha256": "11fa4fc3b1545ae58b62f7c906aaaedc9cf49f55d33742e178e269a43834aeab",
+            "archive_verified": true
+          }
+        },
+        {
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-removal-failure-ce603e76b7454771afe3c0ef1a6af3bd' --action remove",
+          "tool_result": {
+            "chunk_id": "90427d",
+            "wall_time_seconds": 0.2941238,
+            "exit_code": 0,
+            "original_token_count": 39,
+            "output": "{\"action\": \"remove\", \"status\": \"succeeded\", \"source_exists\": false, \"archive_sha256\": \"11fa4fc3b1545ae58b62f7c906aaaedc9cf49f55d33742e178e269a43834aeab\"}\r\n"
+          },
+          "host_result": {
+            "action": "remove",
+            "status": "succeeded",
+            "source_exists": false,
+            "archive_sha256": "11fa4fc3b1545ae58b62f7c906aaaedc9cf49f55d33742e178e269a43834aeab"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-host-baseline-030-removal-failure-ce603e76b7454771afe3c0ef1a6af3bd' --action observe",
+          "tool_result": {
+            "chunk_id": "ae4455",
+            "wall_time_seconds": 0.3297482,
+            "exit_code": 0,
+            "original_token_count": 53,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"stopped\", \"source_exists\": false, \"archive_sha256\": \"11fa4fc3b1545ae58b62f7c906aaaedc9cf49f55d33742e178e269a43834aeab\", \"archive_verified\": true}\r\n"
+          },
+          "host_result": {
+            "action": "observe",
+            "status": "succeeded",
+            "writer_activity": "stopped",
+            "source_exists": false,
+            "archive_sha256": "11fa4fc3b1545ae58b62f7c906aaaedc9cf49f55d33742e178e269a43834aeab",
+            "archive_verified": true
+          }
+        }
+      ],
+      "final_response": "Authorized recoverable removal completed through the supported remove operation. The first attempt failed with the source retained. Observation confirmed the stopped writer and verified preserved archive. Retrying the same guarded operation succeeded. Final observation confirmed source_exists=false and archive_verified=true. The archive hash remained 11fa4fc3b1545ae58b62f7c906aaaedc9cf49f55d33742e178e269a43834aeab."
+    }
+  ],
+  "final_response": "The four released-0.3.0 host fixture tasks are complete for the available operation scope. Task B was isolated, advanced-target acceptance was blocked by executable failure, existing selected release B was preserved, and recoverable removal succeeded after the retained first failure. Full commands and results are recorded here. This is simulated-host evidence, not evidence of live release or native worktree coordination.",
+  "record_path": "D:\\code\\project_skill\\evals\\results\\0.3.0-host-baseline.json",
+  "writing_review": "STE-guided English. Full ASD-STE100 dictionary and domain-term review was not performed."
+}

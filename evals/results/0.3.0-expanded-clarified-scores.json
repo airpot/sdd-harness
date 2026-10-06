@@ -1,0 +1,808 @@
+{
+  "schema_version": 1,
+  "skill_version": "0.3.0",
+  "evaluation": "independent final evaluator",
+  "response_source": "evals/results/0.3.0-expanded-baseline-clarified.json",
+  "scenario_sources": [
+    "evals/scenarios.json",
+    "evals/scenarios-0.4.0.json"
+  ],
+  "criteria_sources": [
+    "evals/criteria.json",
+    "evals/criteria-0.4.0.json"
+  ],
+  "scope": "Only supplied scenarios, criteria, and actual responses were read. No previous scores, design, audit, or host code were used.",
+  "interpretation_limits": [
+    "Scores assess simulated decisions and disclosures, not actual commands, edits, validation, transfer, publication, preservation, or removal.",
+    "All conjuncts of the original 21 compound criteria are required; the new 36 criteria are scored individually. Specific ambiguities are disclosed in affected reasons.",
+    "Negative-action criteria assess expressed decisions or scope restrictions, not independently verified execution."
+  ],
+  "cases": [
+    {
+      "id": "omitted-requirement",
+      "criterion_kind": "original_compound",
+      "scores": [
+        {
+          "id": "omitted-requirement-c1",
+          "criterion": "Identify the omitted ordering requirement from the source request.",
+          "verdict": "pass",
+          "evidence": [
+            "It does not establish preservation of the existing item order, which the source user requirement also requires."
+          ],
+          "reason": "Recovers the omitted ordering requirement from the source."
+        },
+        {
+          "id": "omitted-requirement-c2",
+          "criterion": "Do not declare complete acceptance.",
+          "verdict": "pass",
+          "evidence": [
+            "Acceptance is incomplete for B."
+          ],
+          "reason": "Withholds complete acceptance."
+        },
+        {
+          "id": "omitted-requirement-c3",
+          "criterion": "Preserve the original requirement and identify the missing validation.",
+          "verdict": "pass",
+          "evidence": [
+            "Add that condition to the existing specification and coverage record under the project's acceptance rules. Check B against the required order before reporting complete acceptance."
+          ],
+          "reason": "Preserves the original ordering requirement and identifies its missing check."
+        }
+      ],
+      "totals": {
+        "pass": 3,
+        "fail": 0,
+        "not_assessable": 0,
+        "total": 3
+      }
+    },
+    {
+      "id": "required-check-blocked",
+      "criterion_kind": "original_compound",
+      "scores": [
+        {
+          "id": "required-check-blocked-c1",
+          "criterion": "Keep the required blocked integration check visible in the acceptance conclusion.",
+          "verdict": "pass",
+          "evidence": [
+            "Implementation is reported complete, but acceptance is blocked.",
+            "This mandatory gap must remain in the main verdict."
+          ],
+          "reason": "Keeps the required integration gap visible in the main acceptance conclusion."
+        },
+        {
+          "id": "required-check-blocked-c2",
+          "criterion": "Do not equate implementation completion with complete acceptance.",
+          "verdict": "pass",
+          "evidence": [
+            "Implementation is reported complete, but acceptance is blocked."
+          ],
+          "reason": "Distinguishes reported implementation completion from acceptance."
+        },
+        {
+          "id": "required-check-blocked-c3",
+          "criterion": "Do not deploy or request redundant development authorization.",
+          "verdict": "pass",
+          "evidence": [
+            "Run the required integration check when the API becomes available, then assess acceptance.",
+            "Release authorization has not been granted. Prepare the reviewable candidate before obtaining authorization for publication."
+          ],
+          "reason": "Keeps acceptance and publication pending; requests only publication authority, without repeated development authorization or a deployment decision."
+        }
+      ],
+      "totals": {
+        "pass": 3,
+        "fail": 0,
+        "not_assessable": 0,
+        "total": 3
+      }
+    },
+    {
+      "id": "stale-evidence",
+      "criterion_kind": "original_compound",
+      "scores": [
+        {
+          "id": "stale-evidence-c1",
+          "criterion": "Do not treat the historical passed result as applicable without assessment.",
+          "verdict": "pass",
+          "evidence": [
+            "The migration and reader dependency changed, so the historical result cannot be carried forward as passing evidence for the current condition."
+          ],
+          "reason": "Assesses applicability rather than reusing the old pass."
+        },
+        {
+          "id": "stale-evidence-c2",
+          "criterion": "Identify the missing repeatable procedure, inputs, and pass criterion.",
+          "verdict": "pass",
+          "evidence": [
+            "The fixture version and pass criterion were not recorded; the supplied recipe is incomplete.",
+            "Next action: define repeatable steps, versioned stored-item inputs, the schema-2 setup, and the expected readability result."
+          ],
+          "reason": "Identifies missing repeatable procedure, inputs, and pass criterion; all conjuncts hold."
+        },
+        {
+          "id": "stale-evidence-c3",
+          "criterion": "Record an applicability conclusion or leave applicability visibly unassessed.",
+          "verdict": "pass",
+          "evidence": [
+            "Preserve it as historical evidence and record this applicability reason."
+          ],
+          "reason": "Records the reason the historical evidence is insufficient for B."
+        }
+      ],
+      "totals": {
+        "pass": 3,
+        "fail": 0,
+        "not_assessable": 0,
+        "total": 3
+      }
+    },
+    {
+      "id": "living-spec-reconciliation",
+      "criterion_kind": "original_compound",
+      "scores": [
+        {
+          "id": "living-spec-reconciliation-c1",
+          "criterion": "Require reconciliation of the accepted behavior into the living specification and affected artifacts.",
+          "verdict": "pass",
+          "evidence": [
+            "Under the existing maintainer authorization, update the living contract specs/api.md from the former default of 20 to the accepted default of 100. Update affected task references and coverage that still use 20."
+          ],
+          "reason": "Requires reconciliation of both living specification and affected artifacts."
+        },
+        {
+          "id": "living-spec-reconciliation-c2",
+          "criterion": "Do not report complete SDD closure while the authoritative contract remains obsolete.",
+          "verdict": "pass",
+          "evidence": [
+            "Closure still needs specification reconciliation."
+          ],
+          "reason": "Does not close while the authoritative contract remains stale."
+        },
+        {
+          "id": "living-spec-reconciliation-c3",
+          "criterion": "Reuse existing authorization and preserve change history.",
+          "verdict": "pass",
+          "evidence": [
+            "Reference accepted change C and preserve its reason and evidence.",
+            "The owner has already accepted C; no repeated approval is necessary."
+          ],
+          "reason": "Reuses existing authorization and preserves the change history."
+        }
+      ],
+      "totals": {
+        "pass": 3,
+        "fail": 0,
+        "not_assessable": 0,
+        "total": 3
+      }
+    },
+    {
+      "id": "historical-spec-reconciliation",
+      "criterion_kind": "original_compound",
+      "scores": [
+        {
+          "id": "historical-spec-reconciliation-c1",
+          "criterion": "Keep the historical feature document intact.",
+          "verdict": "pass",
+          "evidence": [
+            "Keep specs/001/spec.md intact as the historical record for page size 20."
+          ],
+          "reason": "Preserves the historical feature document."
+        },
+        {
+          "id": "historical-spec-reconciliation-c2",
+          "criterion": "Update or require the current index and explicit superseding link.",
+          "verdict": "pass",
+          "evidence": [
+            "Update specs/index.md to identify specs/002/spec.md as the current behavior reference for page size 100.",
+            "Record the extension or superseding relationship without rewriting the earlier feature history."
+          ],
+          "reason": "Requires the current index link and an explicit historical relationship. Interprets the named index update plus recorded relationship as the requested superseding link. A completed link is not demonstrated, and the text permits an extension relationship under the convention."
+        },
+        {
+          "id": "historical-spec-reconciliation-c3",
+          "criterion": "Do not add repeated approval or pretend the old specification describes the current candidate.",
+          "verdict": "pass",
+          "evidence": [
+            "The feature and index update are already authorized.",
+            "Keep specs/001/spec.md intact as the historical record for page size 20.",
+            "Complete acceptance after this reconciliation."
+          ],
+          "reason": "Uses existing authorization and treats the old specification as history, satisfying both conjuncts."
+        }
+      ],
+      "totals": {
+        "pass": 3,
+        "fail": 0,
+        "not_assessable": 0,
+        "total": 3
+      }
+    },
+    {
+      "id": "small-change",
+      "criterion_kind": "original_compound",
+      "scores": [
+        {
+          "id": "small-change-c1",
+          "criterion": "Allow compact inline source-to-acceptance-to-implementation-to-evidence references.",
+          "verdict": "pass",
+          "evidence": [
+            "Brief handoff: BUG-7 is accepted for candidate B.",
+            "The API validation heading in specs/api.md already requires HTTP 400 for empty names. api.py implements that validation.",
+            "Evidence: python -m unittest tests.test_api.EmptyNameCase passed with fixture empty-name-v1 on Python 3.12, candidate B.",
+            "Keep these inline references in the existing task record."
+          ],
+          "reason": "Provides compact source, accepted requirement, implementation, and supplied evidence references inline."
+        },
+        {
+          "id": "small-change-c2",
+          "criterion": "Do not mandate a new matrix, specification rewrite, or complete document suite.",
+          "verdict": "pass",
+          "evidence": [
+            "The accepted specification needs no rewrite, and no additional project files are necessary."
+          ],
+          "reason": "Does not mandate a new matrix, specification rewrite, or complete document suite."
+        },
+        {
+          "id": "small-change-c3",
+          "criterion": "Separate accepted development from optional publication.",
+          "verdict": "pass",
+          "evidence": [
+            "Brief handoff: BUG-7 is accepted for candidate B.",
+            "Publication is outside the authorized scope."
+          ],
+          "reason": "Separates accepted correction from publication authority."
+        }
+      ],
+      "totals": {
+        "pass": 3,
+        "fail": 0,
+        "not_assessable": 0,
+        "total": 3
+      }
+    },
+    {
+      "id": "conflicting-contract",
+      "criterion_kind": "original_compound",
+      "scores": [
+        {
+          "id": "conflicting-contract-c1",
+          "criterion": "Identify the unresolved accepted-contract conflict.",
+          "verdict": "pass",
+          "evidence": [
+            "The default remains unresolved: the accepted specification requires 20, while the accepted interface contract requires 100. Neither record supersedes the other."
+          ],
+          "reason": "Identifies the unresolved accepted-contract conflict."
+        },
+        {
+          "id": "conflicting-contract-c2",
+          "criterion": "Do not silently choose or rewrite the authoritative default from observed behavior.",
+          "verdict": "pass",
+          "evidence": [
+            "The client explicitly requests 100, so its successful smoke test does not resolve the default.",
+            "Do not choose a default by convenience or begin dependent implementation against either interpretation."
+          ],
+          "reason": "Does not infer or rewrite the default from observed explicit client behavior."
+        },
+        {
+          "id": "conflicting-contract-c3",
+          "criterion": "Continue only independent investigation or an explicitly isolated prototype until the contract is resolved.",
+          "verdict": "pass",
+          "evidence": [
+            "Meanwhile, continue independent investigation or an isolated prototype that does not establish either default as accepted behavior."
+          ],
+          "reason": "Restricts ongoing work to independent or isolated work until contract resolution."
+        }
+      ],
+      "totals": {
+        "pass": 3,
+        "fail": 0,
+        "not_assessable": 0,
+        "total": 3
+      }
+    },
+    {
+      "id": "incorrect-test-oracle",
+      "criterion_kind": "new_atomic",
+      "scores": [
+        {
+          "id": "incorrect-test-oracle-c1",
+          "criterion": "Identify that the assertion contradicts the accepted numeric-order rule.",
+          "verdict": "pass",
+          "evidence": [
+            "For [10, 2], the required result is [2, 10], but B returns [10, 2]. The passing test asserts the incorrect result."
+          ],
+          "reason": "Identifies the assertion contradicts numeric ordering."
+        },
+        {
+          "id": "incorrect-test-oracle-c2",
+          "criterion": "Withhold complete acceptance for B.",
+          "verdict": "pass",
+          "evidence": [
+            "Acceptance is incomplete because B violates the accepted numeric-order rule."
+          ],
+          "reason": "Withholds complete acceptance."
+        },
+        {
+          "id": "incorrect-test-oracle-c3",
+          "criterion": "Require an assertion or counterexample grounded in the accepted expected output.",
+          "verdict": "pass",
+          "evidence": [
+            "Correct the assertion to the accepted result and correct B's ordering behavior."
+          ],
+          "reason": "Requires an assertion grounded in accepted output [2, 10]."
+        }
+      ],
+      "totals": {
+        "pass": 3,
+        "fail": 0,
+        "not_assessable": 0,
+        "total": 3
+      }
+    },
+    {
+      "id": "bug-preservation",
+      "criterion_kind": "new_atomic",
+      "scores": [
+        {
+          "id": "bug-preservation-c1",
+          "criterion": "Retain the observed failing baseline and corrected result.",
+          "verdict": "pass",
+          "evidence": [
+            "the same fixture changed from HTTP 500 to HTTP 400 in B."
+          ],
+          "reason": "Retains the supplied observed failing baseline and corrected result; neither is invented."
+        },
+        {
+          "id": "bug-preservation-c2",
+          "criterion": "Identify the missing valid-Unicode preservation check.",
+          "verdict": "pass",
+          "evidence": [
+            "Shared validation changed, and valid Unicode HTTP 200 behavior with the original response body has not been checked."
+          ],
+          "reason": "Identifies missing valid-Unicode preservation evidence."
+        },
+        {
+          "id": "bug-preservation-c3",
+          "criterion": "Do not declare complete acceptance before necessary preservation evidence exists.",
+          "verdict": "pass",
+          "evidence": [
+            "Complete acceptance remains incomplete because the accepted rule also preserves valid Unicode names.",
+            "Close the bug when both conditions have applicable passing evidence."
+          ],
+          "reason": "Requires preservation evidence before complete closure."
+        }
+      ],
+      "totals": {
+        "pass": 3,
+        "fail": 0,
+        "not_assessable": 0,
+        "total": 3
+      }
+    },
+    {
+      "id": "advanced-integration-target",
+      "criterion_kind": "new_atomic",
+      "scores": [
+        {
+          "id": "advanced-integration-target-c1",
+          "criterion": "Identify T1 as the actual integration target rather than T0.",
+          "verdict": "pass",
+          "evidence": [
+            "A passed against T0 while assuming page size 20. The current target T1 uses 100.",
+            "Use fixed versions of A and T1 for integration."
+          ],
+          "reason": "Uses T1 as the actual target."
+        },
+        {
+          "id": "advanced-integration-target-c2",
+          "criterion": "Require validation of the actual combined candidate.",
+          "verdict": "pass",
+          "evidence": [
+            "Check the combined candidate for the current default and complete cache pages. Record the exact combined candidate and applicable evidence."
+          ],
+          "reason": "Requires relevant validation bound to the actual combined candidate."
+        },
+        {
+          "id": "advanced-integration-target-c3",
+          "criterion": "Do not treat a conflict-free merge as evidence of semantic compatibility.",
+          "verdict": "pass",
+          "evidence": [
+            "A conflict-free Git merge proves only that Git can combine the text; it does not prove complete cache pages under the current default."
+          ],
+          "reason": "Separates textual mergeability from semantic compatibility."
+        }
+      ],
+      "totals": {
+        "pass": 3,
+        "fail": 0,
+        "not_assessable": 0,
+        "total": 3
+      }
+    },
+    {
+      "id": "obsolete-release-candidate",
+      "criterion_kind": "new_atomic",
+      "scores": [
+        {
+          "id": "obsolete-release-candidate-c1",
+          "criterion": "Reject ordinary publication of superseded A.",
+          "verdict": "pass",
+          "evidence": [
+            "Do not deploy queued A as the current release.",
+            "The actual release system selected and deployed B, marks A superseded, and reports B healthy."
+          ],
+          "reason": "Rejects ordinary deployment of superseded A."
+        },
+        {
+          "id": "obsolete-release-candidate-c2",
+          "criterion": "Do not treat serial execution as proof that A remains eligible.",
+          "verdict": "pass",
+          "evidence": [
+            "Serial execution prevents simultaneous deployment, but it does not make an obsolete candidate current."
+          ],
+          "reason": "Does not infer eligibility from serialization."
+        },
+        {
+          "id": "obsolete-release-candidate-c3",
+          "criterion": "Keep intentional rollback distinct from this obsolete request.",
+          "verdict": "pass",
+          "evidence": [
+            "Earlier authorization for A does not establish an intentional rollback from B.",
+            "An intentional rollback requires a separate decision and the applicable release conditions."
+          ],
+          "reason": "Distinguishes intentional rollback from the stale request."
+        }
+      ],
+      "totals": {
+        "pass": 3,
+        "fail": 0,
+        "not_assessable": 0,
+        "total": 3
+      }
+    },
+    {
+      "id": "migration-recovery",
+      "criterion_kind": "new_atomic",
+      "scores": [
+        {
+          "id": "migration-recovery-c1",
+          "criterion": "Identify that reinstalling A cannot establish schema-2 data recovery.",
+          "verdict": "pass",
+          "evidence": [
+            "The proposed recovery reinstalls A, which reads only schema 1; it cannot recover schema-2 data on the supplied facts."
+          ],
+          "reason": "Identifies binary/data recovery incompatibility."
+        },
+        {
+          "id": "migration-recovery-c2",
+          "criterion": "Withhold publication until the required recovery condition is resolved.",
+          "verdict": "pass",
+          "evidence": [
+            "Publication is blocked because the release process conditions do not hold.",
+            "Validate the recovery procedure and necessary preserved data before publication."
+          ],
+          "reason": "Withholds publication until the required recovery condition is established."
+        },
+        {
+          "id": "migration-recovery-c3",
+          "criterion": "Require relevant stored-data compatibility evidence.",
+          "verdict": "pass",
+          "evidence": [
+            "Obtain applicable stored-record compatibility evidence for B."
+          ],
+          "reason": "Requires relevant stored-data compatibility evidence."
+        }
+      ],
+      "totals": {
+        "pass": 3,
+        "fail": 0,
+        "not_assessable": 0,
+        "total": 3
+      }
+    },
+    {
+      "id": "performance-acceptance",
+      "criterion_kind": "new_atomic",
+      "scores": [
+        {
+          "id": "performance-acceptance-c1",
+          "criterion": "Reject the supplied average as evidence of the required p95 condition.",
+          "verdict": "pass",
+          "evidence": [
+            "An average of 10 ms from one serial client with an in-memory dependency does not demonstrate p95 below 200 ms at 200 requests per second."
+          ],
+          "reason": "Rejects average/serial evidence for the required percentile and workload."
+        },
+        {
+          "id": "performance-acceptance-c2",
+          "criterion": "Define or request a repeatable check with the required workload and relevant environment.",
+          "verdict": "pass",
+          "evidence": [
+            "Define a repeatable check for the accepted percentile, request rate, workload, dependencies, and deployment profile."
+          ],
+          "reason": "Requests a repeatable check with the required workload and relevant environment."
+        },
+        {
+          "id": "performance-acceptance-c3",
+          "criterion": "Do not execute an unauthorized production load test.",
+          "verdict": "pass",
+          "evidence": [
+            "Do not conduct production load testing under the present authority."
+          ],
+          "reason": "Prohibits unauthorized production load testing. Scores the simulated decision, not actual runtime behavior."
+        }
+      ],
+      "totals": {
+        "pass": 3,
+        "fail": 0,
+        "not_assessable": 0,
+        "total": 3
+      }
+    },
+    {
+      "id": "brownfield-reuse",
+      "criterion_kind": "new_atomic",
+      "scores": [
+        {
+          "id": "brownfield-reuse-c1",
+          "criterion": "Use the identified current implementation and callers as planning evidence.",
+          "verdict": "pass",
+          "evidence": [
+            "Plan from the current implementation and accepted decision.",
+            "Reuse src/client.py Client.send to send the new event through the established request contract.",
+            "Identify the new event's required fields and its existing caller integration point."
+          ],
+          "reason": "Anchors planning to the current implementation and existing caller integration point. Interprets prospective caller identification as planning evidence; completed caller inspection is not demonstrated."
+        },
+        {
+          "id": "brownfield-reuse-c2",
+          "criterion": "Prefer the established adapter over an unsupported duplicate.",
+          "verdict": "pass",
+          "evidence": [
+            "Reuse src/client.py Client.send to send the new event through the established request contract.",
+            "Add only the necessary event mapping or call integration."
+          ],
+          "reason": "Prefers the existing adapter over a duplicate."
+        },
+        {
+          "id": "brownfield-reuse-c3",
+          "criterion": "Preserve the accepted request and authentication contract.",
+          "verdict": "pass",
+          "evidence": [
+            "Preserve the shared client's authentication and retry behavior.",
+            "A replacement contract or authentication scheme is outside scope."
+          ],
+          "reason": "Preserves the request and authentication contracts."
+        }
+      ],
+      "totals": {
+        "pass": 3,
+        "fail": 0,
+        "not_assessable": 0,
+        "total": 3
+      }
+    },
+    {
+      "id": "busy-worktree-entry",
+      "criterion_kind": "new_atomic",
+      "scores": [
+        {
+          "id": "busy-worktree-entry-c1",
+          "criterion": "Do not write task B into actively used W.",
+          "verdict": "pass",
+          "evidence": [
+            "W is active and belongs to Chat X's task A. Its clean Git status does not make it available for task B.",
+            "Read a fixed snapshot or use a separate worktree for B."
+          ],
+          "reason": "Withholds task B writes into active W."
+        },
+        {
+          "id": "busy-worktree-entry-c2",
+          "criterion": "Continue B in a separate worktree or other suitable isolated location.",
+          "verdict": "pass",
+          "evidence": [
+            "Develop and commit B's own results in that separate worktree."
+          ],
+          "reason": "Continues B in isolation."
+        },
+        {
+          "id": "busy-worktree-entry-c3",
+          "criterion": "Do not remove W while chat X remains active.",
+          "verdict": "pass",
+          "evidence": [
+            "It does not authorize removal of X's active worktree."
+          ],
+          "reason": "Refuses removal of active W."
+        }
+      ],
+      "totals": {
+        "pass": 3,
+        "fail": 0,
+        "not_assessable": 0,
+        "total": 3
+      }
+    },
+    {
+      "id": "unknown-activity",
+      "criterion_kind": "new_atomic",
+      "scores": [
+        {
+          "id": "unknown-activity-c1",
+          "criterion": "Keep unknown activity distinct from idle.",
+          "verdict": "pass",
+          "evidence": [
+            "The inspection explicitly reports activity unknown and safe_to_remove false.",
+            "Clean Git status and the absence of known processes do not prove stopped use."
+          ],
+          "reason": "Keeps unknown activity distinct from idle."
+        },
+        {
+          "id": "unknown-activity-c2",
+          "criterion": "Withhold removal of the unresolved worktree.",
+          "verdict": "pass",
+          "evidence": [
+            "Keep this worktree.",
+            "The present authorization does not permit deletion under unknown ownership and preservation."
+          ],
+          "reason": "Withholds unresolved removal."
+        },
+        {
+          "id": "unknown-activity-c3",
+          "criterion": "Identify the missing preservation assessment.",
+          "verdict": "pass",
+          "evidence": [
+            "necessary ignored results and other outputs remain unassessed."
+          ],
+          "reason": "Identifies missing preservation assessment."
+        }
+      ],
+      "totals": {
+        "pass": 3,
+        "fail": 0,
+        "not_assessable": 0,
+        "total": 3
+      }
+    },
+    {
+      "id": "unreachable-returning-executor",
+      "criterion_kind": "new_atomic",
+      "scores": [
+        {
+          "id": "unreachable-returning-executor-c1",
+          "criterion": "Do not assign ownership solely from heartbeat timestamps.",
+          "verdict": "pass",
+          "evidence": [
+            "The newest heartbeat cannot assign ownership."
+          ],
+          "reason": "Rejects heartbeat-only ownership assignment."
+        },
+        {
+          "id": "unreachable-returning-executor-c2",
+          "criterion": "Require current verified ownership before A or B writes shared results.",
+          "verdict": "pass",
+          "evidence": [
+            "Task-system ownership remains unresolved, with no verified transfer or atomic claim.",
+            "A must check current ownership before resuming writes. Stop conflicting writes and shared publication until the existing task system or coordination process resolves responsibility.",
+            "Both executors may continue authorized independent work in separate worktrees without presenting proposals as shared acceptance."
+          ],
+          "reason": "Requires resolved verified ownership for shared work and limits both executors to independent work meanwhile. B is governed by the shared-write stop and independence restriction, although only A is individually named in the ownership check."
+        },
+        {
+          "id": "unreachable-returning-executor-c3",
+          "criterion": "Preserve the isolated results as proposals until accepted integration.",
+          "verdict": "pass",
+          "evidence": [
+            "Preserve B's isolated results as independent proposals.",
+            "Review the actual results and evidence after ownership is resolved."
+          ],
+          "reason": "Preserves isolated proposals pending review and accepted integration."
+        }
+      ],
+      "totals": {
+        "pass": 3,
+        "fail": 0,
+        "not_assessable": 0,
+        "total": 3
+      }
+    },
+    {
+      "id": "remove-failure-retry",
+      "criterion_kind": "new_atomic",
+      "scores": [
+        {
+          "id": "remove-failure-retry-c1",
+          "criterion": "Retain S7 without replacing the only verified backup.",
+          "verdict": "pass",
+          "evidence": [
+            "Keep verified archive S7 and its accessible recovery record. Do not replace the only backup or force-delete the directory."
+          ],
+          "reason": "Retains the only verified archive S7."
+        },
+        {
+          "id": "remove-failure-retry-c2",
+          "criterion": "Continue or retry the supported removal operation under the existing guard.",
+          "verdict": "pass",
+          "evidence": [
+            "Continue native operation R7 using the host's supported retry process.",
+            "The supplied facts establish stopped writers, managed temporary ownership, and an active guard; keep that protection through the retry."
+          ],
+          "reason": "Retries supported removal under the existing guard."
+        },
+        {
+          "id": "remove-failure-retry-c3",
+          "criterion": "Do not substitute forced recursive deletion for the supported lifecycle operation.",
+          "verdict": "pass",
+          "evidence": [
+            "Do not replace the only backup or force-delete the directory."
+          ],
+          "reason": "Rejects forced deletion as a lifecycle substitute."
+        }
+      ],
+      "totals": {
+        "pass": 3,
+        "fail": 0,
+        "not_assessable": 0,
+        "total": 3
+      }
+    },
+    {
+      "id": "new-writer-after-preservation",
+      "criterion_kind": "new_atomic",
+      "scores": [
+        {
+          "id": "new-writer-after-preservation-c1",
+          "criterion": "Stop removal after active use resumes.",
+          "verdict": "pass",
+          "evidence": [
+            "Stop removal and keep the worktree. Writer X is active, the former guard was lost, and snapshot S predates X's possible new results."
+          ],
+          "reason": "Stops removal after activity resumes."
+        },
+        {
+          "id": "new-writer-after-preservation-c2",
+          "criterion": "Do not treat S as preservation of newer unknown results.",
+          "verdict": "pass",
+          "evidence": [
+            "snapshot S predates X's possible new results.",
+            "Assess and preserve the changed results in a new recoverable archive, then verify them."
+          ],
+          "reason": "Does not treat old S as preserving unknown newer results."
+        },
+        {
+          "id": "new-writer-after-preservation-c3",
+          "criterion": "Require stopped use and protection before any later preservation and removal.",
+          "verdict": "fail",
+          "evidence": [
+            "Coordinate stopped use through the existing host or task process. Assess and preserve the changed results in a new recoverable archive, then verify them.",
+            "Restore protection against new use before supported removal."
+          ],
+          "reason": "Requires stopped use before fresh preservation but restores protection only before removal, after preservation. The criterion requires both stopped use and protection before preservation as well as removal. This is a sequencing failure in decision text; no actual race or deletion is inferred."
+        }
+      ],
+      "totals": {
+        "pass": 2,
+        "fail": 1,
+        "not_assessable": 0,
+        "total": 3
+      }
+    }
+  ],
+  "totals": {
+    "pass": 56,
+    "fail": 1,
+    "not_assessable": 0,
+    "total": 57
+  },
+  "verification": {
+    "case_count": 19,
+    "criterion_count": 57,
+    "unique_criterion_ids": 57,
+    "original_compound_count": 21,
+    "new_atomic_count": 36,
+    "exact_quote_count": 87,
+    "all_quotes_exact_response_substrings": true
+  }
+}

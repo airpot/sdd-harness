@@ -2,7 +2,7 @@
 name: sdd-harness
 description: Use when specification-driven development spans changes, chats, worktrees, machines, or coding agents. Use when resuming tasks, checking acceptance evidence, preparing releases, or recovering project worktrees.
 metadata:
-  version: "0.3.0"
+  version: "0.4.0"
 ---
 
 # SDD Harness
@@ -43,10 +43,12 @@ Both tools are optional.
 - Find accepted requirements, relevant interfaces, and baseline behavior. Reference existing specifications and tasks instead of duplicating them.
 - Define observable acceptance conditions, dependencies, and the next verifiable change. Keep small tasks brief.
 - Before dependent implementation, review specification quality and conflicting contracts.
+- Before technical planning, inspect relevant current code and decisions. Identify reusable components and behavior to preserve.
 - Trace source requirements to acceptance conditions, work, implementation, and evidence. Check for omitted requirements and unsupported added behavior.
 - Run parallel tasks only when dependencies permit. Use separate worktrees and runtime resources.
 - If shared interfaces, data structures, or dependencies change, coordinate with affected tasks. Review their evidence again.
 - Implement small batches. Read the actual diff. Run relevant checks. Integrate early.
+- Check important assertions against accepted intent. Select validation from affected behavior and risk.
 - Keep checks that did not run, blocked checks, and failed checks visible. Passing checks cover only the behavior they examine.
 - Identify specification proposals and their reasons. Follow the project's acceptance rules. Do not silently weaken acceptance conditions.
 
@@ -76,10 +78,14 @@ Check requirement coverage, actual changes, dependencies, and evidence.
 Bind evidence to the exact commit or snapshot, specification version, and relevant environment.
 If any of these change, review whether the evidence still applies.
 Record the applicability conclusion and its reason. Keep unassessed evidence visibly unassessed.
+
 Required conditions need applicable passing evidence for complete acceptance.
 If required validation fails, is blocked, or did not run, report incomplete acceptance and the remaining work.
 Before final acceptance, reconcile accepted changes with the authoritative specification and affected records.
 Follow the project's specification maintenance model and existing authorization.
+
+Before integration, check the current target.
+Validate the actual combined candidate when the target or relevant dependencies changed.
 
 Check development permission, integration permission, and release authorization separately.
 Continue routine actions that the user already authorized. This skill does not expand authorization.
@@ -88,6 +94,10 @@ Use the existing release entry.
 Record the exact candidate commit, artifact hashes, and target environment before publication.
 Use only the recorded candidate for this release.
 Check combined validation and the release owner.
+
+At execution, verify that the candidate remains selected and eligible.
+Reject superseded requests through the release system.
+For risky publication, check applicable compatibility, rollout observations, stop conditions, and authorized recovery.
 
 If releases compete, old requests remain, or results are uncertain, check the actual release system before deployment.
 Cancellation or timeout does not prove failure or rollback.

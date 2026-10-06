@@ -64,6 +64,12 @@ For this skill, use these technical nouns:
 | candidate | The exact proposed code or artifacts for acceptance or release. |
 | evidence | A recorded check for an identified object and environment. |
 | release | An authorized publication to an identified target. |
+| assertion | A test expression that checks an expected property or result. |
+| counterexample | An input or state that demonstrates violation of an expected property. |
+| integration target | The branch or version that receives accepted changes. |
+| migration | A change between persisted data or configuration versions. |
+| rollout | Application of a candidate to a defined target population. |
+| workload | The input mix and rate used to check system behavior. |
 
 Use these technical verbs only for their stated actions:
 

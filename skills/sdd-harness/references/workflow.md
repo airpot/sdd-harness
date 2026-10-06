@@ -15,6 +15,14 @@ For a new project, select one feature with observable acceptance conditions.
 For an existing system, record relevant behavior and known failures.
 Identify the behavior to change and the compatibility boundaries to keep.
 
+Before technical planning, inspect relevant entry points, callers, tests, configuration, and current architecture decisions.
+Identify existing components to reuse and behavior that must remain unchanged.
+Use code as structural evidence. Resolve intended behavior through accepted requirements and project decisions.
+
+If task-relevant context is stale, correct that context with current evidence.
+Keep large historical documents outside routine task context unless necessary.
+Do not require a whole-repository inventory for a narrow change.
+
 ## Clarify and plan
 
 Resolve choices that affect implementation or acceptance.
@@ -46,10 +54,18 @@ If changes have unknown ownership, preserve those changes.
 Then identify their owner. Do not discard the changes.
 
 Select checks that examine the required behavior.
+Use [meaningful validation](spec-review.md) to review important assertions and select checks by risk.
+
+For bug fixes, reproduce the defect before changing code when feasible.
+Retain the failing input and baseline result. Check the corrected result against accepted behavior.
+If reproduction is unavailable, record that limitation and use the strongest applicable evidence.
+Check affected behavior that must remain unchanged.
+
 Record the exact code or snapshot, specification version, method, environment, result, and log location.
 Define the method as an executable command or repeatable observation procedure.
 Record necessary input versions, setup, and the expected result or pass criterion.
 Use authorized references for sensitive inputs. Do not copy credentials into records.
+
 List baseline failures separately. State whether each baseline failure relates to the change.
 Keep checks that did not run visible.
 
@@ -62,6 +78,18 @@ Agreement between models does not replace actual checks.
 
 For deferred issues, record the impact, responsible task or owner, resolution condition, and effect on acceptance.
 Do not skip a necessary requirement by calling it technical debt.
+
+## Integrate against the current target
+
+Identify the actual target branch or version and its current commit.
+Compare that target with the task's original integration baseline.
+If the target advanced, review affected specifications, interfaces, configuration, dependencies, and assumptions.
+Construct the combined candidate against the current target through the project's supported integration process.
+Validate necessary combined behavior, including changes made during conflict resolution.
+Bind integration evidence to the actual candidate and target versions.
+
+Independent branch success and a conflict-free Git merge do not establish semantic compatibility.
+Reuse verified merge controls when available. Do not require a new queue service.
 
 ## Reconcile accepted changes
 
@@ -80,6 +108,10 @@ Preserve important design reasons and original evidence.
 Before complete acceptance, verify that authoritative records describe the accepted candidate consistently.
 If reconciliation is pending, record the gap and its effect on acceptance.
 An unchanged specification needs no rewrite merely to complete a small correction.
+
+Repeat review only when changes, new evidence, or unresolved material concerns justify it.
+If a convergence loop repeats without new evidence, record the specific unresolved choice.
+Continue independent work. Do not rewrite accepted requirements merely to satisfy a repeated review.
 
 ## Save checkpoints
 

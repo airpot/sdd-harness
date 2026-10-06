@@ -50,6 +50,9 @@ It does not restore native chats, exact staging state, other branches, original 
 After recovery, check the environment and evidence again.
 Old ownership records do not grant permission.
 
+Worktree restoration does not reverse a deployed configuration or data migration.
+Use the project's authorized operational recovery process.
+
 The script rejects symlinks, gitlinks, submodules, and unsupported paths.
 For these projects, use native tools with the necessary preservation capabilities.
 Matching hashes prove content consistency. They do not prove source trust.
@@ -77,6 +80,12 @@ Before removal, satisfy all these conditions:
 
 If preservation succeeds but removal fails, keep the archive record and continue the same operation.
 Do not overwrite the only backup.
+After a failed removal, check writers, protection, preservation, and actual registration before retrying.
+Continue the supported operation while its conditions hold. Keep the verified archive.
+
+If use resumes or protection is lost, stop removal.
+Preserve newer necessary results after stopped use and protection are established again.
+
 If the final record update fails, check actual state before repairing the record.
 If ownership is unknown, use continues, or necessary results are not saved, keep the resource.
 Report the reason for keeping the resource.

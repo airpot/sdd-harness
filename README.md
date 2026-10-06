@@ -2,7 +2,7 @@
 
 A portable skill for specification-driven development across chats, worktrees, machines, and coding agents.
 
-Current version: **0.3.0**.
+Current version: **0.4.0**.
 
 The skill combines accepted specifications and incremental changes from OpenSpec with clarification and consistency checks from Spec Kit.
 Use the project's existing specifications and tools. Neither framework is a required dependency.
@@ -13,6 +13,11 @@ Use the project's existing specifications and tools. Neither framework is a requ
 - Coordinate separate tasks across chats, worktrees, machines, and harnesses.
 - Check acceptance evidence against exact code and specification versions.
 - Review specification quality and trace source requirements to implementation and evidence.
+- Review test assertions against accepted intent and retain useful counterexamples and regression evidence.
+- Plan changes from relevant current code and existing components.
+- Validate the actual combined candidate against the current integration target.
+- Check candidate eligibility when a release executes.
+- Select system, performance, security, migration, and recovery checks from affected behavior and risk.
 - Keep mandatory validation gaps visible in acceptance verdicts.
 - Reconcile accepted behavior with the project's authoritative specification.
 - Prepare releases through the project's existing publication entry.
@@ -46,7 +51,7 @@ Before updating, preserve the existing installation outside discovered skills di
 
 ## Install from the package
 
-Download [sdd-harness-0.3.0.zip](dist/sdd-harness-0.3.0.zip) and its [SHA-256 file](dist/sdd-harness-0.3.0.sha256).
+Download [sdd-harness-0.4.0.zip](dist/sdd-harness-0.4.0.zip) and its [SHA-256 file](dist/sdd-harness-0.4.0.sha256).
 Extract the ZIP into a local directory.
 From that directory, run:
 
@@ -126,3 +131,5 @@ They do not establish full runtime compatibility across products, machines, or o
 Read the [behavior specification](specs/sdd-harness.md) for the skill's accepted requirements.
 Use the [saved instruction evaluations](evals/README.md) to compare executor decisions across revisions.
 Evaluation criteria and complete outputs remain separate from executor inputs.
+Expanded evaluations cover 19 instruction cases and isolated host actions with repeated fresh trials.
+The repository-only host simulator checks files, hashes, behavior, and attempted actions. It is not included in the skill package.

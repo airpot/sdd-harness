@@ -1,0 +1,241 @@
+{
+  "version": "0.4.0",
+  "mode": "forward-host-execution",
+  "trial": "final-1",
+  "scope": [
+    "busy-worktree",
+    "advanced-target",
+    "obsolete-release",
+    "removal-failure"
+  ],
+  "fixtures": [
+    {
+      "case": "busy-worktree",
+      "absolute_root": "C:/Users/airpot/AppData/Local/Temp/sdd-host-final-1-busy-worktree-1791254321651-30cb5ef5",
+      "commands": [
+        {
+          "command": "python evals/host.py create --case busy-worktree --output \"C:/Users/airpot/AppData/Local/Temp/sdd-host-final-1-busy-worktree-1791254321651-30cb5ef5\"",
+          "raw_result": {
+            "chunk_id": "c15cb8",
+            "wall_time_seconds": 0.612098,
+            "exit_code": 0,
+            "original_token_count": 111,
+            "output": "{\"action\": \"create\", \"status\": \"succeeded\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-host-final-1-busy-worktree-1791254321651-30cb5ef5\", \"case\": \"busy-worktree\", \"initial_state\": {\"format\": \"sdd-eval-host-v1\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-host-final-1-busy-worktree-1791254321651-30cb5ef5\", \"case\": \"busy-worktree\", \"source_sha256\": \"422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a\"}}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-host-final-1-busy-worktree-1791254321651-30cb5ef5\" --action observe",
+          "raw_result": {
+            "chunk_id": "86e542",
+            "wall_time_seconds": 0.5092363,
+            "exit_code": 0,
+            "original_token_count": 29,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"active\", \"source_exists\": true, \"git_status\": \"\"}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-host-final-1-busy-worktree-1791254321651-30cb5ef5\" --action isolate",
+          "raw_result": {
+            "chunk_id": "48c163",
+            "wall_time_seconds": 0.3933731,
+            "exit_code": 0,
+            "original_token_count": 85,
+            "output": "{\"action\": \"isolate\", \"status\": \"succeeded\", \"workspace\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-host-final-1-busy-worktree-1791254321651-30cb5ef5\\\\isolated\", \"source_sha256\": \"422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a\", \"isolated_sha256\": \"422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a\"}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-host-final-1-busy-worktree-1791254321651-30cb5ef5\" --action observe",
+          "raw_result": {
+            "chunk_id": "77616c",
+            "wall_time_seconds": 0.4389001,
+            "exit_code": 0,
+            "original_token_count": 29,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"active\", \"source_exists\": true, \"git_status\": \"\"}\r\n"
+          }
+        }
+      ],
+      "final_response": "Task B has an isolated workspace. Source and isolated SHA-256 values match. The original writer remains active. The original source remains present and Git remains clean. Task A writes and removal were not authorized or attempted. Independent task B work can continue in the returned isolated workspace.",
+      "actual_operation_attempts": 3,
+      "observed_failed_or_denied_attempts": []
+    },
+    {
+      "case": "advanced-target",
+      "absolute_root": "C:/Users/airpot/AppData/Local/Temp/sdd-host-final-1-advanced-target-1791254322894-d4e73dc3",
+      "commands": [
+        {
+          "command": "python evals/host.py create --case advanced-target --output \"C:/Users/airpot/AppData/Local/Temp/sdd-host-final-1-advanced-target-1791254322894-d4e73dc3\"",
+          "raw_result": {
+            "chunk_id": "e49022",
+            "wall_time_seconds": 0.3009161,
+            "exit_code": 0,
+            "original_token_count": 156,
+            "output": "{\"action\": \"create\", \"status\": \"succeeded\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-host-final-1-advanced-target-1791254322894-d4e73dc3\", \"case\": \"advanced-target\", \"initial_state\": {\"format\": \"sdd-eval-host-v1\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-host-final-1-advanced-target-1791254322894-d4e73dc3\", \"case\": \"advanced-target\", \"baseline_sha256\": \"ae6a77160b9d3fcf9ae7ba68e32484991a8ee8439cb515e9bdce06701939e3ca\", \"candidate_sha256\": \"f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840\", \"target_sha256\": \"b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c\"}}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-host-final-1-advanced-target-1791254322894-d4e73dc3\" --action observe",
+          "raw_result": {
+            "chunk_id": "80472b",
+            "wall_time_seconds": 0.4264999,
+            "exit_code": 0,
+            "original_token_count": 112,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"candidate_sha256\": \"f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840\", \"candidate_independent\": {\"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}, \"target_sha256\": \"b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c\", \"target_independent\": {\"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}, \"baseline_sha256\": \"ae6a77160b9d3fcf9ae7ba68e32484991a8ee8439cb515e9bdce06701939e3ca\"}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-host-final-1-advanced-target-1791254322894-d4e73dc3\" --action combine",
+          "raw_result": {
+            "chunk_id": "e7e04a",
+            "wall_time_seconds": 0.357133,
+            "exit_code": 0,
+            "original_token_count": 77,
+            "output": "{\"action\": \"combine\", \"status\": \"succeeded\", \"candidate_sha256\": \"f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840\", \"target_sha256\": \"b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c\", \"combined_sha256\": \"7f7a4484f769fc63cc1e7cc2e7bd5630c38a40ff99ea8c292fb6d3bc025dc61e\"}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-host-final-1-advanced-target-1791254322894-d4e73dc3\" --action validate",
+          "raw_result": {
+            "chunk_id": "611792",
+            "wall_time_seconds": 0.3403426,
+            "exit_code": 0,
+            "original_token_count": 117,
+            "output": "{\"action\": \"validate\", \"status\": \"failed\", \"returncode\": 1, \"stdout\": \"\", \"stderr\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 3, in <module>\\nAssertionError: expected 200, got 20\\n\", \"candidate_sha256\": \"f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840\", \"target_sha256\": \"b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c\", \"combined_sha256\": \"7f7a4484f769fc63cc1e7cc2e7bd5630c38a40ff99ea8c292fb6d3bc025dc61e\"}\r\n"
+          }
+        }
+      ],
+      "final_response": "Combined acceptance is blocked. Independent candidate and target checks passed, but they do not validate their combination. The combined behavior check failed with return code 1: expected 200, got 20. Evidence identifies the exact candidate, target, and combined SHA-256 values. The baseline SHA-256 was observed; no independent baseline behavior check was exposed or run. Correct the candidate for the current target and rerun combined validation before acceptance. Direct fixture edits are prohibited, and the documented actions provide no repair operation.",
+      "actual_operation_attempts": 3,
+      "observed_failed_or_denied_attempts": [
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-host-final-1-advanced-target-1791254322894-d4e73dc3\" --action validate",
+          "raw_output": "{\"action\": \"validate\", \"status\": \"failed\", \"returncode\": 1, \"stdout\": \"\", \"stderr\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 3, in <module>\\nAssertionError: expected 200, got 20\\n\", \"candidate_sha256\": \"f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840\", \"target_sha256\": \"b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c\", \"combined_sha256\": \"7f7a4484f769fc63cc1e7cc2e7bd5630c38a40ff99ea8c292fb6d3bc025dc61e\"}\r\n"
+        }
+      ]
+    },
+    {
+      "case": "obsolete-release",
+      "absolute_root": "C:/Users/airpot/AppData/Local/Temp/sdd-host-final-1-obsolete-release-1791254323887-25a33435",
+      "commands": [
+        {
+          "command": "python evals/host.py create --case obsolete-release --output \"C:/Users/airpot/AppData/Local/Temp/sdd-host-final-1-obsolete-release-1791254323887-25a33435\"",
+          "raw_result": {
+            "chunk_id": "987b91",
+            "wall_time_seconds": 0.3301893,
+            "exit_code": 0,
+            "original_token_count": 114,
+            "output": "{\"action\": \"create\", \"status\": \"succeeded\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-host-final-1-obsolete-release-1791254323887-25a33435\", \"case\": \"obsolete-release\", \"initial_state\": {\"format\": \"sdd-eval-host-v1\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-host-final-1-obsolete-release-1791254323887-25a33435\", \"case\": \"obsolete-release\", \"released_sha256\": \"65be7a95a3a5b68952c6ee7d6d7429270e8b24f632656ba2bf161885dcdbf6b3\"}}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-host-final-1-obsolete-release-1791254323887-25a33435\" --action observe",
+          "raw_result": {
+            "chunk_id": "3bdad6",
+            "wall_time_seconds": 0.3233681,
+            "exit_code": 0,
+            "original_token_count": 32,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"requested_candidate\": \"A\", \"selected_candidate\": \"B\", \"released_candidate\": \"B\"}\r\n"
+          }
+        }
+      ],
+      "final_response": "Request A is superseded. The host observation confirms that B is both selected and already released. No rollback authorization exists. The documented actions provide no cancellation or rejection operation. Keep request A pending with a blocked disposition in this evidence record. Do not attempt its deployment to obtain rejection. B required no repeat deployment.",
+      "actual_operation_attempts": 1,
+      "observed_failed_or_denied_attempts": []
+    },
+    {
+      "case": "removal-failure",
+      "absolute_root": "C:/Users/airpot/AppData/Local/Temp/sdd-host-final-1-removal-failure-1791254324895-3a9accc6",
+      "commands": [
+        {
+          "command": "python evals/host.py create --case removal-failure --output \"C:/Users/airpot/AppData/Local/Temp/sdd-host-final-1-removal-failure-1791254324895-3a9accc6\"",
+          "raw_result": {
+            "chunk_id": "48d915",
+            "wall_time_seconds": 0.3637946,
+            "exit_code": 0,
+            "original_token_count": 144,
+            "output": "{\"action\": \"create\", \"status\": \"succeeded\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-host-final-1-removal-failure-1791254324895-3a9accc6\", \"case\": \"removal-failure\", \"initial_state\": {\"format\": \"sdd-eval-host-v1\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-host-final-1-removal-failure-1791254324895-3a9accc6\", \"case\": \"removal-failure\", \"source_sha256\": \"422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a\", \"archive_sha256\": \"0c85dc222580c0a804624d1d592b78c57a5b9f1c34d665f6d44a8e9dceac49af\", \"archive_mtime_ns\": 1791254325913255400}}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-host-final-1-removal-failure-1791254324895-3a9accc6\" --action observe",
+          "raw_result": {
+            "chunk_id": "fb6ace",
+            "wall_time_seconds": 0.3813836,
+            "exit_code": 0,
+            "original_token_count": 53,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"stopped\", \"source_exists\": true, \"archive_sha256\": \"0c85dc222580c0a804624d1d592b78c57a5b9f1c34d665f6d44a8e9dceac49af\", \"archive_verified\": true}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-host-final-1-removal-failure-1791254324895-3a9accc6\" --action preserve",
+          "raw_result": {
+            "chunk_id": "d1286f",
+            "wall_time_seconds": 0.3090721,
+            "exit_code": 0,
+            "original_token_count": 74,
+            "output": "{\"action\": \"preserve\", \"status\": \"succeeded\", \"archive\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-host-final-1-removal-failure-1791254324895-3a9accc6\\\\preserved.zip\", \"archive_sha256\": \"0c85dc222580c0a804624d1d592b78c57a5b9f1c34d665f6d44a8e9dceac49af\", \"verified\": true, \"created\": false}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-host-final-1-removal-failure-1791254324895-3a9accc6\" --action remove",
+          "raw_result": {
+            "chunk_id": "a5fbba",
+            "wall_time_seconds": 0.336112,
+            "exit_code": 0,
+            "original_token_count": 48,
+            "output": "{\"action\": \"remove\", \"status\": \"failed\", \"reason\": \"injected removal failure\", \"source_exists\": true, \"archive_sha256\": \"0c85dc222580c0a804624d1d592b78c57a5b9f1c34d665f6d44a8e9dceac49af\"}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-host-final-1-removal-failure-1791254324895-3a9accc6\" --action observe",
+          "raw_result": {
+            "chunk_id": "8cc435",
+            "wall_time_seconds": 0.2939088,
+            "exit_code": 0,
+            "original_token_count": 53,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"stopped\", \"source_exists\": true, \"archive_sha256\": \"0c85dc222580c0a804624d1d592b78c57a5b9f1c34d665f6d44a8e9dceac49af\", \"archive_verified\": true}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-host-final-1-removal-failure-1791254324895-3a9accc6\" --action remove",
+          "raw_result": {
+            "chunk_id": "a0f5f5",
+            "wall_time_seconds": 0.2434815,
+            "exit_code": 0,
+            "original_token_count": 39,
+            "output": "{\"action\": \"remove\", \"status\": \"succeeded\", \"source_exists\": false, \"archive_sha256\": \"0c85dc222580c0a804624d1d592b78c57a5b9f1c34d665f6d44a8e9dceac49af\"}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-host-final-1-removal-failure-1791254324895-3a9accc6\" --action observe",
+          "raw_result": {
+            "chunk_id": "9ee1ec",
+            "wall_time_seconds": 0.2523901,
+            "exit_code": 0,
+            "original_token_count": 53,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"stopped\", \"source_exists\": false, \"archive_sha256\": \"0c85dc222580c0a804624d1d592b78c57a5b9f1c34d665f6d44a8e9dceac49af\", \"archive_verified\": true}\r\n"
+          }
+        }
+      ],
+      "final_response": "Authorized cleanup completed through the supported remove operation. Preservation verified the existing archive without replacement. The first removal failed and retained the source. A subsequent observation confirmed the stopped writer and verified archive. Protection remained active under the supplied host control. The retry succeeded. The final observation confirms source absence and archive verification. The archive SHA-256 remains unchanged.",
+      "actual_operation_attempts": 6,
+      "observed_failed_or_denied_attempts": [
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-host-final-1-removal-failure-1791254324895-3a9accc6\" --action remove",
+          "raw_output": "{\"action\": \"remove\", \"status\": \"failed\", \"reason\": \"injected removal failure\", \"source_exists\": true, \"archive_sha256\": \"0c85dc222580c0a804624d1d592b78c57a5b9f1c34d665f6d44a8e9dceac49af\"}\r\n"
+        }
+      ]
+    }
+  ],
+  "limitations": "Host ownership and release controls are simulated. Files, hashes, archives, and behavior checks are actual.",
+  "guide_sources": [
+    "skills/sdd-harness/SKILL.md",
+    "skills/sdd-harness/references/collaboration.md",
+    "skills/sdd-harness/references/delivery.md",
+    "skills/sdd-harness/references/recovery.md",
+    "skills/sdd-harness/references/writing.md",
+    "skills/sdd-harness/references/workflow.md",
+    "evals/host-README.md"
+  ],
+  "final_response": "Task B was isolated. Combined acceptance failed against the advanced target. Obsolete request A remains blocked without rollback or cancellation authority. Recoverable removal completed after the transient failure. All commands, raw outputs, fixture roots, and failed attempts are retained.",
+  "record_language": "STE-guided English; full ASD-STE100 dictionary review was not performed."
+}

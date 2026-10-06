@@ -48,6 +48,9 @@ If the old executor returns, check current ownership before writing.
 Keep unaccepted results as proposals.
 Task files do not stop old processes.
 
+If multiple executors produced changes, integrate their accepted results against the current target.
+Review [integration and evidence](workflow.md) before treating their combined results as complete.
+
 Across machines, provide the repository reference, exact commit or snapshot, necessary artifacts, checksums, and recovery steps.
 Transfer results to a user-authorized location.
 Check the results on the receiving machine.

@@ -7,10 +7,14 @@ Keep identifiers and raw evidence unchanged.
 - Change and task ID: enter stable references.
 - Goal and scope: state the user requirement, change, and boundaries.
 - Accepted basis: reference specification, interface, and code baseline versions.
+- Current structure: identify relevant entry points, existing components to reuse, and behavior to preserve.
 - Specification review: record material conflicts, assumptions, boundaries, non-goals, and applicable constraints.
 - Coverage: link source requirements to acceptance conditions, tasks, implementation, and evidence. Use inline references or a useful coverage table.
 - Acceptance conditions: state observable results and validation methods.
+- Assertion basis: reference accepted expected results, useful counterexamples, and defect reproduction when applicable.
+- Risk checks: identify necessary system, performance, security, compatibility, and recovery evidence. Omit inapplicable checks.
 - Dependencies and shared contracts: identify parallel work and results necessary before integration.
+- Integration: reference the current target and actual combined candidate with applicable validation.
 - Execution: identify the task, worktree, machine, harness, owner, and observation time. This record does not provide a lock.
 - Results and evidence: reference commits or snapshots, acceptance conditions, exact validation objects, methods, environments, results, and logs.
 - Validation recipe: record executable steps, necessary input versions, setup, and pass criteria.

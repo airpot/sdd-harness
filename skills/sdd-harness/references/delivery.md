@@ -16,6 +16,12 @@ Do not move a mandatory gap into a footnote beneath a successful verdict.
 
 Keep implementation status and acceptance status separate.
 Record whether the applicable scope is accepted, partial, or blocked.
+Use the project's verdict terms when defined.
+Otherwise, accepted means all required conditions have applicable passing evidence.
+Partial means only identified parts are accepted.
+Blocked means a necessary unresolved condition prevents completion of the stated scope.
+
+Retain each failed, blocked, and unrun result separately from the aggregate verdict.
 For project-authorized exclusions, state the authority, basis, scope, and remaining impact.
 Do not exclude a required condition solely to obtain a successful verdict.
 
@@ -25,6 +31,7 @@ Historical success without applicability review does not establish current accep
 Before closure, check authoritative specification reconciliation using [the workflow](workflow.md).
 
 Use a fixed baseline and candidate for integration.
+Follow [current-target integration](workflow.md) when choosing that baseline and candidate.
 Check relevant interfaces and actual dependencies.
 Check small combined changes early.
 Incomplete unrelated tasks do not block the current scope.
@@ -47,6 +54,19 @@ If acceptance conditions or specifications change, review evidence applicability
 
 If releases compete, old requests remain, or results are uncertain, check the release owner and actual target state.
 Check the selected candidate.
+At execution, check the release system's currently selected candidate and supersession rules.
+If the request is superseded, reject or resolve it through that system before publication.
+Exclusive execution does not prove that a candidate remains eligible.
+
+Check operation semantics before resolving a stale request.
+Canceling or rejecting a queued request differs from attempting its deployment.
+Do not submit a superseded deployment to test whether the release system rejects it.
+If no authorized cancellation operation exists, retain the request and report its blocked disposition.
+
+Do not infer eligibility from commit dates or earlier chat authorization.
+Keep intentional rollback separate from ordinary publication of an obsolete candidate.
+Use the existing process and specific authority for an intentional rollback.
+
 Without a reliable exclusive release entry, do not claim that the skill prevents competing releases.
 Do not use a new shared Git file or a custom lock as proof of release authority.
 Prepare a reviewable candidate. Resolve the missing control through the existing project process.
@@ -56,6 +76,14 @@ If release authorization is missing, first prepare a reviewable result.
 Then obtain authorization for the specific external action.
 
 Before release execution, record its run reference.
+For risky publication, identify rollout scope, success signals, stop conditions, and the responsible recovery decision.
+Check configuration and data compatibility of the proposed recovery path.
+If a required recovery condition is unresolved, keep publication pending.
+Use the project's existing deployment and recovery process.
+
+Existing publication authorization does not automatically authorize separate production experiments or recovery actions.
+Record actual environment validation and recovery outcomes.
+
 After execution, record the actual result and validation evidence.
 Timeout, cancellation, or a closed window does not prove external failure or rollback.
 Use the same run reference to determine the result.

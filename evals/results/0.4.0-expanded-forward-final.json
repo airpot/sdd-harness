@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "version": "0.4.0",
+  "skill_version": "0.4.0",
+  "mode": "forward",
+  "input": "final",
+  "source_paths": [
+    "skills/sdd-harness/SKILL.md",
+    "skills/sdd-harness/references/writing.md",
+    "skills/sdd-harness/references/workflow.md",
+    "skills/sdd-harness/references/spec-review.md",
+    "skills/sdd-harness/references/collaboration.md",
+    "skills/sdd-harness/references/delivery.md",
+    "skills/sdd-harness/references/recovery.md",
+    "skills/sdd-harness/assets/handoff.md",
+    "skills/sdd-harness/assets/change.md",
+    "skills/sdd-harness/assets/release.md",
+    "evals/scenarios.json",
+    "evals/scenarios-0.4.0.json"
+  ],
+  "scope": "Isolated simulated instruction evaluation; no live external actions.",
+  "responses": [
+    {
+      "id": "omitted-requirement",
+      "response": "Acceptance is incomplete for B. The passing check establishes that every item appears once. It does not establish preservation of the existing item order. The source request requires both conditions, although the derived specification omitted ordering. Add ordering to the existing coverage record and check B against the baseline order. Keep the passing completeness evidence. Complete acceptance requires applicable passing ordering evidence."
+    },
+    {
+      "id": "required-check-blocked",
+      "response": "Acceptance is blocked for B. The 93 unit tests passed, but the required real API integration check is blocked because the test API is unavailable. The completed task list and previous implementation handoff do not resolve this acceptance gap. Keep the blocked result in the main verdict. Restore the test API, run the required integration check on B, and record its result and environment. Prepare the reviewable delivery record now. Publication remains pending because release authorization was not granted."
+    },
+    {
+      "id": "stale-evidence",
+      "response": "Acceptance record for B: blocked; stored-item readability after the schema change remains unverified. Historical evidence: A passed a manual smoke test in schema 1; source old-log. Applicability to B: does not establish acceptance. B uses schema 2, and both migration and the reader dependency changed. The fixture version and pass criterion were not recorded, so the old result cannot establish a repeatable validation recipe. Preserve the original evidence. Prepare a check using identified stored-item fixtures, the schema migration, B's reader, and an explicit readability criterion. Record the exact candidate, specification version, environment, procedure, inputs, result, and log. No commands were run."
+    },
+    {
+      "id": "living-spec-reconciliation",
+      "response": "B passed the supplied behavior and compatibility checks for accepted change C, but closure still requires record reconciliation. Update the living contract specs/api.md from default page size 20 to 100 under the existing maintainer authorization. Reference accepted change C. Update the derived task basis and affected coverage or interface references. Preserve the original evidence and accepted reasons. Record whether the supplied checks remain applicable to the reconciled specification and B. Verify that the authoritative contract, C, and task records consistently describe 100. Then close the change. No repeated approval is needed."
+    },
+    {
+      "id": "historical-spec-reconciliation",
+      "response": "Keep specs/001/spec.md intact as historical feature evidence. Update specs/index.md to identify specs/002/spec.md as the current behavior reference for page size 100. Record the extension or superseding relationship through the project's existing convention. Reconcile affected current task references without rewriting the historical feature. Reference B and its applicable passing checks in the existing closure record. Verify the current index and accepted feature agree before closure. The feature and index update already have authorization."
+    },
+    {
+      "id": "small-change",
+      "response": "Brief handoff: BUG-7 maps to the API validation heading in specs/api.md and api.py. B validates empty names. The supplied check python -m unittest tests.test_api.EmptyNameCase passed on Python 3.12 with candidate B and fixture empty-name-v1. Its criterion was HTTP 400 with the existing error body; source logs/empty-name-B.txt. The evidence applies to B and the existing requirement. Acceptance is complete for this correction on the supplied facts. No additional behavior changed. Keep this handoff in the existing record; no new project files or specification rewrite are needed. Publication is outside scope."
+    },
+    {
+      "id": "conflicting-contract",
+      "response": "The default is unresolved: the accepted specification requires 20, while the accepted interface contract requires 100. Neither record supersedes the other. The example client explicitly supplies 100, so its passing smoke test does not distinguish default behavior. Do not select the easiest default or start implementation that depends on this choice. Record the conflict and its impact on the dependent task. The decision owner must resolve the authoritative default before dependent implementation or acceptance. While the owner is unavailable, continue independent investigation or an isolated prototype that makes no shared contract decision."
+    },
+    {
+      "id": "incorrect-test-oracle",
+      "response": "Acceptance failed for B. The accepted rule requires ascending numeric order, so [10, 2] must produce [2, 10]. B produces [10, 2], which is a supplied counterexample to the rule. The test assertion repeats the incorrect result; its passing status and coverage link do not establish acceptance. Correct the assertion from the accepted rule, confirm the supplied counterexample fails against B, fix the implementation, and run the corrected check on the resulting candidate. Retain the incorrect assertion and original result as evidence of the validation defect. No checks were executed here."
+    },
+    {
+      "id": "bug-preservation",
+      "response": "The empty-name correction has passing evidence: the same fixture changed from baseline HTTP 500 to HTTP 400 in B. Complete bug acceptance remains incomplete because valid Unicode names have not been checked. The shared validation code affects those inputs, and the accepted rule also requires HTTP 200 with the original response body. Run an authorized local check on B with representative valid Unicode inputs and the original body as the expected result. Preserve the baseline and empty-name result in the existing brief record. Close the bug only when the preservation condition has applicable passing evidence. Publication remains outside scope."
+    },
+    {
+      "id": "advanced-integration-target",
+      "response": "Integration is authorized, but merge and acceptance are pending. A passed against T0 with a cache assumption of page size 20. The current target T1 uses 100. Independent passing results and no textual conflicts do not establish complete cache pages in the combination. Review the changed default and cache assumption. Construct the combined candidate against T1 through the supported integration process. Check that it respects the current default and returns complete cache pages. Correct the cache if needed, then check the actual corrected combination. Bind the result to the exact combined candidate and T1 before final integration acceptance."
+    },
+    {
+      "id": "obsolete-release-candidate",
+      "response": "Do not deploy A. The release system marks A superseded, selects B, and reports B already deployed and healthy. Yesterday's authorization and serial execution do not make A eligible now. Resolve the stale queued request through the release system's supported cancellation or rejection operation after checking its semantics and authority. Do not submit A for deployment to test rejection. If no authorized queue operation exists, retain the request with a blocked disposition. Keep B deployed. An intentional rollback requires a separate rollback decision and applicable process authority; none was requested."
+    },
+    {
+      "id": "migration-recovery",
+      "response": "Publication of B is pending because the required process conditions do not hold. Synthetic schema-2 and migration checks passed, but compatibility with real stored records remains unassessed. Reinstalling A cannot recover schema-2 data because A reads schema 1 only. Establish and validate a supported data recovery procedure or compatible recoverable snapshot. Check representative stored records across the affected versions within the available authority. Define rollout scope, observations, stop conditions, and the authorized recovery decision. Bind applicable evidence to B and its target environment. Use the existing release entry only after compatibility, recovery, and stop conditions are satisfied; existing conditional publication authority then applies without repeated approval."
+    },
+    {
+      "id": "performance-acceptance",
+      "response": "Performance acceptance is incomplete for B. Average latency of 10 ms for one serial client with an in-memory dependency does not establish p95 below 200 ms at 200 requests per second. The required deployment profile and representative workload were not exercised. Prepare or perform only authorized local validation with an explicit workload, request rate, p95 statistic, observation period, and identified environment. Record limits caused by local resources or simulated dependencies. If local checks cannot represent the required profile, keep that acceptance condition unverified. Production load testing requires separate authorization and must not run under the supplied development authority."
+    },
+    {
+      "id": "brownfield-reuse",
+      "response": "Plan from the supplied current code and decision, and correct the stale README reference. Use src/client.py's shared Client.send adapter for the new event. Preserve the established request contract, authentication handling, and retry behavior. Review the relevant callers and tests before technical implementation. Add only the event-specific mapping needed by the accepted contract. Check that the event reaches Client.send with the expected request and that relevant authentication and retry behavior remain intact. Reference the current reuse decision in the existing plan. A new adapter or replacement authentication scheme has no accepted basis in this scope."
+    },
+    {
+      "id": "busy-worktree-entry",
+      "response": "W belongs to chat X, which is actively writing task A. Clean Git status on feature-A does not grant task B authority to edit, commit, or clean W. Use a fixed snapshot for inspection and obtain a separate managed temporary worktree for B. Identify B's branch, task owner, and active users before writing. Isolate runtime resources if they are shared. Complete B's authorized development and validation there, with a brief handoff. Apply conditional cleanup only to B's temporary worktree after stopped use, necessary preservation, recovery checks, and protection against resumed use are verified. Keep W under task A's ownership."
+    },
+    {
+      "id": "unknown-activity",
+      "response": "Keep the worktree. Ownership is unknown, host activity is unavailable, inspect reports activity unknown and safe_to_remove false, and necessary ignored or external results are unassessed. Clean Git status and an empty process poll do not prove stopped use or complete preservation. Resolve ownership and confirm the normalized path is an authorized temporary resource. Establish stopped use through actual host or task controls. Assess and preserve necessary results at accessible locations, with required recovery validation. Maintain protection against new use until supported removal completes. Automatic cleanup authority applies only after these conditions hold; it does not apply to the current state."
+    },
+    {
+      "id": "unreachable-returning-executor",
+      "response": "Do not assign shared write ownership from the newer heartbeat. C1 is A's accessible accepted checkpoint; later A results may be missing. B's isolated results remain proposals until reviewed and accepted. A must check current task ownership before resuming shared writes. Resolve responsibility through the existing task system's verified transfer or atomic claim, or explicitly separate the remaining tasks and worktrees. Continue authorized independent work in isolated resources while ownership is unresolved. Hold shared publication. After ownership is verified, reconcile accepted results against the current target and validate the actual combination. Local handoff files and heartbeat timestamps do not provide exclusive control."
+    },
+    {
+      "id": "remove-failure-retry",
+      "response": "Keep the verified, accessible archive S7 and its recovery record. Do not replace the only backup or force-delete the directory. R7 failed transiently; both directory and registration remain, so removal is incomplete. Before retrying R7 or the same supported lifecycle operation, recheck stopped writers, managed temporary ownership, active host protection, preservation, and actual registration state. Continue supported removal while those conditions hold under the existing automatic cleanup authorization. Verify the directory and registration outcomes, then record preservation and removal separately. If protection is lost or use resumes, stop removal and preserve any newer necessary results before a later retry."
+    },
+    {
+      "id": "new-writer-after-preservation",
+      "response": "Stop removal and keep the worktree. Writer X is active, the guard was lost, and snapshot S predates possible new results. S does not establish preservation of the current state. Reestablish verified stopped use and protection against new use through the host's controls. Assess and preserve newer necessary results in a new accessible archive without overwriting S. Verify preservation and required recovery checks. Only then use supported worktree removal while protection remains active. Conditional cleanup authority does not permit deletion in the current state."
+    }
+  ]
+}

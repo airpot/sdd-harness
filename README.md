@@ -2,7 +2,7 @@
 
 一个可跨对话、worktree 和编码 agent 使用的规格驱动开发（SDD）技能包。
 
-当前版本：**0.5.1**。
+当前版本：**0.6.0**。
 
 **默认独立开发，按需启用协作。**小任务沿用现有项目记录，保持简短；日常独立开发无需拆分前后端任务，也无需新增角色配置、接口格式、mock 服务或团队 CI。
 
@@ -14,6 +14,8 @@
 - 协作开发时，将组件任务关联到同一份已接受的接口契约及完整业务目标。
 - 区分 mock 测试结果、真实接口提供方与调用方的验证结果，以及完整流程的验收证据。
 - 审查共享变更，复用项目已有命令、运行资源与集成职责。
+- 按任务价值调用 subagent，明确任务边界、执行限制和成果要求，由主 agent 核验并接回结果。
+- 处理 subagent 的部分结果、冲突、超时、遗留任务，以及主对话更换后的接续与收尾。
 - 按确切代码与规格版本核验验收证据，追踪原始需求、实现与验证结果的对应关系。
 - 审查测试断言是否符合已接受的需求，保留有效反例与回归证据。
 - 依据相关现有代码与组件规划变更，针对当前集成目标验证实际合并后的候选版本。
@@ -35,7 +37,7 @@ git clone https://github.com/airpot/sdd-harness.git "$HOME/.agents/skills/sdd-ha
 
 随后在 Codex 中调用 `$sdd-harness`。若尚未识别，可刷新技能发现或新开对话。若目标目录已存在，须先保留旧安装，再进行替换。
 
-直接克隆会同时保留仓库中的开发记录。若只需安装 13 个技能文件，可使用安装脚本：
+直接克隆会同时保留仓库中的开发记录。若只需安装 14 个技能文件，可使用安装脚本：
 
 ```text
 git clone https://github.com/airpot/sdd-harness.git
@@ -49,7 +51,7 @@ ZCode 可将安装父目录设为 `~/.zcode/skills`。DeepSeek Harness 可使用
 
 ## 从安装包安装
 
-下载 [sdd-harness-0.5.1.zip](dist/sdd-harness-0.5.1.zip) 及其 [SHA-256 校验文件](dist/sdd-harness-0.5.1.sha256)，解压到本地目录，然后在该目录执行：
+下载 [sdd-harness-0.6.0.zip](dist/sdd-harness-0.6.0.zip) 及其 [SHA-256 校验文件](dist/sdd-harness-0.6.0.sha256)，解压到本地目录，然后在该目录执行：
 
 ```text
 python sdd-harness/scripts/install.py --into "~/.agents/skills"
@@ -64,6 +66,16 @@ python sdd-harness/scripts/install.py --into "~/.agents/skills"
 > Use sdd-harness to continue from the task handoff. Check results, ownership, and evidence before the next action.
 
 工作流程与资源入口见[技能执行指令](SKILL.md)。项目记录应保存到目标项目中，并与技能安装目录分开。优先复用现有记录，再按需新增文件。
+
+## 按需使用 subagent
+
+小修改与强串行依赖由主 agent 直接处理。独立调研、专项审查或边界清楚的实现，可按需委派；主 agent 保留完整需求、验收与集成责任。
+
+委派时给出已接受需求、准确基线、范围、交付物与停止条件。子 agent 返回实际成果和检查证据，主 agent 决定接受、返工、拒绝、延期或替换，并验证实际组合后的结果。
+
+返回结果、成果验收、执行停止和资源关闭应分别判断。中断成功不等于所有写入已停止；换对话时应保存仍在运行的任务、待核验结果与后续动作。具体流程见 [subagent 规则](references/subagents.md)。
+
+原生权限、续接与中断能力取决于实际宿主。技能包不会安装团队平台、改变全局配置或赋予子 agent 发布权限。
 
 ## 内部文档写作规范
 
@@ -114,7 +126,8 @@ python tools/package_skill.py --source . --output dist/sdd-harness-local.zip
 
 已接受的需求见[行为规格](specs/sdd-harness.md)，版本间的执行决策比较见[指令评测](evals/README.md)。评分标准与完整评测结果不提供给执行者作为输入。
 
-当前指令评测集包含 28 个场景、84 项标准，覆盖独立开发与可选协作。隔离的宿主评测以多轮独立执行检查实际文件、哈希、行为与操作尝试；模拟器只用于仓库评测，不包含在技能安装包中。
+当前指令评测集包含 40 个场景、132 项标准，覆盖独立开发、可选协作与 subagent 闭环。隔离的宿主评测检查实际文件、哈希、行为与操作尝试；模拟器只用于仓库评测，不包含在技能安装包中。模拟停止控制不能证明实际宿主能停止子 agent。
 
 - [0.5.0 工作流程验证记录](evals/results/0.5.0-validation.md)：结果、审查修正及证据适用范围。
 - [0.5.1 分发验证记录](evals/results/0.5.1-validation.md)：根目录布局、安装文件筛选与安装包验证。
+- [0.6.0 验证记录](evals/results/0.6.0-validation.md)：subagent 场景、实际成果检查、修正与验证边界。

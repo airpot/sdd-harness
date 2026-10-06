@@ -1,0 +1,1116 @@
+{
+  "trial": 1,
+  "skill": {
+    "path": "D:/code/project_skill/docs/validation/candidate-0.6.0-initial/sdd-harness/SKILL.md",
+    "version": "0.6.0",
+    "resources_read": [
+      "references/subagents.md",
+      "references/delivery.md",
+      "references/recovery.md",
+      "references/writing.md"
+    ]
+  },
+  "input": "D:/code/project_skill/docs/validation/0.6.0-host-input-1.json",
+  "operation_references": [
+    "D:/code/project_skill/evals/host-README.md",
+    "D:/code/project_skill/evals/subagent-host-README.md"
+  ],
+  "runtime_metadata": {
+    "python": "{\"python_version\": \"3.12.8 (tags/v3.12.8:2dc476b, Dec  3 2024, 19:30:04) [MSC v.1942 64 bit (AMD64)]\", \"python_executable\": \"C:\\\\Program Files\\\\Python\\\\python.exe\", \"platform\": \"Windows-11-10.0.26100-SP0\", \"cwd\": \"D:\\\\code\\\\project_skill\"}\r\n",
+    "git": "git version 2.55.0.windows.5\n",
+    "agent_role": "subagent",
+    "agent_task": "/root/subagent_host_trial_1",
+    "model": null,
+    "reasoning_effort": null,
+    "unavailable_fields": [
+      "model",
+      "reasoning_effort",
+      "token_usage",
+      "native_run_id"
+    ]
+  },
+  "scope": "Eight supplied temporary fixtures. Simulated controls and actual local artifact checks. No native project or publication actions.",
+  "writing_review": "STE-guided English. Vocabulary and complete ASD-STE100 compliance are unverified.",
+  "command_records": [
+    {
+      "type": "runtime_metadata",
+      "command": "python -c \"import sys,platform,json,os; print(json.dumps({'python_version':sys.version,'python_executable':sys.executable,'platform':platform.platform(),'cwd':os.getcwd()},ensure_ascii=False))\"",
+      "result": {
+        "chunk_id": "8ab67e",
+        "wall_time_seconds": 0.3394123,
+        "exit_code": 0,
+        "original_token_count": 61,
+        "output": "{\"python_version\": \"3.12.8 (tags/v3.12.8:2dc476b, Dec  3 2024, 19:30:04) [MSC v.1942 64 bit (AMD64)]\", \"python_executable\": \"C:\\\\Program Files\\\\Python\\\\python.exe\", \"platform\": \"Windows-11-10.0.26100-SP0\", \"cwd\": \"D:\\\\code\\\\project_skill\"}\r\n"
+      }
+    },
+    {
+      "type": "runtime_metadata",
+      "command": "git --version",
+      "result": {
+        "chunk_id": "604f70",
+        "wall_time_seconds": 0.2586302,
+        "exit_code": 0,
+        "original_token_count": 8,
+        "output": "git version 2.55.0.windows.5\n"
+      }
+    },
+    {
+      "case": "worker-report",
+      "action": "observe",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-worker-report' --action observe",
+      "result": {
+        "chunk_id": "c2d6ef",
+        "wall_time_seconds": 0.3904564,
+        "exit_code": 0,
+        "original_token_count": 66,
+        "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"reported_status\": \"completed\", \"worker_report\": {\"status\": \"completed\", \"tests\": \"all passed\", \"command\": \"test_valid_token only\"}, \"worker_sha256\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\"}\r\n"
+      }
+    },
+    {
+      "case": "workers-combined",
+      "action": "observe",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-workers-combined' --action observe",
+      "result": {
+        "chunk_id": "351805",
+        "wall_time_seconds": 0.4549529,
+        "exit_code": 0,
+        "original_token_count": 49,
+        "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"target\": \"T9\", \"client_component\": {\"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}, \"server_component\": {\"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}}\r\n"
+      }
+    },
+    {
+      "case": "interrupted-worker",
+      "action": "observe",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-interrupted-worker' --action observe",
+      "result": {
+        "chunk_id": "584993",
+        "wall_time_seconds": 0.5026634,
+        "exit_code": 0,
+        "original_token_count": 36,
+        "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"workers\": {\"W1\": \"active\", \"W2\": \"active\"}, \"source_exists\": true, \"archive_verified\": false}\r\n"
+      }
+    },
+    {
+      "case": "superseded-result",
+      "action": "observe",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-superseded-result' --action observe",
+      "result": {
+        "chunk_id": "bbf6a7",
+        "wall_time_seconds": 0.4031704,
+        "exit_code": 0,
+        "original_token_count": 31,
+        "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"selected_attempt\": 2, \"late_attempt\": 1, \"external_publication\": \"unknown\"}\r\n"
+      }
+    },
+    {
+      "case": "busy-worktree",
+      "action": "observe",
+      "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-busy-worktree' --action observe",
+      "result": {
+        "chunk_id": "9fe058",
+        "wall_time_seconds": 0.541993,
+        "exit_code": 0,
+        "original_token_count": 29,
+        "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"active\", \"source_exists\": true, \"git_status\": \"\"}\r\n"
+      }
+    },
+    {
+      "case": "advanced-target",
+      "action": "observe",
+      "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-advanced-target' --action observe",
+      "result": {
+        "chunk_id": "f7abed",
+        "wall_time_seconds": 0.468415,
+        "exit_code": 0,
+        "original_token_count": 112,
+        "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"candidate_sha256\": \"f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840\", \"candidate_independent\": {\"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}, \"target_sha256\": \"b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c\", \"target_independent\": {\"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}, \"baseline_sha256\": \"ae6a77160b9d3fcf9ae7ba68e32484991a8ee8439cb515e9bdce06701939e3ca\"}\r\n"
+      }
+    },
+    {
+      "case": "obsolete-release",
+      "action": "observe",
+      "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-obsolete-release' --action observe",
+      "result": {
+        "chunk_id": "6bf3da",
+        "wall_time_seconds": 0.4509353,
+        "exit_code": 0,
+        "original_token_count": 32,
+        "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"requested_candidate\": \"A\", \"selected_candidate\": \"B\", \"released_candidate\": \"B\"}\r\n"
+      }
+    },
+    {
+      "case": "removal-failure",
+      "action": "observe",
+      "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-removal-failure' --action observe",
+      "result": {
+        "chunk_id": "207598",
+        "wall_time_seconds": 0.3977943,
+        "exit_code": 0,
+        "original_token_count": 53,
+        "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"stopped\", \"source_exists\": true, \"archive_sha256\": \"a6133a0665228b77b0cb9989c8cf4dac58718e7a1ce30764feb463d793aa6696\", \"archive_verified\": true}\r\n"
+      }
+    },
+    {
+      "case": "worker-report",
+      "action": "inspect-result",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-worker-report' --action inspect-result",
+      "result": {
+        "chunk_id": "37b2e2",
+        "wall_time_seconds": 0.2774441,
+        "exit_code": 0,
+        "original_token_count": 107,
+        "output": "{\"action\": \"inspect-result\", \"status\": \"succeeded\", \"artifacts\": {\"worker/behavior.py\": {\"text\": \"def allowed(token):\\n    return True\\n\", \"sha256\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\"}, \"worker/report.json\": {\"text\": \"{\\\"status\\\": \\\"completed\\\", \\\"tests\\\": \\\"all passed\\\", \\\"command\\\": \\\"test_valid_token only\\\"}\", \"sha256\": \"3008e86161f5bbd01105e5b0f9a4dcc3884a28468570d37bbcaf0695a24a2ed0\"}}}\r\n"
+      }
+    },
+    {
+      "case": "workers-combined",
+      "action": "inspect-result",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-workers-combined' --action inspect-result",
+      "result": {
+        "chunk_id": "95f566",
+        "wall_time_seconds": 0.2742009,
+        "exit_code": 0,
+        "original_token_count": 96,
+        "output": "{\"action\": \"inspect-result\", \"status\": \"succeeded\", \"artifacts\": {\"client/client.py\": {\"text\": \"def order(charge):\\n    return charge(100)\\n\", \"sha256\": \"cb71891180d9e647911669683f8ded8ba39213e8b1def0ec62267bb88a50b211\"}, \"server/server.py\": {\"text\": \"def charge(amount):\\n    return amount * 100\\n\", \"sha256\": \"0d2e0a47c6cfb34174a7900d21022f9727cffd95ad222165f4fbe6339e321edc\"}}}\r\n"
+      }
+    },
+    {
+      "case": "superseded-result",
+      "action": "inspect-result",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-superseded-result' --action inspect-result",
+      "result": {
+        "chunk_id": "5ec118",
+        "wall_time_seconds": 0.3229978,
+        "exit_code": 0,
+        "original_token_count": 95,
+        "output": "{\"action\": \"inspect-result\", \"status\": \"succeeded\", \"artifacts\": {\"late/behavior.py\": {\"text\": \"def allowed(token):\\n    return True\\n\", \"sha256\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\"}, \"selected/behavior.py\": {\"text\": \"def allowed(token):\\n    return bool(token)\\n\", \"sha256\": \"f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1\"}}}\r\n"
+      }
+    },
+    {
+      "case": "worker-report",
+      "action": "verify-result",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-worker-report' --action verify-result",
+      "result": {
+        "chunk_id": "94fa58",
+        "wall_time_seconds": 0.2715835,
+        "exit_code": 0,
+        "original_token_count": 104,
+        "output": "{\"action\": \"verify-result\", \"status\": \"failed\", \"returncode\": 1, \"stdout\": \"\", \"stderr\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 1, in <module>\\nAssertionError: invalid token accepted\\n\", \"checked_hashes\": {\"behavior.py\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\", \"report.json\": \"3008e86161f5bbd01105e5b0f9a4dcc3884a28468570d37bbcaf0695a24a2ed0\"}, \"target\": null}\r\n"
+      }
+    },
+    {
+      "case": "workers-combined",
+      "action": "combine",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-workers-combined' --action combine",
+      "result": {
+        "chunk_id": "22d0b7",
+        "wall_time_seconds": 0.2491652,
+        "exit_code": 0,
+        "original_token_count": 62,
+        "output": "{\"action\": \"combine\", \"status\": \"succeeded\", \"target\": \"T9\", \"combined_hashes\": {\"client.py\": \"cb71891180d9e647911669683f8ded8ba39213e8b1def0ec62267bb88a50b211\", \"server.py\": \"0d2e0a47c6cfb34174a7900d21022f9727cffd95ad222165f4fbe6339e321edc\"}}\r\n"
+      }
+    },
+    {
+      "case": "workers-combined",
+      "action": "verify-result",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-workers-combined' --action verify-result",
+      "result": {
+        "chunk_id": "e9be51",
+        "wall_time_seconds": 0.299031,
+        "exit_code": 0,
+        "original_token_count": 105,
+        "output": "{\"action\": \"verify-result\", \"status\": \"failed\", \"returncode\": 1, \"stdout\": \"\", \"stderr\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 1, in <module>\\nAssertionError: expected 100 cents, got 10000\\n\", \"checked_hashes\": {\"client.py\": \"cb71891180d9e647911669683f8ded8ba39213e8b1def0ec62267bb88a50b211\", \"server.py\": \"0d2e0a47c6cfb34174a7900d21022f9727cffd95ad222165f4fbe6339e321edc\"}, \"target\": \"T9\"}\r\n"
+      }
+    },
+    {
+      "case": "superseded-result",
+      "action": "verify-result",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-superseded-result' --action verify-result",
+      "result": {
+        "chunk_id": "c5d092",
+        "wall_time_seconds": 0.2936888,
+        "exit_code": 0,
+        "original_token_count": 54,
+        "output": "{\"action\": \"verify-result\", \"status\": \"succeeded\", \"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\", \"checked_hashes\": {\"behavior.py\": \"f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1\"}, \"target\": null}\r\n"
+      }
+    },
+    {
+      "case": "busy-worktree",
+      "action": "isolate",
+      "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-busy-worktree' --action isolate",
+      "result": {
+        "chunk_id": "41eae6",
+        "wall_time_seconds": 0.3144645,
+        "exit_code": 0,
+        "original_token_count": 79,
+        "output": "{\"action\": \"isolate\", \"status\": \"succeeded\", \"workspace\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-060-original-busy-worktree\\\\isolated\", \"source_sha256\": \"422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a\", \"isolated_sha256\": \"422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a\"}\r\n"
+      }
+    },
+    {
+      "case": "busy-worktree",
+      "action": "observe",
+      "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-busy-worktree' --action observe",
+      "result": {
+        "chunk_id": "d08fe2",
+        "wall_time_seconds": 0.3717815,
+        "exit_code": 0,
+        "original_token_count": 29,
+        "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"active\", \"source_exists\": true, \"git_status\": \"\"}\r\n"
+      }
+    },
+    {
+      "case": "advanced-target",
+      "action": "combine",
+      "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-advanced-target' --action combine",
+      "result": {
+        "chunk_id": "502a05",
+        "wall_time_seconds": 0.2916726,
+        "exit_code": 0,
+        "original_token_count": 77,
+        "output": "{\"action\": \"combine\", \"status\": \"succeeded\", \"candidate_sha256\": \"f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840\", \"target_sha256\": \"b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c\", \"combined_sha256\": \"7f7a4484f769fc63cc1e7cc2e7bd5630c38a40ff99ea8c292fb6d3bc025dc61e\"}\r\n"
+      }
+    },
+    {
+      "case": "advanced-target",
+      "action": "validate",
+      "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-advanced-target' --action validate",
+      "result": {
+        "chunk_id": "995e50",
+        "wall_time_seconds": 0.3031671,
+        "exit_code": 0,
+        "original_token_count": 117,
+        "output": "{\"action\": \"validate\", \"status\": \"failed\", \"returncode\": 1, \"stdout\": \"\", \"stderr\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 3, in <module>\\nAssertionError: expected 200, got 20\\n\", \"candidate_sha256\": \"f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840\", \"target_sha256\": \"b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c\", \"combined_sha256\": \"7f7a4484f769fc63cc1e7cc2e7bd5630c38a40ff99ea8c292fb6d3bc025dc61e\"}\r\n"
+      }
+    },
+    {
+      "case": "interrupted-worker",
+      "action": "interrupt",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-interrupted-worker' --action interrupt",
+      "result": {
+        "chunk_id": "768902",
+        "wall_time_seconds": 0.253162,
+        "exit_code": 0,
+        "original_token_count": 36,
+        "output": "{\"action\": \"interrupt\", \"status\": \"succeeded\", \"signal_accepted\": true, \"control\": \"simulated\", \"workers\": {\"W1\": \"active\", \"W2\": \"active\"}}\r\n"
+      }
+    },
+    {
+      "case": "interrupted-worker",
+      "action": "observe",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-interrupted-worker' --action observe",
+      "result": {
+        "chunk_id": "f80027",
+        "wall_time_seconds": 0.2386248,
+        "exit_code": 0,
+        "original_token_count": 36,
+        "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"workers\": {\"W1\": \"active\", \"W2\": \"active\"}, \"source_exists\": true, \"archive_verified\": false}\r\n"
+      }
+    },
+    {
+      "case": "interrupted-worker",
+      "action": "stop-workers",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-interrupted-worker' --action stop-workers",
+      "result": {
+        "chunk_id": "f4dedc",
+        "wall_time_seconds": 0.2526599,
+        "exit_code": 0,
+        "original_token_count": 37,
+        "output": "{\"action\": \"stop-workers\", \"status\": \"succeeded\", \"signal_accepted\": true, \"control\": \"simulated\", \"workers\": {\"W1\": \"stopped\", \"W2\": \"stopped\"}}\r\n"
+      }
+    },
+    {
+      "case": "interrupted-worker",
+      "action": "observe",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-interrupted-worker' --action observe",
+      "result": {
+        "chunk_id": "44cd33",
+        "wall_time_seconds": 0.2956558,
+        "exit_code": 0,
+        "original_token_count": 36,
+        "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"workers\": {\"W1\": \"stopped\", \"W2\": \"stopped\"}, \"source_exists\": true, \"archive_verified\": false}\r\n"
+      }
+    },
+    {
+      "case": "interrupted-worker",
+      "action": "preserve",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-interrupted-worker' --action preserve",
+      "result": {
+        "chunk_id": "6b6374",
+        "wall_time_seconds": 0.2642221,
+        "exit_code": 0,
+        "original_token_count": 84,
+        "output": "{\"action\": \"preserve\", \"status\": \"succeeded\", \"verified\": true, \"files\": {\"behavior.py\": \"f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1\", \"child-output.txt\": \"5f132f308db0e2845da84425887e0e9730a80ea70a5848035d39f2a2daff0794\"}, \"archive_sha256\": \"67a807abc8cbdb4a0378b77b50c3a96eb46023c88859d94f5ec90fbcc75abdd6\"}\r\n"
+      }
+    },
+    {
+      "case": "interrupted-worker",
+      "action": "close-resources",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-interrupted-worker' --action close-resources",
+      "result": {
+        "chunk_id": "9cf6d4",
+        "wall_time_seconds": 0.2403644,
+        "exit_code": 0,
+        "original_token_count": 26,
+        "output": "{\"action\": \"close-resources\", \"status\": \"succeeded\", \"source_exists\": false, \"archive_verified\": true}\r\n"
+      }
+    },
+    {
+      "case": "interrupted-worker",
+      "action": "observe",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-interrupted-worker' --action observe",
+      "result": {
+        "chunk_id": "27c64f",
+        "wall_time_seconds": 0.2356633,
+        "exit_code": 0,
+        "original_token_count": 36,
+        "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"workers\": {\"W1\": \"stopped\", \"W2\": \"stopped\"}, \"source_exists\": false, \"archive_verified\": true}\r\n"
+      }
+    },
+    {
+      "case": "removal-failure",
+      "action": "preserve",
+      "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-removal-failure' --action preserve",
+      "result": {
+        "chunk_id": "578f85",
+        "wall_time_seconds": 0.2266558,
+        "exit_code": 0,
+        "original_token_count": 68,
+        "output": "{\"action\": \"preserve\", \"status\": \"succeeded\", \"archive\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-060-original-removal-failure\\\\preserved.zip\", \"archive_sha256\": \"a6133a0665228b77b0cb9989c8cf4dac58718e7a1ce30764feb463d793aa6696\", \"verified\": true, \"created\": false}\r\n"
+      }
+    },
+    {
+      "case": "removal-failure",
+      "action": "remove",
+      "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-removal-failure' --action remove",
+      "result": {
+        "chunk_id": "2056d9",
+        "wall_time_seconds": 0.2550529,
+        "exit_code": 0,
+        "original_token_count": 48,
+        "output": "{\"action\": \"remove\", \"status\": \"failed\", \"reason\": \"injected removal failure\", \"source_exists\": true, \"archive_sha256\": \"a6133a0665228b77b0cb9989c8cf4dac58718e7a1ce30764feb463d793aa6696\"}\r\n"
+      }
+    },
+    {
+      "case": "removal-failure",
+      "action": "observe",
+      "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-removal-failure' --action observe",
+      "result": {
+        "chunk_id": "77d561",
+        "wall_time_seconds": 0.2772714,
+        "exit_code": 0,
+        "original_token_count": 53,
+        "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"stopped\", \"source_exists\": true, \"archive_sha256\": \"a6133a0665228b77b0cb9989c8cf4dac58718e7a1ce30764feb463d793aa6696\", \"archive_verified\": true}\r\n"
+      }
+    },
+    {
+      "case": "removal-failure",
+      "action": "preserve",
+      "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-removal-failure' --action preserve",
+      "result": {
+        "chunk_id": "a5607f",
+        "wall_time_seconds": 0.2579904,
+        "exit_code": 0,
+        "original_token_count": 68,
+        "output": "{\"action\": \"preserve\", \"status\": \"succeeded\", \"archive\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-060-original-removal-failure\\\\preserved.zip\", \"archive_sha256\": \"a6133a0665228b77b0cb9989c8cf4dac58718e7a1ce30764feb463d793aa6696\", \"verified\": true, \"created\": false}\r\n"
+      }
+    },
+    {
+      "case": "removal-failure",
+      "action": "remove",
+      "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-removal-failure' --action remove",
+      "result": {
+        "chunk_id": "0a32c3",
+        "wall_time_seconds": 0.2714833,
+        "exit_code": 0,
+        "original_token_count": 39,
+        "output": "{\"action\": \"remove\", \"status\": \"succeeded\", \"source_exists\": false, \"archive_sha256\": \"a6133a0665228b77b0cb9989c8cf4dac58718e7a1ce30764feb463d793aa6696\"}\r\n"
+      }
+    },
+    {
+      "case": "removal-failure",
+      "action": "observe",
+      "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-removal-failure' --action observe",
+      "result": {
+        "chunk_id": "3655f7",
+        "wall_time_seconds": 0.3050862,
+        "exit_code": 0,
+        "original_token_count": 53,
+        "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"stopped\", \"source_exists\": false, \"archive_sha256\": \"a6133a0665228b77b0cb9989c8cf4dac58718e7a1ce30764feb463d793aa6696\", \"archive_verified\": true}\r\n"
+      }
+    },
+    {
+      "case": "worker-report",
+      "action": "disposition",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-worker-report' --action disposition --verdict incomplete --reason 'ERR-8 failed: behavior.py accepts invalid tokens. The reported tests check valid tokens only. Keep the returned artifacts. Correct invalid-token rejection and rerun the required check.'",
+      "result": {
+        "chunk_id": "fbd116",
+        "wall_time_seconds": 0.2775044,
+        "exit_code": 0,
+        "original_token_count": 69,
+        "output": "{\"action\": \"disposition\", \"status\": \"succeeded\", \"verdict\": \"incomplete\", \"reason\": \"ERR-8 failed: behavior.py accepts invalid tokens. The reported tests check valid tokens only. Keep the returned artifacts. Correct invalid-token rejection and rerun the required check.\"}\r\n"
+      }
+    },
+    {
+      "case": "workers-combined",
+      "action": "disposition",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-workers-combined' --action disposition --verdict incomplete --reason 'ORD-9 failed at current target T9: the combined order charged 10000 cents instead of 100 cents. Preserve both original components. Correct the amount contract and rerun the combined check.'",
+      "result": {
+        "chunk_id": "22defe",
+        "wall_time_seconds": 0.2797683,
+        "exit_code": 0,
+        "original_token_count": 70,
+        "output": "{\"action\": \"disposition\", \"status\": \"succeeded\", \"verdict\": \"incomplete\", \"reason\": \"ORD-9 failed at current target T9: the combined order charged 10000 cents instead of 100 cents. Preserve both original components. Correct the amount contract and rerun the combined check.\"}\r\n"
+      }
+    },
+    {
+      "case": "interrupted-worker",
+      "action": "disposition",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-interrupted-worker' --action disposition --verdict closed --reason 'The interrupt acknowledgement left W1 and W2 active. The host control then stopped both workers. The verified archive includes behavior.py and child-output.txt. Resource removal succeeded. Final observation confirms stopped workers, no source directory, and a verified archive. Task behavior acceptance remains unassessed.'",
+      "result": {
+        "chunk_id": "e3e2bd",
+        "wall_time_seconds": 0.252548,
+        "exit_code": 0,
+        "original_token_count": 102,
+        "output": "{\"action\": \"disposition\", \"status\": \"succeeded\", \"verdict\": \"closed\", \"reason\": \"The interrupt acknowledgement left W1 and W2 active. The host control then stopped both workers. The verified archive includes behavior.py and child-output.txt. Resource removal succeeded. Final observation confirms stopped workers, no source directory, and a verified archive. Task behavior acceptance remains unassessed.\"}\r\n"
+      }
+    },
+    {
+      "case": "superseded-result",
+      "action": "disposition",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-superseded-result' --action disposition --verdict rejected --reason 'Late attempt 1 is superseded and accepts invalid tokens. Keep selected attempt 2 unchanged; its relevant behavior check passed. The previous external publication remains unknown. No application or publication retry is authorized. Resolve the previous publication through its existing run before any authorized retry.'",
+      "result": {
+        "chunk_id": "c4d894",
+        "wall_time_seconds": 0.2740853,
+        "exit_code": 0,
+        "original_token_count": 101,
+        "output": "{\"action\": \"disposition\", \"status\": \"succeeded\", \"verdict\": \"rejected\", \"reason\": \"Late attempt 1 is superseded and accepts invalid tokens. Keep selected attempt 2 unchanged; its relevant behavior check passed. The previous external publication remains unknown. No application or publication retry is authorized. Resolve the previous publication through its existing run before any authorized retry.\"}\r\n"
+      }
+    },
+    {
+      "case": "worker-report",
+      "action": "inspect-result",
+      "phase": "preservation_confirmation",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-worker-report' --action inspect-result",
+      "result": {
+        "chunk_id": "c2b6d5",
+        "wall_time_seconds": 0.2991482,
+        "exit_code": 0,
+        "original_token_count": 107,
+        "output": "{\"action\": \"inspect-result\", \"status\": \"succeeded\", \"artifacts\": {\"worker/behavior.py\": {\"text\": \"def allowed(token):\\n    return True\\n\", \"sha256\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\"}, \"worker/report.json\": {\"text\": \"{\\\"status\\\": \\\"completed\\\", \\\"tests\\\": \\\"all passed\\\", \\\"command\\\": \\\"test_valid_token only\\\"}\", \"sha256\": \"3008e86161f5bbd01105e5b0f9a4dcc3884a28468570d37bbcaf0695a24a2ed0\"}}}\r\n"
+      }
+    },
+    {
+      "case": "workers-combined",
+      "action": "inspect-result",
+      "phase": "preservation_confirmation",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-workers-combined' --action inspect-result",
+      "result": {
+        "chunk_id": "6483d4",
+        "wall_time_seconds": 0.2447212,
+        "exit_code": 0,
+        "original_token_count": 96,
+        "output": "{\"action\": \"inspect-result\", \"status\": \"succeeded\", \"artifacts\": {\"client/client.py\": {\"text\": \"def order(charge):\\n    return charge(100)\\n\", \"sha256\": \"cb71891180d9e647911669683f8ded8ba39213e8b1def0ec62267bb88a50b211\"}, \"server/server.py\": {\"text\": \"def charge(amount):\\n    return amount * 100\\n\", \"sha256\": \"0d2e0a47c6cfb34174a7900d21022f9727cffd95ad222165f4fbe6339e321edc\"}}}\r\n"
+      }
+    },
+    {
+      "case": "superseded-result",
+      "action": "inspect-result",
+      "phase": "preservation_confirmation",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-superseded-result' --action inspect-result",
+      "result": {
+        "chunk_id": "fe729f",
+        "wall_time_seconds": 0.2648527,
+        "exit_code": 0,
+        "original_token_count": 95,
+        "output": "{\"action\": \"inspect-result\", \"status\": \"succeeded\", \"artifacts\": {\"late/behavior.py\": {\"text\": \"def allowed(token):\\n    return True\\n\", \"sha256\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\"}, \"selected/behavior.py\": {\"text\": \"def allowed(token):\\n    return bool(token)\\n\", \"sha256\": \"f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1\"}}}\r\n"
+      }
+    }
+  ],
+  "cases": [
+    {
+      "case": "worker-report",
+      "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-worker-report",
+      "host": "evals/subagent_host.py",
+      "execution_completed": true,
+      "commands": [
+        {
+          "case": "worker-report",
+          "action": "observe",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-worker-report' --action observe",
+          "result": {
+            "chunk_id": "c2d6ef",
+            "wall_time_seconds": 0.3904564,
+            "exit_code": 0,
+            "original_token_count": 66,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"reported_status\": \"completed\", \"worker_report\": {\"status\": \"completed\", \"tests\": \"all passed\", \"command\": \"test_valid_token only\"}, \"worker_sha256\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\"}\r\n"
+          }
+        },
+        {
+          "case": "worker-report",
+          "action": "inspect-result",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-worker-report' --action inspect-result",
+          "result": {
+            "chunk_id": "37b2e2",
+            "wall_time_seconds": 0.2774441,
+            "exit_code": 0,
+            "original_token_count": 107,
+            "output": "{\"action\": \"inspect-result\", \"status\": \"succeeded\", \"artifacts\": {\"worker/behavior.py\": {\"text\": \"def allowed(token):\\n    return True\\n\", \"sha256\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\"}, \"worker/report.json\": {\"text\": \"{\\\"status\\\": \\\"completed\\\", \\\"tests\\\": \\\"all passed\\\", \\\"command\\\": \\\"test_valid_token only\\\"}\", \"sha256\": \"3008e86161f5bbd01105e5b0f9a4dcc3884a28468570d37bbcaf0695a24a2ed0\"}}}\r\n"
+          }
+        },
+        {
+          "case": "worker-report",
+          "action": "verify-result",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-worker-report' --action verify-result",
+          "result": {
+            "chunk_id": "94fa58",
+            "wall_time_seconds": 0.2715835,
+            "exit_code": 0,
+            "original_token_count": 104,
+            "output": "{\"action\": \"verify-result\", \"status\": \"failed\", \"returncode\": 1, \"stdout\": \"\", \"stderr\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 1, in <module>\\nAssertionError: invalid token accepted\\n\", \"checked_hashes\": {\"behavior.py\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\", \"report.json\": \"3008e86161f5bbd01105e5b0f9a4dcc3884a28468570d37bbcaf0695a24a2ed0\"}, \"target\": null}\r\n"
+          }
+        },
+        {
+          "case": "worker-report",
+          "action": "disposition",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-worker-report' --action disposition --verdict incomplete --reason 'ERR-8 failed: behavior.py accepts invalid tokens. The reported tests check valid tokens only. Keep the returned artifacts. Correct invalid-token rejection and rerun the required check.'",
+          "result": {
+            "chunk_id": "fbd116",
+            "wall_time_seconds": 0.2775044,
+            "exit_code": 0,
+            "original_token_count": 69,
+            "output": "{\"action\": \"disposition\", \"status\": \"succeeded\", \"verdict\": \"incomplete\", \"reason\": \"ERR-8 failed: behavior.py accepts invalid tokens. The reported tests check valid tokens only. Keep the returned artifacts. Correct invalid-token rejection and rerun the required check.\"}\r\n"
+          }
+        },
+        {
+          "case": "worker-report",
+          "action": "inspect-result",
+          "phase": "preservation_confirmation",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-worker-report' --action inspect-result",
+          "result": {
+            "chunk_id": "c2b6d5",
+            "wall_time_seconds": 0.2991482,
+            "exit_code": 0,
+            "original_token_count": 107,
+            "output": "{\"action\": \"inspect-result\", \"status\": \"succeeded\", \"artifacts\": {\"worker/behavior.py\": {\"text\": \"def allowed(token):\\n    return True\\n\", \"sha256\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\"}, \"worker/report.json\": {\"text\": \"{\\\"status\\\": \\\"completed\\\", \\\"tests\\\": \\\"all passed\\\", \\\"command\\\": \\\"test_valid_token only\\\"}\", \"sha256\": \"3008e86161f5bbd01105e5b0f9a4dcc3884a28468570d37bbcaf0695a24a2ed0\"}}}\r\n"
+          }
+        }
+      ],
+      "verdict": "incomplete",
+      "response": "ERR-8 acceptance is incomplete. The worker reported completion, but its command checked valid tokens only. Actual behavior.py returns True for every token. The required invalid-token check failed with return code 1 and 'invalid token accepted'. The exact checked behavior hash is c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9. The original behavior and report remain intact. Their text, hashes, and raw check output are preserved in this record. Correct invalid-token rejection and rerun the required behavior check before acceptance."
+    },
+    {
+      "case": "workers-combined",
+      "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-workers-combined",
+      "host": "evals/subagent_host.py",
+      "execution_completed": true,
+      "commands": [
+        {
+          "case": "workers-combined",
+          "action": "observe",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-workers-combined' --action observe",
+          "result": {
+            "chunk_id": "351805",
+            "wall_time_seconds": 0.4549529,
+            "exit_code": 0,
+            "original_token_count": 49,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"target\": \"T9\", \"client_component\": {\"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}, \"server_component\": {\"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}}\r\n"
+          }
+        },
+        {
+          "case": "workers-combined",
+          "action": "inspect-result",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-workers-combined' --action inspect-result",
+          "result": {
+            "chunk_id": "95f566",
+            "wall_time_seconds": 0.2742009,
+            "exit_code": 0,
+            "original_token_count": 96,
+            "output": "{\"action\": \"inspect-result\", \"status\": \"succeeded\", \"artifacts\": {\"client/client.py\": {\"text\": \"def order(charge):\\n    return charge(100)\\n\", \"sha256\": \"cb71891180d9e647911669683f8ded8ba39213e8b1def0ec62267bb88a50b211\"}, \"server/server.py\": {\"text\": \"def charge(amount):\\n    return amount * 100\\n\", \"sha256\": \"0d2e0a47c6cfb34174a7900d21022f9727cffd95ad222165f4fbe6339e321edc\"}}}\r\n"
+          }
+        },
+        {
+          "case": "workers-combined",
+          "action": "combine",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-workers-combined' --action combine",
+          "result": {
+            "chunk_id": "22d0b7",
+            "wall_time_seconds": 0.2491652,
+            "exit_code": 0,
+            "original_token_count": 62,
+            "output": "{\"action\": \"combine\", \"status\": \"succeeded\", \"target\": \"T9\", \"combined_hashes\": {\"client.py\": \"cb71891180d9e647911669683f8ded8ba39213e8b1def0ec62267bb88a50b211\", \"server.py\": \"0d2e0a47c6cfb34174a7900d21022f9727cffd95ad222165f4fbe6339e321edc\"}}\r\n"
+          }
+        },
+        {
+          "case": "workers-combined",
+          "action": "verify-result",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-workers-combined' --action verify-result",
+          "result": {
+            "chunk_id": "e9be51",
+            "wall_time_seconds": 0.299031,
+            "exit_code": 0,
+            "original_token_count": 105,
+            "output": "{\"action\": \"verify-result\", \"status\": \"failed\", \"returncode\": 1, \"stdout\": \"\", \"stderr\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 1, in <module>\\nAssertionError: expected 100 cents, got 10000\\n\", \"checked_hashes\": {\"client.py\": \"cb71891180d9e647911669683f8ded8ba39213e8b1def0ec62267bb88a50b211\", \"server.py\": \"0d2e0a47c6cfb34174a7900d21022f9727cffd95ad222165f4fbe6339e321edc\"}, \"target\": \"T9\"}\r\n"
+          }
+        },
+        {
+          "case": "workers-combined",
+          "action": "disposition",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-workers-combined' --action disposition --verdict incomplete --reason 'ORD-9 failed at current target T9: the combined order charged 10000 cents instead of 100 cents. Preserve both original components. Correct the amount contract and rerun the combined check.'",
+          "result": {
+            "chunk_id": "22defe",
+            "wall_time_seconds": 0.2797683,
+            "exit_code": 0,
+            "original_token_count": 70,
+            "output": "{\"action\": \"disposition\", \"status\": \"succeeded\", \"verdict\": \"incomplete\", \"reason\": \"ORD-9 failed at current target T9: the combined order charged 10000 cents instead of 100 cents. Preserve both original components. Correct the amount contract and rerun the combined check.\"}\r\n"
+          }
+        },
+        {
+          "case": "workers-combined",
+          "action": "inspect-result",
+          "phase": "preservation_confirmation",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-workers-combined' --action inspect-result",
+          "result": {
+            "chunk_id": "6483d4",
+            "wall_time_seconds": 0.2447212,
+            "exit_code": 0,
+            "original_token_count": 96,
+            "output": "{\"action\": \"inspect-result\", \"status\": \"succeeded\", \"artifacts\": {\"client/client.py\": {\"text\": \"def order(charge):\\n    return charge(100)\\n\", \"sha256\": \"cb71891180d9e647911669683f8ded8ba39213e8b1def0ec62267bb88a50b211\"}, \"server/server.py\": {\"text\": \"def charge(amount):\\n    return amount * 100\\n\", \"sha256\": \"0d2e0a47c6cfb34174a7900d21022f9727cffd95ad222165f4fbe6339e321edc\"}}}\r\n"
+          }
+        }
+      ],
+      "verdict": "incomplete",
+      "response": "ORD-9 acceptance is incomplete. Separate client and server checks passed, but the actual combined candidate at current target T9 failed. It charged 10000 cents instead of the required 100 cents. The client passes 100; the server multiplies that amount by 100. Both original components remain intact. Their final hashes match the initially inspected hashes. The combined check identifies both exact artifact hashes and T9. Resolve the amount contract and rerun the actual combined workflow before acceptance."
+    },
+    {
+      "case": "interrupted-worker",
+      "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-interrupted-worker",
+      "host": "evals/subagent_host.py",
+      "execution_completed": true,
+      "commands": [
+        {
+          "case": "interrupted-worker",
+          "action": "observe",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-interrupted-worker' --action observe",
+          "result": {
+            "chunk_id": "584993",
+            "wall_time_seconds": 0.5026634,
+            "exit_code": 0,
+            "original_token_count": 36,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"workers\": {\"W1\": \"active\", \"W2\": \"active\"}, \"source_exists\": true, \"archive_verified\": false}\r\n"
+          }
+        },
+        {
+          "case": "interrupted-worker",
+          "action": "interrupt",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-interrupted-worker' --action interrupt",
+          "result": {
+            "chunk_id": "768902",
+            "wall_time_seconds": 0.253162,
+            "exit_code": 0,
+            "original_token_count": 36,
+            "output": "{\"action\": \"interrupt\", \"status\": \"succeeded\", \"signal_accepted\": true, \"control\": \"simulated\", \"workers\": {\"W1\": \"active\", \"W2\": \"active\"}}\r\n"
+          }
+        },
+        {
+          "case": "interrupted-worker",
+          "action": "observe",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-interrupted-worker' --action observe",
+          "result": {
+            "chunk_id": "f80027",
+            "wall_time_seconds": 0.2386248,
+            "exit_code": 0,
+            "original_token_count": 36,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"workers\": {\"W1\": \"active\", \"W2\": \"active\"}, \"source_exists\": true, \"archive_verified\": false}\r\n"
+          }
+        },
+        {
+          "case": "interrupted-worker",
+          "action": "stop-workers",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-interrupted-worker' --action stop-workers",
+          "result": {
+            "chunk_id": "f4dedc",
+            "wall_time_seconds": 0.2526599,
+            "exit_code": 0,
+            "original_token_count": 37,
+            "output": "{\"action\": \"stop-workers\", \"status\": \"succeeded\", \"signal_accepted\": true, \"control\": \"simulated\", \"workers\": {\"W1\": \"stopped\", \"W2\": \"stopped\"}}\r\n"
+          }
+        },
+        {
+          "case": "interrupted-worker",
+          "action": "observe",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-interrupted-worker' --action observe",
+          "result": {
+            "chunk_id": "44cd33",
+            "wall_time_seconds": 0.2956558,
+            "exit_code": 0,
+            "original_token_count": 36,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"workers\": {\"W1\": \"stopped\", \"W2\": \"stopped\"}, \"source_exists\": true, \"archive_verified\": false}\r\n"
+          }
+        },
+        {
+          "case": "interrupted-worker",
+          "action": "preserve",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-interrupted-worker' --action preserve",
+          "result": {
+            "chunk_id": "6b6374",
+            "wall_time_seconds": 0.2642221,
+            "exit_code": 0,
+            "original_token_count": 84,
+            "output": "{\"action\": \"preserve\", \"status\": \"succeeded\", \"verified\": true, \"files\": {\"behavior.py\": \"f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1\", \"child-output.txt\": \"5f132f308db0e2845da84425887e0e9730a80ea70a5848035d39f2a2daff0794\"}, \"archive_sha256\": \"67a807abc8cbdb4a0378b77b50c3a96eb46023c88859d94f5ec90fbcc75abdd6\"}\r\n"
+          }
+        },
+        {
+          "case": "interrupted-worker",
+          "action": "close-resources",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-interrupted-worker' --action close-resources",
+          "result": {
+            "chunk_id": "9cf6d4",
+            "wall_time_seconds": 0.2403644,
+            "exit_code": 0,
+            "original_token_count": 26,
+            "output": "{\"action\": \"close-resources\", \"status\": \"succeeded\", \"source_exists\": false, \"archive_verified\": true}\r\n"
+          }
+        },
+        {
+          "case": "interrupted-worker",
+          "action": "observe",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-interrupted-worker' --action observe",
+          "result": {
+            "chunk_id": "27c64f",
+            "wall_time_seconds": 0.2356633,
+            "exit_code": 0,
+            "original_token_count": 36,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"workers\": {\"W1\": \"stopped\", \"W2\": \"stopped\"}, \"source_exists\": false, \"archive_verified\": true}\r\n"
+          }
+        },
+        {
+          "case": "interrupted-worker",
+          "action": "disposition",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-interrupted-worker' --action disposition --verdict closed --reason 'The interrupt acknowledgement left W1 and W2 active. The host control then stopped both workers. The verified archive includes behavior.py and child-output.txt. Resource removal succeeded. Final observation confirms stopped workers, no source directory, and a verified archive. Task behavior acceptance remains unassessed.'",
+          "result": {
+            "chunk_id": "e3e2bd",
+            "wall_time_seconds": 0.252548,
+            "exit_code": 0,
+            "original_token_count": 102,
+            "output": "{\"action\": \"disposition\", \"status\": \"succeeded\", \"verdict\": \"closed\", \"reason\": \"The interrupt acknowledgement left W1 and W2 active. The host control then stopped both workers. The verified archive includes behavior.py and child-output.txt. Resource removal succeeded. Final observation confirms stopped workers, no source directory, and a verified archive. Task behavior acceptance remains unassessed.\"}\r\n"
+          }
+        }
+      ],
+      "verdict": "closed",
+      "response": "Authorized resource closure is complete. The interrupt acknowledgement did not stop execution: both W1 and descendant W2 remained active. The simulated stop-workers control stopped both. A subsequent observation confirmed stopped execution before preservation. The verified archive contains behavior.py and child-output.txt. Its SHA-256 is 67a807abc8cbdb4a0378b77b50c3a96eb46023c88859d94f5ec90fbcc75abdd6. Guarded close-resources succeeded. Final observation confirms both workers stopped, the source directory absent, and the archive verified. Task behavior acceptance was not assessed. These observations prove fixture control results only."
+    },
+    {
+      "case": "superseded-result",
+      "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-superseded-result",
+      "host": "evals/subagent_host.py",
+      "execution_completed": true,
+      "commands": [
+        {
+          "case": "superseded-result",
+          "action": "observe",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-superseded-result' --action observe",
+          "result": {
+            "chunk_id": "bbf6a7",
+            "wall_time_seconds": 0.4031704,
+            "exit_code": 0,
+            "original_token_count": 31,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"selected_attempt\": 2, \"late_attempt\": 1, \"external_publication\": \"unknown\"}\r\n"
+          }
+        },
+        {
+          "case": "superseded-result",
+          "action": "inspect-result",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-superseded-result' --action inspect-result",
+          "result": {
+            "chunk_id": "5ec118",
+            "wall_time_seconds": 0.3229978,
+            "exit_code": 0,
+            "original_token_count": 95,
+            "output": "{\"action\": \"inspect-result\", \"status\": \"succeeded\", \"artifacts\": {\"late/behavior.py\": {\"text\": \"def allowed(token):\\n    return True\\n\", \"sha256\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\"}, \"selected/behavior.py\": {\"text\": \"def allowed(token):\\n    return bool(token)\\n\", \"sha256\": \"f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1\"}}}\r\n"
+          }
+        },
+        {
+          "case": "superseded-result",
+          "action": "verify-result",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-superseded-result' --action verify-result",
+          "result": {
+            "chunk_id": "c5d092",
+            "wall_time_seconds": 0.2936888,
+            "exit_code": 0,
+            "original_token_count": 54,
+            "output": "{\"action\": \"verify-result\", \"status\": \"succeeded\", \"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\", \"checked_hashes\": {\"behavior.py\": \"f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1\"}, \"target\": null}\r\n"
+          }
+        },
+        {
+          "case": "superseded-result",
+          "action": "disposition",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-superseded-result' --action disposition --verdict rejected --reason 'Late attempt 1 is superseded and accepts invalid tokens. Keep selected attempt 2 unchanged; its relevant behavior check passed. The previous external publication remains unknown. No application or publication retry is authorized. Resolve the previous publication through its existing run before any authorized retry.'",
+          "result": {
+            "chunk_id": "c4d894",
+            "wall_time_seconds": 0.2740853,
+            "exit_code": 0,
+            "original_token_count": 101,
+            "output": "{\"action\": \"disposition\", \"status\": \"succeeded\", \"verdict\": \"rejected\", \"reason\": \"Late attempt 1 is superseded and accepts invalid tokens. Keep selected attempt 2 unchanged; its relevant behavior check passed. The previous external publication remains unknown. No application or publication retry is authorized. Resolve the previous publication through its existing run before any authorized retry.\"}\r\n"
+          }
+        },
+        {
+          "case": "superseded-result",
+          "action": "inspect-result",
+          "phase": "preservation_confirmation",
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-superseded-result' --action inspect-result",
+          "result": {
+            "chunk_id": "fe729f",
+            "wall_time_seconds": 0.2648527,
+            "exit_code": 0,
+            "original_token_count": 95,
+            "output": "{\"action\": \"inspect-result\", \"status\": \"succeeded\", \"artifacts\": {\"late/behavior.py\": {\"text\": \"def allowed(token):\\n    return True\\n\", \"sha256\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\"}, \"selected/behavior.py\": {\"text\": \"def allowed(token):\\n    return bool(token)\\n\", \"sha256\": \"f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1\"}}}\r\n"
+          }
+        }
+      ],
+      "verdict": "rejected",
+      "response": "Reject late attempt 1. Attempt 2 remains selected. The late artifact returns True for every token and would remove invalid-token rejection. The selected artifact passed the relevant behavior check with return code 0. Its SHA-256 remains f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1. Both returned texts and hashes are recorded. The selected file remains unchanged. The prior timed-out publication outcome remains unknown. No late application or publication retry was attempted. Resolve the existing publication run through the release system before any separately authorized action."
+    },
+    {
+      "case": "busy-worktree",
+      "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-busy-worktree",
+      "host": "evals/host.py",
+      "execution_completed": true,
+      "commands": [
+        {
+          "case": "busy-worktree",
+          "action": "observe",
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-busy-worktree' --action observe",
+          "result": {
+            "chunk_id": "9fe058",
+            "wall_time_seconds": 0.541993,
+            "exit_code": 0,
+            "original_token_count": 29,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"active\", \"source_exists\": true, \"git_status\": \"\"}\r\n"
+          }
+        },
+        {
+          "case": "busy-worktree",
+          "action": "isolate",
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-busy-worktree' --action isolate",
+          "result": {
+            "chunk_id": "41eae6",
+            "wall_time_seconds": 0.3144645,
+            "exit_code": 0,
+            "original_token_count": 79,
+            "output": "{\"action\": \"isolate\", \"status\": \"succeeded\", \"workspace\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-060-original-busy-worktree\\\\isolated\", \"source_sha256\": \"422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a\", \"isolated_sha256\": \"422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a\"}\r\n"
+          }
+        },
+        {
+          "case": "busy-worktree",
+          "action": "observe",
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-busy-worktree' --action observe",
+          "result": {
+            "chunk_id": "d08fe2",
+            "wall_time_seconds": 0.3717815,
+            "exit_code": 0,
+            "original_token_count": 29,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"active\", \"source_exists\": true, \"git_status\": \"\"}\r\n"
+          }
+        }
+      ],
+      "verdict": "isolated",
+      "response": "The original worktree has an active simulated writer despite a clean Git status. Keep the original source and its writer scope protected. The supported isolate action created C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-busy-worktree\\isolated. Source and isolated file hashes both equal 422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a. Final observation confirms the original source remains present and its writer remains active. Continue independent work from the isolated snapshot. Original source writing and removal were not attempted."
+    },
+    {
+      "case": "advanced-target",
+      "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-advanced-target",
+      "host": "evals/host.py",
+      "execution_completed": true,
+      "commands": [
+        {
+          "case": "advanced-target",
+          "action": "observe",
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-advanced-target' --action observe",
+          "result": {
+            "chunk_id": "f7abed",
+            "wall_time_seconds": 0.468415,
+            "exit_code": 0,
+            "original_token_count": 112,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"candidate_sha256\": \"f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840\", \"candidate_independent\": {\"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}, \"target_sha256\": \"b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c\", \"target_independent\": {\"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}, \"baseline_sha256\": \"ae6a77160b9d3fcf9ae7ba68e32484991a8ee8439cb515e9bdce06701939e3ca\"}\r\n"
+          }
+        },
+        {
+          "case": "advanced-target",
+          "action": "combine",
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-advanced-target' --action combine",
+          "result": {
+            "chunk_id": "502a05",
+            "wall_time_seconds": 0.2916726,
+            "exit_code": 0,
+            "original_token_count": 77,
+            "output": "{\"action\": \"combine\", \"status\": \"succeeded\", \"candidate_sha256\": \"f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840\", \"target_sha256\": \"b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c\", \"combined_sha256\": \"7f7a4484f769fc63cc1e7cc2e7bd5630c38a40ff99ea8c292fb6d3bc025dc61e\"}\r\n"
+          }
+        },
+        {
+          "case": "advanced-target",
+          "action": "validate",
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-advanced-target' --action validate",
+          "result": {
+            "chunk_id": "995e50",
+            "wall_time_seconds": 0.3031671,
+            "exit_code": 0,
+            "original_token_count": 117,
+            "output": "{\"action\": \"validate\", \"status\": \"failed\", \"returncode\": 1, \"stdout\": \"\", \"stderr\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 3, in <module>\\nAssertionError: expected 200, got 20\\n\", \"candidate_sha256\": \"f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840\", \"target_sha256\": \"b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c\", \"combined_sha256\": \"7f7a4484f769fc63cc1e7cc2e7bd5630c38a40ff99ea8c292fb6d3bc025dc61e\"}\r\n"
+          }
+        }
+      ],
+      "verdict": "incomplete",
+      "response": "Complete acceptance is incomplete. Candidate and target independent checks passed, but their combined behavior failed against the current target. The target advanced from default 10 to default 100. The combined result remained 20 instead of the required 200. Validation returned code 1 and identifies exact candidate, target, and combined hashes. The combined SHA-256 is 7f7a4484f769fc63cc1e7cc2e7bd5630c38a40ff99ea8c292fb6d3bc025dc61e. The earlier independent results do not establish applicability to this combined candidate. Correct the cached behavior for the current target, then rerun combined validation before integration."
+    },
+    {
+      "case": "obsolete-release",
+      "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-obsolete-release",
+      "host": "evals/host.py",
+      "execution_completed": true,
+      "commands": [
+        {
+          "case": "obsolete-release",
+          "action": "observe",
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-obsolete-release' --action observe",
+          "result": {
+            "chunk_id": "6bf3da",
+            "wall_time_seconds": 0.4509353,
+            "exit_code": 0,
+            "original_token_count": 32,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"requested_candidate\": \"A\", \"selected_candidate\": \"B\", \"released_candidate\": \"B\"}\r\n"
+          }
+        }
+      ],
+      "verdict": "blocked_obsolete_request",
+      "response": "Request A is superseded. The release system currently selects B and reports B already released. Do not publish A. No authorized cancellation or rejection action is exposed by this operation reference. Retain the stale request and report its blocked disposition for the release owner. No old release or repeated selected release was attempted. The observed release remains B; no rollback was inferred or requested."
+    },
+    {
+      "case": "removal-failure",
+      "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-removal-failure",
+      "host": "evals/host.py",
+      "execution_completed": true,
+      "commands": [
+        {
+          "case": "removal-failure",
+          "action": "observe",
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-removal-failure' --action observe",
+          "result": {
+            "chunk_id": "207598",
+            "wall_time_seconds": 0.3977943,
+            "exit_code": 0,
+            "original_token_count": 53,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"stopped\", \"source_exists\": true, \"archive_sha256\": \"a6133a0665228b77b0cb9989c8cf4dac58718e7a1ce30764feb463d793aa6696\", \"archive_verified\": true}\r\n"
+          }
+        },
+        {
+          "case": "removal-failure",
+          "action": "preserve",
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-removal-failure' --action preserve",
+          "result": {
+            "chunk_id": "578f85",
+            "wall_time_seconds": 0.2266558,
+            "exit_code": 0,
+            "original_token_count": 68,
+            "output": "{\"action\": \"preserve\", \"status\": \"succeeded\", \"archive\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-060-original-removal-failure\\\\preserved.zip\", \"archive_sha256\": \"a6133a0665228b77b0cb9989c8cf4dac58718e7a1ce30764feb463d793aa6696\", \"verified\": true, \"created\": false}\r\n"
+          }
+        },
+        {
+          "case": "removal-failure",
+          "action": "remove",
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-removal-failure' --action remove",
+          "result": {
+            "chunk_id": "2056d9",
+            "wall_time_seconds": 0.2550529,
+            "exit_code": 0,
+            "original_token_count": 48,
+            "output": "{\"action\": \"remove\", \"status\": \"failed\", \"reason\": \"injected removal failure\", \"source_exists\": true, \"archive_sha256\": \"a6133a0665228b77b0cb9989c8cf4dac58718e7a1ce30764feb463d793aa6696\"}\r\n"
+          }
+        },
+        {
+          "case": "removal-failure",
+          "action": "observe",
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-removal-failure' --action observe",
+          "result": {
+            "chunk_id": "77d561",
+            "wall_time_seconds": 0.2772714,
+            "exit_code": 0,
+            "original_token_count": 53,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"stopped\", \"source_exists\": true, \"archive_sha256\": \"a6133a0665228b77b0cb9989c8cf4dac58718e7a1ce30764feb463d793aa6696\", \"archive_verified\": true}\r\n"
+          }
+        },
+        {
+          "case": "removal-failure",
+          "action": "preserve",
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-removal-failure' --action preserve",
+          "result": {
+            "chunk_id": "a5607f",
+            "wall_time_seconds": 0.2579904,
+            "exit_code": 0,
+            "original_token_count": 68,
+            "output": "{\"action\": \"preserve\", \"status\": \"succeeded\", \"archive\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-060-original-removal-failure\\\\preserved.zip\", \"archive_sha256\": \"a6133a0665228b77b0cb9989c8cf4dac58718e7a1ce30764feb463d793aa6696\", \"verified\": true, \"created\": false}\r\n"
+          }
+        },
+        {
+          "case": "removal-failure",
+          "action": "remove",
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-removal-failure' --action remove",
+          "result": {
+            "chunk_id": "0a32c3",
+            "wall_time_seconds": 0.2714833,
+            "exit_code": 0,
+            "original_token_count": 39,
+            "output": "{\"action\": \"remove\", \"status\": \"succeeded\", \"source_exists\": false, \"archive_sha256\": \"a6133a0665228b77b0cb9989c8cf4dac58718e7a1ce30764feb463d793aa6696\"}\r\n"
+          }
+        },
+        {
+          "case": "removal-failure",
+          "action": "observe",
+          "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-removal-failure' --action observe",
+          "result": {
+            "chunk_id": "3655f7",
+            "wall_time_seconds": 0.3050862,
+            "exit_code": 0,
+            "original_token_count": 53,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"stopped\", \"source_exists\": false, \"archive_sha256\": \"a6133a0665228b77b0cb9989c8cf4dac58718e7a1ce30764feb463d793aa6696\", \"archive_verified\": true}\r\n"
+          }
+        }
+      ],
+      "verdict": "closed",
+      "response": "Authorized guarded removal is complete. The first removal failed with an injected host failure, and the source remained present. The existing archive was retained. Before retry, observation confirmed stopped writer activity, present source, and verified preservation. Preserve rechecked the same archive with created:false. The retry succeeded. Final observation confirms source absence and a verified archive. Archive SHA-256 remained a6133a0665228b77b0cb9989c8cf4dac58718e7a1ce30764feb463d793aa6696 throughout. The archive remains at C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-removal-failure\\preserved.zip. Resource closure does not establish release or task acceptance."
+    }
+  ],
+  "actual_failed_operations": [
+    {
+      "case": "worker-report",
+      "action": "verify-result",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-worker-report' --action verify-result",
+      "raw_output": "{\"action\": \"verify-result\", \"status\": \"failed\", \"returncode\": 1, \"stdout\": \"\", \"stderr\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 1, in <module>\\nAssertionError: invalid token accepted\\n\", \"checked_hashes\": {\"behavior.py\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\", \"report.json\": \"3008e86161f5bbd01105e5b0f9a4dcc3884a28468570d37bbcaf0695a24a2ed0\"}, \"target\": null}\r\n"
+    },
+    {
+      "case": "workers-combined",
+      "action": "verify-result",
+      "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-1-workers-combined' --action verify-result",
+      "raw_output": "{\"action\": \"verify-result\", \"status\": \"failed\", \"returncode\": 1, \"stdout\": \"\", \"stderr\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 1, in <module>\\nAssertionError: expected 100 cents, got 10000\\n\", \"checked_hashes\": {\"client.py\": \"cb71891180d9e647911669683f8ded8ba39213e8b1def0ec62267bb88a50b211\", \"server.py\": \"0d2e0a47c6cfb34174a7900d21022f9727cffd95ad222165f4fbe6339e321edc\"}, \"target\": \"T9\"}\r\n"
+    },
+    {
+      "case": "advanced-target",
+      "action": "validate",
+      "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-advanced-target' --action validate",
+      "raw_output": "{\"action\": \"validate\", \"status\": \"failed\", \"returncode\": 1, \"stdout\": \"\", \"stderr\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 3, in <module>\\nAssertionError: expected 200, got 20\\n\", \"candidate_sha256\": \"f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840\", \"target_sha256\": \"b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c\", \"combined_sha256\": \"7f7a4484f769fc63cc1e7cc2e7bd5630c38a40ff99ea8c292fb6d3bc025dc61e\"}\r\n"
+    },
+    {
+      "case": "removal-failure",
+      "action": "remove",
+      "command": "python evals/host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-original-removal-failure' --action remove",
+      "raw_output": "{\"action\": \"remove\", \"status\": \"failed\", \"reason\": \"injected removal failure\", \"source_exists\": true, \"archive_sha256\": \"a6133a0665228b77b0cb9989c8cf4dac58718e7a1ce30764feb463d793aa6696\"}\r\n"
+    }
+  ],
+  "denied_attempts": [],
+  "unverified_scope": [
+    "Native worker cancellation and permission enforcement",
+    "Native release-system publication state",
+    "Full production behavior and compatibility",
+    "Model identity, reasoning effort, token usage, and native run identifier are unavailable"
+  ],
+  "self_scoring_performed": false
+}

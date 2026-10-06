@@ -1,8 +1,8 @@
 ---
 name: sdd-harness
-description: Use when specification-driven development spans changes, chats, worktrees, developers, or coding agents. Use when resuming tasks, checking acceptance evidence, preparing releases, or recovering project worktrees.
+description: Use when specification-driven development spans changes, chats, worktrees, developers, coding agents, or subagents. Use when resuming tasks, checking acceptance evidence, preparing releases, or recovering project worktrees.
 metadata:
-  version: "0.5.1"
+  version: "0.6.0"
 ---
 
 # SDD Harness
@@ -79,6 +79,16 @@ Use existing task assignments, branches, and integration duties. One person can 
 Do not require collaboration setup for an independent task.
 For developer cooperation or multiple active chats, read [references/collaboration.md](references/collaboration.md).
 
+## Use subagents when useful
+
+For delegation, worker results, or outstanding subagents, read [references/subagents.md](references/subagents.md).
+Keep short changes and dependent steps with the main agent.
+The main agent retains complete requirement acceptance and integration responsibility.
+Check actual artifacts and evidence before accepting a worker's result.
+Keep partial results, unfinished workers, and pending decisions visible during handoffs.
+Check stopped execution before reassigning write scope or removing resources.
+Do not require subagents for independent development.
+
 ## Accept and publish
 
 Check requirement coverage, actual changes, dependencies, and evidence.
@@ -132,6 +142,7 @@ If you cannot maintain that protection, keep the directory and report the missin
 | Specification quality and coverage | [references/spec-review.md](references/spec-review.md) |
 | New features or existing systems | [references/workflow.md](references/workflow.md); [assets/change.md](assets/change.md) |
 | Developer cooperation or multiple active chats | [references/collaboration.md](references/collaboration.md) |
+| Delegation, worker results, or outstanding subagents | [references/subagents.md](references/subagents.md) |
 | Workspace inspection or recovery | `scripts/workspace.py --help`; [references/recovery.md](references/recovery.md) |
 | Acceptance, integration, or publication | [references/delivery.md](references/delivery.md) |
 

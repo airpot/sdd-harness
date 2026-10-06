@@ -55,6 +55,10 @@ For this skill, use these technical nouns:
 | --- | --- |
 | task | Work with a stable identity, goal, and acceptance conditions. |
 | chat | A native agent conversation. A chat is not a task. |
+| main agent | The agent responsible for the complete task and acceptance of delegated results. |
+| subagent | An agent that performs a bounded task for the main agent. |
+| disposition | The main agent's decision about a returned result and its necessary next action. |
+| attempt | One execution of an assigned task at an identified basis. |
 | harness | Software that runs an agent and exposes its tools. |
 | worktree | A Git checkout with its own working files. |
 | snapshot | Saved versioned results with recovery information. |

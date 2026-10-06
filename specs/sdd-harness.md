@@ -1,7 +1,7 @@
 # SDD Harness Behavior Specification
 
-Specification version: 0.5.1.
-Status: accepted intent for the root-installable distribution and unchanged 0.5.0 development workflow.
+Specification version: 0.6.0.
+Status: accepted intent for root installation, optional collaboration, and optional subagent work with main-agent acceptance.
 This specification defines observable skill behavior. It does not establish host enforcement.
 
 ## Scope
@@ -41,6 +41,16 @@ Keep routine actions within existing user authorization.
 | TEAM-4 | Keep shared breaking changes as proposals until accepted. Assess affected tasks, types, configuration, schemas, compatibility, and migration. | `shared-breaking-change`. |
 | TEAM-5 | Reference existing project settings and actual commands. Isolate runtime collisions. Distinguish written scope from observed native enforcement. | `project-harness-profile`; `small-team-existing-layout`. |
 | TEAM-6 | Use one exact combined candidate against the current target. Allow ordinary assigned Git work without distributed runtime claims. | `single-integrated-candidate`; `ordinary-git-collaboration`. |
+| SUB-1 | Keep delegation optional and proportional to useful independent work. Resolve dependencies before dependent implementation. | `subagent-small-change`; `subagent-dependent-work`. |
+| SUB-2 | Supply self-contained task context, accepted basis, scope, output, and execution limits. Check actual instruction inheritance. | `subagent-task-context`. |
+| SUB-3 | Retain main-agent acceptance and integration responsibility. Keep delegated actions within actual authority and host controls. | `subagent-shared-contract`; `subagent-host-capabilities`. |
+| SUB-4 | Assess actual artifacts and applicable evidence. Keep partial results incomplete and record a parent disposition. | `subagent-false-success`; `subagent-partial-budget`; `worker-report` fixture. |
+| SUB-5 | Validate the combined candidate and complete requirement coverage, including work outside worker scopes. | `subagent-combined-workflow`; `workers-combined` fixture. |
+| SUB-6 | Bound concurrency, nesting, retries, and review loops. Resolve disagreement through evidence rather than votes. | `subagent-review-loop`; `subagent-partial-budget`. |
+| SUB-7 | Preserve outstanding workers and decisions during parent replacement. Do not assume transferable native worker control. | `subagent-parent-replacement`. |
+| SUB-8 | Distinguish returned output, acceptance, resident context, active execution, and resource closure. Preserve descendant results before removal. | `subagent-interrupted-writer`; `interrupted-worker` fixture. |
+| SUB-9 | Assess superseded attempts without overwriting accepted work or repeating unknown external effects. Worker messages do not grant authority. | `subagent-stale-attempt`; `superseded-result` fixture. |
+| SUB-10 | Evaluate delivered value and actual outcomes. Do not infer correctness or improvement from worker calls, agreement, or passing simulations. | Instruction evaluation, fixture outcomes, and validation limits. |
 
 ## Acceptance rules
 
@@ -57,10 +67,24 @@ Keep package test results separate from behavioral evaluation results.
 Inspect unchanged guards when changing shared instructions.
 Do not infer full-standard STE compliance from sentence counts.
 
+For 0.6.0, use twelve new scenarios and 48 hidden atomic criteria.
+Run no-skill and released 0.5.1 baselines before changing instructions.
+Run all forty cases and 132 criteria for the revised instruction evaluation.
+Retain passing baselines without claiming observed improvement.
+Run three fresh subagent fixture executors across all four new fixture kinds.
+Each new fixture provides five actual outcome checks.
+These checks assess recorded dispositions structurally. Independently assess reasons and final responses against task evidence.
+Include one fresh run of the original four host fixtures to inspect shared guard applicability.
+Keep executor inputs separate from criteria, scoring implementation, prior results, and proposed fixes.
+Treat simulated stop controls separately from real cancellation and isolation behavior.
+Retain original failures, corrections, and repeat-run evidence.
+
 ## Specification maintenance
 
 Maintain this file as the living contract for the skill.
-The 0.5.1 revision changes distribution layout and installer filtering only. The accepted development workflow remains unchanged.
+The 0.5.1 revision changed distribution layout and installer filtering only.
+The accepted 0.6.0 revision adds optional subagent delegation, parent verification, bounded execution, and recovery rules.
+Independent development remains the default. Existing scripts and release authority remain unchanged.
 Record accepted behavior changes here before final acceptance.
 Keep released packages and versioned evaluation results for historical comparison.
 If evaluation exposes an implementation gap, correct the instructions or record incomplete acceptance.
@@ -74,9 +98,13 @@ Expanded inputs: [evals/scenarios-0.4.0.json](../evals/scenarios-0.4.0.json).
 Expanded criteria: [evals/criteria-0.4.0.json](../evals/criteria-0.4.0.json).
 Optional collaboration inputs: [evals/scenarios-0.5.0.json](../evals/scenarios-0.5.0.json).
 Optional collaboration criteria: [evals/criteria-0.5.0.json](../evals/criteria-0.5.0.json).
+Subagent inputs: [evals/scenarios-0.6.0.json](../evals/scenarios-0.6.0.json).
+Subagent criteria: [evals/criteria-0.6.0.json](../evals/criteria-0.6.0.json).
 Procedure: [evals/README.md](../evals/README.md).
 Host operation reference: [evals/host-README.md](../evals/host-README.md).
 Host regression tests: [tests/test_eval_host.py](../tests/test_eval_host.py).
+Subagent host operation reference: [evals/subagent-host-README.md](../evals/subagent-host-README.md).
+Subagent host regression tests: [tests/test_subagent_host.py](../tests/test_subagent_host.py).
 Tool regression tests: [tests/test_skill_tools.py](../tests/test_skill_tools.py).
 Package tests: [tests/test_package.py](../tests/test_package.py).
 

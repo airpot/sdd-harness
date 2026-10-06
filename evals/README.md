@@ -12,6 +12,8 @@ They do not prove host enforcement, deployment success, or model performance acr
 - `criteria-0.4.0.json`: evaluator-only atomic criteria for those scenarios.
 - `scenarios-0.5.0.json`: nine additional cases for optional collaboration and the independent default.
 - `criteria-0.5.0.json`: 27 evaluator-only atomic criteria for those cases.
+- `scenarios-0.6.0.json`: twelve additional subagent delegation, verification, and recovery cases.
+- `criteria-0.6.0.json`: 48 evaluator-only atomic criteria for those cases.
 - `results/`: complete versioned answers and evaluation records.
 
 ## Run an evaluation
@@ -130,3 +132,35 @@ Three fresh forward host executors passed twelve cases and 54 outcome checks.
 The baseline already passes the shared cases; no observed performance gain is claimed.
 Read the [validation record](results/0.5.0-validation.md) for complete records, the handoff repair, retained attempts, and scope limits.
 Read [provenance](results/0.5.0-provenance.json) for source and artifact hashes and evidence applicability.
+
+## Version 0.6.0 procedure
+
+Use no-skill and released 0.5.1 executors for the twelve new baseline cases before changing source instructions.
+Use all four input sets for revised instructions: forty cases and 132 atomic criteria.
+Keep evaluation criteria and earlier answers outside executor input.
+Retain each original answer and independently score actual decisions with quoted evidence.
+Do not require literal template wording when a response satisfies the substantive criterion.
+Passing baselines do not establish an observed improvement.
+
+Read [the subagent host interface](subagent-host-README.md) for four new outcome fixtures.
+Run three fresh executors across all four kinds and one fresh run of the original host cases.
+Score actual artifact checks, combined behavior, worker-tree state, preserved outputs, and attempted operations.
+Keep the five outcome checks per new fixture separate from written-response criteria.
+Worker control remains simulated. Actual hashes, behavior checks, archives, and fixture removal run locally.
+Do not infer native stopped execution or permission enforcement from this simulator.
+
+Record source hashes for each evaluated payload.
+If a repair changes a relevant rule or host operation, reassess evidence applicability and repeat affected checks.
+Retain failed attempts and first responses when recording corrected results.
+
+## Version 0.6.0 results
+
+No-loaded-skill and released 0.5.1 baselines both passed all 48 new-case criteria.
+Revised instructions passed 132 criteria across forty cases after one documented interpretation adjudication.
+Three fresh final host trials passed sixty mechanical outcomes across twelve cases.
+A fresh blinded evaluator passed 24 separate reason and response criteria.
+One fresh run of the original host fixtures passed eighteen mechanical outcomes.
+No statistical superiority or cost improvement is established.
+
+Read the [validation record](results/0.6.0-validation.md) for retained failures, review repairs, scoring limits, and complete results.
+Read [provenance](results/0.6.0-provenance.json) for exact payload and evidence hashes.

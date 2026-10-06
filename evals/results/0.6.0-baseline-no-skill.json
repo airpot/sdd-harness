@@ -1,0 +1,61 @@
+{
+  "evaluated_version": "no skill",
+  "mode": "decision simulation",
+  "runtime_metadata": {
+    "environment_date": "2026-10-06",
+    "timezone": "Asia/Shanghai",
+    "shell": "powershell",
+    "workspace": "D:/code/project_skill",
+    "input": "D:/code/project_skill/evals/scenarios-0.6.0.json"
+  },
+  "scenarios": [
+    {
+      "id": "subagent-small-change",
+      "response": "Correct the known README link directly, inspect the diff to confirm the expected text and target and that only the requested link changed, and report completion. Do not launch workers or add a planning/release workflow for this small edit. Accept when that focused inspection passes; no code tests are needed."
+    },
+    {
+      "id": "subagent-task-context",
+      "response": "Send one worker: 'Investigate duplicate invoice creation without changing files. Use commit B17 and API contract C4 as the fixed basis. INV-17 requires exactly one invoice for repeated requests with the same customer and idempotency key. Inspect src/invoice.py and existing tests. Trace a reproducible failing request sequence and relevant persistence/concurrency behavior. Return reproduction commands and inputs, observed versus expected outcomes, exact commit/file/line and test/log references, the likely cause with supporting evidence, and remaining uncertainty. Stay within this investigation's budget and return partial findings when it ends.' Include the relevant C4 text and INV-17 acceptance text in the supplied context; the worker cannot rely on the parent's history. Accept the investigation only after checking its evidence against B17/C4; a diagnosis alone does not complete a fix."
+    },
+    {
+      "id": "subagent-dependent-work",
+      "response": "Do not start both implementations against incompatible proposals. Assign one worker the independent read-only investigation of existing authorization and report its evidence against REQ-22. Resolve acceptance of the response schema with the responsible decision maker, then supply that same accepted contract and baseline to frontend and backend workers with separate file scopes. Implement and check their integration and an authorized download, including denial for unauthorized access. Keep feature acceptance pending until the schema and combined behavior are verified."
+    },
+    {
+      "id": "subagent-shared-contract",
+      "response": "Tell A to retain user_id under C2 and stop the proposed publication. A's rename is a contract change affecting B and cannot be accepted as harmless or made through out-of-scope shared/types.ts edits. Inform B of the attempted deviation and keep both on B2/C2. If a rename is genuinely requested, obtain acceptance of the revised interface and coordinated scopes before implementation. Inspect the branches for contract consistency and test provider/client integration. Reject the rename under current requirements; no deployment or release is authorized."
+    },
+    {
+      "id": "subagent-false-success",
+      "response": "Reject A's completion claim: its patch violates ERR-8 by accepting empty tokens, and the log proves only the valid-token test ran. B's agreement based on the same report is not independent evidence. Reproduce the empty-token failure, correct the rejection behavior, and run relevant invalid-token tests plus the valid-token regression on the actual candidate. Verify the returned diff and fresh results before accepting or merging. The task remains incomplete until invalid tokens are demonstrably rejected."
+    },
+    {
+      "id": "subagent-partial-budget",
+      "response": "Preserve migration.py and record the max-tokens stop, both exhausted attempts, and the missing recovery implementation and evidence. Within the existing result, identify what migration work is actually present without claiming it is verified. Do not launch another worker, invent recovery evidence, or declare DATA-3 complete. Deliver a partial result with recovery of existing records explicitly outstanding; full acceptance requires further authorized capacity or a revised requirement."
+    },
+    {
+      "id": "subagent-combined-workflow",
+      "response": "Do not merge or accept the complete flow from separate tests. Reconcile cents versus dollars into an accepted interface with explicit conversion, then integrate the selected changes onto T9 and inspect differences from A7/B8. Test the actual provider and consumer together on that exact combined candidate through create, authorize, persist, and retrieve, checking stored and returned amounts and authorization behavior. Accept ORD-9 only on passing combined evidence for that candidate; component and mock results alone are insufficient."
+    },
+    {
+      "id": "subagent-interrupted-writer",
+      "response": "Treat the interrupt response as signal acknowledgement, not proof of termination. Prevent a replacement writer from entering the same scope and preserve W1/W2's latest changes, outputs, and provenance while arranging termination of the whole worker tree. Confirm both workers have stopped and check for any later writes; if stopped use cannot be established, retain the worktree and escalate the limitation. Once results are safely saved and no worker uses it, perform recoverable cleanup and reassign from a verified saved baseline. Reject immediate deletion and reassignment as requested."
+    },
+    {
+      "id": "subagent-parent-replacement",
+      "response": "Before switching, use the old chat's controls to stop or finish W1, preserve its pending billing.py change and final state, and save W2's report with its reviewed snapshot and unverified status. Create a durable handoff with requirements, baselines, file ownership, artifacts, verification still needed, and confirmed worker status. If old controls are unavailable, retain old records and affected workspace and have the old owner resolve the active writer; the new chat must not assume worker IDs transfer or start a conflicting writer. Continue from saved artifacts in the new chat and verify W2's result. Clean up old records only after stopped workers and recoverable results are established; migration alone is not acceptance of the pending work."
+    },
+    {
+      "id": "subagent-stale-attempt",
+      "response": "Quarantine attempt 1 as a late, superseded result and do not overwrite selected attempt 2 at B2. Its patch also violates BUG-5 by deleting the required error check, so reject it on substance. Preserve its report and reconcile the timed-out publication using read-only checks of the external target and request identifiers where available; avoid a duplicate publication while the outcome is unknown. Do not release without authorization. Confirm the selected B2 fix and required error-check evidence; report any unresolved external state separately rather than calling the whole situation settled."
+    },
+    {
+      "id": "subagent-review-loop",
+      "response": "Use the single remaining investigation turn to reproduce A's cross-tenant read on the actual candidate and evaluate the relevant isolation boundary. Ask B for concrete counterevidence within that same investigation rather than launch recursive reviewers. If reproduced, reject SEC-6 acceptance and identify the required fix; if disproved, record exact contradictory evidence; if unresolved, retain the finding and uncertainty and withhold acceptance. Proceed with the independent documentation correction. Consensus without evidence is not a completion condition."
+    },
+    {
+      "id": "subagent-host-capabilities",
+      "response": "Record the observed host limits: one-shot invocation, shared writable tools and checkout, current authorized model only, and unverified stopped-state detection. Do not claim YAML flags enforce read-only execution or native resume. If continuing the investigation, issue a fresh one-shot prompt containing saved context and explicit no-write instructions, and use an actual isolated snapshot if available and verified; describe instructions as behavioral limits, not permission enforcement. If enforced read-only access is required, withhold worker launch until that capability exists. Do not use an unavailable model route or clean up on an assumed stopped state. Accept only a truthful fallback with its limitations disclosed; the requested native read-only/resume configuration is unavailable on current evidence."
+    }
+  ]
+}

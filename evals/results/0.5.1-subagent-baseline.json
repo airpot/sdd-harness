@@ -1,0 +1,66 @@
+{
+  "evaluated_version": "0.5.1 released",
+  "mode": "decision simulation",
+  "runtime_metadata": {
+    "executor_identity": "/root/subagent_baseline_051",
+    "runtime_observed_at_utc": "2026-10-06T04:30:03.0150729Z",
+    "working_directory": "D:/code/project_skill",
+    "shell": "PowerShell",
+    "shell_version": "7.6.5",
+    "operating_system": "Microsoft Windows NT 10.0.26100.0",
+    "scenario_revision": "0.6.0",
+    "skill_path": "D:/code/project_skill/docs/validation/released-0.5.1/sdd-harness/SKILL.md",
+    "scenario_path": "D:/code/project_skill/evals/scenarios-0.6.0.json",
+    "execution_scope": "Read released skill resources and scenario facts; write this simulation result. No live scenario actions or worker invocations."
+  },
+  "scenarios": [
+    {
+      "id": "subagent-small-change",
+      "response": "Next actions: Check the README checkout, owner, and active use. Correct the known Markdown link directly in an available authorized checkout. Inspect the diff for the exact target and expected text. Check that the link resolves to the intended resource using a proportionate check. Keep a brief requirement and evidence reference in the existing record. Eight slots do not justify planner, implementer, reviewer, or release workers for this independent correction. Acceptance disposition: Accept the link correction only after its exact diff and relevant check pass. No code behavior tests or collaboration setup are required by these facts. This simulation does not claim that the edit or check ran."
+    },
+    {
+      "id": "subagent-task-context",
+      "response": "Proposed delegated task: Investigate duplicate invoice creation for INV-17 at fixed commit B17 under accepted API contract C4. INV-17 requires one invoice for repeated requests with the same customer and idempotency key. Inspect src/invoice.py and existing tests. Make no file changes. Use the selected project instructions and this accepted requirement as your basis; do not depend on the parent's mixed history. Return a reproducible diagnosis with preconditions, repeated-request inputs, expected and observed invoice effects, repeatable commands, environment, and exact file, line, test, and log references. Identify the cause, covered conditions, and remaining uncertainty. Use one investigation worker. When the investigation budget ends, return partial findings and unrun checks. Next actions: Provide access to the fixed B17 snapshot and C4 plus necessary instructions. Check the returned sources and reproduction directly. Acceptance disposition: Treat the report as investigation evidence subject to verification. Do not accept INV-17 as fixed without applicable implementation and validation evidence."
+    },
+    {
+      "id": "subagent-dependent-work",
+      "response": "Next actions: Record the two incompatible response proposals and the missing accepted schema for REQ-22. Resolve the correctness-critical interface decision through the existing acceptance authority before schema-dependent implementation. Do not start frontend implementation against an unaccepted proposal. Backend schema changes must also follow that decision. Use the available independent work for a read-only investigation of existing authorization behavior. Once the schema is accepted, bind both tasks to that version, assign separate scopes and checkouts as needed, and validate an authorized download with the actual provider and consumer. Acceptance disposition: Export implementation is blocked on the accepted response schema. Authorization investigation can proceed, but it cannot establish complete REQ-22 acceptance."
+    },
+    {
+      "id": "subagent-shared-contract",
+      "response": "Next actions: Keep C2 with user_id as the accepted contract. Record A's uid rename as a proposal with compatibility effects on B and other callers. Coordinate with B before conflicting contract changes. Keep A within server/users.py and B within client/users.ts; assigned paths do not grant authority over shared/types.ts or deployment. Obtain the existing project's contract acceptance before dependent implementation of a rename. If accepted, coordinate all affected types, callers, transition behavior, and evidence. Otherwise, retain user_id and check both components against C2. Prepare reviewable branch results within development authority. Publishing code for review must use existing integration permission; deploying needs separate release authorization, which is absent. Acceptance disposition: The rename is unaccepted. Development permission does not permit release. Complete combination acceptance requires compatible behavior and applicable evidence."
+    },
+    {
+      "id": "subagent-false-success",
+      "response": "Next actions: Reject the completion claim against ERR-8. Inspect the returned patch and log directly. Record that empty tokens are accepted and that the command ran only test_valid_token. Preserve an empty-token counterexample. Correct token rejection under the accepted requirement and validate invalid-token behavior, including empty tokens, on the exact corrected candidate. Check relevant valid-token behavior for regression. Record the command, inputs, environment, result, and applicability. B's agreement from the same report supplies no independent validation. Acceptance disposition: ERR-8 is not accepted. The artifact contradicts the requirement and required invalid-token checks have no evidence. The valid-token pass covers only its tested condition; do not merge or close the task as complete on that basis."
+    },
+    {
+      "id": "subagent-partial-budget",
+      "response": "Next actions: Preserve migration.py and the stopped worker's available report and evidence. Record max-tokens as the stop reason. Reconcile DATA-3 with the returned artifacts: migration implementation is reported, but recovery.py and recovery validation are absent. Do not launch another worker or spend beyond the stated exhausted budget. Save a brief handoff with the exact result version, migration validation status, missing recovery work, and the next action for future authorized capacity. Acceptance disposition: DATA-3 remains incomplete and blocked by required recovery implementation and evidence. Migration file existence does not establish validated migration acceptance. Do not treat token exhaustion as successful completion or silently exclude recovery."
+    },
+    {
+      "id": "subagent-combined-workflow",
+      "response": "Next actions: Preserve A7 and B8 component results with their tested units and limitations. Resolve cents versus dollars against the accepted ORD-9 interface and business rules before combination. Identify the current T9 target and review changes from both worker baselines. Construct one exact combined candidate through the supported integration process. Check actual frontend and backend behavior for create, authorize, persist, and retrieve, including correct amount conversion and access enforcement. Bind evidence to that candidate, accepted contract, inputs, configuration, and environment. Review earlier component evidence for current applicability. Acceptance disposition: Complete ORD-9 acceptance is blocked. Separate mock and component passes do not validate the actual workflow, incompatible units remain unresolved, and no combined candidate evidence exists. Do not report the complete flow done or merge based solely on these reports."
+    },
+    {
+      "id": "subagent-interrupted-writer",
+      "response": "Next actions: Retain the worktree and W1/W2 records. The interrupt acknowledgment proves signal delivery only; W1 remains running and W2 has continued writing. Use supported host controls to stop every relevant writer, including W2, and confirm actual stopped use before transferring responsibility. If that cannot be confirmed, continue only independent work in a separate worktree. Preserve W2's latest output and all necessary W1/W2 results after stopped use. Verify preservation and recovery as required. Protect the worktree against renewed use through removal. Check managed ownership, normalized path, and supported removal conditions. Only then apply the existing automatic recoverable cleanup policy and verify archive, directory, and registration results. Acceptance disposition: Reassignment of the shared writable worktree and cleanup are blocked. The initial archived commit is insufficient, and timeout does not prove stopped execution. Task acceptance remains separate from interruption and cleanup."
+    },
+    {
+      "id": "subagent-parent-replacement",
+      "response": "Next actions: Save an accessible project handoff for P4 with its goal, accepted specifications, exact versions, task scopes, W1/W2 ownership, available results, missing changes, and next actions. Preserve W2's fixed-snapshot report as unverified evidence. Arrange for the old host to save W1's pending change and confirm stopped writing before responsibility transfers. The new chat cannot do that through old worker IDs, and those IDs have no documented transferable control. Keep old worker records and the original worktree protected. In the new chat, check accessible artifacts and current state. Validate W2's report against its snapshot. Continue independent work in a separate checkout while W1 status remains uncertain. Acceptance disposition: Handoff is incomplete until necessary W1 results and stopped ownership are established. New-chat availability does not authorize cleanup or prove completed acceptance. Do not erase records needed for control or recovery."
+    },
+    {
+      "id": "subagent-stale-attempt",
+      "response": "Next actions: Keep attempt 2 at B2 as the selected accepted fix. Retain attempt 1's late report and patch for traceability without overwriting current code. Compare it with BUG-5 and the current assignment; its deletion of a required error check makes it unsuitable. Confirm that attempt 2's evidence applies to the selected candidate and current accepted requirement before closing development. For attempt 1's timed-out publication, inspect the actual release system and target through the original run reference. Record whether it is pending, applied, rejected, or still unknown. Resolve superseded requests only through authorized release-system operations. Do not redeploy, test obsolete deployment rejection by submission, or assume timeout caused rollback. Acceptance disposition: Reject the late patch for selection. Attempt 2 retains its supplied accepted status subject to current evidence applicability; external publication remains unresolved. No new release or rollback is authorized."
+    },
+    {
+      "id": "subagent-review-loop",
+      "response": "Next actions: Use the one remaining investigation turn to examine A's cross-tenant read reproduction directly against SEC-6. Check its inputs, authorization context, exact candidate, and observable data boundary. Require concrete counterevidence for B's false-positive claim. Preserve the reproduction and findings. Do not launch recursive reviewers or seek consensus as a replacement for validation. If the cross-tenant read is confirmed, record a required defect and its impact. If the remaining turn cannot resolve it, record the specific uncertainty and missing evidence. Continue the unrelated documentation correction independently. Acceptance disposition: SEC-6 cannot be accepted while the reproducible isolation violation remains unresolved. A confirmed reproduction is failed acceptance evidence; an unresolved investigation leaves acceptance blocked. Reviewer agreement or disagreement alone does not change the requirement."
+    },
+    {
+      "id": "subagent-host-capabilities",
+      "response": "Next actions: Correct the portable record to distinguish requested settings from observed host capabilities. The host supports one-shot invocation only. It has no observed resume, tool restriction, or stopped-state API. read_only: true and resume: true do not configure native enforcement. Do not claim restricted permissions or resume a prior native worker. For a fresh investigation, provide the saved task checkpoint, fixed evidence versions, relevant instructions, no-edit scope, and required report to a one-shot invocation using the current authorized model route. Use a separate checkout or fixed snapshot when activity or ownership requires it, while stating that shared writable tools do not enforce read-only behavior. If enforced read-only access is required, keep worker configuration pending until a real control exists. Acceptance disposition: Requested resume and enforced read-only configuration are unsupported by supplied observations. A fresh bounded investigation is possible, but its result needs direct verification and does not itself establish task acceptance."
+    }
+  ]
+}

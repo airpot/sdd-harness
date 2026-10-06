@@ -1,0 +1,430 @@
+{
+  "trial": 1,
+  "skill": "sdd-harness",
+  "skill_version": "0.6.0",
+  "input_path": "D:/code/project_skill/docs/validation/0.6.0-host-input-1-final.json",
+  "executor_runtime_metadata": {
+    "cwd": "D:/code/project_skill",
+    "shell": "powershell",
+    "date": "2026-10-06",
+    "timezone": "Asia/Shanghai",
+    "agent_task": "/root/subagent_host_final_1",
+    "completed_at_utc": "2026-10-06 04:43:39 UTC",
+    "model": null,
+    "reasoning_effort": null,
+    "runtime_version": null,
+    "unavailable_fields_reason": "These values were not supplied by the task environment or host operation outputs."
+  },
+  "cases": [
+    {
+      "case": "worker-report",
+      "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-worker-report",
+      "operations": [
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-worker-report' --action observe",
+          "result": {
+            "chunk_id": "c7f9a4",
+            "wall_time_seconds": 0.3233492,
+            "exit_code": 0,
+            "original_token_count": 66,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"reported_status\": \"completed\", \"worker_report\": {\"status\": \"completed\", \"tests\": \"all passed\", \"command\": \"test_valid_token only\"}, \"worker_sha256\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\"}\r\n"
+          }
+        },
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-worker-report' --action inspect-result",
+          "result": {
+            "chunk_id": "96232e",
+            "wall_time_seconds": 0.3463601,
+            "exit_code": 0,
+            "original_token_count": 107,
+            "output": "{\"action\": \"inspect-result\", \"status\": \"succeeded\", \"artifacts\": {\"worker/behavior.py\": {\"text\": \"def allowed(token):\\n    return True\\n\", \"sha256\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\"}, \"worker/report.json\": {\"text\": \"{\\\"status\\\": \\\"completed\\\", \\\"tests\\\": \\\"all passed\\\", \\\"command\\\": \\\"test_valid_token only\\\"}\", \"sha256\": \"3008e86161f5bbd01105e5b0f9a4dcc3884a28468570d37bbcaf0695a24a2ed0\"}}}\r\n"
+          }
+        },
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-worker-report' --action verify-result",
+          "result": {
+            "chunk_id": "44ff45",
+            "wall_time_seconds": 0.3422223,
+            "exit_code": 0,
+            "original_token_count": 104,
+            "output": "{\"action\": \"verify-result\", \"status\": \"failed\", \"returncode\": 1, \"stdout\": \"\", \"stderr\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 1, in <module>\\nAssertionError: invalid token accepted\\n\", \"checked_hashes\": {\"behavior.py\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\", \"report.json\": \"3008e86161f5bbd01105e5b0f9a4dcc3884a28468570d37bbcaf0695a24a2ed0\"}, \"target\": null}\r\n"
+          }
+        },
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-worker-report' --action disposition --verdict incomplete --reason 'ERR-8 acceptance is incomplete. The worker report checked valid tokens only. The preserved artifact returns True for every token. verify-result failed: invalid token accepted. Reject invalid tokens and run the required behavior check. The original artifact and report remain unchanged.'",
+          "result": {
+            "chunk_id": "9eeeab",
+            "wall_time_seconds": 0.4355797,
+            "exit_code": 0,
+            "original_token_count": 94,
+            "output": "{\"action\": \"disposition\", \"status\": \"succeeded\", \"verdict\": \"incomplete\", \"reason\": \"ERR-8 acceptance is incomplete. The worker report checked valid tokens only. The preserved artifact returns True for every token. verify-result failed: invalid token accepted. Reject invalid tokens and run the required behavior check. The original artifact and report remain unchanged.\"}\r\n"
+          }
+        },
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-worker-report' --action inspect-result",
+          "result": {
+            "chunk_id": "2d0012",
+            "wall_time_seconds": 0.3083917,
+            "exit_code": 0,
+            "original_token_count": 107,
+            "output": "{\"action\": \"inspect-result\", \"status\": \"succeeded\", \"artifacts\": {\"worker/behavior.py\": {\"text\": \"def allowed(token):\\n    return True\\n\", \"sha256\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\"}, \"worker/report.json\": {\"text\": \"{\\\"status\\\": \\\"completed\\\", \\\"tests\\\": \\\"all passed\\\", \\\"command\\\": \\\"test_valid_token only\\\"}\", \"sha256\": \"3008e86161f5bbd01105e5b0f9a4dcc3884a28468570d37bbcaf0695a24a2ed0\"}}}\r\n"
+          }
+        }
+      ],
+      "final_response": "ERR-8 is incomplete. The worker reported success after checking only valid tokens. The actual artifact always returns True. The required invalid-token check failed with 'invalid token accepted' (process exit 1). The original artifact and report remain unchanged, and their full contents and hashes are retained in this trial record. Correct token rejection and rerun the required check before acceptance. No publication occurred."
+    },
+    {
+      "case": "workers-combined",
+      "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-workers-combined",
+      "operations": [
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-workers-combined' --action observe",
+          "result": {
+            "chunk_id": "795aa1",
+            "wall_time_seconds": 0.4188454,
+            "exit_code": 0,
+            "original_token_count": 49,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"target\": \"T9\", \"client_component\": {\"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}, \"server_component\": {\"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}}\r\n"
+          }
+        },
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-workers-combined' --action inspect-result",
+          "result": {
+            "chunk_id": "4d2178",
+            "wall_time_seconds": 0.3408698,
+            "exit_code": 0,
+            "original_token_count": 96,
+            "output": "{\"action\": \"inspect-result\", \"status\": \"succeeded\", \"artifacts\": {\"client/client.py\": {\"text\": \"def order(charge):\\n    return charge(100)\\n\", \"sha256\": \"cb71891180d9e647911669683f8ded8ba39213e8b1def0ec62267bb88a50b211\"}, \"server/server.py\": {\"text\": \"def charge(amount):\\n    return amount * 100\\n\", \"sha256\": \"0d2e0a47c6cfb34174a7900d21022f9727cffd95ad222165f4fbe6339e321edc\"}}}\r\n"
+          }
+        },
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-workers-combined' --action combine",
+          "result": {
+            "chunk_id": "b0da0e",
+            "wall_time_seconds": 0.266994,
+            "exit_code": 0,
+            "original_token_count": 62,
+            "output": "{\"action\": \"combine\", \"status\": \"succeeded\", \"target\": \"T9\", \"combined_hashes\": {\"client.py\": \"cb71891180d9e647911669683f8ded8ba39213e8b1def0ec62267bb88a50b211\", \"server.py\": \"0d2e0a47c6cfb34174a7900d21022f9727cffd95ad222165f4fbe6339e321edc\"}}\r\n"
+          }
+        },
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-workers-combined' --action verify-result",
+          "result": {
+            "chunk_id": "149c23",
+            "wall_time_seconds": 0.5762599,
+            "exit_code": 0,
+            "original_token_count": 105,
+            "output": "{\"action\": \"verify-result\", \"status\": \"failed\", \"returncode\": 1, \"stdout\": \"\", \"stderr\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 1, in <module>\\nAssertionError: expected 100 cents, got 10000\\n\", \"checked_hashes\": {\"client.py\": \"cb71891180d9e647911669683f8ded8ba39213e8b1def0ec62267bb88a50b211\", \"server.py\": \"0d2e0a47c6cfb34174a7900d21022f9727cffd95ad222165f4fbe6339e321edc\"}, \"target\": \"T9\"}\r\n"
+          }
+        },
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-workers-combined' --action disposition --verdict incomplete --reason 'ORD-9 acceptance is incomplete at T9. Both component checks passed. The combined candidate failed: expected 100 cents, got 10000. Original client and server results remain unchanged. Resolve the amount contract and rerun the combined check against the current target.'",
+          "result": {
+            "chunk_id": "62f1f6",
+            "wall_time_seconds": 0.28762,
+            "exit_code": 0,
+            "original_token_count": 89,
+            "output": "{\"action\": \"disposition\", \"status\": \"succeeded\", \"verdict\": \"incomplete\", \"reason\": \"ORD-9 acceptance is incomplete at T9. Both component checks passed. The combined candidate failed: expected 100 cents, got 10000. Original client and server results remain unchanged. Resolve the amount contract and rerun the combined check against the current target.\"}\r\n"
+          }
+        },
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-workers-combined' --action inspect-result",
+          "result": {
+            "chunk_id": "a2e103",
+            "wall_time_seconds": 0.2759545,
+            "exit_code": 0,
+            "original_token_count": 96,
+            "output": "{\"action\": \"inspect-result\", \"status\": \"succeeded\", \"artifacts\": {\"client/client.py\": {\"text\": \"def order(charge):\\n    return charge(100)\\n\", \"sha256\": \"cb71891180d9e647911669683f8ded8ba39213e8b1def0ec62267bb88a50b211\"}, \"server/server.py\": {\"text\": \"def charge(amount):\\n    return amount * 100\\n\", \"sha256\": \"0d2e0a47c6cfb34174a7900d21022f9727cffd95ad222165f4fbe6339e321edc\"}}}\r\n"
+          }
+        }
+      ],
+      "final_response": "ORD-9 is incomplete at target T9. Both independent component checks passed, but the actual combined candidate charged 10000 cents instead of the required 100 cents. The combined behavior check failed (process exit 1). Both original returned components remain unchanged; their full text and hashes are retained alongside the exact combined check. Resolve the amount contract and revalidate the combined candidate against the current target before acceptance."
+    },
+    {
+      "case": "interrupted-worker",
+      "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-interrupted-worker",
+      "operations": [
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-interrupted-worker' --action observe",
+          "result": {
+            "chunk_id": "7846eb",
+            "wall_time_seconds": 0.2844067,
+            "exit_code": 0,
+            "original_token_count": 36,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"workers\": {\"W1\": \"active\", \"W2\": \"active\"}, \"source_exists\": true, \"archive_verified\": false}\r\n"
+          }
+        },
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-interrupted-worker' --action interrupt",
+          "result": {
+            "chunk_id": "aba1f3",
+            "wall_time_seconds": 0.2280964,
+            "exit_code": 0,
+            "original_token_count": 36,
+            "output": "{\"action\": \"interrupt\", \"status\": \"succeeded\", \"signal_accepted\": true, \"control\": \"simulated\", \"workers\": {\"W1\": \"active\", \"W2\": \"active\"}}\r\n"
+          }
+        },
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-interrupted-worker' --action stop-workers",
+          "result": {
+            "chunk_id": "e317df",
+            "wall_time_seconds": 0.369772,
+            "exit_code": 0,
+            "original_token_count": 37,
+            "output": "{\"action\": \"stop-workers\", \"status\": \"succeeded\", \"signal_accepted\": true, \"control\": \"simulated\", \"workers\": {\"W1\": \"stopped\", \"W2\": \"stopped\"}}\r\n"
+          }
+        },
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-interrupted-worker' --action observe",
+          "result": {
+            "chunk_id": "55984e",
+            "wall_time_seconds": 0.4622747,
+            "exit_code": 0,
+            "original_token_count": 36,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"workers\": {\"W1\": \"stopped\", \"W2\": \"stopped\"}, \"source_exists\": true, \"archive_verified\": false}\r\n"
+          }
+        },
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-interrupted-worker' --action preserve",
+          "result": {
+            "chunk_id": "59d589",
+            "wall_time_seconds": 0.318984,
+            "exit_code": 0,
+            "original_token_count": 84,
+            "output": "{\"action\": \"preserve\", \"status\": \"succeeded\", \"verified\": true, \"files\": {\"behavior.py\": \"f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1\", \"child-output.txt\": \"5f132f308db0e2845da84425887e0e9730a80ea70a5848035d39f2a2daff0794\"}, \"archive_sha256\": \"a7f4c7b80ac6629bd7379b445bd61e65624e36256a5a7a9c40a37e14fdd78c03\"}\r\n"
+          }
+        },
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-interrupted-worker' --action close-resources",
+          "result": {
+            "chunk_id": "3fae60",
+            "wall_time_seconds": 0.2671612,
+            "exit_code": 0,
+            "original_token_count": 26,
+            "output": "{\"action\": \"close-resources\", \"status\": \"succeeded\", \"source_exists\": false, \"archive_verified\": true}\r\n"
+          }
+        },
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-interrupted-worker' --action observe",
+          "result": {
+            "chunk_id": "408fb4",
+            "wall_time_seconds": 0.3075639,
+            "exit_code": 0,
+            "original_token_count": 36,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"workers\": {\"W1\": \"stopped\", \"W2\": \"stopped\"}, \"source_exists\": false, \"archive_verified\": true}\r\n"
+          }
+        },
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-interrupted-worker' --action disposition --verdict closed --reason 'Resource closure is complete under the authorized cleanup policy. Interrupt acknowledgement left W1 and W2 active. The simulated stop control stopped both workers. Preservation verified behavior.py and child-output.txt. close-resources removed the source directory. Final observation confirms stopped workers, absent source, and verified archive. Task acceptance and publication were not checked.'",
+          "result": {
+            "chunk_id": "333efa",
+            "wall_time_seconds": 0.3063652,
+            "exit_code": 0,
+            "original_token_count": 121,
+            "output": "{\"action\": \"disposition\", \"status\": \"succeeded\", \"verdict\": \"closed\", \"reason\": \"Resource closure is complete under the authorized cleanup policy. Interrupt acknowledgement left W1 and W2 active. The simulated stop control stopped both workers. Preservation verified behavior.py and child-output.txt. close-resources removed the source directory. Final observation confirms stopped workers, absent source, and verified archive. Task acceptance and publication were not checked.\"}\r\n"
+          }
+        }
+      ],
+      "final_response": "Authorized recoverable resource closure is complete. Interrupt acknowledgement left W1 and descendant W2 active. The simulated stop control stopped both; observation confirmed their stopped states before preservation. The verified archive contains behavior.py and child-output.txt and has SHA-256 a7f4c7b80ac6629bd7379b445bd61e65624e36256a5a7a9c40a37e14fdd78c03. close-resources succeeded. Final observation confirms both workers stopped, source directory absent, and archive verified. This establishes fixture resource closure only; task acceptance, publication, and native cancellation remain unverified."
+    },
+    {
+      "case": "superseded-result",
+      "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-superseded-result",
+      "operations": [
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-superseded-result' --action observe",
+          "result": {
+            "chunk_id": "cb7a62",
+            "wall_time_seconds": 0.317987,
+            "exit_code": 0,
+            "original_token_count": 31,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"selected_attempt\": 2, \"late_attempt\": 1, \"external_publication\": \"unknown\"}\r\n"
+          }
+        },
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-superseded-result' --action inspect-result",
+          "result": {
+            "chunk_id": "36f50b",
+            "wall_time_seconds": 0.3121428,
+            "exit_code": 0,
+            "original_token_count": 95,
+            "output": "{\"action\": \"inspect-result\", \"status\": \"succeeded\", \"artifacts\": {\"late/behavior.py\": {\"text\": \"def allowed(token):\\n    return True\\n\", \"sha256\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\"}, \"selected/behavior.py\": {\"text\": \"def allowed(token):\\n    return bool(token)\\n\", \"sha256\": \"f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1\"}}}\r\n"
+          }
+        },
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-superseded-result' --action verify-result",
+          "result": {
+            "chunk_id": "35f9e1",
+            "wall_time_seconds": 0.3352235,
+            "exit_code": 0,
+            "original_token_count": 54,
+            "output": "{\"action\": \"verify-result\", \"status\": \"succeeded\", \"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\", \"checked_hashes\": {\"behavior.py\": \"f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1\"}, \"target\": null}\r\n"
+          }
+        },
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-superseded-result' --action disposition --verdict rejected --reason 'Reject late attempt 1. Attempt 2 remains selected and passed the invalid-token behavior check. The late artifact returns True for every token. Preserve both artifacts unchanged. Publication remains unknown. No retry is authorized. Check the original publication state before any separately authorized recovery action.'",
+          "result": {
+            "chunk_id": "8a2bea",
+            "wall_time_seconds": 0.2792558,
+            "exit_code": 0,
+            "original_token_count": 101,
+            "output": "{\"action\": \"disposition\", \"status\": \"succeeded\", \"verdict\": \"rejected\", \"reason\": \"Reject late attempt 1. Attempt 2 remains selected and passed the invalid-token behavior check. The late artifact returns True for every token. Preserve both artifacts unchanged. Publication remains unknown. No retry is authorized. Check the original publication state before any separately authorized recovery action.\"}\r\n"
+          }
+        },
+        {
+          "command": "python evals/subagent_host.py act --root 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-superseded-result' --action inspect-result",
+          "result": {
+            "chunk_id": "93be50",
+            "wall_time_seconds": 0.3102166,
+            "exit_code": 0,
+            "original_token_count": 95,
+            "output": "{\"action\": \"inspect-result\", \"status\": \"succeeded\", \"artifacts\": {\"late/behavior.py\": {\"text\": \"def allowed(token):\\n    return True\\n\", \"sha256\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\"}, \"selected/behavior.py\": {\"text\": \"def allowed(token):\\n    return bool(token)\\n\", \"sha256\": \"f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1\"}}}\r\n"
+          }
+        }
+      ],
+      "final_response": "Late attempt 1 is rejected because attempt 2 is selected and the late artifact accepts every token. The selected fix passed the relevant invalid-token behavior check (process exit 0), with SHA-256 f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1. Both original artifacts remain unchanged; a final inspection confirms their hashes. Their full contents and hashes are retained in this trial record. No late patch was applied and no publication was retried. The previous publication outcome remains unknown. Determine its actual state before any separately authorized recovery action; the available observation exposes no definitive outcome."
+    }
+  ],
+  "resource_reads": [
+    {
+      "resource": "references/subagents.md",
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "3b120c",
+          "wall_time_seconds": 0.2960545,
+          "exit_code": 0,
+          "original_token_count": 2150,
+          "output": "# Optional Subagent Work\n\n## Choose useful delegation\n\nKeep independent development as the default.\nOne developer can use a main agent and optional subagents.\nA subagent is an agent that performs a bounded task for the main agent.\nThe main agent retains responsibility for the complete requirement, acceptance, integration, and user communication.\nDelegation does not expand authorization or transfer release authority.\nFollow user instructions and applicable project rules about delegation.\n\nUse a subagent when independent investigation, focused implementation, or a separate review can add useful results.\nConsider context relief, expected quality, elapsed time, and total execution and coordination cost.\nKeep short changes and steps with strong sequential dependencies in the main agent.\nBefore dependent implementation, resolve necessary contract decisions through the existing acceptance procedure.\nContinue independent work while a dependency remains unresolved.\nDo not require fixed worker roles, agent teams, separate task databases, or a coordination service.\n\n## Define the task\n\nUse existing task and acceptance references.\nFor a brief read-only task, a self-contained invocation and result can be sufficient.\nRecord only necessary fields in the existing task record.\n\n| Field | Necessary information |\n| --- | --- |\n| Goal | Parent task, bounded result, and relevant accepted requirements. |\n| Basis | Exact code or snapshot, accepted contract, and important decisions. |\n| Scope | Allowed files and actions, exclusions, dependencies, and shared resources. |\n| Context | Necessary source references and applicable instructions or skills. |\n| Output | Actual artifacts, useful findings, required checks, and evidence locations. |\n| Limits | Available budget, stop conditions, and route for blockers or shared changes. |\n\nDo not assume that a worker receives the parent history, project instructions, skills, permissions, or selected model.\nCheck actual inheritance when it affects the task.\nProvide necessary instructions explicitly when the host does not load them.\nKeep large history and logs outside the task message.\nSupply accessible references and relevant decisions instead.\n\nFor continued work, identify the worker, native run, and attempt when necessary.\nThese references describe responsibility. They do not establish transferable native control.\n\nExample task message:\n\n> Investigate AUTH-8 at snapshot B17 under contract C4. AUTH-8 requires rejection of empty tokens.\n> Read src/auth.py and relevant tests. Do not change files.\n> Read the project's applicable instructions and this skill's acceptance rules.\n> Return reproduction inputs, actual results, exact artifact and log references, and remaining uncertainty.\n> Use one investigation attempt within the available budget. Return partial findings if the budget ends.\n\n## Check host capabilities\n\nCheck available creation, context selection, messaging, continuation, waiting, interruption, and execution-state observations.\nCheck actual tool permissions, file access, model selection, and concurrency limits when relevant.\nUse the existing authorized model route. Do not invent unavailable routes or native configuration keys.\nWritten settings and path scopes do not enforce permissions.\nA worktree does not isolate tool access, ports, databases, containers, or external effects.\nUse [collaboration rules](collaboration.md) for shared files and runtime resources.\n\nPrefer read-only investigation and review when actual host controls support them.\nIf enforced restrictions are required but unavailable, keep that operation blocked.\nUse a supported isolated or sequential procedure for other authorized work.\nDistinguish a no-write instruction from enforced read-only access.\nIf continuation is unsupported, issue a new self-contained task with the necessary saved context.\nDo not change global configuration merely to use subagents.\n\n## Manage execution\n\nUse the smallest useful number of workers within actual host and task limits.\nBound concurrent work, retries, review rounds, and delegated effort.\nKeep nested delegation optional. Require a clear need, bounded depth, and the same task and authority limits.\nIf a worker delegates, retain responsibility for its descendants and their necessary results.\nReuse a worker only when continuation is supported and its context remains relevant.\n\nGive concurrent writers separate scopes or checkouts when conflicts require them.\nDo not modify the same scope while its worker can still write.\nCoordinate shared interfaces, dependencies, schemas, and configuration through the main task.\nKeep proposed specification changes separate from accepted conditions.\n\nUse native completion events or bounded waits when available.\nAvoid repeated unchanged status reads and verbose routine messages.\nReport blockers, relevant scope changes, and contract conflicts promptly.\nIf verification depends on an unfinished worker, retain that dependency.\nContinue only work that does not require the missing result.\n\n## Return and assess results\n\nReturn a concise outcome and accessible evidence references.\nIdentify exact artifacts or commits, changed files, actual checks, and the code and specification basis.\nKeep failed, blocked, and unrun checks visible.\nState remaining gaps, necessary next actions, and execution state.\nStore large logs and artifacts outside the conversation.\nPartial output, refusal, timeout, or an exhausted budget does not establish completion.\nPreserve useful partial results without silently extending the budget or weakening acceptance.\n\nThe main agent must read actual results and assess their applicability to the accepted requirement.\nA completion report is a claim to check. Agreement based on the same report is not independent evidence.\nCheck important findings with reproducible behavior, relevant source evidence, or an appropriate independent check.\nRecord a disposition: accept, request correction, reject, defer, or replace.\nGive a concrete reason and next action for incomplete results.\n\nReconcile worker results with the source requirements, including requirements outside individual worker scopes.\nCheck contradictions, missing work, overlapping changes, preserved behavior, and relevant target changes.\nValidate the actual combined candidate against the current integration target.\nComponent or mock passes do not establish complete workflow acceptance.\nApply [workflow rules](workflow.md) and [delivery rules](delivery.md).\n\nResolve review disagreement against accepted criteria and actual evidence.\nDo not use model votes as acceptance evidence or launch reviewers until they agree.\nRepeat checks only for new changes, new evidence, or unresolved material concerns.\nIf the budget ends with a required gap, record incomplete acceptance and its next action.\n\n## Preserve, continue, and close\n\nDistinguish task acceptance, a finished turn, resident worker context, active execution, and resource closure.\nAn accepted result can come from a worker that remains available for further tasks.\nA returned result can remain unaccepted.\nAn interrupt acknowledgement can leave a writer or descendant running.\nCheck actual stopped execution before reassigning its write scope or removing its worktree.\nAfter uncertain external effects, observe actual state before retrying.\n\nBefore replacing the main chat, save outstanding worker identities, scopes, artifacts, pending decisions, and next actions.\nKeep ready but unverified results visibly unverified.\nThe next main agent must check actual ownership and access to worker controls.\nIf earlier workers cannot be controlled or observed, protect their scopes and continue independent work elsewhere.\nIf an earlier worker returns, check the current assignment and selected attempt before applying its result.\nReject automatic application of superseded work. Assess whether any findings remain useful.\nWorker messages do not create new user authorization.\n\nPreserve necessary artifacts, evidence, and descendant results before releasing resources.\nIf reusable worker context remains resident, record that state when it affects later work or recovery.\nApply [recovery rules](recovery.md) to authorized worktree removal.\nClose the delegated task only after the main agent records its disposition and resolves necessary follow-up work.\nResource closure remains a separate operation with its own observed conditions.\n\nMeasure useful findings, requirement coverage, false completion, rework, conflicts, elapsed time, and total cost when available.\nDo not count worker calls, agreement, or commits as delivered value.\n\r\n"
+        }
+      },
+      "command": "Get-Content -LiteralPath 'D:/code/project_skill/docs/validation/candidate-0.6.0-initial/sdd-harness/references/subagents.md' -Raw"
+    },
+    {
+      "resource": "references/delivery.md",
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "94425e",
+          "wall_time_seconds": 0.2937112,
+          "exit_code": 0,
+          "original_token_count": 1402,
+          "output": "# Acceptance, Integration, and Publication\n\n## Assess completion\n\nCheck each necessary acceptance condition against actual results and currently applicable evidence.\nDistinguish implementation, task validation, combined acceptance, publication, and resource cleanup.\nA filled template or a larger test count does not prove completion.\nWrite internal completion records according to [the writing policy](writing.md).\n\nReview source requirement coverage using [specification review](spec-review.md).\nDo not limit coverage checks to conditions derived from an incomplete task list.\nFor every necessary condition, require applicable passing evidence before reporting complete acceptance.\nIf a required result failed, is blocked, or did not run, report incomplete acceptance.\nState the failed, blocked, or unrun conditions and their effect on the verdict.\nDo not move a mandatory gap into a footnote beneath a successful verdict.\n\nKeep implementation status and acceptance status separate.\nRecord whether the applicable scope is accepted, partial, or blocked.\nUse the project's verdict terms when defined.\nOtherwise, accepted means all required conditions have applicable passing evidence.\nPartial means only identified parts are accepted.\nBlocked means a necessary unresolved condition prevents completion of the stated scope.\n\nRetain each failed, blocked, and unrun result separately from the aggregate verdict.\nFor project-authorized exclusions, state the authority, basis, scope, and remaining impact.\nDo not exclude a required condition solely to obtain a successful verdict.\n\nCheck that validation records contain runnable steps, necessary inputs, environment, pass criteria, results, and source references.\nFor carried evidence, record current applicability and the reason for carrying it forward.\nHistorical success without applicability review does not establish current acceptance.\nBefore closure, check authoritative specification reconciliation using [the workflow](workflow.md).\n\nUse a fixed baseline and candidate for integration.\nFollow [current-target integration](workflow.md) when choosing that baseline and candidate.\nCheck relevant interfaces and actual dependencies.\nCheck small combined changes early.\nIncomplete unrelated tasks do not block the current scope.\nMissing relevant dependencies still block acceptance.\n\nIf acceptance includes deployment, obtain deployment evidence.\nOtherwise, do not require publication to complete development.\n\n## Use the release entry\n\nRead the existing release process, target environment, responsible role, and user authorization.\nPrefer existing CI concurrency controls, approvals, or controlled host tools.\nCheck their actual configuration and pending runs.\nDevelopment chats provide candidates. They do not automatically have deployment authority.\n\nRecord the exact candidate commit, artifact hashes, necessary evidence, and target.\nUse only the recorded candidate for this release.\nDo not use passing evidence for commit A as unconditional evidence for commit B.\nIf acceptance conditions or specifications change, review evidence applicability.\n\nIf releases compete, old requests remain, or results are uncertain, check the release owner and actual target state.\nCheck the selected candidate.\nAt execution, check the release system's currently selected candidate and supersession rules.\nIf the request is superseded, reject or resolve it through that system before publication.\nExclusive execution does not prove that a candidate remains eligible.\n\nCheck operation semantics before resolving a stale request.\nCanceling or rejecting a queued request differs from attempting its deployment.\nDo not submit a superseded deployment to test whether the release system rejects it.\nIf no authorized cancellation operation exists, retain the request and report its blocked disposition.\n\nDo not infer eligibility from commit dates or earlier chat authorization.\nKeep intentional rollback separate from ordinary publication of an obsolete candidate.\nUse the existing process and specific authority for an intentional rollback.\n\nWithout a reliable exclusive release entry, do not claim that the skill prevents competing releases.\nDo not use a new shared Git file or a custom lock as proof of release authority.\nPrepare a reviewable candidate. Resolve the missing control through the existing project process.\n\nIf authorization and entry conditions hold, complete the release without repeated confirmation.\nIf release authorization is missing, first prepare a reviewable result.\nThen obtain authorization for the specific external action.\n\nBefore release execution, record its run reference.\nFor risky publication, identify rollout scope, success signals, stop conditions, and the responsible recovery decision.\nCheck configuration and data compatibility of the proposed recovery path.\nIf a required recovery condition is unresolved, keep publication pending.\nUse the project's existing deployment and recovery process.\n\nExisting publication authorization does not automatically authorize separate production experiments or recovery actions.\nRecord actual environment validation and recovery outcomes.\n\nAfter execution, record the actual result and validation evidence.\nTimeout, cancellation, or a closed window does not prove external failure or rollback.\nUse the same run reference to determine the result.\nFollow platform retry semantics. Do not deploy again without checking the previous result.\n\nUse the [release template](../assets/release.md) only for the current scope and relevant dependencies.\nDo not put credentials in handoff records or snapshots.\n\r\n"
+        }
+      },
+      "command": "Get-Content -LiteralPath 'D:/code/project_skill/docs/validation/candidate-0.6.0-initial/sdd-harness/references/delivery.md' -Raw"
+    },
+    {
+      "resource": "references/recovery.md",
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "edc465",
+          "wall_time_seconds": 0.2864112,
+          "exit_code": 0,
+          "original_token_count": 1233,
+          "output": "# Preservation, Recovery, and Removal\n\n## Prefer native archives\n\nIf the host provides recoverable worktree archives, check the tool's capabilities and managed ownership.\nCheck protected resources, active chats, and necessary results.\nIf the authorized cleanup conditions hold, use the native tool.\nCheck both preservation and removal results.\nWrite internal recovery records according to [the writing policy](writing.md).\n\nIf Codex provides `list_artifacts` and `archive_worktree`, use the returned attachment identity.\nDo not infer attachment identity from a path.\nIf the archive omits necessary ignored files or external results, preserve those results separately first.\nThen verify those results before using the native archive tool.\nFor other harnesses, use only tools that actually exist.\n\n## Use the bundled script\n\nThe script needs Python 3.10 or later and Git 2.29 or later.\nIt has no third-party Python dependencies.\nReplace `<skill-dir>` with the actual installation path.\n\n```text\npython <skill-dir>/scripts/workspace.py inspect --repo <worktree>\npython <skill-dir>/scripts/workspace.py snapshot --repo <worktree> --output <outside-worktree>/task.zip --include <necessary-ignored-path>\npython <skill-dir>/scripts/workspace.py verify --archive <outside-worktree>/task.zip\npython <skill-dir>/scripts/workspace.py restore --archive <outside-worktree>/task.zip --output <new-directory>\n```\n\n`inspect` reads Git state. It does not prove idle state or grant write permission.\n\n`snapshot` saves these items:\n\n- A Git bundle of current HEAD history and the Git object format.\n- Current tracked files and ordinary untracked files.\n- A list of tracked file deletions.\n- Ignored files or directories that you select with `--include`.\n\nSave the archive outside the worktree. Do not overwrite an existing file.\nThe script records hashes and source state. It checks for observable changes during copying.\nThese checks do not replace stopped writers.\n\nSelect necessary ignored results individually.\nPreserve external results separately. Record accessible locations.\nThe script does not synchronize remote storage or collect all ignored directories or credentials.\n\n`verify` checks the complete archive member set and content hashes.\n`restore` writes to a new directory only. It restores HEAD and current file state.\nIt does not restore native chats, exact staging state, other branches, original paths, processes, credentials, or external databases.\nAfter recovery, check the environment and evidence again.\nOld ownership records do not grant permission.\n\nWorktree restoration does not reverse a deployed configuration or data migration.\nUse the project's authorized operational recovery process.\n\nThe script rejects symlinks, gitlinks, submodules, and unsupported paths.\nFor these projects, use native tools with the necessary preservation capabilities.\nMatching hashes prove content consistency. They do not prove source trust.\n\n## Remove a worktree\n\nThe bundled script does not remove source directories.\nBefore removal, satisfy all these conditions:\n\n1. Identify ownership and the normalized absolute path.\n   Confirm that the path belongs to authorized, managed temporary resources.\n   Do not remove the primary worktree or a permanent environment.\n2. Confirm that all relevant chats, writers, and background executions stopped.\n   A timeout or the absence of known processes does not prove stopped state.\n3. Preserve necessary results reliably at accessible locations.\n   For the first important recovery, restore results into a separate directory.\n   Then check the restored results.\n   For later recoveries, follow the project's recovery validation policy.\n4. Protect the resource against new use between preservation checks and removal.\n   If results change after preservation, save the changed results again.\n   Then verify the saved results.\n5. Use native removal or the host's supported Git worktree removal process.\n   Check the directory and registration state.\n   Do not substitute forced recursive deletion for worktree lifecycle management.\n\nIf preservation succeeds but removal fails, keep the archive record and continue the same operation.\nDo not overwrite the only backup.\nAfter a failed removal, check writers, protection, preservation, and actual registration before retrying.\nContinue the supported operation while its conditions hold. Keep the verified archive.\n\nIf use resumes or protection is lost, stop removal.\nPreserve newer necessary results after stopped use and protection are established again.\n\nIf the final record update fails, check actual state before repairing the record.\nIf ownership is unknown, use continues, or necessary results are not saved, keep the resource.\nReport the reason for keeping the resource.\n\nIf its necessary results are reliably preserved, an idle worktree can be removed before integration.\nWorktree removal does not create chat archives or prove a successful release.\n\r\n"
+        }
+      },
+      "command": "Get-Content -LiteralPath 'D:/code/project_skill/docs/validation/candidate-0.6.0-initial/sdd-harness/references/recovery.md' -Raw"
+    },
+    {
+      "resource": "references/writing.md",
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "84a9f2",
+          "wall_time_seconds": 0.320421,
+          "exit_code": 0,
+          "original_token_count": 1611,
+          "output": "# Internal Document Writing Policy\n\n## Scope and precedence\n\nUse English for internal development prose that you create or change while using this skill.\nThis includes specifications, plans, design decisions, interface descriptions, validation records, handoff records, release records, and recovery instructions.\nApply the policy to changed sections. Do not translate unrelated historical documents.\n\nFollow explicit user language requests and mandatory project formats.\nIf a project rule requires another language, keep that language and record the exception briefly.\nDo not replace an accepted specification merely to change its language.\nKeep user conversation in the user's language unless the user requests another language.\n\nKeep source quotations, identifiers, API fields, commands, paths, logs, and tool results unchanged.\nWrite explanations in the language selected under the precedence rules above.\nDo not use this policy to change program behavior, evidence, authorization, or acceptance conditions.\n\nKeep the policy reference in the project's existing development instructions or policy location when creating those records.\nIf no location exists, use `.sdd-harness/project.md`.\nDo not create duplicate policy documents or edit global agent configuration.\n\n## Use ASD-STE100 writing rules\n\nUse ASD-STE100 Issue 9 as the writing reference.\nThese instructions summarize selected rules. They do not replace the standard or its dictionary.\n\n- Write each procedural sentence with no more than 20 words.\n- Keep descriptive sentences within 25 words and paragraphs within six sentences.\n- Give one action per procedural sentence. Use direct commands and active voice.\n- If a condition controls an action, state that condition before the command.\n- Keep a sentence on one topic. Retain words necessary for correct meaning.\n- Separate instructions from explanatory notes.\n- Use dictionary words with their approved meanings and parts of speech.\n- Define necessary software technical nouns and technical verbs. Keep their meanings and grammatical roles fixed.\n- Use one technical term for each concept. Avoid idioms and ambiguous abbreviations.\n- Divide long noun groups. Define a shorter term for a necessary long technical name.\n\nUse the [official standard](https://www.asd-ste100.org/assets/files/ASD-STE100_ISSUE9.pdf) for exact rules and uncertain vocabulary.\nThe [official overview](https://www.asd-ste100.org/about_STE.html) explains the rules and technical terminology.\n\nDo not assume that a short or familiar word has dictionary approval.\nIf dictionary access is unavailable, keep the text clear.\nIdentify the unverified vocabulary review.\nUse `STE-guided English` until a complete rule, dictionary, and domain-term review supports an ASD-STE100 compliance claim.\nSentence counts alone do not establish compliance.\n\nDo not include the standard or its dictionary in project artifacts without distribution permission.\n\n## Keep software terms consistent\n\nUse existing project terms when their definitions are clear.\nFor this skill, use these technical nouns:\n\n| Term | Meaning |\n| --- | --- |\n| task | Work with a stable identity, goal, and acceptance conditions. |\n| chat | A native agent conversation. A chat is not a task. |\n| main agent | The agent responsible for the complete task and acceptance of delegated results. |\n| subagent | An agent that performs a bounded task for the main agent. |\n| disposition | The main agent's decision about a returned result and its necessary next action. |\n| attempt | One execution of an assigned task at an identified basis. |\n| harness | Software that runs an agent and exposes its tools. |\n| worktree | A Git checkout with its own working files. |\n| snapshot | Saved versioned results with recovery information. |\n| archive | Preserved results kept for later recovery. |\n| handoff | The procedure for transferring task responsibility. |\n| handoff record | The document with task state, results, evidence, and next actions. |\n| candidate | The exact proposed code or artifacts for acceptance or release. |\n| evidence | A recorded check for an identified object and environment. |\n| release | An authorized publication to an identified target. |\n| assertion | A test expression that checks an expected property or result. |\n| counterexample | An input or state that demonstrates violation of an expected property. |\n| integration target | The branch or version that receives accepted changes. |\n| migration | A change between persisted data or configuration versions. |\n| rollout | Application of a candidate to a defined target population. |\n| workload | The input mix and rate used to check system behavior. |\n| contract | The accepted agreement about an interface and its observable behavior. |\n| consumer | A component that uses an interface provided by another component. |\n| provider | A component that implements an interface for a consumer. |\n| mock | A substitute used to check selected behavior without the actual component. |\n\nUse these technical verbs only for their stated actions:\n\n| Verb | Action |\n| --- | --- |\n| integrate | Combine changes against an identified code baseline. |\n| deploy | Apply a candidate to its target runtime environment. |\n| restore | Recreate preserved results at a recovery location. |\n\nThese are project term definitions, not declarations of dictionary approval.\nKeep CLI names and API identifiers exact even when their grammar differs from prose.\n\n## Review meaning and evidence\n\nThese checks are project requirements in addition to the STE writing rules:\n\n1. Name the actor when responsibility can be unclear. Do not invent an unknown actor to force active voice.\n2. State the condition, action, object, and observable result for important procedures.\n3. Distinguish requirements, proposals, observations, and accepted decisions.\n4. For evidence, retain the exact object, method, environment, result, and source reference.\n5. Keep `not run`, `blocked`, `failed`, and `passed` distinct. Do not replace unknown results with successful results.\n6. Check that shorter wording preserves authorization, ordering, conditions, and recovery guarantees.\n\nFor example, write:\n\n> If the worktree has active writers, keep the worktree. Continue independent work in a separate worktree.\n\nDo not replace this with \"Clean up when safe.\"\nComplete the document review before using the document to accept, publish, transfer responsibility, or remove resources.\n\r\n"
+        }
+      },
+      "command": "Get-Content -LiteralPath 'D:/code/project_skill/docs/validation/candidate-0.6.0-initial/sdd-harness/references/writing.md' -Raw"
+    }
+  ],
+  "input_read": {
+    "command": "Get-Content -LiteralPath 'D:/code/project_skill/docs/validation/0.6.0-host-input-1-final.json' -Raw",
+    "result": {
+      "chunk_id": "9a46ba",
+      "wall_time_seconds": 0.2768585,
+      "exit_code": 0,
+      "original_token_count": 379,
+      "output": "{\r\n  \"trial\": 1,\r\n  \"cases\": [\r\n    {\r\n      \"case\": \"worker-report\",\r\n      \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-060-final-1-worker-report\",\r\n      \"create_result\": {\r\n        \"action\": \"create\",\r\n        \"status\": \"succeeded\",\r\n        \"case\": \"worker-report\",\r\n        \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-060-final-1-worker-report\"\r\n      }\r\n    },\r\n    {\r\n      \"case\": \"workers-combined\",\r\n      \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-060-final-1-workers-combined\",\r\n      \"create_result\": {\r\n        \"action\": \"create\",\r\n        \"status\": \"succeeded\",\r\n        \"case\": \"workers-combined\",\r\n        \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-060-final-1-workers-combined\"\r\n      }\r\n    },\r\n    {\r\n      \"case\": \"interrupted-worker\",\r\n      \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-060-final-1-interrupted-worker\",\r\n      \"create_result\": {\r\n        \"action\": \"create\",\r\n        \"status\": \"succeeded\",\r\n        \"case\": \"interrupted-worker\",\r\n        \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-060-final-1-interrupted-worker\"\r\n      }\r\n    },\r\n    {\r\n      \"case\": \"superseded-result\",\r\n      \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-060-final-1-superseded-result\",\r\n      \"create_result\": {\r\n        \"action\": \"create\",\r\n        \"status\": \"succeeded\",\r\n        \"case\": \"superseded-result\",\r\n        \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-060-final-1-superseded-result\"\r\n      }\r\n    }\r\n  ]\r\n}\r\n\r\n"
+    }
+  },
+  "supplied_input": {
+    "trial": 1,
+    "cases": [
+      {
+        "case": "worker-report",
+        "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-worker-report",
+        "create_result": {
+          "action": "create",
+          "status": "succeeded",
+          "case": "worker-report",
+          "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-worker-report"
+        }
+      },
+      {
+        "case": "workers-combined",
+        "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-workers-combined",
+        "create_result": {
+          "action": "create",
+          "status": "succeeded",
+          "case": "workers-combined",
+          "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-workers-combined"
+        }
+      },
+      {
+        "case": "interrupted-worker",
+        "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-interrupted-worker",
+        "create_result": {
+          "action": "create",
+          "status": "succeeded",
+          "case": "interrupted-worker",
+          "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-interrupted-worker"
+        }
+      },
+      {
+        "case": "superseded-result",
+        "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-superseded-result",
+        "create_result": {
+          "action": "create",
+          "status": "succeeded",
+          "case": "superseded-result",
+          "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-final-1-superseded-result"
+        }
+      }
+    ]
+  },
+  "case_count": 4,
+  "outcome_summary": [
+    {
+      "case": "worker-report",
+      "disposition": "incomplete",
+      "operation_count": 5
+    },
+    {
+      "case": "workers-combined",
+      "disposition": "incomplete",
+      "operation_count": 6
+    },
+    {
+      "case": "interrupted-worker",
+      "disposition": "closed",
+      "operation_count": 8
+    },
+    {
+      "case": "superseded-result",
+      "disposition": "rejected",
+      "operation_count": 5
+    }
+  ],
+  "host_action_counts": {
+    "failed": 2,
+    "denied": 0
+  },
+  "scope_statement": "Only act operations changed fixtures. No scoring, direct fixture writes, publication, installation, or further delegation occurred. Failed outputs are retained without reinterpretation.",
+  "writing_review": "STE-guided English. Complete ASD-STE100 dictionary and vocabulary compliance was not verified."
+}

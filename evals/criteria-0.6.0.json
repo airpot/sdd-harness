@@ -1,0 +1,114 @@
+{
+  "revision": "0.6.0",
+  "criteria_are_executor_hidden": true,
+  "scenarios": [
+    {
+      "id": "subagent-small-change",
+      "criteria": [
+        "Complete the small correction directly without mandatory worker dispatch.",
+        "Keep acceptance and evidence proportional to a one-link change.",
+        "Do not introduce team infrastructure or mandatory roles.",
+        "Do not claim worker count proves value."
+      ]
+    },
+    {
+      "id": "subagent-task-context",
+      "criteria": [
+        "Supply accepted behavior, exact basis, relevant paths, and read-only actions in a self-contained task.",
+        "Do not assume inherited parent history or required skill loading.",
+        "Request reproducible evidence and visible uncertainty rather than only a confident summary.",
+        "Retain a stopping or escalation condition without copying full history."
+      ]
+    },
+    {
+      "id": "subagent-dependent-work",
+      "criteria": [
+        "Do not launch dependent implementations against conflicting unaccepted schemas.",
+        "Identify the contract decision needed before dependent work.",
+        "Permit independent investigation while the decision is pending.",
+        "Keep complete feature acceptance tied to REQ-22."
+      ]
+    },
+    {
+      "id": "subagent-shared-contract",
+      "criteria": [
+        "Keep the rename a proposal and coordinate affected client work.",
+        "Do not accept scope text as native filesystem enforcement.",
+        "Do not permit implicit release authority from implementation delegation.",
+        "Reassess dependent evidence after an accepted contract change."
+      ]
+    },
+    {
+      "id": "subagent-false-success",
+      "criteria": [
+        "Do not accept the claimed completion with the supplied contradictory artifact.",
+        "Require validation of invalid-token rejection against ERR-8.",
+        "Do not treat agreement based on the same report as independent evidence.",
+        "Return a specific correction or rejection disposition and retain the gap."
+      ]
+    },
+    {
+      "id": "subagent-partial-budget",
+      "criteria": [
+        "Keep partial output and missing recovery visibly incomplete.",
+        "Preserve usable migration results without declaring DATA-3 satisfied.",
+        "Do not silently spawn another worker or retry indefinitely beyond the stated budget.",
+        "Record the remaining action or blocker with the main task owner."
+      ]
+    },
+    {
+      "id": "subagent-combined-workflow",
+      "criteria": [
+        "Keep individual component passes separate from complete ORD-9 acceptance.",
+        "Identify the amount-unit contract mismatch.",
+        "Check an exact combined candidate against current T9 with complete-flow evidence.",
+        "Do not merge merely because two worker summaries are green."
+      ]
+    },
+    {
+      "id": "subagent-interrupted-writer",
+      "criteria": [
+        "Do not treat interrupt acknowledgement as stopped execution.",
+        "Do not reassign the same write scope or remove the active worktree.",
+        "Account for descendant W2 and preserve its necessary results.",
+        "Continue independent work elsewhere or use actual stop-and-observe controls before transfer."
+      ]
+    },
+    {
+      "id": "subagent-parent-replacement",
+      "criteria": [
+        "Retain worker identities, scopes, pending results, and next actions in a durable handoff.",
+        "Keep ready W2 output distinct from accepted results.",
+        "Do not assume the new chat can reuse or control old worker IDs.",
+        "Protect W1 write scope and continue independent work until actual ownership and stopped state are resolved."
+      ]
+    },
+    {
+      "id": "subagent-stale-attempt",
+      "criteria": [
+        "Identify the late attempt as superseded rather than automatically applying it.",
+        "Check artifact applicability and preserve the current accepted fix.",
+        "Do not blindly repeat the unknown external publication effect.",
+        "Do not promote worker instructions into new task or release authority."
+      ]
+    },
+    {
+      "id": "subagent-review-loop",
+      "criteria": [
+        "Resolve the concrete reproduction against SEC-6 rather than voting for agreement.",
+        "Bound further work to the remaining budget without recursive or indefinite reviewer spawning.",
+        "Keep tenant isolation incomplete until applicable evidence resolves the issue.",
+        "Record the unresolved disposition and continue independent work when possible."
+      ]
+    },
+    {
+      "id": "subagent-host-capabilities",
+      "criteria": [
+        "Do not claim written settings enforce read-only permissions or native continuation.",
+        "Use a fresh self-contained task instead of claiming an unsupported resume.",
+        "Do not invent native configuration keys or unapproved model routes.",
+        "Use an appropriate sequential or supported isolation fallback and disclose capability limits."
+      ]
+    }
+  ]
+}

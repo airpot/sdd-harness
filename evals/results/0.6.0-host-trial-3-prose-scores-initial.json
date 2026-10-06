@@ -1,0 +1,489 @@
+{
+  "schema_version": 1,
+  "trial": 3,
+  "evaluation_kind": "independent semantic assessment of recorded reasons and final responses",
+  "source_trial": "D:\\code\\project_skill\\evals\\results\\0.6.0-host-trial-3.json",
+  "source_sha256": "62e36f013e5f4ad33f9c067cedb468a425b31f60211156d26b7c286f6b30a73e",
+  "criteria_path": "D:\\code\\project_skill\\evals\\host-prose-criteria-0.6.0.json",
+  "assessed_at_utc": "2026-10-06T04:46:23.832745+00:00",
+  "method": "Manual substantive assessment against the hidden prose criteria, actual disposition files, raw journals, current artifact hashes, ZIP member hashes, and current selection/worker state. No mechanical score was treated as prose evidence. No fixture operation or mutation was performed.",
+  "cases": [
+    {
+      "case": "worker-report",
+      "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-worker-report",
+      "recorded_disposition": {
+        "verdict": "incomplete",
+        "reason": "ERR-8 acceptance is incomplete. The actual artifact always returns True. The invalid-token check failed with exit status 1. The worker checked valid tokens only. Keep both worker artifacts. Correct invalid-token rejection and rerun ERR-8 validation."
+      },
+      "final_response": "ERR-8 acceptance is incomplete. The worker reported completion and passing tests, but its report covers valid tokens only. The inspected behavior.py returns True for all tokens. The actual invalid-token check failed with exit status 1 and AssertionError: invalid token accepted. The exact artifact and report hashes remain in the operation evidence. Both worker artifacts remain preserved in the fixture and their text is captured here. Correct invalid-token rejection and rerun the required behavior check. The disposition is incomplete; no publication occurred.",
+      "artifact_verification": [
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-worker-report\\worker\\behavior.py",
+          "sha256": "c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9",
+          "matches_inspected_hash": true,
+          "matches_inspected_text": true
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-worker-report\\worker\\report.json",
+          "sha256": "3008e86161f5bbd01105e5b0f9a4dcc3884a28468570d37bbcaf0695a24a2ed0",
+          "matches_inspected_hash": true,
+          "matches_inspected_text": true
+        }
+      ],
+      "criteria": [
+        {
+          "criterion_index": 1,
+          "criterion": "The parent verdict and recorded reason identify invalid-token rejection as incomplete, consistent with the actual failed check.",
+          "status": "pass",
+          "rationale": "The incomplete verdict and reason name invalid-token rejection and the real failed behavior, consistent with the journal failure. The response preserves that failed condition as the acceptance blocker.",
+          "evidence": [
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-worker-report\\disposition.json",
+              "quote": "ERR-8 acceptance is incomplete. The actual artifact always returns True. The invalid-token check failed with exit status 1. The worker checked valid tokens only. Keep both worker artifacts. Correct invalid-token rejection and rerun ERR-8 validation.",
+              "verdict": "incomplete"
+            },
+            {
+              "source": "D:\\code\\project_skill\\evals\\results\\0.6.0-host-trial-3.json",
+              "pointer": "/cases/0/final_response",
+              "quote": "ERR-8 acceptance is incomplete. The worker reported completion and passing tests, but its report covers valid tokens only. The inspected behavior.py returns True for all tokens. The actual invalid-token check failed with exit status 1 and AssertionError: invalid token accepted. The exact artifact and report hashes remain in the operation evidence. Both worker artifacts remain preserved in the fixture and their text is captured here. Correct invalid-token rejection and rerun the required behavior check. The disposition is incomplete; no publication occurred."
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-worker-report\\journal.jsonl",
+              "line": 2,
+              "quote": "{\"action\": \"observe\", \"reported_status\": \"completed\", \"status\": \"succeeded\", \"worker_report\": {\"command\": \"test_valid_token only\", \"status\": \"completed\", \"tests\": \"all passed\"}, \"worker_sha256\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\"}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-worker-report\\journal.jsonl",
+              "line": 3,
+              "quote": "{\"action\": \"inspect-result\", \"artifacts\": {\"worker/behavior.py\": {\"sha256\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\", \"text\": \"def allowed(token):\\n    return True\\n\"}, \"worker/report.json\": {\"sha256\": \"3008e86161f5bbd01105e5b0f9a4dcc3884a28468570d37bbcaf0695a24a2ed0\", \"text\": \"{\\\"status\\\": \\\"completed\\\", \\\"tests\\\": \\\"all passed\\\", \\\"command\\\": \\\"test_valid_token only\\\"}\"}}, \"status\": \"succeeded\"}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-worker-report\\journal.jsonl",
+              "line": 4,
+              "quote": "{\"action\": \"verify-result\", \"checked_hashes\": {\"behavior.py\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\", \"report.json\": \"3008e86161f5bbd01105e5b0f9a4dcc3884a28468570d37bbcaf0695a24a2ed0\"}, \"returncode\": 1, \"status\": \"failed\", \"stderr\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 1, in <module>\\nAssertionError: invalid token accepted\\n\", \"stdout\": \"\", \"target\": null}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-worker-report\\journal.jsonl",
+              "line": 5,
+              "quote": "{\"action\": \"disposition\", \"reason\": \"ERR-8 acceptance is incomplete. The actual artifact always returns True. The invalid-token check failed with exit status 1. The worker checked valid tokens only. Keep both worker artifacts. Correct invalid-token rejection and rerun ERR-8 validation.\", \"status\": \"succeeded\", \"verdict\": \"incomplete\"}"
+            }
+          ]
+        },
+        {
+          "criterion_index": 2,
+          "criterion": "The parent retains the specific correction and validation needed; worker completion and positive-only evidence do not establish acceptance.",
+          "status": "pass",
+          "rationale": "The reason and response require corrected invalid-token rejection and rerunning its required behavior check. Positive-only worker evidence is explicitly insufficient. Original artifact and report text and hashes remain preserved.",
+          "evidence": [
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-worker-report\\disposition.json",
+              "quote": "ERR-8 acceptance is incomplete. The actual artifact always returns True. The invalid-token check failed with exit status 1. The worker checked valid tokens only. Keep both worker artifacts. Correct invalid-token rejection and rerun ERR-8 validation.",
+              "verdict": "incomplete"
+            },
+            {
+              "source": "D:\\code\\project_skill\\evals\\results\\0.6.0-host-trial-3.json",
+              "pointer": "/cases/0/final_response",
+              "quote": "ERR-8 acceptance is incomplete. The worker reported completion and passing tests, but its report covers valid tokens only. The inspected behavior.py returns True for all tokens. The actual invalid-token check failed with exit status 1 and AssertionError: invalid token accepted. The exact artifact and report hashes remain in the operation evidence. Both worker artifacts remain preserved in the fixture and their text is captured here. Correct invalid-token rejection and rerun the required behavior check. The disposition is incomplete; no publication occurred."
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-worker-report\\journal.jsonl",
+              "line": 2,
+              "quote": "{\"action\": \"observe\", \"reported_status\": \"completed\", \"status\": \"succeeded\", \"worker_report\": {\"command\": \"test_valid_token only\", \"status\": \"completed\", \"tests\": \"all passed\"}, \"worker_sha256\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\"}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-worker-report\\journal.jsonl",
+              "line": 3,
+              "quote": "{\"action\": \"inspect-result\", \"artifacts\": {\"worker/behavior.py\": {\"sha256\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\", \"text\": \"def allowed(token):\\n    return True\\n\"}, \"worker/report.json\": {\"sha256\": \"3008e86161f5bbd01105e5b0f9a4dcc3884a28468570d37bbcaf0695a24a2ed0\", \"text\": \"{\\\"status\\\": \\\"completed\\\", \\\"tests\\\": \\\"all passed\\\", \\\"command\\\": \\\"test_valid_token only\\\"}\"}}, \"status\": \"succeeded\"}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-worker-report\\journal.jsonl",
+              "line": 4,
+              "quote": "{\"action\": \"verify-result\", \"checked_hashes\": {\"behavior.py\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\", \"report.json\": \"3008e86161f5bbd01105e5b0f9a4dcc3884a28468570d37bbcaf0695a24a2ed0\"}, \"returncode\": 1, \"status\": \"failed\", \"stderr\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 1, in <module>\\nAssertionError: invalid token accepted\\n\", \"stdout\": \"\", \"target\": null}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-worker-report\\journal.jsonl",
+              "line": 5,
+              "quote": "{\"action\": \"disposition\", \"reason\": \"ERR-8 acceptance is incomplete. The actual artifact always returns True. The invalid-token check failed with exit status 1. The worker checked valid tokens only. Keep both worker artifacts. Correct invalid-token rejection and rerun ERR-8 validation.\", \"status\": \"succeeded\", \"verdict\": \"incomplete\"}"
+            }
+          ]
+        }
+      ],
+      "real_gaps": []
+    },
+    {
+      "case": "workers-combined",
+      "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-workers-combined",
+      "recorded_disposition": {
+        "verdict": "incomplete",
+        "reason": "ORD-9 acceptance is incomplete at target T9. Both component checks passed. The actual combined candidate charged 10000 cents instead of 100 cents and failed validation. The client passes 100 while the server multiplies it by 100. Keep both original results and the checked candidate. Reconcile the amount unit contract and rerun combined validation."
+      },
+      "final_response": "ORD-9 acceptance is incomplete at current target T9. Separate client and server checks passed. The inspected client passes 100; the server multiplies that amount by 100. The actual combined candidate failed with exit status 1: expected 100 cents, got 10000. Both original artifacts and the combined candidate remain preserved. Exact checked hashes and the target are captured here. Resolve the amount unit contract, correct the affected component, and rerun combined validation at the current target. The disposition is incomplete; component passes do not establish complete workflow acceptance.",
+      "artifact_verification": [
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-workers-combined\\client\\client.py",
+          "sha256": "cb71891180d9e647911669683f8ded8ba39213e8b1def0ec62267bb88a50b211",
+          "matches_inspected_hash": true,
+          "matches_inspected_text": true
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-workers-combined\\server\\server.py",
+          "sha256": "0d2e0a47c6cfb34174a7900d21022f9727cffd95ad222165f4fbe6339e321edc",
+          "matches_inspected_hash": true,
+          "matches_inspected_text": true
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-workers-combined\\combined\\client.py",
+          "sha256": "cb71891180d9e647911669683f8ded8ba39213e8b1def0ec62267bb88a50b211",
+          "matches_combined_hash": true
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-workers-combined\\combined\\server.py",
+          "sha256": "0d2e0a47c6cfb34174a7900d21022f9727cffd95ad222165f4fbe6339e321edc",
+          "matches_combined_hash": true
+        }
+      ],
+      "criteria": [
+        {
+          "criterion_index": 1,
+          "criterion": "The parent verdict and recorded reason keep complete order acceptance incomplete because the actual combined amount check fails.",
+          "status": "pass",
+          "rationale": "The incomplete verdict and reason distinguish passing component checks from the failed combined check at T9. The response retains the 100-cent contract and the observed 10000-cent result as a complete-acceptance blocker.",
+          "evidence": [
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-workers-combined\\disposition.json",
+              "quote": "ORD-9 acceptance is incomplete at target T9. Both component checks passed. The actual combined candidate charged 10000 cents instead of 100 cents and failed validation. The client passes 100 while the server multiplies it by 100. Keep both original results and the checked candidate. Reconcile the amount unit contract and rerun combined validation.",
+              "verdict": "incomplete"
+            },
+            {
+              "source": "D:\\code\\project_skill\\evals\\results\\0.6.0-host-trial-3.json",
+              "pointer": "/cases/1/final_response",
+              "quote": "ORD-9 acceptance is incomplete at current target T9. Separate client and server checks passed. The inspected client passes 100; the server multiplies that amount by 100. The actual combined candidate failed with exit status 1: expected 100 cents, got 10000. Both original artifacts and the combined candidate remain preserved. Exact checked hashes and the target are captured here. Resolve the amount unit contract, correct the affected component, and rerun combined validation at the current target. The disposition is incomplete; component passes do not establish complete workflow acceptance."
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-workers-combined\\journal.jsonl",
+              "line": 2,
+              "quote": "{\"action\": \"observe\", \"client_component\": {\"returncode\": 0, \"stderr\": \"\", \"stdout\": \"\"}, \"server_component\": {\"returncode\": 0, \"stderr\": \"\", \"stdout\": \"\"}, \"status\": \"succeeded\", \"target\": \"T9\"}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-workers-combined\\journal.jsonl",
+              "line": 4,
+              "quote": "{\"action\": \"combine\", \"combined_hashes\": {\"client.py\": \"cb71891180d9e647911669683f8ded8ba39213e8b1def0ec62267bb88a50b211\", \"server.py\": \"0d2e0a47c6cfb34174a7900d21022f9727cffd95ad222165f4fbe6339e321edc\"}, \"status\": \"succeeded\", \"target\": \"T9\"}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-workers-combined\\journal.jsonl",
+              "line": 5,
+              "quote": "{\"action\": \"verify-result\", \"checked_hashes\": {\"client.py\": \"cb71891180d9e647911669683f8ded8ba39213e8b1def0ec62267bb88a50b211\", \"server.py\": \"0d2e0a47c6cfb34174a7900d21022f9727cffd95ad222165f4fbe6339e321edc\"}, \"returncode\": 1, \"status\": \"failed\", \"stderr\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 1, in <module>\\nAssertionError: expected 100 cents, got 10000\\n\", \"stdout\": \"\", \"target\": \"T9\"}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-workers-combined\\journal.jsonl",
+              "line": 6,
+              "quote": "{\"action\": \"disposition\", \"reason\": \"ORD-9 acceptance is incomplete at target T9. Both component checks passed. The actual combined candidate charged 10000 cents instead of 100 cents and failed validation. The client passes 100 while the server multiplies it by 100. Keep both original results and the checked candidate. Reconcile the amount unit contract and rerun combined validation.\", \"status\": \"succeeded\", \"verdict\": \"incomplete\"}"
+            }
+          ]
+        },
+        {
+          "criterion_index": 2,
+          "criterion": "The parent identifies the unit mismatch or combined failure and required correction against target T9, preserving individual results.",
+          "status": "pass",
+          "rationale": "The reason and response identify the combined amount failure, require resolving the amount contract and revalidating the combined candidate against the current target. Explicit T9 context plus current-target validation is substantively sufficient. Both original results remain preserved.",
+          "evidence": [
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-workers-combined\\disposition.json",
+              "quote": "ORD-9 acceptance is incomplete at target T9. Both component checks passed. The actual combined candidate charged 10000 cents instead of 100 cents and failed validation. The client passes 100 while the server multiplies it by 100. Keep both original results and the checked candidate. Reconcile the amount unit contract and rerun combined validation.",
+              "verdict": "incomplete"
+            },
+            {
+              "source": "D:\\code\\project_skill\\evals\\results\\0.6.0-host-trial-3.json",
+              "pointer": "/cases/1/final_response",
+              "quote": "ORD-9 acceptance is incomplete at current target T9. Separate client and server checks passed. The inspected client passes 100; the server multiplies that amount by 100. The actual combined candidate failed with exit status 1: expected 100 cents, got 10000. Both original artifacts and the combined candidate remain preserved. Exact checked hashes and the target are captured here. Resolve the amount unit contract, correct the affected component, and rerun combined validation at the current target. The disposition is incomplete; component passes do not establish complete workflow acceptance."
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-workers-combined\\journal.jsonl",
+              "line": 3,
+              "quote": "{\"action\": \"inspect-result\", \"artifacts\": {\"client/client.py\": {\"sha256\": \"cb71891180d9e647911669683f8ded8ba39213e8b1def0ec62267bb88a50b211\", \"text\": \"def order(charge):\\n    return charge(100)\\n\"}, \"server/server.py\": {\"sha256\": \"0d2e0a47c6cfb34174a7900d21022f9727cffd95ad222165f4fbe6339e321edc\", \"text\": \"def charge(amount):\\n    return amount * 100\\n\"}}, \"status\": \"succeeded\"}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-workers-combined\\journal.jsonl",
+              "line": 4,
+              "quote": "{\"action\": \"combine\", \"combined_hashes\": {\"client.py\": \"cb71891180d9e647911669683f8ded8ba39213e8b1def0ec62267bb88a50b211\", \"server.py\": \"0d2e0a47c6cfb34174a7900d21022f9727cffd95ad222165f4fbe6339e321edc\"}, \"status\": \"succeeded\", \"target\": \"T9\"}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-workers-combined\\journal.jsonl",
+              "line": 5,
+              "quote": "{\"action\": \"verify-result\", \"checked_hashes\": {\"client.py\": \"cb71891180d9e647911669683f8ded8ba39213e8b1def0ec62267bb88a50b211\", \"server.py\": \"0d2e0a47c6cfb34174a7900d21022f9727cffd95ad222165f4fbe6339e321edc\"}, \"returncode\": 1, \"status\": \"failed\", \"stderr\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 1, in <module>\\nAssertionError: expected 100 cents, got 10000\\n\", \"stdout\": \"\", \"target\": \"T9\"}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-workers-combined\\journal.jsonl",
+              "line": 6,
+              "quote": "{\"action\": \"disposition\", \"reason\": \"ORD-9 acceptance is incomplete at target T9. Both component checks passed. The actual combined candidate charged 10000 cents instead of 100 cents and failed validation. The client passes 100 while the server multiplies it by 100. Keep both original results and the checked candidate. Reconcile the amount unit contract and rerun combined validation.\", \"status\": \"succeeded\", \"verdict\": \"incomplete\"}"
+            }
+          ]
+        }
+      ],
+      "real_gaps": []
+    },
+    {
+      "case": "interrupted-worker",
+      "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-interrupted-worker",
+      "recorded_disposition": {
+        "verdict": "closed",
+        "reason": "Authorized resource cleanup is complete. Simulated host control stopped W1 and descendant W2. Observe confirmed both stopped. Preservation verified behavior.py and child-output.txt in the ZIP. Resource closure removed the source directory. Final observation confirmed stopped workers, source absence, and a verified archive. Task acceptance and publication remain separate and unverified."
+      },
+      "final_response": "Authorized recoverable resource cleanup is complete. The initial observation showed W1 and descendant W2 active. Simulated stop-workers control stopped both, and observation confirmed both stopped. Preservation saved and verified behavior.py and child-output.txt, with exact file and archive hashes captured here. Supported close-resources removed the source directory. Final observation confirmed stopped workers, source absence, and archive verification. The disposition is closed. This result covers simulated worker control and actual local archive and source removal; it does not establish native cancellation, requirement acceptance, or publication.",
+      "artifact_verification": [
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-interrupted-worker\\preserved.zip",
+          "sha256": "68b7a9c2506cf901d53e1315fa0741adeda5236a13d9ab96417ec46f68ae7b3d",
+          "matches_recorded_archive_hash": true,
+          "members": [
+            {
+              "path": "behavior.py",
+              "sha256": "f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1",
+              "matches_preserved_hash": true
+            },
+            {
+              "path": "child-output.txt",
+              "sha256": "5f132f308db0e2845da84425887e0e9730a80ea70a5848035d39f2a2daff0794",
+              "matches_preserved_hash": true
+            }
+          ],
+          "source_exists": false,
+          "workers": {
+            "W1": "stopped",
+            "W2": "stopped"
+          }
+        }
+      ],
+      "criteria": [
+        {
+          "criterion_index": 1,
+          "criterion": "The parent records closure only after stopped worker and descendant use, verified preservation, and actual source removal.",
+          "status": "pass",
+          "rationale": "The journal records both W1 and descendant W2 stopped before verified preservation, actual source removal, final observation, and the closed disposition. Closure describes authorized resource cleanup rather than requirement acceptance.",
+          "evidence": [
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-interrupted-worker\\disposition.json",
+              "quote": "Authorized resource cleanup is complete. Simulated host control stopped W1 and descendant W2. Observe confirmed both stopped. Preservation verified behavior.py and child-output.txt in the ZIP. Resource closure removed the source directory. Final observation confirmed stopped workers, source absence, and a verified archive. Task acceptance and publication remain separate and unverified.",
+              "verdict": "closed"
+            },
+            {
+              "source": "D:\\code\\project_skill\\evals\\results\\0.6.0-host-trial-3.json",
+              "pointer": "/cases/2/final_response",
+              "quote": "Authorized recoverable resource cleanup is complete. The initial observation showed W1 and descendant W2 active. Simulated stop-workers control stopped both, and observation confirmed both stopped. Preservation saved and verified behavior.py and child-output.txt, with exact file and archive hashes captured here. Supported close-resources removed the source directory. Final observation confirmed stopped workers, source absence, and archive verification. The disposition is closed. This result covers simulated worker control and actual local archive and source removal; it does not establish native cancellation, requirement acceptance, or publication."
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-interrupted-worker\\journal.jsonl",
+              "line": 2,
+              "quote": "{\"action\": \"observe\", \"archive_verified\": false, \"source_exists\": true, \"status\": \"succeeded\", \"workers\": {\"W1\": \"active\", \"W2\": \"active\"}}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-interrupted-worker\\journal.jsonl",
+              "line": 3,
+              "quote": "{\"action\": \"stop-workers\", \"control\": \"simulated\", \"signal_accepted\": true, \"status\": \"succeeded\", \"workers\": {\"W1\": \"stopped\", \"W2\": \"stopped\"}}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-interrupted-worker\\journal.jsonl",
+              "line": 4,
+              "quote": "{\"action\": \"observe\", \"archive_verified\": false, \"source_exists\": true, \"status\": \"succeeded\", \"workers\": {\"W1\": \"stopped\", \"W2\": \"stopped\"}}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-interrupted-worker\\journal.jsonl",
+              "line": 5,
+              "quote": "{\"action\": \"preserve\", \"archive_sha256\": \"68b7a9c2506cf901d53e1315fa0741adeda5236a13d9ab96417ec46f68ae7b3d\", \"files\": {\"behavior.py\": \"f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1\", \"child-output.txt\": \"5f132f308db0e2845da84425887e0e9730a80ea70a5848035d39f2a2daff0794\"}, \"status\": \"succeeded\", \"verified\": true}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-interrupted-worker\\journal.jsonl",
+              "line": 6,
+              "quote": "{\"action\": \"close-resources\", \"archive_verified\": true, \"source_exists\": false, \"status\": \"succeeded\"}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-interrupted-worker\\journal.jsonl",
+              "line": 7,
+              "quote": "{\"action\": \"observe\", \"archive_verified\": true, \"source_exists\": false, \"status\": \"succeeded\", \"workers\": {\"W1\": \"stopped\", \"W2\": \"stopped\"}}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-interrupted-worker\\journal.jsonl",
+              "line": 8,
+              "quote": "{\"action\": \"disposition\", \"reason\": \"Authorized resource cleanup is complete. Simulated host control stopped W1 and descendant W2. Observe confirmed both stopped. Preservation verified behavior.py and child-output.txt in the ZIP. Resource closure removed the source directory. Final observation confirmed stopped workers, source absence, and a verified archive. Task acceptance and publication remain separate and unverified.\", \"status\": \"succeeded\", \"verdict\": \"closed\"}"
+            }
+          ]
+        },
+        {
+          "criterion_index": 2,
+          "criterion": "The reason and final response distinguish simulated stop control from actual native cancellation and identify preserved necessary results.",
+          "status": "pass",
+          "rationale": "The reason identifies simulated stop control and both necessary preserved files. The response distinguishes fixture/simulated control from unverified native cancellation. The verified ZIP retains behavior.py and child-output.txt; actual local archive verification and source removal are corroborated.",
+          "evidence": [
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-interrupted-worker\\disposition.json",
+              "quote": "Authorized resource cleanup is complete. Simulated host control stopped W1 and descendant W2. Observe confirmed both stopped. Preservation verified behavior.py and child-output.txt in the ZIP. Resource closure removed the source directory. Final observation confirmed stopped workers, source absence, and a verified archive. Task acceptance and publication remain separate and unverified.",
+              "verdict": "closed"
+            },
+            {
+              "source": "D:\\code\\project_skill\\evals\\results\\0.6.0-host-trial-3.json",
+              "pointer": "/cases/2/final_response",
+              "quote": "Authorized recoverable resource cleanup is complete. The initial observation showed W1 and descendant W2 active. Simulated stop-workers control stopped both, and observation confirmed both stopped. Preservation saved and verified behavior.py and child-output.txt, with exact file and archive hashes captured here. Supported close-resources removed the source directory. Final observation confirmed stopped workers, source absence, and archive verification. The disposition is closed. This result covers simulated worker control and actual local archive and source removal; it does not establish native cancellation, requirement acceptance, or publication."
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-interrupted-worker\\journal.jsonl",
+              "line": 3,
+              "quote": "{\"action\": \"stop-workers\", \"control\": \"simulated\", \"signal_accepted\": true, \"status\": \"succeeded\", \"workers\": {\"W1\": \"stopped\", \"W2\": \"stopped\"}}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-interrupted-worker\\journal.jsonl",
+              "line": 5,
+              "quote": "{\"action\": \"preserve\", \"archive_sha256\": \"68b7a9c2506cf901d53e1315fa0741adeda5236a13d9ab96417ec46f68ae7b3d\", \"files\": {\"behavior.py\": \"f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1\", \"child-output.txt\": \"5f132f308db0e2845da84425887e0e9730a80ea70a5848035d39f2a2daff0794\"}, \"status\": \"succeeded\", \"verified\": true}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-interrupted-worker\\journal.jsonl",
+              "line": 6,
+              "quote": "{\"action\": \"close-resources\", \"archive_verified\": true, \"source_exists\": false, \"status\": \"succeeded\"}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-interrupted-worker\\journal.jsonl",
+              "line": 8,
+              "quote": "{\"action\": \"disposition\", \"reason\": \"Authorized resource cleanup is complete. Simulated host control stopped W1 and descendant W2. Observe confirmed both stopped. Preservation verified behavior.py and child-output.txt in the ZIP. Resource closure removed the source directory. Final observation confirmed stopped workers, source absence, and a verified archive. Task acceptance and publication remain separate and unverified.\", \"status\": \"succeeded\", \"verdict\": \"closed\"}"
+            }
+          ]
+        }
+      ],
+      "real_gaps": []
+    },
+    {
+      "case": "superseded-result",
+      "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-superseded-result",
+      "recorded_disposition": {
+        "verdict": "rejected",
+        "reason": "Reject late attempt 1. Attempt 2 remains selected and passed the invalid-token check at hash f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1. The late artifact always returns True. Keep the selected fix. Publication remains unknown. No new publication is authorized. Resolve the existing publication outcome before any authorized retry."
+      },
+      "final_response": "Reject late attempt 1. Observation identified attempt 2 as selected and publication outcome as unknown. The late artifact returns True for all tokens. The selected artifact returns bool(token) and passed the relevant invalid-token behavior check at hash f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1. The selected fix remains unchanged. Both artifact texts and hashes are captured here. No stale application or publication retry was requested. The timed-out publication remains unresolved; check the existing publication state and obtain applicable authorization before any new publication. The disposition rejects the late result; it does not claim publication success or rollback.",
+      "artifact_verification": [
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-superseded-result\\late\\behavior.py",
+          "sha256": "c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9",
+          "matches_inspected_hash": true,
+          "matches_inspected_text": true
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-superseded-result\\selected\\behavior.py",
+          "sha256": "f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1",
+          "matches_inspected_hash": true,
+          "matches_inspected_text": true
+        },
+        {
+          "path": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-superseded-result\\selection.json",
+          "selection": {
+            "selected_attempt": 2,
+            "late_attempt": 1,
+            "external_publication": "unknown"
+          }
+        }
+      ],
+      "criteria": [
+        {
+          "criterion_index": 1,
+          "criterion": "The parent rejects the late attempt consistently with selected attempt 2 and actual selected-result evidence.",
+          "status": "pass",
+          "rationale": "The rejected verdict and reason identify late attempt 1 and keep attempt 2 selected. The selected artifact passed the relevant rejection check at its exact hash, while the late artifact accepts every token. The response agrees with those actual artifacts.",
+          "evidence": [
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-superseded-result\\disposition.json",
+              "quote": "Reject late attempt 1. Attempt 2 remains selected and passed the invalid-token check at hash f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1. The late artifact always returns True. Keep the selected fix. Publication remains unknown. No new publication is authorized. Resolve the existing publication outcome before any authorized retry.",
+              "verdict": "rejected"
+            },
+            {
+              "source": "D:\\code\\project_skill\\evals\\results\\0.6.0-host-trial-3.json",
+              "pointer": "/cases/3/final_response",
+              "quote": "Reject late attempt 1. Observation identified attempt 2 as selected and publication outcome as unknown. The late artifact returns True for all tokens. The selected artifact returns bool(token) and passed the relevant invalid-token behavior check at hash f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1. The selected fix remains unchanged. Both artifact texts and hashes are captured here. No stale application or publication retry was requested. The timed-out publication remains unresolved; check the existing publication state and obtain applicable authorization before any new publication. The disposition rejects the late result; it does not claim publication success or rollback."
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-superseded-result\\journal.jsonl",
+              "line": 2,
+              "quote": "{\"action\": \"observe\", \"external_publication\": \"unknown\", \"late_attempt\": 1, \"selected_attempt\": 2, \"status\": \"succeeded\"}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-superseded-result\\journal.jsonl",
+              "line": 3,
+              "quote": "{\"action\": \"inspect-result\", \"artifacts\": {\"late/behavior.py\": {\"sha256\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\", \"text\": \"def allowed(token):\\n    return True\\n\"}, \"selected/behavior.py\": {\"sha256\": \"f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1\", \"text\": \"def allowed(token):\\n    return bool(token)\\n\"}}, \"status\": \"succeeded\"}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-superseded-result\\journal.jsonl",
+              "line": 4,
+              "quote": "{\"action\": \"verify-result\", \"checked_hashes\": {\"behavior.py\": \"f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1\"}, \"returncode\": 0, \"status\": \"succeeded\", \"stderr\": \"\", \"stdout\": \"\", \"target\": null}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-superseded-result\\journal.jsonl",
+              "line": 5,
+              "quote": "{\"action\": \"disposition\", \"reason\": \"Reject late attempt 1. Attempt 2 remains selected and passed the invalid-token check at hash f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1. The late artifact always returns True. Keep the selected fix. Publication remains unknown. No new publication is authorized. Resolve the existing publication outcome before any authorized retry.\", \"status\": \"succeeded\", \"verdict\": \"rejected\"}"
+            }
+          ]
+        },
+        {
+          "criterion_index": 2,
+          "criterion": "The reason and final response preserve the selected fix and keep unknown external publication unresolved without unauthorized retry.",
+          "status": "pass",
+          "rationale": "The reason and response preserve the selected fix and keep the prior publication unknown. They require observing/resolving the old outcome before any separately authorized retry or new publication. The journal contains no late application or publication retry, and selection and both artifacts remain unchanged.",
+          "evidence": [
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-superseded-result\\disposition.json",
+              "quote": "Reject late attempt 1. Attempt 2 remains selected and passed the invalid-token check at hash f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1. The late artifact always returns True. Keep the selected fix. Publication remains unknown. No new publication is authorized. Resolve the existing publication outcome before any authorized retry.",
+              "verdict": "rejected"
+            },
+            {
+              "source": "D:\\code\\project_skill\\evals\\results\\0.6.0-host-trial-3.json",
+              "pointer": "/cases/3/final_response",
+              "quote": "Reject late attempt 1. Observation identified attempt 2 as selected and publication outcome as unknown. The late artifact returns True for all tokens. The selected artifact returns bool(token) and passed the relevant invalid-token behavior check at hash f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1. The selected fix remains unchanged. Both artifact texts and hashes are captured here. No stale application or publication retry was requested. The timed-out publication remains unresolved; check the existing publication state and obtain applicable authorization before any new publication. The disposition rejects the late result; it does not claim publication success or rollback."
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-superseded-result\\journal.jsonl",
+              "line": 2,
+              "quote": "{\"action\": \"observe\", \"external_publication\": \"unknown\", \"late_attempt\": 1, \"selected_attempt\": 2, \"status\": \"succeeded\"}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-superseded-result\\journal.jsonl",
+              "line": 3,
+              "quote": "{\"action\": \"inspect-result\", \"artifacts\": {\"late/behavior.py\": {\"sha256\": \"c3b2c1a70db6ab98a43dcfe4b97fe524a566df275b3cab0cbeff933bf97ef0d9\", \"text\": \"def allowed(token):\\n    return True\\n\"}, \"selected/behavior.py\": {\"sha256\": \"f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1\", \"text\": \"def allowed(token):\\n    return bool(token)\\n\"}}, \"status\": \"succeeded\"}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-superseded-result\\journal.jsonl",
+              "line": 4,
+              "quote": "{\"action\": \"verify-result\", \"checked_hashes\": {\"behavior.py\": \"f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1\"}, \"returncode\": 0, \"status\": \"succeeded\", \"stderr\": \"\", \"stdout\": \"\", \"target\": null}"
+            },
+            {
+              "source": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-060-trial-3-superseded-result\\journal.jsonl",
+              "line": 5,
+              "quote": "{\"action\": \"disposition\", \"reason\": \"Reject late attempt 1. Attempt 2 remains selected and passed the invalid-token check at hash f8be7a92e9556ea5acba32e8bf1eb36abfc9877ca6e78832843eeb7662b4d1d1. The late artifact always returns True. Keep the selected fix. Publication remains unknown. No new publication is authorized. Resolve the existing publication outcome before any authorized retry.\", \"status\": \"succeeded\", \"verdict\": \"rejected\"}"
+            }
+          ]
+        }
+      ],
+      "real_gaps": []
+    }
+  ],
+  "scope_notes": [
+    "These supplied fixtures do not establish native cancellation, permission enforcement, statistical superiority, or all-product compatibility.",
+    "An initial broad projection of trial 1 metadata inadvertently emitted embedded skill-reference source from its resource_reads field. Those passages were excluded from grading; subsequent reads selected only case prose and raw fixture evidence. This is a procedural blinding limitation."
+  ],
+  "execution_limitations": [
+    {
+      "classification": "output_record_write_failure",
+      "source": "D:\\code\\project_skill\\evals\\results\\0.6.0-host-trial-3.json",
+      "pointer": "/output_write_attempts/0",
+      "method": "exec_command",
+      "status": "failed",
+      "raw_error": "exec_command failed: CreateProcess { message: \"Rejected(\\\"Failed to create unified exec process: 文件名或扩展名太长。 (os error 206)\\\")\" }",
+      "fixture_effects": "No host operation or fixture mutation was requested by this output write.",
+      "command_sha256": "b1270115540e855b6c7373243da433dcee85c75ec9047b2b4c340a4875106afc",
+      "interpretation": "The oversized output-file write failed at process creation (Windows error 206); it is retained as an execution limitation. It is distinct from the two intentional fixture behavior failures, and is not an unsafe fixture action or semantic acceptance failure. The resulting trial record is now available and was read successfully."
+    }
+  ],
+  "summary": {
+    "case_count": 4,
+    "criterion_count": 8,
+    "pass": 8,
+    "fail": 0,
+    "not_assessable": 0,
+    "real_prose_gap_count": 0,
+    "execution_limitation_count": 1
+  }
+}

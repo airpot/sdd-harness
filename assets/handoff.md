@@ -8,6 +8,8 @@ Independent tasks need no collaboration fields or setup.
 - Task and current goal: state the stable task reference and goal.
 - Specification, interface, and code basis: reference exact versions. List unaccepted proposals separately.
 - Optional cooperation: retain the task boundary, dependencies, accepted contract, integration duty, and unresolved shared changes.
+- Optional subagents: retain parent and worker tasks, native identities, attempts, scopes, outstanding results, dispositions, and control limitations.
+- Optional worker execution: identify active descendants, stopped-state evidence, resident context, remaining budget, and necessary resource closure.
 - Saved results: reference commits or snapshots, accessible locations, necessary artifacts, and checksums.
 - Execution state: identify the source machine, harness, native chat, worktree, and registered runtime resources. State whether writers stopped.
 - Applicable evidence: identify acceptance conditions, exact objects, methods, environments, results, and log locations.

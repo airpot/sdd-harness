@@ -1,0 +1,831 @@
+{
+  "evaluated_version": "no skill",
+  "mode": "independent atomic criterion scoring of decision simulation",
+  "scenario_revision": "0.6.0",
+  "evaluator_identity": "/root/subagent_baseline_score",
+  "source_files": [
+    "D:/code/project_skill/evals/scenarios-0.6.0.json",
+    "D:/code/project_skill/evals/criteria-0.6.0.json",
+    "D:/code/project_skill/evals/results/0.6.0-baseline-no-skill.json"
+  ],
+  "scoring_policy": [
+    "Score the proposed decisions in the supplied simulation, not whether live execution occurred.",
+    "Use reasonable substantive interpretations; do not require exact rubric wording or named record fields.",
+    "For a prohibition, absence of the prohibited assumption can satisfy the criterion; do not invent a contrary assumption.",
+    "All quoted evidence was checked as an exact substring of its scenario response."
+  ],
+  "totals": {
+    "cases": 12,
+    "atomic_criteria": 48,
+    "pass": 48,
+    "fail": 0,
+    "not_assessable": 0
+  },
+  "real_gaps": [],
+  "limitations": [
+    "These scores assess decision-simulation responses only and do not establish live worker control, permission enforcement, cleanup, or execution effectiveness.",
+    "Some criteria are satisfied by proposed coordination and verification or by avoiding a false claim; the score does not imply that the response used every optional terminology or record field."
+  ],
+  "scenarios": [
+    {
+      "id": "subagent-small-change",
+      "totals": {
+        "pass": 4,
+        "fail": 0,
+        "not_assessable": 0
+      },
+      "scores": [
+        {
+          "criterion_index": 1,
+          "criterion": "Complete the small correction directly without mandatory worker dispatch.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Correct the known README link directly"
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "Do not launch workers"
+            }
+          ],
+          "explanation": "The known single-link correction is handled directly; workers are not a prerequisite."
+        },
+        {
+          "criterion_index": 2,
+          "criterion": "Keep acceptance and evidence proportional to a one-link change.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Accept when that focused inspection passes; no code tests are needed."
+            }
+          ],
+          "explanation": "Acceptance uses focused diff/link inspection rather than behavioral testing for a Markdown-only change."
+        },
+        {
+          "criterion_index": 3,
+          "criterion": "Do not introduce team infrastructure or mandatory roles.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Do not launch workers or add a planning/release workflow for this small edit."
+            }
+          ],
+          "explanation": "The response declines the multi-role workflow and adds no team infrastructure."
+        },
+        {
+          "criterion_index": 4,
+          "criterion": "Do not claim worker count proves value.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Do not launch workers"
+            }
+          ],
+          "explanation": "No worker-count-based value claim is made; dispatch is declined despite the available slots."
+        }
+      ]
+    },
+    {
+      "id": "subagent-task-context",
+      "totals": {
+        "pass": 4,
+        "fail": 0,
+        "not_assessable": 0
+      },
+      "scores": [
+        {
+          "criterion_index": 1,
+          "criterion": "Supply accepted behavior, exact basis, relevant paths, and read-only actions in a self-contained task.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Use commit B17 and API contract C4 as the fixed basis."
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "INV-17 requires exactly one invoice for repeated requests with the same customer and idempotency key."
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "Inspect src/invoice.py and existing tests."
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "without changing files"
+            }
+          ],
+          "explanation": "The delegated prompt supplies INV-17 behavior, B17/C4, the investigation paths, and a no-write scope; the contract material is supplied with it."
+        },
+        {
+          "criterion_index": 2,
+          "criterion": "Do not assume inherited parent history or required skill loading.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "the worker cannot rely on the parent's history"
+            }
+          ],
+          "explanation": "Relevant instructions and contract material are explicitly supplied, and parent history is disclaimed; no automatically inherited skill load is assumed."
+        },
+        {
+          "criterion_index": 3,
+          "criterion": "Request reproducible evidence and visible uncertainty rather than only a confident summary.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Return reproduction commands and inputs, observed versus expected outcomes, exact commit/file/line and test/log references"
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "remaining uncertainty"
+            }
+          ],
+          "explanation": "The return requires a reproducible sequence, precise references, and unresolved uncertainty rather than confidence alone."
+        },
+        {
+          "criterion_index": 4,
+          "criterion": "Retain a stopping or escalation condition without copying full history.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Stay within this investigation's budget and return partial findings when it ends."
+            }
+          ],
+          "explanation": "The investigation stops at its budget with partial findings, without copying the large mixed history."
+        }
+      ]
+    },
+    {
+      "id": "subagent-dependent-work",
+      "totals": {
+        "pass": 4,
+        "fail": 0,
+        "not_assessable": 0
+      },
+      "scores": [
+        {
+          "criterion_index": 1,
+          "criterion": "Do not launch dependent implementations against conflicting unaccepted schemas.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Do not start both implementations against incompatible proposals."
+            }
+          ],
+          "explanation": "Both schema-dependent implementations wait for acceptance of one shared schema."
+        },
+        {
+          "criterion_index": 2,
+          "criterion": "Identify the contract decision needed before dependent work.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Resolve acceptance of the response schema with the responsible decision maker"
+            }
+          ],
+          "explanation": "The interface decision is explicitly assigned to the responsible acceptance authority."
+        },
+        {
+          "criterion_index": 3,
+          "criterion": "Permit independent investigation while the decision is pending.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Assign one worker the independent read-only investigation of existing authorization"
+            }
+          ],
+          "explanation": "A separate read-only authorization investigation can proceed before the schema is decided."
+        },
+        {
+          "criterion_index": 4,
+          "criterion": "Keep complete feature acceptance tied to REQ-22.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "report its evidence against REQ-22"
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "Keep feature acceptance pending until the schema and combined behavior are verified."
+            }
+          ],
+          "explanation": "The independent investigation is distinguished from full REQ-22 acceptance, which still requires the integrated authorized download."
+        }
+      ]
+    },
+    {
+      "id": "subagent-shared-contract",
+      "totals": {
+        "pass": 4,
+        "fail": 0,
+        "not_assessable": 0
+      },
+      "scores": [
+        {
+          "criterion_index": 1,
+          "criterion": "Keep the rename a proposal and coordinate affected client work.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Tell A to retain user_id under C2"
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "Inform B of the attempted deviation"
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "obtain acceptance of the revised interface and coordinated scopes before implementation"
+            }
+          ],
+          "explanation": "The rename remains unaccepted, and the affected client worker is coordinated before a changed interface is implemented."
+        },
+        {
+          "criterion_index": 2,
+          "criterion": "Do not accept scope text as native filesystem enforcement.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "cannot be accepted as harmless or made through out-of-scope shared/types.ts edits."
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "Inspect the branches for contract consistency"
+            }
+          ],
+          "explanation": "The response treats paths as assigned authority and requires evidence of compatible behavior. It never claims that textual scope technically prevents writes; this negative criterion does not require the phrase 'filesystem enforcement'."
+        },
+        {
+          "criterion_index": 3,
+          "criterion": "Do not permit implicit release authority from implementation delegation.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "no deployment or release is authorized."
+            }
+          ],
+          "explanation": "Development delegation is explicitly kept separate from deployment or release permission."
+        },
+        {
+          "criterion_index": 4,
+          "criterion": "Reassess dependent evidence after an accepted contract change.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "obtain acceptance of the revised interface and coordinated scopes before implementation."
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "Inspect the branches for contract consistency and test provider/client integration."
+            }
+          ],
+          "explanation": "A revised contract triggers coordination of affected components and applicable integration evidence. The prospective verification covers the changed combination rather than treating the original reports as automatically sufficient."
+        }
+      ]
+    },
+    {
+      "id": "subagent-false-success",
+      "totals": {
+        "pass": 4,
+        "fail": 0,
+        "not_assessable": 0
+      },
+      "scores": [
+        {
+          "criterion_index": 1,
+          "criterion": "Do not accept the claimed completion with the supplied contradictory artifact.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Reject A's completion claim: its patch violates ERR-8 by accepting empty tokens"
+            }
+          ],
+          "explanation": "The contradictory empty-token patch overrides the worker's claimed completion."
+        },
+        {
+          "criterion_index": 2,
+          "criterion": "Require validation of invalid-token rejection against ERR-8.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Reproduce the empty-token failure, correct the rejection behavior, and run relevant invalid-token tests"
+            }
+          ],
+          "explanation": "Invalid-token rejection, specifically empty tokens, must be validated on the corrected candidate under ERR-8."
+        },
+        {
+          "criterion_index": 3,
+          "criterion": "Do not treat agreement based on the same report as independent evidence.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "B's agreement based on the same report is not independent evidence."
+            }
+          ],
+          "explanation": "The second worker's agreement is explicitly rejected as independent evidence because it derives from the same report."
+        },
+        {
+          "criterion_index": 4,
+          "criterion": "Return a specific correction or rejection disposition and retain the gap.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Reject A's completion claim"
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "The task remains incomplete until invalid tokens are demonstrably rejected."
+            }
+          ],
+          "explanation": "The completion report is rejected, the token behavior must be corrected, and the missing invalid-token evidence remains an acceptance gap."
+        }
+      ]
+    },
+    {
+      "id": "subagent-partial-budget",
+      "totals": {
+        "pass": 4,
+        "fail": 0,
+        "not_assessable": 0
+      },
+      "scores": [
+        {
+          "criterion_index": 1,
+          "criterion": "Keep partial output and missing recovery visibly incomplete.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "record the max-tokens stop, both exhausted attempts, and the missing recovery implementation and evidence."
+            }
+          ],
+          "explanation": "The token-limit stop and absent recovery implementation/evidence remain explicit, and the result stays partial."
+        },
+        {
+          "criterion_index": 2,
+          "criterion": "Preserve usable migration results without declaring DATA-3 satisfied.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Preserve migration.py"
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "Do not launch another worker, invent recovery evidence, or declare DATA-3 complete."
+            }
+          ],
+          "explanation": "The migration artifact is preserved while DATA-3 remains unsatisfied; file existence is not treated as validation."
+        },
+        {
+          "criterion_index": 3,
+          "criterion": "Do not silently spawn another worker or retry indefinitely beyond the stated budget.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Do not launch another worker"
+            }
+          ],
+          "explanation": "No new worker or further spending beyond the exhausted budget is permitted."
+        },
+        {
+          "criterion_index": 4,
+          "criterion": "Record the remaining action or blocker with the main task owner.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Deliver a partial result with recovery of existing records explicitly outstanding; full acceptance requires further authorized capacity or a revised requirement."
+            }
+          ],
+          "explanation": "The partial delivery or handoff records missing recovery and the next action requiring authorized capacity; this leaves the gap with the main task rather than losing it."
+        }
+      ]
+    },
+    {
+      "id": "subagent-combined-workflow",
+      "totals": {
+        "pass": 4,
+        "fail": 0,
+        "not_assessable": 0
+      },
+      "scores": [
+        {
+          "criterion_index": 1,
+          "criterion": "Keep individual component passes separate from complete ORD-9 acceptance.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Accept ORD-9 only on passing combined evidence for that candidate; component and mock results alone are insufficient."
+            }
+          ],
+          "explanation": "Mock/component success is distinguished from full ORD-9 acceptance."
+        },
+        {
+          "criterion_index": 2,
+          "criterion": "Identify the amount-unit contract mismatch.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Reconcile cents versus dollars into an accepted interface with explicit conversion"
+            }
+          ],
+          "explanation": "The cents-versus-dollars mismatch is explicitly identified and must be resolved through the accepted amount contract."
+        },
+        {
+          "criterion_index": 3,
+          "criterion": "Check an exact combined candidate against current T9 with complete-flow evidence.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "integrate the selected changes onto T9"
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "Test the actual provider and consumer together on that exact combined candidate through create, authorize, persist, and retrieve"
+            }
+          ],
+          "explanation": "The proposed validation uses one exact combined candidate at current T9 and the actual provider/consumer for all four required workflow stages."
+        },
+        {
+          "criterion_index": 4,
+          "criterion": "Do not merge merely because two worker summaries are green.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Do not merge or accept the complete flow from separate tests."
+            }
+          ],
+          "explanation": "Merge/completion is withheld despite the two green component reports."
+        }
+      ]
+    },
+    {
+      "id": "subagent-interrupted-writer",
+      "totals": {
+        "pass": 4,
+        "fail": 0,
+        "not_assessable": 0
+      },
+      "scores": [
+        {
+          "criterion_index": 1,
+          "criterion": "Do not treat interrupt acknowledgement as stopped execution.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Treat the interrupt response as signal acknowledgement, not proof of termination."
+            }
+          ],
+          "explanation": "Interrupt acknowledgement is correctly treated as signal delivery rather than evidence of stopped execution."
+        },
+        {
+          "criterion_index": 2,
+          "criterion": "Do not reassign the same write scope or remove the active worktree.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Prevent a replacement writer from entering the same scope"
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "if stopped use cannot be established, retain the worktree"
+            }
+          ],
+          "explanation": "The active write scope is protected and the worktree is retained until actual stopped use and preservation are established."
+        },
+        {
+          "criterion_index": 3,
+          "criterion": "Account for descendant W2 and preserve its necessary results.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "preserve W1/W2's latest changes, outputs, and provenance"
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "termination of the whole worker tree"
+            }
+          ],
+          "explanation": "W2 is included in stopping and preservation of the worker tree; the initial W1 archive is not treated as sufficient."
+        },
+        {
+          "criterion_index": 4,
+          "criterion": "Continue independent work elsewhere or use actual stop-and-observe controls before transfer.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Confirm both workers have stopped and check for any later writes"
+            }
+          ],
+          "explanation": "Actual stop-and-observe controls are required before transfer, with an explicit fallback when stopped use cannot be confirmed."
+        }
+      ]
+    },
+    {
+      "id": "subagent-parent-replacement",
+      "totals": {
+        "pass": 4,
+        "fail": 0,
+        "not_assessable": 0
+      },
+      "scores": [
+        {
+          "criterion_index": 1,
+          "criterion": "Retain worker identities, scopes, pending results, and next actions in a durable handoff.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "preserve its pending billing.py change and final state, and save W2's report"
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "Create a durable handoff with requirements, baselines, file ownership, artifacts, verification still needed, and confirmed worker status."
+            }
+          ],
+          "explanation": "The durable handoff retains the P4/W1/W2 work through task ownership, snapshots, pending artifacts, verification status, and next actions. Identity is preserved by the named worker context and retained old records rather than depending on a required field name."
+        },
+        {
+          "criterion_index": 2,
+          "criterion": "Keep ready W2 output distinct from accepted results.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "save W2's report with its reviewed snapshot and unverified status"
+            }
+          ],
+          "explanation": "W2's ready report is saved as unverified and must be checked against its reviewed snapshot."
+        },
+        {
+          "criterion_index": 3,
+          "criterion": "Do not assume the new chat can reuse or control old worker IDs.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "the new chat must not assume worker IDs transfer"
+            }
+          ],
+          "explanation": "Old worker IDs are not assumed to transfer or give the new chat control over old workers."
+        },
+        {
+          "criterion_index": 4,
+          "criterion": "Protect W1 write scope and continue independent work until actual ownership and stopped state are resolved.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "retain old records and affected workspace and have the old owner resolve the active writer"
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "the new chat must not assume worker IDs transfer or start a conflicting writer."
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "Continue from saved artifacts in the new chat and verify W2's result."
+            }
+          ],
+          "explanation": "W1's writable scope and records remain protected until the old owner resolves stopped use; independent saved-artifact verification or separate-checkout work can proceed."
+        }
+      ]
+    },
+    {
+      "id": "subagent-stale-attempt",
+      "totals": {
+        "pass": 4,
+        "fail": 0,
+        "not_assessable": 0
+      },
+      "scores": [
+        {
+          "criterion_index": 1,
+          "criterion": "Identify the late attempt as superseded rather than automatically applying it.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Quarantine attempt 1 as a late, superseded result"
+            }
+          ],
+          "explanation": "The late result is rejected from selection and retained as superseded traceability rather than automatically applied."
+        },
+        {
+          "criterion_index": 2,
+          "criterion": "Check artifact applicability and preserve the current accepted fix.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "do not overwrite selected attempt 2 at B2."
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "Its patch also violates BUG-5 by deleting the required error check"
+            }
+          ],
+          "explanation": "The patch is checked against the required error check, and the selected B2 fix is preserved."
+        },
+        {
+          "criterion_index": 3,
+          "criterion": "Do not blindly repeat the unknown external publication effect.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "reconcile the timed-out publication using read-only checks"
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "avoid a duplicate publication while the outcome is unknown."
+            }
+          ],
+          "explanation": "The unknown publication is inspected through available external references without blindly resubmitting it."
+        },
+        {
+          "criterion_index": 4,
+          "criterion": "Do not promote worker instructions into new task or release authority.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Do not release without authorization."
+            }
+          ],
+          "explanation": "The worker report supplies no new release authority; a new release is withheld."
+        }
+      ]
+    },
+    {
+      "id": "subagent-review-loop",
+      "totals": {
+        "pass": 4,
+        "fail": 0,
+        "not_assessable": 0
+      },
+      "scores": [
+        {
+          "criterion_index": 1,
+          "criterion": "Resolve the concrete reproduction against SEC-6 rather than voting for agreement.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "reproduce A's cross-tenant read on the actual candidate"
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "Consensus without evidence is not a completion condition."
+            }
+          ],
+          "explanation": "The concrete cross-tenant reproduction is investigated against SEC-6 rather than decided by reviewer voting."
+        },
+        {
+          "criterion_index": 2,
+          "criterion": "Bound further work to the remaining budget without recursive or indefinite reviewer spawning.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Use the single remaining investigation turn"
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "rather than launch recursive reviewers"
+            }
+          ],
+          "explanation": "Further investigation is bounded to the one remaining turn; recursive review spawning is declined."
+        },
+        {
+          "criterion_index": 3,
+          "criterion": "Keep tenant isolation incomplete until applicable evidence resolves the issue.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "if unresolved, retain the finding and uncertainty and withhold acceptance"
+            }
+          ],
+          "explanation": "Tenant-isolation acceptance stays failed or incomplete until applicable evidence resolves the reproduction."
+        },
+        {
+          "criterion_index": 4,
+          "criterion": "Record the unresolved disposition and continue independent work when possible.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "If reproduced, reject SEC-6 acceptance and identify the required fix"
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "Proceed with the independent documentation correction."
+            }
+          ],
+          "explanation": "The defect or unresolved uncertainty is recorded, while the unrelated documentation correction proceeds."
+        }
+      ]
+    },
+    {
+      "id": "subagent-host-capabilities",
+      "totals": {
+        "pass": 4,
+        "fail": 0,
+        "not_assessable": 0
+      },
+      "scores": [
+        {
+          "criterion_index": 1,
+          "criterion": "Do not claim written settings enforce read-only permissions or native continuation.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "Do not claim YAML flags enforce read-only execution or native resume."
+            }
+          ],
+          "explanation": "Portable YAML flags are explicitly distinguished from observed native enforcement and continuation."
+        },
+        {
+          "criterion_index": 2,
+          "criterion": "Use a fresh self-contained task instead of claiming an unsupported resume.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "issue a fresh one-shot prompt containing saved context and explicit no-write instructions"
+            }
+          ],
+          "explanation": "Continuation is represented as a fresh one-shot task containing saved context and an explicit investigation scope."
+        },
+        {
+          "criterion_index": 3,
+          "criterion": "Do not invent native configuration keys or unapproved model routes.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "current authorized model only"
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "Do not use an unavailable model route"
+            }
+          ],
+          "explanation": "Only the current authorized model route and observed capabilities are used; no native configuration mechanism is invented."
+        },
+        {
+          "criterion_index": 4,
+          "criterion": "Use an appropriate sequential or supported isolation fallback and disclose capability limits.",
+          "status": "pass",
+          "evidence": [
+            {
+              "kind": "exact_quote",
+              "quote": "use an actual isolated snapshot if available and verified"
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "If enforced read-only access is required, withhold worker launch until that capability exists."
+            },
+            {
+              "kind": "exact_quote",
+              "quote": "the requested native read-only/resume configuration is unavailable on current evidence."
+            }
+          ],
+          "explanation": "The response gives a snapshot/separate-checkout fallback, discloses its permission limits, and withholds launch/configuration if real enforcement is required."
+        }
+      ]
+    }
+  ]
+}

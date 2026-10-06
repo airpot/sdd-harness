@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "scoring": "Evaluator-only criteria for recorded reasons and final fixture responses. Use actual journals and artifacts.",
+  "cases": [
+    {
+      "id": "worker-report",
+      "criteria": [
+        "The parent verdict and recorded reason identify invalid-token rejection as incomplete, consistent with the actual failed check.",
+        "The parent retains the specific correction and validation needed; worker completion and positive-only evidence do not establish acceptance."
+      ]
+    },
+    {
+      "id": "workers-combined",
+      "criteria": [
+        "The parent verdict and recorded reason keep complete order acceptance incomplete because the actual combined amount check fails.",
+        "The parent identifies the unit mismatch or combined failure and required correction against target T9, preserving individual results."
+      ]
+    },
+    {
+      "id": "interrupted-worker",
+      "criteria": [
+        "The parent records closure only after stopped worker and descendant use, verified preservation, and actual source removal.",
+        "The reason and final response distinguish simulated stop control from actual native cancellation and identify preserved necessary results."
+      ]
+    },
+    {
+      "id": "superseded-result",
+      "criteria": [
+        "The parent rejects the late attempt consistently with selected attempt 2 and actual selected-result evidence.",
+        "The reason and final response preserve the selected fix and keep unknown external publication unresolved without unauthorized retry."
+      ]
+    }
+  ]
+}

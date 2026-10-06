@@ -9,6 +9,8 @@ Do not require frontend/backend task splits, role profiles, new contract formats
 
 Use the following procedures only when tasks need cooperation or chats share project resources.
 Apply [the writing policy](writing.md) to new and changed internal prose.
+For bounded work delegated by a main agent, read [subagent rules](subagents.md).
+Subagents are optional for independent development and distinct from developer task assignments.
 
 ## Divide work through accepted boundaries
 

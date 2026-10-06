@@ -1,52 +1,41 @@
 # SDD Harness
 
-A portable skill for specification-driven development across chats, worktrees, and coding agents.
+一个可跨对话、worktree 和编码 agent 使用的规格驱动开发（SDD）技能包。
 
-Current version: **0.5.1**.
+当前版本：**0.5.1**。
 
-Independent development is the default. Keep small tasks brief in existing project records.
-Use collaboration procedures only when work needs cooperation.
-Ordinary independent tasks need no frontend/backend split, role profiles, new contract format, mock service, or team CI setup.
+**默认独立开发，按需启用协作。**小任务沿用现有项目记录，保持简短；日常独立开发无需拆分前后端任务，也无需新增角色配置、接口格式、mock 服务或团队 CI。
 
-The skill combines accepted specifications and incremental changes from OpenSpec with clarification and consistency checks from Spec Kit.
-Use the project's existing specifications and tools. Neither framework is a required dependency.
+本技能结合 OpenSpec 的已接受规格与增量变更，以及 Spec Kit 的需求澄清与一致性检查。优先使用项目已有的规格与工具，两者均非必需依赖。
 
-## Use cases
+## 适用场景
 
-- Continue development from a task handoff.
-- Continue independent tasks across chats, checkouts, and harnesses.
-- For cooperating developers, connect component tasks to one accepted contract and the complete business outcome.
-- Distinguish mock results from actual provider, consumer, and combined workflow evidence.
-- Review shared changes and reference existing project commands, runtime resources, and integration duties.
-- Check acceptance evidence against exact code and specification versions.
-- Review specification quality and trace source requirements to implementation and evidence.
-- Review test assertions against accepted intent and retain useful counterexamples and regression evidence.
-- Plan changes from relevant current code and existing components.
-- Validate the actual combined candidate against the current integration target.
-- Check candidate eligibility when a release executes.
-- Select system, performance, security, migration, and recovery checks from affected behavior and risk.
-- Keep mandatory validation gaps visible in acceptance verdicts.
-- Reconcile accepted behavior with the project's authoritative specification.
-- Prepare releases through the project's existing publication entry.
-- Preserve results before authorized worktree removal.
-- Write internal development documents in English with ASD-STE100 writing rules.
+- 从任务交接记录继续开发，在不同对话、检出目录或 harness 之间接续独立任务。
+- 协作开发时，将组件任务关联到同一份已接受的接口契约及完整业务目标。
+- 区分 mock 测试结果、真实接口提供方与调用方的验证结果，以及完整流程的验收证据。
+- 审查共享变更，复用项目已有命令、运行资源与集成职责。
+- 按确切代码与规格版本核验验收证据，追踪原始需求、实现与验证结果的对应关系。
+- 审查测试断言是否符合已接受的需求，保留有效反例与回归证据。
+- 依据相关现有代码与组件规划变更，针对当前集成目标验证实际合并后的候选版本。
+- 在发布执行时核验候选版本是否仍符合发布条件。
+- 按受影响行为与风险，选择系统、性能、安全、迁移与恢复检查。
+- 明示必需验证的缺口，将已接受行为同步到项目的权威规格。
+- 通过项目现有发布入口交付，并在获授权移除 worktree 前保存可恢复成果。
+- 按英语与 ASD-STE100 写作规则编写内部开发文档。
 
-## Install for Codex
+## 安装到 Codex
 
-The repository root is the skill directory. It contains `SKILL.md`, `scripts/`, `references/`, and `assets/`.
-Clone it directly into a discovered skills directory.
-For example, use PowerShell on Windows:
+仓库根目录即技能目录，包含 `SKILL.md`、`scripts/`、`references/` 和 `assets/`。可直接克隆到 Codex 能发现的技能目录中。
+
+Windows PowerShell 示例：
 
 ```powershell
 git clone https://github.com/airpot/sdd-harness.git "$HOME/.agents/skills/sdd-harness"
 ```
 
-Then invoke `$sdd-harness` in Codex.
-If unavailable, refresh skill discovery or start a new chat.
-If the destination exists, preserve the old installation before replacing it.
+随后在 Codex 中调用 `$sdd-harness`。若尚未识别，可刷新技能发现或新开对话。若目标目录已存在，须先保留旧安装，再进行替换。
 
-Direct cloning also retains repository development records.
-For an installation with only the thirteen skill files, use the installer:
+直接克隆会同时保留仓库中的开发记录。若只需安装 13 个技能文件，可使用安装脚本：
 
 ```text
 git clone https://github.com/airpot/sdd-harness.git
@@ -54,100 +43,78 @@ cd sdd-harness
 python scripts/install.py --into "~/.agents/skills"
 ```
 
-For ZCode, use `~/.zcode/skills` as the installation parent.
-For DeepSeek Harness, use the project's `.dsh/skills` or its configured user skills directory.
-Read [installation instructions](references/install.md) for discovery, updates, and alternative paths.
+ZCode 可将安装父目录设为 `~/.zcode/skills`。DeepSeek Harness 可使用项目的 `.dsh/skills`，或其实际配置的用户技能目录。技能发现、更新与其他路径详见[安装说明](references/install.md)。
 
-The installer refuses to overwrite different content.
-Before updating, preserve the existing installation outside discovered skills directories.
+安装脚本拒绝覆盖不同内容。更新前，应将旧安装保存到技能发现目录之外。
 
-## Install from the package
+## 从安装包安装
 
-Download [sdd-harness-0.5.1.zip](dist/sdd-harness-0.5.1.zip) and its [SHA-256 file](dist/sdd-harness-0.5.1.sha256).
-Extract the ZIP into a local directory.
-From that directory, run:
+下载 [sdd-harness-0.5.1.zip](dist/sdd-harness-0.5.1.zip) 及其 [SHA-256 校验文件](dist/sdd-harness-0.5.1.sha256)，解压到本地目录，然后在该目录执行：
 
 ```text
 python sdd-harness/scripts/install.py --into "~/.agents/skills"
 ```
 
-Without Python, copy the complete `sdd-harness` directory into the target skills directory.
-Do not copy only `SKILL.md`.
+没有 Python 时，可将完整的 `sdd-harness` 目录复制到目标技能目录；须保留完整资源，不能只复制 `SKILL.md`。
 
-## Continue a project
+## 继续项目开发
 
-Give the agent this instruction:
+可向 agent 提供以下指令：
 
 > Use sdd-harness to continue from the task handoff. Check results, ownership, and evidence before the next action.
 
-Read the [skill entry](SKILL.md) for the workflow and relevant resources.
-Project records belong in the target project. Keep them separate from the skill installation.
-Use existing project records before adding new files.
+工作流程与资源入口见[技能执行指令](SKILL.md)。项目记录应保存到目标项目中，并与技能安装目录分开。优先复用现有记录，再按需新增文件。
 
-## Internal document policy
+## 内部文档写作规范
 
-New or changed internal development prose defaults to English.
-Apply the [writing policy](references/writing.md) to specifications, plans, decisions, validation records, and handoff records.
-The policy uses short instructions, active voice, explicit conditions, and consistent software terms.
-Explicit user language requests and mandatory project formats take precedence.
-Keep code identifiers, commands, paths, quotations, and raw evidence unchanged.
-Use the user's language for conversation unless the user requests another language.
+新增或修改的内部开发文档默认使用英语。规格、计划、决策、验证与交接记录均应遵循[写作规范](references/writing.md)，采用短句、主动语态、明确条件与一致术语。
 
-The package uses **STE-guided English**.
-No complete ASD-STE100 dictionary or full-standard compliance audit has been performed.
+用户明确指定的语言与项目强制格式优先。代码标识符、命令、路径、引文及原始证据保持原样；与用户交流时，默认使用用户的语言。本 README 按用户要求使用中文，技能执行指令仍使用英语。
 
-## Workspace tools
+技能包采用 **STE-guided English（遵循 STE 指导的英语）**，尚未完成 ASD-STE100 词典与完整标准的合规审计。
 
-The scripts need Python 3.10 or later.
-Workspace commands also need Git 2.29 or later.
-There are no third-party Python dependencies.
+## 工作区工具
+
+脚本需要 Python 3.10 或更高版本；工作区命令还需要 Git 2.29 或更高版本。无第三方 Python 依赖。
 
 ```text
 python scripts/workspace.py --help
 ```
 
-Available commands:
-
-| Command | Function |
+| 命令 | 功能 |
 | --- | --- |
-| `inspect` | Read Git observations. It does not establish activity or write permission. |
-| `snapshot` | Save HEAD history, current regular files, and selected ignored results outside the worktree. |
-| `verify` | Check archive contents and hashes. |
-| `restore` | Restore preserved results into a new directory. |
+| `inspect` | 读取 Git 状态；不能据此判定工作区无人使用或已获得写入权限。 |
+| `snapshot` | 在 worktree 之外保存 HEAD 历史、当前普通文件及明确选取的被忽略成果。 |
+| `verify` | 核验归档内容与哈希。 |
+| `restore` | 将保存的成果恢复到新目录。 |
 
-These commands do not delete source worktrees.
-For removal conditions and supported recovery scope, read [recovery instructions](references/recovery.md).
+这些命令不会删除源 worktree。移除条件及支持的恢复范围见[恢复说明](references/recovery.md)。
 
-Cooperating developers can use ordinary assigned tasks, branches, and independent checkouts in one repository.
-The workflow requires no cross-machine execution claims, heartbeat leases, or coordination service.
-Written task scopes do not enforce native permissions. Check actual project and host controls before claiming enforcement.
-The installer does not configure project CI or release credentials.
+协作开发者可在同一仓库中使用已分配任务、普通分支与独立检出目录。流程不强制要求跨机器执行权声明、心跳租约或协调服务。
 
-## Verify and build
+书面任务范围不能强制执行原生权限；是否存在有效限制，须核验实际项目与宿主控制。安装脚本不会配置项目 CI 或发布凭据。
 
-Run the test suite:
+## 验证与打包
+
+运行测试：
 
 ```text
 python -m unittest discover -s tests -q
 ```
 
-Build a new package at an unused output path:
+在尚未使用的输出路径生成安装包：
 
 ```text
 python tools/package_skill.py --source . --output dist/sdd-harness-local.zip
 ```
 
-The builder checks relative references and ZIP integrity. It refuses to overwrite an existing output.
-Its output includes the archive SHA-256 hash.
-The tests cover workspace preservation and recovery, installation, and packaging.
-They do not establish full runtime compatibility across products, machines, or operating systems.
+打包工具会检查相对链接与 ZIP 完整性，拒绝覆盖已有输出，并返回安装包的 SHA-256 哈希。
 
-Read the [behavior specification](specs/sdd-harness.md) for the skill's accepted requirements.
-Use the [saved instruction evaluations](evals/README.md) to compare executor decisions across revisions.
-Evaluation criteria and complete outputs remain separate from executor inputs.
-The current instruction suite contains 28 cases and 84 criteria, including independent and optional collaboration workflows.
-Isolated host evaluations exercise actual fixture actions in repeated fresh trials.
-The repository-only host simulator checks files, hashes, behavior, and attempted actions. It is not included in the skill package.
-Read the [0.5.0 workflow validation record](evals/results/0.5.0-validation.md) for results, source-review repairs, and applicability limits.
+测试覆盖工作区成果保存与恢复、安装及打包；不能据此认定所有产品、机器与操作系统的运行兼容性均已得到验证。
 
-The [0.5.1 distribution record](evals/results/0.5.1-validation.md) covers the root layout, installer filtering, and package validation.
+已接受的需求见[行为规格](specs/sdd-harness.md)，版本间的执行决策比较见[指令评测](evals/README.md)。评分标准与完整评测结果不提供给执行者作为输入。
+
+当前指令评测集包含 28 个场景、84 项标准，覆盖独立开发与可选协作。隔离的宿主评测以多轮独立执行检查实际文件、哈希、行为与操作尝试；模拟器只用于仓库评测，不包含在技能安装包中。
+
+- [0.5.0 工作流程验证记录](evals/results/0.5.0-validation.md)：结果、审查修正及证据适用范围。
+- [0.5.1 分发验证记录](evals/results/0.5.1-validation.md)：根目录布局、安装文件筛选与安装包验证。

@@ -1,0 +1,300 @@
+{
+  "version": "0.7.1",
+  "date": "2026-10-06",
+  "release_commit": "e8c117af6ea38c637f49549556c81d071d9646aa",
+  "reason": "Git core.autocrlf checkout converted text newline bytes after release commit. This additive record preserves original evaluated raw hashes and separately binds current checkout bytes to the release Git blobs.",
+  "original_release_provenance": {
+    "path": "evals/results/0.7.1-release-provenance.json",
+    "sha256": "4788a3881f51f52e849da2fe98e21321e739348dae7b76d66cd4336614cea239",
+    "unchanged": true
+  },
+  "files": {
+    "assets/change.md": {
+      "category": "portable_source",
+      "evaluated_raw_sha256": "da13204796df87ea9405216f5b85dc7a9d35aff09969f7b44946fcd223880292",
+      "checkout_raw_sha256": "da13204796df87ea9405216f5b85dc7a9d35aff09969f7b44946fcd223880292",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "e22029ca705c2655c02a5f3a842b786089d30ef6",
+      "lf_normalized_sha256": "da13204796df87ea9405216f5b85dc7a9d35aff09969f7b44946fcd223880292",
+      "release_normalized_content_equal": true
+    },
+    "assets/handoff.md": {
+      "category": "portable_source",
+      "evaluated_raw_sha256": "4da71c505cc6730ddbd86fcc1491f4ff9544564c4cd1167a3f50df012c495b73",
+      "checkout_raw_sha256": "4da71c505cc6730ddbd86fcc1491f4ff9544564c4cd1167a3f50df012c495b73",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "65463c71ff3671df00e3bc9ae9b0ade38c5de980",
+      "lf_normalized_sha256": "4da71c505cc6730ddbd86fcc1491f4ff9544564c4cd1167a3f50df012c495b73",
+      "release_normalized_content_equal": true
+    },
+    "assets/release.md": {
+      "category": "portable_source",
+      "evaluated_raw_sha256": "2dd28a051622ecf6c42074ad8b6787e1ddfd39027dd32781f7ed86a8a0b42ab5",
+      "checkout_raw_sha256": "2dd28a051622ecf6c42074ad8b6787e1ddfd39027dd32781f7ed86a8a0b42ab5",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "1f1ff4a391751f1ffd739792ed17cba002c90078",
+      "lf_normalized_sha256": "2dd28a051622ecf6c42074ad8b6787e1ddfd39027dd32781f7ed86a8a0b42ab5",
+      "release_normalized_content_equal": true
+    },
+    "references/collaboration.md": {
+      "category": "portable_source",
+      "evaluated_raw_sha256": "90780d83facbfb5bf7b0c5d1f14eecc30e3a34753abf5d6af2c5a74a85552661",
+      "checkout_raw_sha256": "90780d83facbfb5bf7b0c5d1f14eecc30e3a34753abf5d6af2c5a74a85552661",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "6d7de682557014a06f2bde6c6558703de3a6f20c",
+      "lf_normalized_sha256": "85522f2d07ac2381be00db1b21d381aebdfcb019218ae67ba40e14b371e84264",
+      "release_normalized_content_equal": true
+    },
+    "references/delivery.md": {
+      "category": "portable_source",
+      "evaluated_raw_sha256": "95566a3aab43d1c29cc06c395bbe8150a1bedf73576ae8caa59c86cf05151468",
+      "checkout_raw_sha256": "95566a3aab43d1c29cc06c395bbe8150a1bedf73576ae8caa59c86cf05151468",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "4d530a52f96cecc8f089a6fbbf88f23bef9fd6b7",
+      "lf_normalized_sha256": "95566a3aab43d1c29cc06c395bbe8150a1bedf73576ae8caa59c86cf05151468",
+      "release_normalized_content_equal": true
+    },
+    "references/install.md": {
+      "category": "portable_source",
+      "evaluated_raw_sha256": "8f801581c4f8fe82e1cc1a65f9b423bb9517dd2f9b19efa808a9c623064f3353",
+      "checkout_raw_sha256": "8f801581c4f8fe82e1cc1a65f9b423bb9517dd2f9b19efa808a9c623064f3353",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "3bb07d3325304175050f56ae8aa60a9189eb409b",
+      "lf_normalized_sha256": "d564f5c993cc8bfcf746c14b819710a18c63592253319b0c1b43337a153c8956",
+      "release_normalized_content_equal": true
+    },
+    "references/recovery.md": {
+      "category": "portable_source",
+      "evaluated_raw_sha256": "2f567a7ff1d337bb379e2c7705b9d230b1866013347c060bb3981624e52d05c4",
+      "checkout_raw_sha256": "2f567a7ff1d337bb379e2c7705b9d230b1866013347c060bb3981624e52d05c4",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "c9e31bac1aa6ed189795da7625813efa31a4b4fa",
+      "lf_normalized_sha256": "2f567a7ff1d337bb379e2c7705b9d230b1866013347c060bb3981624e52d05c4",
+      "release_normalized_content_equal": true
+    },
+    "references/spec-review.md": {
+      "category": "portable_source",
+      "evaluated_raw_sha256": "99af55f4a2873b0e0540e792486f51f83cddcaa13316dbbbf4d70329a372fccc",
+      "checkout_raw_sha256": "99af55f4a2873b0e0540e792486f51f83cddcaa13316dbbbf4d70329a372fccc",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "caa33367ed5bde74c4c4af42a2221c476ece638d",
+      "lf_normalized_sha256": "99af55f4a2873b0e0540e792486f51f83cddcaa13316dbbbf4d70329a372fccc",
+      "release_normalized_content_equal": true
+    },
+    "references/subagents.md": {
+      "category": "portable_source",
+      "evaluated_raw_sha256": "4b3380e3b609700dae1a793767818b7c9496f2224afdf50fd25cf0b0fd03eb5c",
+      "checkout_raw_sha256": "4b3380e3b609700dae1a793767818b7c9496f2224afdf50fd25cf0b0fd03eb5c",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "1f3465e63543edb8f4bde6f78b76d700a063c96b",
+      "lf_normalized_sha256": "4b3380e3b609700dae1a793767818b7c9496f2224afdf50fd25cf0b0fd03eb5c",
+      "release_normalized_content_equal": true
+    },
+    "references/workflow.md": {
+      "category": "portable_source",
+      "evaluated_raw_sha256": "24b728f039169939beb272efc24a2e78e4b5ed54e5678030b5cba4634e71cafc",
+      "checkout_raw_sha256": "24b728f039169939beb272efc24a2e78e4b5ed54e5678030b5cba4634e71cafc",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "3825c53a7457322f4de9ea9df02293d1ec418b66",
+      "lf_normalized_sha256": "24b728f039169939beb272efc24a2e78e4b5ed54e5678030b5cba4634e71cafc",
+      "release_normalized_content_equal": true
+    },
+    "references/writing.md": {
+      "category": "portable_source",
+      "evaluated_raw_sha256": "38fd8563663da1c1e21de6a4c6b9f7ae5dc605794876e9e5eab2e36d794623c7",
+      "checkout_raw_sha256": "38fd8563663da1c1e21de6a4c6b9f7ae5dc605794876e9e5eab2e36d794623c7",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "adb9fd370e223d25f53118f335fe3c11d6260b6e",
+      "lf_normalized_sha256": "38fd8563663da1c1e21de6a4c6b9f7ae5dc605794876e9e5eab2e36d794623c7",
+      "release_normalized_content_equal": true
+    },
+    "scripts/install.py": {
+      "category": "portable_source",
+      "evaluated_raw_sha256": "e12bcdcb1e18ff64b8a26de12c14d0a6a2ec04462cd13f68c9343bd452dc1cb4",
+      "checkout_raw_sha256": "e12bcdcb1e18ff64b8a26de12c14d0a6a2ec04462cd13f68c9343bd452dc1cb4",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "f51fc3e0b024957256caf1aaf6cd089006269e71",
+      "lf_normalized_sha256": "e12bcdcb1e18ff64b8a26de12c14d0a6a2ec04462cd13f68c9343bd452dc1cb4",
+      "release_normalized_content_equal": true
+    },
+    "scripts/workspace.py": {
+      "category": "portable_source",
+      "evaluated_raw_sha256": "f042e27a5cce0031f59c93f72de0c01dd066e27b5db75e4a8559a4d6c0bca225",
+      "checkout_raw_sha256": "f042e27a5cce0031f59c93f72de0c01dd066e27b5db75e4a8559a4d6c0bca225",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "98dc24d7bd24e53f8df509f67d1433ed392c1b11",
+      "lf_normalized_sha256": "f042e27a5cce0031f59c93f72de0c01dd066e27b5db75e4a8559a4d6c0bca225",
+      "release_normalized_content_equal": true
+    },
+    "SKILL.md": {
+      "category": "portable_source",
+      "evaluated_raw_sha256": "09b13e3016fbdd4e9d3c19696d20cf33d20d88f83a9d5f6af0e41f1847a462c3",
+      "checkout_raw_sha256": "09b13e3016fbdd4e9d3c19696d20cf33d20d88f83a9d5f6af0e41f1847a462c3",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "77db105c232981bd310639ebbb403ef62144e04f",
+      "lf_normalized_sha256": "2f08ee7367abeae9c8064c917e17435a260e5904fa35b440920ccd013c316202",
+      "release_normalized_content_equal": true
+    },
+    "evals/results/0.7.1-correction-provenance.json": {
+      "category": "records",
+      "evaluated_raw_sha256": "de4e78e7d13528f19893d87b4834e1004a42654e5ffc259d3f1b570052140d0f",
+      "checkout_raw_sha256": "de4e78e7d13528f19893d87b4834e1004a42654e5ffc259d3f1b570052140d0f",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "fa373e590b58c995a4ce2c61535fcc2a90c4d2af",
+      "lf_normalized_sha256": "72b16852ffe68f3dc20b0a73318427d2127b200b51500cf6a7f77e9b8813dedd",
+      "release_normalized_content_equal": true
+    },
+    "evals/results/0.7.1-native-applicability.json": {
+      "category": "records",
+      "evaluated_raw_sha256": "f31d76e78f683a3513bf03e3e6184fcd3bf7f36b74a3f482582f148b875cb9e2",
+      "checkout_raw_sha256": "f31d76e78f683a3513bf03e3e6184fcd3bf7f36b74a3f482582f148b875cb9e2",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "73ec7154b238dc8d2b4b74b9b5cefd9239d30237",
+      "lf_normalized_sha256": "b2d7958920bcb3e046adddb8cc94c970ad671e9d3e2b6ae5533b7c02773cb1a4",
+      "release_normalized_content_equal": true
+    },
+    "evals/results/0.7.1-native-requests.json": {
+      "category": "records",
+      "evaluated_raw_sha256": "36a296cf72c45e9a28cb1f1eba515b264d9aa257a15915229334f1842d4fbb8e",
+      "checkout_raw_sha256": "36a296cf72c45e9a28cb1f1eba515b264d9aa257a15915229334f1842d4fbb8e",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "074648b1699bfc511942ded26d42136ccddad75c",
+      "lf_normalized_sha256": "c250013a68ccf44ef5b9160d5e22ee7560d1c3447d6833d93abd122070abf567",
+      "release_normalized_content_equal": true
+    },
+    "evals/results/0.7.1-quality-review.md": {
+      "category": "records",
+      "evaluated_raw_sha256": "899859d651687bfebde15d82ce58c1a7bd787510c133e897c0f3260cd3ac8c36",
+      "checkout_raw_sha256": "899859d651687bfebde15d82ce58c1a7bd787510c133e897c0f3260cd3ac8c36",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "44d72ba27be5895b696ccf533a07f3cc1407ce9e",
+      "lf_normalized_sha256": "899859d651687bfebde15d82ce58c1a7bd787510c133e897c0f3260cd3ac8c36",
+      "release_normalized_content_equal": true
+    },
+    "evals/results/0.7.1-regression.json": {
+      "category": "records",
+      "evaluated_raw_sha256": "9f500cd6a61334201e1ba8910c74e33b05f37d72ddf5bfb93a24722e72bbe325",
+      "checkout_raw_sha256": "9f500cd6a61334201e1ba8910c74e33b05f37d72ddf5bfb93a24722e72bbe325",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "684460cb8c72f725b9bb68c738fbb19d530823ec",
+      "lf_normalized_sha256": "7f32146a0adba4a95a29e92a8f1127bf3cb9c7730e800a451b2c37022729612a",
+      "release_normalized_content_equal": true
+    },
+    "evals/results/0.7.1-release-validation.md": {
+      "category": "records",
+      "evaluated_raw_sha256": "2468f13772e9b652d4859a915b72dd162c777e478fd66a7502b0d58e47488e0e",
+      "checkout_raw_sha256": "2468f13772e9b652d4859a915b72dd162c777e478fd66a7502b0d58e47488e0e",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "74246c9d80f4f07305a111359fae2648ab2d3286",
+      "lf_normalized_sha256": "a36f9a4e622d229e3de075c520ae6f857dd3d206e71452f93eeccd264e618ba4",
+      "release_normalized_content_equal": true
+    },
+    "evals/results/0.7.1-review-correction.json": {
+      "category": "records",
+      "evaluated_raw_sha256": "9eea01bcae86042c4af89924d4363de7841b9e9f5c0e655a3b5c13856e869238",
+      "checkout_raw_sha256": "9eea01bcae86042c4af89924d4363de7841b9e9f5c0e655a3b5c13856e869238",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "f177e0c16399b1244be4da9d83a28abaf43f54ec",
+      "lf_normalized_sha256": "e848b65ae2e2116066001c96f7217f563653770450a67730673cbb2a9990a5b4",
+      "release_normalized_content_equal": true
+    },
+    "evals/results/0.7.1-spec-review.md": {
+      "category": "records",
+      "evaluated_raw_sha256": "9bb17ad870bd6efc253d1ab736c55fcb157dc33e6b9a1d351c9ac13b47762d36",
+      "checkout_raw_sha256": "9bb17ad870bd6efc253d1ab736c55fcb157dc33e6b9a1d351c9ac13b47762d36",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "124de205d5d4df93f30deb8b5aea3cdd94f2b32f",
+      "lf_normalized_sha256": "9bb17ad870bd6efc253d1ab736c55fcb157dc33e6b9a1d351c9ac13b47762d36",
+      "release_normalized_content_equal": true
+    },
+    "evals/results/0.7.1-template-results.json": {
+      "category": "records",
+      "evaluated_raw_sha256": "57029a080287014629d4b7a11d9606ff8767df322e8ac50a346891949a9de579",
+      "checkout_raw_sha256": "57029a080287014629d4b7a11d9606ff8767df322e8ac50a346891949a9de579",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "df839c9ab34410cdb73ebe976982e3f8ab87ba8d",
+      "lf_normalized_sha256": "d372d2f2134cd74215c53a3e209faccbd8838e005315906d2374038f3113aeb5",
+      "release_normalized_content_equal": true
+    },
+    "evals/results/0.7.1-tests-release.txt": {
+      "category": "records",
+      "evaluated_raw_sha256": "97ea83df24b723611f805e64df6757690f992cb034177ae28bb86d6889527bdc",
+      "checkout_raw_sha256": "97ea83df24b723611f805e64df6757690f992cb034177ae28bb86d6889527bdc",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "b94af28f7bad459ee198f399a7dc62ac830136c5",
+      "lf_normalized_sha256": "024a00009080cce7490fccc0b246804a68fad5cc7c6c4e456e91491a363133b2",
+      "release_normalized_content_equal": true
+    },
+    "evals/results/0.7.1-validation.md": {
+      "category": "records",
+      "evaluated_raw_sha256": "9917782dfe4cac13e33e32d0a2d061df91503286446357d2a209ea1a4c85693a",
+      "checkout_raw_sha256": "9917782dfe4cac13e33e32d0a2d061df91503286446357d2a209ea1a4c85693a",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "358537cd21aa7b7a0cf903ab90c21d6ecb41e1d4",
+      "lf_normalized_sha256": "9f9e08e69f4c4229dad56546fc7f1d2562b35ce8c4393e67069f55c41b525793",
+      "release_normalized_content_equal": true
+    },
+    "README.md": {
+      "category": "repository_code_and_docs",
+      "evaluated_raw_sha256": "20d9d13bd04d745ec0b4a418811e4d29873416f541f9633c229312e6f9b1b031",
+      "checkout_raw_sha256": "20d9d13bd04d745ec0b4a418811e4d29873416f541f9633c229312e6f9b1b031",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "2750c50c6e143d3300a6e90b8a4042862d068ef8",
+      "lf_normalized_sha256": "a437308f0063412174f13ad98bbce54d6339da5d593e8cf8716afb51aef62f81",
+      "release_normalized_content_equal": true
+    },
+    "specs/sdd-harness.md": {
+      "category": "repository_code_and_docs",
+      "evaluated_raw_sha256": "8189c5995fca78c807dfac51e29a1ca176d3fc3cddbfb03e2868df1e137a0b22",
+      "checkout_raw_sha256": "8dcba0c09a5a6b5d46e0581f808bb722698b1ee57298d80389489960df06f79a",
+      "evaluated_raw_matches": false,
+      "release_git_blob": "64f4577a34ad39c397d6a1b46d800ec007116c43",
+      "lf_normalized_sha256": "e0a91f3fb4c69c8f63a3aeeba1af8a82a4fa14a00430aa772d4ab48a237b2a84",
+      "release_normalized_content_equal": true
+    },
+    "tools/package_skill.py": {
+      "category": "repository_code_and_docs",
+      "evaluated_raw_sha256": "8f86ca2910557cb00998d407a2b32d60f11c7aefb093b4dfdc9a785113155916",
+      "checkout_raw_sha256": "8f86ca2910557cb00998d407a2b32d60f11c7aefb093b4dfdc9a785113155916",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "6fad49a7ea5290d83b0a39b4e53d366f6324ed2e",
+      "lf_normalized_sha256": "8f86ca2910557cb00998d407a2b32d60f11c7aefb093b4dfdc9a785113155916",
+      "release_normalized_content_equal": true
+    },
+    "tests/test_followup_corrections.py": {
+      "category": "repository_code_and_docs",
+      "evaluated_raw_sha256": "47a94d8851a4289d2f2c2dc5a97804ef1c96a6393ed97d9da37513be6b442986",
+      "checkout_raw_sha256": "47a94d8851a4289d2f2c2dc5a97804ef1c96a6393ed97d9da37513be6b442986",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "624577d9b028f86976c4b3c86692420c4726e7f7",
+      "lf_normalized_sha256": "47a94d8851a4289d2f2c2dc5a97804ef1c96a6393ed97d9da37513be6b442986",
+      "release_normalized_content_equal": true
+    },
+    "tests/test_skill_tools.py": {
+      "category": "repository_code_and_docs",
+      "evaluated_raw_sha256": "7f757fdc787110cf45bc4489cba9cb574c68d2cbafe9d99953162b78f9407308",
+      "checkout_raw_sha256": "7f757fdc787110cf45bc4489cba9cb574c68d2cbafe9d99953162b78f9407308",
+      "evaluated_raw_matches": true,
+      "release_git_blob": "0d27c00ceef107d1ed197eeb6e5332b62feeb105",
+      "lf_normalized_sha256": "7f757fdc787110cf45bc4489cba9cb574c68d2cbafe9d99953162b78f9407308",
+      "release_normalized_content_equal": true
+    },
+    "evals/README.md": {
+      "category": "repository_code_and_docs",
+      "evaluated_raw_sha256": "42a38f6421a05b3ef7f8c5fb16948a3943415c43d73fd92cf7976a8f985a07fb",
+      "checkout_raw_sha256": "09032a4af83f13e8fb50cbaf08d05d21d3cad08564f8be600e8ab6ad722f8615",
+      "evaluated_raw_matches": false,
+      "release_git_blob": "52531b5f534d18d6c859a87a569b90577320ebb9",
+      "lf_normalized_sha256": "287b25868fa483df94947c267bf4df2e6b042e78c7d218ab6fbab46da6091c8c",
+      "release_normalized_content_equal": true
+    }
+  },
+  "portable_files": 14,
+  "archive_sha256": "62a522a1c5ed97d27d1cc5a5f0584d96bee64a553d93bbac2428d742b6739420",
+  "installed_path": "C:/Users/airpot/.agents/skills/sdd-harness",
+  "portable_source_archive_install_equal": true,
+  "limitations": [
+    "Exact original mixed-newline snapshots of specs/sdd-harness.md and evals/README.md were not saved and could not be recovered. Their prior raw hashes remain historical bindings; this record does not claim their current checkout bytes match those raw hashes.",
+    "No behavior code changed during reconciliation. Native older Python and other agent hosts remain untested."
+  ]
+}

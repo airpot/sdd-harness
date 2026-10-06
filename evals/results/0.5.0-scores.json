@@ -1,0 +1,1137 @@
+{
+  "schema_version": 1,
+  "version": "0.5.0",
+  "evaluation": "Independent final evaluation against the supplied scenarios and criteria; only the seven permitted source files were read.",
+  "scope": "Isolated simulated instruction evaluation; no live external actions.",
+  "hash_algorithm": "SHA256",
+  "source_hashes": {
+    "evals/scenarios.json": "582d6b677765fdbbcb690fb7659c279a827c7b76797b855b865487e7498d7fc0",
+    "evals/criteria.json": "74678b6dd089dbf2d24ea78a46b915fca0d4aeeab59050e044c446d37297262b",
+    "evals/scenarios-0.4.0.json": "af77066a4c1a375cdffc786929c9b405e6010914c3deaf0b25b0c891311020f8",
+    "evals/criteria-0.4.0.json": "b1524f1fbf618fbea78f725b8212ef0246ec27fc37563631b04165cf2e617f84",
+    "evals/scenarios-0.5.0.json": "301b81aee786251f017a0000b47c86926527bcecf30c1251f90507137060aa27",
+    "evals/criteria-0.5.0.json": "d7f4549052b36cfa987a73f074f10f198c2325c18b0a235963fc4f7cce70c544",
+    "evals/results/0.5.0-forward.json": "a963b6b97c41fcc54da1848487c7e627b8ef44cda38558d16d60d5473b3c5133"
+  },
+  "forward_input_hash_checks": [
+    {
+      "path": "evals/scenarios.json",
+      "declared_hash": "582d6b677765fdbbcb690fb7659c279a827c7b76797b855b865487e7498d7fc0",
+      "actual_hash": "582d6b677765fdbbcb690fb7659c279a827c7b76797b855b865487e7498d7fc0",
+      "match": true
+    },
+    {
+      "path": "evals/scenarios-0.4.0.json",
+      "declared_hash": "af77066a4c1a375cdffc786929c9b405e6010914c3deaf0b25b0c891311020f8",
+      "actual_hash": "af77066a4c1a375cdffc786929c9b405e6010914c3deaf0b25b0c891311020f8",
+      "match": true
+    },
+    {
+      "path": "evals/scenarios-0.5.0.json",
+      "declared_hash": "301b81aee786251f017a0000b47c86926527bcecf30c1251f90507137060aa27",
+      "actual_hash": "301b81aee786251f017a0000b47c86926527bcecf30c1251f90507137060aa27",
+      "match": true
+    }
+  ],
+  "scoring_rules": [
+    "Every criterion is scored independently against the actual response for the same case, interpreted using its supplied scenario.",
+    "All conjuncts of original compound criteria are required; partial fulfillment does not pass.",
+    "Exact criterion text is copied unchanged from its source. IDs combine globally unique case ID and one-based criterion position.",
+    "Every response quote is verified by a case-sensitive ordinal substring check against the corresponding actual forward response.",
+    "Negative criteria are supported by explicit decisions or scope disclosures; no hidden actions are assumed."
+  ],
+  "interpretation_limits": [
+    "Scores assess simulated response decisions and disclosures only. They do not verify live code, test execution, repository edits, actual ownership, deployment, recovery, or removal.",
+    "Require, identify, allow, and do-not criteria can be satisfied by explicit proposed requirements or decisions; no action is falsely treated as executed.",
+    "Compact inline references and reuse of existing authorization satisfy the original compound criteria without demanding additional document structure or literal terminology.",
+    "Brownfield-reuse uses the supplied current adapter facts and the explicit plan to inspect current callers/tests as planning evidence; actual code inspection is expressly unperformed.",
+    "Unreachable-returning-executor retains isolated results as proposals separately from accepted C1 and bars shared writes/publication pending verified task-system responsibility; this satisfies proposal preservation without an invented ownership mechanism.",
+    "Shared-breaking-change coordinates compatibility/migration effects, affected artifacts and evidence, then requires actual combined validation; no unstated concrete migration command is imposed.",
+    "No previous scores, other evaluator answers, skill/source/design/plans/reviews, host code, or external actions were consulted."
+  ],
+  "counts": {
+    "cases": 28,
+    "criteria": 84,
+    "pass": 84,
+    "fail": 0,
+    "not_assessable": 0,
+    "by_group": {
+      "original": {
+        "cases": 7,
+        "criteria": 21,
+        "pass": 21,
+        "fail": 0,
+        "not_assessable": 0
+      },
+      "0.4.0": {
+        "cases": 12,
+        "criteria": 36,
+        "pass": 36,
+        "fail": 0,
+        "not_assessable": 0
+      },
+      "0.5.0": {
+        "cases": 9,
+        "criteria": 27,
+        "pass": 27,
+        "fail": 0,
+        "not_assessable": 0
+      }
+    }
+  },
+  "failed_criterion_ids": [],
+  "ambiguous_criterion_ids": [],
+  "cases": [
+    {
+      "case_id": "omitted-requirement",
+      "criterion_group": "original",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "omitted-requirement:1",
+          "criterion_text": "Identify the omitted ordering requirement from the source request.",
+          "verdict": "pass",
+          "response_quotes": [
+            "it does not check preservation of the existing item order."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Identifies the omitted source ordering requirement."
+        },
+        {
+          "criterion_id": "omitted-requirement:2",
+          "criterion_text": "Do not declare complete acceptance.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Acceptance is incomplete for B."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Withholds complete acceptance."
+        },
+        {
+          "criterion_id": "omitted-requirement:3",
+          "criterion_text": "Preserve the original requirement and identify the missing validation.",
+          "verdict": "pass",
+          "response_quotes": [
+            "That requirement remains binding even though the derived specification omitted it. Add the ordering condition to the existing requirement record and obtain applicable ordering evidence for B."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Preserves the original requirement and identifies the missing ordering validation."
+        }
+      ]
+    },
+    {
+      "case_id": "required-check-blocked",
+      "criterion_group": "original",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "required-check-blocked:1",
+          "criterion_text": "Keep the required blocked integration check visible in the acceptance conclusion.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Acceptance is blocked. Unit checks passed, but the mandatory real API integration check is blocked because the test API is unavailable."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Keeps the required blocked integration check in the main acceptance conclusion."
+        },
+        {
+          "criterion_id": "required-check-blocked:2",
+          "criterion_text": "Do not equate implementation completion with complete acceptance.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Checked tasks, the test count, the deadline, and the earlier implementation-complete handoff do not satisfy that condition. Keep this gap in the main verdict. Retain implementation status separately"
+          ],
+          "quotes_verified_present": true,
+          "reason": "Separates implementation completion from complete acceptance."
+        },
+        {
+          "criterion_id": "required-check-blocked:3",
+          "criterion_text": "Do not deploy or request redundant development authorization.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Release authorization is also absent; publication must remain pending. This assessment performs no release."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Does not deploy; asks only for API restoration and checking, not redundant development authorization."
+        }
+      ]
+    },
+    {
+      "case_id": "stale-evidence",
+      "criterion_group": "original",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "stale-evidence:1",
+          "criterion_text": "Do not treat the historical passed result as applicable without assessment.",
+          "verdict": "pass",
+          "response_quotes": [
+            "That result does not establish acceptance of B: the migration, reader dependency, and schema changed. Applicability to B is unassessed."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Does not transfer historical evidence to B without assessment."
+        },
+        {
+          "criterion_id": "stale-evidence:2",
+          "criterion_text": "Identify the missing repeatable procedure, inputs, and pass criterion.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Fixture version and pass criterion were not recorded. Acceptance remains incomplete. Next action: define repeatable compatibility steps, versioned stored-record inputs, setup, and expected readable results"
+          ],
+          "quotes_verified_present": true,
+          "reason": "Identifies missing repeatable procedure, versioned inputs, and pass criterion."
+        },
+        {
+          "criterion_id": "stale-evidence:3",
+          "criterion_text": "Record an applicability conclusion or leave applicability visibly unassessed.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Applicability to B is unassessed."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Leaves applicability visibly unassessed."
+        }
+      ]
+    },
+    {
+      "case_id": "living-spec-reconciliation",
+      "criterion_group": "original",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "living-spec-reconciliation:1",
+          "criterion_text": "Require reconciliation of the accepted behavior into the living specification and affected artifacts.",
+          "verdict": "pass",
+          "response_quotes": [
+            "update specs/api.md from default 20 to 100 and link accepted Change C. Update the affected task basis and derived references."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Requires accepted behavior in the living specification and affected artifacts."
+        },
+        {
+          "criterion_id": "living-spec-reconciliation:2",
+          "criterion_text": "Do not report complete SDD closure while the authoritative contract remains obsolete.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Verify that the authoritative specification and task records now describe B consistently, then close the accepted change."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Makes closure conditional on contract reconciliation."
+        },
+        {
+          "criterion_id": "living-spec-reconciliation:3",
+          "criterion_text": "Reuse existing authorization and preserve change history.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Under the existing maintainer authorization, update specs/api.md from default 20 to 100 and link accepted Change C. Update the affected task basis and derived references. Preserve C and the original evidence.",
+            "No repeat approval is needed."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Reuses existing authorization and preserves change history and evidence."
+        }
+      ]
+    },
+    {
+      "case_id": "historical-spec-reconciliation",
+      "criterion_group": "original",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "historical-spec-reconciliation:1",
+          "criterion_text": "Keep the historical feature document intact.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Preserve specs/001/spec.md as the historical record for page size 20."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Keeps the historical feature document intact."
+        },
+        {
+          "criterion_id": "historical-spec-reconciliation:2",
+          "criterion_text": "Update or require the current index and explicit superseding link.",
+          "verdict": "pass",
+          "response_quotes": [
+            "update specs/index.md to identify specs/002/spec.md as the current behavior, page size 100. Record the superseding relationship through the existing index or task record."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Requires the current index and explicit superseding relationship."
+        },
+        {
+          "criterion_id": "historical-spec-reconciliation:3",
+          "criterion_text": "Do not add repeated approval or pretend the old specification describes the current candidate.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Use the existing authorization to update specs/index.md to identify specs/002/spec.md as the current behavior, page size 100.",
+            "no historical document needs rewriting or repeat approval."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Uses existing approval and assigns current behavior to feature 002 rather than the old feature."
+        }
+      ]
+    },
+    {
+      "case_id": "small-change",
+      "criterion_group": "original",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "small-change:1",
+          "criterion_text": "Allow compact inline source-to-acceptance-to-implementation-to-evidence references.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Brief handoff for the existing BUG-7 record: B is accepted for this correction. The API validation heading in specs/api.md requires HTTP 400 for empty names; api.py implements it. Supplied evidence: python -m unittest tests.test_api.EmptyNameCase, fixture empty-name-v1, Python 3.12, candidate B; passed HTTP 400 with the existing error body. Log: logs/empty-name-B.txt."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Allows compact inline source, accepted requirement, implementation, and evidence references."
+        },
+        {
+          "criterion_id": "small-change:2",
+          "criterion_text": "Do not mandate a new matrix, specification rewrite, or complete document suite.",
+          "verdict": "pass",
+          "response_quotes": [
+            "No new project files or specification rewrite are necessary."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Does not mandate a new matrix, rewrite, or document suite."
+        },
+        {
+          "criterion_id": "small-change:3",
+          "criterion_text": "Separate accepted development from optional publication.",
+          "verdict": "pass",
+          "response_quotes": [
+            "No additional behavior changed. No new project files or specification rewrite are necessary. Publication is outside scope.",
+            "Publication is outside scope."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Separates accepted correction development from publication."
+        }
+      ]
+    },
+    {
+      "case_id": "conflicting-contract",
+      "criterion_group": "original",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "conflicting-contract:1",
+          "criterion_text": "Identify the unresolved accepted-contract conflict.",
+          "verdict": "pass",
+          "response_quotes": [
+            "the accepted specification requires 20, while the accepted interface contract requires 100. Neither supersedes the other."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Identifies the unresolved accepted-contract conflict."
+        },
+        {
+          "criterion_id": "conflicting-contract:2",
+          "criterion_text": "Do not silently choose or rewrite the authoritative default from observed behavior.",
+          "verdict": "pass",
+          "response_quotes": [
+            "The example client explicitly supplies 100, so its passing smoke test does not resolve the default.",
+            "without selecting a production default.",
+            "Do not change either accepted contract"
+          ],
+          "quotes_verified_present": true,
+          "reason": "Does not choose or rewrite the default from observed client behavior."
+        },
+        {
+          "criterion_id": "conflicting-contract:3",
+          "criterion_text": "Continue only independent investigation or an explicitly isolated prototype until the contract is resolved.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Continue independent investigation or an explicitly isolated prototype without selecting a production default."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Allows only independent investigation or isolated prototyping pending resolution."
+        }
+      ]
+    },
+    {
+      "case_id": "incorrect-test-oracle",
+      "criterion_group": "0.4.0",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "incorrect-test-oracle:1",
+          "criterion_text": "Identify that the assertion contradicts the accepted numeric-order rule.",
+          "verdict": "pass",
+          "response_quotes": [
+            "B violates the accepted numeric ordering rule: [10, 2] must produce [2, 10], but B returns [10, 2]. Acceptance fails for this condition. The supplied passing assertion encodes the same error"
+          ],
+          "quotes_verified_present": true,
+          "reason": "Identifies the assertion as contradicting the numeric-order rule."
+        },
+        {
+          "criterion_id": "incorrect-test-oracle:2",
+          "criterion_text": "Withhold complete acceptance for B.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Acceptance fails for this condition."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Withholds complete acceptance for B."
+        },
+        {
+          "criterion_id": "incorrect-test-oracle:3",
+          "criterion_text": "Require an assertion or counterexample grounded in the accepted expected output.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Correct the assertion to the accepted output, fix the implementation, and rerun applicable checks against the exact revised candidate."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Requires an assertion grounded in the previously stated accepted output."
+        }
+      ]
+    },
+    {
+      "case_id": "bug-preservation",
+      "criterion_group": "0.4.0",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "bug-preservation:1",
+          "criterion_text": "Retain the observed failing baseline and corrected result.",
+          "verdict": "pass",
+          "response_quotes": [
+            "The same empty-name fixture changed from baseline HTTP 500 to HTTP 400 on B"
+          ],
+          "quotes_verified_present": true,
+          "reason": "Retains the observed failing baseline and corrected result."
+        },
+        {
+          "criterion_id": "bug-preservation:2",
+          "criterion_text": "Identify the missing valid-Unicode preservation check.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Valid Unicode names also use the changed validation code, but their required HTTP 200 and original response body remain unassessed."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Identifies the missing valid-Unicode preservation check."
+        },
+        {
+          "criterion_id": "bug-preservation:3",
+          "criterion_text": "Do not declare complete acceptance before necessary preservation evidence exists.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Close the bug only after both required behaviors have applicable passing evidence."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Withholds complete acceptance until necessary preservation evidence exists."
+        }
+      ]
+    },
+    {
+      "case_id": "advanced-integration-target",
+      "criterion_group": "0.4.0",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "advanced-integration-target:1",
+          "criterion_text": "Identify T1 as the actual integration target rather than T0.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Current target T1 uses 100"
+          ],
+          "quotes_verified_present": true,
+          "reason": "Identifies T1 as the actual integration target."
+        },
+        {
+          "criterion_id": "advanced-integration-target:2",
+          "criterion_text": "Require validation of the actual combined candidate.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Validate that actual combination and retain candidate, target, contract, environment, and log references."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Requires validation of the actual combined candidate."
+        },
+        {
+          "criterion_id": "advanced-integration-target:3",
+          "criterion_text": "Do not treat a conflict-free merge as evidence of semantic compatibility.",
+          "verdict": "pass",
+          "response_quotes": [
+            "a conflict-free merge does not establish semantic compatibility."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Rejects conflict freedom as evidence of semantic compatibility."
+        }
+      ]
+    },
+    {
+      "case_id": "obsolete-release-candidate",
+      "criterion_group": "0.4.0",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "obsolete-release-candidate:1",
+          "criterion_text": "Reject ordinary publication of superseded A.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Do not deploy A. The supplied release-system state marks A superseded"
+          ],
+          "quotes_verified_present": true,
+          "reason": "Rejects ordinary publication of superseded A."
+        },
+        {
+          "criterion_id": "obsolete-release-candidate:2",
+          "criterion_text": "Do not treat serial execution as proof that A remains eligible.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Serial execution and yesterday's authorization do not make A eligible now."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Does not infer release eligibility from serialized execution."
+        },
+        {
+          "criterion_id": "obsolete-release-candidate:3",
+          "criterion_text": "Keep intentional rollback distinct from this obsolete request.",
+          "verdict": "pass",
+          "response_quotes": [
+            "An intentional rollback requires its own process and authority, and none was requested."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Keeps intentional rollback distinct from the obsolete release request."
+        }
+      ]
+    },
+    {
+      "case_id": "migration-recovery",
+      "criterion_group": "0.4.0",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "migration-recovery:1",
+          "criterion_text": "Identify that reinstalling A cannot establish schema-2 data recovery.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Reinstalling A cannot recover schema-2 data because A reads schema 1 only."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Explains why reinstalling A cannot establish schema-2 recovery."
+        },
+        {
+          "criterion_id": "migration-recovery:2",
+          "criterion_text": "Withhold publication until the required recovery condition is resolved.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Publication is blocked on required compatibility and recovery conditions."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Withholds publication until recovery and compatibility conditions are resolved."
+        },
+        {
+          "criterion_id": "migration-recovery:3",
+          "criterion_text": "Require relevant stored-data compatibility evidence.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Prepare and validate representative stored-record compatibility checks"
+          ],
+          "quotes_verified_present": true,
+          "reason": "Requires relevant stored-record compatibility evidence."
+        }
+      ]
+    },
+    {
+      "case_id": "performance-acceptance",
+      "criterion_group": "0.4.0",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "performance-acceptance:1",
+          "criterion_text": "Reject the supplied average as evidence of the required p95 condition.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Average latency of 10 ms for one serial client with an in-memory dependency does not establish p95 below 200 ms at 200 requests per second."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Rejects the supplied mean as evidence of the required p95 condition."
+        },
+        {
+          "criterion_id": "performance-acceptance:2",
+          "criterion_text": "Define or request a repeatable check with the required workload and relevant environment.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Prepare a repeatable check for B with the specified profile, representative dependencies and inputs, request rate, p95 statistic, observation period, and recorded logs."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Defines a repeatable check with the required workload and environment."
+        },
+        {
+          "criterion_id": "performance-acceptance:3",
+          "criterion_text": "Do not execute an unauthorized production load test.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Run only checks supported by the existing local authority. If the required profile cannot be exercised locally, record that limitation and obtain specific authority before any production load test. No load test was run here."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Does not execute an unauthorized production load test."
+        }
+      ]
+    },
+    {
+      "case_id": "brownfield-reuse",
+      "criterion_group": "0.4.0",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "brownfield-reuse:1",
+          "criterion_text": "Use the identified current implementation and callers as planning evidence.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Plan around the current shared Client.send in src/client.py and the current decision to reuse it. The old README describes a removed adapter path and is stale. Before implementation, inspect relevant callers, tests, configuration, and entry points to confirm the reuse details."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Uses current implementation facts and plans current caller/test inspection as planning evidence."
+        },
+        {
+          "criterion_id": "brownfield-reuse:2",
+          "criterion_text": "Prefer the established adapter over an unsupported duplicate.",
+          "verdict": "pass",
+          "response_quotes": [
+            "A duplicate adapter or changed authentication scheme has no accepted basis."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Prefers the established adapter over an unsupported duplicate."
+        },
+        {
+          "criterion_id": "brownfield-reuse:3",
+          "criterion_text": "Preserve the accepted request and authentication contract.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Route the new event through the established request contract; preserve authentication and retry handling."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Preserves the accepted request and authentication contract."
+        }
+      ]
+    },
+    {
+      "case_id": "busy-worktree-entry",
+      "criterion_group": "0.4.0",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "busy-worktree-entry:1",
+          "criterion_text": "Do not write task B into actively used W.",
+          "verdict": "pass",
+          "response_quotes": [
+            "W is busy: Chat X owns task A and is actively writing on feature-A. Its clean Git status does not grant task B use of that checkout."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Does not authorize task B writes into actively used W."
+        },
+        {
+          "criterion_id": "busy-worktree-entry:2",
+          "criterion_text": "Continue B in a separate worktree or other suitable isolated location.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Continue B in a separate authorized worktree and branch"
+          ],
+          "quotes_verified_present": true,
+          "reason": "Continues B in a suitable isolated checkout."
+        },
+        {
+          "criterion_id": "busy-worktree-entry:3",
+          "criterion_text": "Do not remove W while chat X remains active.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Do not commit or clean W."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Withholds removal of actively used W."
+        }
+      ]
+    },
+    {
+      "case_id": "unknown-activity",
+      "criterion_group": "0.4.0",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "unknown-activity:1",
+          "criterion_text": "Keep unknown activity distinct from idle.",
+          "verdict": "pass",
+          "response_quotes": [
+            "inspect reports activity unknown and safe_to_remove false, and necessary ignored and external outputs remain unassessed. A clean Git status and an empty known-process poll do not establish stopped use."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Keeps unknown activity distinct from idle."
+        },
+        {
+          "criterion_id": "unknown-activity:2",
+          "criterion_text": "Withhold removal of the unresolved worktree.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Keep the worktree."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Withholds unresolved worktree removal."
+        },
+        {
+          "criterion_id": "unknown-activity:3",
+          "criterion_text": "Identify the missing preservation assessment.",
+          "verdict": "pass",
+          "response_quotes": [
+            "necessary ignored and external outputs remain unassessed."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Identifies the missing preservation assessment."
+        }
+      ]
+    },
+    {
+      "case_id": "unreachable-returning-executor",
+      "criterion_group": "0.4.0",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "unreachable-returning-executor:1",
+          "criterion_text": "Do not assign ownership solely from heartbeat timestamps.",
+          "verdict": "pass",
+          "response_quotes": [
+            "A newer heartbeat does not decide task ownership."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Rejects heartbeat timestamps as the sole ownership basis."
+        },
+        {
+          "criterion_id": "unreachable-returning-executor:2",
+          "criterion_text": "Require current verified ownership before A or B writes shared results.",
+          "verdict": "pass",
+          "response_quotes": [
+            "A must check the current task assignment before resuming writes; neither executor should overwrite shared results or publish while ownership remains unresolved. Resolve responsibility through the existing task system, confirm the original writers stopped, and verify actual state before transfer."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Requires current verified responsibility before shared writes."
+        },
+        {
+          "criterion_id": "unreachable-returning-executor:3",
+          "criterion_text": "Preserve the isolated results as proposals until accepted integration.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Preserve accepted checkpoint C1 and B's isolated proposals separately.",
+            "neither executor should overwrite shared results or publish while ownership remains unresolved."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Keeps B's isolated results as proposals separate from accepted C1; unresolved ownership precludes their shared integration or publication."
+        }
+      ]
+    },
+    {
+      "case_id": "remove-failure-retry",
+      "criterion_group": "0.4.0",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "remove-failure-retry:1",
+          "criterion_text": "Retain S7 without replacing the only verified backup.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Keep verified archive S7",
+            "Do not overwrite the only backup or force-delete the directory."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Retains the verified archive rather than replacing the only backup."
+        },
+        {
+          "criterion_id": "remove-failure-retry:2",
+          "criterion_text": "Continue or retry the supported removal operation under the existing guard.",
+          "verdict": "pass",
+          "response_quotes": [
+            "continue native operation R7 through its supported retry semantics. Do not overwrite the only backup or force-delete the directory. Before retrying, recheck stopped writers, managed temporary ownership, guard protection, archive accessibility, and actual directory and registration state."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Requires a supported R7 retry with guard protection rechecked."
+        },
+        {
+          "criterion_id": "remove-failure-retry:3",
+          "criterion_text": "Do not substitute forced recursive deletion for the supported lifecycle operation.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Do not overwrite the only backup or force-delete the directory."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Rejects forced deletion as a substitute for supported removal."
+        }
+      ]
+    },
+    {
+      "case_id": "new-writer-after-preservation",
+      "criterion_group": "0.4.0",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "new-writer-after-preservation:1",
+          "criterion_text": "Stop removal after active use resumes.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Stop removal and keep the worktree. Writer X is active"
+          ],
+          "quotes_verified_present": true,
+          "reason": "Stops removal after active use resumes."
+        },
+        {
+          "criterion_id": "new-writer-after-preservation:2",
+          "criterion_text": "Do not treat S as preservation of newer unknown results.",
+          "verdict": "pass",
+          "response_quotes": [
+            "S predates possible new results."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Does not treat S as preservation of newer unknown results."
+        },
+        {
+          "criterion_id": "new-writer-after-preservation:3",
+          "criterion_text": "Require stopped use and protection before any later preservation and removal.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Establish stopped use and protection again, assess X's newer necessary results, preserve them in a new accessible archive, and verify recovery under the project policy."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Requires stopped use and protection before later preservation and removal."
+        }
+      ]
+    },
+    {
+      "case_id": "split-business-acceptance",
+      "criterion_group": "0.5.0",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "split-business-acceptance:1",
+          "criterion_text": "Connect both tasks to the overall persisted-order and UI business outcome.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Link both tasks to one accepted order contract and the complete outcome: an authorized user submits an order, it persists, and the UI shows the correct saved order."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Connects both tasks to the complete persisted-order and UI business outcome."
+        },
+        {
+          "criterion_id": "split-business-acceptance:2",
+          "criterion_text": "Identify a responsible integration duty using the existing team.",
+          "verdict": "pass",
+          "response_quotes": [
+            "B can also coordinate integration."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Identifies an integration duty within the existing team."
+        },
+        {
+          "criterion_id": "split-business-acceptance:3",
+          "criterion_text": "Do not accept the complete feature from separate component passes alone.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Component checks passed, but complete acceptance remains incomplete."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Does not accept the whole feature from separate component passes."
+        }
+      ]
+    },
+    {
+      "case_id": "contract-source-drift",
+      "criterion_group": "0.5.0",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "contract-source-drift:1",
+          "criterion_text": "Use accepted contract C rather than the conflicting old example.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Use api/openapi.yaml at commit C as the accepted contract."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Uses accepted C rather than the conflicting old example."
+        },
+        {
+          "criterion_id": "contract-source-drift:2",
+          "criterion_text": "Identify payload, pagination and time-unit drift in the mock.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Responses use items and optional nextCursor; timestamps use UTC seconds. The README's data, next_page, and milliseconds example is stale and does not authorize a different interface. Correct the affected README example and frontend mock assumptions"
+          ],
+          "quotes_verified_present": true,
+          "reason": "Identifies payload, pagination, and time-unit drift affecting the mock."
+        },
+        {
+          "criterion_id": "contract-source-drift:3",
+          "criterion_text": "Require consumer/mock consistency with the accepted contract.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Bind mocks and generated clients to C and review affected consumer checks."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Requires consumer and mock consistency with accepted C."
+        }
+      ]
+    },
+    {
+      "case_id": "mock-only-team-completion",
+      "criterion_group": "0.5.0",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "mock-only-team-completion:1",
+          "criterion_text": "Keep frontend mock validation separate from whole-feature acceptance.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Complete feature acceptance is incomplete. F's pass supports only the consumer behavior exercised by its contract-derived mock."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Keeps mock validation separate from whole-feature acceptance."
+        },
+        {
+          "criterion_id": "mock-only-team-completion:2",
+          "criterion_text": "Require actual provider compatibility with C.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Obtain provider evidence for C's empty results and unauthorized HTTP 403 behavior. Then validate actual consumer/provider compatibility"
+          ],
+          "quotes_verified_present": true,
+          "reason": "Requires actual provider compatibility with C."
+        },
+        {
+          "criterion_id": "mock-only-team-completion:3",
+          "criterion_text": "Keep the required authorization and complete-flow evidence gap visible.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Keep unrun authorization and complete-flow checks visible."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Keeps required authorization and complete-flow evidence gaps visible."
+        }
+      ]
+    },
+    {
+      "case_id": "shared-breaking-change",
+      "criterion_group": "0.5.0",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "shared-breaking-change:1",
+          "criterion_text": "Keep C2 a proposal until accepted through existing authority.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Keep C2 as an unaccepted proposal.",
+            "coordinate the proposal through the existing acceptance authority before dependent implementation."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Keeps C2 a proposal pending existing authority acceptance."
+        },
+        {
+          "criterion_id": "shared-breaking-change:2",
+          "criterion_text": "Identify the affected frontend and shared type or schema dependencies.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Removing required orderId would break the active frontend on C1 and also affect the database schema and generated types."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Identifies affected frontend, shared types, and schema dependencies."
+        },
+        {
+          "criterion_id": "shared-breaking-change:3",
+          "criterion_text": "Require coordinated compatibility or migration checks before complete integration acceptance.",
+          "verdict": "pass",
+          "response_quotes": [
+            "record compatibility and migration effects, and coordinate the proposal through the existing acceptance authority before dependent implementation. Consider an additive transition if compatibility requires it. If accepted, update affected consumers, generated types, examples, schema procedures, and evidence together. Preserve the original C1 evidence and validate the actual combination."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Requires coordinated compatibility/migration effects, affected updates and evidence, and actual combined validation."
+        }
+      ]
+    },
+    {
+      "case_id": "project-harness-profile",
+      "criterion_group": "0.5.0",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "project-harness-profile:1",
+          "criterion_text": "Do not claim a task record or unverified host settings enforce permissions.",
+          "verdict": "pass",
+          "response_quotes": [
+            "A YAML task record can describe instructions but cannot enforce filesystem permissions or prove approval. Native permissions and hooks remain unverified."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Does not claim prose records or unverified host settings enforce permissions."
+        },
+        {
+          "criterion_id": "project-harness-profile:2",
+          "criterion_text": "Identify runtime resource collisions and necessary local isolation.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Allocate distinct available ports and separate test databases before concurrent runs; independent worktrees do not isolate runtime resources."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Identifies runtime collisions and necessary local isolation."
+        },
+        {
+          "criterion_id": "project-harness-profile:3",
+          "criterion_text": "Use project-local records and actual commands without claiming CODEOWNERS alone proves both approvals.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Reference Root AGENTS.md, each component README's actual entry points and check commands",
+            "CODEOWNERS alone does not establish mandatory review or CI enforcement; actual configured controls must be checked before claiming them."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Uses project-local records and actual commands; separately rejects CODEOWNERS as approval/enforcement proof."
+        }
+      ]
+    },
+    {
+      "case_id": "single-integrated-candidate",
+      "criterion_group": "0.5.0",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "single-integrated-candidate:1",
+          "criterion_text": "Use current T2 and an exact combined candidate as the integration basis.",
+          "verdict": "pass",
+          "response_quotes": [
+            "construct one exact combined candidate against T2 using the authorized integration process."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Uses current T2 and an exact combined integration candidate."
+        },
+        {
+          "criterion_id": "single-integrated-candidate:2",
+          "criterion_text": "Require applicable combined behavior checks rather than independent old passes.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Validate provider, consumer, and required complete workflow behavior with its actual configuration and dependencies. Record evidence applicability and retain original branch results."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Requires applicable combined behavior checks rather than independent old passes."
+        },
+        {
+          "criterion_id": "single-integrated-candidate:3",
+          "criterion_text": "Do not select a release candidate by newest branch timestamp.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Branch recency does not choose a release."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Rejects newest-branch timestamp for release selection."
+        }
+      ]
+    },
+    {
+      "case_id": "ordinary-git-collaboration",
+      "criterion_group": "0.5.0",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "ordinary-git-collaboration:1",
+          "criterion_text": "Permit authorized independent task development without an atomic cross-machine ownership claim.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Continue through ordinary Git and the existing task records.",
+            "Atomic cross-machine claims and heartbeat leases are unnecessary for the supplied noncompeting ownership state."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Permits authorized independent development through the existing workflow without atomic ownership claims."
+        },
+        {
+          "criterion_id": "ordinary-git-collaboration:2",
+          "criterion_text": "Do not require a heartbeat, lease, or coordination service.",
+          "verdict": "pass",
+          "response_quotes": [
+            "No coordination service is needed to start this work.",
+            "Atomic cross-machine claims and heartbeat leases are unnecessary for the supplied noncompeting ownership state."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Does not require a heartbeat, lease, or coordination service."
+        },
+        {
+          "criterion_id": "ordinary-git-collaboration:3",
+          "criterion_text": "Retain shared contract and integration responsibilities.",
+          "verdict": "pass",
+          "response_quotes": [
+            "F and B have explicit independent assignments, separate checkouts and branches, accepted contract C, and an identified integration owner and target."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Retains the shared accepted contract and existing integration responsibilities."
+        }
+      ]
+    },
+    {
+      "case_id": "small-team-existing-layout",
+      "criterion_group": "0.5.0",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "small-team-existing-layout:1",
+          "criterion_text": "Reuse the existing layout, contract and task tracker.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Keep web/, service/, and api/contract.json in the existing layout. Contract C and the required HTTP 400 behavior remain unchanged.",
+            "Retain the existing recipe and log references in the issue"
+          ],
+          "quotes_verified_present": true,
+          "reason": "Reuses the existing layout and contract, with the existing R7 issue as the handoff destination."
+        },
+        {
+          "criterion_id": "small-team-existing-layout:2",
+          "criterion_text": "Allow one developer to handle multiple duties without mandatory separate role infrastructure.",
+          "verdict": "pass",
+          "response_quotes": [
+            "One developer may perform both component duties."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Allows one developer multiple duties without mandatory separate role infrastructure."
+        },
+        {
+          "criterion_id": "small-team-existing-layout:3",
+          "criterion_text": "Allow concise accepted development handoff while keeping publication outside scope.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Brief handoff for the existing R7 issue: development is complete and accepted for candidate K.",
+            "Publication is outside scope."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Allows concise accepted development handoff and expressly keeps publication outside scope."
+        }
+      ]
+    },
+    {
+      "case_id": "solo-default-lightweight",
+      "criterion_group": "0.5.0",
+      "response_source": "evals/results/0.5.0-forward.json",
+      "criteria": [
+        {
+          "criterion_id": "solo-default-lightweight:1",
+          "criterion_text": "Use independent development as the default without frontend/backend task splitting.",
+          "verdict": "pass",
+          "response_quotes": [
+            "No contract change, external dependency, or frontend/backend cooperation is involved.",
+            "No team profiles, mocks, task splits, or coordination service are needed."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Defaults to independent work without frontend/backend splitting."
+        },
+        {
+          "criterion_id": "solo-default-lightweight:2",
+          "criterion_text": "Do not require new role profiles, interface formats, mock services or team CI setup for this correction.",
+          "verdict": "pass",
+          "response_quotes": [
+            "The unchanged specification needs no rewrite. No team profiles, mocks, task splits, or coordination service are needed."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Requires no new role profiles, interface formats, mock services, or team CI infrastructure."
+        },
+        {
+          "criterion_id": "solo-default-lightweight:3",
+          "criterion_text": "Permit concise existing-record development acceptance while keeping publication outside scope.",
+          "verdict": "pass",
+          "response_quotes": [
+            "Brief handoff for the existing BUG-12 record: development is complete and accepted for exact candidate K.",
+            "Publication is outside scope."
+          ],
+          "quotes_verified_present": true,
+          "reason": "Allows concise existing-record development acceptance and expressly keeps publication outside scope."
+        }
+      ]
+    }
+  ]
+}

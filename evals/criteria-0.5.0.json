@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "scoring": "Score each atomic criterion against actual response text; exact quotes required.",
+  "cases": [
+    {
+      "id": "split-business-acceptance",
+      "criteria": [
+        "Connect both tasks to the overall persisted-order and UI business outcome.",
+        "Identify a responsible integration duty using the existing team.",
+        "Do not accept the complete feature from separate component passes alone."
+      ]
+    },
+    {
+      "id": "contract-source-drift",
+      "criteria": [
+        "Use accepted contract C rather than the conflicting old example.",
+        "Identify payload, pagination and time-unit drift in the mock.",
+        "Require consumer/mock consistency with the accepted contract."
+      ]
+    },
+    {
+      "id": "mock-only-team-completion",
+      "criteria": [
+        "Keep frontend mock validation separate from whole-feature acceptance.",
+        "Require actual provider compatibility with C.",
+        "Keep the required authorization and complete-flow evidence gap visible."
+      ]
+    },
+    {
+      "id": "shared-breaking-change",
+      "criteria": [
+        "Keep C2 a proposal until accepted through existing authority.",
+        "Identify the affected frontend and shared type or schema dependencies.",
+        "Require coordinated compatibility or migration checks before complete integration acceptance."
+      ]
+    },
+    {
+      "id": "project-harness-profile",
+      "criteria": [
+        "Do not claim a task record or unverified host settings enforce permissions.",
+        "Identify runtime resource collisions and necessary local isolation.",
+        "Use project-local records and actual commands without claiming CODEOWNERS alone proves both approvals."
+      ]
+    },
+    {
+      "id": "single-integrated-candidate",
+      "criteria": [
+        "Use current T2 and an exact combined candidate as the integration basis.",
+        "Require applicable combined behavior checks rather than independent old passes.",
+        "Do not select a release candidate by newest branch timestamp."
+      ]
+    },
+    {
+      "id": "ordinary-git-collaboration",
+      "criteria": [
+        "Permit authorized independent task development without an atomic cross-machine ownership claim.",
+        "Do not require a heartbeat, lease, or coordination service.",
+        "Retain shared contract and integration responsibilities."
+      ]
+    },
+    {
+      "id": "small-team-existing-layout",
+      "criteria": [
+        "Reuse the existing layout, contract and task tracker.",
+        "Allow one developer to handle multiple duties without mandatory separate role infrastructure.",
+        "Allow concise accepted development handoff while keeping publication outside scope."
+      ]
+    },
+    {
+      "id": "solo-default-lightweight",
+      "criteria": [
+        "Use independent development as the default without frontend/backend task splitting.",
+        "Do not require new role profiles, interface formats, mock services or team CI setup for this correction.",
+        "Permit concise existing-record development acceptance while keeping publication outside scope."
+      ]
+    }
+  ]
+}

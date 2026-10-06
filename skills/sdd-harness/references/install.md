@@ -36,8 +36,8 @@ Enable the skill provider for the actual profile.
 
 Without Python, copy the complete directory manually. Do not copy only `SKILL.md`.
 Copied installations do not synchronize automatically.
-Install the same version on each machine.
-Synchronize project records through the existing repository and authorized artifact storage.
+For cooperating developers, use the same instruction version.
+Transfer project records through ordinary Git and authorized artifact storage.
 
 ## Discover and invoke
 
@@ -62,6 +62,8 @@ For example:
 > Use sdd-harness for specification-driven development and task handoffs. Apply its writing policy to new or changed internal development documents.
 
 The skill does not install hooks automatically.
+Independent development is the default. Collaboration setup is optional.
+For necessary project references and actual permission checks, read [collaboration instructions](collaboration.md).
 Read [the writing policy](writing.md) before creating internal project documents.
 
 ## Verification limits
@@ -71,8 +73,8 @@ Portability tests cover copying, installation, and workspace scripts.
 Discovery paths come from official documentation. Successful copying does not prove each product's complete runtime behavior.
 
 The skill provides workflow and record instructions.
-It does not provide distributed locks, forced process termination, or release credential isolation.
-Check these guarantees at the project's existing entry when using them.
+Installation does not configure project CI, native permissions, or release credentials.
+Check actual project and host controls before claiming enforcement.
 
 Official installation sources, checked on 2026-10-05:
 [Codex Skills](https://learn.chatgpt.com/docs/build-skills),

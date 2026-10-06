@@ -1,8 +1,8 @@
 ---
 name: sdd-harness
-description: Use when specification-driven development spans changes, chats, worktrees, machines, or coding agents. Use when resuming tasks, checking acceptance evidence, preparing releases, or recovering project worktrees.
+description: Use when specification-driven development spans changes, chats, worktrees, developers, or coding agents. Use when resuming tasks, checking acceptance evidence, preparing releases, or recovering project worktrees.
 metadata:
-  version: "0.4.0"
+  version: "0.5.0"
 ---
 
 # SDD Harness
@@ -10,6 +10,9 @@ metadata:
 Keep requirements, changes, evidence, and handoffs consistent.
 Use the project's existing specifications, Git tools, and host tools.
 Do not create a management platform to use this skill.
+
+Independent development is the default. Use collaboration procedures only when the task needs cooperation.
+For small tasks, keep brief references in existing records. Omit fields and setup that do not apply.
 
 ## Enter a project
 
@@ -45,7 +48,7 @@ Both tools are optional.
 - Before dependent implementation, review specification quality and conflicting contracts.
 - Before technical planning, inspect relevant current code and decisions. Identify reusable components and behavior to preserve.
 - Trace source requirements to acceptance conditions, work, implementation, and evidence. Check for omitted requirements and unsupported added behavior.
-- Run parallel tasks only when dependencies permit. Use separate worktrees and runtime resources.
+- Run parallel tasks only when dependencies permit. Use separate checkouts and runtime resources when necessary.
 - If shared interfaces, data structures, or dependencies change, coordinate with affected tasks. Review their evidence again.
 - Implement small batches. Read the actual diff. Run relevant checks. Integrate early.
 - Check important assertions against accepted intent. Select validation from affected behavior and risk.
@@ -55,22 +58,26 @@ Both tools are optional.
 Read [references/workflow.md](references/workflow.md) when planning or implementing a change.
 For specification quality and coverage, read [references/spec-review.md](references/spec-review.md).
 
-## Continue and coordinate
+## Continue a task
 
-A task belongs to the project. Its chat, machine, harness, and model can change.
+A task belongs to the project. Its chat, checkout, harness, and model can change.
 For a planned handoff, save the results before the original executor stops writing.
+Before transferring responsibility, confirm that the original writers stopped.
 The next executor must check current ownership and actual state before taking responsibility.
 
 - Record the goal, specification and code versions, results, evidence, decisions, incomplete work, and next action.
 - Use [assets/handoff.md](assets/handoff.md) when the project has no suitable handoff record format.
-- Across machines, transfer commits or recoverable snapshots, necessary artifacts, and checksums.
+- Use ordinary Git to transfer commits. For other necessary results, use authorized storage and recovery information.
 - If necessary results are missing, continue only work that does not depend on those results.
 - If the original executor's stopped state is uncertain, use a separate worktree. Keep its results for review.
 
-Local records and Git handoff files do not provide distributed locks.
-For exclusive task ownership or publication, use verified host, task-system, or CI controls.
-Do not create a shared lock protocol by default.
-For multiple executors, read [references/collaboration.md](references/collaboration.md).
+## Collaborate when necessary
+
+Link cooperating tasks to the complete business outcome and their accepted shared contract.
+Keep component acceptance separate from complete workflow acceptance.
+Use existing task assignments, branches, and integration duties. One person can perform several duties.
+Do not require collaboration setup for an independent task.
+For developer cooperation or multiple active chats, read [references/collaboration.md](references/collaboration.md).
 
 ## Accept and publish
 
@@ -124,7 +131,7 @@ If you cannot maintain that protection, keep the directory and report the missin
 | Internal document writing | [references/writing.md](references/writing.md) |
 | Specification quality and coverage | [references/spec-review.md](references/spec-review.md) |
 | New features or existing systems | [references/workflow.md](references/workflow.md); [assets/change.md](assets/change.md) |
-| Multiple chats, machines, or agents | [references/collaboration.md](references/collaboration.md) |
+| Developer cooperation or multiple active chats | [references/collaboration.md](references/collaboration.md) |
 | Workspace inspection or recovery | `scripts/workspace.py --help`; [references/recovery.md](references/recovery.md) |
 | Acceptance, integration, or publication | [references/delivery.md](references/delivery.md) |
 

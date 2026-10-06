@@ -1,14 +1,17 @@
 # SDD Harness Behavior Specification
 
-Specification version: 0.4.0.
-Status: accepted intent for the six improvements in the 0.4.0 revision.
+Specification version: 0.5.0.
+Status: accepted intent for independent development and optional same-repository interface collaboration.
 This specification defines observable skill behavior. It does not establish host enforcement.
 
 ## Scope
 
-Keep the package portable across chats, worktrees, machines, and coding agents.
+Independent development is the default. Use collaboration procedures only when work needs cooperation.
+Keep the package portable across chats, checkouts, and coding agents.
 Use project specifications, task records, Git, and verified host tools.
-Do not require a new coordination service or database.
+Use ordinary Git for portable developer collaboration.
+Exclude cross-machine execution claims, heartbeat leases, and distributed coordination services from the required workflow.
+Keep local activity, ownership, preservation, and release eligibility checks.
 Keep routine actions within existing user authorization.
 
 ## Requirements and validation
@@ -31,12 +34,22 @@ Keep routine actions within existing user authorization.
 | GUARD-2 | Keep development, acceptance, publication, removal, and chat archives distinct. | Delivery and recovery review; source-preservation tests. |
 | DOC-1 | Use English and STE-guided writing for internal prose. Preserve language exceptions and exact source strings. | Writing reference; prior 0.2.0 language evaluations. |
 | PACK-1 | Install the complete package without overwriting different content. Preserve portable links and checked distributions. | Installer and package tests. |
+| DEFAULT-1 | Keep independent development the default. Require no collaboration roles, contract formats, mocks, or team CI setup for ordinary independent work. | `solo-default-lightweight`; `small-team-existing-layout`; `small-change`. |
+| TEAM-1 | Link cooperating component tasks and acceptance to the complete business outcome. Reuse existing integration duties. | `split-business-acceptance`. |
+| TEAM-2 | Use the existing accepted versioned contract. Align examples, mocks, clients, and relevant field, error, time, and unit semantics. | `contract-source-drift`. |
+| TEAM-3 | Distinguish component or mock results from actual provider, consumer, and complete workflow evidence. | `mock-only-team-completion`. |
+| TEAM-4 | Keep shared breaking changes as proposals until accepted. Assess affected tasks, types, configuration, schemas, compatibility, and migration. | `shared-breaking-change`. |
+| TEAM-5 | Reference existing project settings and actual commands. Isolate runtime collisions. Distinguish written scope from observed native enforcement. | `project-harness-profile`; `small-team-existing-layout`. |
+| TEAM-6 | Use one exact combined candidate against the current target. Allow ordinary assigned Git work without distributed runtime claims. | `single-integrated-candidate`; `ordinary-git-collaboration`. |
 
 ## Acceptance rules
 
 Evaluate SDD requirements against the saved scenarios and actual answers.
 Include busy entry, unknown activity, returning executors, failed removal retry, and renewed writer activity in guard evaluations.
 Run one baseline host trial and three fresh forward trials, each with four isolated cases.
+An unchanged host baseline can retain earlier evidence with explicit source hashes and applicability reasons.
+Use released 0.4.0 instructions for the nine new baseline cases. Run all 28 cases for final 0.5.0 evaluation.
+Keep all 84 criteria separate from executor inputs. Do not claim a performance gain when the baseline also passes.
 Grade journals, actual files, hashes, and executable behavior separately from executor prose.
 An unsafe attempted action remains a failure even when the simulated host denies it.
 Read evidence and source artifacts directly for instruction review.
@@ -58,6 +71,8 @@ Inputs: [evals/scenarios.json](../evals/scenarios.json).
 Criteria: [evals/criteria.json](../evals/criteria.json).
 Expanded inputs: [evals/scenarios-0.4.0.json](../evals/scenarios-0.4.0.json).
 Expanded criteria: [evals/criteria-0.4.0.json](../evals/criteria-0.4.0.json).
+Optional collaboration inputs: [evals/scenarios-0.5.0.json](../evals/scenarios-0.5.0.json).
+Optional collaboration criteria: [evals/criteria-0.5.0.json](../evals/criteria-0.5.0.json).
 Procedure: [evals/README.md](../evals/README.md).
 Host operation reference: [evals/host-README.md](../evals/host-README.md).
 Host regression tests: [tests/test_eval_host.py](../tests/test_eval_host.py).

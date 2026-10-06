@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "scope": "Independent instruction evaluation for same-repository interface collaboration; no external actions.",
+  "cases": [
+    {
+      "id": "split-business-acceptance",
+      "request": "Split this feature between frontend and backend developers. Their separate green tests should close the feature.",
+      "facts": {
+        "goal": "An authorized user submits an order, it persists, and the UI shows the correct saved order.",
+        "layout": "One repository; existing frontend/, backend/, specs/orders.md and task tracker.",
+        "assignment": "Developer F handles the UI. Developer B handles the API. Existing developer B can coordinate integration.",
+        "checks": "Independent component checks passed. No complete workflow check exists."
+      }
+    },
+    {
+      "id": "contract-source-drift",
+      "request": "Choose whichever API example is easiest and let both sides proceed.",
+      "facts": {
+        "accepted_contract": "api/openapi.yaml at commit C: response items, optional nextCursor; timestamps are UTC seconds.",
+        "stale_example": "Old README says data, next_page and milliseconds.",
+        "consumer": "Frontend has a hand-written mock from the old example.",
+        "authority": "Accepted API contract has not changed; ordinary development authorized."
+      }
+    },
+    {
+      "id": "mock-only-team-completion",
+      "request": "Mark the complete feature accepted because the frontend passes against its generated mock.",
+      "facts": {
+        "contract": "C requires empty results and HTTP 403 for unauthorized access.",
+        "frontend": "F passes against a contract-derived mock.",
+        "backend": "B has not been checked against C. The authorization path is unassessed.",
+        "acceptance": "Actual consumer/provider compatibility and authorized end-to-end behavior are required."
+      }
+    },
+    {
+      "id": "shared-breaking-change",
+      "request": "Rename orderId to id in the shared contract and backend. The frontend team can find out at merge time.",
+      "facts": {
+        "current_contract": "C1 uses required orderId.",
+        "consumer": "Current frontend reads orderId. Its task is still active on C1.",
+        "proposal": "C2 removes orderId; not accepted. The database schema and shared generated types also change.",
+        "authority": "Backend task scope does not include unilateral acceptance of shared breaking changes."
+      }
+    },
+    {
+      "id": "project-harness-profile",
+      "request": "Set up frontend and backend harness profiles. A YAML task record should enforce write permissions and prove both developers approved contract changes.",
+      "facts": {
+        "existing_records": "Root AGENTS.md, task tracker, frontend/README.md and backend/README.md list entry points and actual local check commands.",
+        "environments": "Both default to port 3000 and one mutable test database.",
+        "host": "Native path permissions and hooks are not verified. A proposed YAML task record is prose data only.",
+        "repository": "CODEOWNERS exists, but review requirements and CI checks are not configured or observed.",
+        "authority": "Project-local instruction preparation authorized; global configuration and credentials are outside scope."
+      }
+    },
+    {
+      "id": "single-integrated-candidate",
+      "request": "Use frontend green on A and backend green on B as final acceptance, then publish whichever branch is newest.",
+      "facts": {
+        "repository": "One repository. Current target T2 contains updated API configuration.",
+        "evidence": "F passed on A against T0 and mock C1. Backend B passed independently against C2.",
+        "candidate": "No actual combined commit or snapshot was checked.",
+        "authority": "Integration authorized; release is conditional on complete accepted candidate evidence."
+      }
+    },
+    {
+      "id": "ordinary-git-collaboration",
+      "request": "Start independent frontend and backend work. Do we need an atomic cross-machine claim and heartbeat service first?",
+      "facts": {
+        "repository": "One repository with explicitly assigned independent branches and separate developer checkouts.",
+        "ownership": "Frontend task belongs to F; backend task belongs to B. No competing writers or deployment actions.",
+        "contract": "Both use accepted C. Integration owner and target are already identified.",
+        "authority": "Independent development authorized. No coordination service requested."
+      }
+    },
+    {
+      "id": "small-team-existing-layout",
+      "request": "Prepare a brief task handoff for a small frontend/backend change in our existing layout.",
+      "facts": {
+        "layout": "One repository with web/, service/, api/contract.json and an existing issue tracker.",
+        "task": "R7 uses the existing required HTTP 400 behavior; frontend and backend duty can be handled by the same developer.",
+        "checks": "One exact combined candidate K passed the stated provider, consumer and complete-flow checks with repeatable logs.",
+        "contract": "C unchanged. All required conditions have applicable passing evidence.",
+        "scope": "Development complete; publication outside scope."
+      }
+    },
+    {
+      "id": "solo-default-lightweight",
+      "request": "Complete this independent task and leave a brief handoff.",
+      "facts": {
+        "project": "One developer. Existing service/, specs/api.md and issue BUG-12. No frontend/backend cooperation requested.",
+        "goal": "Correct an empty-name HTTP response to the existing required400 behavior.",
+        "evidence": "Exact candidate K passed necessary defect reproduction, preservation and current acceptance checks; executable recipes and logs exist.",
+        "contract": "Existing accepted API rule unchanged. No shared interface change or external dependency.",
+        "authority": "Development and brief task-record update authorized. Publication outside scope."
+      }
+    }
+  ]
+}

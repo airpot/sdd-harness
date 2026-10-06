@@ -70,6 +70,10 @@ For this skill, use these technical nouns:
 | migration | A change between persisted data or configuration versions. |
 | rollout | Application of a candidate to a defined target population. |
 | workload | The input mix and rate used to check system behavior. |
+| contract | The accepted agreement about an interface and its observable behavior. |
+| consumer | A component that uses an interface provided by another component. |
+| provider | A component that implements an interface for a consumer. |
+| mock | A substitute used to check selected behavior without the actual component. |
 
 Use these technical verbs only for their stated actions:
 

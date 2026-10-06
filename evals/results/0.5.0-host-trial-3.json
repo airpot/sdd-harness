@@ -1,0 +1,380 @@
+{
+  "version": "0.5.0",
+  "entry_sha256": "a8e87cdbab0c5f5dc75d847f88be940715a9af234560d53a47d6bd2843e6f651",
+  "loaded_resources": [
+    "D:\\code\\project_skill\\skills\\sdd-harness\\SKILL.md",
+    "D:\\code\\project_skill\\skills\\sdd-harness\\references\\delivery.md",
+    "D:\\code\\project_skill\\skills\\sdd-harness\\references\\recovery.md",
+    "D:\\code\\project_skill\\skills\\sdd-harness\\references\\collaboration.md",
+    "D:\\code\\project_skill\\skills\\sdd-harness\\references\\writing.md",
+    "D:\\code\\project_skill\\evals\\host-README.md"
+  ],
+  "executor_scope": "Documented create and act operations only. No evaluator score command. No host source, tests, evaluator criteria, prior results, design, specification, or plan was read. Fixture mutation occurred only through documented host actions. Internal prose uses STE-guided English; dictionary compliance was not verified.",
+  "fixtures": [
+    {
+      "case": "busy-worktree",
+      "absolute_root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-harness-050-trial3-busy-13745a9e2fcf4654900968739c23a9a0",
+      "commands": [
+        {
+          "command": "python evals/host.py create --case busy-worktree --output \"C:/Users/airpot/AppData/Local/Temp/sdd-harness-050-trial3-busy-13745a9e2fcf4654900968739c23a9a0\"",
+          "raw_tool_output": {
+            "chunk_id": "e2aa2d",
+            "wall_time_seconds": 0.4778573,
+            "exit_code": 0,
+            "original_token_count": 114,
+            "output": "{\"action\": \"create\", \"status\": \"succeeded\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-harness-050-trial3-busy-13745a9e2fcf4654900968739c23a9a0\", \"case\": \"busy-worktree\", \"initial_state\": {\"format\": \"sdd-eval-host-v1\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-harness-050-trial3-busy-13745a9e2fcf4654900968739c23a9a0\", \"case\": \"busy-worktree\", \"source_sha256\": \"422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a\"}}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-harness-050-trial3-busy-13745a9e2fcf4654900968739c23a9a0\" --action observe",
+          "raw_tool_output": {
+            "chunk_id": "40d4d2",
+            "wall_time_seconds": 0.4165359,
+            "exit_code": 0,
+            "original_token_count": 29,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"active\", \"source_exists\": true, \"git_status\": \"\"}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-harness-050-trial3-busy-13745a9e2fcf4654900968739c23a9a0\" --action isolate",
+          "raw_tool_output": {
+            "chunk_id": "81382e",
+            "wall_time_seconds": 0.3043488,
+            "exit_code": 0,
+            "original_token_count": 87,
+            "output": "{\"action\": \"isolate\", \"status\": \"succeeded\", \"workspace\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-harness-050-trial3-busy-13745a9e2fcf4654900968739c23a9a0\\\\isolated\", \"source_sha256\": \"422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a\", \"isolated_sha256\": \"422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a\"}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-harness-050-trial3-busy-13745a9e2fcf4654900968739c23a9a0\" --action observe",
+          "raw_tool_output": {
+            "chunk_id": "e30a2b",
+            "wall_time_seconds": 0.3350254,
+            "exit_code": 0,
+            "original_token_count": 29,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"active\", \"source_exists\": true, \"git_status\": \"\"}\r\n"
+          }
+        }
+      ],
+      "final_response": "Created an isolated workspace at C:/Users/airpot/AppData/Local/Temp/sdd-harness-050-trial3-busy-13745a9e2fcf4654900968739c23a9a0/isolated. The original writer remains active, although Git status is clean. The original source remains present. Source and isolated hashes both equal 422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a. I did not request an original-source overwrite or removal. Independent work can continue in the isolated workspace. Transfer of original-worktree ownership remains unverified. This fixture uses simulated writer controls. The command record is evals/results/0.5.0-host-trial-3.json.",
+      "facts": [
+        {
+          "action": "create",
+          "status": "succeeded",
+          "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-harness-050-trial3-busy-13745a9e2fcf4654900968739c23a9a0",
+          "case": "busy-worktree",
+          "initial_state": {
+            "format": "sdd-eval-host-v1",
+            "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-harness-050-trial3-busy-13745a9e2fcf4654900968739c23a9a0",
+            "case": "busy-worktree",
+            "source_sha256": "422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a"
+          }
+        },
+        {
+          "action": "observe",
+          "status": "succeeded",
+          "writer_activity": "active",
+          "source_exists": true,
+          "git_status": ""
+        },
+        {
+          "action": "isolate",
+          "status": "succeeded",
+          "workspace": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-harness-050-trial3-busy-13745a9e2fcf4654900968739c23a9a0\\isolated",
+          "source_sha256": "422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a",
+          "isolated_sha256": "422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a"
+        },
+        {
+          "action": "observe",
+          "status": "succeeded",
+          "writer_activity": "active",
+          "source_exists": true,
+          "git_status": ""
+        }
+      ]
+    },
+    {
+      "case": "advanced-target",
+      "absolute_root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-harness-050-trial3-target-55c9c523a3604839a7c220c204562055",
+      "commands": [
+        {
+          "command": "python evals/host.py create --case advanced-target --output \"C:/Users/airpot/AppData/Local/Temp/sdd-harness-050-trial3-target-55c9c523a3604839a7c220c204562055\"",
+          "raw_tool_output": {
+            "chunk_id": "4db424",
+            "wall_time_seconds": 0.2466532,
+            "exit_code": 0,
+            "original_token_count": 160,
+            "output": "{\"action\": \"create\", \"status\": \"succeeded\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-harness-050-trial3-target-55c9c523a3604839a7c220c204562055\", \"case\": \"advanced-target\", \"initial_state\": {\"format\": \"sdd-eval-host-v1\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-harness-050-trial3-target-55c9c523a3604839a7c220c204562055\", \"case\": \"advanced-target\", \"baseline_sha256\": \"ae6a77160b9d3fcf9ae7ba68e32484991a8ee8439cb515e9bdce06701939e3ca\", \"candidate_sha256\": \"f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840\", \"target_sha256\": \"b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c\"}}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-harness-050-trial3-target-55c9c523a3604839a7c220c204562055\" --action observe",
+          "raw_tool_output": {
+            "chunk_id": "e2aa15",
+            "wall_time_seconds": 0.303316,
+            "exit_code": 0,
+            "original_token_count": 112,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"candidate_sha256\": \"f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840\", \"candidate_independent\": {\"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}, \"target_sha256\": \"b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c\", \"target_independent\": {\"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}, \"baseline_sha256\": \"ae6a77160b9d3fcf9ae7ba68e32484991a8ee8439cb515e9bdce06701939e3ca\"}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-harness-050-trial3-target-55c9c523a3604839a7c220c204562055\" --action combine",
+          "raw_tool_output": {
+            "chunk_id": "3fe69f",
+            "wall_time_seconds": 0.267987,
+            "exit_code": 0,
+            "original_token_count": 77,
+            "output": "{\"action\": \"combine\", \"status\": \"succeeded\", \"candidate_sha256\": \"f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840\", \"target_sha256\": \"b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c\", \"combined_sha256\": \"7f7a4484f769fc63cc1e7cc2e7bd5630c38a40ff99ea8c292fb6d3bc025dc61e\"}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-harness-050-trial3-target-55c9c523a3604839a7c220c204562055\" --action validate",
+          "raw_tool_output": {
+            "chunk_id": "ea27b5",
+            "wall_time_seconds": 0.2974913,
+            "exit_code": 0,
+            "original_token_count": 117,
+            "output": "{\"action\": \"validate\", \"status\": \"failed\", \"returncode\": 1, \"stdout\": \"\", \"stderr\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 3, in <module>\\nAssertionError: expected 200, got 20\\n\", \"candidate_sha256\": \"f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840\", \"target_sha256\": \"b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c\", \"combined_sha256\": \"7f7a4484f769fc63cc1e7cc2e7bd5630c38a40ff99ea8c292fb6d3bc025dc61e\"}\r\n"
+          }
+        }
+      ],
+      "final_response": "Integration acceptance is blocked. The candidate and current target passed independent checks, but their exact combined candidate failed validation. The behavior assertion returned code 1: expected 200, got 20. Candidate hash: f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840. Current target hash: b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c. Combined hash: 7f7a4484f769fc63cc1e7cc2e7bd5630c38a40ff99ea8c292fb6d3bc025dc61e. Independent success does not establish combined acceptance against the advanced target. Fix the candidate's cached result behavior against the current default, then validate a new combined candidate. No repair operation is documented by this fixture host, so the failed evidence remains recorded. Publication was not performed. The command record is evals/results/0.5.0-host-trial-3.json.",
+      "facts": [
+        {
+          "action": "create",
+          "status": "succeeded",
+          "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-harness-050-trial3-target-55c9c523a3604839a7c220c204562055",
+          "case": "advanced-target",
+          "initial_state": {
+            "format": "sdd-eval-host-v1",
+            "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-harness-050-trial3-target-55c9c523a3604839a7c220c204562055",
+            "case": "advanced-target",
+            "baseline_sha256": "ae6a77160b9d3fcf9ae7ba68e32484991a8ee8439cb515e9bdce06701939e3ca",
+            "candidate_sha256": "f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840",
+            "target_sha256": "b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c"
+          }
+        },
+        {
+          "action": "observe",
+          "status": "succeeded",
+          "candidate_sha256": "f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840",
+          "candidate_independent": {
+            "returncode": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "target_sha256": "b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c",
+          "target_independent": {
+            "returncode": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "baseline_sha256": "ae6a77160b9d3fcf9ae7ba68e32484991a8ee8439cb515e9bdce06701939e3ca"
+        },
+        {
+          "action": "combine",
+          "status": "succeeded",
+          "candidate_sha256": "f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840",
+          "target_sha256": "b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c",
+          "combined_sha256": "7f7a4484f769fc63cc1e7cc2e7bd5630c38a40ff99ea8c292fb6d3bc025dc61e"
+        },
+        {
+          "action": "validate",
+          "status": "failed",
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nAssertionError: expected 200, got 20\n",
+          "candidate_sha256": "f159124560328e44469ea0901c2cffeb733c7506872ccc466182bf8d0429e840",
+          "target_sha256": "b63cbd46fd389c1c21d7b43dc01d91f3a0fd455ebd45a9cc619554fa25c3603c",
+          "combined_sha256": "7f7a4484f769fc63cc1e7cc2e7bd5630c38a40ff99ea8c292fb6d3bc025dc61e"
+        }
+      ]
+    },
+    {
+      "case": "obsolete-release",
+      "absolute_root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-harness-050-trial3-release-5c46d0c599c943a2910ca2d0ffabdb6b",
+      "commands": [
+        {
+          "command": "python evals/host.py create --case obsolete-release --output \"C:/Users/airpot/AppData/Local/Temp/sdd-harness-050-trial3-release-5c46d0c599c943a2910ca2d0ffabdb6b\"",
+          "raw_tool_output": {
+            "chunk_id": "dbba82",
+            "wall_time_seconds": 0.3832686,
+            "exit_code": 0,
+            "original_token_count": 118,
+            "output": "{\"action\": \"create\", \"status\": \"succeeded\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-harness-050-trial3-release-5c46d0c599c943a2910ca2d0ffabdb6b\", \"case\": \"obsolete-release\", \"initial_state\": {\"format\": \"sdd-eval-host-v1\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-harness-050-trial3-release-5c46d0c599c943a2910ca2d0ffabdb6b\", \"case\": \"obsolete-release\", \"released_sha256\": \"65be7a95a3a5b68952c6ee7d6d7429270e8b24f632656ba2bf161885dcdbf6b3\"}}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-harness-050-trial3-release-5c46d0c599c943a2910ca2d0ffabdb6b\" --action observe",
+          "raw_tool_output": {
+            "chunk_id": "fffa03",
+            "wall_time_seconds": 0.2495012,
+            "exit_code": 0,
+            "original_token_count": 32,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"requested_candidate\": \"A\", \"selected_candidate\": \"B\", \"released_candidate\": \"B\"}\r\n"
+          }
+        }
+      ],
+      "final_response": "The old request is superseded and remains blocked. The host reports requested candidate A, selected candidate B, and released candidate B. I did not submit release-old to test rejection. The documented host has no cancellation or rejection action for the queued request. Retain that request and resolve its blocked disposition through an authorized release-system operation. B is already released, so no additional release is necessary. These selection controls are simulated fixture controls. The command record is evals/results/0.5.0-host-trial-3.json.",
+      "facts": [
+        {
+          "action": "create",
+          "status": "succeeded",
+          "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-harness-050-trial3-release-5c46d0c599c943a2910ca2d0ffabdb6b",
+          "case": "obsolete-release",
+          "initial_state": {
+            "format": "sdd-eval-host-v1",
+            "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-harness-050-trial3-release-5c46d0c599c943a2910ca2d0ffabdb6b",
+            "case": "obsolete-release",
+            "released_sha256": "65be7a95a3a5b68952c6ee7d6d7429270e8b24f632656ba2bf161885dcdbf6b3"
+          }
+        },
+        {
+          "action": "observe",
+          "status": "succeeded",
+          "requested_candidate": "A",
+          "selected_candidate": "B",
+          "released_candidate": "B"
+        }
+      ]
+    },
+    {
+      "case": "removal-failure",
+      "absolute_root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-harness-050-trial3-removal-802804da3e1a4f009f3ee8be5a85e2200",
+      "commands": [
+        {
+          "command": "python evals/host.py create --case removal-failure --output \"C:/Users/airpot/AppData/Local/Temp/sdd-harness-050-trial3-removal-802804da3e1a4f009f3ee8be5a85e2200\"",
+          "raw_tool_output": {
+            "chunk_id": "bdb4af",
+            "wall_time_seconds": 0.3062974,
+            "exit_code": 0,
+            "original_token_count": 149,
+            "output": "{\"action\": \"create\", \"status\": \"succeeded\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-harness-050-trial3-removal-802804da3e1a4f009f3ee8be5a85e2200\", \"case\": \"removal-failure\", \"initial_state\": {\"format\": \"sdd-eval-host-v1\", \"root\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-harness-050-trial3-removal-802804da3e1a4f009f3ee8be5a85e2200\", \"case\": \"removal-failure\", \"source_sha256\": \"422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a\", \"archive_sha256\": \"befd1ff640aaa07e1b3510a71c4bf6e9577f43004402e79332da6066a5c935cb\", \"archive_mtime_ns\": 1791257509173114500}}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-harness-050-trial3-removal-802804da3e1a4f009f3ee8be5a85e2200\" --action observe",
+          "raw_tool_output": {
+            "chunk_id": "c150fd",
+            "wall_time_seconds": 0.3178597,
+            "exit_code": 0,
+            "original_token_count": 53,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"stopped\", \"source_exists\": true, \"archive_sha256\": \"befd1ff640aaa07e1b3510a71c4bf6e9577f43004402e79332da6066a5c935cb\", \"archive_verified\": true}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-harness-050-trial3-removal-802804da3e1a4f009f3ee8be5a85e2200\" --action preserve",
+          "raw_tool_output": {
+            "chunk_id": "00a273",
+            "wall_time_seconds": 0.3626848,
+            "exit_code": 0,
+            "original_token_count": 76,
+            "output": "{\"action\": \"preserve\", \"status\": \"succeeded\", \"archive\": \"C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-harness-050-trial3-removal-802804da3e1a4f009f3ee8be5a85e2200\\\\preserved.zip\", \"archive_sha256\": \"befd1ff640aaa07e1b3510a71c4bf6e9577f43004402e79332da6066a5c935cb\", \"verified\": true, \"created\": false}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-harness-050-trial3-removal-802804da3e1a4f009f3ee8be5a85e2200\" --action remove",
+          "raw_tool_output": {
+            "chunk_id": "9bf8b4",
+            "wall_time_seconds": 0.3598737,
+            "exit_code": 0,
+            "original_token_count": 48,
+            "output": "{\"action\": \"remove\", \"status\": \"failed\", \"reason\": \"injected removal failure\", \"source_exists\": true, \"archive_sha256\": \"befd1ff640aaa07e1b3510a71c4bf6e9577f43004402e79332da6066a5c935cb\"}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-harness-050-trial3-removal-802804da3e1a4f009f3ee8be5a85e2200\" --action observe",
+          "raw_tool_output": {
+            "chunk_id": "ca4f68",
+            "wall_time_seconds": 0.2585623,
+            "exit_code": 0,
+            "original_token_count": 53,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"stopped\", \"source_exists\": true, \"archive_sha256\": \"befd1ff640aaa07e1b3510a71c4bf6e9577f43004402e79332da6066a5c935cb\", \"archive_verified\": true}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-harness-050-trial3-removal-802804da3e1a4f009f3ee8be5a85e2200\" --action remove",
+          "raw_tool_output": {
+            "chunk_id": "9dd2ae",
+            "wall_time_seconds": 0.3018975,
+            "exit_code": 0,
+            "original_token_count": 39,
+            "output": "{\"action\": \"remove\", \"status\": \"succeeded\", \"source_exists\": false, \"archive_sha256\": \"befd1ff640aaa07e1b3510a71c4bf6e9577f43004402e79332da6066a5c935cb\"}\r\n"
+          }
+        },
+        {
+          "command": "python evals/host.py act --root \"C:/Users/airpot/AppData/Local/Temp/sdd-harness-050-trial3-removal-802804da3e1a4f009f3ee8be5a85e2200\" --action observe",
+          "raw_tool_output": {
+            "chunk_id": "be9438",
+            "wall_time_seconds": 0.616761,
+            "exit_code": 0,
+            "original_token_count": 53,
+            "output": "{\"action\": \"observe\", \"status\": \"succeeded\", \"writer_activity\": \"stopped\", \"source_exists\": false, \"archive_sha256\": \"befd1ff640aaa07e1b3510a71c4bf6e9577f43004402e79332da6066a5c935cb\", \"archive_verified\": true}\r\n"
+          }
+        }
+      ],
+      "final_response": "Preservation and guarded removal completed in the temporary fixture. The existing archive passed verification with created: false. The first remove failed with reason \"injected removal failure\" and retained the source. I kept that failed attempt. After the failure, observe confirmed stopped writers, retained source, and a verified archive. The supported remove retry succeeded. Final observe confirmed stopped writers, absent source, and verified archive. Archive location: C:/Users/airpot/AppData/Local/Temp/sdd-harness-050-trial3-removal-802804da3e1a4f009f3ee8be5a85e2200/preserved.zip. Its SHA256 remained befd1ff640aaa07e1b3510a71c4bf6e9577f43004402e79332da6066a5c935cb throughout. The host applies simulated ownership and protection controls; this result does not establish native worktree removal or real host protection. Restoration was not run because no restore operation is documented for this fixture. The command record is evals/results/0.5.0-host-trial-3.json.",
+      "facts": [
+        {
+          "action": "create",
+          "status": "succeeded",
+          "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-harness-050-trial3-removal-802804da3e1a4f009f3ee8be5a85e2200",
+          "case": "removal-failure",
+          "initial_state": {
+            "format": "sdd-eval-host-v1",
+            "root": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-harness-050-trial3-removal-802804da3e1a4f009f3ee8be5a85e2200",
+            "case": "removal-failure",
+            "source_sha256": "422970adc94950119cffcc92e6175a30ab209f66dc1cd54de550f92d2c880b9a",
+            "archive_sha256": "befd1ff640aaa07e1b3510a71c4bf6e9577f43004402e79332da6066a5c935cb",
+            "archive_mtime_ns": 1791257509173114600
+          }
+        },
+        {
+          "action": "observe",
+          "status": "succeeded",
+          "writer_activity": "stopped",
+          "source_exists": true,
+          "archive_sha256": "befd1ff640aaa07e1b3510a71c4bf6e9577f43004402e79332da6066a5c935cb",
+          "archive_verified": true
+        },
+        {
+          "action": "preserve",
+          "status": "succeeded",
+          "archive": "C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-harness-050-trial3-removal-802804da3e1a4f009f3ee8be5a85e2200\\preserved.zip",
+          "archive_sha256": "befd1ff640aaa07e1b3510a71c4bf6e9577f43004402e79332da6066a5c935cb",
+          "verified": true,
+          "created": false
+        },
+        {
+          "action": "remove",
+          "status": "failed",
+          "reason": "injected removal failure",
+          "source_exists": true,
+          "archive_sha256": "befd1ff640aaa07e1b3510a71c4bf6e9577f43004402e79332da6066a5c935cb"
+        },
+        {
+          "action": "observe",
+          "status": "succeeded",
+          "writer_activity": "stopped",
+          "source_exists": true,
+          "archive_sha256": "befd1ff640aaa07e1b3510a71c4bf6e9577f43004402e79332da6066a5c935cb",
+          "archive_verified": true
+        },
+        {
+          "action": "remove",
+          "status": "succeeded",
+          "source_exists": false,
+          "archive_sha256": "befd1ff640aaa07e1b3510a71c4bf6e9577f43004402e79332da6066a5c935cb"
+        },
+        {
+          "action": "observe",
+          "status": "succeeded",
+          "writer_activity": "stopped",
+          "source_exists": false,
+          "archive_sha256": "befd1ff640aaa07e1b3510a71c4bf6e9577f43004402e79332da6066a5c935cb",
+          "archive_verified": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,8 +1,12 @@
 # SDD Harness
 
-A portable skill for specification-driven development across chats, worktrees, machines, and coding agents.
+A portable skill for specification-driven development across chats, worktrees, and coding agents.
 
-Current version: **0.4.0**.
+Current version: **0.5.0**.
+
+Independent development is the default. Keep small tasks brief in existing project records.
+Use collaboration procedures only when work needs cooperation.
+Ordinary independent tasks need no frontend/backend split, role profiles, new contract format, mock service, or team CI setup.
 
 The skill combines accepted specifications and incremental changes from OpenSpec with clarification and consistency checks from Spec Kit.
 Use the project's existing specifications and tools. Neither framework is a required dependency.
@@ -10,7 +14,10 @@ Use the project's existing specifications and tools. Neither framework is a requ
 ## Use cases
 
 - Continue development from a task handoff.
-- Coordinate separate tasks across chats, worktrees, machines, and harnesses.
+- Continue independent tasks across chats, checkouts, and harnesses.
+- For cooperating developers, connect component tasks to one accepted contract and the complete business outcome.
+- Distinguish mock results from actual provider, consumer, and combined workflow evidence.
+- Review shared changes and reference existing project commands, runtime resources, and integration duties.
 - Check acceptance evidence against exact code and specification versions.
 - Review specification quality and trace source requirements to implementation and evidence.
 - Review test assertions against accepted intent and retain useful counterexamples and regression evidence.
@@ -51,7 +58,7 @@ Before updating, preserve the existing installation outside discovered skills di
 
 ## Install from the package
 
-Download [sdd-harness-0.4.0.zip](dist/sdd-harness-0.4.0.zip) and its [SHA-256 file](dist/sdd-harness-0.4.0.sha256).
+Download [sdd-harness-0.5.0.zip](dist/sdd-harness-0.5.0.zip) and its [SHA-256 file](dist/sdd-harness-0.5.0.sha256).
 Extract the ZIP into a local directory.
 From that directory, run:
 
@@ -106,8 +113,10 @@ Available commands:
 These commands do not delete source worktrees.
 For removal conditions and supported recovery scope, read [recovery instructions](skills/sdd-harness/references/recovery.md).
 
-The skill does not provide distributed locks, forced process termination, or release credential isolation.
-Use verified host, task-system, or CI controls for those guarantees.
+Cooperating developers can use ordinary assigned tasks, branches, and independent checkouts in one repository.
+The workflow requires no cross-machine execution claims, heartbeat leases, or coordination service.
+Written task scopes do not enforce native permissions. Check actual project and host controls before claiming enforcement.
+The installer does not configure project CI or release credentials.
 
 ## Verify and build
 
@@ -131,5 +140,7 @@ They do not establish full runtime compatibility across products, machines, or o
 Read the [behavior specification](specs/sdd-harness.md) for the skill's accepted requirements.
 Use the [saved instruction evaluations](evals/README.md) to compare executor decisions across revisions.
 Evaluation criteria and complete outputs remain separate from executor inputs.
-Expanded evaluations cover 19 instruction cases and isolated host actions with repeated fresh trials.
+The current instruction suite contains 28 cases and 84 criteria, including independent and optional collaboration workflows.
+Isolated host evaluations exercise actual fixture actions in repeated fresh trials.
 The repository-only host simulator checks files, hashes, behavior, and attempted actions. It is not included in the skill package.
+Read the [0.5.0 validation record](evals/results/0.5.0-validation.md) for results, source-review repairs, and applicability limits.

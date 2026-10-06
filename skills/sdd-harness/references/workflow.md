@@ -9,6 +9,8 @@ If records are missing, keep a short goal, acceptance conditions, and a handoff 
 For a change with multiple steps, use the [change template](../assets/change.md) at the project's existing location.
 If the project has no location, use `.sdd-harness/changes/<change-id>.md`.
 Remove fields that do not apply.
+
+Independent development is the default. A small task needs no collaboration setup.
 For new or changed internal prose, follow [the writing policy](writing.md).
 
 For a new project, select one feature with observable acceptance conditions.
@@ -39,10 +41,9 @@ For example: "With default pagination, existing callers retrieve all items witho
 Do not use "Implement pagination" as an acceptance condition.
 If relevant, specify inputs, time, environment, and expected results.
 
-Split tasks to reduce interface conflicts.
-Use accepted interfaces for parallel work.
-Before accepting combined results, obtain the actual dependencies.
-Then check the combination.
+If tasks need cooperation, use [optional collaboration procedures](collaboration.md).
+Link component scope to the complete business outcome and accepted shared contract.
+Before combined acceptance, obtain actual dependencies and check their combination.
 Changes to shared contracts affect related tasks even when their files differ.
 
 ## Implement and check
@@ -87,6 +88,8 @@ If the target advanced, review affected specifications, interfaces, configuratio
 Construct the combined candidate against the current target through the project's supported integration process.
 Validate necessary combined behavior, including changes made during conflict resolution.
 Bind integration evidence to the actual candidate and target versions.
+
+For cooperating components, retain their accepted contract reference and required complete workflow evidence.
 
 Independent branch success and a conflict-free Git merge do not establish semantic compatibility.
 Reuse verified merge controls when available. Do not require a new queue service.

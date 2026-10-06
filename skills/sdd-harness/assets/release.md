@@ -7,6 +7,7 @@ Use only fields that apply to the current scope.
 - Scope: reference tasks and relevant dependencies.
 - Candidate: record the exact integrated commit, specification version, build artifacts, and hashes.
 - Integration target: reference its current version and validation of the actual combined candidate.
+- Optional cooperation: reference the accepted shared contract and complete workflow evidence for the combined candidate.
 - Acceptance: reference evidence for each condition and combined validation. List unverified work separately.
 - Verdict: record accepted, partial, or blocked scope. Identify each mandatory failed, blocked, or unrun condition.
 - Evidence applicability: record current applicability and the reason for carrying historical evidence forward.

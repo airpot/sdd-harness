@@ -1,0 +1,366 @@
+{
+  "schema_version": 1,
+  "evaluated_version": "0.4.0-monorepo-baseline",
+  "response_input": "evals/results/0.4.0-monorepo-baseline.json",
+  "scope": "Independent text-only criterion assessment using only the listed scenario, criterion and actual-response files. No skill, design, plan, review, prior-score or host-code sources read; no external actions performed.",
+  "input_hashes": {
+    "evals/results/0.4.0-monorepo-baseline.json": {
+      "algorithm": "SHA256",
+      "value": "099451dc64bebdf6e075e5f9849dbe72af4f88c805b01a13f7769b901e28cede"
+    },
+    "evals/scenarios-0.5.0.json": {
+      "algorithm": "SHA256",
+      "value": "301b81aee786251f017a0000b47c86926527bcecf30c1251f90507137060aa27"
+    },
+    "evals/criteria-0.5.0.json": {
+      "algorithm": "SHA256",
+      "value": "d7f4549052b36cfa987a73f074f10f198c2325c18b0a235963fc4f7cce70c544"
+    }
+  },
+  "interpretation_limits": [
+    "Verdicts assess written decisions and disclosures, not executed checks or actual external enforcement. Supplied facts are the scenario basis, not independently verified operational evidence.",
+    "The 21 original criteria remain compound where written. Each is evaluated as a whole; no atomic subdivision, denominator inflation, or separate subcriterion gain is inferred.",
+    "Negative-action criteria are assessed from explicit restraint, decision and execution disclosures in these responses; this is not independent verification of runtime behavior.",
+    "The old-version baseline covers only the nine 0.5.0 cases. If baseline and forward both pass a criterion, there is no demonstrated criterion-level gain."
+  ],
+  "counts": {
+    "actual_responses": 9,
+    "cases": 9,
+    "criteria": 27,
+    "pass": 27,
+    "fail": 0,
+    "not_assessable": 0,
+    "original_compound_criteria": 0,
+    "atomic_0_4_criteria": 0,
+    "atomic_0_5_criteria": 27
+  },
+  "failed_criterion_ids": [],
+  "ambiguous_criterion_ids": [],
+  "quote_verification": {
+    "all_quotes_present_in_original_responses": true,
+    "unique_criterion_ids": true,
+    "expected_criterion_count": 27,
+    "verified_criterion_count": 27
+  },
+  "cases": [
+    {
+      "case_id": "split-business-acceptance",
+      "criterion_source": "evals/criteria-0.5.0.json",
+      "criterion_interpretation": "atomic criterion, evaluated as written",
+      "actual_response_sha256": "9ff28142cc8f95b18b1eeea9935dbec55836df78920eda2557b3fae6c8032ca9",
+      "criteria": [
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:split-business-acceptance:c1",
+          "criterion": "Connect both tasks to the overall persisted-order and UI business outcome.",
+          "quotes": [
+            "Each task must reference the accepted interface and the shared outcome: an authorized user submits an order, the order persists, and the UI displays the correct saved order."
+          ],
+          "verdict": "pass",
+          "reason": "Explicitly links both component tasks to authorization, persistence, and correct display."
+        },
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:split-business-acceptance:c2",
+          "criterion": "Identify a responsible integration duty using the existing team.",
+          "quotes": [
+            "Assign B the integration responsibility, since B can already coordinate integration."
+          ],
+          "verdict": "pass",
+          "reason": "Assigns integration to existing developer B."
+        },
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:split-business-acceptance:c3",
+          "criterion": "Do not accept the complete feature from separate component passes alone.",
+          "quotes": [
+            "Current verdict: component checks passed; complete feature acceptance is incomplete because the required workflow check does not exist."
+          ],
+          "verdict": "pass",
+          "reason": "Withholds whole-feature acceptance despite separate passing component checks."
+        }
+      ]
+    },
+    {
+      "case_id": "contract-source-drift",
+      "criterion_source": "evals/criteria-0.5.0.json",
+      "criterion_interpretation": "atomic criterion, evaluated as written",
+      "actual_response_sha256": "70ed3ff964f4497de37bf13600a6ed81453dbe60d0e49e0985f5265c7308232c",
+      "criteria": [
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:contract-source-drift:c1",
+          "criterion": "Use accepted contract C rather than the conflicting old example.",
+          "quotes": [
+            "Use api/openapi.yaml at commit C."
+          ],
+          "verdict": "pass",
+          "reason": "Selects the accepted versioned contract as the basis."
+        },
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:contract-source-drift:c2",
+          "criterion": "Identify payload, pagination and time-unit drift in the mock.",
+          "quotes": [
+            "Both sides must use response items, optional nextCursor, and UTC seconds. Correct the frontend mock that currently uses data, next_page, and milliseconds."
+          ],
+          "verdict": "pass",
+          "reason": "Identifies all three payload, pagination, and time-unit mismatches."
+        },
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:contract-source-drift:c3",
+          "criterion": "Require consumer/mock consistency with the accepted contract.",
+          "quotes": [
+            "Check the actual provider response and frontend interpretation against C."
+          ],
+          "verdict": "pass",
+          "reason": "Requires real provider and consumer consistency; the preceding correction also aligns the mock."
+        }
+      ]
+    },
+    {
+      "case_id": "mock-only-team-completion",
+      "criterion_source": "evals/criteria-0.5.0.json",
+      "criterion_interpretation": "atomic criterion, evaluated as written",
+      "actual_response_sha256": "d5881a8e27f55c12d2a31e3204d642a8dfb1096e90c66a8f4eb80f4b285deee8",
+      "criteria": [
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:mock-only-team-completion:c1",
+          "criterion": "Keep frontend mock validation separate from whole-feature acceptance.",
+          "quotes": [
+            "Do not mark the complete feature accepted. The frontend result supports its behavior against the contract-derived mock."
+          ],
+          "verdict": "pass",
+          "reason": "Limits the frontend pass to the mock validation scope."
+        },
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:mock-only-team-completion:c2",
+          "criterion": "Require actual provider compatibility with C.",
+          "quotes": [
+            "Check B against C, including empty results and HTTP 403 for unauthorized access."
+          ],
+          "verdict": "pass",
+          "reason": "Requires actual backend conformity to the accepted contract."
+        },
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:mock-only-team-completion:c3",
+          "criterion": "Keep the required authorization and complete-flow evidence gap visible.",
+          "quotes": [
+            "Backend compliance, the authorization path, actual compatibility, and the required complete workflow remain without applicable passing evidence."
+          ],
+          "verdict": "pass",
+          "reason": "Keeps authorization and complete-workflow gaps explicit in the verdict."
+        }
+      ]
+    },
+    {
+      "case_id": "shared-breaking-change",
+      "criterion_source": "evals/criteria-0.5.0.json",
+      "criterion_interpretation": "atomic criterion, evaluated as written",
+      "actual_response_sha256": "66bc0ab9cf6b85ca1619745b89d85e6f55b3510f787b9071c7e21591cadb0a14",
+      "criteria": [
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:shared-breaking-change:c1",
+          "criterion": "Keep C2 a proposal until accepted through existing authority.",
+          "quotes": [
+            "Keep C2 explicitly marked as an unaccepted proposal."
+          ],
+          "verdict": "pass",
+          "reason": "Leaves the breaking change as a proposal pending existing authority."
+        },
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:shared-breaking-change:c2",
+          "criterion": "Identify the affected frontend and shared type or schema dependencies.",
+          "quotes": [
+            "Record the proposed removal, its reason, and its impact on the frontend, backend, database schema, and shared generated types."
+          ],
+          "verdict": "pass",
+          "reason": "Names both the consumer and shared schema/type dependencies."
+        },
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:shared-breaking-change:c3",
+          "criterion": "Require coordinated compatibility or migration checks before complete integration acceptance.",
+          "quotes": [
+            "Obtain the actual changed dependencies, integrate against the current target, and check the combined consumer/provider behavior, generated types, and affected data compatibility."
+          ],
+          "verdict": "pass",
+          "reason": "Requires coordinated combined and data compatibility validation after acceptance, before integration closure."
+        }
+      ]
+    },
+    {
+      "case_id": "project-harness-profile",
+      "criterion_source": "evals/criteria-0.5.0.json",
+      "criterion_interpretation": "atomic criterion, evaluated as written",
+      "actual_response_sha256": "8edd01690620fe2ad67d5eec6f3405154c6c55cac2afc3358ee41c6835bd071e",
+      "criteria": [
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:project-harness-profile:c1",
+          "criterion": "Do not claim a task record or unverified host settings enforce permissions.",
+          "quotes": [
+            "A YAML record can describe intended responsibilities and approval references. It cannot enforce writes or prove approval. Native path permissions and hooks are unverified, so record those guarantees as unverified."
+          ],
+          "verdict": "pass",
+          "reason": "Distinguishes descriptive records and unverified settings from enforcement."
+        },
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:project-harness-profile:c2",
+          "criterion": "Identify runtime resource collisions and necessary local isolation.",
+          "quotes": [
+            "Both defaults currently use port 3000 and one mutable test database. Assign distinct runtime ports and isolated test databases before concurrent checks; separate checkouts alone do not isolate those resources."
+          ],
+          "verdict": "pass",
+          "reason": "Identifies both runtime collisions and requires local resource isolation."
+        },
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:project-harness-profile:c3",
+          "criterion": "Use project-local records and actual commands without claiming CODEOWNERS alone proves both approvals.",
+          "quotes": [
+            "Reference their actual local check commands without inventing commands.",
+            "CODEOWNERS is present, but configured review requirements and CI enforcement have not been observed. Do not claim that it already controls contract acceptance."
+          ],
+          "verdict": "pass",
+          "reason": "Uses existing project-local entry points and real commands; its explicit CODEOWNERS limitation separately denies observed enforcement or acceptance proof."
+        }
+      ]
+    },
+    {
+      "case_id": "single-integrated-candidate",
+      "criterion_source": "evals/criteria-0.5.0.json",
+      "criterion_interpretation": "atomic criterion, evaluated as written",
+      "actual_response_sha256": "28261130351c657b014c5e1d47d3dd4ee09254b978c98641c1acc6fecb452758",
+      "criteria": [
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:single-integrated-candidate:c1",
+          "criterion": "Use current T2 and an exact combined candidate as the integration basis.",
+          "quotes": [
+            "construct one exact combined commit or snapshot against T2."
+          ],
+          "verdict": "pass",
+          "reason": "Requires current T2 and a precise integrated candidate."
+        },
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:single-integrated-candidate:c2",
+          "criterion": "Require applicable combined behavior checks rather than independent old passes.",
+          "quotes": [
+            "Check the actual dependencies and combined behavior, including the target configuration and any integration changes."
+          ],
+          "verdict": "pass",
+          "reason": "Requires combined checks and applicability review instead of inherited independent passes."
+        },
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:single-integrated-candidate:c3",
+          "criterion": "Do not select a release candidate by newest branch timestamp.",
+          "quotes": [
+            "Commit recency cannot choose the release candidate."
+          ],
+          "verdict": "pass",
+          "reason": "Explicitly rejects selection by branch recency."
+        }
+      ]
+    },
+    {
+      "case_id": "ordinary-git-collaboration",
+      "criterion_source": "evals/criteria-0.5.0.json",
+      "criterion_interpretation": "atomic criterion, evaluated as written",
+      "actual_response_sha256": "e987c128cab370bfa08f1afb2a65c0ca86d4ffdcfe32f6c5b5a2cfe4ab828a61",
+      "criteria": [
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:ordinary-git-collaboration:c1",
+          "criterion": "Permit authorized independent task development without an atomic cross-machine ownership claim.",
+          "quotes": [
+            "Proceed with the authorized independent development against accepted C."
+          ],
+          "verdict": "pass",
+          "reason": "Allows the already assigned independent work to proceed without an atomic claim."
+        },
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:ordinary-git-collaboration:c2",
+          "criterion": "Do not require a heartbeat, lease, or coordination service.",
+          "quotes": [
+            "No atomic claim or heartbeat service is needed for the supplied arrangement."
+          ],
+          "verdict": "pass",
+          "reason": "Does not make new coordination infrastructure a prerequisite."
+        },
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:ordinary-git-collaboration:c3",
+          "criterion": "Retain shared contract and integration responsibilities.",
+          "quotes": [
+            "Before combined acceptance, obtain the actual results and validate one combined candidate against the current integration target.",
+            "There are no competing writers or deployment actions, and the integration owner and target are known."
+          ],
+          "verdict": "pass",
+          "reason": "Retains accepted C, existing integration owner/target, and combined validation responsibilities."
+        }
+      ]
+    },
+    {
+      "case_id": "small-team-existing-layout",
+      "criterion_source": "evals/criteria-0.5.0.json",
+      "criterion_interpretation": "atomic criterion, evaluated as written",
+      "actual_response_sha256": "a2791a18b7c2a579b4bacf85f8e46940592ebbae73f5a86f0c2d9e903621d524",
+      "criteria": [
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:small-team-existing-layout:c1",
+          "criterion": "Reuse the existing layout, contract and task tracker.",
+          "quotes": [
+            "Use this brief handoff in the existing issue tracker:",
+            "Goal: Preserve the existing required HTTP 400 behavior in web/ and service/.\nAccepted basis: C in api/contract.json; unchanged."
+          ],
+          "verdict": "pass",
+          "reason": "Reuses the issue tracker; the handoff names web/, service/, and unchanged api/contract.json."
+        },
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:small-team-existing-layout:c2",
+          "criterion": "Allow one developer to handle multiple duties without mandatory separate role infrastructure.",
+          "quotes": [
+            "Ownership: One developer can handle both frontend and backend duties. A separate coordination role is unnecessary for this scope."
+          ],
+          "verdict": "pass",
+          "reason": "Allows multiple duties with one developer without mandatory roles."
+        },
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:small-team-existing-layout:c3",
+          "criterion": "Allow concise accepted development handoff while keeping publication outside scope.",
+          "quotes": [
+            "Verdict: Development complete and accepted for this scope. Publication is outside scope."
+          ],
+          "verdict": "pass",
+          "reason": "Allows concise acceptance of the supplied fully evidenced development while excluding publication."
+        }
+      ]
+    },
+    {
+      "case_id": "solo-default-lightweight",
+      "criterion_source": "evals/criteria-0.5.0.json",
+      "criterion_interpretation": "atomic criterion, evaluated as written",
+      "actual_response_sha256": "517ae1d25ec4eda78cdc7660bf46a37ca8e5920daf58b7f572185636b4995e0d",
+      "criteria": [
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:solo-default-lightweight:c1",
+          "criterion": "Use independent development as the default without frontend/backend task splitting.",
+          "quotes": [
+            "Keep the work with the single developer and use the existing issue for the brief handoff. No separate frontend/backend tasks or collaboration setup are needed."
+          ],
+          "verdict": "pass",
+          "reason": "Retains independent development as the default."
+        },
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:solo-default-lightweight:c2",
+          "criterion": "Do not require new role profiles, interface formats, mock services or team CI setup for this correction.",
+          "quotes": [
+            "Keep the existing layout and references; no shared interface or external dependency requires additional coordination."
+          ],
+          "verdict": "pass",
+          "reason": "Uses existing records without requiring profiles, mock services, interface formats, or team CI."
+        },
+        {
+          "criterion_id": "0.4.0-monorepo-baseline:solo-default-lightweight:c3",
+          "criterion": "Permit concise existing-record development acceptance while keeping publication outside scope.",
+          "quotes": [
+            "Development is complete and accepted for BUG-12 under the supplied evidence.",
+            "Publication is outside scope."
+          ],
+          "verdict": "pass",
+          "reason": "Accepts the supplied exact-candidate evidence in a brief existing-record handoff; publication is explicitly outside scope."
+        }
+      ]
+    }
+  ]
+}

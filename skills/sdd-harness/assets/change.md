@@ -3,6 +3,7 @@
 Keep the project's format. Remove fields that do not apply.
 Write internal prose according to [the writing policy](../references/writing.md).
 Keep identifiers and raw evidence unchanged.
+Independent tasks need no collaboration fields or setup.
 
 - Change and task ID: enter stable references.
 - Goal and scope: state the user requirement, change, and boundaries.
@@ -14,8 +15,9 @@ Keep identifiers and raw evidence unchanged.
 - Assertion basis: reference accepted expected results, useful counterexamples, and defect reproduction when applicable.
 - Risk checks: identify necessary system, performance, security, compatibility, and recovery evidence. Omit inapplicable checks.
 - Dependencies and shared contracts: identify parallel work and results necessary before integration.
+- Optional cooperation: link component scope, responsible developer, and integration duty to the complete business outcome and accepted contract.
 - Integration: reference the current target and actual combined candidate with applicable validation.
-- Execution: identify the task, worktree, machine, harness, owner, and observation time. This record does not provide a lock.
+- Execution: identify the task, checkout, harness, owner, and actual activity observations. This record does not enforce ownership.
 - Results and evidence: reference commits or snapshots, acceptance conditions, exact validation objects, methods, environments, results, and logs.
 - Validation recipe: record executable steps, necessary input versions, setup, and pass criteria.
 - Evidence applicability: record the current conclusion and reason for carrying historical evidence forward.

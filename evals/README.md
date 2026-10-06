@@ -10,6 +10,8 @@ They do not prove host enforcement, deployment success, or model performance acr
 - `criteria.json`: evaluator-only criteria.
 - `scenarios-0.4.0.json`: twelve additional executor scenarios for the six approved improvements.
 - `criteria-0.4.0.json`: evaluator-only atomic criteria for those scenarios.
+- `scenarios-0.5.0.json`: nine additional cases for optional collaboration and the independent default.
+- `criteria-0.5.0.json`: 27 evaluator-only atomic criteria for those cases.
 - `results/`: complete versioned answers and evaluation records.
 
 ## Run an evaluation
@@ -95,6 +97,16 @@ The baseline omissions concern explicit repeatable procedures and explicit links
 Both criteria were partly satisfied. The score records retain alternative interpretations that could permit a passing score.
 These results compare simulated written responses. They do not measure live enforcement or general performance across models and harnesses.
 
+## Version 0.5.0 procedure
+
+Use released 0.4.0 instructions for the nine new baseline cases before editing the source skill.
+Use all three scenario files for final 0.5.0 answers: 28 cases and 84 criteria.
+Keep criteria, design proposals, and prior answers outside executor inputs.
+Retain the earlier nineteen-case baseline results with their original scope. Do not present them as a new baseline run.
+Score actual answers independently. A passing baseline does not establish an observed improvement.
+Run three fresh forward host trials with the unchanged four-case host interface.
+Record applicability when carrying earlier host baseline evidence forward.
+
 ## Version 0.4.0 results
 
 | Revision and input | Passed criteria | Failed criteria | Answers | Scores |
@@ -109,3 +121,12 @@ An initial tool trial also retained one unsafe deployment attempt despite host r
 After clarification, three fresh final tool trials passed twelve cases and 54 outcome checks.
 Read the [validation record](results/0.4.0-validation.md) for coverage, complete trial links, failures, repairs, and limits.
 Read [provenance](results/0.4.0-provenance.json) for source and input hashes and evidence applicability.
+
+## Version 0.5.0 results
+
+Released 0.4.0 passed all 27 criteria for the nine new cases.
+Final 0.5.0 passed all 84 criteria across 28 cases.
+Three fresh forward host executors passed twelve cases and 54 outcome checks.
+The baseline already passes the shared cases; no observed performance gain is claimed.
+Read the [validation record](results/0.5.0-validation.md) for complete records, the handoff repair, retained attempts, and scope limits.
+Read [provenance](results/0.5.0-provenance.json) for source and artifact hashes and evidence applicability.

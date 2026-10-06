@@ -1,0 +1,174 @@
+{
+  "version": "0.5.0",
+  "baseline_commit": "a1ee32c96b341bfc7e7dbbc7e792ba76a0dc3b5f",
+  "runner": "Fresh isolated Codex subagents. The runner did not provide a model identifier.",
+  "baseline_package_sha256": "65ecea4a9ef633469f2cb09ad6f2845f4583449929ef83cf1918c01f3dc2a368",
+  "baseline_instruction_sha256": {
+    "assets/change.md": "271c3db3641e8934c9213a5a15c8052bacad5ab40310efe211f713825482511b",
+    "assets/handoff.md": "009b5b5c97214c087ca6ed6f7ae0e0ee2fd2ec48e6c423be13a7ac343db7e712",
+    "assets/release.md": "a7bf4bbd3ec8b28be2523cbb2205db23c60c9700e4dda2302465ef0a960d300a",
+    "references/collaboration.md": "4b836cef3305bc5348bab44acb7181bdbb4cc9d7dc2983be88d9d7c0ea0704d7",
+    "references/delivery.md": "95566a3aab43d1c29cc06c395bbe8150a1bedf73576ae8caa59c86cf05151468",
+    "references/install.md": "d874a96627f9959499c583dbc7e8f606a27116a629cb3fb21335a12c287aaf63",
+    "references/recovery.md": "ed02b97b754fbf95fc5f45df449d8d868c47315bb356d4d255e793dc7ae3136a",
+    "references/spec-review.md": "6731a432c481cd7ed6d8dbfd45d6486acdd0a290e611055c15c8ce784f16f9a1",
+    "references/workflow.md": "18326afaf1a4417b363708017ea9f035dec324ff2afabc7a795238cc68a0e3ea",
+    "references/writing.md": "ea09ecd141d138f3c679632a49a9335e73932ec3df72b66b3990e45f3a22a2e1",
+    "scripts/install.py": "adbf6991005fe8e688562903f823a8f9310d00c59792a0cc44723b0a0331bbf3",
+    "scripts/workspace.py": "9e14fd84b918c318f225a224650ae1be72d6f6fc0d4588ab1d33c7dcb4d18896",
+    "SKILL.md": "a28cf9971b75086e69fac0dbffd376cfa602095c098dc216ad2aa308443d0154"
+  },
+  "initial_instruction_sha256": {
+    "assets/change.md": "f3691a4495663500cebd8cab5ef274471a08aff6f0771e3f38dcacc8b1284377",
+    "assets/handoff.md": "0fe262b4b5b883154fe20cecde65f5b51bea75728f68df73bd012aa7b30422f2",
+    "assets/release.md": "b89de08a9cde9908d55733f31857ea72b7f4bcfcbf06a32d66c1e8b7408ba491",
+    "references/collaboration.md": "3aeb9966924ef9fc0f5e7aa186f36f61c0c8f931786ef8798dfdce6cd161582f",
+    "references/delivery.md": "95566a3aab43d1c29cc06c395bbe8150a1bedf73576ae8caa59c86cf05151468",
+    "references/install.md": "1a9ac1f324b32e79d7a3803e1ba2e6fec583e06aeeb738f624366d6e5e90070b",
+    "references/recovery.md": "ed02b97b754fbf95fc5f45df449d8d868c47315bb356d4d255e793dc7ae3136a",
+    "references/spec-review.md": "6731a432c481cd7ed6d8dbfd45d6486acdd0a290e611055c15c8ce784f16f9a1",
+    "references/workflow.md": "1526865eae235e8f790a9936a71ee43dd4f42727eaa7c4b049c7ccd8959645d3",
+    "references/writing.md": "87c76bf40be5e7a883ca36ad5d25bdb711c9815168be0f8b8d43eb7b82e097f2",
+    "scripts/install.py": "adbf6991005fe8e688562903f823a8f9310d00c59792a0cc44723b0a0331bbf3",
+    "scripts/workspace.py": "9e14fd84b918c318f225a224650ae1be72d6f6fc0d4588ab1d33c7dcb4d18896",
+    "SKILL.md": "041e4661614d9c76c5b119c7717062dc518509962150639b08ed4045b55912b4"
+  },
+  "final_instruction_sha256": {
+    "assets/change.md": "f3691a4495663500cebd8cab5ef274471a08aff6f0771e3f38dcacc8b1284377",
+    "assets/handoff.md": "0fe262b4b5b883154fe20cecde65f5b51bea75728f68df73bd012aa7b30422f2",
+    "assets/release.md": "b89de08a9cde9908d55733f31857ea72b7f4bcfcbf06a32d66c1e8b7408ba491",
+    "references/collaboration.md": "6d820b3e7d245bc3481ca111748cfd868c0d21999acdbfcef3919bf345d68021",
+    "references/delivery.md": "95566a3aab43d1c29cc06c395bbe8150a1bedf73576ae8caa59c86cf05151468",
+    "references/install.md": "1a9ac1f324b32e79d7a3803e1ba2e6fec583e06aeeb738f624366d6e5e90070b",
+    "references/recovery.md": "ed02b97b754fbf95fc5f45df449d8d868c47315bb356d4d255e793dc7ae3136a",
+    "references/spec-review.md": "6731a432c481cd7ed6d8dbfd45d6486acdd0a290e611055c15c8ce784f16f9a1",
+    "references/workflow.md": "1526865eae235e8f790a9936a71ee43dd4f42727eaa7c4b049c7ccd8959645d3",
+    "references/writing.md": "87c76bf40be5e7a883ca36ad5d25bdb711c9815168be0f8b8d43eb7b82e097f2",
+    "scripts/install.py": "adbf6991005fe8e688562903f823a8f9310d00c59792a0cc44723b0a0331bbf3",
+    "scripts/workspace.py": "9e14fd84b918c318f225a224650ae1be72d6f6fc0d4588ab1d33c7dcb4d18896",
+    "SKILL.md": "a8e87cdbab0c5f5dc75d847f88be940715a9af234560d53a47d6bd2843e6f651"
+  },
+  "final_package_sha256": "dd2d36c1f9166749b951d9f4f0869279981cdefd41b0af98e54c2880507da4c4",
+  "input_and_host_sha256": {
+    "evals/scenarios.json": "582d6b677765fdbbcb690fb7659c279a827c7b76797b855b865487e7498d7fc0",
+    "evals/criteria.json": "74678b6dd089dbf2d24ea78a46b915fca0d4aeeab59050e044c446d37297262b",
+    "evals/scenarios-0.4.0.json": "af77066a4c1a375cdffc786929c9b405e6010914c3deaf0b25b0c891311020f8",
+    "evals/criteria-0.4.0.json": "b1524f1fbf618fbea78f725b8212ef0246ec27fc37563631b04165cf2e617f84",
+    "evals/scenarios-0.5.0.json": "301b81aee786251f017a0000b47c86926527bcecf30c1251f90507137060aa27",
+    "evals/criteria-0.5.0.json": "d7f4549052b36cfa987a73f074f10f198c2325c18b0a235963fc4f7cce70c544",
+    "evals/host.py": "dcb44724c88fbf2d6e314ab3d6b31dfd998f2dd0fa70e67c3a3ba439a778baf8",
+    "evals/host-README.md": "458e51a433cb6f8ec090774a2a8c7cdb9a558440d51e2d8c00a2367d27f7f31d"
+  },
+  "result_sha256": {
+    "evals/results/0.4.0-monorepo-baseline.json": "099451dc64bebdf6e075e5f9849dbe72af4f88c805b01a13f7769b901e28cede",
+    "evals/results/0.4.0-monorepo-scores.json": "db7ccad5606a2473f7b55213d92fc77e96e9ac33ff56f2be10ef5068bb93c1af",
+    "evals/results/0.5.0-forward-initial.json": "432a487b8c8908e992c5e1af08f9d8d1857ecc20affebcbf3f79813cfce12396",
+    "evals/results/0.5.0-forward.json": "a963b6b97c41fcc54da1848487c7e627b8ef44cda38558d16d60d5473b3c5133",
+    "evals/results/0.5.0-host-trial-1-initial-scores.json": "e44ada06083bac93b3dc44836e2497231342a1f4b86b3720f44e2fce4542a43f",
+    "evals/results/0.5.0-host-trial-1-initial.json": "7277fbfb54bd3531370ab1320d839c82ec1614f0f3217e91c0ab6eddb2942ad9",
+    "evals/results/0.5.0-host-trial-1-scores.json": "3f76d91a1fabdb3a4dcc799a7fe0fb0a28846de9d8efd6e057ecff9287b7ffb8",
+    "evals/results/0.5.0-host-trial-1.json": "5b5166201a8faa61a93b47bc711c48b46fdbd461396c97d252e492a4fad34f13",
+    "evals/results/0.5.0-host-trial-2-scores.json": "fa398473dd5bed77f681c0afabc202960b6a5d5e21d53d833f97d30815685cb2",
+    "evals/results/0.5.0-host-trial-2.json": "f165f8b3d3a4b03395b0455b3cb4e5038ba45729fe1894f32763912795ff5048",
+    "evals/results/0.5.0-host-trial-3-scores.json": "3f07bec3b5c37800079a494f88a406f1f0b1c1cb25b8e6c2862a21d4a6bfbdad",
+    "evals/results/0.5.0-host-trial-3.json": "72905d91b2ee88cc04ec47a7661598bd660ed497d1757e04747757a4a51877a8",
+    "evals/results/0.5.0-scores-initial.json": "6b5070cfe78a3307df06ed64d8198305a6b79c2957df0b10281a2ce11300a9f4",
+    "evals/results/0.5.0-scores.json": "36ea431f24e94fd669b596f3939d0930b1015f1da151507758c25cf527f75c0c",
+    "evals/results/0.5.0-validation.md": "45dbbe29444b7c895057c8492b4fd29882918b8ca57a1979aca72be47dc9e3f3"
+  },
+  "instruction_score_verification": [
+    {
+      "scores": "evals/results/0.4.0-monorepo-scores.json",
+      "criteria": 27,
+      "quotes_verified": 31,
+      "all_passed": true
+    },
+    {
+      "scores": "evals/results/0.5.0-scores.json",
+      "criteria": 84,
+      "quotes_verified": 99,
+      "all_passed": true
+    }
+  ],
+  "host_trials": [
+    {
+      "trial": 1,
+      "execution": "evals/results/0.5.0-host-trial-1.json",
+      "scores": "evals/results/0.5.0-host-trial-1-scores.json",
+      "cases": 4,
+      "passing_cases": 4,
+      "passed": 18,
+      "failed": 0,
+      "total": 18
+    },
+    {
+      "trial": 2,
+      "execution": "evals/results/0.5.0-host-trial-2.json",
+      "scores": "evals/results/0.5.0-host-trial-2-scores.json",
+      "cases": 4,
+      "passing_cases": 4,
+      "passed": 18,
+      "failed": 0,
+      "total": 18
+    },
+    {
+      "trial": 3,
+      "execution": "evals/results/0.5.0-host-trial-3.json",
+      "scores": "evals/results/0.5.0-host-trial-3-scores.json",
+      "cases": 4,
+      "passing_cases": 4,
+      "passed": 18,
+      "failed": 0,
+      "total": 18
+    }
+  ],
+  "regression_tests": {
+    "command": "python -m unittest discover -s tests -q",
+    "tests": 40,
+    "exit_code": 0,
+    "observed_result": "Ran 40 tests in 44.501s; OK",
+    "applicability": "Scripts, tests and host behavior remained unchanged after this run. Final Markdown and package content received separate checks."
+  },
+  "review": {
+    "specification": "No material findings.",
+    "quality": "One missing explicit stopped-writer handoff condition was repaired. Independent re-review found no remaining material issues.",
+    "report_sha256": {
+      "docs/validation/0.5.0-spec-review.md": "51e9f01d5c0965e414fd7901f8da0025dd029968c3d27386f955238258381757",
+      "docs/validation/0.5.0-quality-review.md": "3a03c7878e485c544f90c4e29383c81b621030a015ec77d9aef6a20cd003e8ec"
+    }
+  },
+  "installation": {
+    "version": "0.5.0",
+    "backup": "C:\\Users\\airpot\\.agents\\skill-backups\\sdd-harness-0.4.0-20261006T033402644740Z",
+    "backup_version": "0.4.0",
+    "backup_matched_files": 13,
+    "installed": "C:\\Users\\airpot\\.agents\\skills\\sdd-harness",
+    "matched_files": 13,
+    "first_install": {
+      "status": "installed",
+      "installed": "C:\\Users\\airpot\\.agents\\skills\\sdd-harness",
+      "files": 13
+    },
+    "repeat_install": {
+      "status": "already-installed",
+      "installed": "C:\\Users\\airpot\\.agents\\skills\\sdd-harness"
+    }
+  },
+  "distribution": {
+    "files": 13,
+    "source_zip_extracted_and_codex_installation_match": true,
+    "source_and_installed_quick_validate_passed": true,
+    "portable_links_and_zip_integrity_passed": true,
+    "sentence_and_paragraph_screens_passed": true,
+    "repeat_installation_status": "already-installed"
+  },
+  "applicability": {
+    "baseline_instruction": "Released 0.4.0 package. First eight new cases ran before the solo case was appended; the same isolated executor answered the ninth before source edits. Previous answers were preserved. Criteria and new source were excluded.",
+    "carried_host_baseline": "evals/results/0.4.0-host-final-trial-1.json and corresponding scores retain unchanged host/control baseline evidence. They do not cover the new collaboration instructions.",
+    "initial_forward": "Initial 28 answers passed the written rubric. A source-review guard finding triggered a fresh final 28-case run; no criterion failure was fabricated.",
+    "initial_host_trial": "Earlier trial 1 and its passing scores remain preserved. Trial 1 was repeated after repair.",
+    "trial_2": "Executor reread repaired entry and records both initial/final instruction provenance. No responsibility transfer occurred; all final actions followed the actual writer checks. A Windows command-line-length failure prevented the first result-save command from starting; subsequent save retained the failure and all operations.",
+    "comparison": "Released baseline passes all 27 shared criteria. There is no observed shared-criterion performance gain.",
+    "limits": "Text-only decisions are simulated. Host controls are simulated; actual local files, hashes, assertions and journals were checked. Native lifecycle enforcement, all-product runtime compatibility, statistical superiority, and complete ASD-STE100 compliance remain unverified."
+  }
+}

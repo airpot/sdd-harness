@@ -1,0 +1,442 @@
+{
+  "version": "0.7.3",
+  "base_commit": "f7c58a99d89b946091554b8e0b8176621f769195",
+  "hash_binding": "Raw frozen release bytes; ZIP preserves portable bytes; Git may convert unprotected text. Versioned exported evidence uses -text.",
+  "portable_source": {
+    "assets/change.md": "da13204796df87ea9405216f5b85dc7a9d35aff09969f7b44946fcd223880292",
+    "assets/handoff.md": "4da71c505cc6730ddbd86fcc1491f4ff9544564c4cd1167a3f50df012c495b73",
+    "assets/release.md": "2dd28a051622ecf6c42074ad8b6787e1ddfd39027dd32781f7ed86a8a0b42ab5",
+    "references/collaboration.md": "85522f2d07ac2381be00db1b21d381aebdfcb019218ae67ba40e14b371e84264",
+    "references/delivery.md": "95566a3aab43d1c29cc06c395bbe8150a1bedf73576ae8caa59c86cf05151468",
+    "references/install.md": "84ff3d78af05891d5b06c81ddee237f6a91a8f0586a9474543a4d033d89a73be",
+    "references/recovery.md": "dd82d61c0baac5aa69216b5abbdb3815a1c6deb526b2791452683122e8f80ad6",
+    "references/spec-review.md": "99af55f4a2873b0e0540e792486f51f83cddcaa13316dbbbf4d70329a372fccc",
+    "references/subagents.md": "4b3380e3b609700dae1a793767818b7c9496f2224afdf50fd25cf0b0fd03eb5c",
+    "references/workflow.md": "24b728f039169939beb272efc24a2e78e4b5ed54e5678030b5cba4634e71cafc",
+    "references/writing.md": "38fd8563663da1c1e21de6a4c6b9f7ae5dc605794876e9e5eab2e36d794623c7",
+    "scripts/install.py": "29c82baeea48d96e3121584b50c1efed583a58dc41d317cf1f354df788be85b6",
+    "scripts/workspace.py": "47fe9d9d6019f828879b151f5a4361d432e721be128a07a80805b810ce8b3374",
+    "SKILL.md": "3f7f57d215626a31c3b7c8d939d1596d4db09e8f0951ba61f6b82ede20fd1d9e"
+  },
+  "portable_files": 14,
+  "archive": {
+    "path": "dist/sdd-harness-0.7.3.zip",
+    "sha256": "2b193c5e44379c40c3895090f602422cc2aac427ecf4756cf6c9d1e2d1ee211b"
+  },
+  "repository_code_and_docs": {
+    ".gitattributes": "159610160fe38db0d68576af475e5ca14b766f702f1fa2517db1c9d5aec9791f",
+    "README.md": "b2e0b132d9699e26f5cc876e106b39bed536ff8e18c99f5bd5e63b95c617cbeb",
+    "specs/sdd-harness.md": "984c4ea553247aa7056df6263b5788abcd26f1df0454b34f54df0a3b165154f0",
+    "evals/host.py": "8bcb8e59f3ea9fedbc9d9749bef62caeb1bcf40e28d447ee095158d7c8be9a05",
+    "evals/host-README.md": "2b032d702638662b624356e08202e292bb2f62657fd6f5deea5358a2af2915fb",
+    "tests/test_073_corrections.py": "93b314356df46038d5ed10b6e27eab167b560808689f9c909becc2070c01da09"
+  },
+  "git_blob_bindings": {
+    "assets/change.md": "e22029ca705c2655c02a5f3a842b786089d30ef6",
+    "assets/handoff.md": "65463c71ff3671df00e3bc9ae9b0ade38c5de980",
+    "assets/release.md": "1f1ff4a391751f1ffd739792ed17cba002c90078",
+    "references/collaboration.md": "6d7de682557014a06f2bde6c6558703de3a6f20c",
+    "references/delivery.md": "4d530a52f96cecc8f089a6fbbf88f23bef9fd6b7",
+    "references/install.md": "9a73d632969b54161ea03a08dec453afa4034ff4",
+    "references/recovery.md": "d5cb10aa5876607f072f9b4b95c59647db0bfdbd",
+    "references/spec-review.md": "caa33367ed5bde74c4c4af42a2221c476ece638d",
+    "references/subagents.md": "1f3465e63543edb8f4bde6f78b76d700a063c96b",
+    "references/workflow.md": "3825c53a7457322f4de9ea9df02293d1ec418b66",
+    "references/writing.md": "adb9fd370e223d25f53118f335fe3c11d6260b6e",
+    "scripts/install.py": "53105651c22acbdac0a521049982704ce7f6e2eb",
+    "scripts/workspace.py": "337058d48ca2499eb4a5e65746b139eca9fff472",
+    "SKILL.md": "4f4999c318bcdc3f4b24f87a6903bec2f70be35a",
+    ".gitattributes": "ec1d37f7d9113bf4e0487f88db6bddf829ebb92b",
+    "README.md": "862b5ca888fa1d56919a6fa906cd8f39f26d0b7f",
+    "specs/sdd-harness.md": "97dbe4942613ad31a0df19f33d25d9de2f82c022",
+    "evals/host.py": "001f29a5e5e0916dec1b13c87ceae56b7797daff",
+    "evals/host-README.md": "1ab78706a5753b8a146ac09d4a389f245cb550c2",
+    "tests/test_073_corrections.py": "d26b519df05d1db455d009e4f13c2a62746ce98e"
+  },
+  "records": {
+    "evals/results/0.7.3-affected-test_072_corrections.log": "7f9f5d1aa46dbbae35d841edfe0117f2e87fcaef270dc874b916b80d24f08ecb",
+    "evals/results/0.7.3-affected-test_eval_host.log": "eff10cee935d98de4cc650db4304ccc28bcc5f1fd30852282fa524466f1d2e58",
+    "evals/results/0.7.3-affected-test_followup_corrections.log": "3367478e456c45f8e838ab8b390ced48987a0b768766f295be264c71424f938a",
+    "evals/results/0.7.3-affected-test_package.log": "d35b13996ad116af1d86b65e9eee7b5f5e9db685c5bbf5c8c494527bf1e396f8",
+    "evals/results/0.7.3-affected-test_skill_tools.log": "5687108abeca59d44949a3d4381b0f6542288b6f95684531213022f9903c02c0",
+    "evals/results/0.7.3-affected-test_subagent_host.log": "67ba77b7593db9ee78f3b7faf4a5f69f828a8b5b1680986e2f648acb3e3dfaa1",
+    "evals/results/0.7.3-baseline-test_072_corrections.log": "6b7d53ccc267413835b473afbe3aa4dad3371d0c52e7362cf96a221629de06b6",
+    "evals/results/0.7.3-baseline-test_eval_host.log": "c4547442a71423dfb7ef21242ca9bfd06d4f99e99c6ce57b8f1e65d4f088eba9",
+    "evals/results/0.7.3-baseline-test_package.log": "56ba13806eb9fc42790d5e4a157c4b91a426c0dab2c13585f15e09bbb70990be",
+    "evals/results/0.7.3-export-first-error.txt": "8a4ae0baab6ca3a38da5a00e4c93c4e61cd57161bafbbc3ef55e7c82c6b1d9a8",
+    "evals/results/0.7.3-final-test_073_corrections.log": "9d3c30641d65c8698764b641b51d52c663444c56e08ae1fd693e511edc43035e",
+    "evals/results/0.7.3-final-test_eval_host.log": "9c975ce759dcd313e890d99e426a6e0dbceb7ff99b2a5aad9dd8134381361a79",
+    "evals/results/0.7.3-implementation-hashes.json": "a440a19e7c9bdf307a984254ac3c462edd2ed63608a723b007fbce8414614e15",
+    "evals/results/0.7.3-implementation-report.txt": "fb22624ed865ed821edba87db84fc5689d3b42efc8b8053ea6adba3d8abf5595",
+    "evals/results/0.7.3-installation.json": "c9b17e253febed0024118767f3d1a50919f489c28dd1cdbead6690b0ecac6583",
+    "evals/results/0.7.3-metadata-and-diff-checks.log": "585c7cf1c22109bb9744bbc01da5da95840184237180259a655a46e7b224799b",
+    "evals/results/0.7.3-old-installed-baseline.json": "62bcccad06e9460fd4d9e09da52171adc5abb67c27b28e34b08cc23c28ea854c",
+    "evals/results/0.7.3-package.json": "050a96b46b43eb2f5249862a07e64a8f1b128825e031f070695aa96705a3dc5d",
+    "evals/results/0.7.3-quality-final-check.json": "f605a3335715f9c817eeae2b2cb9ca55e6cb5a6e59ec6b30cbc5fbc6b043b05f",
+    "evals/results/0.7.3-quality-history-first.stderr.log": "ddbfaa950e32738b8684bb7c399ffadf8c0b01b331c43de5680580b2807107f6",
+    "evals/results/0.7.3-quality-history-first.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evals/results/0.7.3-quality-history.json": "8dc652fcf75ff6ed7b811c93ddcb529593618a7dc0e50e359462b8f18ba6ac2a",
+    "evals/results/0.7.3-quality-history.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evals/results/0.7.3-quality-history.stdout.log": "148f9675d17fee4ea56bbf532f67bb443b18bdfdbb82053e12ee01f396e77982",
+    "evals/results/0.7.3-quality-probes.json": "4255a1fba4cc9a8dfe6bfe6d77bf4dea1e9cb1dc9b47b69c60f46621948f1cf5",
+    "evals/results/0.7.3-quality-probes.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evals/results/0.7.3-quality-probes.stdout.log": "05040b7d3b8cbac8fa5b9773e8eb77943b46e2b7b691485535202ef0aff077d7",
+    "evals/results/0.7.3-quality-regressions.stderr.log": "38ee16a04e5905c7f105f8fbd2befad0ff4f8649d7ee950000d06df13cf4fe98",
+    "evals/results/0.7.3-quality-regressions.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evals/results/0.7.3-quality-review.txt": "2f422986a90ca206a3edd818a0cfc005fe1d735663a454c3f26ba74762818bf2",
+    "evals/results/0.7.3-regressions-green-first.log": "2d6718332e0d3aed0daaa9698a47307cc6acc12f30517eb86748b1d462e27219",
+    "evals/results/0.7.3-regressions-red-fixture-corrected.log": "7e5d5c1ffb05ed837a19bf8e84bcdaacbbf81a2c4c404ffbb7b2b11ddc8c4374",
+    "evals/results/0.7.3-regressions-red.log": "3efbee36d653263be5d1dca27711c1906b834a7c2df8dae650de5a7825d8daa1",
+    "evals/results/0.7.3-spec-final-check.json": "1188824aa1bcd72d2f4422fc09617ba84d342cfd131ecd08d2744912652cc6bd",
+    "evals/results/0.7.3-spec-probes-first.stderr.log": "d48e5f4cd1b932d03825609122df642e01666bcb25ece471f52b22c0341b8937",
+    "evals/results/0.7.3-spec-probes-first.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evals/results/0.7.3-spec-probes-second.stderr.log": "f4cb9c4ff9324565a2386603289f15b9ef3b33d762372c35cad570bddad85f87",
+    "evals/results/0.7.3-spec-probes-second.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evals/results/0.7.3-spec-probes.json": "de4d5ea45275407536f88b301beaf2df31fd1314bb530abe60260891ee0eb9f4",
+    "evals/results/0.7.3-spec-probes.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evals/results/0.7.3-spec-probes.stdout.log": "0a3090490abbfa7e428e907bfd3fd89bdb97c6e82312eee6e8ad1d165f9c5ab4",
+    "evals/results/0.7.3-spec-review.txt": "b60163e28b4cefaff8c797cc762abb27fe463030ec98003a0335a41ac38a5b80",
+    "evals/results/0.7.3-spec-suites.json": "9552517528b6a30c0cf5df5dbdb53f69d9586838f519093eeaa7c2b369a2abd1",
+    "evals/results/0.7.3-spec-test_072_corrections.stderr.log": "93ec900dd5b348726acf0daaacf97fa7b8190aa95ed3b3ccee8016e975fa8673",
+    "evals/results/0.7.3-spec-test_072_corrections.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evals/results/0.7.3-spec-test_073_corrections.stderr.log": "f5a3cc0bf13d5284c54938430d93d6265acc863116e2a85364865311db1d2a64",
+    "evals/results/0.7.3-spec-test_073_corrections.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evals/results/0.7.3-spec-test_eval_host.stderr.log": "5d1313d80231d127759012a3647f5e2d24416c59cf3f8be9f229a96e66b305d6",
+    "evals/results/0.7.3-spec-test_eval_host.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evals/results/0.7.3-spec-test_skill_tools.stderr.log": "3988b633f99bc433318570796497ef2314a81b72deb57488f9239dc624ef073d",
+    "evals/results/0.7.3-spec-test_skill_tools.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evals/results/0.7.3-tests-final-capture.json": "484fd89ff563dbebace8e9585515ee4506fc13ca3bc2871f28bdaf96c5cfb446",
+    "evals/results/0.7.3-tests-final-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "evals/results/0.7.3-tests-final.log": "394ce2c5bfeb4a9eec95d27001a0c3147583729fa679951b94db80d0e3f0fb30",
+    "evals/results/0.7.3-validation.md": "3249e5a7ee2a7a47330ed04dc506bf4f380aaaeec373d7125e5be09f54d7216d"
+  },
+  "original_exports": {
+    "evals/results/0.7.3-affected-test_072_corrections.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-affected-test_072_corrections.log",
+      "raw_sha256": "7f9f5d1aa46dbbae35d841edfe0117f2e87fcaef270dc874b916b80d24f08ecb",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-affected-test_eval_host.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-affected-test_eval_host.log",
+      "raw_sha256": "eff10cee935d98de4cc650db4304ccc28bcc5f1fd30852282fa524466f1d2e58",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-affected-test_followup_corrections.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-affected-test_followup_corrections.log",
+      "raw_sha256": "3367478e456c45f8e838ab8b390ced48987a0b768766f295be264c71424f938a",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-affected-test_package.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-affected-test_package.log",
+      "raw_sha256": "d35b13996ad116af1d86b65e9eee7b5f5e9db685c5bbf5c8c494527bf1e396f8",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-affected-test_skill_tools.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-affected-test_skill_tools.log",
+      "raw_sha256": "5687108abeca59d44949a3d4381b0f6542288b6f95684531213022f9903c02c0",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-affected-test_subagent_host.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-affected-test_subagent_host.log",
+      "raw_sha256": "67ba77b7593db9ee78f3b7faf4a5f69f828a8b5b1680986e2f648acb3e3dfaa1",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-baseline-test_072_corrections.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-baseline-test_072_corrections.log",
+      "raw_sha256": "6b7d53ccc267413835b473afbe3aa4dad3371d0c52e7362cf96a221629de06b6",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-baseline-test_eval_host.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-baseline-test_eval_host.log",
+      "raw_sha256": "c4547442a71423dfb7ef21242ca9bfd06d4f99e99c6ce57b8f1e65d4f088eba9",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-baseline-test_package.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-baseline-test_package.log",
+      "raw_sha256": "56ba13806eb9fc42790d5e4a157c4b91a426c0dab2c13585f15e09bbb70990be",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-export-first-error.txt": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-export-first-error.txt",
+      "raw_sha256": "8a4ae0baab6ca3a38da5a00e4c93c4e61cd57161bafbbc3ef55e7c82c6b1d9a8",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-final-test_073_corrections.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-final-test_073_corrections.log",
+      "raw_sha256": "9d3c30641d65c8698764b641b51d52c663444c56e08ae1fd693e511edc43035e",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-final-test_eval_host.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-final-test_eval_host.log",
+      "raw_sha256": "9c975ce759dcd313e890d99e426a6e0dbceb7ff99b2a5aad9dd8134381361a79",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-implementation-hashes.json": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-implementation-hashes.json",
+      "raw_sha256": "a440a19e7c9bdf307a984254ac3c462edd2ed63608a723b007fbce8414614e15",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-implementation-report.txt": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-implementation-report.md",
+      "raw_sha256": "fb22624ed865ed821edba87db84fc5689d3b42efc8b8053ea6adba3d8abf5595",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-installation.json": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-installation.json",
+      "raw_sha256": "c9b17e253febed0024118767f3d1a50919f489c28dd1cdbead6690b0ecac6583",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-metadata-and-diff-checks.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-metadata-and-diff-checks.log",
+      "raw_sha256": "585c7cf1c22109bb9744bbc01da5da95840184237180259a655a46e7b224799b",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-old-installed-baseline.json": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-old-installed-baseline.json",
+      "raw_sha256": "62bcccad06e9460fd4d9e09da52171adc5abb67c27b28e34b08cc23c28ea854c",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-package.json": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-package.json",
+      "raw_sha256": "050a96b46b43eb2f5249862a07e64a8f1b128825e031f070695aa96705a3dc5d",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-quality-final-check.json": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-quality-final-check.json",
+      "raw_sha256": "f605a3335715f9c817eeae2b2cb9ca55e6cb5a6e59ec6b30cbc5fbc6b043b05f",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-quality-history-first.stderr.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-quality-history-first.stderr.log",
+      "raw_sha256": "ddbfaa950e32738b8684bb7c399ffadf8c0b01b331c43de5680580b2807107f6",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-quality-history-first.stdout.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-quality-history-first.stdout.log",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-quality-history.json": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-quality-history.json",
+      "raw_sha256": "8dc652fcf75ff6ed7b811c93ddcb529593618a7dc0e50e359462b8f18ba6ac2a",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-quality-history.stderr.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-quality-history.stderr.log",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-quality-history.stdout.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-quality-history.stdout.log",
+      "raw_sha256": "148f9675d17fee4ea56bbf532f67bb443b18bdfdbb82053e12ee01f396e77982",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-quality-probes.json": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-quality-probes.json",
+      "raw_sha256": "4255a1fba4cc9a8dfe6bfe6d77bf4dea1e9cb1dc9b47b69c60f46621948f1cf5",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-quality-probes.stderr.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-quality-probes.stderr.log",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-quality-probes.stdout.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-quality-probes.stdout.log",
+      "raw_sha256": "05040b7d3b8cbac8fa5b9773e8eb77943b46e2b7b691485535202ef0aff077d7",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-quality-regressions.stderr.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-quality-regressions.stderr.log",
+      "raw_sha256": "38ee16a04e5905c7f105f8fbd2befad0ff4f8649d7ee950000d06df13cf4fe98",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-quality-regressions.stdout.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-quality-regressions.stdout.log",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-quality-review.txt": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-quality-review.md",
+      "raw_sha256": "2f422986a90ca206a3edd818a0cfc005fe1d735663a454c3f26ba74762818bf2",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-regressions-green-first.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-regressions-green-first.log",
+      "raw_sha256": "2d6718332e0d3aed0daaa9698a47307cc6acc12f30517eb86748b1d462e27219",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-regressions-red-fixture-corrected.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-regressions-red-fixture-corrected.log",
+      "raw_sha256": "7e5d5c1ffb05ed837a19bf8e84bcdaacbbf81a2c4c404ffbb7b2b11ddc8c4374",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-regressions-red.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-regressions-red.log",
+      "raw_sha256": "3efbee36d653263be5d1dca27711c1906b834a7c2df8dae650de5a7825d8daa1",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-spec-final-check.json": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-spec-final-check.json",
+      "raw_sha256": "1188824aa1bcd72d2f4422fc09617ba84d342cfd131ecd08d2744912652cc6bd",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-spec-probes-first.stderr.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-spec-probes-first.stderr.log",
+      "raw_sha256": "d48e5f4cd1b932d03825609122df642e01666bcb25ece471f52b22c0341b8937",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-spec-probes-first.stdout.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-spec-probes-first.stdout.log",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-spec-probes-second.stderr.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-spec-probes-second.stderr.log",
+      "raw_sha256": "f4cb9c4ff9324565a2386603289f15b9ef3b33d762372c35cad570bddad85f87",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-spec-probes-second.stdout.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-spec-probes-second.stdout.log",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-spec-probes.json": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-spec-probes.json",
+      "raw_sha256": "de4d5ea45275407536f88b301beaf2df31fd1314bb530abe60260891ee0eb9f4",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-spec-probes.stderr.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-spec-probes.stderr.log",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-spec-probes.stdout.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-spec-probes.stdout.log",
+      "raw_sha256": "0a3090490abbfa7e428e907bfd3fd89bdb97c6e82312eee6e8ad1d165f9c5ab4",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-spec-review.txt": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-spec-review.md",
+      "raw_sha256": "b60163e28b4cefaff8c797cc762abb27fe463030ec98003a0335a41ac38a5b80",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-spec-suites.json": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-spec-suites.json",
+      "raw_sha256": "9552517528b6a30c0cf5df5dbdb53f69d9586838f519093eeaa7c2b369a2abd1",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-spec-test_072_corrections.stderr.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-spec-test_072_corrections.stderr.log",
+      "raw_sha256": "93ec900dd5b348726acf0daaacf97fa7b8190aa95ed3b3ccee8016e975fa8673",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-spec-test_072_corrections.stdout.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-spec-test_072_corrections.stdout.log",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-spec-test_073_corrections.stderr.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-spec-test_073_corrections.stderr.log",
+      "raw_sha256": "f5a3cc0bf13d5284c54938430d93d6265acc863116e2a85364865311db1d2a64",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-spec-test_073_corrections.stdout.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-spec-test_073_corrections.stdout.log",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-spec-test_eval_host.stderr.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-spec-test_eval_host.stderr.log",
+      "raw_sha256": "5d1313d80231d127759012a3647f5e2d24416c59cf3f8be9f229a96e66b305d6",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-spec-test_eval_host.stdout.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-spec-test_eval_host.stdout.log",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-spec-test_skill_tools.stderr.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-spec-test_skill_tools.stderr.log",
+      "raw_sha256": "3988b633f99bc433318570796497ef2314a81b72deb57488f9239dc624ef073d",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-spec-test_skill_tools.stdout.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-spec-test_skill_tools.stdout.log",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-tests-final-capture.json": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-tests-final-capture.json",
+      "raw_sha256": "484fd89ff563dbebace8e9585515ee4506fc13ca3bc2871f28bdaf96c5cfb446",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-tests-final-exit.txt": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-tests-final-exit.txt",
+      "raw_sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+      "verbatim_export": true
+    },
+    "evals/results/0.7.3-tests-final.log": {
+      "original_path": "D:\\code\\project_skill\\docs\\validation\\0.7.3-tests-final.log",
+      "raw_sha256": "394ce2c5bfeb4a9eec95d27001a0c3147583729fa679951b94db80d0e3f0fb30",
+      "verbatim_export": true
+    }
+  },
+  "installation": {
+    "installed": "C:\\Users\\airpot\\.agents\\skills\\sdd-harness",
+    "backup": "C:\\Users\\airpot\\.agents\\skill-backups\\sdd-harness-0.7.2-20261007T024651005841Z",
+    "portable_files": 14,
+    "checks": [
+      {
+        "command": [
+          "C:\\Program Files\\Python\\python.exe",
+          "-B",
+          "C:\\Users\\airpot\\.codex\\worktrees\\sdd-fix-073\\project_skill\\scripts\\install.py",
+          "--into",
+          "C:\\Users\\airpot\\.agents\\skills"
+        ],
+        "exit_code": 0,
+        "stdout": "{\"status\": \"installed\", \"installed\": \"C:\\\\Users\\\\airpot\\\\.agents\\\\skills\\\\sdd-harness\", \"files\": 14}\n",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "C:\\Program Files\\Python\\python.exe",
+          "-B",
+          "C:\\Users\\airpot\\.codex\\worktrees\\sdd-fix-073\\project_skill\\scripts\\install.py",
+          "--into",
+          "C:\\Users\\airpot\\.agents\\skills"
+        ],
+        "exit_code": 0,
+        "stdout": "{\"status\": \"already-installed\", \"installed\": \"C:\\\\Users\\\\airpot\\\\.agents\\\\skills\\\\sdd-harness\"}\n",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "C:\\Program Files\\Python\\python.exe",
+          "-B",
+          "C:\\Users\\airpot\\.agents\\skills\\sdd-harness\\scripts\\workspace.py",
+          "--help"
+        ],
+        "exit_code": 0,
+        "stdout": "usage: workspace.py [-h] {inspect,snapshot,verify,restore} ...\n\nObserve Git workspaces and preserve portable file snapshots. Never delete\nsources.\n\npositional arguments:\n  {inspect,snapshot,verify,restore}\n    inspect             Read-only Git facts; does not establish activity or\n                        authority\n    snapshot            Save HEAD history and current regular files, without\n                        removing source\n    verify              Check snapshot inventory and content hashes\n    restore             Restore files and HEAD into a new directory\n\noptions:\n  -h, --help            show this help message and exit\n",
+        "stderr": ""
+      }
+    ],
+    "source_zip_install_equal": true,
+    "old_backup_raw_equal": true,
+    "successful": true
+  },
+  "final_suite": {
+    "command": "python -B -m unittest discover -s tests -v",
+    "exit_code": 0,
+    "ran": 112,
+    "passed": 111,
+    "skipped": 1,
+    "seconds": 131.761
+  },
+  "limits": [
+    "Native older Python, Git 2.29 and other hosts untested.",
+    "No new native routing, writable completion or production recovery trial."
+  ]
+}

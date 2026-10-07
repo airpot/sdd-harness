@@ -1,0 +1,27 @@
+command: ['C:\\Program Files\\Python\\python.exe', '-B', 'C:/Users/airpot/.codex/skills/.system/skill-creator/scripts/quick_validate.py', '.']
+Skill is valid!
+
+exit_code=0
+command: ['git', 'diff', '--check']
+warning: in the working copy of '.gitattributes', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'SKILL.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'evals/host-README.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'evals/host.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'references/recovery.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'scripts/workspace.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'specs/sdd-harness.md', LF will be replaced by CRLF the next time Git touches it
+
+exit_code=0
+command: ['git', 'status', '--short']
+ M .gitattributes
+ M README.md
+ M SKILL.md
+ M evals/host-README.md
+ M evals/host.py
+ M references/recovery.md
+ M scripts/workspace.py
+ M specs/sdd-harness.md
+?? tests/test_073_corrections.py
+
+exit_code=0

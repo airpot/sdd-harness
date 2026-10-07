@@ -1,0 +1,79 @@
+# 0.7.3 independent specification review
+
+Date: 2026-10-07. Result: **No material gap found in the six accepted source corrections.**
+Writing policy: [project policy](../../references/writing.md).
+The final actual release ZIP, checksum, installation, full combined suite, and publication remain parent-owned acceptance work.
+This review does not report those pending steps as passed.
+
+## Basis and ownership
+
+- Accepted audit: [six-finding continued audit](../research/2026-10-07-sdd-harness-072-continued-audit.md).
+- Base: `f7c58a99d89b946091554b8e0b8176621f769195`.
+- Candidate: `C:/Users/airpot/.codex/worktrees/sdd-fix-073/project_skill`, branch `codex/fix-audit-073`.
+- Runtime: Python 3.12.8 and Git 2.55.0.windows.5 on Windows.
+- I read the actual diff, source, tests, accepted specification, and retained corrected red evidence.
+- All eight implementation-file SHA-256 hashes match [the worker binding](0.7.3-implementation-hashes.json).
+- Tracked changes are the eight expected tracked paths. The ninth expected path, `tests/test_073_corrections.py`, remains untracked.
+- `.gitattributes` contains only the parent-owned `0.7.3-* -text` addition beyond the worker paths.
+- Review writes are uniquely named `0.7.3-spec-*` records in this primary validation directory.
+
+## Requirements and evidence
+
+| Finding | Actual source assessment | Independent evidence |
+| --- | --- | --- |
+| F1 / EVAL-5 | `evals/host.py:86-128,131-150,282-288` clears Git-reported local variables case-insensitively in a copy. Creation reuses that copy. Other fixture Git commands filter their child environments. Signing and fixture hook controls remain. Creation and busy grading check actual gitdir, common dir, top-level root, own index, HEAD, stage entries, and clean state. | The 17-case suite preserves a real foreign staged-only index and usable content. A missing external index stays absent. Missing, empty, and corrupt fixture indexes cannot pass. My additional probe combines foreign directory, worktree, common directory, object directory, and missing-index routing. Foreign raw files and staged-only content remain unchanged. An independently changed actual HEAD fails grading. |
+| F2 / RECOVER-3 | `scripts/workspace.py:273-351` uses one operation-local empty template and hook directory. Every restore Git command receives the copied environment and hook override. Final verification checks actual regular working inventory, hashes, selected ignored files, and deleted paths after Git operations. Metadata, HEAD, own-index, and unborn checks remain. | Actual environment/configured template hooks and configured hook paths cannot recreate a deleted file. Four injected final-file mutations fail. My additional roundtrip preserves caller environment, temporary caller configuration, complete history, source raw bytes, and necessary ignored binary content. Recreating a deleted path as a directory also fails final verification. Existing suites cover unborn and SHA-256 recovery. |
+| F3 / RECOVER-4 | `scripts/workspace.py:178-185` asks Git for effective `info/grafts`. The rejection precedes destination-parent and archive creation. It uses the source routing environment. No fetch or source rewrite was added. | Actual nonempty ordinary, external, and linked-worktree graft regressions pass. My additional routed-source probe supplies foreign `--repo` with effective source Git environment and confirms rejection before parent creation. Original raw source files and both commit objects remain accessible. Empty and comment-only graft information permit complete-history roundtrips. |
+| F4 / RECOVER-5 | `scripts/workspace.py:93-110` checks each lexical component with `lstat`, symbolic-link mode, and Windows reparse attributes before resolution and traversal. Existing containment and metadata guards remain. | The real inside-root Windows junction test passes after removing `Path.is_junction`. Existing link/containment checks pass. Changed Python files parse with Python 3.10 grammar. Native Python 3.10/3.11 execution was not performed. |
+| F5 / PACK-4 | `SKILL.md:5`, `README.md:5,59`, and the accepted specification declare 0.7.3. Both active archive names are 0.7.3. Historical links remain unchanged. | A fresh independently rerun regression builds an actual temporary fourteen-file package, checks its SHA-256, reads the embedded version, and matches the source entry. This is temporary-package evidence. The parent's final README-linked 0.7.3 ZIP and checksum check remains pending. |
+| F6 / GUARD-3 | `scripts/workspace.py:59-63` disables optional Git locks on the status observation. No caller environment mutation was added. | The real timestamp-only regression preserves exact source index bytes and staged entries. Changing actual working content remains dirty. |
+
+The payload inventory remains the same fourteen paths as 0.7.2.
+The entry and README retain independent development as the default.
+The changes add standard-library code only. They add no service or host configuration change.
+
+## Independent execution
+
+The command for each suite was `python -B -m unittest discover -s tests -p PATTERN -v` in the candidate checkout.
+
+| Pattern | Result | Exact output |
+| --- | --- | --- |
+| `test_073_corrections.py` | 17 passed, no skips | [stderr](0.7.3-spec-test_073_corrections.stderr.log), [stdout](0.7.3-spec-test_073_corrections.stdout.log) |
+| `test_072_corrections.py` | 9 passed | [stderr](0.7.3-spec-test_072_corrections.stderr.log), [stdout](0.7.3-spec-test_072_corrections.stdout.log) |
+| `test_skill_tools.py` | 23 passed | [stderr](0.7.3-spec-test_skill_tools.stderr.log), [stdout](0.7.3-spec-test_skill_tools.stdout.log) |
+| `test_eval_host.py` | 15 passed | [stderr](0.7.3-spec-test_eval_host.stderr.log), [stdout](0.7.3-spec-test_eval_host.stdout.log) |
+
+Total: 64 independently rerun test methods passed. [Command and exit summary](0.7.3-spec-suites.json).
+`git --no-optional-locks diff --check` also returned 0.
+The retained corrected red log contains 17 methods and 19 assertion failures, with no setup errors.
+I inspected its failure inventory. I did not modify or recreate the old raw log.
+
+Additional probes used [this procedure](0.7.3-spec-probes.py).
+The final child returned 0. [Results](0.7.3-spec-probes.json), [stdout](0.7.3-spec-probes.stdout.log), [stderr](0.7.3-spec-probes.stderr.log).
+No fixture or helper process remains running.
+
+## Historical bindings and limits
+
+The probe checked 140 historical paths from the accepted base.
+Protected records and binary archives retain exact Git blob bytes.
+There are 110 pre-existing unprotected checkout text representations with CRLF differences from base blobs.
+Their content matches the accepted base after newline comparison. No historical tracked-content diff was introduced.
+The probe also confirms unchanged current source raw bytes from before to after its execution.
+
+All fourteen 0.7.2 record hashes match their provenance exactly.
+The 0.7.0, 0.7.1, and 0.7.2 archive hashes and all fourteen embedded portable hash maps match their recorded bindings.
+Older provenance has nine 0.7.0 and two 0.7.1 current-checkout raw record mismatches.
+Most match the base LF or CRLF representation.
+Two older logs, `0.7.0-early-exit-green.txt` and `0.7.0-early-exit-red.txt`, match neither form of their provenance hash.
+They remain unchanged in content from the accepted base. This review does not claim every older raw binding is valid.
+Those existing discrepancies are separate from preservation of the accepted historical content during this correction.
+
+The first probe stopped on its overly broad assumption that every historical text checkout must equal the Git blob byte-for-byte.
+The second stopped on its assumption that every older recorded hash must equal one uniform newline representation.
+Both stopped runs are retained as [first stderr](0.7.3-spec-probes-first.stderr.log) and [second stderr](0.7.3-spec-probes-second.stderr.log).
+The final procedure separates checkout representation and pre-existing binding discrepancies. It changes no historical evidence.
+
+This is source-compliance and bounded local regression evidence.
+It is not native older-interpreter execution, sandbox enforcement, new native agent effectiveness, or cross-host recovery evidence.
+The parent must finish the actual 0.7.3 release artifact, installation, full-suite, and publication checks before release acceptance.
+No source, installed payload, production repository index, host environment, Git configuration, commit, push, or real worktree was changed by this review.

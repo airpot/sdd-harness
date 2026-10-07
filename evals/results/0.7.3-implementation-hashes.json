@@ -1,0 +1,10 @@
+{
+  "README.md": "b2e0b132d9699e26f5cc876e106b39bed536ff8e18c99f5bd5e63b95c617cbeb",
+  "SKILL.md": "3f7f57d215626a31c3b7c8d939d1596d4db09e8f0951ba61f6b82ede20fd1d9e",
+  "evals/host-README.md": "2b032d702638662b624356e08202e292bb2f62657fd6f5deea5358a2af2915fb",
+  "evals/host.py": "8bcb8e59f3ea9fedbc9d9749bef62caeb1bcf40e28d447ee095158d7c8be9a05",
+  "references/recovery.md": "dd82d61c0baac5aa69216b5abbdb3815a1c6deb526b2791452683122e8f80ad6",
+  "scripts/workspace.py": "47fe9d9d6019f828879b151f5a4361d432e721be128a07a80805b810ce8b3374",
+  "specs/sdd-harness.md": "984c4ea553247aa7056df6263b5788abcd26f1df0454b34f54df0a3b165154f0",
+  "tests/test_073_corrections.py": "93b314356df46038d5ed10b6e27eab167b560808689f9c909becc2070c01da09"
+}

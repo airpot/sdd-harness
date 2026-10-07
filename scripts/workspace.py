@@ -16,8 +16,10 @@ import tempfile
 import zipfile
 
 
-def git(root: Path, *args: str, optional: bool = False, env: dict | None = None) -> bytes:
-    result = subprocess.run(['git', '-C', str(root), *args], capture_output=True, env=env)
+def git(root: Path, *args: str, optional: bool = False, env: dict | None = None,
+        hooks: Path | None = None) -> bytes:
+    options = ['-c', 'core.hooksPath=' + str(hooks)] if hooks is not None else []
+    result = subprocess.run(['git', '-C', str(root), *options, *args], capture_output=True, env=env)
     if result.returncode and not optional:
         raise ValueError(result.stderr.decode('utf-8', 'replace').strip())
     return result.stdout if not result.returncode else b''
@@ -29,18 +31,18 @@ def restore_environment() -> dict:
     result = subprocess.run(['git', 'rev-parse', '--local-env-vars'], capture_output=True, env=env)
     if result.returncode:
         raise ValueError('Cannot determine Git repository-local environment variables')
-    local = set(result.stdout.decode('ascii').split())
+    local = {name.upper() for name in result.stdout.decode('ascii').split()}
     return {name: value for name, value in env.items() if name.upper() not in local}
 
 
-def restore_index(root: Path, env: dict) -> Path:
+def restore_index(root: Path, env: dict, hooks: Path | None = None) -> Path:
     metadata = root / '.git'
-    actual = Path(text(git(root, 'rev-parse', '--absolute-git-dir', env=env))).resolve()
-    common = Path(text(git(root, 'rev-parse', '--git-common-dir', env=env)))
-    index = Path(text(git(root, 'rev-parse', '--git-path', 'index', env=env)))
+    actual = Path(text(git(root, 'rev-parse', '--absolute-git-dir', env=env, hooks=hooks))).resolve()
+    common = Path(text(git(root, 'rev-parse', '--git-common-dir', env=env, hooks=hooks)))
+    index = Path(text(git(root, 'rev-parse', '--git-path', 'index', env=env, hooks=hooks)))
     common = common if common.is_absolute() else root / common
     index = index if index.is_absolute() else root / index
-    top = Path(text(git(root, 'rev-parse', '--show-toplevel', env=env))).resolve()
+    top = Path(text(git(root, 'rev-parse', '--show-toplevel', env=env, hooks=hooks))).resolve()
     if (not metadata.is_dir() or metadata.is_symlink() or actual != metadata or
             common.resolve() != metadata or top != root or index.resolve() != metadata / 'index'):
         raise ValueError('Restore Git metadata must belong to the new output directory')
@@ -57,7 +59,7 @@ def root_of(path: Path) -> Path:
 
 def inspect(path: Path) -> dict:
     root = root_of(path)
-    status = git(root, 'status', '--porcelain=v1', '-z', '--untracked-files=all')
+    status = git(root, '--no-optional-locks', 'status', '--porcelain=v1', '-z', '--untracked-files=all')
     common = Path(text(git(root, 'rev-parse', '--git-common-dir')))
     if not common.is_absolute():
         common = root / common
@@ -93,7 +95,12 @@ def local_file(root: Path, name: str) -> Path:
     current = root
     for part in PurePosixPath(name).parts:
         current = current / part
-        if current.is_symlink() or (hasattr(current, 'is_junction') and current.is_junction()):
+        try:
+            info = current.lstat()
+        except FileNotFoundError:
+            continue
+        if stat.S_ISLNK(info.st_mode) or (
+                getattr(info, 'st_file_attributes', 0) & getattr(stat, 'FILE_ATTRIBUTE_REPARSE_POINT', 0x400)):
             raise ValueError(f'Links require a native snapshot tool: {name}')
     resolved = path.resolve()
     if not resolved.is_relative_to(root):
@@ -170,6 +177,12 @@ def snapshot(repo: Path, output: Path, includes: list[str]) -> dict:
         raise ValueError('Refusing to overwrite an existing snapshot')
     if text(git(root, 'rev-parse', '--is-shallow-repository')) == 'true':
         raise ValueError('Shallow repositories require complete history or a native preservation tool; preserve the source')
+    # --git-path resolves common metadata for linked worktrees and GIT_GRAFT_FILE.
+    grafts = Path(text(git(root, 'rev-parse', '--git-path', 'info/grafts')))
+    grafts = grafts if grafts.is_absolute() else root / grafts
+    if grafts.is_file() and any(line.strip() and not line.lstrip().startswith(b'#')
+                               for line in grafts.read_bytes().splitlines()):
+        raise ValueError('Legacy graft history requires a native preservation tool; preserve the source')
     before = inspect(root)
     paths, missing = inventory(root, includes)
     manifest = {'format': 1, 'source': before, 'files': [], 'deleted': missing,
@@ -257,27 +270,61 @@ def verify(archive: Path) -> dict:
         return manifest
 
 
+def verify_restored_files(root: Path, manifest: dict) -> None:
+    expected = {entry['path']: entry for entry in manifest['files']}
+    actual = set()
+    for current, dirs, files in os.walk(root, followlinks=False):
+        if Path(current) == root:
+            dirs[:] = [name for name in dirs if name != '.git']
+        for name in dirs + files:
+            relative = (Path(current) / name).relative_to(root).as_posix()
+            path = local_file(root, relative)
+            if name in dirs:
+                continue
+            if not stat.S_ISREG(path.lstat().st_mode) or relative not in expected:
+                raise ValueError(f'Unexpected restored file: {relative}')
+            actual.add(relative)
+            entry = expected[relative]
+            with path.open('rb') as stream:
+                if digest(stream) != (entry['sha256'], entry['size']):
+                    raise ValueError(f'Restored file mismatch: {relative}')
+    if actual != set(expected):
+        raise ValueError('Restored file inventory does not match the snapshot')
+    for name in manifest['deleted']:
+        path = local_file(root, name)
+        if path.exists():
+            raise ValueError(f'Deleted snapshot path was recreated: {name}')
+
+
 def restore(archive: Path, output: Path) -> dict:
     manifest = verify(archive)
     output = output.expanduser().resolve()
     if output.exists():
         raise ValueError('Restore requires a new, nonexistent directory')
     env = restore_environment()
-    output.mkdir(parents=True)
-    git(output, 'init', '--quiet', '--object-format=' + manifest['source']['object_format'], env=env)
-    restore_index(output, env)
     with zipfile.ZipFile(archive) as z, tempfile.TemporaryDirectory(prefix='sdd-restore-') as staging:
+        # Command-local overrides keep inherited templates and hooks out of restore.
+        empty = Path(staging) / 'empty'
+        empty.mkdir()
+
+        def run(*args, optional=False):
+            return git(output, *args, optional=optional, env=env, hooks=empty)
+
+        output.mkdir(parents=True)
+        run('init', '--quiet', '--template=' + str(empty),
+            '--object-format=' + manifest['source']['object_format'])
+        restore_index(output, env, empty)
         if manifest['source']['head']:
             bundle = Path(staging) / 'history.bundle'
             with z.open('history.bundle') as src, bundle.open('wb') as dst:
                 shutil.copyfileobj(src, dst)
-            git(output, 'fetch', '--quiet', str(bundle), 'HEAD', env=env)
+            run('fetch', '--quiet', str(bundle), 'HEAD')
             head = manifest['source']['head']
-            git(output, 'update-ref', '--no-deref', 'HEAD', head, env=env)
+            run('update-ref', '--no-deref', 'HEAD', head)
             # Load the original index without checking out potentially historical links.
-            git(output, 'read-tree', head, env=env)
+            run('read-tree', head)
         else:
-            git(output, 'read-tree', '--empty', env=env)
+            run('read-tree', '--empty')
         for entry in manifest['files']:
             target = local_file(output, entry['path'])
             target.parent.mkdir(parents=True, exist_ok=True)
@@ -287,15 +334,16 @@ def restore(archive: Path, output: Path) -> dict:
             with target.open('rb') as restored:
                 if digest(restored) != (entry['sha256'], entry['size']):
                     raise ValueError(f'Restored file mismatch: {entry["path"]}')
-    if not restore_index(output, env).is_file():
-        raise ValueError('Restore did not create the output repository index')
-    head = text(git(output, 'rev-parse', '--verify', 'HEAD', optional=True, env=env)) or None
-    if head != manifest['source']['head']:
-        raise ValueError('Restored HEAD does not match the snapshot')
-    if head:
-        git(output, 'diff-index', '--cached', '--quiet', head, '--', env=env)
-    elif git(output, 'ls-files', '--stage', '-z', env=env):
-        raise ValueError('Unborn restore requires an empty index')
+        if not restore_index(output, env, empty).is_file():
+            raise ValueError('Restore did not create the output repository index')
+        head = text(run('rev-parse', '--verify', 'HEAD', optional=True)) or None
+        if head != manifest['source']['head']:
+            raise ValueError('Restored HEAD does not match the snapshot')
+        if head:
+            run('diff-index', '--cached', '--quiet', head, '--')
+        elif run('ls-files', '--stage', '-z'):
+            raise ValueError('Unborn restore requires an empty index')
+        verify_restored_files(output, manifest)
     return {'restored': str(output), 'head': manifest['source']['head'],
             'files': len(manifest['files']), 'verified': True, 'write_authorized': False}
 

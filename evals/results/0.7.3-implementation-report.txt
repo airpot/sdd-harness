@@ -1,0 +1,118 @@
+# 0.7.3 implementation report
+
+Status: DONE_WITH_CONCERNS. All six scoped fixes and applicable checks passed.
+The final release artifact check and native older-interpreter trials remain outside this implementation result.
+
+## Basis and scope
+
+- Accepted base: `f7c58a99d89b946091554b8e0b8176621f769195`.
+- Checkout: `C:/Users/airpot/.codex/worktrees/sdd-fix-073/project_skill`.
+- Branch: `codex/fix-audit-073`.
+- Runtime: Python 3.12.8; Git 2.55.0.windows.5; Windows; PowerShell.
+- Source edits stayed in the assigned checkout. Primary checkout writes were uniquely named `docs/validation/0.7.3-*` records only.
+- Parent owns `.gitattributes`, evidence export, actual release packaging, installation, commits, publication, and worktree archiving.
+
+## Corrected behavior
+
+| Finding | Implementation and actual verification |
+| --- | --- |
+| F1 | `evals/host.py` obtains Git-reported local environment names before busy fixture creation. It removes these names case-insensitively in a copied environment and passes the same copy to all creation Git commands. Later fixture commands use the same filtering. Caller and unrelated settings remain unchanged. Signing and hook overrides remain. Creation checks actual gitdir, common dir, worktree root, own index, HEAD, stage entries, and clean state. Busy grading repeats actual repository checks within the existing `source_preserved` outcome. Staged-only foreign content and all foreign files remain usable and unchanged; missing external index remains absent. Missing, empty, and corrupt own indexes fail despite successful action journals. |
+| F2 | `scripts/workspace.py` uses a temporary empty init template and a command-local empty hook directory for init, fetch, update-ref, read-tree, metadata checks, and index checks. User configuration and unrelated environment stay intact. After all Git operations, final verification walks actual working files, excludes only root Git metadata, checks inventory and hashes, includes selected ignored results, and checks deleted paths. Real environment/configured template hooks and configured hook paths cannot recreate the deleted fixture file. Injected actual unexpected, changed, recreated-deleted, and changed-ignored files fail final verification. Existing metadata, HEAD, index, and unborn checks remain. |
+| F3 | Snapshot asks Git for the effective `info/grafts` path. Git resolves common metadata and `GIT_GRAFT_FILE`. Nonempty non-comment information fails before archive or destination-parent creation. Two original commits remain accessible and source hashes remain unchanged. Actual linked worktree and external-graft tests pass. Empty graft information permits a normal complete-history roundtrip. No source fetch or history rewrite occurs. |
+| F4 | `local_file` checks each lexical component with `lstat`, symlink mode, and Windows reparse attributes before traversal. It does not depend on `Path.is_junction`. A real junction inside the source, explicitly selected by `--include`, fails with the newer API removed on Python 3.12. Existing link and containment checks pass. |
+| F5 | Entry metadata and current README version are 0.7.3. Both active download names are 0.7.3. Historical records and links remain unchanged. A regression builds a real temporary fourteen-file package, compares active names, package checksum, embedded entry VERSION, and source entry text. Parent will check the actual final README-linked ZIP and checksum file before publication. That final artifact check is pending and is not recorded as passing here. |
+| F6 | Inspect status uses `--no-optional-locks`. The real timestamp-only test preserves exact source index bytes and staged entries. An actual content change remains dirty. |
+
+The living accepted specification is 0.7.3. Recovery documentation and evaluation host instructions describe these actual controls.
+No new portable module was added. The payload remains fourteen files. Independent development remains the default.
+No host configuration, network publication, global installation, staging, commit, or real worktree removal was performed.
+
+## Fail-first evidence
+
+All checks use disposable actual repositories, temporary config files/templates/hooks, or a real disposable Windows junction.
+The test wrapper captures stdout, stderr, and the child suite exit code without changing the raw stream.
+
+| Run | Actual result | Evidence file under `D:/code/project_skill/docs/validation` |
+| --- | --- | --- |
+| Initial new regressions | 17 tests; 17 assertion failures; 3 fixture setup errors | `0.7.3-regressions-red.log` |
+| Corrected fixture, unchanged implementation | 17 tests; 19 assertion failures; no errors | `0.7.3-regressions-red-fixture-corrected.log` |
+| First corrected implementation | 17 tests passed | `0.7.3-regressions-green-first.log` |
+| Final implementation | 17 tests passed | `0.7.3-final-test_073_corrections.log` |
+
+The initial setup errors came from empty-template init omitting `.git/info`. The test fixture now creates that directory before writing graft information.
+The initial error log remains separate and unchanged. The corrected red run is the implementation counterexample basis.
+Four final-file mutation subtests cause four assertions within one test, so the red assertion count exceeds the test-method count.
+
+Runtime regression command:
+
+```text
+python -B -m unittest discover -s tests -p test_073_corrections.py -v
+```
+
+## Baseline and affected checks
+
+Each listed suite used this exact command with its listed pattern:
+
+```text
+python -B -m unittest discover -s tests -p PATTERN -v
+```
+
+| Pattern | Baseline | Affected result | Final applicable log |
+| --- | --- | --- | --- |
+| `test_073_corrections.py` | Fail-first above | 17 passed | `0.7.3-final-test_073_corrections.log` |
+| `test_eval_host.py` | 15 passed | 15 passed; repeated after the final small host adjustment | `0.7.3-final-test_eval_host.log` |
+| `test_skill_tools.py` | Not duplicated before the focused implementation | 23 passed | `0.7.3-affected-test_skill_tools.log` |
+| `test_subagent_host.py` | Not duplicated before the focused implementation | 13 passed | `0.7.3-affected-test_subagent_host.log` |
+| `test_package.py` | 7 passed | 7 passed | `0.7.3-affected-test_package.log` |
+| `test_072_corrections.py` | 9 passed | 9 passed | `0.7.3-affected-test_072_corrections.log` |
+| `test_followup_corrections.py` | Not duplicated before the focused implementation | 10 passed | `0.7.3-affected-test_followup_corrections.log` |
+
+The applicable suites cover 94 test methods. The baseline logs retain the three initial passing suites.
+The final small host adjustment retains the existing Git-free behavior of non-busy fixtures; only the busy fixture needs Git setup.
+Affected checks retain SHA-256 repositories, unborn restore, necessary ignored files, local-change refusal, exact portable hashes, and host/subagent outcomes.
+
+Additional commands:
+
+```text
+python -B C:/Users/airpot/.codex/skills/.system/skill-creator/scripts/quick_validate.py .
+git diff --check
+git status --short
+python --version
+git --version
+py -0p
+```
+
+Skill metadata validation passed. `git diff --check` returned 0 with no whitespace error.
+`0.7.3-metadata-and-diff-checks.log` retains validation and status output.
+Git warned that global `core.autocrlf=true` can later convert changed LF files to CRLF.
+No configuration was changed. All eight implementation files currently have LF bytes.
+The parent-owned `.gitattributes` addition is the only extra tracked diff outside these eight files.
+The new regression file remains untracked for parent staging. There are no historical evidence diffs.
+
+## Final source hashes
+
+The file hash map was saved in `0.7.3-implementation-hashes.json` and checked again after final verification.
+These hashes bind this report to the actual current implementation bytes.
+
+```json
+{
+  "README.md": "b2e0b132d9699e26f5cc876e106b39bed536ff8e18c99f5bd5e63b95c617cbeb",
+  "SKILL.md": "3f7f57d215626a31c3b7c8d939d1596d4db09e8f0951ba61f6b82ede20fd1d9e",
+  "evals/host-README.md": "2b032d702638662b624356e08202e292bb2f62657fd6f5deea5358a2af2915fb",
+  "evals/host.py": "8bcb8e59f3ea9fedbc9d9749bef62caeb1bcf40e28d447ee095158d7c8be9a05",
+  "references/recovery.md": "dd82d61c0baac5aa69216b5abbdb3815a1c6deb526b2791452683122e8f80ad6",
+  "scripts/workspace.py": "47fe9d9d6019f828879b151f5a4361d432e721be128a07a80805b810ce8b3374",
+  "specs/sdd-harness.md": "984c4ea553247aa7056df6263b5788abcd26f1df0454b34f54df0a3b165154f0",
+  "tests/test_073_corrections.py": "93b314356df46038d5ed10b6e27eab167b560808689f9c909becc2070c01da09"
+}
+```
+
+## Limits and parent handoff
+
+- Only Python 3.12.8 was found through the launcher. Native Python 3.10/3.11 execution was not performed. The real junction test removes a newer API on the current interpreter; it is fallback evidence only.
+- The actual final 0.7.3 distribution/checksum check, full combined suite, release export, installation, commit, push, and archive remain parent-owned work. A temporary real-package pass is not final release acceptance.
+- The controls do not provide a sandbox or proof against malicious concurrent filesystem replacement. No new native invocation, performance, or cross-host results are claimed.
+- Existing outcome names and counts remain unchanged. Busy creation adds `source_head` to its marker so grading can bind the actual HEAD to fixture creation.
+- All subprocess calls launched by this implementation completed. All execution sessions were collected with exit results. No background writer or helper was started. Disposable fixtures and the real junction were cleaned up; no real worktree was removed.
+
+Next: independently review the actual diff and these logs. Then run the parent-owned final checks and publication steps against this exact candidate.

@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "D:\code\project_skill\docs\validation\0.7.3-spec-probes.py", line 178, in <module>
+    assert (ROOT/p).read_bytes()==base_raw,p
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: dist/sdd-harness-0.1.0.sha256

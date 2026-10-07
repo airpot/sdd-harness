@@ -1,0 +1,239 @@
+test_active_download_names_and_real_built_package_version (test_073_corrections.AuditCorrections.test_active_download_names_and_real_built_package_version) ... FAIL
+test_empty_grafts_and_normal_history_roundtrip (test_073_corrections.AuditCorrections.test_empty_grafts_and_normal_history_roundtrip) ... ERROR
+test_host_busy_grader_checks_empty_and_corrupt_index (test_073_corrections.AuditCorrections.test_host_busy_grader_checks_empty_and_corrupt_index) ... FAIL
+test_host_busy_grader_checks_missing_index (test_073_corrections.AuditCorrections.test_host_busy_grader_checks_missing_index) ... FAIL
+test_host_child_environment_keeps_caller_and_unrelated_settings (test_073_corrections.AuditCorrections.test_host_child_environment_keeps_caller_and_unrelated_settings) ... FAIL
+test_host_keeps_missing_external_index_absent (test_073_corrections.AuditCorrections.test_host_keeps_missing_external_index_absent) ... FAIL
+test_host_preserves_foreign_repository_routing (test_073_corrections.AuditCorrections.test_host_preserves_foreign_repository_routing) ... FAIL
+test_host_preserves_real_foreign_staged_only_index (test_073_corrections.AuditCorrections.test_host_preserves_real_foreign_staged_only_index) ... FAIL
+test_inspect_timestamp_only_change_preserves_index_and_staging (test_073_corrections.AuditCorrections.test_inspect_timestamp_only_change_preserves_index_and_staging) ... FAIL
+test_restore_disables_configured_hooks_path (test_073_corrections.AuditCorrections.test_restore_disables_configured_hooks_path) ... FAIL
+test_restore_disables_configured_template_hook (test_073_corrections.AuditCorrections.test_restore_disables_configured_template_hook) ... FAIL
+test_restore_disables_environment_template_hook (test_073_corrections.AuditCorrections.test_restore_disables_environment_template_hook) ... FAIL
+test_restore_final_verification_checks_actual_complete_files (test_073_corrections.AuditCorrections.test_restore_final_verification_checks_actual_complete_files) ... 
+  test_restore_final_verification_checks_actual_complete_files (test_073_corrections.AuditCorrections.test_restore_final_verification_checks_actual_complete_files) (name='unexpected.txt') ... FAIL
+  test_restore_final_verification_checks_actual_complete_files (test_073_corrections.AuditCorrections.test_restore_final_verification_checks_actual_complete_files) (name='keep.txt') ... FAIL
+  test_restore_final_verification_checks_actual_complete_files (test_073_corrections.AuditCorrections.test_restore_final_verification_checks_actual_complete_files) (name='removed.txt') ... FAIL
+  test_restore_final_verification_checks_actual_complete_files (test_073_corrections.AuditCorrections.test_restore_final_verification_checks_actual_complete_files) (name='results/proof.txt') ... FAIL
+test_snapshot_rejects_effective_external_graft_file (test_073_corrections.AuditCorrections.test_snapshot_rejects_effective_external_graft_file) ... FAIL
+test_snapshot_rejects_grafts_in_linked_worktree_common_metadata (test_073_corrections.AuditCorrections.test_snapshot_rejects_grafts_in_linked_worktree_common_metadata) ... ERROR
+test_snapshot_rejects_inside_junction_without_newer_path_api (test_073_corrections.AuditCorrections.test_snapshot_rejects_inside_junction_without_newer_path_api) ... FAIL
+test_snapshot_rejects_nonempty_legacy_grafts (test_073_corrections.AuditCorrections.test_snapshot_rejects_nonempty_legacy_grafts) ... ERROR
+
+======================================================================
+ERROR: test_empty_grafts_and_normal_history_roundtrip (test_073_corrections.AuditCorrections.test_empty_grafts_and_normal_history_roundtrip)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 249, in test_empty_grafts_and_normal_history_roundtrip
+    (source / '.git/info/grafts').write_bytes(b'')
+  File "C:\Program Files\Python\Lib\pathlib.py", line 1036, in write_bytes
+    with self.open(mode='wb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-073-test-qka__2ug\\source\\.git\\info\\grafts'
+
+======================================================================
+ERROR: test_snapshot_rejects_grafts_in_linked_worktree_common_metadata (test_073_corrections.AuditCorrections.test_snapshot_rejects_grafts_in_linked_worktree_common_metadata)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 242, in test_snapshot_rejects_grafts_in_linked_worktree_common_metadata
+    (source / '.git/info/grafts').write_text(head + '\n', encoding='ascii')
+  File "C:\Program Files\Python\Lib\pathlib.py", line 1047, in write_text
+    with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-073-test-npue0o7b\\source\\.git\\info\\grafts'
+
+======================================================================
+ERROR: test_snapshot_rejects_nonempty_legacy_grafts (test_073_corrections.AuditCorrections.test_snapshot_rejects_nonempty_legacy_grafts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 228, in test_snapshot_rejects_nonempty_legacy_grafts
+    (source / '.git/info/grafts').write_text(head + '\n', encoding='ascii')
+  File "C:\Program Files\Python\Lib\pathlib.py", line 1047, in write_text
+    with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\airpot\\AppData\\Local\\Temp\\sdd-073-test-xkcg0721\\source\\.git\\info\\grafts'
+
+======================================================================
+FAIL: test_active_download_names_and_real_built_package_version (test_073_corrections.AuditCorrections.test_active_download_names_and_real_built_package_version)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 303, in test_active_download_names_and_real_built_package_version
+    self.assertEqual(names, ['dist/sdd-harness-0.7.3.zip', 'dist/sdd-harness-0.7.3.sha256'])
+AssertionError: Lists differ: ['dist/sdd-harness-0.7.1.zip', 'dist/sdd-harness-0.7.1.sha256'] != ['dist/sdd-harness-0.7.3.zip', 'dist/sdd-harness-0.7.3.sha256']
+
+First differing element 0:
+'dist/sdd-harness-0.7.1.zip'
+'dist/sdd-harness-0.7.3.zip'
+
+- ['dist/sdd-harness-0.7.1.zip', 'dist/sdd-harness-0.7.1.sha256']
+?                        ^                             ^
+
++ ['dist/sdd-harness-0.7.3.zip', 'dist/sdd-harness-0.7.3.sha256']
+?                        ^                             ^
+
+
+======================================================================
+FAIL: test_host_busy_grader_checks_empty_and_corrupt_index (test_073_corrections.AuditCorrections.test_host_busy_grader_checks_empty_and_corrupt_index)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 132, in test_host_busy_grader_checks_empty_and_corrupt_index
+    self.assertFalse(self.cli(HOST, 'score', '--root', root)['all_passed'])
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_host_busy_grader_checks_missing_index (test_073_corrections.AuditCorrections.test_host_busy_grader_checks_missing_index)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 125, in test_host_busy_grader_checks_missing_index
+    self.assertFalse(result['all_passed'])
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_host_child_environment_keeps_caller_and_unrelated_settings (test_073_corrections.AuditCorrections.test_host_child_environment_keeps_caller_and_unrelated_settings)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 116, in test_host_child_environment_keeps_caller_and_unrelated_settings
+    self.assertFalse(index.exists())
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_host_keeps_missing_external_index_absent (test_073_corrections.AuditCorrections.test_host_keeps_missing_external_index_absent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 94, in test_host_keeps_missing_external_index_absent
+    self.assertFalse(index.exists())
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_host_preserves_foreign_repository_routing (test_073_corrections.AuditCorrections.test_host_preserves_foreign_repository_routing)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 101, in test_host_preserves_foreign_repository_routing
+    root, result = self.busy({'GIT_DIR': str(foreign / '.git'), 'GIT_WORK_TREE': str(foreign)})
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 73, in busy
+    self.cli(HOST, 'create', '--case', 'busy-worktree', '--output', root, extra=extra)
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 56, in cli
+    result = self.run_command([sys.executable, '-B', script, *args], extra, ok)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 47, in run_command
+    self.assertEqual(result.returncode, 0, result.stderr.decode('utf-8', 'replace'))
+AssertionError: 1 != 0 : 
+
+======================================================================
+FAIL: test_host_preserves_real_foreign_staged_only_index (test_073_corrections.AuditCorrections.test_host_preserves_real_foreign_staged_only_index)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 86, in test_host_preserves_real_foreign_staged_only_index
+    self.assertEqual(tree_hashes(foreign), before)
+AssertionError: {'kee[341 chars]x': 'e567deaa5cca6b3a9f9ce82495faa50794ceff0d1[803 chars]b00'} != {'kee[341 chars]x': '261696dca18a2297fd916f08d268aa735f9f982dc[803 chars]b00'}
+Diff is 1321 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_inspect_timestamp_only_change_preserves_index_and_staging (test_073_corrections.AuditCorrections.test_inspect_timestamp_only_change_preserves_index_and_staging)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 294, in test_inspect_timestamp_only_change_preserves_index_and_staging
+    self.assertEqual((source / '.git/index').read_bytes(), before)
+AssertionError: b'DIR[62 chars]c5\xad\x120\xc9\x89\xe0\x00\x00\x00\x00\x00\x0[305 chars]\xce' != b'DIR[62 chars]c5\xac\xf40\xc9\x89\xe0\x00\x00\x00\x00\x00\x0[305 chars]\x86'
+
+======================================================================
+FAIL: test_restore_disables_configured_hooks_path (test_073_corrections.AuditCorrections.test_restore_disables_configured_hooks_path)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 185, in test_restore_disables_configured_hooks_path
+    self.assert_restore_without_hook({'GIT_CONFIG_GLOBAL': str(config)})
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 166, in assert_restore_without_hook
+    self.assertFalse((target / 'removed.txt').exists())
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_restore_disables_configured_template_hook (test_073_corrections.AuditCorrections.test_restore_disables_configured_template_hook)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 178, in test_restore_disables_configured_template_hook
+    self.assert_restore_without_hook({'GIT_CONFIG_GLOBAL': str(config)})
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 166, in assert_restore_without_hook
+    self.assertFalse((target / 'removed.txt').exists())
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_restore_disables_environment_template_hook (test_073_corrections.AuditCorrections.test_restore_disables_environment_template_hook)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 171, in test_restore_disables_environment_template_hook
+    self.assert_restore_without_hook({'GIT_TEMPLATE_DIR': str(template)})
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 166, in assert_restore_without_hook
+    self.assertFalse((target / 'removed.txt').exists())
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_restore_final_verification_checks_actual_complete_files (test_073_corrections.AuditCorrections.test_restore_final_verification_checks_actual_complete_files) (name='unexpected.txt')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 203, in test_restore_final_verification_checks_actual_complete_files
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_restore_final_verification_checks_actual_complete_files (test_073_corrections.AuditCorrections.test_restore_final_verification_checks_actual_complete_files) (name='keep.txt')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 203, in test_restore_final_verification_checks_actual_complete_files
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_restore_final_verification_checks_actual_complete_files (test_073_corrections.AuditCorrections.test_restore_final_verification_checks_actual_complete_files) (name='removed.txt')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 203, in test_restore_final_verification_checks_actual_complete_files
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_restore_final_verification_checks_actual_complete_files (test_073_corrections.AuditCorrections.test_restore_final_verification_checks_actual_complete_files) (name='results/proof.txt')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 203, in test_restore_final_verification_checks_actual_complete_files
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_snapshot_rejects_effective_external_graft_file (test_073_corrections.AuditCorrections.test_snapshot_rejects_effective_external_graft_file)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 235, in test_snapshot_rejects_effective_external_graft_file
+    self.assert_graft_rejected(source, first, head, {'GIT_GRAFT_FILE': str(grafts)})
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 219, in assert_graft_rejected
+    self.assertNotEqual(result.returncode, 0, result.stdout)
+AssertionError: 0 == 0 : b'{"archive": "C:\\\\Users\\\\airpot\\\\AppData\\\\Local\\\\Temp\\\\sdd-073-test-yihq5s4g\\\\not-created\\\\snapshot.zip", "sha256": "84f255964e96c9171450896afef69485c3291010516fd30cf88bc83743b85666", "files": 1, "head": "944d397519095d5f76560a6bb1f04682ec43f2ae", "verified": true, "safe_to_remove": false}\r\n'
+
+======================================================================
+FAIL: test_snapshot_rejects_inside_junction_without_newer_path_api (test_073_corrections.AuditCorrections.test_snapshot_rejects_inside_junction_without_newer_path_api)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\airpot\.codex\worktrees\sdd-fix-073\project_skill\tests\test_073_corrections.py", line 276, in test_snapshot_rejects_inside_junction_without_newer_path_api
+    with self.assertRaisesRegex(ValueError, 'Links|links|reparse'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 17 tests in 30.501s
+
+FAILED (failures=17, errors=3)
+
+exit_code=1

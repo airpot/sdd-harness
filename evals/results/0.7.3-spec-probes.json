@@ -1,0 +1,999 @@
+{
+  "runtime": {
+    "python": "3.12.8 (tags/v3.12.8:2dc476b, Dec  3 2024, 19:30:04) [MSC v.1942 64 bit (AMD64)]",
+    "git": "git version 2.55.0.windows.5"
+  },
+  "combined_foreign_routing": {
+    "foreign_raw_files_unchanged": true,
+    "staged_only_content_usable": true,
+    "missing_external_index_absent": true,
+    "caller_env_unchanged": true,
+    "fixture_actual_grade_passed": true
+  },
+  "head_mismatch_rejected": {
+    "creation_head": "f1502dcdcf00aeac2d2630559b73bced154fd08f",
+    "changed_head": "0685488bcd50fece0d79867f159d4022649f83d5",
+    "grade_passed": false
+  },
+  "environment_routed_graft": {
+    "rejected_before_parent_creation": true,
+    "source_raw_files_unchanged": true,
+    "both_original_commits_accessible": true
+  },
+  "restore_additional_boundaries": {
+    "comment_only_grafts_valid": true,
+    "full_history_restored": true,
+    "necessary_ignored_bytes_equal": true,
+    "caller_env_config_and_source_unchanged": true,
+    "recreated_deleted_directory_rejected": true
+  },
+  "implementation_hashes": {
+    "README.md": "b2e0b132d9699e26f5cc876e106b39bed536ff8e18c99f5bd5e63b95c617cbeb",
+    "SKILL.md": "3f7f57d215626a31c3b7c8d939d1596d4db09e8f0951ba61f6b82ede20fd1d9e",
+    "evals/host-README.md": "2b032d702638662b624356e08202e292bb2f62657fd6f5deea5358a2af2915fb",
+    "evals/host.py": "8bcb8e59f3ea9fedbc9d9749bef62caeb1bcf40e28d447ee095158d7c8be9a05",
+    "references/recovery.md": "dd82d61c0baac5aa69216b5abbdb3815a1c6deb526b2791452683122e8f80ad6",
+    "scripts/workspace.py": "47fe9d9d6019f828879b151f5a4361d432e721be128a07a80805b810ce8b3374",
+    "specs/sdd-harness.md": "984c4ea553247aa7056df6263b5788abcd26f1df0454b34f54df0a3b165154f0",
+    "tests/test_073_corrections.py": "93b314356df46038d5ed10b6e27eab167b560808689f9c909becc2070c01da09"
+  },
+  "ownership": {
+    "tracked_diffs": [
+      ".gitattributes",
+      "README.md",
+      "SKILL.md",
+      "evals/host-README.md",
+      "evals/host.py",
+      "references/recovery.md",
+      "scripts/workspace.py",
+      "specs/sdd-harness.md"
+    ],
+    "untracked": [
+      "tests/test_073_corrections.py"
+    ]
+  },
+  "historical_unchanged_content": {
+    "count": 140,
+    "hashes": {
+      "dist/sdd-harness-0.1.0.sha256": "e288dc5e121cac8c2604a4862721ffddeaebeb6242c6be658ef0cc81bd639146",
+      "dist/sdd-harness-0.1.0.zip": "43e8c0979ec5118188853dde4a9c1231e822d9cfab06009b4eb3e94269c29fc2",
+      "dist/sdd-harness-0.2.0.sha256": "ae31b29ce5e79dceef554080c5a9347c813b7309d5bf19472c57891d3c2a660a",
+      "dist/sdd-harness-0.2.0.zip": "b65d7f6f168f7c64419681c1b55e81d71039374498d1a2ab635f77b8d9d8e8eb",
+      "dist/sdd-harness-0.3.0.sha256": "e948a56654ed84364640b03553989ef4ecafb97ffb71a62f23bec09c6f6a4e4c",
+      "dist/sdd-harness-0.3.0.zip": "7820b985ecd72174589d221c9582dbad9e0586eea0a86517c2bd87085560f445",
+      "dist/sdd-harness-0.4.0.sha256": "1795c7de0e319cf776b36012a92142e9a304b571eafa4d586453e70b9a1a5a47",
+      "dist/sdd-harness-0.4.0.zip": "65ecea4a9ef633469f2cb09ad6f2845f4583449929ef83cf1918c01f3dc2a368",
+      "dist/sdd-harness-0.5.0.sha256": "e6cc55ad5d95e3f2a09e11c11a1525056bad8ddf184f22e3a4061ef9dc0ac160",
+      "dist/sdd-harness-0.5.0.zip": "dd2d36c1f9166749b951d9f4f0869279981cdefd41b0af98e54c2880507da4c4",
+      "dist/sdd-harness-0.5.1.sha256": "d813367815545ade9714dc1f0a591baa2c1c253320a154c2990b7b4eb904c614",
+      "dist/sdd-harness-0.5.1.zip": "eea350b1ad87a78415642d8bfe260188f32d4c85f74d4e8fb477f7b9b2fcabb2",
+      "dist/sdd-harness-0.6.0.sha256": "39e7abff0a71cc217a72b09b4ba7bdfa4c15b885d83d5dc3b55c450bf2648db4",
+      "dist/sdd-harness-0.6.0.zip": "69518d41df48d65bf964349f58261cbd602f1301a27f193d72dd9d3dfbc5fb73",
+      "dist/sdd-harness-0.7.0.sha256": "caeb16ca1e00c6cb79c9a17949be2b12d88690f6a48ffd6b1c0d24208dc23918",
+      "dist/sdd-harness-0.7.0.zip": "d85dd9006400c32046c3033a370a11af6c28c5dd79e626f27ff9c7a4135ab806",
+      "dist/sdd-harness-0.7.1.sha256": "c11074d326a87a8b18439b63a1d81b6a16d169d5fd3de962207c5e9bc438a683",
+      "dist/sdd-harness-0.7.1.zip": "62a522a1c5ed97d27d1cc5a5f0584d96bee64a553d93bbac2428d742b6739420",
+      "dist/sdd-harness-0.7.2.sha256": "189b734255c5b2c3c3be96939f19c53cc352cc9172b994d8b4a83fb4ea3769b9",
+      "dist/sdd-harness-0.7.2.zip": "78d1c80d7805b48adfe31a243fcf95307fb1a6ed915b88fea5a6d4c77b685df6",
+      "evals/invocation-0.7.0.json": "980b293efa38f77c4d665c51b55685b39e6f91447668ba07aa1e7f0691a4c6aa",
+      "evals/results/0.2.0-baseline.json": "5265fabfd4ca14b151b88c3e035550303751ef3420f6036596e73a780b2c4f27",
+      "evals/results/0.2.0-scores.json": "0f51e45635c54bb1f14f56c64727434fd0a0a7994a2402e96d5d65217e47732b",
+      "evals/results/0.3.0-expanded-baseline-clarified.json": "f0dd7a2ff7223ab4f015d2a7e670735086ba980fd284fdf4ae4f45b63dc6ce13",
+      "evals/results/0.3.0-expanded-baseline.json": "e3239bb58d80e5049c2b90433c1003479756d5dadbd2dbc948703799d7901151",
+      "evals/results/0.3.0-expanded-clarified-scores.json": "c672304396724fbee2f9bd3ee33ee04f3933d018442d7c95236a58f44800772a",
+      "evals/results/0.3.0-expanded-scores.json": "f64fa6169c1f00d7294ead245dc520083d08826b983d7ff254a00639da904254",
+      "evals/results/0.3.0-forward.json": "174841ce17ada935a305d5928ba1bca6b8c197730b6701306e9eafccffe948a6",
+      "evals/results/0.3.0-host-baseline.json": "27cfcd4d5d76234b09f5ab14436e4150350695af41d0d836b66f75d3797067ca",
+      "evals/results/0.3.0-host-scores.json": "fb8675eb2a8e38bb909374b9e22ecaf9bb2830b251db476242aaa1dba99e4d07",
+      "evals/results/0.3.0-scores.json": "e4cf13768439f605380e4991320536c8ab2b2d191d7fa1993f614625b33ba0e6",
+      "evals/results/0.4.0-expanded-final-scores.json": "cd44d3f0ce82c06a8520b9e683c70c0705303337b9e3e774fa91b2ddd1db2f0c",
+      "evals/results/0.4.0-expanded-forward-final.json": "935a6707eed38d16d7007db279dafab32642429ed29e0663a464982da6bed83b",
+      "evals/results/0.4.0-expanded-forward.json": "85aa85dc2a54323b0195e15a4e67272ac2791f4b379bd061ef6e470e6807911d",
+      "evals/results/0.4.0-expanded-scores.json": "d318ab18bdb51ed3d04618eca577884fa32eb423d6323efa9ea19eecbc1f7ef7",
+      "evals/results/0.4.0-host-final-trial-1-scores.json": "f691b33c82c2bed51fed49b419e4455a7e56e624f64cff8a1b01253aa793afe7",
+      "evals/results/0.4.0-host-final-trial-1.json": "65e5d21d0fba1e5717d3829f747925623f1b08cac047e635d7d946f29a415a0f",
+      "evals/results/0.4.0-host-final-trial-2-scores.json": "6ff2524232970799929c4436e8bcacbd67b0158463928a0f1a001b151bcf2c36",
+      "evals/results/0.4.0-host-final-trial-2.json": "10daabb1b8286068806a946e968ec38f6dc58f8077b3e287d6964c1ed5ebf25c",
+      "evals/results/0.4.0-host-final-trial-3-scores.json": "db562d5125cdfcd701727a0af0a29cbabfdc98cd6307d514c24a4ab1f96d1ce8",
+      "evals/results/0.4.0-host-final-trial-3.json": "7b1d09f13b06683bc5ed510a7345032efa1d25f56f6ef6dabc133292a828fedb",
+      "evals/results/0.4.0-host-trial-1-scores.json": "e2648f88518cc24873335479370a20c757e8f0845f29d30273cdcd92d421104d",
+      "evals/results/0.4.0-host-trial-1.json": "1ed71cc59acc0e15b62993b93fe45c4d680276aa6ba94031be1a88bdc6689334",
+      "evals/results/0.4.0-initial-scenarios.json": "22da8a35ed2140a02d255ebc54b34a39592303b4663231568c133ec59d4f0ae8",
+      "evals/results/0.4.0-monorepo-baseline.json": "2132da6310e7bda30fa5bf5800dd41d50e7abf886002f7a7b755bc87fc3ecd71",
+      "evals/results/0.4.0-monorepo-scores.json": "db7ccad5606a2473f7b55213d92fc77e96e9ac33ff56f2be10ef5068bb93c1af",
+      "evals/results/0.4.0-provenance.json": "2e50fbea14d6e22287134aea997d236a1788c8debdea9849f1b5091d3749bdce",
+      "evals/results/0.4.0-validation.md": "346ef3b09945e8a8f1e588516778b6c0216841db93c52c37ae7ed076022e4c3a",
+      "evals/results/0.5.0-forward-initial.json": "432a487b8c8908e992c5e1af08f9d8d1857ecc20affebcbf3f79813cfce12396",
+      "evals/results/0.5.0-forward.json": "a963b6b97c41fcc54da1848487c7e627b8ef44cda38558d16d60d5473b3c5133",
+      "evals/results/0.5.0-host-trial-1-initial-scores.json": "e44ada06083bac93b3dc44836e2497231342a1f4b86b3720f44e2fce4542a43f",
+      "evals/results/0.5.0-host-trial-1-initial.json": "7a2f863e6651839a41734c97020f2b18483947ee4fa6b17ef3098706aa346167",
+      "evals/results/0.5.0-host-trial-1-scores.json": "3f76d91a1fabdb3a4dcc799a7fe0fb0a28846de9d8efd6e057ecff9287b7ffb8",
+      "evals/results/0.5.0-host-trial-1.json": "8902b8322ee0ba4ec21b371b4d029eb01b33871c662dc0849c073a259263cbfb",
+      "evals/results/0.5.0-host-trial-2-scores.json": "fa398473dd5bed77f681c0afabc202960b6a5d5e21d53d833f97d30815685cb2",
+      "evals/results/0.5.0-host-trial-2.json": "94ca13a7c6c6562a6bfc3f4b3eff102f620a46092ac6b38ef1a46714f55942c8",
+      "evals/results/0.5.0-host-trial-3-scores.json": "3f07bec3b5c37800079a494f88a406f1f0b1c1cb25b8e6c2862a21d4a6bfbdad",
+      "evals/results/0.5.0-host-trial-3.json": "d2734c0c388b65f51ec7985a69c795e680a8166a82c2cc337201dcedcef97ee3",
+      "evals/results/0.5.0-provenance.json": "2869facf11c17ef4d513859ff5dcc1518f706c0c7499bf95106d6cf14a1015dd",
+      "evals/results/0.5.0-scores-initial.json": "6b5070cfe78a3307df06ed64d8198305a6b79c2957df0b10281a2ce11300a9f4",
+      "evals/results/0.5.0-scores.json": "36ea431f24e94fd669b596f3939d0930b1015f1da151507758c25cf527f75c0c",
+      "evals/results/0.5.0-validation.md": "f419044e7914f6f0d5a880cf65094f38b3dcc0fa8cfd52f705b6af16377cf95d",
+      "evals/results/0.5.1-provenance.json": "d9eb3a80a08c8cd21d11e33f3e207c28b0b03e683dad6b86fbca6ee430a1db4b",
+      "evals/results/0.5.1-subagent-baseline-scores.json": "3ad0c516eed4a554c46a8bf135f1e2732a580f7fbc2dd2134e669cf3956681ad",
+      "evals/results/0.5.1-subagent-baseline.json": "364cf91634c7d0d3768146cc7d72a01866f8fce5cfe0e9dd84ce79ffcd05a1da",
+      "evals/results/0.5.1-validation.md": "860997dbac0c8d413cda29dc0eef6e8f3ca05dc0032caf7f0e35dfdc4c2c9649",
+      "evals/results/0.6.0-baseline-no-skill-scores.json": "52dc72d4143e8eec73074cfb38d3ccfff1777ce61c296d522e061c1ea2040c3d",
+      "evals/results/0.6.0-baseline-no-skill.json": "7dbd1ec6643852207f2ec3e94719bead472d7fa315fbd7a393dea2a306e1736b",
+      "evals/results/0.6.0-forward-initial-scores.json": "83879935e22748b3623d5e44b654f24521a446993f8b509101bcc2a19613c57b",
+      "evals/results/0.6.0-forward-initial.json": "b63e87166384296de538413fd4b3a4562b93a16439d7238a10582bfe4d009e3b",
+      "evals/results/0.6.0-host-trial-1-initial-scores.json": "b9885c71c0b9b7b266c8591bd43a6cdb5ff1a3f5b17ac16dd633775b12ddd824",
+      "evals/results/0.6.0-host-trial-1-initial.json": "b051ac8516267dfe2bc155808323ee412e43e069d7c7021900a06a99749fd883",
+      "evals/results/0.6.0-host-trial-1-prose-scores-initial.json": "de0ac76d0aa269449c8d49698f0751be7f3879faefd441702793041025fcdec7",
+      "evals/results/0.6.0-host-trial-1-prose-scores.json": "e33a8a4712231b0d1d20d32bb70f1c15bfdf0ed9b23add5d6a9b01a74ffc55dc",
+      "evals/results/0.6.0-host-trial-1-scores.json": "376c54456ffc9cf4986653ed548b56c58844400819eb7f80fa6ed9b6c32e6e6c",
+      "evals/results/0.6.0-host-trial-1.json": "d18a64313256db90d88fb9a595af1ce1e1d369fd0552092a1569b1988ab8088c",
+      "evals/results/0.6.0-host-trial-2-prose-scores-initial.json": "fd0ef70d129756f676a7f1a3f41087edcc93730fcb74576437a84cf8ba047a4b",
+      "evals/results/0.6.0-host-trial-2-prose-scores.json": "6b0022e9502b1d6521b1b68ce5bb23b5c4f82351e58fb56be1fe7e02871b931a",
+      "evals/results/0.6.0-host-trial-2-scores.json": "2763b5155d2e2c2b4444c83fea83f2887add3535d03eacdec246c78a212a951c",
+      "evals/results/0.6.0-host-trial-2.json": "e2a1acd78d1d1b3ed39e7c1d819fb6c1520fbeae344ea5d84c3e31a56cc02f18",
+      "evals/results/0.6.0-host-trial-3-prose-scores-initial.json": "d381848283ebd7c9742d3567c19ddc5dcad3506179429de2d577089f6906bac6",
+      "evals/results/0.6.0-host-trial-3-prose-scores.json": "96d70dba51f24577a42c95dc18007303b100f1787542f12942a12e6f45bf03e8",
+      "evals/results/0.6.0-host-trial-3-scores.json": "b38f3812d8e8d4231bd4f1dff9124ea387d8e284a9ffe65ca5278009796df9b6",
+      "evals/results/0.6.0-host-trial-3.json": "181efe12c431ab796094543054244a6a0e214474a1b12968f21cb568cbf727e7",
+      "evals/results/0.6.0-provenance.json": "2d3d4b11ce0505eb6fc5b9e08397c03163c5e5e5bdc5c5bed96f5f2b520b079e",
+      "evals/results/0.6.0-review-final.md": "3a67f0750d0ef882f520f677b46f311416b38d44718bb8419002b3ca48c84ffe",
+      "evals/results/0.6.0-review-initial.md": "0d86c0a78a9ad79c754f8014dd0c4cda1f4900771cd5e381bd4ad0e85187dca9",
+      "evals/results/0.6.0-scores.json": "03fe8d28acce81141dfe6f96a1d96512c3cc6f1cfcb7bbce25eeb76aace1587c",
+      "evals/results/0.6.0-validation.md": "296175c6f63db60cecce5594ac1cb5bb279f3d28bf02311cdc0a95d9b0fe7cb7",
+      "evals/results/0.7.0-coding-060.json": "d4c5aba0787f02de7cff91c0e478285698265d6fa60d7ec6b4ad46bbfebc2183",
+      "evals/results/0.7.0-coding-forward.json": "0b728dc15294cd5c355180d767f926369475b2c5d294991181ef461f7238ff86",
+      "evals/results/0.7.0-coding-no-skill.json": "6f5f482c518e6aa2fb2e12028184d75748c5a0ec8f61e0535ad2d9509652e642",
+      "evals/results/0.7.0-coding-originals.json": "55abf34bdaa56a9dc1757e8806729e016fa80c7ae5fa0fcf2523a70f9c5607a2",
+      "evals/results/0.7.0-coding-outcomes.json": "339effaaba4ce117429222d221ff96823db1466f64469896d06f368471d34b0e",
+      "evals/results/0.7.0-early-exit-green.txt": "89c8acdac5a74f55ae8224070a642f63b2b78e1951c205ec947707267dfecffb",
+      "evals/results/0.7.0-early-exit-red.txt": "601073d543f7cf7bdd4b6ad5bd01a6efd436a2407423c4d0ade40c728f02c634",
+      "evals/results/0.7.0-grader-provenance-green.txt": "804b9f653fa92e9d9361bf4a2f88bf3a93420600a8cb1f68f5c04352c999f8b6",
+      "evals/results/0.7.0-grader-provenance-red.txt": "92f2672497b184f46667b616fec3226ed406b8657b70021cee6cede27af62fb8",
+      "evals/results/0.7.0-host-observations.json": "3e0b74fb37ba462c99548c9e93f47075b457317040599007d5b6c3d771d2eb8e",
+      "evals/results/0.7.0-instruction-baseline.json": "55e39e60edec0f8f62a9c782e8a685391eb2431644712236803bf22d5926ee97",
+      "evals/results/0.7.0-instruction-forward.json": "5959f89f16ccbcaa7b1ae50f8fafbf9eb7d59d47edef8a324a2c19572e84fe84",
+      "evals/results/0.7.0-instruction-recheck-input.json": "51ee2cd6c954a133afb822f4dd854b7b3c6e661ed29e1ad559ddd5f7ad3ca545",
+      "evals/results/0.7.0-instruction-recheck-scores.json": "6bb8ee365e4750ed3dcf9b321203a19ef93d5525c32b3c9a98337bb05ba425a9",
+      "evals/results/0.7.0-instruction-recheck.json": "b9cb3b905dad22077a73d95aa64d58e8439b033d96c6dcffbd1cba0fe9f2899b",
+      "evals/results/0.7.0-instruction-regression.json": "dcf1bc5abae31daf93a0991b051a8c0a1f66f22061959b95749f8a9a11a34ce9",
+      "evals/results/0.7.0-instruction-scores.json": "78cd931466c4a69bd0ff085a6a02f87e78b0a52c2a1cf6923acff225cf3e24a5",
+      "evals/results/0.7.0-invocation-errata.json": "02618dbdd4dcd1db8bd8b3f98281d23fb9352eec468a8b31bd04ad63f60dcc1a",
+      "evals/results/0.7.0-invocation-errata.md": "51ef0f0a172749398815ae740d028f5ae19c71ada719de0a2bb4a368b1bbddfc",
+      "evals/results/0.7.0-native-prompts.json": "e0d77c4136551076b6368190dafd13afdcdb8752de759c7d9f67a95eb9cd5d3c",
+      "evals/results/0.7.0-provenance.json": "0fa65be0d8ed7927e517cfa9f87a770bbb7c28beb82fcd9b35817baf3c35fea3",
+      "evals/results/0.7.0-tests.txt": "11ea0be75cd507e6d9d4f13a96ec382fbd33197d2d72c29ff06f6f2f285de58b",
+      "evals/results/0.7.0-validation.md": "8ac5e06cd74e0eae2c6eb5244edbd0f62e015cf6e4cabee7efa1ecbf84d37c0e",
+      "evals/results/0.7.1-checkout-reconciliation.json": "8b7a70f8ebb48fa69673854047211408ffa8f1fc22a25cc5ca5d83083afa81c7",
+      "evals/results/0.7.1-correction-provenance.json": "de4e78e7d13528f19893d87b4834e1004a42654e5ffc259d3f1b570052140d0f",
+      "evals/results/0.7.1-native-applicability.json": "f31d76e78f683a3513bf03e3e6184fcd3bf7f36b74a3f482582f148b875cb9e2",
+      "evals/results/0.7.1-native-requests.json": "36a296cf72c45e9a28cb1f1eba515b264d9aa257a15915229334f1842d4fbb8e",
+      "evals/results/0.7.1-quality-review.md": "76cadee8a7acbe0bb6c17b282e899ea37cdb0cd0cdf167f199b80bcd19cd813f",
+      "evals/results/0.7.1-regression.json": "9f500cd6a61334201e1ba8910c74e33b05f37d72ddf5bfb93a24722e72bbe325",
+      "evals/results/0.7.1-release-provenance.json": "4788a3881f51f52e849da2fe98e21321e739348dae7b76d66cd4336614cea239",
+      "evals/results/0.7.1-release-validation.md": "2468f13772e9b652d4859a915b72dd162c777e478fd66a7502b0d58e47488e0e",
+      "evals/results/0.7.1-review-correction.json": "9eea01bcae86042c4af89924d4363de7841b9e9f5c0e655a3b5c13856e869238",
+      "evals/results/0.7.1-spec-review.md": "60c21c245acf490384d97fa7351489ba8715e5d2fca6dc9c8631fe8e3a8fa232",
+      "evals/results/0.7.1-template-results.json": "57029a080287014629d4b7a11d9606ff8767df322e8ac50a346891949a9de579",
+      "evals/results/0.7.1-tests-release.txt": "97ea83df24b723611f805e64df6757690f992cb034177ae28bb86d6889527bdc",
+      "evals/results/0.7.1-validation.md": "9917782dfe4cac13e33e32d0a2d061df91503286446357d2a209ea1a4c85693a",
+      "evals/results/0.7.2-first-red.log": "26c589c606776498cc0914120a4962d881fb163a5a8a52cd8d8ad3ac32d73c28",
+      "evals/results/0.7.2-green.log": "f858f9beb8d188e9cc3561d928c5c4b97ac5a80c47633cbcaf54c789ccc787e7",
+      "evals/results/0.7.2-historical-baseline.log": "0f209cedf722e90dfd4e92365684223cd4c87d47e919026c04ed021fb5990c7f",
+      "evals/results/0.7.2-historical-byte-preservation.json": "3fb90b3d211e713475eaa081d868deb3c6f71b081268af307b3f92a9ac7621a8",
+      "evals/results/0.7.2-historical-green.log": "c1ed7aca53a1393b8365f2267245b88e2348d58b72e8730f86e9f27107fcff95",
+      "evals/results/0.7.2-implementation.txt": "8717cf14a7b600c3466416ca9de0e491cfa0bc31f8f4af1aa6915a52cfd459b4",
+      "evals/results/0.7.2-installation.json": "34ba7b5874a04a83ac058288c866444be9587648c483b7f4045617f66b0dccda",
+      "evals/results/0.7.2-package.json": "71ede1e54031b0b92fd91d393847545826e6922da6e11f150209c056841f6472",
+      "evals/results/0.7.2-provenance.json": "9a89361896c56ae9c06b41f6e9716c8bb2fedd1741e1c637da3cc2e50bfecfa9",
+      "evals/results/0.7.2-quality-probes.json": "5dc9dcad11c4d333ed95a08ce8cf4dc8fa1a3da3299af03500b713ceb8c29535",
+      "evals/results/0.7.2-quality-review.txt": "a84408c32a8c5fd247cfc5a5871569f7d1b0a7015c4fc4fcb6c4a10364024a9e",
+      "evals/results/0.7.2-red.log": "7b4b3df565e809633065c180853f7dfa2cd06d6376a919af60ec131fdff70f04",
+      "evals/results/0.7.2-spec-review.txt": "e8fb16fc36fa7bd4fbddeacfdc1582d4493e30e3543b6c22b8d38e025eeb55a9",
+      "evals/results/0.7.2-tests.log": "e905d950a6f397fb155c8ab26e482518d3fe53a7612d5f4edb8741e06e2322e8",
+      "evals/results/0.7.2-validation.md": "a58b98e794b87918a30abd48d9250d935be6cf6164b61528c07b57961b055448"
+    },
+    "preexisting_unprotected_checkout_crlf_differences": [
+      {
+        "path": "dist/sdd-harness-0.1.0.sha256",
+        "attribute": "dist/sdd-harness-0.1.0.sha256: text: unspecified",
+        "checkout_sha256": "e288dc5e121cac8c2604a4862721ffddeaebeb6242c6be658ef0cc81bd639146",
+        "git_blob_sha256": "222a93b520796620928b102051c7b0b640eec951bf5a78ec111ddaa3a936fb1d"
+      },
+      {
+        "path": "dist/sdd-harness-0.2.0.sha256",
+        "attribute": "dist/sdd-harness-0.2.0.sha256: text: unspecified",
+        "checkout_sha256": "ae31b29ce5e79dceef554080c5a9347c813b7309d5bf19472c57891d3c2a660a",
+        "git_blob_sha256": "cbaf5b77836d653a4b7c6228b7ec529d842414093f31a960fcf23178d31a6cb9"
+      },
+      {
+        "path": "dist/sdd-harness-0.3.0.sha256",
+        "attribute": "dist/sdd-harness-0.3.0.sha256: text: unspecified",
+        "checkout_sha256": "e948a56654ed84364640b03553989ef4ecafb97ffb71a62f23bec09c6f6a4e4c",
+        "git_blob_sha256": "24419d9bf48c47c512b800f9cb98fc2a76ac687e5d7513bf1c44b01e0be7d162"
+      },
+      {
+        "path": "dist/sdd-harness-0.4.0.sha256",
+        "attribute": "dist/sdd-harness-0.4.0.sha256: text: unspecified",
+        "checkout_sha256": "1795c7de0e319cf776b36012a92142e9a304b571eafa4d586453e70b9a1a5a47",
+        "git_blob_sha256": "9dc638d79da8530f7e24b08c3a47d56de3025478daac9c46345dbd58258b4dc6"
+      },
+      {
+        "path": "dist/sdd-harness-0.5.0.sha256",
+        "attribute": "dist/sdd-harness-0.5.0.sha256: text: unspecified",
+        "checkout_sha256": "e6cc55ad5d95e3f2a09e11c11a1525056bad8ddf184f22e3a4061ef9dc0ac160",
+        "git_blob_sha256": "9d67466d998a970ac4e76e2c5dc0add2fa4b0256adc1075c57d40d4aa4adc134"
+      },
+      {
+        "path": "dist/sdd-harness-0.5.1.sha256",
+        "attribute": "dist/sdd-harness-0.5.1.sha256: text: unspecified",
+        "checkout_sha256": "d813367815545ade9714dc1f0a591baa2c1c253320a154c2990b7b4eb904c614",
+        "git_blob_sha256": "07b4afea8c0a9055167401994ee1bc5d24dfb99098101d7ed6a681cb51262203"
+      },
+      {
+        "path": "dist/sdd-harness-0.6.0.sha256",
+        "attribute": "dist/sdd-harness-0.6.0.sha256: text: unspecified",
+        "checkout_sha256": "39e7abff0a71cc217a72b09b4ba7bdfa4c15b885d83d5dc3b55c450bf2648db4",
+        "git_blob_sha256": "8312c700a3e71db9e89c8dfd9281069f0f59d30785478ecd55079f6e944e95a6"
+      },
+      {
+        "path": "dist/sdd-harness-0.7.0.sha256",
+        "attribute": "dist/sdd-harness-0.7.0.sha256: text: unspecified",
+        "checkout_sha256": "caeb16ca1e00c6cb79c9a17949be2b12d88690f6a48ffd6b1c0d24208dc23918",
+        "git_blob_sha256": "62d47f01b73a2a1c43b8b11ce2295f73d10b49f2b58c12fbf6bb86b2d85e20d9"
+      },
+      {
+        "path": "dist/sdd-harness-0.7.1.sha256",
+        "attribute": "dist/sdd-harness-0.7.1.sha256: text: unspecified",
+        "checkout_sha256": "c11074d326a87a8b18439b63a1d81b6a16d169d5fd3de962207c5e9bc438a683",
+        "git_blob_sha256": "408ceec81959a06000e0fe51906f67d232fab051e42b1c1cba7d00cf49545e5d"
+      },
+      {
+        "path": "dist/sdd-harness-0.7.2.sha256",
+        "attribute": "dist/sdd-harness-0.7.2.sha256: text: unspecified",
+        "checkout_sha256": "189b734255c5b2c3c3be96939f19c53cc352cc9172b994d8b4a83fb4ea3769b9",
+        "git_blob_sha256": "5f404f863cbd4f86755bbeaaec6da1894a3c38c0b6998822087de837b8531620"
+      },
+      {
+        "path": "evals/results/0.2.0-baseline.json",
+        "attribute": "evals/results/0.2.0-baseline.json: text: unspecified",
+        "checkout_sha256": "5265fabfd4ca14b151b88c3e035550303751ef3420f6036596e73a780b2c4f27",
+        "git_blob_sha256": "b1868017378bcbc5e350ad59d2f5a1f531e82769e84678879c783ec4f837abe9"
+      },
+      {
+        "path": "evals/results/0.2.0-scores.json",
+        "attribute": "evals/results/0.2.0-scores.json: text: unspecified",
+        "checkout_sha256": "0f51e45635c54bb1f14f56c64727434fd0a0a7994a2402e96d5d65217e47732b",
+        "git_blob_sha256": "180979de7bdf9e807e8c6f2288395ed4a62fa01a02ab43ef7cbfadffee1bc240"
+      },
+      {
+        "path": "evals/results/0.3.0-expanded-baseline-clarified.json",
+        "attribute": "evals/results/0.3.0-expanded-baseline-clarified.json: text: unspecified",
+        "checkout_sha256": "f0dd7a2ff7223ab4f015d2a7e670735086ba980fd284fdf4ae4f45b63dc6ce13",
+        "git_blob_sha256": "744e90e107391393e865d84592b29491476c5963e44710b658660f43be5d28f3"
+      },
+      {
+        "path": "evals/results/0.3.0-expanded-baseline.json",
+        "attribute": "evals/results/0.3.0-expanded-baseline.json: text: unspecified",
+        "checkout_sha256": "e3239bb58d80e5049c2b90433c1003479756d5dadbd2dbc948703799d7901151",
+        "git_blob_sha256": "8d793e2a13c6a41b27c4dac19767322f859aa1e50b5668ec4cc392c70ddbc0c0"
+      },
+      {
+        "path": "evals/results/0.3.0-expanded-clarified-scores.json",
+        "attribute": "evals/results/0.3.0-expanded-clarified-scores.json: text: unspecified",
+        "checkout_sha256": "c672304396724fbee2f9bd3ee33ee04f3933d018442d7c95236a58f44800772a",
+        "git_blob_sha256": "3e49b556b0f94a4a3e02c500351f40d38dde7740da34203d230d1bed0313536f"
+      },
+      {
+        "path": "evals/results/0.3.0-expanded-scores.json",
+        "attribute": "evals/results/0.3.0-expanded-scores.json: text: unspecified",
+        "checkout_sha256": "f64fa6169c1f00d7294ead245dc520083d08826b983d7ff254a00639da904254",
+        "git_blob_sha256": "318c64f3fd7d9db45533a5b2ac1fc75b29dd6e2975a0e99805468dfe48ca0cff"
+      },
+      {
+        "path": "evals/results/0.3.0-forward.json",
+        "attribute": "evals/results/0.3.0-forward.json: text: unspecified",
+        "checkout_sha256": "174841ce17ada935a305d5928ba1bca6b8c197730b6701306e9eafccffe948a6",
+        "git_blob_sha256": "e0f40aa9d558e3c24344de49012ac12740fb7b3818d859ec4b95f700a8f07858"
+      },
+      {
+        "path": "evals/results/0.3.0-host-baseline.json",
+        "attribute": "evals/results/0.3.0-host-baseline.json: text: unspecified",
+        "checkout_sha256": "27cfcd4d5d76234b09f5ab14436e4150350695af41d0d836b66f75d3797067ca",
+        "git_blob_sha256": "6447b287f8bd6c9a1fae5996ef2550a84c821dd3e3eabf8fd8a3ed27f527828c"
+      },
+      {
+        "path": "evals/results/0.3.0-host-scores.json",
+        "attribute": "evals/results/0.3.0-host-scores.json: text: unspecified",
+        "checkout_sha256": "fb8675eb2a8e38bb909374b9e22ecaf9bb2830b251db476242aaa1dba99e4d07",
+        "git_blob_sha256": "b898479e40a07ffdfecf3b6983e2d23f91054069e8518631875ad685b960701e"
+      },
+      {
+        "path": "evals/results/0.3.0-scores.json",
+        "attribute": "evals/results/0.3.0-scores.json: text: unspecified",
+        "checkout_sha256": "e4cf13768439f605380e4991320536c8ab2b2d191d7fa1993f614625b33ba0e6",
+        "git_blob_sha256": "06112f48405dfd44b46b32fcf59bed1892a8e71815391244f6c478115756a177"
+      },
+      {
+        "path": "evals/results/0.4.0-expanded-final-scores.json",
+        "attribute": "evals/results/0.4.0-expanded-final-scores.json: text: unspecified",
+        "checkout_sha256": "cd44d3f0ce82c06a8520b9e683c70c0705303337b9e3e774fa91b2ddd1db2f0c",
+        "git_blob_sha256": "750cc299540b36521669b3d2b271188747040c022e8a805a4bf23da69ccf269e"
+      },
+      {
+        "path": "evals/results/0.4.0-expanded-forward-final.json",
+        "attribute": "evals/results/0.4.0-expanded-forward-final.json: text: unspecified",
+        "checkout_sha256": "935a6707eed38d16d7007db279dafab32642429ed29e0663a464982da6bed83b",
+        "git_blob_sha256": "4bcf052719773d4447626ae736161a3a5e4e0333ac15c29e2fa7dff568d0357d"
+      },
+      {
+        "path": "evals/results/0.4.0-expanded-forward.json",
+        "attribute": "evals/results/0.4.0-expanded-forward.json: text: unspecified",
+        "checkout_sha256": "85aa85dc2a54323b0195e15a4e67272ac2791f4b379bd061ef6e470e6807911d",
+        "git_blob_sha256": "a9b66c8d0e28ae3bb8b8dd309c1c4bf06b67b0f661f2885c1bfb95f20b810940"
+      },
+      {
+        "path": "evals/results/0.4.0-expanded-scores.json",
+        "attribute": "evals/results/0.4.0-expanded-scores.json: text: unspecified",
+        "checkout_sha256": "d318ab18bdb51ed3d04618eca577884fa32eb423d6323efa9ea19eecbc1f7ef7",
+        "git_blob_sha256": "e361d78122849278f79c88fa182086cf5d78813531a9693c0034f4689630a152"
+      },
+      {
+        "path": "evals/results/0.4.0-host-final-trial-1-scores.json",
+        "attribute": "evals/results/0.4.0-host-final-trial-1-scores.json: text: unspecified",
+        "checkout_sha256": "f691b33c82c2bed51fed49b419e4455a7e56e624f64cff8a1b01253aa793afe7",
+        "git_blob_sha256": "ca306022995a1f476948beb21c5bfed1096aac5237d8815b6a3facc897e7656e"
+      },
+      {
+        "path": "evals/results/0.4.0-host-final-trial-1.json",
+        "attribute": "evals/results/0.4.0-host-final-trial-1.json: text: unspecified",
+        "checkout_sha256": "65e5d21d0fba1e5717d3829f747925623f1b08cac047e635d7d946f29a415a0f",
+        "git_blob_sha256": "3ec62b07866af05bc6cbf8bff39ffc73a4fad4353fe82414f31a63d024f2401f"
+      },
+      {
+        "path": "evals/results/0.4.0-host-final-trial-2-scores.json",
+        "attribute": "evals/results/0.4.0-host-final-trial-2-scores.json: text: unspecified",
+        "checkout_sha256": "6ff2524232970799929c4436e8bcacbd67b0158463928a0f1a001b151bcf2c36",
+        "git_blob_sha256": "d473109c2219b5cf33a1f1e0eb9225635bd43f7787694181f04f6227c47ff638"
+      },
+      {
+        "path": "evals/results/0.4.0-host-final-trial-2.json",
+        "attribute": "evals/results/0.4.0-host-final-trial-2.json: text: unspecified",
+        "checkout_sha256": "10daabb1b8286068806a946e968ec38f6dc58f8077b3e287d6964c1ed5ebf25c",
+        "git_blob_sha256": "f9e065639a3081dbba13f3b133578537f6a4b4e57eaeb3516be46b575c2cbeaa"
+      },
+      {
+        "path": "evals/results/0.4.0-host-final-trial-3-scores.json",
+        "attribute": "evals/results/0.4.0-host-final-trial-3-scores.json: text: unspecified",
+        "checkout_sha256": "db562d5125cdfcd701727a0af0a29cbabfdc98cd6307d514c24a4ab1f96d1ce8",
+        "git_blob_sha256": "ebada4524693455b04d2f371a1fb37f19e50ee98ae67071fe7bb7595ce68fd37"
+      },
+      {
+        "path": "evals/results/0.4.0-host-final-trial-3.json",
+        "attribute": "evals/results/0.4.0-host-final-trial-3.json: text: unspecified",
+        "checkout_sha256": "7b1d09f13b06683bc5ed510a7345032efa1d25f56f6ef6dabc133292a828fedb",
+        "git_blob_sha256": "017a474a7d7a5324cdfee7920070fc19bcd2826cba519a7b97cd57f90ec74fd5"
+      },
+      {
+        "path": "evals/results/0.4.0-host-trial-1-scores.json",
+        "attribute": "evals/results/0.4.0-host-trial-1-scores.json: text: unspecified",
+        "checkout_sha256": "e2648f88518cc24873335479370a20c757e8f0845f29d30273cdcd92d421104d",
+        "git_blob_sha256": "ec0083f0a0b70914493ae004d492c0bde99cce1424f6acbfdb815aa61c98715d"
+      },
+      {
+        "path": "evals/results/0.4.0-host-trial-1.json",
+        "attribute": "evals/results/0.4.0-host-trial-1.json: text: unspecified",
+        "checkout_sha256": "1ed71cc59acc0e15b62993b93fe45c4d680276aa6ba94031be1a88bdc6689334",
+        "git_blob_sha256": "b1e28ea48addeebc1a327c959dfe8cb75a7cfff9e7e393ed05eccf43d84c1050"
+      },
+      {
+        "path": "evals/results/0.4.0-initial-scenarios.json",
+        "attribute": "evals/results/0.4.0-initial-scenarios.json: text: unspecified",
+        "checkout_sha256": "22da8a35ed2140a02d255ebc54b34a39592303b4663231568c133ec59d4f0ae8",
+        "git_blob_sha256": "205027eae0a521be6e739c735c1a504d10a060df732944fb29f95c2e12dac560"
+      },
+      {
+        "path": "evals/results/0.4.0-monorepo-baseline.json",
+        "attribute": "evals/results/0.4.0-monorepo-baseline.json: text: unspecified",
+        "checkout_sha256": "2132da6310e7bda30fa5bf5800dd41d50e7abf886002f7a7b755bc87fc3ecd71",
+        "git_blob_sha256": "099451dc64bebdf6e075e5f9849dbe72af4f88c805b01a13f7769b901e28cede"
+      },
+      {
+        "path": "evals/results/0.4.0-monorepo-scores.json",
+        "attribute": "evals/results/0.4.0-monorepo-scores.json: text: unspecified",
+        "checkout_sha256": "db7ccad5606a2473f7b55213d92fc77e96e9ac33ff56f2be10ef5068bb93c1af",
+        "git_blob_sha256": "57c53990c898a5060205250b809c62682a7cec6374b414bf988fbd2f9b61babb"
+      },
+      {
+        "path": "evals/results/0.4.0-provenance.json",
+        "attribute": "evals/results/0.4.0-provenance.json: text: unspecified",
+        "checkout_sha256": "2e50fbea14d6e22287134aea997d236a1788c8debdea9849f1b5091d3749bdce",
+        "git_blob_sha256": "b8717910d153686760027cfef16279c20b3f510a202da8af5af3a86163040759"
+      },
+      {
+        "path": "evals/results/0.4.0-validation.md",
+        "attribute": "evals/results/0.4.0-validation.md: text: unspecified",
+        "checkout_sha256": "346ef3b09945e8a8f1e588516778b6c0216841db93c52c37ae7ed076022e4c3a",
+        "git_blob_sha256": "416ba543e0201f91d3f1793e67c3e2178b59df7829b7e49854b04d5fcb1d75cf"
+      },
+      {
+        "path": "evals/results/0.5.0-forward-initial.json",
+        "attribute": "evals/results/0.5.0-forward-initial.json: text: unspecified",
+        "checkout_sha256": "432a487b8c8908e992c5e1af08f9d8d1857ecc20affebcbf3f79813cfce12396",
+        "git_blob_sha256": "74af36fc7b125bd6a5a7ff27459238548b378cc2a534fbd454ae993ba129be3c"
+      },
+      {
+        "path": "evals/results/0.5.0-forward.json",
+        "attribute": "evals/results/0.5.0-forward.json: text: unspecified",
+        "checkout_sha256": "a963b6b97c41fcc54da1848487c7e627b8ef44cda38558d16d60d5473b3c5133",
+        "git_blob_sha256": "04263b9add964276e3af645d2b0254cb3904e51f5ae4fe40e6a9ca996f568f8e"
+      },
+      {
+        "path": "evals/results/0.5.0-host-trial-1-initial-scores.json",
+        "attribute": "evals/results/0.5.0-host-trial-1-initial-scores.json: text: unspecified",
+        "checkout_sha256": "e44ada06083bac93b3dc44836e2497231342a1f4b86b3720f44e2fce4542a43f",
+        "git_blob_sha256": "448e6f7a32b0a9a480c62c3500bd2c402c8b535334586b8eb7aca40e98d97477"
+      },
+      {
+        "path": "evals/results/0.5.0-host-trial-1-initial.json",
+        "attribute": "evals/results/0.5.0-host-trial-1-initial.json: text: unspecified",
+        "checkout_sha256": "7a2f863e6651839a41734c97020f2b18483947ee4fa6b17ef3098706aa346167",
+        "git_blob_sha256": "7277fbfb54bd3531370ab1320d839c82ec1614f0f3217e91c0ab6eddb2942ad9"
+      },
+      {
+        "path": "evals/results/0.5.0-host-trial-1-scores.json",
+        "attribute": "evals/results/0.5.0-host-trial-1-scores.json: text: unspecified",
+        "checkout_sha256": "3f76d91a1fabdb3a4dcc799a7fe0fb0a28846de9d8efd6e057ecff9287b7ffb8",
+        "git_blob_sha256": "51222cf8c6cb7f456f2b15445db290984a9d254a24d503c6adad39211513e10e"
+      },
+      {
+        "path": "evals/results/0.5.0-host-trial-1.json",
+        "attribute": "evals/results/0.5.0-host-trial-1.json: text: unspecified",
+        "checkout_sha256": "8902b8322ee0ba4ec21b371b4d029eb01b33871c662dc0849c073a259263cbfb",
+        "git_blob_sha256": "5b5166201a8faa61a93b47bc711c48b46fdbd461396c97d252e492a4fad34f13"
+      },
+      {
+        "path": "evals/results/0.5.0-host-trial-2-scores.json",
+        "attribute": "evals/results/0.5.0-host-trial-2-scores.json: text: unspecified",
+        "checkout_sha256": "fa398473dd5bed77f681c0afabc202960b6a5d5e21d53d833f97d30815685cb2",
+        "git_blob_sha256": "088c35b8b0d32d662086e410a704c6ec1225421c417baf524f0526ccbd39ba80"
+      },
+      {
+        "path": "evals/results/0.5.0-host-trial-2.json",
+        "attribute": "evals/results/0.5.0-host-trial-2.json: text: unspecified",
+        "checkout_sha256": "94ca13a7c6c6562a6bfc3f4b3eff102f620a46092ac6b38ef1a46714f55942c8",
+        "git_blob_sha256": "f165f8b3d3a4b03395b0455b3cb4e5038ba45729fe1894f32763912795ff5048"
+      },
+      {
+        "path": "evals/results/0.5.0-host-trial-3-scores.json",
+        "attribute": "evals/results/0.5.0-host-trial-3-scores.json: text: unspecified",
+        "checkout_sha256": "3f07bec3b5c37800079a494f88a406f1f0b1c1cb25b8e6c2862a21d4a6bfbdad",
+        "git_blob_sha256": "1166fdec33b25cb7a9dce2c6f187c393548ec155025085c40135da91e3da1060"
+      },
+      {
+        "path": "evals/results/0.5.0-host-trial-3.json",
+        "attribute": "evals/results/0.5.0-host-trial-3.json: text: unspecified",
+        "checkout_sha256": "d2734c0c388b65f51ec7985a69c795e680a8166a82c2cc337201dcedcef97ee3",
+        "git_blob_sha256": "72905d91b2ee88cc04ec47a7661598bd660ed497d1757e04747757a4a51877a8"
+      },
+      {
+        "path": "evals/results/0.5.0-provenance.json",
+        "attribute": "evals/results/0.5.0-provenance.json: text: unspecified",
+        "checkout_sha256": "2869facf11c17ef4d513859ff5dcc1518f706c0c7499bf95106d6cf14a1015dd",
+        "git_blob_sha256": "d81f1afed7901372c7d2e58a4147cb05fb409728cd316638b85cda0a417ed77c"
+      },
+      {
+        "path": "evals/results/0.5.0-scores-initial.json",
+        "attribute": "evals/results/0.5.0-scores-initial.json: text: unspecified",
+        "checkout_sha256": "6b5070cfe78a3307df06ed64d8198305a6b79c2957df0b10281a2ce11300a9f4",
+        "git_blob_sha256": "0be8c3ba5bacc14fbb5e6758676c5a7b4d3b5c28b172ea7186db5992232753f4"
+      },
+      {
+        "path": "evals/results/0.5.0-scores.json",
+        "attribute": "evals/results/0.5.0-scores.json: text: unspecified",
+        "checkout_sha256": "36ea431f24e94fd669b596f3939d0930b1015f1da151507758c25cf527f75c0c",
+        "git_blob_sha256": "621a03d7f2620016f7116a00eb1d5db27855bcaac712c78b1128264284f6f289"
+      },
+      {
+        "path": "evals/results/0.5.0-validation.md",
+        "attribute": "evals/results/0.5.0-validation.md: text: unspecified",
+        "checkout_sha256": "f419044e7914f6f0d5a880cf65094f38b3dcc0fa8cfd52f705b6af16377cf95d",
+        "git_blob_sha256": "45dbbe29444b7c895057c8492b4fd29882918b8ca57a1979aca72be47dc9e3f3"
+      },
+      {
+        "path": "evals/results/0.5.1-provenance.json",
+        "attribute": "evals/results/0.5.1-provenance.json: text: unspecified",
+        "checkout_sha256": "d9eb3a80a08c8cd21d11e33f3e207c28b0b03e683dad6b86fbca6ee430a1db4b",
+        "git_blob_sha256": "a1d2d287feb777a9cd361236dde75156827697452378029d008b98aec19a64db"
+      },
+      {
+        "path": "evals/results/0.5.1-subagent-baseline-scores.json",
+        "attribute": "evals/results/0.5.1-subagent-baseline-scores.json: text: unspecified",
+        "checkout_sha256": "3ad0c516eed4a554c46a8bf135f1e2732a580f7fbc2dd2134e669cf3956681ad",
+        "git_blob_sha256": "4f024e5e831f2fdd76b3d25ee7d939615565a61c61e0c269662667d5dd772d53"
+      },
+      {
+        "path": "evals/results/0.5.1-subagent-baseline.json",
+        "attribute": "evals/results/0.5.1-subagent-baseline.json: text: unspecified",
+        "checkout_sha256": "364cf91634c7d0d3768146cc7d72a01866f8fce5cfe0e9dd84ce79ffcd05a1da",
+        "git_blob_sha256": "e42ea1239ad33c14c0d07ac7fe811848aadba27dbbe78133db92c95189567943"
+      },
+      {
+        "path": "evals/results/0.5.1-validation.md",
+        "attribute": "evals/results/0.5.1-validation.md: text: unspecified",
+        "checkout_sha256": "860997dbac0c8d413cda29dc0eef6e8f3ca05dc0032caf7f0e35dfdc4c2c9649",
+        "git_blob_sha256": "f6d9768771148bb2aef338a625f325d3f2abfba9f4595fae9f29278f8f085d30"
+      },
+      {
+        "path": "evals/results/0.6.0-baseline-no-skill-scores.json",
+        "attribute": "evals/results/0.6.0-baseline-no-skill-scores.json: text: unspecified",
+        "checkout_sha256": "52dc72d4143e8eec73074cfb38d3ccfff1777ce61c296d522e061c1ea2040c3d",
+        "git_blob_sha256": "d40c9034b95fb8129b06113ac9d55cf7203110ed83b3c92f9983ae19a9da36bc"
+      },
+      {
+        "path": "evals/results/0.6.0-baseline-no-skill.json",
+        "attribute": "evals/results/0.6.0-baseline-no-skill.json: text: unspecified",
+        "checkout_sha256": "7dbd1ec6643852207f2ec3e94719bead472d7fa315fbd7a393dea2a306e1736b",
+        "git_blob_sha256": "c4ce6cfc95285a64477249b1c3ffa1a3a01c99e5ecbd21817b24013237597827"
+      },
+      {
+        "path": "evals/results/0.6.0-forward-initial-scores.json",
+        "attribute": "evals/results/0.6.0-forward-initial-scores.json: text: unspecified",
+        "checkout_sha256": "83879935e22748b3623d5e44b654f24521a446993f8b509101bcc2a19613c57b",
+        "git_blob_sha256": "7e990723574d2dadf97222a1f456334a81c16991a08c32245b49d697d375150f"
+      },
+      {
+        "path": "evals/results/0.6.0-forward-initial.json",
+        "attribute": "evals/results/0.6.0-forward-initial.json: text: unspecified",
+        "checkout_sha256": "b63e87166384296de538413fd4b3a4562b93a16439d7238a10582bfe4d009e3b",
+        "git_blob_sha256": "c776279b89a47f3b4a368c26abfbd29623bcabada8f8c96a78e49f0f78e13b24"
+      },
+      {
+        "path": "evals/results/0.6.0-host-trial-1-initial-scores.json",
+        "attribute": "evals/results/0.6.0-host-trial-1-initial-scores.json: text: unspecified",
+        "checkout_sha256": "b9885c71c0b9b7b266c8591bd43a6cdb5ff1a3f5b17ac16dd633775b12ddd824",
+        "git_blob_sha256": "764b4327427fc6008c2c2b50faf5f2f1edaca06c2b3869a4837c6b73171077e9"
+      },
+      {
+        "path": "evals/results/0.6.0-host-trial-1-initial.json",
+        "attribute": "evals/results/0.6.0-host-trial-1-initial.json: text: unspecified",
+        "checkout_sha256": "b051ac8516267dfe2bc155808323ee412e43e069d7c7021900a06a99749fd883",
+        "git_blob_sha256": "acf1f8fd8b217fa889aaf5ae8936068f66ac12f905b8d09d0b31c433e4469d07"
+      },
+      {
+        "path": "evals/results/0.6.0-host-trial-1-prose-scores-initial.json",
+        "attribute": "evals/results/0.6.0-host-trial-1-prose-scores-initial.json: text: unspecified",
+        "checkout_sha256": "de0ac76d0aa269449c8d49698f0751be7f3879faefd441702793041025fcdec7",
+        "git_blob_sha256": "7b4fdf73b8f76e78ce8dd7f8899b73d67db1df40bb816aba1563282fbdfc640e"
+      },
+      {
+        "path": "evals/results/0.6.0-host-trial-1-prose-scores.json",
+        "attribute": "evals/results/0.6.0-host-trial-1-prose-scores.json: text: unspecified",
+        "checkout_sha256": "e33a8a4712231b0d1d20d32bb70f1c15bfdf0ed9b23add5d6a9b01a74ffc55dc",
+        "git_blob_sha256": "e0689b6635925fd3444f44a2ba877cbe152ae371a6d1cf5db81ce87feb3c63d6"
+      },
+      {
+        "path": "evals/results/0.6.0-host-trial-1-scores.json",
+        "attribute": "evals/results/0.6.0-host-trial-1-scores.json: text: unspecified",
+        "checkout_sha256": "376c54456ffc9cf4986653ed548b56c58844400819eb7f80fa6ed9b6c32e6e6c",
+        "git_blob_sha256": "d4164feb80d224e82d1e229c1b0e60c850e72ff355ccfd84fced55852b7d9e0f"
+      },
+      {
+        "path": "evals/results/0.6.0-host-trial-1.json",
+        "attribute": "evals/results/0.6.0-host-trial-1.json: text: unspecified",
+        "checkout_sha256": "d18a64313256db90d88fb9a595af1ce1e1d369fd0552092a1569b1988ab8088c",
+        "git_blob_sha256": "5d161027ddbae194dc8a5646b61f287bc9364170dd4e65e1e1d14eeee7d55827"
+      },
+      {
+        "path": "evals/results/0.6.0-host-trial-2-prose-scores-initial.json",
+        "attribute": "evals/results/0.6.0-host-trial-2-prose-scores-initial.json: text: unspecified",
+        "checkout_sha256": "fd0ef70d129756f676a7f1a3f41087edcc93730fcb74576437a84cf8ba047a4b",
+        "git_blob_sha256": "1ad0087893f53df9542c38ae9d2a42e9627d76c68ad885a00b9934470e090bd6"
+      },
+      {
+        "path": "evals/results/0.6.0-host-trial-2-prose-scores.json",
+        "attribute": "evals/results/0.6.0-host-trial-2-prose-scores.json: text: unspecified",
+        "checkout_sha256": "6b0022e9502b1d6521b1b68ce5bb23b5c4f82351e58fb56be1fe7e02871b931a",
+        "git_blob_sha256": "c1098e61452ed1543fe3756a2814acea1fa1df30f33cb4f9920e87c8c20bec3a"
+      },
+      {
+        "path": "evals/results/0.6.0-host-trial-2-scores.json",
+        "attribute": "evals/results/0.6.0-host-trial-2-scores.json: text: unspecified",
+        "checkout_sha256": "2763b5155d2e2c2b4444c83fea83f2887add3535d03eacdec246c78a212a951c",
+        "git_blob_sha256": "73a4c659f2842bd0a508033b8168fcadbe94d55213c12d1e2f1388fc13cf2441"
+      },
+      {
+        "path": "evals/results/0.6.0-host-trial-2.json",
+        "attribute": "evals/results/0.6.0-host-trial-2.json: text: unspecified",
+        "checkout_sha256": "e2a1acd78d1d1b3ed39e7c1d819fb6c1520fbeae344ea5d84c3e31a56cc02f18",
+        "git_blob_sha256": "b735967ee369de984a5ac7f9938226ae42fbce4297f7e1d4273d1ed6dff6027b"
+      },
+      {
+        "path": "evals/results/0.6.0-host-trial-3-prose-scores-initial.json",
+        "attribute": "evals/results/0.6.0-host-trial-3-prose-scores-initial.json: text: unspecified",
+        "checkout_sha256": "d381848283ebd7c9742d3567c19ddc5dcad3506179429de2d577089f6906bac6",
+        "git_blob_sha256": "93fcb4866cbfaef96689fd16f740fdee35d04adc7a6bbebee426c6466ea9c3c0"
+      },
+      {
+        "path": "evals/results/0.6.0-host-trial-3-prose-scores.json",
+        "attribute": "evals/results/0.6.0-host-trial-3-prose-scores.json: text: unspecified",
+        "checkout_sha256": "96d70dba51f24577a42c95dc18007303b100f1787542f12942a12e6f45bf03e8",
+        "git_blob_sha256": "9b54e28e30bffc6d7ad28031f3ec78c36e189681ed19aad69c563edc6707b39c"
+      },
+      {
+        "path": "evals/results/0.6.0-host-trial-3-scores.json",
+        "attribute": "evals/results/0.6.0-host-trial-3-scores.json: text: unspecified",
+        "checkout_sha256": "b38f3812d8e8d4231bd4f1dff9124ea387d8e284a9ffe65ca5278009796df9b6",
+        "git_blob_sha256": "0ad413a9ae7e5593ac9f86e40459b0b37889ff098a347a0fb2c9fefee32faa96"
+      },
+      {
+        "path": "evals/results/0.6.0-host-trial-3.json",
+        "attribute": "evals/results/0.6.0-host-trial-3.json: text: unspecified",
+        "checkout_sha256": "181efe12c431ab796094543054244a6a0e214474a1b12968f21cb568cbf727e7",
+        "git_blob_sha256": "62e36f013e5f4ad33f9c067cedb468a425b31f60211156d26b7c286f6b30a73e"
+      },
+      {
+        "path": "evals/results/0.6.0-provenance.json",
+        "attribute": "evals/results/0.6.0-provenance.json: text: unspecified",
+        "checkout_sha256": "2d3d4b11ce0505eb6fc5b9e08397c03163c5e5e5bdc5c5bed96f5f2b520b079e",
+        "git_blob_sha256": "8807363a52580347543577186ab70abb48568e6d528b9085cf649518cf6c0be7"
+      },
+      {
+        "path": "evals/results/0.6.0-review-final.md",
+        "attribute": "evals/results/0.6.0-review-final.md: text: unspecified",
+        "checkout_sha256": "3a67f0750d0ef882f520f677b46f311416b38d44718bb8419002b3ca48c84ffe",
+        "git_blob_sha256": "d731f8e67c464cbd5f19932a8b733badb301129251ab42136dc3c66b3d3780eb"
+      },
+      {
+        "path": "evals/results/0.6.0-review-initial.md",
+        "attribute": "evals/results/0.6.0-review-initial.md: text: unspecified",
+        "checkout_sha256": "0d86c0a78a9ad79c754f8014dd0c4cda1f4900771cd5e381bd4ad0e85187dca9",
+        "git_blob_sha256": "4b1b543b8c1f5bc33649dbb6a90490b281dcb520512bfabce9f52375ee8224b3"
+      },
+      {
+        "path": "evals/results/0.6.0-scores.json",
+        "attribute": "evals/results/0.6.0-scores.json: text: unspecified",
+        "checkout_sha256": "03fe8d28acce81141dfe6f96a1d96512c3cc6f1cfcb7bbce25eeb76aace1587c",
+        "git_blob_sha256": "3997260f79d56c814a0ae21584bbfde27aa411f68ab85f7a31e1cd920c6dcc8f"
+      },
+      {
+        "path": "evals/results/0.6.0-validation.md",
+        "attribute": "evals/results/0.6.0-validation.md: text: unspecified",
+        "checkout_sha256": "296175c6f63db60cecce5594ac1cb5bb279f3d28bf02311cdc0a95d9b0fe7cb7",
+        "git_blob_sha256": "734f65333cc16179a14d8313361f319c76ccf2e2980c9d2d6c05a12809868afb"
+      },
+      {
+        "path": "evals/results/0.7.0-coding-060.json",
+        "attribute": "evals/results/0.7.0-coding-060.json: text: unspecified",
+        "checkout_sha256": "d4c5aba0787f02de7cff91c0e478285698265d6fa60d7ec6b4ad46bbfebc2183",
+        "git_blob_sha256": "045416aff2df740feb557296d50b82de395ffe363e0ed3c4a46d40ee43e25f4a"
+      },
+      {
+        "path": "evals/results/0.7.0-coding-forward.json",
+        "attribute": "evals/results/0.7.0-coding-forward.json: text: unspecified",
+        "checkout_sha256": "0b728dc15294cd5c355180d767f926369475b2c5d294991181ef461f7238ff86",
+        "git_blob_sha256": "e59c4fbc6662e0006e7af50ea57fbe0a826aa204176a65aa156a59d2f9ca643e"
+      },
+      {
+        "path": "evals/results/0.7.0-coding-no-skill.json",
+        "attribute": "evals/results/0.7.0-coding-no-skill.json: text: unspecified",
+        "checkout_sha256": "6f5f482c518e6aa2fb2e12028184d75748c5a0ec8f61e0535ad2d9509652e642",
+        "git_blob_sha256": "e0a61b406e8ec409836aff9d0cb79ceebd90159928bac22c8f36ca298b7f23f8"
+      },
+      {
+        "path": "evals/results/0.7.0-coding-originals.json",
+        "attribute": "evals/results/0.7.0-coding-originals.json: text: unspecified",
+        "checkout_sha256": "55abf34bdaa56a9dc1757e8806729e016fa80c7ae5fa0fcf2523a70f9c5607a2",
+        "git_blob_sha256": "abc6f113cd8b88fddf81a003f69b7cd489463f2c872f5d3ca9bce4fb7bddda27"
+      },
+      {
+        "path": "evals/results/0.7.0-coding-outcomes.json",
+        "attribute": "evals/results/0.7.0-coding-outcomes.json: text: unspecified",
+        "checkout_sha256": "339effaaba4ce117429222d221ff96823db1466f64469896d06f368471d34b0e",
+        "git_blob_sha256": "0cba2052eabb4565b934e6c1804144846c7f70ed2ec530dc56baa25f9a5a47a7"
+      },
+      {
+        "path": "evals/results/0.7.0-early-exit-green.txt",
+        "attribute": "evals/results/0.7.0-early-exit-green.txt: text: unspecified",
+        "checkout_sha256": "89c8acdac5a74f55ae8224070a642f63b2b78e1951c205ec947707267dfecffb",
+        "git_blob_sha256": "b5e31c04690fee676bdccd40c599293f32671239cf3f099c4a194ce37f4d0fbd"
+      },
+      {
+        "path": "evals/results/0.7.0-early-exit-red.txt",
+        "attribute": "evals/results/0.7.0-early-exit-red.txt: text: unspecified",
+        "checkout_sha256": "601073d543f7cf7bdd4b6ad5bd01a6efd436a2407423c4d0ade40c728f02c634",
+        "git_blob_sha256": "bc507a22bfac708329c6a77a6371798b91275cf612941f4c54c0f639113f2645"
+      },
+      {
+        "path": "evals/results/0.7.0-grader-provenance-green.txt",
+        "attribute": "evals/results/0.7.0-grader-provenance-green.txt: text: unspecified",
+        "checkout_sha256": "804b9f653fa92e9d9361bf4a2f88bf3a93420600a8cb1f68f5c04352c999f8b6",
+        "git_blob_sha256": "fe8281b50ffaae6aeadefa74c9d220bf5a410d10344fee3911191258138cd4a2"
+      },
+      {
+        "path": "evals/results/0.7.0-grader-provenance-red.txt",
+        "attribute": "evals/results/0.7.0-grader-provenance-red.txt: text: unspecified",
+        "checkout_sha256": "92f2672497b184f46667b616fec3226ed406b8657b70021cee6cede27af62fb8",
+        "git_blob_sha256": "17020fc7a26ef8f9a228b3582cbfb6af6874cba69683db4f4624f467c856c528"
+      },
+      {
+        "path": "evals/results/0.7.0-instruction-baseline.json",
+        "attribute": "evals/results/0.7.0-instruction-baseline.json: text: unspecified",
+        "checkout_sha256": "55e39e60edec0f8f62a9c782e8a685391eb2431644712236803bf22d5926ee97",
+        "git_blob_sha256": "58f761f3f958db567d947366bc1f2174bd7233dad595c05b236deaee06e57fe1"
+      },
+      {
+        "path": "evals/results/0.7.0-instruction-forward.json",
+        "attribute": "evals/results/0.7.0-instruction-forward.json: text: unspecified",
+        "checkout_sha256": "5959f89f16ccbcaa7b1ae50f8fafbf9eb7d59d47edef8a324a2c19572e84fe84",
+        "git_blob_sha256": "4aee57a590c532e7e265d6056463a54b88f172c0874b97c83f2d4bf638f98b57"
+      },
+      {
+        "path": "evals/results/0.7.0-instruction-recheck-input.json",
+        "attribute": "evals/results/0.7.0-instruction-recheck-input.json: text: unspecified",
+        "checkout_sha256": "51ee2cd6c954a133afb822f4dd854b7b3c6e661ed29e1ad559ddd5f7ad3ca545",
+        "git_blob_sha256": "8290d7abc7e6401b6e458d6b66dca36ddb502929ac695aac1c3d02c58a2611df"
+      },
+      {
+        "path": "evals/results/0.7.0-instruction-recheck-scores.json",
+        "attribute": "evals/results/0.7.0-instruction-recheck-scores.json: text: unspecified",
+        "checkout_sha256": "6bb8ee365e4750ed3dcf9b321203a19ef93d5525c32b3c9a98337bb05ba425a9",
+        "git_blob_sha256": "bba0be72fb1d194d2bbb43ddbe08c8ba1e643da59e07475e08b42289b24783ad"
+      },
+      {
+        "path": "evals/results/0.7.0-instruction-recheck.json",
+        "attribute": "evals/results/0.7.0-instruction-recheck.json: text: unspecified",
+        "checkout_sha256": "b9cb3b905dad22077a73d95aa64d58e8439b033d96c6dcffbd1cba0fe9f2899b",
+        "git_blob_sha256": "52e4e439241bef2bfc914617316156a36bebf94fd66aa16ff45ef9f655535a45"
+      },
+      {
+        "path": "evals/results/0.7.0-instruction-regression.json",
+        "attribute": "evals/results/0.7.0-instruction-regression.json: text: unspecified",
+        "checkout_sha256": "dcf1bc5abae31daf93a0991b051a8c0a1f66f22061959b95749f8a9a11a34ce9",
+        "git_blob_sha256": "d4e8fa369ba0972e4f0e7d3834bcf89b1be294d1ff21c0ebbafcdaab88e1a9a5"
+      },
+      {
+        "path": "evals/results/0.7.0-instruction-scores.json",
+        "attribute": "evals/results/0.7.0-instruction-scores.json: text: unspecified",
+        "checkout_sha256": "78cd931466c4a69bd0ff085a6a02f87e78b0a52c2a1cf6923acff225cf3e24a5",
+        "git_blob_sha256": "6771517d616c10f4d33dc0d8334ba91c913dda20f5fcee9490369c9ea5bbdcb5"
+      },
+      {
+        "path": "evals/results/0.7.0-invocation-errata.json",
+        "attribute": "evals/results/0.7.0-invocation-errata.json: text: unspecified",
+        "checkout_sha256": "02618dbdd4dcd1db8bd8b3f98281d23fb9352eec468a8b31bd04ad63f60dcc1a",
+        "git_blob_sha256": "5d8e4afd3f82055d18e7a047d51972963c2adb1e1e6227e9f7a8004e35548378"
+      },
+      {
+        "path": "evals/results/0.7.0-invocation-errata.md",
+        "attribute": "evals/results/0.7.0-invocation-errata.md: text: unspecified",
+        "checkout_sha256": "51ef0f0a172749398815ae740d028f5ae19c71ada719de0a2bb4a368b1bbddfc",
+        "git_blob_sha256": "547079ec2b0b8d1b88bcfbc9f4db90e97983b95631b07bb5009926c4dde5b814"
+      },
+      {
+        "path": "evals/results/0.7.0-tests.txt",
+        "attribute": "evals/results/0.7.0-tests.txt: text: unspecified",
+        "checkout_sha256": "11ea0be75cd507e6d9d4f13a96ec382fbd33197d2d72c29ff06f6f2f285de58b",
+        "git_blob_sha256": "7ab6b911ed40d8aa817d3da2574ca97a2de17f65f9f1fa303b150a87513a76e1"
+      },
+      {
+        "path": "evals/results/0.7.1-checkout-reconciliation.json",
+        "attribute": "evals/results/0.7.1-checkout-reconciliation.json: text: unspecified",
+        "checkout_sha256": "8b7a70f8ebb48fa69673854047211408ffa8f1fc22a25cc5ca5d83083afa81c7",
+        "git_blob_sha256": "afd7ebad578d0fac0820f249cf93afa0f028402adb6860ee86669c57c8891aab"
+      },
+      {
+        "path": "evals/results/0.7.1-correction-provenance.json",
+        "attribute": "evals/results/0.7.1-correction-provenance.json: text: unspecified",
+        "checkout_sha256": "de4e78e7d13528f19893d87b4834e1004a42654e5ffc259d3f1b570052140d0f",
+        "git_blob_sha256": "72b16852ffe68f3dc20b0a73318427d2127b200b51500cf6a7f77e9b8813dedd"
+      },
+      {
+        "path": "evals/results/0.7.1-native-applicability.json",
+        "attribute": "evals/results/0.7.1-native-applicability.json: text: unspecified",
+        "checkout_sha256": "f31d76e78f683a3513bf03e3e6184fcd3bf7f36b74a3f482582f148b875cb9e2",
+        "git_blob_sha256": "b2d7958920bcb3e046adddb8cc94c970ad671e9d3e2b6ae5533b7c02773cb1a4"
+      },
+      {
+        "path": "evals/results/0.7.1-native-requests.json",
+        "attribute": "evals/results/0.7.1-native-requests.json: text: unspecified",
+        "checkout_sha256": "36a296cf72c45e9a28cb1f1eba515b264d9aa257a15915229334f1842d4fbb8e",
+        "git_blob_sha256": "c250013a68ccf44ef5b9160d5e22ee7560d1c3447d6833d93abd122070abf567"
+      },
+      {
+        "path": "evals/results/0.7.1-quality-review.md",
+        "attribute": "evals/results/0.7.1-quality-review.md: text: unspecified",
+        "checkout_sha256": "76cadee8a7acbe0bb6c17b282e899ea37cdb0cd0cdf167f199b80bcd19cd813f",
+        "git_blob_sha256": "899859d651687bfebde15d82ce58c1a7bd787510c133e897c0f3260cd3ac8c36"
+      },
+      {
+        "path": "evals/results/0.7.1-regression.json",
+        "attribute": "evals/results/0.7.1-regression.json: text: unspecified",
+        "checkout_sha256": "9f500cd6a61334201e1ba8910c74e33b05f37d72ddf5bfb93a24722e72bbe325",
+        "git_blob_sha256": "7f32146a0adba4a95a29e92a8f1127bf3cb9c7730e800a451b2c37022729612a"
+      },
+      {
+        "path": "evals/results/0.7.1-release-provenance.json",
+        "attribute": "evals/results/0.7.1-release-provenance.json: text: unspecified",
+        "checkout_sha256": "4788a3881f51f52e849da2fe98e21321e739348dae7b76d66cd4336614cea239",
+        "git_blob_sha256": "f9734edacfc25cc47499136b8cbcc624379fd7acc4014cb135dc69b6845a0736"
+      },
+      {
+        "path": "evals/results/0.7.1-release-validation.md",
+        "attribute": "evals/results/0.7.1-release-validation.md: text: unspecified",
+        "checkout_sha256": "2468f13772e9b652d4859a915b72dd162c777e478fd66a7502b0d58e47488e0e",
+        "git_blob_sha256": "a36f9a4e622d229e3de075c520ae6f857dd3d206e71452f93eeccd264e618ba4"
+      },
+      {
+        "path": "evals/results/0.7.1-review-correction.json",
+        "attribute": "evals/results/0.7.1-review-correction.json: text: unspecified",
+        "checkout_sha256": "9eea01bcae86042c4af89924d4363de7841b9e9f5c0e655a3b5c13856e869238",
+        "git_blob_sha256": "e848b65ae2e2116066001c96f7217f563653770450a67730673cbb2a9990a5b4"
+      },
+      {
+        "path": "evals/results/0.7.1-spec-review.md",
+        "attribute": "evals/results/0.7.1-spec-review.md: text: unspecified",
+        "checkout_sha256": "60c21c245acf490384d97fa7351489ba8715e5d2fca6dc9c8631fe8e3a8fa232",
+        "git_blob_sha256": "9bb17ad870bd6efc253d1ab736c55fcb157dc33e6b9a1d351c9ac13b47762d36"
+      },
+      {
+        "path": "evals/results/0.7.1-template-results.json",
+        "attribute": "evals/results/0.7.1-template-results.json: text: unspecified",
+        "checkout_sha256": "57029a080287014629d4b7a11d9606ff8767df322e8ac50a346891949a9de579",
+        "git_blob_sha256": "d372d2f2134cd74215c53a3e209faccbd8838e005315906d2374038f3113aeb5"
+      },
+      {
+        "path": "evals/results/0.7.1-tests-release.txt",
+        "attribute": "evals/results/0.7.1-tests-release.txt: text: unspecified",
+        "checkout_sha256": "97ea83df24b723611f805e64df6757690f992cb034177ae28bb86d6889527bdc",
+        "git_blob_sha256": "024a00009080cce7490fccc0b246804a68fad5cc7c6c4e456e91491a363133b2"
+      },
+      {
+        "path": "evals/results/0.7.1-validation.md",
+        "attribute": "evals/results/0.7.1-validation.md: text: unspecified",
+        "checkout_sha256": "9917782dfe4cac13e33e32d0a2d061df91503286446357d2a209ea1a4c85693a",
+        "git_blob_sha256": "9f9e08e69f4c4229dad56546fc7f1d2562b35ce8c4393e67069f55c41b525793"
+      }
+    ]
+  },
+  "historical_provenance_bindings": {
+    "evals/results/0.7.0-provenance.json": {
+      "records": 20,
+      "archive_hash_equal": true,
+      "portable_members_equal": 14,
+      "preexisting_record_checkout_crlf_differences": [
+        {
+          "path": "evals/results/0.7.0-coding-060.json",
+          "expected_raw_sha256": "045416aff2df740feb557296d50b82de395ffe363e0ed3c4a46d40ee43e25f4a",
+          "checkout_sha256": "d4c5aba0787f02de7cff91c0e478285698265d6fa60d7ec6b4ad46bbfebc2183",
+          "base_blob_sha256": "045416aff2df740feb557296d50b82de395ffe363e0ed3c4a46d40ee43e25f4a",
+          "binding_matches_base_lf_or_crlf": true,
+          "content_unchanged_from_accepted_base": true
+        },
+        {
+          "path": "evals/results/0.7.0-coding-forward.json",
+          "expected_raw_sha256": "e59c4fbc6662e0006e7af50ea57fbe0a826aa204176a65aa156a59d2f9ca643e",
+          "checkout_sha256": "0b728dc15294cd5c355180d767f926369475b2c5d294991181ef461f7238ff86",
+          "base_blob_sha256": "e59c4fbc6662e0006e7af50ea57fbe0a826aa204176a65aa156a59d2f9ca643e",
+          "binding_matches_base_lf_or_crlf": true,
+          "content_unchanged_from_accepted_base": true
+        },
+        {
+          "path": "evals/results/0.7.0-coding-no-skill.json",
+          "expected_raw_sha256": "e0a61b406e8ec409836aff9d0cb79ceebd90159928bac22c8f36ca298b7f23f8",
+          "checkout_sha256": "6f5f482c518e6aa2fb2e12028184d75748c5a0ec8f61e0535ad2d9509652e642",
+          "base_blob_sha256": "e0a61b406e8ec409836aff9d0cb79ceebd90159928bac22c8f36ca298b7f23f8",
+          "binding_matches_base_lf_or_crlf": true,
+          "content_unchanged_from_accepted_base": true
+        },
+        {
+          "path": "evals/results/0.7.0-early-exit-green.txt",
+          "expected_raw_sha256": "b7ea85036154ed88f55257038d639359f8b8d04815e5a833fefed277ccbff432",
+          "checkout_sha256": "89c8acdac5a74f55ae8224070a642f63b2b78e1951c205ec947707267dfecffb",
+          "base_blob_sha256": "b5e31c04690fee676bdccd40c599293f32671239cf3f099c4a194ce37f4d0fbd",
+          "binding_matches_base_lf_or_crlf": false,
+          "content_unchanged_from_accepted_base": true
+        },
+        {
+          "path": "evals/results/0.7.0-early-exit-red.txt",
+          "expected_raw_sha256": "e26d7f0ffac7a3b231a409226dd19e2ef1caa03678cc8818b3c3b6c2d7576110",
+          "checkout_sha256": "601073d543f7cf7bdd4b6ad5bd01a6efd436a2407423c4d0ade40c728f02c634",
+          "base_blob_sha256": "bc507a22bfac708329c6a77a6371798b91275cf612941f4c54c0f639113f2645",
+          "binding_matches_base_lf_or_crlf": false,
+          "content_unchanged_from_accepted_base": true
+        },
+        {
+          "path": "evals/results/0.7.0-instruction-baseline.json",
+          "expected_raw_sha256": "58f761f3f958db567d947366bc1f2174bd7233dad595c05b236deaee06e57fe1",
+          "checkout_sha256": "55e39e60edec0f8f62a9c782e8a685391eb2431644712236803bf22d5926ee97",
+          "base_blob_sha256": "58f761f3f958db567d947366bc1f2174bd7233dad595c05b236deaee06e57fe1",
+          "binding_matches_base_lf_or_crlf": true,
+          "content_unchanged_from_accepted_base": true
+        },
+        {
+          "path": "evals/results/0.7.0-instruction-forward.json",
+          "expected_raw_sha256": "4aee57a590c532e7e265d6056463a54b88f172c0874b97c83f2d4bf638f98b57",
+          "checkout_sha256": "5959f89f16ccbcaa7b1ae50f8fafbf9eb7d59d47edef8a324a2c19572e84fe84",
+          "base_blob_sha256": "4aee57a590c532e7e265d6056463a54b88f172c0874b97c83f2d4bf638f98b57",
+          "binding_matches_base_lf_or_crlf": true,
+          "content_unchanged_from_accepted_base": true
+        },
+        {
+          "path": "evals/results/0.7.0-instruction-recheck.json",
+          "expected_raw_sha256": "52e4e439241bef2bfc914617316156a36bebf94fd66aa16ff45ef9f655535a45",
+          "checkout_sha256": "b9cb3b905dad22077a73d95aa64d58e8439b033d96c6dcffbd1cba0fe9f2899b",
+          "base_blob_sha256": "52e4e439241bef2bfc914617316156a36bebf94fd66aa16ff45ef9f655535a45",
+          "binding_matches_base_lf_or_crlf": true,
+          "content_unchanged_from_accepted_base": true
+        },
+        {
+          "path": "evals/results/0.7.0-instruction-regression.json",
+          "expected_raw_sha256": "d4e8fa369ba0972e4f0e7d3834bcf89b1be294d1ff21c0ebbafcdaab88e1a9a5",
+          "checkout_sha256": "dcf1bc5abae31daf93a0991b051a8c0a1f66f22061959b95749f8a9a11a34ce9",
+          "base_blob_sha256": "d4e8fa369ba0972e4f0e7d3834bcf89b1be294d1ff21c0ebbafcdaab88e1a9a5",
+          "binding_matches_base_lf_or_crlf": true,
+          "content_unchanged_from_accepted_base": true
+        }
+      ]
+    },
+    "evals/results/0.7.1-release-provenance.json": {
+      "records": 11,
+      "archive_hash_equal": true,
+      "portable_members_equal": 14,
+      "preexisting_record_checkout_crlf_differences": [
+        {
+          "path": "evals/results/0.7.1-quality-review.md",
+          "expected_raw_sha256": "899859d651687bfebde15d82ce58c1a7bd787510c133e897c0f3260cd3ac8c36",
+          "checkout_sha256": "76cadee8a7acbe0bb6c17b282e899ea37cdb0cd0cdf167f199b80bcd19cd813f",
+          "base_blob_sha256": "899859d651687bfebde15d82ce58c1a7bd787510c133e897c0f3260cd3ac8c36",
+          "binding_matches_base_lf_or_crlf": true,
+          "content_unchanged_from_accepted_base": true
+        },
+        {
+          "path": "evals/results/0.7.1-spec-review.md",
+          "expected_raw_sha256": "9bb17ad870bd6efc253d1ab736c55fcb157dc33e6b9a1d351c9ac13b47762d36",
+          "checkout_sha256": "60c21c245acf490384d97fa7351489ba8715e5d2fca6dc9c8631fe8e3a8fa232",
+          "base_blob_sha256": "9bb17ad870bd6efc253d1ab736c55fcb157dc33e6b9a1d351c9ac13b47762d36",
+          "binding_matches_base_lf_or_crlf": true,
+          "content_unchanged_from_accepted_base": true
+        }
+      ]
+    },
+    "evals/results/0.7.2-provenance.json": {
+      "records": 14,
+      "archive_hash_equal": true,
+      "portable_members_equal": 14,
+      "preexisting_record_checkout_crlf_differences": []
+    }
+  },
+  "portable_and_syntax": {
+    "count": 14,
+    "inventory": [
+      "SKILL.md",
+      "assets/change.md",
+      "assets/handoff.md",
+      "assets/release.md",
+      "references/collaboration.md",
+      "references/delivery.md",
+      "references/install.md",
+      "references/recovery.md",
+      "references/spec-review.md",
+      "references/subagents.md",
+      "references/workflow.md",
+      "references/writing.md",
+      "scripts/install.py",
+      "scripts/workspace.py"
+    ],
+    "python_310_ast_parse": true,
+    "native_310_311_execution": "not performed"
+  },
+  "review_cleanup": {
+    "source_raw_files_unchanged": true,
+    "caller_environment_unchanged": true,
+    "all_child_calls_completed": true,
+    "disposable_fixtures_cleaned": true
+  }
+}

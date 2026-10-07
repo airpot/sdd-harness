@@ -27,7 +27,8 @@ python <skill-dir>/scripts/workspace.py verify --archive <outside-worktree>/task
 python <skill-dir>/scripts/workspace.py restore --archive <outside-worktree>/task.zip --output <new-directory>
 ```
 
-`inspect` reads Git state. It does not prove idle state or grant write permission.
+`inspect` reads Git state with optional Git locks disabled. A timestamp-only file change does not refresh the source index.
+It does not prove idle state or grant write permission.
 
 `snapshot` saves these items:
 
@@ -38,6 +39,9 @@ python <skill-dir>/scripts/workspace.py restore --archive <outside-worktree>/tas
 
 Save the archive outside the worktree. Do not overwrite an existing file.
 The script rejects shallow repositories before archive creation. It does not fetch missing history.
+It also rejects effective nonempty legacy graft information before it creates the archive or its parent directory.
+Git resolves the graft path from actual metadata and source environment settings, including linked worktrees and `GIT_GRAFT_FILE`.
+Empty graft information does not prevent preservation of otherwise supported history.
 Keep the source. Obtain complete history through separately authorized Git work, or use a verified native preservation tool.
 Then repeat preservation and restoration checks.
 The script records hashes and source state. It checks for observable changes during copying.
@@ -54,6 +58,11 @@ It uses that same environment for every restore Git command. It does not change 
 This includes repository, worktree, index, object-store, and repository-local configuration overrides.
 Git documents this procedure for commands that target another repository in its [hook guidance](https://git-scm.com/docs/githooks).
 Restore checks the output's actual Git directory, common directory, worktree root, HEAD, and own index before it reports success.
+Every restore Git command uses a temporary empty hook directory. Initialization also uses an empty template directory.
+These command-local settings prevent inherited templates and hooks from changing restored files. They do not change user Git configuration.
+After all Git operations, restore checks every actual regular working file against the manifest inventory and content hashes.
+This check includes selected ignored results and excludes only the root Git metadata directory.
+Deleted snapshot paths must remain absent. Unexpected files and changed content prevent a successful verification result.
 An unborn repository remains unborn and receives an empty index in the output.
 It does not restore native chats, exact staging state, other branches, original paths, processes, credentials, or external databases.
 After recovery, check the environment and evidence again.
@@ -62,9 +71,11 @@ Old ownership records do not grant permission.
 Worktree restoration does not reverse a deployed configuration or data migration.
 Use the project's authorized operational recovery process.
 
-The script rejects symlinks, gitlinks, submodules, and unsupported paths.
+The script checks `lstat` attributes before path traversal and rejects symlinks and Windows reparse points without `Path.is_junction`.
+It also rejects gitlinks, submodules, and unsupported paths.
 For these projects, use native tools with the necessary preservation capabilities.
 Matching hashes prove content consistency. They do not prove source trust.
+These checks do not provide a sandbox against concurrent filesystem replacement or malicious source content.
 
 ## Remove a worktree
 

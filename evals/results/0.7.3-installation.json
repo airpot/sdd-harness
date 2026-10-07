@@ -1,0 +1,45 @@
+{
+  "installed": "C:\\Users\\airpot\\.agents\\skills\\sdd-harness",
+  "backup": "C:\\Users\\airpot\\.agents\\skill-backups\\sdd-harness-0.7.2-20261007T024651005841Z",
+  "portable_files": 14,
+  "checks": [
+    {
+      "command": [
+        "C:\\Program Files\\Python\\python.exe",
+        "-B",
+        "C:\\Users\\airpot\\.codex\\worktrees\\sdd-fix-073\\project_skill\\scripts\\install.py",
+        "--into",
+        "C:\\Users\\airpot\\.agents\\skills"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status\": \"installed\", \"installed\": \"C:\\\\Users\\\\airpot\\\\.agents\\\\skills\\\\sdd-harness\", \"files\": 14}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python\\python.exe",
+        "-B",
+        "C:\\Users\\airpot\\.codex\\worktrees\\sdd-fix-073\\project_skill\\scripts\\install.py",
+        "--into",
+        "C:\\Users\\airpot\\.agents\\skills"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status\": \"already-installed\", \"installed\": \"C:\\\\Users\\\\airpot\\\\.agents\\\\skills\\\\sdd-harness\"}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python\\python.exe",
+        "-B",
+        "C:\\Users\\airpot\\.agents\\skills\\sdd-harness\\scripts\\workspace.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: workspace.py [-h] {inspect,snapshot,verify,restore} ...\n\nObserve Git workspaces and preserve portable file snapshots. Never delete\nsources.\n\npositional arguments:\n  {inspect,snapshot,verify,restore}\n    inspect             Read-only Git facts; does not establish activity or\n                        authority\n    snapshot            Save HEAD history and current regular files, without\n                        removing source\n    verify              Check snapshot inventory and content hashes\n    restore             Restore files and HEAD into a new directory\n\noptions:\n  -h, --help            show this help message and exit\n",
+      "stderr": ""
+    }
+  ],
+  "source_zip_install_equal": true,
+  "old_backup_raw_equal": true,
+  "successful": true
+}

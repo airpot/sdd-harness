@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "D:\code\project_skill\docs\validation\0.7.3-quality-history.py", line 34, in <module>
+    provenance = json.loads((ROOT / ('evals/results/' + version + '-provenance.json')).read_bytes())
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python\Lib\pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\airpot\\.codex\\worktrees\\sdd-fix-073\\project_skill\\evals\\results\\0.7.1-provenance.json'

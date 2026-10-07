@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "D:\code\project_skill\docs\validation\0.7.3-spec-probes.py", line 197, in <module>
+    assert digest(blob)==h or digest(blob.replace(b'\n',b'\r\n'))==h,(name,p)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('evals/results/0.7.0-provenance.json', 'evals/results/0.7.0-early-exit-green.txt')

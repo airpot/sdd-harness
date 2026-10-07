@@ -1,0 +1,24 @@
+test_active_download_names_and_real_built_package_version (test_073_corrections.AuditCorrections.test_active_download_names_and_real_built_package_version) ... ok
+test_empty_grafts_and_normal_history_roundtrip (test_073_corrections.AuditCorrections.test_empty_grafts_and_normal_history_roundtrip) ... ok
+test_host_busy_grader_checks_empty_and_corrupt_index (test_073_corrections.AuditCorrections.test_host_busy_grader_checks_empty_and_corrupt_index) ... ok
+test_host_busy_grader_checks_missing_index (test_073_corrections.AuditCorrections.test_host_busy_grader_checks_missing_index) ... ok
+test_host_child_environment_keeps_caller_and_unrelated_settings (test_073_corrections.AuditCorrections.test_host_child_environment_keeps_caller_and_unrelated_settings) ... ok
+test_host_keeps_missing_external_index_absent (test_073_corrections.AuditCorrections.test_host_keeps_missing_external_index_absent) ... ok
+test_host_preserves_foreign_repository_routing (test_073_corrections.AuditCorrections.test_host_preserves_foreign_repository_routing) ... ok
+test_host_preserves_real_foreign_staged_only_index (test_073_corrections.AuditCorrections.test_host_preserves_real_foreign_staged_only_index) ... ok
+test_inspect_timestamp_only_change_preserves_index_and_staging (test_073_corrections.AuditCorrections.test_inspect_timestamp_only_change_preserves_index_and_staging) ... ok
+test_restore_disables_configured_hooks_path (test_073_corrections.AuditCorrections.test_restore_disables_configured_hooks_path) ... ok
+test_restore_disables_configured_template_hook (test_073_corrections.AuditCorrections.test_restore_disables_configured_template_hook) ... ok
+test_restore_disables_environment_template_hook (test_073_corrections.AuditCorrections.test_restore_disables_environment_template_hook) ... ok
+test_restore_final_verification_checks_actual_complete_files (test_073_corrections.AuditCorrections.test_restore_final_verification_checks_actual_complete_files) ... ok
+test_snapshot_rejects_effective_external_graft_file (test_073_corrections.AuditCorrections.test_snapshot_rejects_effective_external_graft_file) ... ok
+test_snapshot_rejects_grafts_in_linked_worktree_common_metadata (test_073_corrections.AuditCorrections.test_snapshot_rejects_grafts_in_linked_worktree_common_metadata) ... ok
+test_snapshot_rejects_inside_junction_without_newer_path_api (test_073_corrections.AuditCorrections.test_snapshot_rejects_inside_junction_without_newer_path_api) ... ok
+test_snapshot_rejects_nonempty_legacy_grafts (test_073_corrections.AuditCorrections.test_snapshot_rejects_nonempty_legacy_grafts) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 41.339s
+
+OK
+
+exit_code=0

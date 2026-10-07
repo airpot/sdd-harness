@@ -2,7 +2,7 @@
 
 一个可跨对话、worktree 和编码 agent 使用的规格驱动开发（SDD）技能包。
 
-当前版本：**0.7.2**。
+当前版本：**0.7.3**。
 
 **默认独立开发，按需启用协作。**小任务沿用现有项目记录，保持简短；日常独立开发无需拆分前后端任务，也无需新增角色配置、接口格式、mock 服务或团队 CI。
 
@@ -56,7 +56,7 @@ ZCode 可将安装父目录设为 `~/.zcode/skills`。DeepSeek Harness 可使用
 
 ## 从安装包安装
 
-下载 [sdd-harness-0.7.1.zip](dist/sdd-harness-0.7.1.zip) 及其 [SHA-256 校验文件](dist/sdd-harness-0.7.1.sha256)，解压到本地目录，然后在该目录执行：
+下载 [sdd-harness-0.7.3.zip](dist/sdd-harness-0.7.3.zip) 及其 [SHA-256 校验文件](dist/sdd-harness-0.7.3.sha256)，解压到本地目录，然后在该目录执行：
 
 ```text
 python sdd-harness/scripts/install.py --into "~/.agents/skills"
@@ -136,8 +136,12 @@ python tools/package_skill.py --source . --output dist/sdd-harness-local.zip
 新增[真实编码评测](evals/coding-tasks-README.md)允许 agent 修改实际代码，再由独立断言检查修复、增量开发和需求变更。
 另有[调用测试请求](evals/invocation-0.7.0.json)，分别检查显式、隐式及不应调用的情况。
 0.7.2 恢复前会在子进程环境副本中清除 Git 所列的仓库局部变量，并贯穿使用该环境；调用者环境与其他设置保持不变。报告成功前会核验目标自身的 Git 目录、HEAD 与 index，未提交过的仓库仍可恢复。详见[恢复说明](references/recovery.md)。
+
+0.7.3 恢复时使用本次操作专用的空模板与空 hook 目录，不改用户 Git 配置；全部 Git 操作后，核对实际工作文件库存与哈希，含所选忽略成果，并确认已删路径仍不存在。快照在创建输出前拒绝有效非空 legacy graft 信息；空 graft 信息不妨碍正常历史保存。`inspect` 禁用可选锁，文件仅时间戳变化时不刷新源 index。
+
+评估宿主亦隔离 Git 仓库路由环境，保全外部暂存成果；busy fixture 创建与评分均核验实际 Git 目录、HEAD 和自身 index，不能仅凭成功日志通过。诸检查不构成安全沙箱。
 0.7.1 会在创建归档前拒绝浅克隆，不会自动补取历史；请保留源目录，再选择获授权的恢复方式。
-安装器与打包器以 `lstat` 属性在遍历前拒绝 Windows junction/reparse point，最低版本仍为 Python 3.10。
+恢复脚本、安装器与打包器以 `lstat` 属性在遍历前拒绝 Windows junction/reparse point，最低版本仍为 Python 3.10。当前解释器上的旧 API 分支测试不等于原生 Python 3.10/3.11 核验。
 三个可选模板改用明确的写作政策占位符；保存前须替换为项目政策或可读取的技能政策，并按记录所在目录核验链接。
 每次原生调用须记录实际请求 ID、输入哈希、源案例、适配内容及预期/观察路径。
 旧版显式与隐式原生请求均为 worker 结果评估，不能计作标准独立开发路径覆盖，详见[日期勘误](evals/results/0.7.0-invocation-errata.md)。

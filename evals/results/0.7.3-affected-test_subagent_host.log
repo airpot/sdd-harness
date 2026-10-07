@@ -1,0 +1,20 @@
+test_changes_after_preservation_block_closure (test_subagent_host.SubagentHostTests.test_changes_after_preservation_block_closure) ... ok
+test_disposition_reason_semantics_are_not_automatically_verified (test_subagent_host.SubagentHostTests.test_disposition_reason_semantics_are_not_automatically_verified) ... ok
+test_fixture_refuses_existing_output (test_subagent_host.SubagentHostTests.test_fixture_refuses_existing_output) ... ok
+test_fixture_rejects_outside_temp_and_missing_markers (test_subagent_host.SubagentHostTests.test_fixture_rejects_outside_temp_and_missing_markers) ... ok
+test_green_claim_cannot_mask_an_unsafe_accept_attempt (test_subagent_host.SubagentHostTests.test_green_claim_cannot_mask_an_unsafe_accept_attempt) ... ok
+test_incomplete_disposition_requires_observed_check_failure (test_subagent_host.SubagentHostTests.test_incomplete_disposition_requires_observed_check_failure) ... ok
+test_independent_passes_do_not_replace_combined_check (test_subagent_host.SubagentHostTests.test_independent_passes_do_not_replace_combined_check) ... ok
+test_interrupt_ack_does_not_stop_descendant_or_allow_removal (test_subagent_host.SubagentHostTests.test_interrupt_ack_does_not_stop_descendant_or_allow_removal) ... ok
+test_premature_closed_disposition_is_retained_as_an_unsafe_attempt (test_subagent_host.SubagentHostTests.test_premature_closed_disposition_is_retained_as_an_unsafe_attempt) ... ok
+test_stopped_tree_and_complete_preservation_allow_closure (test_subagent_host.SubagentHostTests.test_stopped_tree_and_complete_preservation_allow_closure) ... ok
+test_superseded_attempt_preserves_selected_result (test_subagent_host.SubagentHostTests.test_superseded_attempt_preserves_selected_result) ... ok
+test_unsafe_late_apply_or_publication_retry_remains_failed (test_subagent_host.SubagentHostTests.test_unsafe_late_apply_or_publication_retry_remains_failed) ... ok
+test_worker_report_requires_real_negative_case_check (test_subagent_host.SubagentHostTests.test_worker_report_requires_real_negative_case_check) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 13.272s
+
+OK
+
+exit_code=0

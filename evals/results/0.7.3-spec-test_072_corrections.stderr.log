@@ -1,0 +1,14 @@
+test_cache_named_source_ancestor_preserves_portable_inventory (test_072_corrections.CorrectionTests.test_cache_named_source_ancestor_preserves_portable_inventory) ... ok
+test_cache_named_target_ancestor_preserves_portable_inventory (test_072_corrections.CorrectionTests.test_cache_named_target_ancestor_preserves_portable_inventory) ... ok
+test_empty_install_inventory_is_rejected_before_parent_creation (test_072_corrections.CorrectionTests.test_empty_install_inventory_is_rejected_before_parent_creation) ... ok
+test_empty_package_inventory_is_rejected_before_output_creation (test_072_corrections.CorrectionTests.test_empty_package_inventory_is_rejected_before_output_creation) ... ok
+test_restore_isolates_foreign_common_and_object_directories (test_072_corrections.CorrectionTests.test_restore_isolates_foreign_common_and_object_directories) ... ok
+test_restore_preserves_caller_environment_and_unrelated_settings (test_072_corrections.CorrectionTests.test_restore_preserves_caller_environment_and_unrelated_settings) ... ok
+test_restore_preserves_foreign_head_and_branch (test_072_corrections.CorrectionTests.test_restore_preserves_foreign_head_and_branch) ... ok
+test_restore_preserves_foreign_staged_index (test_072_corrections.CorrectionTests.test_restore_preserves_foreign_staged_index) ... ok
+test_unborn_restore_has_own_empty_index_under_foreign_overrides (test_072_corrections.CorrectionTests.test_unborn_restore_has_own_empty_index_under_foreign_overrides) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 19.197s
+
+OK

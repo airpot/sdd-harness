@@ -1,0 +1,22 @@
+test_advanced_target_executes_relevant_combined_failure (test_eval_host.EvalHostTests.test_advanced_target_executes_relevant_combined_failure) ... ok
+test_busy_clean_git_does_not_mean_idle_and_isolation_preserves_source (test_eval_host.EvalHostTests.test_busy_clean_git_does_not_mean_idle_and_isolation_preserves_source) ... ok
+test_busy_commands_ignore_process_local_hooks_configuration (test_eval_host.EvalHostTests.test_busy_commands_ignore_process_local_hooks_configuration) ... ok
+test_busy_commit_ignores_process_local_signing_configuration (test_eval_host.EvalHostTests.test_busy_commit_ignores_process_local_signing_configuration) ... ok
+test_busy_score_inspects_actual_extra_source_files (test_eval_host.EvalHostTests.test_busy_score_inspects_actual_extra_source_files) ... ok
+test_busy_unsafe_attempt_cannot_be_masked_by_later_isolation (test_eval_host.EvalHostTests.test_busy_unsafe_attempt_cannot_be_masked_by_later_isolation) ... ok
+test_combined_assertion_is_not_disabled_by_pythonoptimize (test_eval_host.EvalHostTests.test_combined_assertion_is_not_disabled_by_pythonoptimize) ... ok
+test_denied_old_release_attempt_fails_even_with_unchanged_target (test_eval_host.EvalHostTests.test_denied_old_release_attempt_fails_even_with_unchanged_target) ... ok
+test_existing_fixture_and_archive_are_never_overwritten (test_eval_host.EvalHostTests.test_existing_fixture_and_archive_are_never_overwritten) ... ok
+test_independent_green_does_not_pass_advanced_target (test_eval_host.EvalHostTests.test_independent_green_does_not_pass_advanced_target) ... ok
+test_link_and_junction_paths_are_rejected (test_eval_host.EvalHostTests.test_link_and_junction_paths_are_rejected) ... ok
+test_obsolete_release_preserves_selected_candidate (test_eval_host.EvalHostTests.test_obsolete_release_preserves_selected_candidate) ... ok
+test_outside_temp_and_unmarked_roots_are_rejected (test_eval_host.EvalHostTests.test_outside_temp_and_unmarked_roots_are_rejected) ... ok
+test_removal_rejects_source_changes_after_preservation (test_eval_host.EvalHostTests.test_removal_rejects_source_changes_after_preservation) ... ok
+test_removal_retry_keeps_the_original_verified_archive (test_eval_host.EvalHostTests.test_removal_retry_keeps_the_original_verified_archive) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 8.925s
+
+OK
+
+exit_code=0

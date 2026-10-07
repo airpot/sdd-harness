@@ -1,0 +1,41 @@
+{
+  "command": [
+    "C:\\Program Files\\Python\\python.exe",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-v"
+  ],
+  "cwd": "C:\\Users\\airpot\\.codex\\worktrees\\sdd-fix-073\\project_skill",
+  "exit_code": 0,
+  "elapsed_seconds": 131.90599999995902,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "394ce2c5bfeb4a9eec95d27001a0c3147583729fa679951b94db80d0e3f0fb30",
+  "source_before": {
+    "SKILL.md": "3f7f57d215626a31c3b7c8d939d1596d4db09e8f0951ba61f6b82ede20fd1d9e",
+    "scripts/workspace.py": "47fe9d9d6019f828879b151f5a4361d432e721be128a07a80805b810ce8b3374",
+    "evals/host.py": "8bcb8e59f3ea9fedbc9d9749bef62caeb1bcf40e28d447ee095158d7c8be9a05",
+    "tests/test_073_corrections.py": "93b314356df46038d5ed10b6e27eab167b560808689f9c909becc2070c01da09",
+    "README.md": "b2e0b132d9699e26f5cc876e106b39bed536ff8e18c99f5bd5e63b95c617cbeb",
+    "references/recovery.md": "dd82d61c0baac5aa69216b5abbdb3815a1c6deb526b2791452683122e8f80ad6",
+    "evals/host-README.md": "2b032d702638662b624356e08202e292bb2f62657fd6f5deea5358a2af2915fb",
+    "specs/sdd-harness.md": "984c4ea553247aa7056df6263b5788abcd26f1df0454b34f54df0a3b165154f0",
+    ".gitattributes": "159610160fe38db0d68576af475e5ca14b766f702f1fa2517db1c9d5aec9791f"
+  },
+  "source_after": {
+    "SKILL.md": "3f7f57d215626a31c3b7c8d939d1596d4db09e8f0951ba61f6b82ede20fd1d9e",
+    "scripts/workspace.py": "47fe9d9d6019f828879b151f5a4361d432e721be128a07a80805b810ce8b3374",
+    "evals/host.py": "8bcb8e59f3ea9fedbc9d9749bef62caeb1bcf40e28d447ee095158d7c8be9a05",
+    "tests/test_073_corrections.py": "93b314356df46038d5ed10b6e27eab167b560808689f9c909becc2070c01da09",
+    "README.md": "b2e0b132d9699e26f5cc876e106b39bed536ff8e18c99f5bd5e63b95c617cbeb",
+    "references/recovery.md": "dd82d61c0baac5aa69216b5abbdb3815a1c6deb526b2791452683122e8f80ad6",
+    "evals/host-README.md": "2b032d702638662b624356e08202e292bb2f62657fd6f5deea5358a2af2915fb",
+    "specs/sdd-harness.md": "984c4ea553247aa7056df6263b5788abcd26f1df0454b34f54df0a3b165154f0",
+    ".gitattributes": "159610160fe38db0d68576af475e5ca14b766f702f1fa2517db1c9d5aec9791f"
+  },
+  "source_unchanged": true,
+  "log": "D:\\code\\project_skill\\docs\\validation\\0.7.3-tests-final.log"
+}

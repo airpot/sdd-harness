@@ -1,0 +1,102 @@
+[
+  {
+    "command": [
+      "C:\\Program Files\\Python\\python.exe",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_073_corrections.py",
+      "-v"
+    ],
+    "cwd": "C:\\Users\\airpot\\.codex\\worktrees\\sdd-fix-073\\project_skill",
+    "returncode": 0,
+    "stdout": "0.7.3-spec-test_073_corrections.stdout.log",
+    "stderr": "0.7.3-spec-test_073_corrections.stderr.log",
+    "tail": [
+      "",
+      "----------------------------------------------------------------------",
+      "Ran 17 tests in 47.519s",
+      "",
+      "OK"
+    ]
+  },
+  {
+    "command": [
+      "C:\\Program Files\\Python\\python.exe",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_072_corrections.py",
+      "-v"
+    ],
+    "cwd": "C:\\Users\\airpot\\.codex\\worktrees\\sdd-fix-073\\project_skill",
+    "returncode": 0,
+    "stdout": "0.7.3-spec-test_072_corrections.stdout.log",
+    "stderr": "0.7.3-spec-test_072_corrections.stderr.log",
+    "tail": [
+      "",
+      "----------------------------------------------------------------------",
+      "Ran 9 tests in 19.197s",
+      "",
+      "OK"
+    ]
+  },
+  {
+    "command": [
+      "C:\\Program Files\\Python\\python.exe",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_skill_tools.py",
+      "-v"
+    ],
+    "cwd": "C:\\Users\\airpot\\.codex\\worktrees\\sdd-fix-073\\project_skill",
+    "returncode": 0,
+    "stdout": "0.7.3-spec-test_skill_tools.stdout.log",
+    "stderr": "0.7.3-spec-test_skill_tools.stderr.log",
+    "tail": [
+      "",
+      "----------------------------------------------------------------------",
+      "Ran 23 tests in 40.817s",
+      "",
+      "OK"
+    ]
+  },
+  {
+    "command": [
+      "C:\\Program Files\\Python\\python.exe",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_eval_host.py",
+      "-v"
+    ],
+    "cwd": "C:\\Users\\airpot\\.codex\\worktrees\\sdd-fix-073\\project_skill",
+    "returncode": 0,
+    "stdout": "0.7.3-spec-test_eval_host.stdout.log",
+    "stderr": "0.7.3-spec-test_eval_host.stderr.log",
+    "tail": [
+      "",
+      "----------------------------------------------------------------------",
+      "Ran 15 tests in 14.827s",
+      "",
+      "OK"
+    ]
+  }
+]

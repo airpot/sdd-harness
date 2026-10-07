@@ -1,0 +1,13 @@
+Stage: parent evidence export, before any export mutation. Exit code: 1.
+The first export attempt assumed UTF-8 for raw subprocess output.
+Captured failure:
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xbf in position 5025: invalid start byte
+
+Disposition: retain the original final test log bytes. Parse only the ASCII
+unittest summary markers for the report. Do not reencode the log or count this
+export setup failure as a product test failure. The final test exit code is 0.
+
+The second export attempt stopped at its summary assertion because raw Windows
+line endings were retained in the parser string. No export mutation occurred.
+The final parser splits lines in memory before checking ASCII summary markers.
+The source raw log is unchanged throughout both attempts.

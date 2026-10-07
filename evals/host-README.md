@@ -11,13 +11,18 @@ Behavior check subprocesses ignore inherited Python environment variables, so
 optimization settings cannot disable assertions. Fixture Git commands disable
 commit signing and use an unused fixture-local hook path without changing user
 Git configuration.
+Before busy fixture creation, Git reports its repository-local environment variable names.
+The tool clears those names case-insensitively in a copied child environment and uses that environment for every creation Git command.
+Other fixture Git operations apply the same filtering. Unrelated settings and the caller's environment remain unchanged.
+Busy fixture creation checks its actual Git directory, common directory, worktree root, own index, and HEAD.
+The evaluator checks those actual repository facts again. Successful journals cannot make a missing, empty, or malformed fixture index pass.
 
 Executors receive this operation reference and their task input. They must not
 read `host.py`, evaluator criteria, tests, or evaluation results, or invoke the
 evaluator-only `score` command. Use `act` for fixture operations. Do not edit
 markers, journals, or fixture files directly.
 
-Prerequisites: Python 3.9 or newer and Git on `PATH` for the busy fixture. Run
+Prerequisites: Python 3.10 or newer and Git on `PATH` for the busy fixture. Run
 commands from the repository root. Paths with spaces must be quoted.
 
 ```text

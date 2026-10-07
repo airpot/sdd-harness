@@ -1,0 +1,89 @@
+# 0.7.3 independent quality review
+
+Date: 2026-10-07. Result: **No material source correctness issue found in the six accepted fixes.**
+The source candidate can proceed to parent-owned combined validation and release checks.
+This review does not accept the final release artifact, installation, or publication.
+Writing policy: [project policy](../../references/writing.md). This record uses STE-guided English; dictionary compliance was not checked.
+
+## Basis and scope
+
+- Accepted scope: [six-finding continued audit](../research/2026-10-07-sdd-harness-072-continued-audit.md).
+- Base: `f7c58a99d89b946091554b8e0b8176621f769195`.
+- Candidate: `C:/Users/airpot/.codex/worktrees/sdd-fix-073/project_skill`, branch `codex/fix-audit-073`.
+- Runtime: Python 3.12.8 and Git 2.55.0.windows.5 on Windows.
+- I read the actual diff, complete changed Python source, new regression assertions, and changed guidance.
+- I read [the specification review](0.7.3-spec-review.md) for context, then checked actual behavior independently.
+- The eight implementation hashes match [the implementation binding](0.7.3-implementation-hashes.json).
+- `.gitattributes` is the ninth changed path, including the new untracked regression file in the implementation count.
+- There are eight tracked modifications and one untracked test file. No historical evidence path appears in the tracked diff.
+
+## Assessment
+
+| Scope | Source assessment and independent evidence |
+| --- | --- |
+| F1 / EVAL-5 | `evals/host.py:86-150,285` obtains local variable names before output creation. It filters a copied environment case-insensitively. Creation reuses this environment. Later commands filter their child environments. Signing and hook controls remain. Metadata, common directory, root, own index, actual HEAD, index entries, and clean state control busy grading. New regressions reject missing, empty, and corrupt indexes. My combined routing probe preserves raw foreign repository bytes and readable staged-only content. It covers a lowercase index variable. My actual changed HEAD and foreign `.git` pointer probes fail grading despite successful prior journals. |
+| F2 / RECOVER-3 | `scripts/workspace.py:273-351` keeps the temporary empty template and hooks directory alive for the complete restore operation. All restore Git calls receive the isolated environment and hook override. Final checks run after the last Git operation. They verify actual regular files, exact inventory, hashes, selected ignored results, and deleted paths. New regressions cover template hooks, configured hooks, extra files, changed files, and recreated deletions. My probes also reject a missing expected file, a file replaced by a directory, and a real output junction. A command-environment `core.hooksPath` override cannot create an extra file. Caller environment and hook bytes remain unchanged. |
+| F3 / RECOVER-4 | `scripts/workspace.py:178-185` resolves effective graft metadata through Git and rejects active information before destination-parent creation. It retains source routing for source inspection. Ordinary, external, and linked-worktree graft regressions pass. Empty graft information permits a complete-history roundtrip. No fetch or history rewrite was added. |
+| F4 / RECOVER-5 | `scripts/workspace.py:93-110` checks each lexical path component with `lstat` before resolution or traversal. Symbolic-link mode and Windows reparse attributes reject links independently of `Path.is_junction`. The real inside-root junction regression passes after removing that newer API. My final-output junction probe also fails verification. |
+| F5 / PACK-4 | `README.md:5,59` and `SKILL.md:5` declare 0.7.3. The active ZIP and checksum names are 0.7.3. The new regression builds an actual temporary fourteen-file package, checks its checksum, and reads its embedded entry version. The actual final README-linked release ZIP and checksum remain parent-owned checks. |
+| F6 / GUARD-3 | `scripts/workspace.py:59-63` disables optional Git locks for the status observation. The real timestamp-only regression preserves exact index bytes and stage entries. An actual working content change still reports dirty. Caller environment is not mutated. |
+
+The changes use standard-library code and existing Git commands.
+They add no service or host configuration mutation.
+The fourteen-file payload, independent default, and local-change installation guard remain.
+The installer and packaging implementation have no diff.
+The final inventory control is a consistency check. It does not provide a concurrent filesystem sandbox.
+
+## Independent checks
+
+`python -B -m unittest discover -s tests -p test_073_corrections.py -v` passed all 17 methods, without skips.
+The suite finished in 42.888 seconds with exit code 0.
+Raw output: [stdout](0.7.3-quality-regressions.stdout.log), [stderr](0.7.3-quality-regressions.stderr.log).
+I did not repeat the complete suite or all previously passing affected suites.
+
+[The independent procedure](0.7.3-quality-probes.py) passed nine additional bounded checks.
+[Results](0.7.3-quality-probes.json), [stdout](0.7.3-quality-probes.stdout.log), and [stderr](0.7.3-quality-probes.stderr.log) retain the procedure outcome.
+The checks include two actual SHA-256 roundtrips, one committed and one unborn.
+Both retain dirty binary content, selected ignored binary content, source bytes, and the original object format.
+Other checks cover final inventory failures, command-environment hook settings, foreign staging, actual metadata, and attribute scope.
+
+The effective `.gitattributes:10` rule sets `text` to `unset` only for the intended 0.7.3 export path pattern.
+Checks retain the earlier 0.7.2 export rule and a strictly bound 0.7.0 path.
+Nearby 0.7.1, validation-document, and distribution paths remain `unspecified`.
+The new rule does not normalize historical records or portable source files.
+
+The nine candidate file hashes and both production index hashes match before and after the probes.
+`git --no-optional-locks diff --check` returned 0.
+The candidate still has only the expected eight tracked modifications and one untracked test file.
+[The final check](0.7.3-quality-final-check.json) confirms unchanged candidate files, both production indexes, completed subprocess sessions, and fixture cleanup.
+
+## Historical evidence
+
+[The independent historical procedure](0.7.3-quality-history.py) confirms five protected paths match accepted-base Git blobs byte-for-byte.
+All fourteen 0.7.2 record hashes match their provenance and accepted-base bytes.
+All three historical release ZIP hashes match their provenance.
+Each ZIP retains its complete fourteen-file portable hash map.
+[Results](0.7.3-quality-history.json), [stdout](0.7.3-quality-history.stdout.log), and [stderr](0.7.3-quality-history.stderr.log) retain these checks.
+
+The two older 0.7.0 early-exit logs retain accepted-base content.
+Their recorded raw provenance hashes match neither checkout bytes nor LF/CRLF variants.
+These are pre-existing evidence discrepancies, outside the six accepted source fixes.
+This review does not mark those bindings as passed or modify those logs.
+It does not claim that every older raw record binding is valid.
+
+The first historical check used the incorrect assumed name `0.7.1-provenance.json` and stopped before completion.
+[Its original stderr](0.7.3-quality-history-first.stderr.log) remains separate.
+The corrected procedure uses the actual `0.7.1-release-provenance.json` and passes the stated checks.
+This setup error is not a product defect or completed historical check.
+The worker's initial three graft-fixture setup errors also remain distinct from its corrected fail-first evidence.
+The corrected red log reports 17 methods and 19 failures without setup errors.
+
+## Limits and handoff
+
+- Native Python 3.10/3.11 execution was not performed. The real junction fallback check ran on Python 3.12.
+- The complete combined suite, actual 0.7.3 ZIP/checksum link binding, installation, commit, and publication remain parent-owned work.
+- These checks do not establish native agent effectiveness, cross-host recovery, malicious concurrent mutation resistance, or performance improvement.
+- All review subprocess calls completed. No background process was started. Disposable repositories and real junctions were removed.
+- No production source, installed skill, host config, environment, Git index, commit, push, or real worktree was changed by this review.
+
+No material correction is requested for this candidate source.

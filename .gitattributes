@@ -6,3 +6,5 @@ evals/results/0.7.0-provenance.json -text
 evals/invocation-0.7.0.json -text
 # Preserve this release's exported evidence bytes.
 evals/results/0.7.2-* -text
+# Preserve this release's exported evidence bytes.
+evals/results/0.7.3-* -text

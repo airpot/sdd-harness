@@ -1,0 +1,21 @@
+{
+  "old_version": "0.7.2",
+  "installed": "C:\\Users\\airpot\\.agents\\skills\\sdd-harness",
+  "portable_source": {
+    "assets/change.md": "da13204796df87ea9405216f5b85dc7a9d35aff09969f7b44946fcd223880292",
+    "assets/handoff.md": "4da71c505cc6730ddbd86fcc1491f4ff9544564c4cd1167a3f50df012c495b73",
+    "assets/release.md": "2dd28a051622ecf6c42074ad8b6787e1ddfd39027dd32781f7ed86a8a0b42ab5",
+    "references/collaboration.md": "85522f2d07ac2381be00db1b21d381aebdfcb019218ae67ba40e14b371e84264",
+    "references/delivery.md": "95566a3aab43d1c29cc06c395bbe8150a1bedf73576ae8caa59c86cf05151468",
+    "references/install.md": "84ff3d78af05891d5b06c81ddee237f6a91a8f0586a9474543a4d033d89a73be",
+    "references/recovery.md": "788db3cc3b72b3f40f63ec183e0e447fe22b6da175cc0daa280d1cb8f15cfea9",
+    "references/spec-review.md": "99af55f4a2873b0e0540e792486f51f83cddcaa13316dbbbf4d70329a372fccc",
+    "references/subagents.md": "4b3380e3b609700dae1a793767818b7c9496f2224afdf50fd25cf0b0fd03eb5c",
+    "references/workflow.md": "24b728f039169939beb272efc24a2e78e4b5ed54e5678030b5cba4634e71cafc",
+    "references/writing.md": "38fd8563663da1c1e21de6a4c6b9f7ae5dc605794876e9e5eab2e36d794623c7",
+    "scripts/install.py": "29c82baeea48d96e3121584b50c1efed583a58dc41d317cf1f354df788be85b6",
+    "scripts/workspace.py": "48b3e30d25a450fd3997a8d9deab30ccda93cd1e6427ee48045a4c44368ee9d6",
+    "SKILL.md": "366fe7b7dfeac5f52177d767ddd665f15ab5847ce075ad381ef2f81300afe267"
+  },
+  "all_fourteen_match": true
+}

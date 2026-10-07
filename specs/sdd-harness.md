@@ -1,6 +1,6 @@
 # SDD Harness Behavior Specification
 
-Specification version: 0.7.2.
+Specification version: 0.7.3.
 Status: accepted intent for portable development guidance, optional cooperation, and observable skill effectiveness checks.
 This specification defines observable skill behavior. It does not establish host enforcement.
 
@@ -63,8 +63,24 @@ Keep routine actions within existing user authorization.
 | EVAL-4 | Bind actual request identity and input hash to source case, adaptation, expected route, observed route, and trace. Preserve historical raw evidence. | Dated 0.7.0 invocation errata; 0.7.1 native request records. |
 | RECOVER-2 | Before creating restore output, clear Git's reported repository-local variables in a copied subprocess environment. Use that environment throughout restore. Preserve existing source repositories and unrelated caller settings. Verify the target's actual Git directory, HEAD, and own index, including unborn restoration. | Foreign index, repository, common/object-directory, caller-environment, and unborn regressions in `tests/test_072_corrections.py`. |
 | PACK-3 | Filter cache directories against paths relative to the source or target inventory. Preserve the complete portable payload below cache-named external ancestors. Reject empty output inventories before destination creation. | Source/target ancestor, internal-cache exclusion, inventory/hash, idempotency, and empty-inventory regressions in `tests/test_072_corrections.py`. |
+| EVAL-5 | Clear Git-reported repository-local environment variables case-insensitively in copied fixture child environments before creation. Preserve caller settings, foreign repositories, and staged-only indexes. Check actual fixture metadata, HEAD, and index at creation and busy grading. | Foreign routing, missing external index, actual staged-only preservation, caller environment, and malformed own-index regressions in `tests/test_073_corrections.py`. |
+| RECOVER-3 | Disable operation-local init templates and hooks during restore without changing user configuration. After Git operations, verify all actual regular working files and hashes against the manifest, including selected ignored results. Exclude only root Git metadata. Require deleted paths to remain absent. Retain repository, HEAD, own-index, and unborn checks. | Environment/configured template, configured hooks, final unexpected/changed/recreated file checks in `tests/test_073_corrections.py`; existing restore checks. |
+| RECOVER-4 | Reject effective nonempty legacy graft information before archive or destination creation. Resolve actual metadata and source environment, including linked worktrees. Preserve source history without automatic fetch or rewrite. Permit empty graft information. | Two-commit source, external graft file, linked worktree, source preservation, and empty-graft history roundtrip regressions in `tests/test_073_corrections.py`. |
+| RECOVER-5 | Before recovery file traversal, use `lstat` symbolic-link and Windows reparse attributes independently of `Path.is_junction`. Keep Python 3.10 and standard-library-only support. | Real inside-root junction with the newer API removed in `tests/test_073_corrections.py`; existing link and containment checks. |
+| PACK-4 | Keep active ZIP and checksum download names consistent with the entry version and actual release artifact. Keep historical release links and records unchanged. | Real temporary package/version regression in `tests/test_073_corrections.py`; release checks against the final actual ZIP and checksum. |
+| GUARD-3 | Read inspect status with optional Git locks disabled. Preserve source index bytes and staged entries for timestamp-only changes. Continue to detect ordinary dirty state. | Actual index-byte, staged-entry, and dirty-state regression in `tests/test_073_corrections.py`. |
 
 ## Acceptance rules
+
+For 0.7.3, retain actual fail-first counterexamples for EVAL-5, RECOVER-3 through RECOVER-5, PACK-4, and GUARD-3.
+Check foreign staged-only content with ordinary Git after fixture operations. Missing external indexes must remain absent.
+Busy grading must reject missing, empty, or corrupt actual fixture indexes despite earlier successful journals.
+Use disposable templates, configuration files, hooks, repositories, and real Windows junctions for sensitive checks.
+Check normal history restoration alongside graft rejection and preserve source files and accessible original commits.
+Bind active release links and embedded entry version to the actual newly built ZIP and its recorded checksum before publication.
+Keep the fourteen-file payload, independent default, local-change protection, and raw historical records.
+Report simulated API fallback coverage separately from native Python 3.10/3.11 execution.
+These checks do not establish sandbox enforcement, new native invocation results, or general performance gains.
 
 For 0.7.2, retain actual fail-first restore and distribution counterexamples and passing affected regressions.
 Check that foreign Git environment settings do not change source index content, HEAD, branch association, or other source files.

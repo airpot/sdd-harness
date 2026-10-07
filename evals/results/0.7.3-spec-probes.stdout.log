@@ -1,0 +1,182 @@
+{
+  "runtime": {
+    "python": "3.12.8 (tags/v3.12.8:2dc476b, Dec  3 2024, 19:30:04) [MSC v.1942 64 bit (AMD64)]",
+    "git": "git version 2.55.0.windows.5"
+  },
+  "combined_foreign_routing": {
+    "foreign_raw_files_unchanged": true,
+    "staged_only_content_usable": true,
+    "missing_external_index_absent": true,
+    "caller_env_unchanged": true,
+    "fixture_actual_grade_passed": true
+  },
+  "head_mismatch_rejected": {
+    "creation_head": "f1502dcdcf00aeac2d2630559b73bced154fd08f",
+    "changed_head": "0685488bcd50fece0d79867f159d4022649f83d5",
+    "grade_passed": false
+  },
+  "environment_routed_graft": {
+    "rejected_before_parent_creation": true,
+    "source_raw_files_unchanged": true,
+    "both_original_commits_accessible": true
+  },
+  "restore_additional_boundaries": {
+    "comment_only_grafts_valid": true,
+    "full_history_restored": true,
+    "necessary_ignored_bytes_equal": true,
+    "caller_env_config_and_source_unchanged": true,
+    "recreated_deleted_directory_rejected": true
+  },
+  "ownership": {
+    "tracked_diffs": [
+      ".gitattributes",
+      "README.md",
+      "SKILL.md",
+      "evals/host-README.md",
+      "evals/host.py",
+      "references/recovery.md",
+      "scripts/workspace.py",
+      "specs/sdd-harness.md"
+    ],
+    "untracked": [
+      "tests/test_073_corrections.py"
+    ]
+  },
+  "historical_provenance_bindings": {
+    "evals/results/0.7.0-provenance.json": {
+      "records": 20,
+      "archive_hash_equal": true,
+      "portable_members_equal": 14,
+      "preexisting_record_checkout_crlf_differences": [
+        {
+          "path": "evals/results/0.7.0-coding-060.json",
+          "expected_raw_sha256": "045416aff2df740feb557296d50b82de395ffe363e0ed3c4a46d40ee43e25f4a",
+          "checkout_sha256": "d4c5aba0787f02de7cff91c0e478285698265d6fa60d7ec6b4ad46bbfebc2183",
+          "base_blob_sha256": "045416aff2df740feb557296d50b82de395ffe363e0ed3c4a46d40ee43e25f4a",
+          "binding_matches_base_lf_or_crlf": true,
+          "content_unchanged_from_accepted_base": true
+        },
+        {
+          "path": "evals/results/0.7.0-coding-forward.json",
+          "expected_raw_sha256": "e59c4fbc6662e0006e7af50ea57fbe0a826aa204176a65aa156a59d2f9ca643e",
+          "checkout_sha256": "0b728dc15294cd5c355180d767f926369475b2c5d294991181ef461f7238ff86",
+          "base_blob_sha256": "e59c4fbc6662e0006e7af50ea57fbe0a826aa204176a65aa156a59d2f9ca643e",
+          "binding_matches_base_lf_or_crlf": true,
+          "content_unchanged_from_accepted_base": true
+        },
+        {
+          "path": "evals/results/0.7.0-coding-no-skill.json",
+          "expected_raw_sha256": "e0a61b406e8ec409836aff9d0cb79ceebd90159928bac22c8f36ca298b7f23f8",
+          "checkout_sha256": "6f5f482c518e6aa2fb2e12028184d75748c5a0ec8f61e0535ad2d9509652e642",
+          "base_blob_sha256": "e0a61b406e8ec409836aff9d0cb79ceebd90159928bac22c8f36ca298b7f23f8",
+          "binding_matches_base_lf_or_crlf": true,
+          "content_unchanged_from_accepted_base": true
+        },
+        {
+          "path": "evals/results/0.7.0-early-exit-green.txt",
+          "expected_raw_sha256": "b7ea85036154ed88f55257038d639359f8b8d04815e5a833fefed277ccbff432",
+          "checkout_sha256": "89c8acdac5a74f55ae8224070a642f63b2b78e1951c205ec947707267dfecffb",
+          "base_blob_sha256": "b5e31c04690fee676bdccd40c599293f32671239cf3f099c4a194ce37f4d0fbd",
+          "binding_matches_base_lf_or_crlf": false,
+          "content_unchanged_from_accepted_base": true
+        },
+        {
+          "path": "evals/results/0.7.0-early-exit-red.txt",
+          "expected_raw_sha256": "e26d7f0ffac7a3b231a409226dd19e2ef1caa03678cc8818b3c3b6c2d7576110",
+          "checkout_sha256": "601073d543f7cf7bdd4b6ad5bd01a6efd436a2407423c4d0ade40c728f02c634",
+          "base_blob_sha256": "bc507a22bfac708329c6a77a6371798b91275cf612941f4c54c0f639113f2645",
+          "binding_matches_base_lf_or_crlf": false,
+          "content_unchanged_from_accepted_base": true
+        },
+        {
+          "path": "evals/results/0.7.0-instruction-baseline.json",
+          "expected_raw_sha256": "58f761f3f958db567d947366bc1f2174bd7233dad595c05b236deaee06e57fe1",
+          "checkout_sha256": "55e39e60edec0f8f62a9c782e8a685391eb2431644712236803bf22d5926ee97",
+          "base_blob_sha256": "58f761f3f958db567d947366bc1f2174bd7233dad595c05b236deaee06e57fe1",
+          "binding_matches_base_lf_or_crlf": true,
+          "content_unchanged_from_accepted_base": true
+        },
+        {
+          "path": "evals/results/0.7.0-instruction-forward.json",
+          "expected_raw_sha256": "4aee57a590c532e7e265d6056463a54b88f172c0874b97c83f2d4bf638f98b57",
+          "checkout_sha256": "5959f89f16ccbcaa7b1ae50f8fafbf9eb7d59d47edef8a324a2c19572e84fe84",
+          "base_blob_sha256": "4aee57a590c532e7e265d6056463a54b88f172c0874b97c83f2d4bf638f98b57",
+          "binding_matches_base_lf_or_crlf": true,
+          "content_unchanged_from_accepted_base": true
+        },
+        {
+          "path": "evals/results/0.7.0-instruction-recheck.json",
+          "expected_raw_sha256": "52e4e439241bef2bfc914617316156a36bebf94fd66aa16ff45ef9f655535a45",
+          "checkout_sha256": "b9cb3b905dad22077a73d95aa64d58e8439b033d96c6dcffbd1cba0fe9f2899b",
+          "base_blob_sha256": "52e4e439241bef2bfc914617316156a36bebf94fd66aa16ff45ef9f655535a45",
+          "binding_matches_base_lf_or_crlf": true,
+          "content_unchanged_from_accepted_base": true
+        },
+        {
+          "path": "evals/results/0.7.0-instruction-regression.json",
+          "expected_raw_sha256": "d4e8fa369ba0972e4f0e7d3834bcf89b1be294d1ff21c0ebbafcdaab88e1a9a5",
+          "checkout_sha256": "dcf1bc5abae31daf93a0991b051a8c0a1f66f22061959b95749f8a9a11a34ce9",
+          "base_blob_sha256": "d4e8fa369ba0972e4f0e7d3834bcf89b1be294d1ff21c0ebbafcdaab88e1a9a5",
+          "binding_matches_base_lf_or_crlf": true,
+          "content_unchanged_from_accepted_base": true
+        }
+      ]
+    },
+    "evals/results/0.7.1-release-provenance.json": {
+      "records": 11,
+      "archive_hash_equal": true,
+      "portable_members_equal": 14,
+      "preexisting_record_checkout_crlf_differences": [
+        {
+          "path": "evals/results/0.7.1-quality-review.md",
+          "expected_raw_sha256": "899859d651687bfebde15d82ce58c1a7bd787510c133e897c0f3260cd3ac8c36",
+          "checkout_sha256": "76cadee8a7acbe0bb6c17b282e899ea37cdb0cd0cdf167f199b80bcd19cd813f",
+          "base_blob_sha256": "899859d651687bfebde15d82ce58c1a7bd787510c133e897c0f3260cd3ac8c36",
+          "binding_matches_base_lf_or_crlf": true,
+          "content_unchanged_from_accepted_base": true
+        },
+        {
+          "path": "evals/results/0.7.1-spec-review.md",
+          "expected_raw_sha256": "9bb17ad870bd6efc253d1ab736c55fcb157dc33e6b9a1d351c9ac13b47762d36",
+          "checkout_sha256": "60c21c245acf490384d97fa7351489ba8715e5d2fca6dc9c8631fe8e3a8fa232",
+          "base_blob_sha256": "9bb17ad870bd6efc253d1ab736c55fcb157dc33e6b9a1d351c9ac13b47762d36",
+          "binding_matches_base_lf_or_crlf": true,
+          "content_unchanged_from_accepted_base": true
+        }
+      ]
+    },
+    "evals/results/0.7.2-provenance.json": {
+      "records": 14,
+      "archive_hash_equal": true,
+      "portable_members_equal": 14,
+      "preexisting_record_checkout_crlf_differences": []
+    }
+  },
+  "portable_and_syntax": {
+    "count": 14,
+    "inventory": [
+      "SKILL.md",
+      "assets/change.md",
+      "assets/handoff.md",
+      "assets/release.md",
+      "references/collaboration.md",
+      "references/delivery.md",
+      "references/install.md",
+      "references/recovery.md",
+      "references/spec-review.md",
+      "references/subagents.md",
+      "references/workflow.md",
+      "references/writing.md",
+      "scripts/install.py",
+      "scripts/workspace.py"
+    ],
+    "python_310_ast_parse": true,
+    "native_310_311_execution": "not performed"
+  },
+  "review_cleanup": {
+    "source_raw_files_unchanged": true,
+    "caller_environment_unchanged": true,
+    "all_child_calls_completed": true,
+    "disposable_fixtures_cleaned": true
+  }
+}

@@ -162,6 +162,16 @@ Repeat review only when changes, new evidence, or unresolved material concerns j
 If a convergence loop repeats without new evidence, record the specific unresolved choice.
 Continue independent work. Do not rewrite accepted requirements merely to satisfy a repeated review.
 
+## Compare effectiveness
+
+This procedure applies to effectiveness comparisons for independent work and optional delegation.
+Ordinary tasks do not require measurements, team setup, or additional records.
+
+For effectiveness comparisons, declare the task, acceptance basis, conditions, and available measurement limits.
+When measurements are available, compare actual acceptance, rework, conflicts, human review effort, and elapsed time.
+If available, include total execution and coordination cost.
+Keep missing measurements unknown. Do not promise universal speedups or infer benefits from unrelated model trials.
+
 ## Save checkpoints
 
 Update the task handoff record when recoverable results, important decisions, handoffs, or validation conclusions change.

@@ -145,8 +145,5 @@ Apply [recovery rules](recovery.md) to authorized worktree removal.
 Close the delegated task only after the main agent records its disposition and resolves necessary follow-up work.
 Resource closure remains a separate operation with its own observed conditions.
 
-For effectiveness comparisons, declare the task, acceptance basis, conditions, and available measurement limits.
-When measurements are available, compare actual acceptance, rework, conflicts, human review effort, and elapsed time.
-If available, include total execution and coordination cost.
-Keep missing measurements unknown. Do not promise universal speedups or infer benefits from unrelated model trials.
+For delegation effectiveness comparisons, use [the shared workflow procedure](workflow.md#compare-effectiveness).
 Do not count worker calls, agreement, or commits as delivered value.

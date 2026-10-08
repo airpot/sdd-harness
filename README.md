@@ -1,8 +1,10 @@
 # SDD Harness
 
-当前版本：**0.8.0**。以 SDD 为主线，默认独立开发，按需启用协作与辅助方法。
+当前版本：**0.8.1**。以 SDD 为主线，默认独立开发，按需启用协作与辅助方法。
 
-本仓库为可直接安装的独立发布输出。开发、测试与评测留在统一源码工作区；来源提交、文件哈希与历史资料映射见[发布清单](release/0.8.0-manifest.json)。
+本仓库为可直接安装的独立发布输出。开发、测试与评测留在统一源码工作区；来源提交、文件哈希与历史资料映射见[发布清单](release/0.8.1-manifest.json)。
+
+0.8.1 修正独立 agent 的效果比较入口，并明确归档前须另存暂存区独有的必要成果。运行脚本与 16 文件包结构保持原样。
 
 ## 辅助方法
 
@@ -33,7 +35,7 @@ cd sdd-harness
 python scripts/install.py --into "~/.agents/skills"
 ```
 
-亦可下载[安装包](dist/sdd-harness-0.8.0.zip)与 [SHA-256 校验文件](dist/sdd-harness-0.8.0.sha256)，解压后运行 `python sdd-harness/scripts/install.py --into "~/.agents/skills"`。没有 Python 时复制完整目录，不可只复制入口。
+亦可下载[安装包](dist/sdd-harness-0.8.1.zip)与 [SHA-256 校验文件](dist/sdd-harness-0.8.1.sha256)，解压后运行 `python sdd-harness/scripts/install.py --into "~/.agents/skills"`。没有 Python 时复制完整目录，不可只复制入口。
 
 ZCode、DeepSeek Harness 与实际宿主能力的检查见[安装说明](references/install.md)。跨宿主复制成功不等于原生能力已验证。
 
@@ -43,4 +45,4 @@ ZCode、DeepSeek Harness 与实际宿主能力的检查见[安装说明](referen
 
 内部开发指令采用英语与 [STE 写作规则](references/writing.md)，README 使用中文。短句与格式检查不构成完整 ASD-STE100 词典合规认证。
 
-本版核验了打包、解压、安装、重复安装及拒绝覆盖本地修改。八案决策试验用于检查指令边界，不能证明真实项目普遍提效。历史开发资料位于 `history/source-0.7.3/`，其原始路径为历史记录，不是本版执行入口。
+本版核验了打包、解压、安装、重复安装及拒绝覆盖本地修改。既有八案与本轮两案决策观察用于检查指令边界，不能证明真实项目普遍提效。历史开发资料位于 `history/source-0.7.3/`，其原始路径为历史记录，不是本版执行入口。

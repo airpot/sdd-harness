@@ -3,6 +3,7 @@
 ## Prefer native archives
 
 If the host provides recoverable worktree archives, check the tool's capabilities and managed ownership.
+Check whether the native archive preserves necessary content held only in the Git index.
 Check protected resources, active chats, and necessary results.
 If the authorized cleanup conditions hold, use the native tool.
 Check both preservation and removal results.
@@ -11,7 +12,8 @@ Write internal recovery records according to [the writing policy](writing.md).
 If Codex provides `list_artifacts` and `archive_worktree`, use the returned attachment identity.
 Do not infer attachment identity from a path.
 If the archive omits necessary ignored files or external results, preserve those results separately first.
-Then verify those results before using the native archive tool.
+If the archive omits necessary content held only in the Git index, preserve that content separately first.
+Then verify all separately saved results before using the native archive tool.
 For other harnesses, use only tools that actually exist.
 
 ## Use the bundled script
@@ -36,6 +38,11 @@ It does not prove idle state or grant write permission.
 - Current tracked files and ordinary untracked files.
 - A list of tracked file deletions.
 - Ignored files or directories that you select with `--include`.
+
+The Git index records staged content that can differ from HEAD and current working files.
+The bundled snapshot does not preserve content that exists only in the Git index.
+If necessary content exists only in the Git index, preserve that content separately through a reliable method.
+Before removal, verify the saved content itself.
 
 Save the archive outside the worktree. Do not overwrite an existing file.
 The script rejects shallow repositories before archive creation. It does not fetch missing history.

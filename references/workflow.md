@@ -24,6 +24,7 @@ Identify the behavior to change and the compatibility boundaries to keep.
 Before technical planning, inspect relevant entry points, callers, tests, configuration, and current architecture decisions.
 Identify existing components to reuse and behavior that must remain unchanged.
 Use code as structural evidence. Resolve intended behavior through accepted requirements and project decisions.
+For domain ambiguity, state, invariants, or consistency needs, use [domain guidance](domain.md).
 
 If task-relevant context is stale, correct that context with current evidence.
 Keep large historical documents outside routine task context unless necessary.
@@ -66,6 +67,11 @@ For example: "With default pagination, existing callers retrieve all items witho
 Do not use "Implement pagination" as an acceptance condition.
 If relevant, specify inputs, time, environment, and expected results.
 
+Select execution steps by uncertainty, dependencies, impact, and observed agent capability.
+Keep clear, low-impact tasks short. Investigate unresolved choices before dependent implementation.
+Do not impose fixed agent teams or context resets from unrelated model results.
+For optional delegation, retain the main agent's verification and follow-up duty under [subagent rules](subagents.md).
+
 If tasks need cooperation, use [optional collaboration procedures](collaboration.md).
 Link component scope to the complete business outcome and accepted shared contract.
 Before combined acceptance, obtain actual dependencies and check their combination.
@@ -82,15 +88,24 @@ Then identify their owner. Do not discard the changes.
 Select checks that examine the required behavior.
 Use [meaningful validation](spec-review.md) to review important assertions and select checks by risk.
 
-For bug fixes, reproduce the defect before changing code when feasible.
-Retain the failing input and baseline result. Check the corrected result against accepted behavior.
-If reproduction is unavailable, record that limitation and use the strongest applicable evidence.
-Check affected behavior that must remain unchanged.
+For suitable executable changes, use the next-test cycle in [testing guidance](testing.md) under the project's testing policy.
+Retain actual red evidence and distinguish behavior failure, intended interface absence, and unrelated setup errors.
+If reproduction is unavailable, record the limitation and use the strongest applicable evidence.
+For documentation and low-impact formatting, direct checks can suffice.
 
 Record the exact code or snapshot, specification version, method, environment, result, and log location.
 Define the method as an executable command or repeatable observation procedure.
 Record necessary input versions, setup, and the expected result or pass criterion.
 Use authorized references for sensitive inputs. Do not copy credentials into records.
+Avoid unnecessary secrets in model context. Use only sensitive inputs needed for authorized work through supported controls.
+For consequential runs, retain available model/provider, harness, skill, tool versions, and relevant nonsecret configuration in existing records.
+Identify unavailable metadata. Do not infer it or create another record format.
+
+If progress fails, classify the cause before retrying.
+Distinguish requirement ambiguity, missing context, setup failure, implementation failure, and unavailable capability.
+After uncertain external effects, inspect actual state before repeating the action.
+Preserve useful partial results. Change the next step to address the observed cause within existing authority and limits.
+Written instructions do not enforce tool or data permissions.
 
 List baseline failures separately. State whether each baseline failure relates to the change.
 Keep checks that did not run visible.
@@ -101,6 +116,7 @@ Record the reason and covered acceptance conditions when carrying evidence forwa
 Keep original records.
 For review, read the specifications, diffs, and evidence directly.
 Agreement between models does not replace actual checks.
+Review assertion, skip, mock, discovery, and runner changes under [test integrity guidance](testing.md).
 
 For deferred issues, record the impact, responsible task or owner, resolution condition, and effect on acceptance.
 Do not skip a necessary requirement by calling it technical debt.
@@ -151,3 +167,4 @@ Continue independent work. Do not rewrite accepted requirements merely to satisf
 Update the task handoff record when recoverable results, important decisions, handoffs, or validation conclusions change.
 Do not log every tool call.
 Save results and evidence references instead of copying the complete chat into the next context.
+When necessary for continuation, retain consequential-run metadata and classified failed attempts.

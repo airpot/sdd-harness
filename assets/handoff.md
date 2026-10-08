@@ -14,6 +14,7 @@ Independent tasks need no collaboration fields or setup.
 - Optional worker execution: identify active descendants, stopped-state evidence, resident context, remaining budget, and necessary resource closure.
 - Saved results: reference commits or snapshots, accessible locations, necessary artifacts, and checksums.
 - Execution state: identify the source machine, harness, native chat, worktree, and registered runtime resources. State whether writers stopped.
+- Consequential runs: retain available model/provider, skill, tool, relevant nonsecret configuration, and failed-attempt classifications needed for continuation.
 - Applicable evidence: identify acceptance conditions, exact objects, methods, environments, results, and log locations.
 - Validation recipe: retain executable steps, necessary input versions, setup, and pass criteria.
 - Integration state: reference the current target, combined candidate, preserved behavior, and necessary checks that remain.

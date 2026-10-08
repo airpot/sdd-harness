@@ -22,6 +22,8 @@ Identify the existing integration duty and target. One person can perform severa
 For example, order submission needs both persistence and the correct visible result.
 A frontend task can cover submission and display. A backend task can cover validation and persistence.
 Separate component passes do not establish that the complete order workflow works.
+Frontend/backend task boundaries do not define business contexts.
+If terms or rules differ across contexts, identify rule owners and accepted translations under [domain guidance](domain.md).
 
 Use explicit task assignments and ordinary Git branches or independent checkouts for separate work.
 Do not require cross-machine claims, heartbeat leases, or a coordination service before starting independent assigned tasks.
@@ -52,6 +54,9 @@ A frontend result with a mock can establish only the behavior that the mock chec
 Before complete acceptance, obtain applicable evidence from the actual provider and consumer combination.
 Check relevant request validation, authentication, errors, empty results, and accepted business effects.
 Schema checks alone do not establish business behavior or access enforcement.
+Contract compatibility checks cover only tested requests, responses, errors, and versions.
+Check actual consumer requests against the provider's accepted behavior, not only matching response shapes.
+Check required persistence and other side effects in the complete workflow.
 Keep required checks that failed, did not run, or remain blocked visible.
 
 Construct one exact combined candidate against the current integration target.
@@ -90,6 +95,7 @@ For a cooperating task, retain only the references needed to run and check its s
 These are record references, not a new native configuration schema.
 Do not invent host configuration keys or successful check results.
 Written path scopes instruct agents. They do not enforce filesystem permissions.
+Avoid unnecessary secrets in model context. Reference protected inputs through existing authorized controls.
 
 Check actual host or repository controls before claiming enforcement.
 CODEOWNERS alone does not prove both parties must approve or that writes are restricted.

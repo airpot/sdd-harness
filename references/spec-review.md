@@ -29,6 +29,7 @@ Keep review depth proportional to the change.
 ## Select meaningful validation
 
 Use concrete examples when a rule permits incompatible interpretations.
+Identify the accepted rule, a distinguishing example, and any unresolved question.
 State the relevant preconditions, input, and expected observable result.
 Choose an example that distinguishes accepted behavior from a plausible incorrect result.
 Use accepted rules or suitable reference results as the basis for expected values.
@@ -38,9 +39,9 @@ A test that repeats an implementation mistake does not establish acceptance.
 Check whether the assertions can detect the relevant failure.
 Use counterexamples or an established independent reference when useful.
 
-Use property, differential, or mutation checks only when their value justifies their cost.
-For randomized checks, retain necessary seeds and failing inputs for reproduction.
-Passing sampled inputs provide evidence. They do not prove behavior for every possible input.
+For test cycles, characterization, conditional broader checks, and test integrity, use [testing guidance](testing.md).
+For context meanings, business-rule ownership, invariants, or consistency choices, use [domain guidance](domain.md).
+Select the next useful detailed case from uncertainty and actual results. Do not require all speculative tests upfront.
 
 Select checks from affected behavior and risk, not task size alone.
 Use necessary integration or end-to-end checks for affected user workflows.
@@ -111,6 +112,7 @@ Check transitions and migration by risk. Do not require a migration document for
 
 Check completeness, correctness, and consistency against the current candidate.
 Read actual specifications, changes, and evidence.
+For material risk, use available controlled acceptance procedures. Confirm actual controls before claiming enforced independence or permissions.
 Distinguish implementation completion from complete acceptance.
 For evidence requirements and verdicts, read [delivery instructions](delivery.md).
 For accepted specification changes, follow [the workflow](workflow.md).

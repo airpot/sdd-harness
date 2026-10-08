@@ -21,6 +21,7 @@ Independent tasks need no collaboration fields or setup.
 - Optional cooperation: link component scope, responsible developer, and integration duty to the complete business outcome and accepted contract.
 - Integration: reference the current target and actual combined candidate with applicable validation.
 - Execution: identify the task, checkout, harness, owner, and actual activity observations. This record does not enforce ownership.
+- Consequential runs: retain available model/provider, skill, tool, and relevant nonsecret configuration metadata. Classify failed attempts before retrying.
 - Results and evidence: reference commits or snapshots, acceptance conditions, exact validation objects, methods, environments, results, and logs.
 - Validation recipe: record executable steps, necessary input versions, setup, and pass criteria.
 - Evidence applicability: record the current conclusion and reason for carrying historical evidence forward.

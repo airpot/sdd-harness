@@ -11,6 +11,7 @@ Follow user instructions and applicable project rules about delegation.
 
 Use a subagent when independent investigation, focused implementation, or a separate review can add useful results.
 Consider context relief, expected quality, elapsed time, and total execution and coordination cost.
+Adapt delegation to uncertainty, dependency structure, impact, and observed capability on relevant tasks.
 Keep short changes and steps with strong sequential dependencies in the main agent.
 Before dependent implementation, resolve necessary contract decisions through the existing acceptance procedure.
 Continue independent work while a dependency remains unresolved.
@@ -36,6 +37,7 @@ Check actual inheritance when it affects the task.
 Provide necessary instructions explicitly when the host does not load them.
 Keep large history and logs outside the task message.
 Supply accessible references and relevant decisions instead.
+Avoid unnecessary secrets in worker context. Use existing authorized controls for required sensitive inputs.
 
 For continued work, identify the worker, native run, and attempt when necessary.
 These references describe responsibility. They do not establish transferable native control.
@@ -94,10 +96,15 @@ Store large logs and artifacts outside the conversation.
 
 Partial output, refusal, timeout, or an exhausted budget does not establish completion.
 Preserve useful partial results without silently extending the budget or weakening acceptance.
+Before retries or replacement, classify ambiguity, missing context, setup failure, implementation failure, or unavailable capability.
+Select a correction that addresses the observed cause within the task's authority and limits.
+For consequential runs, retain available model/provider, harness, skill, tool, and relevant nonsecret configuration metadata in existing records.
+Keep unavailable metadata explicit.
 
 The main agent must read actual results and assess their applicability to the accepted requirement.
 A completion report is a claim to check. Agreement based on the same report is not independent evidence.
 Check important findings with reproducible behavior, relevant source evidence, or an appropriate independent check.
+Review weakened assertions, skips, mocks, discovery, and runner changes under [testing guidance](testing.md).
 Record a disposition: accept, request correction, reject, defer, or replace.
 Give a concrete reason and next action for incomplete results.
 
@@ -138,5 +145,8 @@ Apply [recovery rules](recovery.md) to authorized worktree removal.
 Close the delegated task only after the main agent records its disposition and resolves necessary follow-up work.
 Resource closure remains a separate operation with its own observed conditions.
 
-Measure useful findings, requirement coverage, false completion, rework, conflicts, elapsed time, and total cost when available.
+For effectiveness comparisons, declare the task, acceptance basis, conditions, and available measurement limits.
+When measurements are available, compare actual acceptance, rework, conflicts, human review effort, and elapsed time.
+If available, include total execution and coordination cost.
+Keep missing measurements unknown. Do not promise universal speedups or infer benefits from unrelated model trials.
 Do not count worker calls, agreement, or commits as delivered value.

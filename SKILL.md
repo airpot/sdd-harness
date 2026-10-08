@@ -2,7 +2,7 @@
 name: sdd-harness
 description: Use when implementing or resuming project changes against specifications, checking acceptance evidence, integrating worker results, preparing releases, or preserving worktrees.
 metadata:
-  version: "0.7.3"
+  version: "0.8.0"
 ---
 
 # SDD Harness
@@ -34,12 +34,15 @@ Resolve bundled script paths from this skill directory. Save project records in 
 
 1. Find accepted behavior and relevant code. Identify existing components and behavior to preserve.
 2. State the observable acceptance condition in the existing task record.
-3. Reproduce a defect when feasible. Keep the failing input and relevant baseline result.
-4. Make the next small change. Read the actual diff and run meaningful affected checks.
+3. For suitable executable changes, list useful cases and observe one meaningful failing check under the project's testing policy.
+4. Implement a small complete change. Read the actual diff and check the changed and necessary preserved behavior.
 5. Check the result against source requirements. Preserve failed, blocked, and unrun conditions.
 6. Record the code basis, check command or procedure, result, limitations, and next action.
 
 Keep this record brief. Do not require a template, team setup, or additional document.
+For documentation and low-impact formatting, direct checks can suffice.
+Keep expected new-interface absence and unrelated setup errors distinct from executed behavior failures.
+If useful, refactor after passing checks. Select the next case from remaining uncertainty and actual results.
 For example, a pagination repair needs an accepted ordering rule, a failing input, and a checked correction.
 Existing positive tests do not establish that the failing input is corrected.
 
@@ -54,6 +57,8 @@ Reconcile changed accepted behavior with the authoritative record using the proj
 | --- | --- |
 | Multiple steps, architectural choices, dependencies, or significant existing-system changes | [Change workflow](references/workflow.md) |
 | Ambiguity, conflicting contracts, requirement coverage, changed or removed behavior, or important validation choices | [Specification review](references/spec-review.md) |
+| Executable behavior changes, test-result interpretation, legacy characterization, or assertion integrity | [Testing](references/testing.md) |
+| Context-specific terms, business-rule ownership, state, invariants, consistency, or recurring boundary coupling | [Domain modeling](references/domain.md) |
 | Resume after context replacement or transfer task responsibility | [Workflow checkpoints](references/workflow.md); [handoff template](assets/handoff.md) only if useful |
 | Cooperating developers or chats sharing resources | [Collaboration](references/collaboration.md) |
 | Delegate work, assess worker results, or preserve outstanding workers | [Subagents](references/subagents.md) |

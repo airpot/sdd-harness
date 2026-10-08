@@ -18,7 +18,7 @@ import zipfile
 
 def git(root: Path, *args: str, optional: bool = False, env: dict | None = None,
         hooks: Path | None = None) -> bytes:
-    options = ['-c', 'core.hooksPath=' + str(hooks)] if hooks is not None else []
+    options = ['-c', 'core.hooksPath=' + str(hooks), '-c', 'core.fsmonitor='] if hooks is not None else []
     result = subprocess.run(['git', '-C', str(root), *options, *args], capture_output=True, env=env)
     if result.returncode and not optional:
         raise ValueError(result.stderr.decode('utf-8', 'replace').strip())
@@ -343,9 +343,15 @@ def restore(archive: Path, output: Path) -> dict:
             run('diff-index', '--cached', '--quiet', head, '--')
         elif run('ls-files', '--stage', '-z'):
             raise ValueError('Unborn restore requires an empty index')
+        # Index validation can change metadata. Observe HEAD after all other Git commands.
+        if not restore_index(output, env, empty).is_file():
+            raise ValueError('Restore did not create the output repository index')
+        head = text(run('rev-parse', '--verify', 'HEAD', optional=True)) or None
+        if head != manifest['source']['head']:
+            raise ValueError('Restored HEAD does not match the snapshot')
         verify_restored_files(output, manifest)
-    return {'restored': str(output), 'head': manifest['source']['head'],
-            'files': len(manifest['files']), 'verified': True, 'write_authorized': False}
+    return {'restored': str(output), 'head': head, 'files': len(manifest['files']),
+            'verified': True, 'write_authorized': False, 'safe_to_remove': False}
 
 
 def main() -> int:

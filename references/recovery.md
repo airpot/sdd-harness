@@ -65,8 +65,13 @@ It uses that same environment for every restore Git command. It does not change 
 This includes repository, worktree, index, object-store, and repository-local configuration overrides.
 Git documents this procedure for commands that target another repository in its [hook guidance](https://git-scm.com/docs/githooks).
 Restore checks the output's actual Git directory, common directory, worktree root, HEAD, and own index before it reports success.
-Every restore Git command uses a temporary empty hook directory. Initialization also uses an empty template directory.
-These command-local settings prevent inherited templates and hooks from changing restored files. They do not change user Git configuration.
+Every Git command that targets the restore output uses a temporary empty hook directory and an empty `core.fsmonitor` value.
+Initialization also uses an empty template directory.
+These command-local settings prevent inherited templates, hooks, and fsmonitor callbacks from changing restored state.
+The empty fsmonitor value also disables callbacks on supported Git 2.29 versions.
+These settings do not change user Git configuration.
+After the index check, restore checks actual metadata and HEAD again.
+The success result reports this final observed HEAD.
 After all Git operations, restore checks every actual regular working file against the manifest inventory and content hashes.
 This check includes selected ignored results and excludes only the root Git metadata directory.
 Deleted snapshot paths must remain absent. Unexpected files and changed content prevent a successful verification result.

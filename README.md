@@ -1,12 +1,28 @@
 # SDD Harness
 
-当前版本：**0.8.2**。以 SDD 为主线，默认独立开发，按需启用协作与辅助方法。
+当前版本：**0.9.0**。以 SDD 为主线，默认独立开发，按需启用协作与辅助方法。
 
-本仓库为可直接安装的独立发布输出。开发、测试与评测留在统一源码工作区；来源提交、文件哈希与历史资料映射见[发布清单](release/0.8.2-manifest.json)。
+本仓库为可直接安装的独立发布输出。开发、测试与评测留在统一源码工作区；来源提交、文件哈希与历史资料映射见[发布清单](release/0.9.0-manifest.json)。
 
 0.8.1 修正独立 agent 的效果比较入口，并明确归档前须另存暂存区独有的必要成果。运行脚本与 16 文件包结构保持原样。
 
 0.8.2 修复恢复终态核验：恢复命令临时禁用 fsmonitor 回调，核验 index 后重查实际 Git 元数据与 HEAD，再返回所见 HEAD。两项真实仓库回归及 Git 2.29.2 实测通过。16 文件结构、安装器与权限边界保持原样。
+
+## 项目模板
+
+0.9.0 新增五类可选模板，含规格提示、验收例证与按需检查；共用现有 SDD 主流程。
+
+| 项目 | 模板关注点 |
+| --- | --- |
+| [Skill](assets/profiles/skill.md) | 调用范围、实际成果、资源、打包与安装 |
+| [MCP](assets/profiles/mcp.md) | 所选协议与客户端、契约、权限、写入及重试 |
+| [Agent](assets/profiles/agent.md) | 成果、工具与预算、停止、续接及实际运行评测 |
+| [MIS／业务系统](assets/profiles/business-system.md) | 角色、状态、不变量及完整业务流程 |
+| [数据分析／决策支持](assets/profiles/data-analysis.md) | 数据与指标口径、独立预期样例、复现与输出依据 |
+
+按实际交付物选主模板，混合项目仅叠加相关能力，并在现有记录中合并契约和验收条件。业务报表可组合业务与分析；分析 agent 可按需组合 Agent、MCP 与分析。选择规则见[模板入口](references/project-profiles.md)。
+
+小修改仍走简短流程，无须初始化模板、组队或基础设施。模板不另立权威规格；预测、回测、迁移与流水线检查仅在实际涉及时启用。
 
 ## 辅助方法
 
@@ -29,7 +45,7 @@ git clone https://github.com/airpot/sdd-harness.git "$HOME/.agents/skills/sdd-ha
 
 若目标已存在，先将旧安装保存在技能发现目录之外。随后在 Codex 调用 `$sdd-harness`；必要时刷新发现或新开对话。
 
-若只需 16 个技能文件：
+若只需 22 个技能文件：
 
 ```text
 git clone https://github.com/airpot/sdd-harness.git
@@ -37,7 +53,7 @@ cd sdd-harness
 python scripts/install.py --into "~/.agents/skills"
 ```
 
-亦可下载[安装包](dist/sdd-harness-0.8.2.zip)与 [SHA-256 校验文件](dist/sdd-harness-0.8.2.sha256)，解压后运行 `python sdd-harness/scripts/install.py --into "~/.agents/skills"`。没有 Python 时复制完整目录，不可只复制入口。
+亦可下载[安装包](dist/sdd-harness-0.9.0.zip)与 [SHA-256 校验文件](dist/sdd-harness-0.9.0.sha256)，解压后运行 `python sdd-harness/scripts/install.py --into "~/.agents/skills"`。没有 Python 时复制完整目录，不可只复制入口。
 
 ZCode、DeepSeek Harness 与实际宿主能力的检查见[安装说明](references/install.md)。跨宿主复制成功不等于原生能力已验证。
 
@@ -47,4 +63,4 @@ ZCode、DeepSeek Harness 与实际宿主能力的检查见[安装说明](referen
 
 内部开发指令采用英语与 [STE 写作规则](references/writing.md)，README 使用中文。短句与格式检查不构成完整 ASD-STE100 词典合规认证。
 
-本版核验了打包、解压、安装、重复安装及拒绝覆盖本地修改。既有八案与 0.8.1 两案决策观察用于检查指令边界，不能证明真实项目普遍提效。历史开发资料位于 `history/source-0.7.3/`，其原始路径为历史记录，不是本版执行入口。
+本版核验了打包、解压、安装、重复安装及拒绝覆盖本地修改。本轮八个规划场景在旧版与新版各检查 40 项标准；旧版已全部通过，故不宣称模型判断提效。规划与安装检查不证明真实项目普遍有效；原生 ZCode、DeepSeek 与自动发现仍有未验证范围。历史开发资料位于 `history/source-0.7.3/`，其原始路径为历史记录，不是本版执行入口。

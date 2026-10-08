@@ -2,7 +2,7 @@
 name: sdd-harness
 description: Use when implementing or resuming project changes against specifications, checking acceptance evidence, integrating worker results, preparing releases, or preserving worktrees.
 metadata:
-  version: "0.8.2"
+  version: "0.9.0"
 ---
 
 # SDD Harness
@@ -55,6 +55,7 @@ Reconcile changed accepted behavior with the authoritative record using the proj
 
 | Condition | Read |
 | --- | --- |
+| Project-specific specification prompts, acceptance examples, or execution checks | [Optional project profiles](references/project-profiles.md) |
 | Multiple steps, architectural choices, dependencies, or significant existing-system changes | [Change workflow](references/workflow.md) |
 | Compare effectiveness of development or execution methods | [Effectiveness comparisons](references/workflow.md#compare-effectiveness) |
 | Ambiguity, conflicting contracts, requirement coverage, changed or removed behavior, or important validation choices | [Specification review](references/spec-review.md) |

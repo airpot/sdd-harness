@@ -17,6 +17,9 @@ Check local links from the saved record's directory. Do not copy a second author
 Independent development is the default. A small task needs no collaboration setup.
 For new or changed internal prose, follow [the writing policy](writing.md).
 
+For project-specific prompts or checks, use [optional project profiles](project-profiles.md).
+Select only relevant capabilities. Keep one accepted record and the existing short path.
+
 For a new project, select one feature with observable acceptance conditions.
 For an existing system, record relevant behavior and known failures.
 Identify the behavior to change and the compatibility boundaries to keep.

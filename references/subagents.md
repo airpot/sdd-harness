@@ -126,7 +126,8 @@ An accepted result can come from a worker that remains available for further tas
 A returned result can remain unaccepted.
 An interrupt acknowledgement can leave a writer or descendant running.
 Check actual stopped execution before reassigning its write scope or removing its worktree.
-After uncertain external effects, observe actual state before retrying.
+After uncertain external effects, apply [the shared recovery rule](workflow.md#resolve-uncertain-effects) before retrying.
+Keep the selected attempt, supersession, stopped-execution, and authorization checks.
 
 Before replacing the main chat, save outstanding worker identities, scopes, artifacts, pending decisions, and next actions.
 Keep ready but unverified results visibly unverified.

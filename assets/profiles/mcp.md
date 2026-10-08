@@ -25,12 +25,15 @@ Suppose an accepted reservation contract uses an application request identity, `
 This identity differs from a protocol message ID.
 A client submits `reservation_key=R17` for one seat.
 The server creates the reservation, but the client loses the response.
-The client checks actual state or retries with `R17` under the accepted contract.
+The client uses supported outcome inspection or retries with `R17` under applicable, verified replay protection.
 The expected result returns the same reservation without another seat deduction.
 Changed inputs for `R17` produce the contract's defined conflict result.
 
-This example requires no retry mechanism that the project has not accepted.
-After uncertain effects, inspect actual state before repeating a write.
+This example requires no retry mechanism that the project has not accepted and verified.
+Apply [the shared recovery rule](../../references/workflow.md#resolve-uncertain-effects).
+If aggregate inventory cannot identify R17 and no request-status interface exists, do not invent an inspection interface.
+Authorized replay can use the same target, key, and inputs within the verified scope, retention period, and retry limits.
+Keep the outcome unresolved until applicable result evidence establishes it.
 
 ## Conditional harness checks
 

@@ -106,7 +106,7 @@ Identify unavailable metadata. Do not infer it or create another record format.
 
 If progress fails, classify the cause before retrying.
 Distinguish requirement ambiguity, missing context, setup failure, implementation failure, and unavailable capability.
-After uncertain external effects, inspect actual state before repeating the action.
+After uncertain external effects, use [uncertain-effect recovery](#resolve-uncertain-effects) before repeating the action.
 Preserve useful partial results. Change the next step to address the observed cause within existing authority and limits.
 Written instructions do not enforce tool or data permissions.
 
@@ -123,6 +123,27 @@ Review assertion, skip, mock, discovery, and runner changes under [test integrit
 
 For deferred issues, record the impact, responsible task or owner, resolution condition, and effect on acceptance.
 Do not skip a necessary requirement by calling it technical debt.
+
+## Resolve uncertain effects
+
+A timeout or lost response does not establish failure or completion.
+Keep the outcome unresolved until applicable evidence establishes it.
+Use supported outcome inspection when available. Aggregate state can be insufficient to identify one request.
+Do not invent a status interface or request access that the project does not provide.
+
+If inspection cannot resolve the outcome, an authorized retry can proceed under verified, accepted idempotent replay protection.
+The same route applies when supported outcome inspection is unavailable.
+Check that the protection applies to the actual operation, target, application request identity, inputs, and protection scope.
+Check the retention period and remaining retry limits before each retry.
+Protocol message identity alone does not establish this protection.
+Keep the protected identity and inputs unchanged. Do not change the identity or target to bypass uncertainty.
+
+This route does not grant new authority or bypass other operation controls.
+Keep publication eligibility, supersession, ownership, stopped execution, and applicable status checks.
+For publication, apply [delivery rules](delivery.md).
+If neither inspection nor applicable replay protection permits safe progress, do not repeat the effect.
+Preserve partial results and state the recovery gap and supported next action.
+If another response is lost, keep the outcome unresolved and reassess the remaining limits.
 
 ## Integrate against the current target
 

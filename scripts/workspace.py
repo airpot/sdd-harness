@@ -102,6 +102,9 @@ def local_file(root: Path, name: str) -> Path:
         if stat.S_ISLNK(info.st_mode) or (
                 getattr(info, 'st_file_attributes', 0) & getattr(stat, 'FILE_ATTRIBUTE_REPARSE_POINT', 0x400)):
             raise ValueError(f'Links require a native snapshot tool: {name}')
+        # Descendants cannot exist below an observed regular file.
+        if stat.S_ISREG(info.st_mode) and current != path:
+            break
     resolved = path.resolve()
     if not resolved.is_relative_to(root):
         raise ValueError(f'Path leaves repository: {name}')
@@ -143,7 +146,7 @@ def inventory(root: Path, includes: list[str]) -> tuple[list[str], list[str]]:
         path = local_file(root, name)
         if path.is_file():
             present.append(name)
-        elif not path.exists() and name in tracked:
+        elif name in tracked and (not path.exists() or path.is_dir()):
             missing.append(name)
         else:
             raise ValueError(f'Unsupported repository entry: {name}')
@@ -292,7 +295,8 @@ def verify_restored_files(root: Path, manifest: dict) -> None:
         raise ValueError('Restored file inventory does not match the snapshot')
     for name in manifest['deleted']:
         path = local_file(root, name)
-        if path.exists():
+        if path.exists() and not (
+                path.is_dir() and any(saved.startswith(name + '/') for saved in expected)):
             raise ValueError(f'Deleted snapshot path was recreated: {name}')
 
 

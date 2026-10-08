@@ -74,7 +74,9 @@ After the index check, restore checks actual metadata and HEAD again.
 The success result reports this final observed HEAD.
 After all Git operations, restore checks every actual regular working file against the manifest inventory and content hashes.
 This check includes selected ignored results and excludes only the root Git metadata directory.
-Deleted snapshot paths must remain absent. Unexpected files and changed content prevent a successful verification result.
+A deleted tracked regular file can be replaced by a directory when saved current descendants require that directory.
+Other deleted snapshot paths must remain absent. A recreated regular file or an undeclared directory prevents success.
+Unexpected files and changed content prevent a successful verification result.
 An unborn repository remains unborn and receives an empty index in the output.
 It does not restore native chats, exact staging state, other branches, original paths, processes, credentials, or external databases.
 After recovery, check the environment and evidence again.

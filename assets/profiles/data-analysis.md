@@ -1,47 +1,63 @@
 # Data-Analysis Project Prompts
 
-Use these prompts for a report, analysis, model, or repeatable data transformation.
+Use these prompts for a report, analysis, model, or data transformation that you can do again.
 For selection and composition, read [project profiles](../../references/project-profiles.md).
-Fill relevant prompts in the existing record. Keep its format and authority.
+Write information for the related prompts in the record that the project uses.
+Keep its format and authority.
 
 ## Specification prompts
 
-- Identify permitted sources, source versions, access permissions, and coverage.
-- Define data quality rules for missing values, duplicates, invalid values, and exclusions.
-- Define observation grain, units, time basis, time zone, and relevant availability times.
-- Define metric formulas, filtering, grouping, denominators, and rounding rules.
-- State the analysis method, assumptions, uncertainty, and limitations.
-- Supply independent expected examples with a source or calculation basis.
-- Define reproducible execution inputs, code, dependencies, configuration, and output provenance.
-- If prediction or backtesting applies, define time splits, leakage checks, and evaluation conditions.
-- If a recurring pipeline applies, define retry, recovery, freshness, and delivery requirements.
+For the related prompts, use these instructions:
 
-Use authorized versions, hashes, or query definitions to identify sensitive inputs.
-Do not require private or licensed raw datasets to enter Git.
-If exact replay is restricted, state the restriction and its effect on validation.
+- Identify permitted sources, source versions, access permissions, and coverage.
+- Give data quality rules for missing values, duplicates, invalid values, and exclusions.
+- Give observation grain, units, time basis, time zone, and related availability times.
+- Give metric formulas, filtering, grouping, denominators, and rounding rules.
+- Give the analysis method, assumptions, uncertainty, and limitations.
+- Supply expected examples from a source or calculation that does not use the implementation output.
+- Give the inputs, code, dependencies, configuration, and output provenance that let you do the same execution again.
+- If prediction or backtesting is applicable, give time splits, leakage checks, and evaluation conditions.
+- If a pipeline operates again and again, give retry, recovery, freshness, and delivery requirements.
+
+Use permitted versions, hashes, or query definitions to identify sensitive inputs.
+Do not make Git storage necessary for raw datasets with privacy conditions or license conditions.
+If the same execution has replay restrictions, give these restrictions and their effect for validation.
 
 ## Acceptance example
 
-Suppose the accepted metric is net revenue for completed orders in CNY during a stated reporting period.
-Each input row represents one order. The accepted formula subtracts refunds from completed-order revenue.
-The permitted sample has completed orders of 100 and 200, with respective refunds of 0 and 50.
-A canceled order of 80 does not contribute.
-The independent expected result is `100 + (200 - 50) = 250 CNY`.
-The expected result comes from the accepted formula and sample, not the implementation's output.
+This example uses an accepted metric of net revenue for completed orders in CNY during a specified reporting period.
+Each input row has data for one order.
+The accepted formula subtracts refunds from revenue for completed orders.
+The permitted sample has a completed order of 100 with a refund of 0.
+It also has a completed order of 200 with a refund of 50.
+The formula does not include a canceled order of 80.
 
-The check also verifies the reporting period, source basis, and output provenance.
-These example metric choices do not replace the project's accepted definitions.
+For this example, the calculation independently gives `100 + (200 - 50) = 250 CNY`.
+The accepted formula and sample give this expected result.
+The implementation output is not the basis for this result.
+The check also makes sure that the reporting period, source basis, and output provenance are correct.
+These example metric selections do not replace the accepted definitions from the project.
 
 ## Conditional harness checks
 
-- For calculated outputs, compare independent expected examples with actual results.
-- Check applicable grain, units, time boundaries, filters, and data quality rules.
-- For reproducible execution, rerun with identified inputs and compare accepted output properties.
-- If numerical variation applies, check the accepted tolerance and stated uncertainty.
-- If sources require restricted access, check authorized retrieval and declared replay limits.
-- If prediction applies, check time splits and features available at the actual decision time.
-- If backtesting applies, check execution assumptions and information availability before each simulated decision.
-- If a pipeline applies, check relevant retry, recovery, freshness, and actual output delivery.
+For applicable checks, use these instructions:
 
-A successful run does not establish correct metric definitions or causal conclusions.
-Record input provenance, query basis, candidate, execution conditions, actual outputs, and remaining limits in the existing evidence record.
+- For calculated outputs, compare expected examples that use no implementation output with the execution results.
+- Do checks of applicable grain, units, time boundaries, filters, and data quality rules.
+- For replay, do the execution again with the identified inputs.
+  Then, compare the results with the accepted output properties.
+- If numerical variation is applicable, do a check of the accepted tolerance and specified uncertainty.
+- If sources have access restrictions, do checks of permitted retrieval and the specified replay limits.
+- If prediction is applicable, examine time splits and features available at each decision time.
+- For backtesting, before each decision in the simulation, examine execution assumptions and information availability.
+- If a pipeline is applicable, examine related retry, recovery, freshness, and output delivery from execution.
+
+Execution with satisfactory results does not show correct metric definitions or correct conclusions about causes.
+
+In the evidence record that the project uses, record:
+- Input provenance
+- The query basis
+- The candidate
+- Execution conditions
+- Execution outputs
+- Remaining limits.

@@ -1,137 +1,165 @@
 # Optional Collaboration and Local Chats
 
-## Keep independent development simple
+## Do development work independently
 
-Independent development is the default.
-Use the existing specification, task record, commands, and handoff location.
-For a small correction, keep brief acceptance and evidence references in that record.
-Do not require frontend/backend task splits, role profiles, new contract formats, mocks, or team CI setup for independent work.
+As the default procedure, do development work independently.
+Use the specification, task record, commands, and handoff location that the project uses.
+For a small correction, keep short acceptance and evidence references in this record.
+Frontend/backend task splits, role profiles, new contract formats, mocks, and team CI setup are not necessary for development work that you do independently.
 
-Use the following procedures only when tasks need cooperation or chats share project resources.
-Apply [the writing policy](writing.md) to new and changed internal prose.
-For bounded work delegated by a main agent, read [subagent rules](subagents.md).
-Subagents are optional for independent development and distinct from developer task assignments.
+If tasks must operate together or chats use shared project resources, use these procedures.
+For other work, these procedures are not necessary.
+Obey [the writing policy](writing.md) for new and changed prose for project development.
+If a main agent gives work with a specified scope and conditions, read [subagent rules](subagents.md).
+For development work that you do independently, subagents are optional.
+Subagent tasks and developer task assignments are different.
 
-## Divide work through accepted boundaries
+## Divide work at accepted boundaries
 
-For one repository, retain the existing directory structure and task tracker.
-Link each component task to the overall requirement and complete business outcome.
-Record its responsible developer, scope, dependencies, accepted contract reference, deliverable, and relevant acceptance conditions.
-Identify the existing integration duty and target. One person can perform several duties.
+For one repository, keep the directory structure and task tracker that the project uses.
+Record references from each component task to the full requirement and business outcome.
+Record its developer, scope, dependencies, accepted contract reference, deliverable, and related acceptance conditions.
+Find the integration role and target that the project uses.
+One person can have more than one role.
 
-For example, order submission needs both persistence and the correct visible result.
-A frontend task can cover submission and display. A backend task can cover validation and persistence.
-Separate component passes do not establish that the complete order workflow works.
-Frontend/backend task boundaries do not define business contexts.
-If terms or rules differ across contexts, identify rule owners and accepted translations under [domain guidance](domain.md).
+For example, order submission must keep the order in storage and show the correct result.
+A frontend task can include submission and display.
+A backend task can include validation and storage.
+Component passes are not sufficient evidence that the full order workflow operates correctly.
+Frontend/backend task boundaries do not give business contexts.
+If terms or rules are different in different contexts, find rule owners and accepted translations in [domain guidance](domain.md).
 
-Use explicit task assignments and ordinary Git branches or independent checkouts for separate work.
-Do not require cross-machine claims, heartbeat leases, or a coordination service before starting independent assigned tasks.
-If scope or ownership conflicts, resolve the affected boundary before conflicting writes.
-Continue work that does not depend on that resolution.
+Use task assignments that give scope and ownership.
+Use Git branches or different checkouts for work that you do independently.
+Cross-machine claims, heartbeat leases, and a coordination service are not necessary before you start your tasks independently.
+If scopes or owners have a conflict, get a decision for the boundary in conflict before conflicting writes.
+Continue work that does not make this decision necessary.
 
 ## Use one accepted contract
 
-Find the existing authoritative interface contract and its accepted version or commit.
-Keep its location and format. OpenAPI is optional.
-Identify proposals and stale examples separately from accepted behavior.
+Find the interface contract that has project authority and its accepted version or commit.
+Keep its location and format.
+OpenAPI is optional.
+Keep sources and acceptance status for proposals, examples that do not agree with the contract, and accepted behavior.
 
-Check the contract details that affect the task:
+Examine the contract information with effects on the task:
 
-- Requests, responses, field names, required fields, optional fields, and null behavior.
-- Errors, access rules, pagination, time formats, time zones, and units.
-- Linked business rules, observable effects, and useful examples.
+- Requests, responses, field names, fields that are mandatory or optional, and null behavior
+- Errors, access rules, pagination, time formats, time zones, and units
+- Related business rules, effects that you can see, and examples that help the task.
 
-Bind mocks and generated clients to the contract version they implement.
-Compare their behavior with the accepted contract. Correct stale fixtures and consumer assumptions.
-If the contract changes, review affected generated files, examples, and earlier evidence.
-Do not create another authoritative copy merely to support this skill.
+Record the contract version that mocks and generated clients use for their behavior.
+Compare their behavior with the accepted contract.
+Correct fixtures and consumer information without sufficient evidence that does not agree with the contract.
+If the contract changes, examine generated files, examples, and previous evidence with effects from this change.
+Do not make one more copy with contract authority only to use this skill.
 
-## Check the actual combination
+## Examine the combination
 
-Record component evidence separately from evidence for the complete workflow.
-A frontend result with a mock can establish only the behavior that the mock checks.
-Before complete acceptance, obtain applicable evidence from the actual provider and consumer combination.
-Check relevant request validation, authentication, errors, empty results, and accepted business effects.
-Schema checks alone do not establish business behavior or access enforcement.
-Contract compatibility checks cover only tested requests, responses, errors, and versions.
-Check actual consumer requests against the provider's accepted behavior, not only matching response shapes.
-Check required persistence and other side effects in the complete workflow.
-Keep required checks that failed, did not run, or remain blocked visible.
+Keep component evidence and evidence for the full workflow in different groups.
+A frontend result with a mock gives evidence only for behavior that the mock examines.
+Before full acceptance, get applicable evidence from the provider and consumer combination in execution.
+Do checks of related request validation, authentication, errors, empty results, and accepted business effects.
+Schema checks are not sufficient evidence of correct business behavior or access enforcement.
+Contract compatibility checks include only the requests, responses, errors, and versions that they examined.
 
-Construct one exact combined candidate against the current integration target.
-Reference its accepted contract version, necessary configuration, input data, and repeatable check commands.
-Validate the complete required workflow on that candidate.
-Review evidence applicability after relevant target, contract, dependency, or environment changes.
-Independent branch success does not authorize selection of the newest branch for release.
-Use [delivery rules](delivery.md) for authorized publication of the selected candidate.
+Compare consumer requests with the provider's accepted behavior, not only response shapes that agree.
+Do checks of necessary storage changes and other side effects in the full workflow.
+Keep records of necessary checks with results that are not satisfactory, no execution, or blockers.
 
-## Change shared behavior deliberately
+Make one combined candidate with the integration target at this time.
+Record its commit or artifact hashes to identify this candidate.
+Give references to its accepted contract version, necessary configuration, input data, and commands for checks that you can do again.
+Do the checks for the full necessary workflow for this candidate.
+After related target, contract, dependency, or environment changes, examine if the evidence is applicable.
 
-For contract, shared type, configuration, or schema changes, identify affected tasks and callers.
-Record the proposed behavior, compatibility impact, and necessary migration or transition.
-Keep unaccepted changes as proposals. Follow existing project acceptance authority before dependent implementation.
-Coordinate affected task updates and relevant validation before accepting the combination.
+Satisfactory results from branches that operate independently give no approval to select the newest branch for release.
+Use [delivery rules](delivery.md) for permitted publication of the selected candidate.
 
-Use an additive transition when compatibility requires one.
-Preserve original evidence and defect reproduction. Do not silently change expected results to fit the proposal.
+## Change shared behavior
 
-## Reference project harness settings
+For contract, shared type, configuration, or schema changes, find tasks and callers with effects from this change.
+Record the behavior in the change proposal, compatibility effects, and necessary migration or transition.
+Keep changes without acceptance as proposals.
+Before implementation that uses the proposal, obey the project's acceptance authority.
+Before acceptance of the combination, do task coordination for updates with effects from the change and related validation.
 
-Use existing project instructions, component READMEs, task records, and supported host settings.
-For a cooperating task, retain only the references needed to run and check its scope.
+If compatibility makes a transition necessary, use a transition that adds behavior before removal.
+Keep initial evidence and defect reproduction.
+Do not change expected results without a report of the cause to make them agree with the proposal.
+
+## Give references to project harness settings
+
+Use project instructions, component READMEs, task records, and host settings that are available.
+For a task that must operate with other tasks, keep only references necessary to do and examine its work.
 
 | Setting | Necessary reference |
 | --- | --- |
-| Project entry | Existing specification, task tracker, instructions, and writing policy. |
-| Task boundary | Assigned scope, relevant paths, dependencies, and integration duty. |
-| Shared contract | Accepted location and exact version; related examples or generated clients. |
-| Workspace | Independent checkout or worktree, branch, and actual activity observations. |
-| Runtime resources | Relevant ports, databases, containers, logs, and isolated test data. |
-| Checks | Actual component and combined commands, setup, inputs, pass criteria, and logs. |
-| Integration | Current target and exact combined candidate. |
-| Permission evidence | Observed native permissions, hooks, review rules, and release entry when applicable. |
+| Project entry | Specification, task tracker, instructions, and writing policy that the project uses. |
+| Task boundary | Scope from the task assignment, related paths, dependencies, and integration role. |
+| Shared contract | Accepted location and version or commit. Related examples or generated clients. |
+| Workspace | Checkout or worktree that operates independently, branch, and activity that you see. |
+| Runtime resources | Give references to related ports, databases, containers, logs, and test data. Use available controls or different resource instances that prevent conflicts. |
+| Checks | Component and combined commands, setup, inputs, pass criteria, and logs from the checks. |
+| Integration | Target at integration and identity of the combined candidate. |
+| Permission evidence | If permission evidence is applicable, give the native permissions, hooks, review rules, and release entry that you examined. |
 
-These are record references, not a new native configuration schema.
-Do not invent host configuration keys or successful check results.
-Written path scopes instruct agents. They do not enforce filesystem permissions.
-Avoid unnecessary secrets in model context. Reference protected inputs through existing authorized controls.
+These are record references.
+They do not give a new schema for native configuration.
+Do not give host configuration keys without a host source.
+Do not give check results without evidence from execution.
 
-Check actual host or repository controls before claiming enforcement.
-CODEOWNERS alone does not prove both parties must approve or that writes are restricted.
-Use existing Git and CI controls within authorization. Do not require new CI infrastructure merely to use this skill.
-Do not change global agent configuration to force these settings.
+Written path scopes give instructions to agents.
+They do not supply native controls for filesystem permissions.
+For secrets that are not necessary, do not include them in model context.
+Give references to inputs with access restrictions with permitted controls that the project uses.
 
-## Protect local work and handoffs
+Before you give a report of enforcement, examine the host or repository controls in use directly.
+CODEOWNERS is not sufficient evidence that each party must give approval.
+It is not sufficient evidence of controls that prevent writes.
+Use Git and CI controls that the project uses, with authorization.
+New CI infrastructure is not necessary only to use this skill.
+Do not change global agent configuration to make these settings mandatory.
 
-Before writing, identify the repository, checkout, branch, task owner, active chats, and background tasks.
-The bundled `inspect` command observes Git only. Unknown activity does not mean idle.
-A clean Git status or a closed window does not prove that writers stopped.
-If a chat enters a busy worktree, use a fixed snapshot or a separate worktree.
-Do not commit, clean, or publish from the original checkout without authority.
+## Keep local work and handoffs
 
-Isolate conflicting ports, databases, containers, and logs. A worktree isolates files only.
+Before writes, find the repository, checkout, branch, task owner, active chats, and background tasks.
+The skill's `inspect` command examines Git only.
+Unknown activity is not evidence that no execution is active.
+A clean Git status or a closed window is not sufficient evidence that writers stopped.
+If a chat starts in a worktree with active writers, select one of these:
 
-For a planned handoff, save results and evidence before the original executor stops writing.
-Before transferring responsibility, confirm that the original writers stopped.
-The next executor must check current ownership and actual state before continuing.
+- A snapshot that does not change
+- A different worktree.
+Do not commit from the initial checkout without approval.
+Do not use Git cleanup or publication from this checkout without approval.
 
-After a disconnection, identify missing results from the latest accessible checkpoint.
-If stopped state is uncertain, continue independent work in a separate checkout.
-If an earlier executor returns, check the current task assignment before writing.
-Task records do not stop processes or grant release authority.
+Use available controls or different resource instances to prevent conflicts for ports, databases, containers, and logs.
+A worktree keeps only files in a different directory.
 
-Use ordinary Git for portable code results.
-Transfer necessary artifacts to authorized storage with checksums and recovery steps.
-Check received results. Do not transfer credentials by default.
-Use [recovery rules](recovery.md) before removing worktrees.
+Before a handoff and before the initial executor stops writes, keep results and evidence.
+Before the next executor gets responsibility, make sure that the initial writers stopped.
+Before the next executor continues, it must examine ownership and state at this time.
+
+After a disconnection, find missing results from the last checkpoint that you can read.
+If you do not know if writers stopped, continue work independently in a different checkout.
+If a previous executor is available again, examine the task assignment at this time before writes.
+Task records do not stop processes or give release authority.
+
+Use Git for portable code results.
+Move necessary artifacts to permitted storage with checksums and recovery steps.
+Examine received results.
+As the default procedure, keep credentials in their initial storage.
+Use [recovery rules](recovery.md) before worktree removal.
 
 ## Use different agents
 
-Use the same instruction version when developers cooperate.
-Read [installation instructions](install.md) for actual discovery locations.
-Check each host's tools, permissions, and hooks. Similar event names do not prove equivalent behavior.
-If automatic loading is unavailable, invoke the skill explicitly.
+When developers operate together, use the same instruction version.
+Read [installation instructions](install.md) for discovery locations that each host uses.
+Examine each host's tools, permissions, and hooks.
+Event names that are almost the same are not sufficient evidence of equivalent behavior.
+If automatic invocation is not available, use the skill name for invocation.
 
-If necessary, add a short entry to existing project instructions. Preserve their existing content.
-Keep development, integration, release authorization, and native enforcement distinct.
+If a skill entry is necessary, add a short entry to project instructions that the project uses.
+Keep their content.
+Keep the scope and controls for development, integration, release approval, and native enforcement.

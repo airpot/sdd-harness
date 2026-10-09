@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Copy the complete skill into a selected agent skills directory; never overwrite."""
+"""Install all skill files in a selected directory for agent skills. Do not replace a skill."""
 import argparse
 import hashlib
 import json
@@ -60,19 +60,19 @@ def install(parent):
     parent = Path(parent).expanduser().resolve()
     target = parent / 'sdd-harness'
     if parent.is_relative_to(source):
-        raise ValueError('Installation directory must be outside the source skill')
+        raise ValueError('Installation directory must not be in the source skill')
     if not (source / 'SKILL.md').is_file():
-        raise ValueError('Missing SKILL.md; copy the complete distribution')
+        raise ValueError('SKILL.md is missing. Get a copy of all distribution files')
     files = skill_files(source)
     if not files:
         raise ValueError('Cannot install an empty skill inventory')
     expected = {p.relative_to(source).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
     if is_link(target):
-        raise ValueError('Refusing to replace a linked skill')
+        raise ValueError('Cannot replace a skill at a link')
     if target.exists():
         if target.is_dir() and contents(target) == expected:
             return {'status': 'already-installed', 'installed': str(target)}
-        raise ValueError('Existing skill differs; preserve it as a backup before installing')
+        raise ValueError('The installed skill is different. Before installation, keep it as a backup')
     parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='.sdd-install-', dir=parent) as temporary:
         staged = Path(temporary) / 'sdd-harness'
@@ -81,16 +81,16 @@ def install(parent):
             copied.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(path, copied)
         if contents(staged) != expected:
-            raise ValueError('Source changed or copy verification failed')
+            raise ValueError('Source changed or the copy does not agree with the source')
         if is_link(target) or target.exists():
-            raise ValueError('Target appeared during installation; preserve it and retry')
+            raise ValueError('Target is there after installation started. Keep it and try again')
         staged.rename(target)
     return {'status': 'installed', 'installed': str(target), 'files': len(expected)}
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--into', required=True, help='Parent skills directory, not the final skill folder')
+    parser.add_argument('--into', required=True, help='Parent skills directory. Do not give the directory for the installed skill')
     args = parser.parse_args()
     try:
         print(json.dumps(install(args.into), ensure_ascii=True))

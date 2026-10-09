@@ -1,49 +1,67 @@
 # Agent Project Prompts
 
-Use these prompts for an agent that acts toward an accepted goal.
+Use these prompts for an agent that does work for an accepted goal.
 For selection and composition, read [project profiles](../../references/project-profiles.md).
-Fill relevant prompts in the existing record. Keep its format and authority.
+Write information for the related prompts in the record that the project uses.
+Keep its format and authority.
 
 ## Specification prompts
 
-- State the accepted goal, observable outcome, and excluded work.
-- Define allowed autonomous actions, tools, data access, and consequential side effects.
-- Define necessary approval points through existing authority rules.
-- Define budget, stop conditions, failure reporting, and recovery behavior.
-- Identify which limits the host enforces and which remain written instructions.
-- Identify durable context needed to continue after context loss or interruption.
-- Define saved task state, completed effects, unresolved work, and the next action.
-- If delegation helps, define bounded responsibilities and acceptance of returned results.
+For the related prompts, use these instructions:
 
-Independent execution remains the default.
-Delegation is optional. No fixed agent team or distributed coordinator is required.
-For required controls, check actual host support before dependent work.
+- Give the accepted goal, observable outcome, and work that the task does not include.
+- Give permitted autonomous actions, tools, data access, and side effects that can be important.
+- Give necessary approval points in the authority rules that the project uses.
+- Give the budget, stop conditions, failure reports, and recovery behavior.
+- Identify the limits with host enforcement and the limits that are only written instructions.
+- Identify the context to keep for continuation after context loss or interruption.
+- Give the recorded task state, completed effects, work without a resolution, and the next action.
+- If delegation helps, give responsibilities with specified limits and acceptance of the results that the subagents give.
+
+The default is work that the agent does independently.
+Delegation is optional.
+An agent team that must keep the same composition is not necessary.
+A distributed coordinator is not necessary.
+
+Before work for which a control is necessary, make sure that the host has the control.
 
 ## Acceptance example
 
-Suppose the accepted task creates `summary.md` from a permitted local document set.
-The agent may write that artifact but may not send messages or publish it.
-An interruption occurs after it writes part of the summary.
-The resumed agent reads saved task state and checks the actual artifact.
-It completes the accepted summary without duplicating completed external effects.
-The acceptance check examines the summary, relevant tool effects, and truthful completion report.
+For this example, the accepted task makes `summary.md` from a permitted set of local documents.
+The agent can write the artifact, but it is not permitted to send messages or publish the artifact.
+An interruption occurs after the agent writes part of the summary.
+After the interruption, the agent reads the recorded task state and examines the artifact.
+It completes the accepted summary and does not cause the completed external effects again.
+The acceptance check examines the summary, related tool effects, and a completion report that agrees with the evidence.
 
-An example budget can bound tool calls or elapsed time.
-Before relying on a hard budget control, identify available native enforcement.
+An example budget can give limits for tool calls or elapsed time.
+
+Before you use a hard budget control, identify the enforcement that the host supplies.
 
 ## Conditional harness checks
 
-- For deterministic components, check useful rules such as output paths, schemas, calculations, and stop transitions.
-- For agent behavior, run representative tasks against observable artifacts and actual side effects.
-- For model behavior acceptance, repeat bounded trials under declared inputs and execution conditions.
-- Before model trials, state their count, failure allowance, and acceptance threshold.
-- After model trials, record observed variation and its effect on acceptance.
-- If stop conditions apply, check actual stopping behavior and the reported unfinished work.
-- If recovery applies, interrupt execution and check saved state against actual completed effects.
-- If tools can cause external effects, check their applicable authorization and uncertain completion handling.
-- If delegation applies, check combined task outcomes and disposition of failed or incomplete results.
+For applicable checks, use these instructions:
 
-Keep deterministic evidence and model trial evidence distinct.
-One successful response does not establish reliable task completion.
-Written budgets do not enforce tool restrictions, elapsed time, or spending limits.
-Record available enforcement, missing controls, actual results, and variance limits in the existing evidence record.
+- For deterministic components, do checks of rules that help.
+  For example, do checks of output paths, schemas, calculations, and stop transitions.
+- For agent behavior, do typical tasks. Then, examine their artifacts and side effects from execution.
+- For acceptance of model behavior, do trials again with specified limits, inputs, and execution conditions.
+- Before model trials, give their count, failure allowance, and acceptance threshold.
+- After model trials, record the variation that you found and its effect for acceptance.
+- If stop conditions are applicable, examine behavior when the agent stops.
+  Also examine the report about work that is not completed.
+- If recovery is applicable, make an interruption occur during execution.
+  Then, compare the recorded state with the completed effects from execution.
+- If tools can cause external effects, examine their applicable authorization and recovery for completion with an unknown outcome.
+- If delegation is applicable, examine task outcomes in combination. Also examine dispositions of results that are not satisfactory or not completed.
+
+Record evidence from deterministic checks and model trials in different groups.
+
+One satisfactory response does not show reliability for task completion.
+Written budgets are not controls for tool restrictions, elapsed time, or spending limits.
+
+In the evidence record that the project uses, record:
+- Available enforcement
+- Missing controls
+- Execution results
+- Variance limits.

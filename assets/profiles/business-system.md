@@ -2,46 +2,62 @@
 
 Use these prompts for a business application with domain workflows and persisted state.
 For selection and composition, read [project profiles](../../references/project-profiles.md).
-Fill relevant prompts in the existing record. Keep its format and authority.
+Write information for the related prompts in the record that the project uses.
+Keep its format and authority.
 
 ## Specification prompts
 
-- Define domain terms and the accepted business outcome.
-- Identify actual roles and their permitted actions.
-- Define relevant states, transitions, and invalid transitions.
-- Define data invariants, ownership, and required consistency boundaries.
-- Identify existing components, callers, and actual interface contracts.
-- Define inputs, outputs, error behavior, and compatibility requirements at those boundaries.
-- If persisted data changes, define migration and recovery requirements.
-- If runtime operations change, define necessary rollout, observation, and operational recovery requirements.
+For the related prompts, use these instructions:
 
-Preserve the accepted architecture, including an existing monolith.
-Use actual component boundaries. Do not impose layers, services, or a new framework.
-For significant domain ambiguity, use [domain guidance](../../references/domain.md).
+- Give domain terms and the accepted business outcome.
+- Identify the roles from the business contract and their permitted actions.
+- Give related states, transitions, and invalid transitions.
+- Give data invariants, ownership, and necessary consistency boundaries.
+- Identify the components that the system uses, their callers, and their interface contracts.
+- Give inputs, outputs, error behavior, and compatibility requirements at these boundaries.
+- If persisted data changes, give migration and recovery requirements.
+- If runtime operations change, give necessary rollout, observation, and recovery requirements during operation.
+
+Keep the accepted architecture.
+If the system has a monolith, keep it in the accepted architecture.
+Use the component boundaries that the system has.
+Do not add layers, services, or a new framework as requirements.
+For important domain ambiguity, use [domain guidance](../../references/domain.md).
 
 ## Acceptance example
 
-Suppose the accepted purchase contract permits an approver to approve a pending order.
-Approval creates one stock reservation and changes the order state to approved.
-A later approval attempt returns the accepted existing result without another reservation.
-A user without the approver role receives the defined rejection.
-The order and stock remain unchanged after that rejection.
+For this example, the accepted purchase contract lets an approver give approval for an order in the pending state.
+Approval makes one stock reservation and changes the order state to approved.
+A subsequent approval attempt gives the same accepted result without a second reservation.
+A user without the approver role gets the specified rejection.
+After this rejection, the order and stock do not change.
 
-The vertical check follows the real request entry through authorization, domain behavior, and persisted state.
-The example does not require a separate service for any step.
-Its roles and reservation rule become requirements only through the project's accepted contract.
+The vertical check starts at the application request entry.
+It examines authorization, domain behavior, and persisted state in this flow.
+For each step in this example, a service only for the step is not necessary.
+The roles and reservation rule become requirements only if the project accepts them in its contract.
 
 ## Conditional harness checks
 
-- For changed business behavior, check a complete vertical flow through the actual components.
-- Check accepted state transitions, relevant invalid transitions, and data invariants.
-- If roles affect the flow, check permitted and rejected actions against actual state.
-- If component contracts change, check actual consumers and providers at the affected boundary.
-- If concurrent actions threaten an invariant, check the relevant competing actions and final state.
-- If migration applies, check representative old data, the transformed state, and accepted recovery behavior.
-- If deployment changes, check required operations in the accepted target environment.
-- If reports or analysis support the outcome, add only relevant [data-analysis prompts](data-analysis.md).
+For applicable checks, use these instructions:
 
-Isolated component checks do not establish the complete business outcome.
-Mocked boundaries do not prove compatibility with actual dependencies.
-Record the candidate, contract, environment, observed state, and remaining gaps in the existing evidence record.
+- For changed business behavior, do a check of a full vertical flow through the components that the application uses.
+- Do checks of accepted state transitions, related invalid transitions, and data invariants.
+- If roles have an effect for the flow, compare permitted and rejected actions with state from execution.
+- If component contracts change, do checks of consumer and provider components at the related boundaries.
+- For concurrent actions that can cause an invariant failure, do a check of these concurrent actions.
+  Also examine the state after these actions.
+- If migration is applicable, do checks with typical data from before migration.
+  Also examine the state after transformation and the accepted recovery behavior.
+- If deployment changes, do checks of necessary operations in the accepted target environment.
+- If reports or analysis help give the outcome, add only related [data-analysis prompts](data-analysis.md).
+
+Checks of isolated components do not show the full business outcome.
+Mocks at component boundaries do not show compatibility with the dependencies in the application.
+
+In the evidence record that the project uses, record:
+- The candidate
+- The contract
+- The environment
+- State from the checks
+- Remaining gaps.

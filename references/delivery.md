@@ -1,93 +1,109 @@
 # Acceptance, Integration, and Publication
 
-## Assess completion
+## Examine completion
 
-Check each necessary acceptance condition against actual results and currently applicable evidence.
-Distinguish implementation, task validation, combined acceptance, publication, and resource cleanup.
-A filled template or a larger test count does not prove completion.
-Write internal completion records according to [the writing policy](writing.md).
+Examine each necessary acceptance condition with results and evidence that are applicable at this time.
+Keep scope, status, and approval for each operation: implementation, task validation, combined acceptance, publication, and resource cleanup.
+Content in a template or a larger test count is not sufficient evidence of completion.
+Obey [the writing policy](writing.md) for completion records for project development.
 
-Review source requirement coverage using [specification review](spec-review.md).
-Do not limit coverage checks to conditions derived from an incomplete task list.
-For every necessary condition, require applicable passing evidence before reporting complete acceptance.
-If a required result failed, is blocked, or did not run, report incomplete acceptance.
-State the failed, blocked, or unrun conditions and their effect on the verdict.
-Do not move a mandatory gap into a footnote beneath a successful verdict.
+Examine source requirement coverage with [specification review](spec-review.md).
+Do not examine only conditions from a task list that does not include all source requirements.
+Before you give a report of full acceptance, each necessary condition must have applicable evidence of a pass.
+If a necessary check is not satisfactory, give a report of its condition without acceptance.
 
-Keep implementation status and acceptance status separate.
-Record whether the applicable scope is accepted, partial, or blocked.
-Use the project's verdict terms when defined.
-Otherwise, accepted means all required conditions have applicable passing evidence.
-Partial means only identified parts are accepted.
-Blocked means a necessary unresolved condition prevents completion of the stated scope.
+If a necessary check has a blocker or no execution, give a report of necessary acceptance conditions without satisfactory evidence.
+Give these conditions and their effects on the verdict.
+Do not put a mandatory condition without acceptance in a footnote below a success verdict.
 
-Retain each failed, blocked, and unrun result separately from the aggregate verdict.
-For project-authorized exclusions, state the authority, basis, scope, and remaining impact.
-Do not exclude a required condition solely to obtain a successful verdict.
+Keep the source and scope for implementation status and acceptance status.
+Record the applicable scope verdict: accepted, partial, or blocked.
+If the project gives verdict terms, use them.
+If the project gives no verdict terms, use these meanings:
+Accepted: all necessary conditions have applicable evidence of a pass.
+Partial: only specified parts are accepted.
+Blocked: a necessary condition without a decision prevents completion of the specified scope.
 
-Check that validation records contain runnable steps, necessary inputs, environment, pass criteria, results, and source references.
-For carried evidence, record current applicability and the reason for carrying it forward.
-Historical success without applicability review does not establish current acceptance.
-Before closure, check authoritative specification reconciliation using [the workflow](workflow.md).
+Keep conditions and scopes for results that are not satisfactory, blockers, and checks without execution.
+Keep the aggregate scope verdict.
+For exclusions with project authorization, give the authority, source evidence, scope, and effects that continue.
+Do not remove a necessary condition from acceptance only to get a success verdict.
 
-Use a fixed baseline and candidate for integration.
-Follow [current-target integration](workflow.md) when choosing that baseline and candidate.
-Check relevant interfaces and actual dependencies.
-Check small combined changes early.
-Incomplete unrelated tasks do not block the current scope.
-Missing relevant dependencies still block acceptance.
+Make sure that validation records give executable steps, necessary inputs and environment, pass criteria, results, and source references.
+For previous evidence that you use again, record if it is applicable at this time.
+Record the information that makes this evidence applicable.
+A previous satisfactory result without a check of its applicable conditions is not sufficient evidence of acceptance at this time.
+Before closure, examine reconciliation of the specification with project authority with [the workflow](workflow.md).
 
-If acceptance includes deployment, obtain deployment evidence.
-Otherwise, do not require publication to complete development.
+
+For integration, select one baseline and candidate.
+Keep their identities the same.
+When you select this baseline and candidate, obey [integration with the target at integration](workflow.md).
+Examine related interfaces and dependencies directly.
+
+Do checks of small combined changes before large integration batches.
+Tasks that are not included in this scope and have work that is not completed do not prevent acceptance of this scope.
+Missing related dependencies prevent acceptance.
+
+If acceptance includes deployment, get deployment evidence.
+If acceptance does not include deployment, publication is not necessary to complete development.
 
 ## Use the release entry
 
-Read the existing release process, target environment, responsible role, and user authorization.
-Prefer existing CI concurrency controls, approvals, or controlled host tools.
-Check their actual configuration and pending runs.
-Development chats provide candidates. They do not automatically have deployment authority.
+Read the release process, target environment, role with release authority, and user authorization that the project uses.
+If CI concurrency controls, approvals, or host tools with controls are available, use them.
+Examine their configuration and runs that are not completed directly.
+Development chats supply candidates.
+They do not automatically have deployment authority.
 
-Record the exact candidate commit, artifact hashes, necessary evidence, and target.
+Record the candidate commit, artifact hashes, necessary evidence, and target to identify this release.
 Use only the recorded candidate for this release.
-Do not use passing evidence for commit A as unconditional evidence for commit B.
-If acceptance conditions or specifications change, review evidence applicability.
+Before you use evidence for commit A for commit B, examine its applicable conditions.
+If acceptance conditions or specifications change, examine if the evidence is applicable.
 
-If releases compete, old requests remain, or results are uncertain, check the release owner and actual target state.
-Check the selected candidate.
-At execution, check the release system's currently selected candidate and supersession rules.
-If the request is superseded, reject or resolve it through that system before publication.
-Exclusive execution does not prove that a candidate remains eligible.
+If requests are in conflict, do the owner and target-state checks.
+If previous requests are not completed or outcomes are unknown, do these checks.
+Examine the release owner and target state directly.
+Examine the selected candidate.
 
-Check operation semantics before resolving a stale request.
-Canceling or rejecting a queued request differs from attempting its deployment.
-Do not submit a superseded deployment to test whether the release system rejects it.
-If no authorized cancellation operation exists, retain the request and report its blocked disposition.
+At execution, examine the candidate that the release system selects at this time and its supersession rules.
+If release supersession removes this request's publication eligibility, reject it or get a decision with this system before publication.
+Exclusive execution is not sufficient evidence that the candidate continues to have eligibility.
 
-Do not infer eligibility from commit dates or earlier chat authorization.
-Keep intentional rollback separate from ordinary publication of an obsolete candidate.
-Use the existing process and specific authority for an intentional rollback.
+Before a decision for a request with supersession from the selected release, examine operation semantics.
+Cancellation or rejection of a queued request and an attempt at its deployment are different.
+Do not send a deployment request with supersession from the selected release only to examine the system's rejection behavior.
+If no cancellation operation has approval, keep the request.
+Give a report of the condition that prevents permitted execution.
 
-Without a reliable exclusive release entry, do not claim that the skill prevents competing releases.
-Do not use a new shared Git file or a custom lock as proof of release authority.
-Prepare a reviewable candidate. Resolve the missing control through the existing project process.
+Commit dates and previous chat authorization are not sufficient evidence of eligibility.
+Keep these as different operation types: a rollback with project approval and publication of a candidate with supersession.
+Use the project's process and specified authority for a rollback with selection from project authority.
 
-If authorization and entry conditions hold, complete the release without repeated confirmation.
-If release authorization is missing, first prepare a reviewable result.
-Then obtain authorization for the specific external action.
+If the entry cannot prevent releases at the same time, do not give a report that the skill can.
+Do not use a new Git file for shared state as evidence of release authority.
+Do not use a lock from a specified project procedure as evidence of release authority.
+Prepare a candidate that a reviewer can examine.
+Get the missing control with the project's procedure.
+
+If authorization is applicable and the release agrees with entry conditions, complete the release without confirmation again.
+If release authorization is missing, first prepare a result that a reviewer can examine.
+Then, get authorization for the specified external action.
 
 Before release execution, record its run reference.
-For risky publication, identify rollout scope, success signals, stop conditions, and the responsible recovery decision.
-Check configuration and data compatibility of the proposed recovery path.
-If a required recovery condition is unresolved, keep publication pending.
-Use the project's existing deployment and recovery process.
+For publication with risk, find rollout scope, success signals, stop conditions, and the role that must make the recovery decision.
+Examine configuration and data compatibility for the recovery path in the proposal.
+If a necessary recovery condition has no decision, do not do publication.
+Use the project's deployment and recovery process.
 
-Existing publication authorization does not automatically authorize separate production experiments or recovery actions.
-Record actual environment validation and recovery outcomes.
+Publication authorization does not automatically give authorization for production experiments or different recovery actions.
+Record environment validation and recovery outcomes from execution.
 
-After execution, record the actual result and validation evidence.
-Timeout, cancellation, or a closed window does not prove external failure or rollback.
-Use the same run reference to determine the result.
-Follow platform retry semantics. Do not deploy again without checking the previous result.
+After execution, record the result and validation evidence from that execution.
+A timeout, cancellation, or closed window is not sufficient evidence of external failure or rollback.
+Use the same run reference to find the result.
+Obey platform retry semantics.
+Before deployment again, examine the previous result.
 
-Use the [release template](../assets/release.md) only for the current scope and relevant dependencies.
+Use the [release template](../assets/release.md) only for this scope and related dependencies.
 Do not put credentials in handoff records or snapshots.

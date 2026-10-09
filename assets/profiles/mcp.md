@@ -1,51 +1,75 @@
 # MCP Project Prompts
 
-Use these prompts for an MCP server or exposed MCP capability.
+Use these prompts for an MCP server or an MCP capability that it supplies.
 For selection and composition, read [project profiles](../../references/project-profiles.md).
-Fill relevant prompts in the existing record. Keep its format and authority.
+Write information for the related prompts in the record that the project uses.
+Keep its format and authority.
 
 ## Specification prompts
 
-- Identify the selected protocol version, SDK version, and supported client.
-- Identify the actual transport and deployment environment.
-- Define exposed capabilities, such as tools, resources, or prompts.
-- Define input schemas, output schemas, validation rules, and error behavior.
-- State initialization, capability negotiation, and compatibility requirements.
-- For writes, define actual side effects and required authorization.
-- For uncertain completion, define status inspection, request identity, and permitted retry behavior.
-- If the actual transport requires network authentication, define its applicable identity and access rules.
+For the related prompts, use these instructions:
 
-Select only capabilities that the deliverable exposes.
-A local stdio server does not require an unused network transport or authentication system.
-Do not add a hosted service merely to satisfy these prompts.
+- Identify the selected protocol version, SDK version, and supported client.
+- Identify the transport and deployment environment that the server uses.
+- Give the capabilities that the server supplies. For example, give tools, resources, or prompts.
+- Give input schemas, output schemas, validation rules, and error behavior.
+- Give initialization, capability negotiation, and compatibility requirements.
+- For writes, give side effects and necessary authorization.
+- For completion with an unknown outcome, give status inspection, request identity, and permitted retry behavior.
+- If network authentication is necessary for the transport, give its applicable identity and access rules.
+
+Select only capabilities that the deliverable supplies.
+
+A network transport that the local stdio server does not use is not necessary.
+An authentication system that the server does not use is also not necessary.
+
+Do not add a hosted service only to give information for these prompts.
 
 ## Acceptance example
 
-Suppose an accepted reservation contract uses an application request identity, `reservation_key`.
-This identity differs from a protocol message ID.
-A client submits `reservation_key=R17` for one seat.
-The server creates the reservation, but the client loses the response.
-The client uses supported outcome inspection or retries with `R17` under applicable, verified replay protection.
-The expected result returns the same reservation without another seat deduction.
-Changed inputs for `R17` produce the contract's defined conflict result.
+For this example, the accepted reservation contract uses `reservation_key` as the application request identity.
+This identity is different from a protocol message ID.
+A client sends `reservation_key=R17` for one seat.
+The server makes the reservation, but the client does not get the response.
 
-This example requires no retry mechanism that the project has not accepted and verified.
-Apply [the shared recovery rule](../../references/workflow.md#resolve-uncertain-effects).
-If aggregate inventory cannot identify R17 and no request-status interface exists, do not invent an inspection interface.
-Authorized replay can use the same target, key, and inputs within the verified scope, retention period, and retry limits.
-Keep the outcome unresolved until applicable result evidence establishes it.
+The client uses outcome inspection that the interface supplies or does a retry with `R17`.
+For this retry, the client uses applicable replay protection that the checks show.
+The expected result gives the same reservation without a second seat deduction.
+Changed inputs for `R17` give the specified conflict result from the contract.
+
+If a retry mechanism has no project acceptance or satisfactory checks, this example does not make the mechanism necessary.
+
+Obey [the recovery rule](../../references/workflow.md#resolve-uncertain-effects).
+If aggregate inventory cannot identify R17 and there is no request-status interface, keep the inspection limitation.
+If the project supplies no basis for an inspection interface, do not use the interface.
+
+With replay authorization, you can use the same target, key, and inputs in the scope that the evidence shows.
+
+Use this permission only in the retention period and retry limits that the evidence shows.
+Until applicable result evidence shows the outcome, keep the outcome status unknown.
 
 ## Conditional harness checks
 
-- For exposed capabilities, use the supported real client through the selected transport.
-- Check initialization and negotiated capabilities against the accepted compatibility contract.
-- Check valid inputs, invalid inputs, output schemas, and observable error behavior.
-- If a capability writes state, inspect the actual changed state and authorization boundary.
-- If retries apply, reproduce a lost response and check the accepted request identity behavior.
-- If cancellation affects completion, check the resulting state and reported completion status.
-- If network authentication applies, check accepted and rejected access through the actual transport.
-- If client or SDK versions change, check the affected compatibility boundary.
+For applicable checks, use these instructions:
 
-Schema validity does not establish real-client compatibility or correct side effects.
-Mocks can check isolated behavior but do not replace the necessary real-client check.
-Record protocol, SDK, client, transport, candidate, actual results, and unavailable checks in the existing evidence record.
+- For each capability that the server supplies, use the supported client in operation through the selected transport.
+- Compare initialization and negotiated capabilities with the accepted compatibility contract.
+- Do checks of correct inputs, incorrect inputs, output schemas, and observable error behavior.
+- If a capability writes state, examine the state after the write and the authorization boundary.
+- If retries are applicable, make a response loss occur. Then, do a check of behavior for the accepted request identity.
+- If cancellation has an effect for completion, examine the state after cancellation and the completion status in the report.
+- If network authentication is applicable, do checks of accepted and rejected access through the transport that the server uses.
+- If client or SDK versions change, do a check of the compatibility boundary for this change.
+
+A correct schema does not show compatibility with the supported client in operation or correct side effects.
+Mocks can show behavior in isolated components.
+But mocks cannot replace the necessary check with the supported client in operation.
+
+In the evidence record that the project uses, record:
+- The protocol
+- The SDK
+- The client
+- The transport
+- The candidate
+- Execution results
+- Checks that you cannot do.

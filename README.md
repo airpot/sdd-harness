@@ -1,8 +1,14 @@
 # SDD Harness
 
-当前版本：**0.9.2**。以 SDD 为主线，默认独立开发，按需启用协作与辅助方法。
+当前版本：**0.9.3**。以 SDD 为主线，默认独立开发，按需启用协作与辅助方法。
 
-本仓库为可直接安装的独立发布输出。开发、测试与评测留在统一源码工作区；来源提交、文件哈希与历史资料映射见[发布清单](release/0.9.2-manifest.json)。
+本仓库为可直接安装的独立发布输出。开发、测试与评测留在统一源码工作区；来源提交、文件哈希与历史资料映射见[发布清单](release/0.9.3-manifest.json)。
+
+0.9.3 完成本版 22 个技能文件的英语重构、逐词语境审查与 53 条规则、8 项建议审查。审查绑定 ASD-STE100 Issue 9 与最终文件哈希，覆盖 20482 个词汇语境目标。复合词按独立拆词计，代码与标识符另记字面范围；原始证据记明保留依据。检查权限、条件与验收含义，防止改写减弱原约束。此为指定源码范围的项目审查，不是 ASD 官方认证，也不保证后续新增文字合规。
+
+同版在原生 Linux、Intel macOS 与 Windows 实测；最低组合为 Python 3.10.0、Git 2.29.0（Windows 为 2.29.0.windows.1），另测当前 Linux。四组各运行 52 项核心检查，共 208 次，均通过；另有 12 次补充检查，其中 3 次仅适用于 Windows 的 junction 检查在 POSIX 上按条件跳过。实测包括权限、链接拒绝、特殊路径、保存恢复与源仓库保全，见[原生运行记录](https://github.com/airpot/sdd-harness/actions/runs/37950675310)。失败过的环境准备与上传记录另存，未混作测试成功。
+
+以下旧版本叙述保留其当时的验证范围；其中三项未验证范围已由 0.9.3 对本版源码补齐。
 
 0.8.1 修正独立 agent 的效果比较入口，并明确归档前须另存暂存区独有的必要成果。运行脚本与 16 文件包结构保持原样。
 
@@ -69,7 +75,7 @@ cd sdd-harness
 python scripts/install.py --into "~/.agents/skills"
 ```
 
-亦可下载[安装包](dist/sdd-harness-0.9.2.zip)与 [SHA-256 校验文件](dist/sdd-harness-0.9.2.sha256)，解压后运行 `python sdd-harness/scripts/install.py --into "~/.agents/skills"`。没有 Python 时复制完整目录，不可只复制入口。
+亦可下载[安装包](dist/sdd-harness-0.9.3.zip)与 [SHA-256 校验文件](dist/sdd-harness-0.9.3.sha256)，解压后运行 `python sdd-harness/scripts/install.py --into "~/.agents/skills"`。没有 Python 时复制完整目录，不可只复制入口。
 
 ZCode、DeepSeek Harness 与实际宿主能力的检查见[安装说明](references/install.md)。跨宿主复制成功不等于原生能力已验证。
 
@@ -77,6 +83,6 @@ ZCode、DeepSeek Harness 与实际宿主能力的检查见[安装说明](referen
 
 小任务沿用现有记录；复杂变更、协作、发布与清理才加载相关流程。换对话时保存交接，发布前核验权限与候选版本；worktree 满足归属、停止写入及成果保存条件后，可按授权归档移除。
 
-内部开发指令采用英语与 [STE 写作规则](references/writing.md)，README 使用中文。短句与格式检查不构成完整 ASD-STE100 词典合规认证。
+内部开发指令采用英语与 [STE 写作规则](references/writing.md)，README 使用中文。本版的完整源码范围审查与文件哈希见发布清单；短句、格式或项目审查均不构成官方认证。
 
 本版核验了打包、解压、安装、重复安装及拒绝覆盖本地修改。0.9.0 的八个规划场景在旧版与新版各检查 40 项标准；旧版已全部通过，故不宣称模型判断提效。规划与安装检查不证明真实项目普遍有效；原生 ZCode、DeepSeek 与自动发现仍有未验证范围。历史开发资料位于 `history/source-0.7.3/`，其原始路径为历史记录，不是本版执行入口。

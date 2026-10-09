@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Observe Git workspaces and preserve portable file snapshots. Never delete sources."""
+"""Read Git workspace data. Keep portable file snapshots. Do not remove sources."""
 from __future__ import annotations
 
 import argparse
@@ -27,10 +27,10 @@ def git(root: Path, *args: str, optional: bool = False, env: dict | None = None,
 
 def restore_environment() -> dict:
     env = os.environ.copy()
-    # Git documents clearing this list when commands target a foreign repository.
+    # Git documentation tells you to remove these variables from commands for a different repository.
     result = subprocess.run(['git', 'rev-parse', '--local-env-vars'], capture_output=True, env=env)
     if result.returncode:
-        raise ValueError('Cannot determine Git repository-local environment variables')
+        raise ValueError('Cannot find the Git environment variables for this repository')
     local = {name.upper() for name in result.stdout.decode('ascii').split()}
     return {name: value for name, value in env.items() if name.upper() not in local}
 
@@ -45,7 +45,7 @@ def restore_index(root: Path, env: dict, hooks: Path | None = None) -> Path:
     top = Path(text(git(root, 'rev-parse', '--show-toplevel', env=env, hooks=hooks))).resolve()
     if (not metadata.is_dir() or metadata.is_symlink() or actual != metadata or
             common.resolve() != metadata or top != root or index.resolve() != metadata / 'index'):
-        raise ValueError('Restore Git metadata must belong to the new output directory')
+        raise ValueError('Restore can use only the Git metadata of the new output directory')
     return index
 
 
@@ -82,12 +82,12 @@ def inspect(path: Path) -> dict:
 
 def safe_name(name: str) -> str:
     if not isinstance(name, str) or not name or '\\' in name or ':' in name or '\x00' in name:
-        raise ValueError(f'Unsupported relative path: {name!r}')
+        raise ValueError(f'Cannot use this relative path: {name!r}')
     path = PurePosixPath(name)
     if path.is_absolute() or any(p in ('', '.', '..') or p.rstrip(' .').casefold() == '.git'
                                  or re.fullmatch(r'git~[0-9]+', p.rstrip(' .'), re.IGNORECASE)
                                  for p in name.split('/')):
-        raise ValueError(f'Unsafe relative path: {name!r}')
+        raise ValueError(f'Cannot use this relative path: {name!r}')
     return name
 
 
@@ -102,16 +102,16 @@ def local_file(root: Path, name: str) -> Path:
             continue
         if stat.S_ISLNK(info.st_mode) or (
                 getattr(info, 'st_file_attributes', 0) & getattr(stat, 'FILE_ATTRIBUTE_REPARSE_POINT', 0x400)):
-            raise ValueError(f'Links require a native snapshot tool: {name}')
-        # Descendants cannot exist below an observed regular file.
+            raise ValueError(f'Links must have a native snapshot tool: {name}')
+        # A regular file cannot have descendants.
         if stat.S_ISREG(info.st_mode) and current != path:
             break
     resolved = path.resolve()
     if not resolved.is_relative_to(root):
-        raise ValueError(f'Path leaves repository: {name}')
+        raise ValueError(f'Path is not in the repository: {name}')
     metadata = (root / '.git').resolve()
     if resolved == metadata or resolved.is_relative_to(metadata):
-        raise ValueError(f'Path resolves into Git metadata: {name}')
+        raise ValueError(f'Path is a Git metadata location: {name}')
     return path
 
 
@@ -123,7 +123,7 @@ def inventory(root: Path, includes: list[str]) -> tuple[list[str], list[str]]:
         info, name = entry.split(b'\t', 1)
         mode, _oid, stage = info.split()
         if mode not in (b'100644', b'100755') or stage != b'0':
-            raise ValueError('Symlinks, gitlinks and unmerged indexes require a native snapshot tool')
+            raise ValueError('Symlinks, gitlinks and indexes with merge conflicts must have a native snapshot tool')
         tracked.append(name.decode('utf-8', 'surrogateescape'))
     selected = set(tracked)
     selected.update(p.decode('utf-8', 'surrogateescape') for p in
@@ -131,7 +131,7 @@ def inventory(root: Path, includes: list[str]) -> tuple[list[str], list[str]]:
     for name in includes:
         path = local_file(root, name)
         if not path.exists():
-            raise ValueError(f'Explicit include does not exist: {name}')
+            raise ValueError(f'Include path is missing: {name}')
         if path.is_dir():
             for child in path.rglob('*'):
                 rel = child.relative_to(root).as_posix()
@@ -139,7 +139,7 @@ def inventory(root: Path, includes: list[str]) -> tuple[list[str], list[str]]:
                 if candidate.is_file():
                     selected.add(rel)
                 elif not candidate.is_dir():
-                    raise ValueError(f'Unsupported file: {rel}')
+                    raise ValueError(f'Cannot use this file: {rel}')
         else:
             selected.add(name)
     present, missing = [], []
@@ -150,7 +150,7 @@ def inventory(root: Path, includes: list[str]) -> tuple[list[str], list[str]]:
         elif name in tracked and (not path.exists() or path.is_dir()):
             missing.append(name)
         else:
-            raise ValueError(f'Unsupported repository entry: {name}')
+            raise ValueError(f'Cannot use this repository entry: {name}')
     return present, missing
 
 
@@ -179,22 +179,22 @@ def snapshot(repo: Path, output: Path, includes: list[str]) -> dict:
     common = Path(text(git(root, 'rev-parse', '--git-common-dir')))
     common = (common if common.is_absolute() else root / common).resolve()
     if any(output.is_relative_to(path) for path in (root, git_dir, common)):
-        raise ValueError('Snapshot output must be outside the source worktree and Git metadata')
+        raise ValueError('Snapshot output must not be in the source worktree or Git metadata')
     if output.exists():
-        raise ValueError('Refusing to overwrite an existing snapshot')
+        raise ValueError('Cannot replace the snapshot at the output location')
     if text(git(root, 'rev-parse', '--is-shallow-repository')) == 'true':
-        raise ValueError('Shallow repositories require complete history or a native preservation tool; preserve the source')
-    # --git-path resolves common metadata for linked worktrees and GIT_GRAFT_FILE.
+        raise ValueError('Shallow repositories must have all history or a native preservation tool. Keep the source')
+    # --git-path gives common metadata paths for linked worktrees and GIT_GRAFT_FILE.
     grafts = Path(text(git(root, 'rev-parse', '--git-path', 'info/grafts')))
     grafts = grafts if grafts.is_absolute() else root / grafts
     if grafts.is_file() and any(line.strip() and not line.lstrip().startswith(b'#')
                                for line in grafts.read_bytes().splitlines()):
-        raise ValueError('Legacy graft history requires a native preservation tool; preserve the source')
+        raise ValueError('Legacy graft history must have a native preservation tool. Keep the source')
     before = inspect(root)
     paths, missing = inventory(root, includes)
     manifest = {'format': 1, 'source': before, 'files': [], 'deleted': missing,
                 'bundle': None, 'included_ignored': includes,
-                'stability': 'observed-only; not proof of stopped writers'}
+                'stability': 'The results show only file and Git state from checks. They do not show that writers stopped.'}
     output.parent.mkdir(parents=True, exist_ok=True)
     created = False
     try:
@@ -213,11 +213,11 @@ def snapshot(repo: Path, output: Path, includes: list[str]) -> dict:
                     entry.update(add_file(z, source, 'files/' + name))
                     manifest['files'].append(entry)
                 if inspect(root) != before or inventory(root, includes) != (paths, missing):
-                    raise ValueError('Source changed during snapshot; preserve the worktree and retry after stopping writers')
+                    raise ValueError('Source changed during snapshot. Keep the worktree. After writers stop, try again')
                 for entry in manifest['files']:
                     with local_file(root, entry['path']).open('rb') as src:
                         if digest(src) != (entry['sha256'], entry['size']):
-                            raise ValueError('File changed during snapshot; do not remove the worktree')
+                            raise ValueError('File changed during snapshot. Do not remove the worktree')
                 z.writestr('manifest.json', json.dumps(manifest, ensure_ascii=True, indent=2))
         verify(output)
     except Exception:
@@ -239,45 +239,45 @@ def verify(archive: Path) -> dict:
             raise ValueError('Manifest is too large')
         manifest = json.loads(z.read('manifest.json'))
         if manifest['format'] != 1:
-            raise ValueError('Unsupported snapshot format')
+            raise ValueError('Cannot use this snapshot format')
         head = manifest['source']['head']
         object_format = manifest['source'].get('object_format', 'sha256' if head and len(head) == 64 else 'sha1')
         if object_format not in ('sha1', 'sha256') or (head and len(head) != {'sha1': 40, 'sha256': 64}[object_format]):
-            raise ValueError('Inconsistent Git object format')
+            raise ValueError('Git object format does not agree with the HEAD identity')
         manifest['source']['object_format'] = object_format
         expected = {'manifest.json'}
         checks = []
         if manifest['source']['head']:
             if not re.fullmatch(r'[0-9a-f]{40}|[0-9a-f]{64}', manifest['source']['head']):
-                raise ValueError('Invalid HEAD')
+                raise ValueError('Incorrect HEAD identity')
             checks.append(('history.bundle', manifest['bundle']))
             expected.add('history.bundle')
         elif manifest['bundle'] is not None:
-            raise ValueError('Unexpected bundle without HEAD')
+            raise ValueError('A bundle must have a HEAD identity')
         deleted = [safe_name(name) for name in manifest['deleted']]
         if len(deleted) != len(set(deleted)):
-            raise ValueError('Duplicate deleted path')
+            raise ValueError('Duplicate path in the deletion inventory')
         for entry in manifest['files']:
             name = 'files/' + safe_name(entry['path'])
             if name in expected or entry['path'] in deleted:
-                raise ValueError('Duplicate or contradictory file path')
+                raise ValueError('File path has a duplicate or a conflict')
             if type(entry['mode']) is not int or not 0 <= entry['mode'] <= 0o777:
-                raise ValueError('Invalid file mode')
+                raise ValueError('Incorrect file mode')
             expected.add(name)
             checks.append((name, entry))
         present = {entry['path'] for entry in manifest['files']}
         if any(parent.as_posix() in present for name in present
                for parent in PurePosixPath(name).parents):
-            raise ValueError('Present regular-file paths have an ancestor conflict')
+            raise ValueError('Regular-file paths in the inventory have an ancestor conflict')
         if set(names) != expected:
-            raise ValueError('Archive members do not match the manifest')
+            raise ValueError('Archive members do not agree with the manifest')
         for name, entry in checks:
             info = z.getinfo(name)
             if stat.S_ISLNK(info.external_attr >> 16) or type(entry['size']) is not int or entry['size'] < 0:
-                raise ValueError('Unsupported member metadata')
+                raise ValueError('Cannot use this member metadata')
             with z.open(name) as src:
                 if digest(src) != (entry['sha256'], entry['size']):
-                    raise ValueError(f'Content checksum mismatch: {name}')
+                    raise ValueError(f'Incorrect content checksum: {name}')
         return manifest
 
 
@@ -293,29 +293,29 @@ def verify_restored_files(root: Path, manifest: dict) -> None:
             if name in dirs:
                 continue
             if not stat.S_ISREG(path.lstat().st_mode) or relative not in expected:
-                raise ValueError(f'Unexpected restored file: {relative}')
+                raise ValueError(f'Restored file is not in the expected inventory or is not a regular file: {relative}')
             actual.add(relative)
             entry = expected[relative]
             with path.open('rb') as stream:
                 if digest(stream) != (entry['sha256'], entry['size']):
-                    raise ValueError(f'Restored file mismatch: {relative}')
+                    raise ValueError(f'Restored file does not agree with the snapshot: {relative}')
     if actual != set(expected):
-        raise ValueError('Restored file inventory does not match the snapshot')
+        raise ValueError('Restored file inventory does not agree with the snapshot')
     for name in manifest['deleted']:
         path = local_file(root, name)
         if path.exists() and not (
                 path.is_dir() and any(saved.startswith(name + '/') for saved in expected)):
-            raise ValueError(f'Deleted snapshot path was recreated: {name}')
+            raise ValueError(f'Restored results contain a path from the deletion inventory: {name}')
 
 
 def restore(archive: Path, output: Path) -> dict:
     manifest = verify(archive)
     output = output.expanduser().resolve()
     if output.exists():
-        raise ValueError('Restore requires a new, nonexistent directory')
+        raise ValueError('Restore must use an output directory that is not there before restore starts')
     env = restore_environment()
     with zipfile.ZipFile(archive) as z, tempfile.TemporaryDirectory(prefix='sdd-restore-') as staging:
-        # Command-local overrides keep inherited templates and hooks out of restore.
+        # Overrides for each command prevent templates and hooks from the host configuration during restore.
         empty = Path(staging) / 'empty'
         empty.mkdir()
 
@@ -333,7 +333,7 @@ def restore(archive: Path, output: Path) -> dict:
             run('fetch', '--quiet', str(bundle), 'HEAD')
             head = manifest['source']['head']
             run('update-ref', '--no-deref', 'HEAD', head)
-            # Load the original index without checking out potentially historical links.
+            # Read the index from the snapshot HEAD without a checkout of links from its history.
             run('read-tree', head)
         else:
             run('read-tree', '--empty')
@@ -345,22 +345,22 @@ def restore(archive: Path, output: Path) -> dict:
             target.chmod(entry['mode'])
             with target.open('rb') as restored:
                 if digest(restored) != (entry['sha256'], entry['size']):
-                    raise ValueError(f'Restored file mismatch: {entry["path"]}')
+                    raise ValueError(f'Restored file does not agree with the snapshot: {entry["path"]}')
         if not restore_index(output, env, empty).is_file():
-            raise ValueError('Restore did not create the output repository index')
+            raise ValueError('Restore did not make the output repository index')
         head = text(run('rev-parse', '--verify', 'HEAD', optional=True)) or None
         if head != manifest['source']['head']:
-            raise ValueError('Restored HEAD does not match the snapshot')
+            raise ValueError('Restored HEAD does not agree with the snapshot')
         if head:
             run('diff-index', '--cached', '--quiet', head, '--')
         elif run('ls-files', '--stage', '-z'):
-            raise ValueError('Unborn restore requires an empty index')
-        # Index validation can change metadata. Observe HEAD after all other Git commands.
+            raise ValueError('Restore without an initial commit must have an empty index')
+        # Index validation can change metadata. Read HEAD after all other Git commands.
         if not restore_index(output, env, empty).is_file():
-            raise ValueError('Restore did not create the output repository index')
+            raise ValueError('Restore did not make the output repository index')
         head = text(run('rev-parse', '--verify', 'HEAD', optional=True)) or None
         if head != manifest['source']['head']:
-            raise ValueError('Restored HEAD does not match the snapshot')
+            raise ValueError('Restored HEAD does not agree with the snapshot')
         verify_restored_files(output, manifest)
     return {'restored': str(output), 'head': head, 'files': len(manifest['files']),
             'verified': True, 'write_authorized': False, 'safe_to_remove': False}
@@ -369,13 +369,13 @@ def restore(archive: Path, output: Path) -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest='command', required=True)
-    p = commands.add_parser('inspect', help='Read-only Git facts; does not establish activity or authority')
+    p = commands.add_parser('inspect', help='Read Git data without changes. The data give no activity proof or authority')
     p.add_argument('--repo', type=Path, required=True)
-    p = commands.add_parser('snapshot', help='Save HEAD history and current regular files, without removing source')
+    p = commands.add_parser('snapshot', help='Keep HEAD history and regular files at snapshot time. Do not remove source')
     p.add_argument('--repo', type=Path, required=True)
     p.add_argument('--output', type=Path, required=True)
-    p.add_argument('--include', action='append', default=[], help='Explicit necessary ignored path within worktree')
-    p = commands.add_parser('verify', help='Check snapshot inventory and content hashes')
+    p.add_argument('--include', action='append', default=[], help='A necessary ignored path that you supply from the worktree')
+    p = commands.add_parser('verify', help='Make sure that snapshot inventory and content hashes agree')
     p.add_argument('--archive', type=Path, required=True)
     p = commands.add_parser('restore', help='Restore files and HEAD into a new directory')
     p.add_argument('--archive', type=Path, required=True)

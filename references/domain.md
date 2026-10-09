@@ -1,53 +1,64 @@
-# Domain Meaning and Model Boundaries
+# Business Terms and Model Boundaries
 
-## Clarify meaning when needed
+## Examine business terms when necessary
 
-If terms, business rules, state, or consistency affect implementation choices, load this reference.
-For a simple script or CRUD change with clear accepted rules, keep the existing simple structure.
-Domain-driven design (DDD) helps clarify business meaning and necessary model boundaries.
-It does not require a new architecture or folder layout.
+If terms, business rules, state, or consistency have effects on implementation decisions, read this reference.
+For a script or CRUD change with clear accepted rules, keep the structure that the project uses.
+Domain-driven design (DDD) helps make business terms and necessary model boundaries clear.
+A new architecture or folder layout is not necessary.
 
-1. Find accepted terms, relevant examples, and business-rule owners.
-2. Identify each context where a term has a specific meaning and governing rules.
-3. Identify translations, identifiers, and responsibilities at boundaries between those contexts.
-4. Resolve correctness-critical ambiguity through [specification review](spec-review.md) before dependent work.
-5. Keep proposed terms and models separate from accepted agreements.
+For the domain behavior in this task, do these steps:
 
-A business context is a scope with consistent meanings and rule ownership.
-Frontend and backend describe technical components. Their directory split does not establish a business context map.
-One component can serve several business contexts. Several components can serve one context.
-When evaluating proposed domain models from AI, use accepted terms.
-Similar names do not establish equivalent meaning.
+1. Find accepted terms, related examples, and business-rule owners.
+2. Find each context with specified term information and controlling rules.
+3. Find term relations, identifiers, and task owners at the boundaries of these contexts.
+4. If term or rule decisions have effects on correctness, get missing decisions before work that uses them.
+   Use [specification review](spec-review.md) for this decision.
+5. Keep term and model proposals with their proposal status and accepted domain rules with their acceptance status.
 
-Example: Billing's Account means a billable customer relationship. Identity's Account means a login principal.
-Their accepted contract relates these meanings by customer ID.
-Keep those meanings and that translation explicit. Do not merge them merely because both use the word Account.
-Any changed relationship remains a proposal until accepted through the project's existing authority.
+A business context is a scope with term information that agrees and rule ownership.
+Frontend and backend are software components.
+Different component directories are not sufficient evidence of a business context map.
+One component can operate in more than one business context.
+More than one component can operate in one context.
+When you examine proposals for domain models from AI, use accepted terms.
+
+Names that are almost the same are not sufficient evidence that the terms are equivalent.
+
+Example: Billing's Account is a billable customer relationship.
+Identity's Account is a login principal.
+Their accepted contract gives a customer ID relation for these terms.
+Give the information for these terms and this customer ID relation in the record.
+Do not give the two contexts the same term information only because they use the name Account.
+A changed customer relation stays a proposal until acceptance with project approval.
 
 ## Select only necessary model tactics
 
-State important invariants: conditions that accepted behavior requires to remain true.
-Identify the actor or component responsible for updates and the required consistency of those updates.
-When existing project terms and structures express these needs, use them.
+Give important invariants: conditions with which accepted behavior must always agree.
+Find the actor or component that must update the state and the necessary consistency of these updates.
+When project terms and structures give these conditions, use them.
 
-| Actual need | Optional tactic |
+| Condition | Optional tactic |
 | --- | --- |
-| Identity persists while attributes change | An entity can retain that identity. |
-| A value has meaning through its attributes | A value object can group validation and value equality. |
-| State changes have accepted preconditions and outcomes | Explicit transitions can protect the state rules. |
-| Several updates must preserve one invariant together | An aggregate or existing transaction boundary can define the consistency responsibility. |
+| Identity stays the same while attributes change | An entity can keep this identity. |
+| Attributes give value semantics | A value object can keep validation and value equality in one group. |
+| State changes have accepted preconditions and outcomes | Transitions with specified preconditions and outcomes can make state behavior agree with its rules. |
+| More than one update must keep one invariant together | An aggregate or transaction boundary can have the role for consistency. |
 
-Only if a tactic solves a current identity, value, state, invariant, or consistency problem, select it.
-Do not infer transactional consistency from common vocabulary alone.
-When updates cross consistency boundaries, record any accepted delay, reconciliation, or failure behavior.
-Do not mandate microservices, CQRS, event sourcing, events, repositories, or fixed folder layers.
-When accepted rules need no additional model tactics, keep scripts and CRUD simple.
+If a tactic corrects an identity, value, state, invariant, or consistency problem in this task, select it.
+For other problems, these tactics are not necessary.
+The same vocabulary is not sufficient evidence of transactional consistency.
+When updates occur in different consistency scopes, record accepted time intervals, reconciliation, or failure behavior.
+Microservices, CQRS, event sourcing, events, repositories, and specified folder layers are not mandatory.
+When accepted rules make no more model tactics necessary, keep scripts and CRUD without added model tactics.
 
-## Protect accepted boundaries when useful
+## Keep accepted boundaries when checks help
 
-If recurring coupling threatens an accepted boundary, consider checks available in the existing project.
-Architecture tests or static analysis can check prohibited dependencies, imports, or data access.
-Derive these checks from accepted boundaries. Do not invent a layer rule merely because a tool can check it.
-Record the checked boundary and the limits of the method.
-Passing structural checks do not establish correct business behavior or complete workflow acceptance.
-Use [testing guidance](testing.md) for accepted invariants, compatible interfaces, and required effects.
+If coupling causes a risk of boundary violation again, examine checks that are available in the project.
+Architecture tests or static analysis can examine dependencies, imports, or data access that do not agree with accepted boundaries.
+Get these checks from accepted boundaries.
+Do not make a new layer rule only because a tool can examine it.
+Record the boundary that you examined and the conditions for which the method gives evidence.
+Satisfactory results from architecture checks are not sufficient evidence of correct business behavior or full workflow acceptance.
+
+Use [testing guidance](testing.md) for accepted invariants, compatible interfaces, and necessary effects.

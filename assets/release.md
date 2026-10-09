@@ -1,23 +1,28 @@
 # Delivery Record
 
 Writing policy: <accessible-writing-policy-reference>.
-Before saving, replace this placeholder with the project's policy reference or an accessible installed skill policy.
-Resolve local links from this record's destination. Check that the next reader can open the policy.
+Before you keep this record, replace this placeholder with the project's policy reference or an installed skill policy.
+Use this record's directory at its destination as the base directory for local links. Make sure that the next reader can read the policy.
 Keep the project's format, identifiers, and raw evidence.
-Use only fields that apply to the current scope.
+Use only fields that are applicable to the scope at delivery.
 
-- Scope: reference tasks and relevant dependencies.
-- Candidate: record the exact integrated commit, specification version, build artifacts, and hashes.
-- Integration target: reference its current version and validation of the actual combined candidate.
-- Optional cooperation: reference the accepted shared contract and complete workflow evidence for the combined candidate.
-- Acceptance: reference evidence for each condition and combined validation. List unverified work separately.
-- Verdict: record accepted, partial, or blocked scope. Identify each mandatory failed, blocked, or unrun condition.
-- Evidence applicability: record current applicability and the reason for carrying historical evidence forward.
-- Validation recipe: reference repeatable steps, necessary inputs, environment, and pass criteria.
-- Specification reconciliation: reference the authoritative record and accepted updates. State any remaining closure gap.
-- Release: identify the existing entry, environment, owner, authorization, and competing or pending runs.
-- Eligibility: record the currently selected candidate, supersession check, and execution-time conclusion.
+For applicable fields, use these instructions:
+
+- Scope: give references to tasks and related dependencies.
+- Candidate: record the identities of the integrated commit, specification version, build artifacts, and hashes.
+- Integration target: give references to its version at integration and validation of the combined candidate that it receives.
+- Optional cooperation: give references to the accepted shared contract and full workflow evidence for the combined candidate.
+- Acceptance: give references to evidence for each condition and combined validation.
+  Put work without verification in a different group.
+- Verdict: record scope with acceptance for all conditions, acceptance for some conditions, or `blocked` results.
+  Identify each mandatory condition with a `failed`, `blocked`, or `not run` result.
+- Evidence applicability: record applicability at delivery and the reason that evidence from before the change is applicable.
+- Validation recipe: give references to steps that the reader can do again, necessary inputs, environment, and pass criteria.
+- Specification reconciliation: give references to the record with specification authority and accepted updates. Write each remaining closure gap.
+- Release: identify the entry that the project uses, environment, owner, and authorization.
+  Identify runs that can have conflicts or runs without completed execution.
+- Eligibility: record the selected candidate at execution, supersession check, and conclusion at execution.
 - Operational conditions: identify applicable rollout observations, stop conditions, recovery authority, and configuration or data compatibility.
-- Execution and result: record the run reference, start and observation times, actual result, and environment validation.
-- Cleanup: identify temporary worktrees, activity checks, saved results, recovery validation, and native removal results.
-- Follow-up: state blocking conditions or specific deferred tasks.
+- Execution and result: record the run reference, start and observation times, result from execution, and environment validation.
+- Cleanup: identify temporary worktrees, activity checks, kept results, recovery validation, and native removal results.
+- Follow-up: write conditions that prevent progress or identify tasks for subsequent execution.

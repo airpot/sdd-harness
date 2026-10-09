@@ -1,118 +1,138 @@
 # Specification Quality and Coverage
 
-## Review the intended behavior
+## Examine accepted behavior
 
-Read the source request, accepted specification, interface contracts, and relevant project principles.
-Separate intended behavior from observations of existing code.
-Do not treat a working example as authority for a conflicting contract.
+Read the source request, accepted specification, interface contracts, and related project principles.
+Keep the source and acceptance status for accepted behavior.
+Keep the source and acceptance status for code observations.
+Do not use an example that operates correctly as approval for a contract that does not agree with it.
 
-Check these dimensions for the current scope:
+Examine these items for this scope:
 
-- Goal: identify the user outcome, scope, and non-goals.
-- Precision: define inputs, outputs, units, defaults, limits, and relevant timing.
-- Scenarios: cover normal behavior, boundaries, and relevant failure or recovery behavior.
+- Task: find the user outcome, scope, and outcomes not in this task.
+- Precision: give inputs, outputs, units, defaults, limits, and related timing.
+- Scenarios: include usual behavior, boundaries, and related failure or recovery behavior.
 - Consistency: compare related requirements, interfaces, terms, and versions.
-- Assumptions: identify unsupported facts, missing dependencies, and choices that affect correctness.
-- Constraints: check applicable compatibility and project principles. Record relevant non-functional acceptance conditions when necessary.
+- Facts without evidence: find missing dependencies and all decisions with effects on correctness.
+- Constraints: examine applicable compatibility and project principles.
+  If acceptance conditions for non-functional behavior are necessary, record the related conditions.
 
-If accepted contracts conflict, identify the responsible authority and the exact conflict.
-Resolve correctness-critical choices before dependent implementation or acceptance.
-Use existing decisions and authorization when they resolve the issue.
-Ask only about necessary choices that available records cannot resolve.
-Continue independent investigation or an explicitly isolated prototype when useful.
-Do not silently select a contract or weaken a requirement to match code.
+If accepted contracts are in conflict, find the conflict in the source contracts.
+Find who must give the decision with project approval.
+If correctness makes a decision necessary, get it before implementation or acceptance that uses it.
+If project decisions and approval give this decision, use them.
 
-Record other assumptions with their impact and validation method.
-Do not require all uncertainty to disappear before independent work can continue.
-Keep review depth proportional to the change.
+For necessary decisions that available records cannot give, get user decisions.
+If investigation helps the task, continue it independently.
+If a prototype helps the task, continue it in its specified boundaries.
+Use available controls or different resource instances to prevent conflicts.
+Do not select a contract without a report of the cause or decrease a requirement only to agree with code.
 
-## Select meaningful validation
+Record other facts without evidence with their effects and validation method.
+Work that you do independently can continue without decisions for all conditions without sufficient evidence.
+Use the change's scope and effects to select review scope and procedures.
 
-Use concrete examples when a rule permits incompatible interpretations.
-Identify the accepted rule, a distinguishing example, and any unresolved question.
-State the relevant preconditions, input, and expected observable result.
-Choose an example that distinguishes accepted behavior from a plausible incorrect result.
-Use accepted rules or suitable reference results as the basis for expected values.
+## Select checks that give acceptance evidence
 
-Review important test assertions, not only requirement links or test names.
-A test that repeats an implementation mistake does not establish acceptance.
-Check whether the assertions can detect the relevant failure.
-Use counterexamples or an established independent reference when useful.
+When a rule can give results that are not compatible, use examples with specified inputs and results.
+Find the accepted rule, an example that shows the difference, and each missing decision.
+Give related preconditions, input, and the expected result that you can see.
+Select an example that shows different results for accepted behavior and possible incorrect behavior.
+Get expected values from accepted rules or applicable reference results.
 
-For test cycles, characterization, conditional broader checks, and test integrity, use [testing guidance](testing.md).
-For context meanings, business-rule ownership, invariants, or consistency choices, use [domain guidance](domain.md).
-Select the next useful detailed case from uncertainty and actual results. Do not require all speculative tests upfront.
+Examine important test assertions directly.
+Requirement links and test names are not sufficient.
+A test that has the same error as implementation is not sufficient evidence of acceptance.
+Make sure that assertions can find the related failure.
 
-Select checks from affected behavior and risk, not task size alone.
-Use necessary integration or end-to-end checks for affected user workflows.
-If dependencies are simulated, state what those simulations cannot establish.
-If performance matters, record the workload, environment, statistic, limit, and observation period.
-For security-sensitive changes, check relevant access and data boundaries.
+If counterexamples help the task, use them.
+If a reference helps the task, use it for acceptance.
+The reference must have sufficient evidence from a source other than the candidate.
 
-For persisted data or configuration changes, check compatibility across affected versions.
-Record failure detection and an authorized recovery path when operational risk requires them.
-Restoring a previous binary does not necessarily restore previous data.
+For test cycles, characterization, test integrity, and more checks necessary for the task, use [testing guidance](testing.md).
+For business terms, business-rule ownership, invariants, or consistency decisions, use [domain guidance](domain.md).
+Use information without sufficient evidence and results from execution to select the next case with specified inputs and results.
+All possible tests with fully specified cases are not necessary before you examine results from previous cases.
 
-Keep small, low-impact checks brief.
-Do not require every test type, formal notation, or a separate validation document.
-Do not run production experiments or load tests without the necessary authorization.
+Select checks from behavior with effects from the change and risk, not only task size.
+Use necessary integration or end-to-end checks for user workflows with effects from the change.
+If dependencies are simulated, give the behavior for which these simulations cannot supply evidence.
+If performance is important, record the workload, environment, statistic, limit, and observation period.
+For changes with effects on security, examine related access and data boundaries.
 
-## Trace requirements
+For stored data or configuration changes, examine compatibility for versions with effects from the change.
+When risk from operation makes failure checks and recovery necessary, record the checks and permitted recovery path.
+A previous binary after recovery is not sufficient evidence that data agrees with its previous state.
 
-Start from source requirements, not only the agent's derived task list.
-Reuse existing requirement IDs, headings, issue references, or source links.
-For each in-scope requirement, connect these items:
+Keep small checks with small effects short.
+Select the test types necessary for the task.
+All test types, formal notation, and an added validation document are not mandatory for each task.
+Do not do production experiments or load tests without necessary authorization.
 
-1. The source requirement and accepted intent.
-2. Observable acceptance conditions and relevant scenarios.
-3. The responsible task or necessary design decision.
-4. The actual implementation location or artifact.
-5. Applicable evidence and its current result.
+## Give references from requirements to evidence
 
-For a small task, keep these references inline in the existing record.
+Start from source requirements, not only the task list from the agent.
+Use requirement IDs, headings, issue references, or source links that the project has.
+For each requirement in scope, give references for these items:
+
+1. The source requirement and accepted behavior
+2. Acceptance conditions that checks can examine and related scenarios
+3. The task owner or necessary design decision
+4. The implementation location or artifact directly
+5. Applicable evidence and its result at this time.
+
+For a small task, keep these references inline in the record that the project uses.
 For a larger change, use a coverage table:
 
-| Source requirement | Acceptance condition | Task or decision | Implementation | Evidence and applicability | Gap or disposition |
+| Source requirement | Acceptance condition | Task or decision | Implementation | Evidence and applicable conditions | Missing work or decision |
 | --- | --- | --- | --- | --- | --- |
 
-Use the table only when it helps find omissions.
-Do not create a parallel requirement catalog or impose a new identifier scheme.
-Do not invent links, implemented behavior, or evidence to fill empty cells.
+If the table helps find omissions, use it.
+For other work, the table is not necessary.
+Do not make one more requirement catalog or a mandatory new format for identifiers.
+Do not write links, behavior from code, or evidence in empty cells without a source.
 
-Check both directions:
+Do these two checks:
 
 - From requirements, find missing conditions, work, implementation, or evidence.
-- From actual changes, find their requirement or necessary implementation reason.
+- From source changes, find their requirement or the source that makes their implementation necessary.
 
-Flag added behavior that lacks an accepted basis.
-For excluded or deferred scope, record the source, impact, and project-authorized disposition.
-Do not hide a required condition by removing its coverage row.
+Give a report of added behavior without an accepted source.
+For scope not included or without a decision, record the source, effects, and permitted decision with project approval.
+Do not remove a coverage row to make a necessary condition not available to the reader.
 
-## Check requirement change operations
+## Examine requirement change operations
 
-Use the project's existing delta format, identity links, or explicit accepted change description.
-Do not require another schema or requirement catalog.
+Use the project's delta format, identity links, or an accepted change description that gives the operation.
+One more schema or requirement catalog is not necessary.
 
 | Accepted operation | Necessary behavior check |
 | --- | --- |
-| Add | Check the new behavior and relevant interactions with existing behavior. |
-| Modify | Check the changed conditions and behavior that remains required. |
-| Remove | Check absence of the obsolete behavior, including remaining executable paths. |
-| Rename | Follow the old and new identity. Check preserved behavior unless an accepted modification changes it. |
+| Add | Examine the new behavior and related interactions with behavior that the project has. |
+| Modify | Examine changed conditions and behavior that continues to be necessary. |
+| Remove | Examine if there is no behavior that the accepted change removes. Include executable paths that the project continues to have. |
+| Rename | Find previous and new identities and their references. If an accepted change does not change the behavior, keep the behavior the same. |
 
-For removal, inspect affected callers, tests, configuration, generated files, and persisted data when relevant.
-Accepted deprecation or migration can require a temporary compatibility path.
-Record its accepted scope and end condition. Do not invent a transition to retain removed behavior.
-An old positive test can be obsolete evidence after accepted removal.
-Update affected assertions through the accepted change, rather than preserving a contradictory expectation.
-Renaming a requirement does not require renaming implementation symbols unless the accepted contract specifies that change.
-Check transitions and migration by risk. Do not require a migration document for a harmless name change.
+For removal, examine related callers, tests, configuration, generated files, and stored data with effects from the removal.
+Accepted deprecation or migration can make a temporary compatibility path necessary.
+Record its accepted scope and end condition.
+Without an accepted source, do not make a transition to keep removed behavior.
+After accepted removal, a previous test with a satisfactory result can become evidence that is not applicable.
 
-## Review before acceptance
+Use the accepted change to change assertions with effects from this change.
+Do not keep expected results that do not agree with accepted behavior.
+A requirement rename makes no implementation symbol rename necessary unless the accepted contract gives this change.
+Use risk to select transition and migration checks.
+A migration document is not necessary for a name change without unwanted effects.
 
-Check completeness, correctness, and consistency against the current candidate.
-Read actual specifications, changes, and evidence.
-For material risk, use available controlled acceptance procedures. Confirm actual controls before claiming enforced independence or permissions.
-Distinguish implementation completion from complete acceptance.
+## Examine before acceptance
+
+Examine completeness, correctness, and consistency for the candidate at acceptance.
+Read source specifications, changes, and evidence directly.
+Before you give a report of independence or permissions from native controls, examine the controls in use directly.
+Before you give a report of independence or permissions from native controls, examine controls directly.
+Keep the source and scope for task status.
+Keep the source and scope for acceptance status.
+
 For evidence requirements and verdicts, read [delivery instructions](delivery.md).
-For accepted specification changes, follow [the workflow](workflow.md).
+For accepted specification changes, obey [the workflow](workflow.md).

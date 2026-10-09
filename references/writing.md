@@ -16,7 +16,11 @@ Write explanations in the language selected under the precedence rules above.
 Do not use this policy to change program behavior, evidence, authorization, or acceptance conditions.
 
 Keep the policy reference in the project's existing development instructions or policy location when creating those records.
-If no location exists, use `.sdd-harness/project.md`.
+For a small change, the existing task record can hold this reference.
+Use an accessible project policy reference or an installed skill policy reference.
+Do not create a separate policy document for a small change.
+If project setup requires a policy location and none exists, use `.sdd-harness/project.md`.
+Follow an accepted project convention when it specifies another location.
 Do not create duplicate policy documents or edit global agent configuration.
 Asset templates contain a policy placeholder because project destinations vary.
 Before saving a record, replace it with an accessible project policy reference or an installed skill policy reference.

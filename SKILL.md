@@ -2,7 +2,7 @@
 name: sdd-harness
 description: Use when implementing or resuming project changes against specifications, checking acceptance evidence, integrating worker results, preparing releases, or preserving worktrees.
 metadata:
-  version: "0.9.1"
+  version: "0.9.2"
 ---
 
 # SDD Harness
@@ -82,6 +82,7 @@ If a required control is unavailable, retain the affected resource and use suppo
 ## Write and report
 
 Apply [the writing policy](references/writing.md) to new or changed internal development prose.
+For a small change, keep its policy reference in the existing task record.
 Use STE-guided English, short active sentences, and consistent terms.
 Read the full policy for formal documents, terminology questions, or unfamiliar writing requirements.
 Follow explicit user language requests and mandatory project formats. Keep source strings and raw evidence unchanged.

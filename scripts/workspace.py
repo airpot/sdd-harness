@@ -50,7 +50,7 @@ def restore_index(root: Path, env: dict, hooks: Path | None = None) -> Path:
 
 
 def text(data: bytes) -> str:
-    return data.decode('utf-8', 'surrogateescape').strip()
+    return data.decode('utf-8', 'surrogateescape').removesuffix('\n')
 
 
 def root_of(path: Path) -> Path:
@@ -74,7 +74,8 @@ def inspect(path: Path) -> dict:
         'root': str(root), 'head': head, 'object_format': object_format,
         'branch': text(git(root, 'symbolic-ref', '--quiet', '--short', 'HEAD', optional=True)) or None,
         'git_common_dir': str(common.resolve()), 'linked_worktree': git_dir.resolve() != common.resolve(),
-        'dirty': bool(status), 'status': [text(item) for item in status.split(b'\0') if item],
+        'dirty': bool(status), 'status': [item.decode('utf-8', 'surrogateescape')
+                                        for item in status.split(b'\0') if item],
         'activity': 'unknown', 'write_authorized': False, 'safe_to_remove': False,
     }
 
@@ -174,8 +175,11 @@ def add_file(z: zipfile.ZipFile, source: Path, name: str) -> dict:
 def snapshot(repo: Path, output: Path, includes: list[str]) -> dict:
     root = root_of(repo)
     output = output.expanduser().resolve()
-    if output.is_relative_to(root):
-        raise ValueError('Snapshot output must be outside the source worktree')
+    git_dir = Path(text(git(root, 'rev-parse', '--absolute-git-dir'))).resolve()
+    common = Path(text(git(root, 'rev-parse', '--git-common-dir')))
+    common = (common if common.is_absolute() else root / common).resolve()
+    if any(output.is_relative_to(path) for path in (root, git_dir, common)):
+        raise ValueError('Snapshot output must be outside the source worktree and Git metadata')
     if output.exists():
         raise ValueError('Refusing to overwrite an existing snapshot')
     if text(git(root, 'rev-parse', '--is-shallow-repository')) == 'true':
@@ -261,6 +265,10 @@ def verify(archive: Path) -> dict:
                 raise ValueError('Invalid file mode')
             expected.add(name)
             checks.append((name, entry))
+        present = {entry['path'] for entry in manifest['files']}
+        if any(parent.as_posix() in present for name in present
+               for parent in PurePosixPath(name).parents):
+            raise ValueError('Present regular-file paths have an ancestor conflict')
         if set(names) != expected:
             raise ValueError('Archive members do not match the manifest')
         for name, entry in checks:

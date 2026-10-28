@@ -48,6 +48,133 @@ Missing related dependencies prevent acceptance.
 If acceptance includes deployment, get deployment evidence.
 If acceptance does not include deployment, publication is not necessary to complete development.
 
+## Keep one RC candidate
+
+Before merge, validate the current combination with the integration target.
+After combination changes that affect the evidence, examine its applicability.
+Build the release candidate (RC) from a fixed integrated commit.
+Record artifact digests and the applicable specification, configuration, migrations, test data, and gate identities.
+Keep these identities immutable for the candidate.
+If an identity that affects candidate evidence changes, register a new candidate.
+For that new candidate, examine necessary checks again.
+Promote the tested artifacts by digest. Evidence for a rebuild is necessary even with the same commit.
+
+Use candidate-specific resources when possible.
+For a shared RC, reserve the actual environment and database before deployment.
+Until every mandatory gate and evidence capture are completed, keep the slot.
+Do not release the slot immediately after deployment.
+For full gate scope and test admission, use [testing rules](testing.md#freeze-the-full-gate).
+
+The optional [local registry](coordination.md) also supports `scripts/delivery.py` with Python standard-library modules.
+Use the project's existing release record when it supplies equivalent controls.
+The [candidate example](../assets/candidate.example.json) shows the helper's manifest structure.
+Replace every placeholder and digest with actual project values before registration.
+Include applicable configuration, migrations, data, tests, and accepted specifications in `basis`.
+Include project runner files and their applicable dependencies in `basis`.
+Record the gate version in a basis file.
+Freeze each gate's full test list.
+The example commands are placeholders for project runners, not installed skill commands.
+Keep secrets out of arguments, basis files, receipts, and retained logs.
+
+For an authorized project with a completed manifest, the helper sequence is:
+
+```text
+python <skill>/scripts/delivery.py --root <project> register --manifest <candidate.json>
+python <skill>/scripts/delivery.py --root <project> run --candidate rc-17 --stage rc --request rc-17-deploy
+python <skill>/scripts/delivery.py --root <project> run --candidate rc-17 --stage gate --gate system --request rc-17-system
+python <skill>/scripts/delivery.py --root <project> select --candidate rc-17 --expected <current-selection-generation>
+python <skill>/scripts/delivery.py --root <project> run --candidate rc-17 --stage publish --request rc-17-publish --selection <returned-generation> --authority <authority.json>
+python <skill>/scripts/delivery.py --root <project> run --candidate rc-17 --stage verify --request rc-17-verify --selection <returned-generation> --authority <authority.json>
+```
+
+Run every named gate before selection. The example has one gate.
+Use `inspect` to find the current selection generation. An absent selection has generation zero.
+Selection uses compare-and-set semantics. A stale expected generation cannot replace the current selection.
+You can keep the selected candidate fixed. The newest commit is not mandatory for this selection.
+
+The project runner must examine the actual deployed artifacts.
+Then, it must return a structured receipt.
+A successful process exit alone cannot satisfy a gate.
+The runner writes its receipt to `SDD_GATE_RESULT` and identifies the candidate and observed artifact digests.
+For gates, its `tests` map must contain exactly the declared test IDs with `passed` results.
+Do not convert skipped or flaky results into passes.
+For publication, the receiver must check the expected target revision before mutation.
+Publication receipts identify the previous target revision and the observed new candidate revision.
+Verification receipts identify the target, candidate revision, and observed artifacts.
+
+The frozen authority file records the project's existing authorization. Its fields give no credentials or native permissions.
+Use the manifest's actual candidate, target, and observed target revision:
+
+```json
+{
+  "authorized": true,
+  "candidate": "rc-17",
+  "target": "production:app",
+  "target_revision": "<observed-target-revision>"
+}
+```
+
+Participating CI jobs must use the same authority and resource keys for the actual target.
+Separate CI runners do not automatically share this local registry.
+Use verified CI controls or a project backend for their shared targets.
+Keep merge validation and deployment serialization as separate controls.
+
+For participating GitHub Actions workflows, use one concurrency group for the production target that these workflows share.
+This fragment queues deployments without cancellation of an active mutation:
+
+```yaml
+concurrency:
+  group: app-production
+  queue: max
+  cancel-in-progress: false
+```
+
+Use the same group across all workflows that modify that target in the repository.
+Before use, examine support in the selected GitHub version and the actual project workflow.
+This group does not coordinate different repositories or commands outside Actions.
+For GitLab, use the project's target-specific `resource_group` and outdated-deployment controls.
+Until its gates are completed, keep the RC slot. A production-only group cannot protect a shared RC.
+Sources: [GitHub concurrency](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency)
+and [GitLab deployment safety](https://docs.gitlab.com/ci/environments/deployment_safety/).
+
+## Resolve candidate operations
+
+Keep one request ID for each operation.
+Repeated requests with the same ID retrieve its recorded state without another mutation.
+Do not use a new ID to retry an uncertain operation.
+Examine the actual runner, descendants, resource state, and external outcome first.
+Keep target serialization until the outcome has resolution.
+For recovery, use `reconcile --request <request-id> --evidence <resolution.json>` with `--root <project>`.
+The recovery record must identify actual stopped-writer observations and the resolved external outcome.
+Keep the initial failure and the recovery evidence.
+After a failed gate, use a new candidate. Do not silently replace a failure with a pass.
+Before reconciliation, confirm stopped writers.
+Before a new candidate uses the slot from the failed operation, reconcile that operation.
+
+A successful RC recovery uses this structure with actual observations and artifact digests:
+
+```json
+{
+  "writer_stopped": true,
+  "outcome": "passed",
+  "observations": "<native writer observations and actual external result reference>",
+  "receipt": {
+    "candidate": "rc-17",
+    "artifacts": {"app": "sha256:<actual-64-hex-digest>"}
+  }
+}
+```
+
+For a gate recovery, include the full `tests` map in its receipt.
+For publication or verification recovery, include the target fields from the applicable stage contract.
+For a failed outcome, use `"outcome": "failed"` with actual stopped-writer and outcome observations.
+That outcome releases the candidate's slots and prevents its acceptance.
+The helper records the writer-stop assertion. It cannot determine native termination from the JSON fields.
+
+The receiving release entry must enforce current selection, authorization, target revision, and idempotency.
+Native credentials and permissions determine bypass protection.
+Local registry checks and hook prose cannot enforce an external receiver.
+
 ## Use the release entry
 
 Read the release process, target environment, role with release authority, and user authorization that the project uses.

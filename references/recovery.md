@@ -12,6 +12,13 @@ If the resource agrees with permitted cleanup conditions, use the native tool.
 Examine preservation and removal results.
 Obey [the writing policy](writing.md) for recovery records for project development.
 
+For projects with [shared execution ownership](coordination.md), examine the claims and operations related to this checkout.
+Resolve active children and uncertain commands before removal.
+Preserve necessary command logs, receipts, result files, and registry references outside the checkout first.
+Only after actual observations of stopped writers, close the applicable claims.
+The shared registry can remain in Git's common directory after one worktree is removed.
+Do not remove that registry or unrelated ownership records as checkout cleanup.
+
 If Codex supplies `list_artifacts` and `archive_worktree`, use the attachment identity from their result.
 A path is not sufficient evidence of attachment identity.
 If the archive does not include necessary ignored files or external results, keep these results at a different location first.

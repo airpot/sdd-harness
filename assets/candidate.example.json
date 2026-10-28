@@ -1,0 +1,33 @@
+{
+  "format": 1,
+  "candidate": "rc-17",
+  "commit": "0000000000000000000000000000000000000000",
+  "artifacts": {"app": "sha256:0000000000000000000000000000000000000000000000000000000000000000"},
+  "basis": {
+    "requirements.md": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "config.json": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "migrations.json": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "test-data.json": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "gate-v1.json": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "runner.py": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "tests/system.py": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "release-authority.json": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "target": "production:app",
+  "target_revision": "<observed-target-revision>",
+  "authority": "release-authority.json",
+  "rc_resources": ["environment:shared-rc", "database:shared-test"],
+  "production_resources": ["environment:production-app"],
+  "commands": {
+    "rc": {"argv": ["<project-rc-runner>"], "timeout": 600},
+    "publish": {"argv": ["<project-publish-runner>"], "timeout": 600},
+    "verify": {"argv": ["<project-verify-runner>"], "timeout": 600}
+  },
+  "gates": {
+    "system": {
+      "argv": ["<project-system-runner>"],
+      "timeout": 600,
+      "tests": ["order-save", "order-reject"]
+    }
+  }
+}

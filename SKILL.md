@@ -2,7 +2,7 @@
 name: sdd-harness
 description: When you change or continue a project from specifications, use this skill. Also use it for acceptance checks, worker results, release preparation, or worktree protection.
 metadata:
-  version: "0.9.3"
+  version: "0.15.0"
 ---
 
 # SDD Harness
@@ -16,6 +16,7 @@ A project workflow is not necessary for general explanations.
 For this project work, do these steps:
 
 1. Read the user goal, applicable project instructions, accepted requirements, and related task record.
+   Before planning, examine [related lessons and known failures](references/workflow.md#use-lessons-across-tasks).
 2. Identify the repository, checkout, branch, changes at entry, and responsibility for the scope of the change.
 3. Examine available host observations and project records for related writer activity.
 4. If the scope has writer conflicts, use a snapshot that cannot change or a different checkout.
@@ -34,6 +35,8 @@ If a conflict can make work incorrect, complete its resolution before work that 
 If possible, continue work that you can do independently.
 
 For first use or changed host capabilities, read [installation and capability checks](references/install.md).
+For first project use, prepare [default retrieval and document coverage](references/retrieval.md).
+If backend setup fails, keep the fallback reason and coverage gaps in the task record.
 Find the paths of scripts in this skill directory. Keep project records in the target project.
 
 ## Complete a small change independently
@@ -48,6 +51,9 @@ For a small change, do these steps:
    Examine the changed behavior and necessary behavior to keep.
 5. Compare the result with source requirements. Keep conditions with `failed`, `blocked`, and `not run` results.
 6. Record the code basis, check command or procedure, result, limitations, and next action.
+
+For useful findings from execution, use the [lesson loop](references/workflow.md#use-lessons-across-tasks).
+Keep lesson verification, task acceptance, and evidence of prevention different.
 
 Keep this record short. Do not make a template, team setup, or more documents mandatory.
 For documentation and formatting with low impact, checks of the changed text can be sufficient.
@@ -72,7 +78,11 @@ Use the project's maintenance convention to make the record with specification a
 | Condition | Read |
 | --- | --- |
 | Project-specific specification prompts, acceptance examples, or execution checks | [Optional project profiles](references/project-profiles.md) |
+| Metrics, statistical analysis, model evaluation, or reports that use calculated results | [Data-analysis prompts and checks](assets/profiles/data-analysis.md) |
 | More than one step, architecture decisions, dependencies, or important changes to a system that the project uses | [Change workflow](references/workflow.md) |
+| Prepare project retrieval, examine document coverage, or select query tools | [Project retrieval](references/retrieval.md) |
+| Enable native hooks, examine task bindings, record check evidence, or inspect hook limits | [Optional native hooks](references/hooks.md) |
+| Claim a task or debt item, delegate a child assignment, or recover shared execution ownership | [Task coordination](references/coordination.md) |
 | Compare effectiveness of development or execution methods | [Effectiveness comparisons](references/workflow.md#compare-effectiveness) |
 | Ambiguity, contracts with conflicts, requirement coverage, changed or removed behavior, or important validation decisions | [Specification review](references/spec-review.md) |
 | Behavior changes in executable code, test-result interpretation, characterization of behavior from before the change, or assertion integrity | [Testing](references/testing.md) |

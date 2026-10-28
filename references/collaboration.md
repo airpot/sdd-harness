@@ -31,6 +31,9 @@ If terms or rules are different in different contexts, find rule owners and acce
 
 Use task assignments that give scope and ownership.
 Use Git branches or different checkouts for work that you do independently.
+For shared task claims, use [coordination rules](coordination.md).
+A task status on a board is not an atomic execution claim.
+Keep the existing board as task authority.
 Cross-machine claims, heartbeat leases, and a coordination service are not necessary before you start your tasks independently.
 If scopes or owners have a conflict, get a decision for the boundary in conflict before conflicting writes.
 Continue work that does not make this decision necessary.
@@ -136,6 +139,10 @@ Do not use Git cleanup or publication from this checkout without approval.
 
 Use available controls or different resource instances to prevent conflicts for ports, databases, containers, and logs.
 A worktree keeps only files in a different directory.
+Branches and worktrees do not isolate ports, databases, containers, or external effects.
+Use resource keys for actual shared targets, not branch or session names.
+Before shared RC deployment, acquire the environment slot.
+Until all mandatory gates and evidence capture are completed, keep the slot.
 
 Before a handoff and before the initial executor stops writes, keep results and evidence.
 Before the next executor gets responsibility, make sure that the initial writers stopped.

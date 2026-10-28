@@ -31,6 +31,7 @@ For a system that the project uses, record related behavior and known failures.
 Find the behavior to change and compatibility boundaries to keep.
 
 Before implementation planning, examine related entry points, callers, tests, configuration, and architecture decisions at this time.
+For default backend setup, document coverage, and source search, use [project retrieval](retrieval.md).
 Find components that you can use again and behavior that must stay the same.
 Use code as evidence of its structure.
 Find accepted behavior in accepted requirements and project decisions.
@@ -132,12 +133,34 @@ Do not give metadata without a source or make one more record format.
 
 If work does not give results that help the task, find the cause's category before you try again.
 Keep the cause type for requirements without decisions, missing context, setup failure, implementation failure, and capability that is not available.
+Before you use the approach again, examine [related lessons](#use-lessons-across-tasks).
 After external effects with unknown outcomes, use [recovery for unknown outcomes](#resolve-uncertain-effects) before you try again.
 Keep results that help the task.
 
 This includes results for only part of the scope.
 Change the next step for the cause from execution, with applicable approval and in the specified scope and conditions.
 Written instructions do not supply native controls for tool or data permissions.
+
+### Find the cause before another attempt
+
+If the same failure occurs again without new evidence, stop the current approach.
+If the current approach uses all its applicable budget, stop that approach.
+Do the same if changes exceed the accepted scope.
+Keep failure evidence, useful results, and remaining acceptance gaps.
+
+Examine the specification, assertions, environment, and diff.
+Use a minimal reproduction for a test of the cause hypothesis before another implementation attempt.
+If reproduction is unavailable, record the limit and select another applicable check.
+Before another attempt, identify new evidence or a changed approach that addresses the cause hypothesis.
+Before another attempt, check the scope, authorization, and remaining budget.
+Repeated failures do not prove a cause.
+Do not increase the budget only to repeat the same attempt.
+
+Do not discard work only to restart the approach.
+Before recovery that discards work, use [recovery controls](recovery.md).
+Keep previous applicable authorization. Continue work that you can do independently.
+
+### Examine remaining checks and evidence
 
 Make a list of baseline failures in a different group.
 Record the relation of each baseline failure to the change.
@@ -236,6 +259,72 @@ If changes, new evidence, or important remaining problems make a review necessar
 If a convergence loop occurs again without new evidence, record the specified missing decision.
 Continue work that you can do independently.
 Do not write new accepted requirements only to make a review that occurs again give a different verdict.
+
+## Use lessons across tasks
+
+Use the project's records for lessons. A new document structure or service is not necessary.
+Before planning a related task, find lessons and known failures for its behavior, dependencies, or execution conditions.
+After an important failure, examine related lessons before you use the approach again.
+Use direct reads or `rg` for known sources. For unknown locations, use [project retrieval](retrieval.md).
+
+Read the lesson's source evidence. Compare its scope, accepted requirements, versions, and environment with the current task.
+Select use, non-use, or further validation. In the task record, keep decisions that change the work and their reasons.
+If records are missing or retrieval is unavailable, keep important gaps.
+If independent source checks give sufficient evidence for work, continue that work.
+A lesson does not give authority to change requirements, project rules, shared skills, or global agent memory.
+For these changes, obey the applicable change authority.
+
+### Find and verify a useful lesson
+
+Use repeated failures, important incorrect assumptions, costly rework, incidents, user corrections, or useful verified methods as triggers.
+A lesson record is not mandatory for every task or tool call.
+Keep a short source-linked statement in the record location that the project uses.
+Include the following information when it is applicable:
+
+- The observed problem or useful result, its task, and source version.
+- The accepted result and actual observation, with the method and evidence location.
+- The cause with supporting evidence, or a hypothesis with its unverified status.
+- The correction or proposed action, its scope, and conditions that limit its use.
+- The verification result and any necessary follow-up, responsible task or owner, and trigger for that work.
+
+Before cause verification, keep the observation or hypothesis as a candidate lesson.
+Reports from models that agree do not verify a cause.
+A correction check with a satisfactory result gives evidence only for the behavior and conditions that it examines.
+It does not prove the proposed cause or prevention in subsequent tasks.
+If the available evidence is sufficient only for a statement with a smaller scope, keep that statement.
+
+### Use the lesson and examine the outcome
+
+For a lesson that you use, identify its source and the task action that it changes.
+This action can change the plan, implementation, applicable test, or execution procedure.
+Use accepted requirements for expected results. Do not use the lesson as a replacement for these requirements.
+Use a suitable existing check when it gives the necessary evidence.
+If a new regression check is necessary, keep the counterexample and correction evidence with the test.
+
+Before task closure, record the actual action, result, scope, and remaining uncertainty.
+Keep correction of an existing defect different from prevention of a defect in a later task.
+If the later task already contains the defect, its repair does not show prevention before implementation.
+If prevention stays untested, keep that result unverified.
+When later validation is necessary, keep its responsible task or owner and its execution trigger in the existing record.
+Future lesson validation does not block current task acceptance unless it is a mandatory condition of that task.
+A lesson record does not replace a mandatory check or make a failed task accepted.
+
+### Maintain the lesson and its evidence
+
+After related requirement, dependency, or environment changes, examine lesson applicability again.
+Use new conflicting evidence for the same examination.
+If only part of a lesson stays applicable, limit the statement to that part.
+Keep unaffected uses and their evidence.
+If a correction or replacement is necessary, keep the initial record and link its successor and affected scope.
+Mark unsupported or replaced conclusions with the project's status terms. Do not use them as verified current guidance.
+For duplicates, keep one current reference with links to the initial evidence. Do not delete unique evidence.
+When authority has no resolution, keep the conflict explicit and continue independent work under accepted requirements.
+
+In worker results and handoffs, keep lesson references, applicability decisions, unverified claims, and necessary follow-up.
+Keep this information accessible to the next executor. A worker's report does not verify its lesson.
+The main agent examines the source evidence before use.
+After lesson document changes, use the [refresh or fallback procedure](retrieval.md#examine-source-and-effects).
+Use project records for this loop. Do not change global agent configuration or memory as part of it.
 
 ## Compare effectiveness
 

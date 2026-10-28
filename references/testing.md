@@ -91,6 +91,77 @@ Keep seeds, counterexamples, setup, and reference versions necessary for failure
 
 Satisfactory results from an input sample are not sufficient evidence of behavior for each input.
 
+## Assign checks to stages
+
+| Stage | Main checks |
+| --- | --- |
+| Development | Unit, component, property, and applicable regression checks. |
+| PR and integration | Current combination, interfaces, contracts, and affected source checks. |
+| RC acceptance | System and end-to-end checks of the actual deployed candidate. |
+| Production rollout | Authorized smoke checks, health signals, and rollout observations. |
+
+Complete applicable unit and component checks before RC acceptance.
+Use current evidence for the integrated combination, not only separate branch passes.
+An unchanged completed job can supply applicable evidence. It is not necessary for RC to repeat every unit job.
+For system checks, use the actual supported UI, API, CLI, MCP, or data entry.
+Observe required persistence and other business effects.
+A successful click or HTTP response alone is not sufficient evidence of the business result.
+Do not use mock checks as evidence for the actual combination.
+
+For changed behavior, select applicable positive, negative, boundary, state, and concurrency cases.
+For rejection cases, check both the rejection and absence of forbidden side effects.
+Use authorized actors for positive access checks and unauthorized actors for applicable negative checks.
+
+## Maintain useful regressions
+
+For each bug repair, keep the original reproducer, input, incorrect result, and accepted expected result.
+Add a reliable regression at the lowest effective test layer.
+If a system boundary caused the defect, add or extend the applicable system test.
+When prior execution is available and safe, observe defect failure and repair success.
+Do not combine missing-interface results, setup failures, and behavior failures.
+Keep important generated counterexamples as durable inputs. A local cache alone is not sufficient.
+
+Agents can propose tests from accepted specifications, diffs, defect reports, and previous failures.
+Get expected results from accepted specifications or an applicable independent oracle.
+Before mandatory admission, review requirement references, assertions, discovery, side effects, and stability.
+For important risk, use independent review or controlled project checks.
+When feasible, show that assertions detect the original defect or a representative fault.
+Do not accept snapshot updates, weaker assertions, skips, or candidate output automatically.
+
+Maintain usefulness rather than an increasing end-to-end test count.
+Use review to remove duplicate or obsolete active cases. Keep historical evidence.
+Unless accepted changes or justified replacements remove their applicability, keep bug regressions.
+Track defect detection, escaped defects, runtime, and instability when these observations help maintenance.
+
+## Freeze the full gate
+
+Use the existing test catalog or project record. A second test database is not necessary.
+Before RC execution, freeze a versioned mandatory manifest with these items:
+
+- Critical baseline workflows.
+- Applicable maintained regressions.
+- Affected scenarios and workflows.
+- Conditional checks for the change's risks.
+- Test IDs, suite versions, shards, required resources, and acceptance criteria.
+
+If impact is uncertain, select broader coverage.
+An impact map helps selection. It does not prove that all effects are known.
+Scheduled extended suites cannot replace applicable mandatory release checks.
+Full gate means satisfactory execution of every mandatory item in the accepted manifest.
+It does not mean every historical test or only the implementing agent's selected tests.
+
+Bind results to candidate digests and applicable configuration, migrations, data, tests, and gate version.
+Verify discovery and every shard's completion.
+Use different result labels for failed, blocked, cancelled, missing, skipped, and flaky results.
+Do not silently omit cases or accept zero discovered tests.
+Unresolved flaky critical cases block acceptance.
+For other exceptions, explicit project authority, policy, and follow-up records are necessary.
+The optional delivery helper requires `passed` for every declared test.
+For an accepted manifest change, create a new version and examine evidence applicability again.
+Do not reduce the manifest to conceal failure.
+Keep failed attempts even after a later pass.
+Before another attempt, find the cause and correct the applicable problem. Do not retry blindly.
+
 ## Keep accepted test behavior
 
 Examine changed assertions that accept more behavior, removed checks, skips, mocks, discovery settings, and runner changes in the change's diff.

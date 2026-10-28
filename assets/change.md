@@ -32,6 +32,7 @@ For applicable fields, use these instructions:
 - Results and evidence: give references to commits or snapshots, acceptance conditions, validation-object identities, methods, environments, results, and logs.
 - Validation recipe: record executable steps, necessary input versions, setup, and pass criteria.
 - Evidence applicability: record the conclusion at review and the reason that evidence from before the change is applicable.
+- Related lessons: give references, current applicability, changed task actions, observed outcomes, and necessary unverified follow-up.
 - Acceptance: record scope with acceptance for all conditions, acceptance for some conditions, or `blocked` results.
   Keep each mandatory condition with a `failed`, `blocked`, or `not run` result in the record.
 - Specification reconciliation: identify the record with specification authority, maintenance model, accepted updates, and remaining gaps.

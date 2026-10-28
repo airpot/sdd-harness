@@ -1,31 +1,135 @@
-# 版本记录
+# Repository Changes
 
-## 0.9.3
+## 2026-10-27: Task claims and candidate gates in 0.15.0
 
-补齐本版原生 POSIX 与最低 Python、Git 组合实测；对 22 个技能文件作完整、哈希绑定的 STE 词汇和规则审查。改写英语指令，保留原需求、权限、语言例外、运行算法及格式 1。只调整脚本中的人读文字，旧包、旧标签及历史映射保持原样。审查范围、运行矩阵、原始证据哈希见本版发布清单。
+Add shared local task claims, child assignments, current ownership checks, and explicit recovery.
+Keep the existing task board and debt board. Use SQLite from the Python standard library for execution state.
+Connect optional hooks to current claims and keep active commands distinct from stopped writers.
+Add a project command entry for fixed candidates, shared RC resources, mandatory gate receipts, and selected publication.
+Keep uncertain outcomes, operation identities, prior failures, and artifact digests across recovery.
+Put unit tests before RC acceptance. Maintain applicable system and end-to-end regressions from accepted requirements and defect evidence.
+Keep generated assertions, positive and negative cases, gate completeness, and project authority under review.
+No service, global hook registration, automatic deployment, or distributed coordination is mandatory.
 
-## 0.9.2
+## 2026-10-27: Optional native hooks in 0.14.0
 
-保留 Git 路径的有效末尾空白，拒绝快照输出至源仓库实际或共享元数据，在恢复前拒绝普通文件祖先冲突。修复规格表格，明定小任务沿用原记录引用写作政策。22 文件、格式 1、安装器及既有权限边界沿用原约束。旧归档、原审计、原始记录与旧标签悉数保留。
+Add shared operation checks, process evidence, checkpoints, and completion/worker state checks.
+Keep ordinary installation unchanged. Explicit setup generates or merges host configuration with exact backups.
+Codex and ZCode configurations use their own supported event and handler formats.
+Keep actual activation, scope coverage, semantic acceptance, and independent operation controls as separate evidence.
+Add no service, database, model dependency, automatic publication, or automatic deletion.
 
-## 0.9.1
+## 2026-10-26: Semantic delivery in 0.13.0
 
-统一工作流、委派与 MCP 的不确定结果处理规则。状态不可查或不足以确认时，允许在适用、已核验且获授权的幂等保护内重试；身份、输入、目标、时限、次数、失效任务与发布资格检查仍存。文件改同名目录可直接保存、恢复，不改源码暂存区；旧删除核验、格式 1、链接拒绝与源码保全沿用原约束。22 文件与安装器保持原样，旧审计、标签、发布包及历史映射悉数保留。
+For calculated reports, metrics, statistics, and model evaluations, use applicable data-analysis prompts.
+Connect the question, metric, population, and permitted conclusion.
+Check record counts, join effects, and values across outputs from the identified execution.
+For important replayable outputs, verify the recipe and record isolation limits.
+Stop an approach without progress and find the cause before another attempt. Keep useful work and recovery controls.
+Use existing records and dependencies. Keep evaluation artifacts outside the portable package.
 
-## 0.9.0
+## 2026-10-16: Lessons across tasks in 0.12.0
 
-新增 Skill、MCP、Agent、业务系统、数据分析五类可选模板与选择入口。规格提示、验收例证和条件检查共用原 SDD 流程；混合项目沿用一份权威记录，小任务仍可简用。安装库存为 22 文件；两项运行脚本保持原样。保留历史版本、标签与资料映射。规划评测和安装验证分别记录，不作普遍提效或完整 STE 合规声明。
+Connect task-relevant lessons to planning, failure analysis, actions, verification, and later maintenance.
+Keep observations, cause hypotheses, correction checks, and prevention evidence distinct.
+Keep lesson applicability and source evidence across workers and handoffs.
+Use existing records, tests, and retrieval. No new runtime, service, or mandatory template is necessary.
+Lessons give no new authority and do not replace accepted requirements or mandatory checks.
 
-## 0.8.2
+## 2026-10-16: Default project retrieval in 0.11.0
 
-恢复命令临时禁用 fsmonitor 回调，核验 index 后重查实际元数据与 HEAD；新增配置回调与末段 HEAD 改动的真实仓库回归。保留 16 文件结构、安装器及权限边界，原审计与历史包另存。
+Zvec-Grep is the default backend for first project use with applicable setup authorization.
+The portable package and installer exclude backend dependencies.
+The agent examines admission of applicable project documents and keeps coverage gaps in the task record.
+Document authority, source reads, checkout isolation, and effect controls stay mandatory.
+If setup fails, the agent records the reason.
+The agent can use direct reads and `rg` for work that these tools support.
+These instructions do not show host enforcement or general retrieval quality.
 
-## 0.8.1
+## 2026-10-16: Optional project retrieval in 0.10.0
 
-通用效果比较规则移入 workflow，独立开发与 subagent 共用；当前规格测试路径改为统一源码位置，归档前明确核验暂存区独有的必要成果。保持 SDD 主线、独立开发默认、16 文件结构与原运行脚本。
+This release adds project retrieval with one reference.
+The task procedure has tool selection and source evidence.
+The installer and workspace scripts have no changes.
 
-## 0.8.0
+The backend is optional.
+The verification records give methods and limitations for checks, model trials and packages.
+These results are for the specified inputs.
 
-保留 SDD 主线，加入按需启用的 TDD、BDD/ATDD、DDD 与 AIDD 执行规则。补强测试结果依据、旧行为识别、领域边界、接口与完整流程验证、测试完整性及 AI 执行反馈。技能文件由 14 个增至 16 个；运行脚本及依赖未增加。
+## 2026-10-09: Runtime and complete STE review for 0.9.3
 
-独立仓库为安装输出。0.7.3 开发资料按原始字节保存在 `history/source-0.7.3/`，原位置与哈希见发布清单；后续开发与验证使用统一源码。旧提交及安装包保持可恢复。
+Review the complete portable English corpus against the pinned official ASD-STE100 Issue 9 source.
+Correct dictionary uses, verb forms, sentence structures, and technical terminology while retaining accepted behavior and authority.
+Use the complete writing foundation for project development documents. Keep small changes and policy references brief.
+Bind native POSIX and exact minimum-runtime observations to actual source hashes and raw results.
+Keep format checks, runtime checks, instruction review, and external certification distinct.
+Preserve prior raw evidence, packages, and tag targets.
+
+## 2026-10-09: Audit corrections for 0.9.2
+
+Preserve significant whitespace in Git paths. Select the requested repository and permit matching restore destinations.
+Reject snapshot destinations inside actual or common source Git metadata before creating output.
+Reject conflicting present-file ancestors during verification, before restore creates its output.
+Keep format 1, valid file-to-directory transitions, source preservation, and the unchanged installer.
+
+Repair the living specification tables without removing historical requirement identities.
+Make the existing brief task record an explicit valid location for its writing-policy reference.
+Keep twenty-two portable files, independent development, project authority, and optional records.
+Preserve earlier audits, archives, raw evidence, and tag targets.
+
+## 2026-10-08: Audit corrections for 0.9.1
+
+Use one shared rule for uncertain effects across workflow, delegation, and MCP guidance.
+Permit authorized replay under applicable verified idempotent protection when outcome inspection is unavailable or inconclusive.
+Keep identity, inputs, target, scope, retention, retry limits, and operation-specific authority controls.
+Support ordinary tracked-file replacement by directories with saved current descendants without changing source staging.
+Keep archive format 1, legacy deletion checks, source preservation, and link rejection.
+Retain twenty-two portable files and the unchanged installer. Preserve all previous audit and release records.
+
+## 2026-10-08: Optional project profiles for 0.9.0
+
+Add one selector and five project profiles: skill, MCP, agent, business system, and data analysis.
+Supply specification prompts, acceptance examples, and conditional checks in the existing SDD flow.
+Compose relevant capabilities in one accepted project record. Keep narrow changes on the short path.
+Retain accepted architecture, independent development, permissions, and both runtime scripts.
+The selected portable inventory grows from sixteen to twenty-two files.
+Preserve old releases and evidence. Record package checks and bounded planning trials separately.
+
+## 2026-10-08: Final restore checks for 0.8.2
+
+Disable restore fsmonitor callbacks through an empty command-local configuration value.
+Recheck actual output metadata and HEAD after index validation. Return the final observed HEAD.
+Add real configured-callback and late-HEAD regressions. Retain native Git 2.29 support.
+Preserve source repositories, caller settings, file checks, and explicit permission results.
+Keep the sixteen-file payload and installer unchanged.
+Preserve the original 0.8.1 audit and evidence. Record new validation separately.
+
+## 2026-10-08: Audit corrections for 0.8.1
+
+Route effectiveness comparisons through the shared workflow for independent work and optional delegation.
+Keep measurements conditional. Ordinary tasks require no team setup or additional record.
+Correct current specification test paths without changing historical procedures.
+
+Clarify separate reliable preservation and content verification for necessary results held only in the Git index before removal.
+Keep exact staging restoration excluded and retain ownership, stopped writers, protection, and native tool checks.
+
+Keep the sixteen-file payload, both runtime scripts, independent default, and authority boundaries.
+Preserve the 0.8.0 archive and evidence. Record new validation separately.
+
+## 2026-10-08: Accepted supporting methods for 0.8.0
+
+Add conditional testing and domain references to the independent SDD path.
+Use meaningful next-test feedback, accepted result references, and observation-only characterization.
+Clarify business meanings, rule ownership, optional model tactics, and actual consumer/provider effects.
+Adapt AI execution to task uncertainty, dependencies, impact, and observed capability.
+Review test integrity and retain consequential-run metadata, classified failures, and declared effectiveness comparison conditions.
+Keep the existing authorization, worker feedback, integration, release, and recovery boundaries.
+The selected portable inventory grows from fourteen to sixteen files. Runtime scripts and shared packaging tools remain unchanged.
+Preserve historical packages and evidence. Record new validation separately from prior release claims.
+
+## 2026-10-07: Unified source layout
+
+The portable SDD 0.7.3 tree moved into `skills/sdd-harness/` without changing runtime bytes.
+Development specifications, tests, evaluations and distributions moved into matching named directories.
+This is a source workspace migration, not a new skill release.
+Historical release records remain in `evals/sdd-harness/results/` with their original contents.

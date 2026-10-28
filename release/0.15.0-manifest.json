@@ -1,0 +1,73 @@
+{
+  "version": "0.15.0",
+  "date": "2026-10-28",
+  "role": "standalone installation output",
+  "development_source": {
+    "head_at_validation": "ca98afb929f600058e3cac2d038aeba08cd637a8",
+    "state": "Selected portable files include uncommitted changes. Raw hashes identify the tested source.",
+    "identity": "portable_files raw hashes; development HEAD alone does not identify these uncommitted files"
+  },
+  "previous_standalone_commit": "e31375988ee7651bfab7e5230357652ebf867756",
+  "previous_release_manifest": "release/0.9.3-manifest.json",
+  "portable_files": {
+    "SKILL.md": "7c8dfc3d920edacbbac7f9d565d2b69fbd0b1adfd4f80b111dfda5e9d89a2700",
+    "assets/candidate.example.json": "14576c978f46237942b2623f3ca889bf128b746bccc853bdda7de95d3cc15836",
+    "assets/change.md": "d7d9122345c8e77595823f51fccded7074b336492635169c22fc0205a36517a3",
+    "assets/handoff.md": "da58d6c988e45faf72486b79cc87e71e90e55df5d651d20160a607b8342ee38c",
+    "assets/release.md": "f8ebb5a4d079f0fa140e7dcf56f77b2a84a8018c75ab74cb479a3cfac6df20d4",
+    "references/collaboration.md": "6d86f794c57594f3ab56d73b3b2e1179ce23c3e2fe4f92ca2e9b7d8a804d9a30",
+    "references/coordination.md": "2b8fbdb934e5473a13bde4544e836204dd6947c4d8742d77689cd65edd12d09b",
+    "references/delivery.md": "0891f16b4cfa01f58a4fb63df35d7b437a205c38391acccc0733ef237503a8a3",
+    "references/domain.md": "1ad621545afb22709eebca3bf709f19044f372a196308d3bc1aa7831e58c99b5",
+    "references/hooks.md": "f61859ffaaf225f0c4eb07a600f3d8d6ff7fe5aea88cf3fa66510442da87957d",
+    "references/install.md": "2db8f1c57729e3d1243437cd80c2f44bb4db91e226fa5e7b4a42cd1582a4b01f",
+    "references/project-profiles.md": "3a9bc05a725f8b928d51f0e919669f8647e61d2d3d66b6979c0deb1e271f26f5",
+    "references/recovery.md": "26cd8f94276d7c57972094db246c4b54fbe8f4e7b5d63c5c6284c279e2b4ea6f",
+    "references/retrieval.md": "3c0b4c15081adf7e3d55c9df107c8d12ba694cf46901d1b7b354697d0c073af8",
+    "references/spec-review.md": "f0f2a43bf8690ca54010da4202fba866a3d16696a52b677459a5d0c4e7ba54ca",
+    "references/subagents.md": "487a05a3fc52cc01c95c65531ac2d85f119a89d418c7be0c5a6524936bd75caf",
+    "references/testing.md": "e5d52099e4f613835553589377afce7d744b12a34795dd8bcd7c68ca69b382b1",
+    "references/workflow.md": "59e13397967302a54fad996cebf759f460c43d7e6c7555c71724e4efa74d551b",
+    "references/writing.md": "63e7a7fa17ad570db887c2b39f0788a250373b5c2292a5f1ec8b0c605c790abd",
+    "scripts/coordination.py": "badb3ac3bde4d104c0a5e392707fbd13e831b5c41e264bd5fd22fcb8cd0f9462",
+    "scripts/delivery.py": "4374474cf395387b291e63a3232ee2e4f1bf125ddbca4c8ddfee2186463532ab",
+    "scripts/hooks.py": "1d7dbec6adc783cc4883597e170d269a1dbaa7fed37de6fdcdae0d93fb7e857c",
+    "scripts/install.py": "39936fa49bcb4687c3c14b8b784fda3e066ed4a8fae2252d478126fff7585243",
+    "scripts/workspace.py": "3dec1749347f195187d29e9d12d1d933ce44aeb522db1a85afb58384fb50aeee",
+    "assets/profiles/agent.md": "76ae8de57eb10a6e49acf7da1cd7d5b7e4c267f63023a395ed39f508afedd2e0",
+    "assets/profiles/business-system.md": "b945a6deec97b3a244ec7fde13281c680ed9b88f6209f25909c2aaafcbd47960",
+    "assets/profiles/data-analysis.md": "f7f74148368e8c5d0dd1d45a7eaab93eb065788bec6a8e4a4cb41d4d9a38829c",
+    "assets/profiles/mcp.md": "28839afec6b8e9585036e2bacb30bc9c14f347b54f474521ee222da662164781",
+    "assets/profiles/skill.md": "af7ff6059ce29177b9ac9ef9e618fefce10d9c33f5e7e34006e2236183fb9c34"
+  },
+  "archive_sha256": "ebfe8f2ba226230c1e4220a094e16a060204032e7d8ce19f8046cd86271f7e03",
+  "archive_bytes": 97745,
+  "evidence_binding_sha256": "993651c0b4b65fe1af5a02e9640c52605cd23129e12fcc4eff7d7ca53c9d77ae",
+  "preserved_old_tags": [
+    "1dff8de3f5a20ea7e68d31b560b4b274c1e3fe2b refs/tags/sdd-harness/v0.8.0",
+    "6e561cc6642aec214a8929d8d558d5a928bd4e86 refs/tags/sdd-harness/v0.8.1",
+    "6551698be50ea2463e0ed106333723a02764a22e refs/tags/sdd-harness/v0.8.2",
+    "3b30416ab7b99a5b712d951d82a1e07878ab3ae3 refs/tags/sdd-harness/v0.9.0",
+    "2663b1e4413cfef4ef3b945a9c9020de8ddf5a94 refs/tags/sdd-harness/v0.9.1",
+    "9e34f5c425208c865df185d719297abe5cf9527f refs/tags/sdd-harness/v0.9.2",
+    "b1da0d36aa6ab8de4daf7b8b663b7d7b15920f17 refs/tags/sdd-harness/v0.9.3"
+  ],
+  "validation": {
+    "total": 498,
+    "passed": 495,
+    "skipped": 3,
+    "failures": 0,
+    "errors": 0,
+    "log": "evals\\sdd-harness\\claims-delivery-0.15.0\\raw\\full-suite-002.log",
+    "sha256": "45cd24e569c9dab957c92c9c126a1c201a9238a4f1151624c3a5d603498f5bbc"
+  },
+  "limits": [
+    "Native hook activation",
+    "Real container or production deployment",
+    "Unobserved writers and descendants",
+    "Cross-machine and separate-registry exclusion",
+    "Project receiver authorization and business correctness",
+    "POSIX and exact minimum runtime execution",
+    "Full contextual STE vocabulary and rule conformance"
+  ]
+}

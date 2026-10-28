@@ -30,6 +30,8 @@ To select a profile for the deliverable, do these steps:
 A report in a business application can make business-system and data-analysis prompts necessary.
 An agent that supplies analysis can make agent and data-analysis prompts necessary.
 These combinations do not make two development workflows necessary.
+For metrics, statistical analysis, model evaluation, or reports with calculated results, examine the data-analysis prompts.
+Use only prompts and checks with effects on the accepted outcome.
 
 ## Put profiles in the project's record
 

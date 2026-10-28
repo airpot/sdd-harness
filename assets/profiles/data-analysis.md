@@ -10,8 +10,11 @@ Keep its format and authority.
 For the related prompts, use these instructions:
 
 - Identify permitted sources, source versions, access permissions, and coverage.
+- Identify the question and the comparison or decision that needs the output.
+- Connect each metric to this question, the accepted population, and the permitted conclusion.
 - Give data quality rules for missing values, duplicates, invalid values, and exclusions.
 - Give observation grain, units, time basis, time zone, and related availability times.
+- For joins, give the expected number of matches for each key.
 - Give metric formulas, filtering, grouping, denominators, and rounding rules.
 - Give the analysis method, assumptions, uncertainty, and limitations.
 - Supply expected examples from a source or calculation that does not use the implementation output.
@@ -43,9 +46,19 @@ These example metric selections do not replace the accepted definitions from the
 For applicable checks, use these instructions:
 
 - For calculated outputs, compare expected examples that use no implementation output with the execution results.
+- Check that the metric answers the accepted question. Keep descriptive comparisons distinct from causal conclusions.
 - Do checks of applicable grain, units, time boundaries, filters, and data quality rules.
-- For replay, do the execution again with the identified inputs.
-  Then, compare the results with the accepted output properties.
+- Compare input counts with valid, excluded, and unresolved counts at the accepted grain.
+  If a record has more than one exclusion reason, keep reason counts distinct from the count of excluded records.
+- For joins, check duplicate keys and unexpected changes in record counts against the accepted relation.
+- Compare shared values, units, and sample counts across tables, charts, and report text.
+  Identify the execution and source versions for each output. Exclude outputs from earlier executions unless the accepted contract permits reuse.
+- For important outputs that permit replay, do a test of the recorded recipe in an available clean directory or environment.
+  Use only declared code, dependencies, configuration, and permitted input versions.
+  Compare the results with the accepted output properties.
+  Record what the clean environment excludes. A new directory alone does not show dependency isolation.
+  If no clean environment is available, record this validation gap.
+- For other replay checks, use the identified inputs and compare the accepted output properties.
 - If numerical variation is applicable, do a check of the accepted tolerance and specified uncertainty.
 - If sources have access restrictions, do checks of permitted retrieval and the specified replay limits.
 - If prediction is applicable, examine time splits and features available at each decision time.
@@ -60,4 +73,6 @@ In the evidence record that the project uses, record:
 - The candidate
 - Execution conditions
 - Execution outputs
+- Relations among outputs and the input record counts
+- Replay method and isolation limits
 - Remaining limits.

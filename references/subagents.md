@@ -54,6 +54,14 @@ If references are necessary for continued work, find the worker, native run, and
 These references give responsibility.
 They are not sufficient evidence of native control that the next executor can use.
 
+For a project with shared claims, record the parent claim and a distinct child assignment.
+Use distinct host, instance, session, and worker identities from [coordination rules](coordination.md).
+Keep the child scope inside the parent scope.
+Do not allocate a second independent claim for the parent task.
+Before parent writes, exclude active child scopes.
+Child execution does not increase release authority.
+For read-only review, use a fixed snapshot without implementation write authority.
+
 Example task message:
 
 > Do an investigation of AUTH-8 at snapshot B17 with contract C4.
@@ -115,6 +123,7 @@ Give a short outcome and evidence references that the main agent can read.
 Give artifact or commit identities, changed files, checks from execution, and related code and specification versions.
 Keep records of checks with results that are not satisfactory, blockers, or no execution.
 Give work that is not completed, necessary next steps, and execution state.
+Give references to useful lessons and their source evidence. Keep cause hypotheses and prevention claims with their verification status.
 Keep large logs and artifacts in storage that is not in the conversation.
 
 Output for only part of the task, refusal, or timeout is not sufficient evidence of completion.
@@ -166,8 +175,12 @@ Before reassignment of its write scope or worktree removal, make sure that execu
 After external effects with unknown outcomes, use [the shared recovery rule](workflow.md#resolve-uncertain-effects) before a retry.
 
 Keep selected-attempt, supersession, stopped-execution, and authorization checks.
+Do not combine execution status, result disposition, and evidence of stopped writers.
+For claim transfer or closure, preserve results and resolve active descendants and uncertain commands first.
+Do not use lease expiry as evidence that execution stopped.
 
 Before a different chat becomes the main chat, keep necessary worker identities, scopes, artifacts, missing decisions, and next actions.
+Keep related lesson references and unverified follow-up with the [lesson loop](workflow.md#use-lessons-across-tasks).
 Identify available results without verification with their verification status.
 The next main agent must examine ownership and access to worker controls at this time.
 If you cannot control or examine previous workers, prevent changes in their scopes.

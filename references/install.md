@@ -8,6 +8,12 @@ Extract the release ZIP.
 Make a copy of the full directory in the skills directory for the target agent.
 Python 3.10 or a subsequent version is necessary for the scripts.
 Git 2.29 or a subsequent version is also necessary for workspace commands.
+
+For shared task claims and candidate execution, use Python's standard-library `sqlite3` module.
+No database service or additional Python package is necessary.
+Use [task coordination](coordination.md) only when shared execution ownership is necessary.
+Use [delivery](delivery.md) for project commands and actual candidate evidence.
+Installation does not activate these controls or register native hooks.
 Python is not necessary for instructions and templates.
 
 Before directory traversal, the installer rejects symbolic links and Windows reparse points.
@@ -26,6 +32,16 @@ An ancestor with the name `__pycache__` that is not in the source or target skil
 
 Before the scripts make the destination, the two scripts reject an empty portable inventory.
 The installer does not change global configuration, connect services, or install dependencies.
+
+For default backend setup and document coverage, read [project retrieval](retrieval.md).
+The portable installer only copies skill files.
+For first project use, the agent prepares Zvec-Grep and a local model with applicable setup authorization.
+`Node.js` version 22 or a subsequent version and an initial model download are necessary for the backend.
+Do not include its dependencies in the skill package.
+If setup is unavailable, record the fallback reason.
+Then, if direct reads and `rg` are sufficient, use these tools.
+The Python and Git minimum versions stay the same.
+The installer does not supply a search backend or change backend configuration.
 
 ```text
 # Codex user installation
@@ -94,6 +110,8 @@ For example:
 > For new or changed development documents for the project, obey its writing policy.
 
 The skill does not install hooks automatically.
+For explicit project hook setup, use [optional native hooks](hooks.md).
+Keep host registration, trust, actual event execution, and successful rejection as separate checks.
 As the default procedure, do development work independently.
 Setup for tasks that you do together is optional.
 For necessary project references and permission checks, read [instructions for tasks done together](collaboration.md).

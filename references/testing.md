@@ -151,6 +151,7 @@ Full gate means satisfactory execution of every mandatory item in the accepted m
 It does not mean every historical test or only the implementing agent's selected tests.
 
 Bind results to candidate digests and applicable configuration, migrations, data, tests, and gate version.
+Examine upstream dependency evidence as well as direct task results before combined acceptance.
 Verify discovery and every shard's completion.
 Use different result labels for failed, blocked, cancelled, missing, skipped, and flaky results.
 Do not silently omit cases or accept zero discovered tests.
@@ -160,6 +161,8 @@ The optional delivery helper requires `passed` for every declared test.
 For an accepted manifest change, create a new version and examine evidence applicability again.
 Do not reduce the manifest to conceal failure.
 Keep failed attempts even after a later pass.
+Retirement preserves prior gate results. It does not make an incomplete or failed gate pass.
+Recovered checks remain nonpassing when a late callback arrives. Obtain new evidence through a new actual check.
 Before another attempt, find the cause and correct the applicable problem. Do not retry blindly.
 
 ## Keep accepted test behavior

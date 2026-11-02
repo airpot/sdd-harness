@@ -1,9 +1,11 @@
 # SDD Harness
 
-面向编程 agent 的规格驱动开发（SDD）技能包。当前版本：**0.15.0**。
+面向编程 agent 的规格驱动开发（SDD）技能包。当前版本：**0.15.1**。
 默认独立开发，按需使用协作、subagent 与执行约束。仓库根目录即技能目录，可直接安装。
 
 ## 能力
+
+0.15.1 修正完整依赖链复核、归档后证据可用性、成功候选退役、只读绑定共存和诊断读取副作用，并限制恢复后的迟到回调。沿用现有 SQLite 与项目记录，不新增服务。
 
 - **规格到验收**：结合 OpenSpec 与 Spec Kit 的长处，沿用项目已有规格、任务与工具；按需加入 TDD、DDD 和 AI 执行方法。
 - **任务领取与锁**：关联 worktree 共用本机执行记录，分别记录任务、session 和子任务；原子领取、范围约束、依赖复核和显式交接，过期不自动夺取。
@@ -23,7 +25,7 @@ git clone https://github.com/airpot/sdd-harness.git "$HOME/.agents/skills/sdd-ha
 
 若目录已存在，先将旧安装移到技能发现目录之外保存。随后在 Codex 调用 `$sdd-harness`；新版本在下一轮对话可用，必要时刷新发现或新开对话。
 
-也可下载[安装包](dist/sdd-harness-0.15.0.zip)与 [SHA-256 文件](dist/sdd-harness-0.15.0.sha256)，解压后执行：
+也可下载[安装包](dist/sdd-harness-0.15.1.zip)与 [SHA-256 文件](dist/sdd-harness-0.15.1.sha256)，解压后执行：
 
 ```text
 python sdd-harness/scripts/install.py --into "~/.agents/skills"
@@ -41,7 +43,9 @@ python sdd-harness/scripts/install.py --into "~/.agents/skills"
 
 ## 验证与边界
 
-0.15.0 的本地全仓检查共 498 项：495 通过、3 项条件跳过。独立上下文完成真实 CLI 修复及本地 RC/gate/publish/verify 演练；父 agent 又对源码和实际演示构件各执行 37 项行为检查。详见[本版验证摘要](release/0.15.0-validation.md)、[发布清单](release/0.15.0-manifest.json)及[变更记录](CHANGELOG.md)。这些测试结果绑定本版文件哈希。
+0.15.1 在 2026-10-31 完成的本地全仓检查共 537 项：534 通过、3 项条件跳过，无失败或错误；最后两轮对相同冻结范围的完整独立审查均无待修问题。独立上下文完成本地归档后依赖接续、旧候选退役和后继 RC/gate 演练，由主 agent 另行核验实际记录与构件。详见[本版验证摘要](release/0.15.1-validation.md)、[发布清单](release/0.15.1-manifest.json)及[变更记录](CHANGELOG.md)。这些是此前执行并绑定文件哈希的验证结果，本次分发不将其记作重新执行。
+
+旧版已存在的 shared=passed、local=running 不一致检查记录须由项目受控迁移；新检查防止再次形成该中断窗口。
 
 安装不自动启用 hook、配置项目 CI 或授予发布权限。实际容器、生产流水线、原生 hook 执行仍须接入项目验证；不同机器、独立 clone 或不同 registry 不自动互斥。新脚本未完成原生 POSIX、精确最低版本及完整 STE 逐词资格验证。0.9.3 的历史验证不替代新增能力的验证。
 

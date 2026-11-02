@@ -61,8 +61,9 @@ Promote the tested artifacts by digest. Evidence for a rebuild is necessary even
 
 Use candidate-specific resources when possible.
 For a shared RC, reserve the actual environment and database before deployment.
-Until every mandatory gate and evidence capture are completed, keep the slot.
+For a continuing candidate, keep the slot until every mandatory gate and evidence capture are completed.
 Do not release the slot immediately after deployment.
+For withdrawal, use the explicit retirement procedure below.
 For full gate scope and test admission, use [testing rules](testing.md#freeze-the-full-gate).
 
 The optional [local registry](coordination.md) also supports `scripts/delivery.py` with Python standard-library modules.
@@ -133,7 +134,8 @@ Use the same group across all workflows that modify that target in the repositor
 Before use, examine support in the selected GitHub version and the actual project workflow.
 This group does not coordinate different repositories or commands outside Actions.
 For GitLab, use the project's target-specific `resource_group` and outdated-deployment controls.
-Until its gates are completed, keep the RC slot. A production-only group cannot protect a shared RC.
+Until its gates are completed or authorized retirement resolves the candidate, keep the RC slot.
+A production-only group cannot protect a shared RC.
 Sources: [GitHub concurrency](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency)
 and [GitLab deployment safety](https://docs.gitlab.com/ci/environments/deployment_safety/).
 
@@ -170,10 +172,71 @@ For publication or verification recovery, include the target fields from the app
 For a failed outcome, use `"outcome": "failed"` with actual stopped-writer and outcome observations.
 That outcome releases the candidate's slots and prevents its acceptance.
 The helper records the writer-stop assertion. It cannot determine native termination from the JSON fields.
+Apply the [wrapper and writer conditions](coordination.md#return-recover-and-close) before recovery.
+After explicit resolution, later callbacks cannot replace that resolution or release a successor's resources.
 
 The receiving release entry must enforce current selection, authorization, target revision, and idempotency.
+A stored selection can still name a retired candidate. The receiver must reject that candidate before mutation.
 Native credentials and permissions determine bypass protection.
 Local registry checks and hook prose cannot enforce an external receiver.
+
+## Retire a candidate
+
+If a candidate cannot continue after an accepted change or withdrawal decision, examine its actual operations and external state.
+A successful earlier stage remains a historical success. Do not manufacture a failed gate to release its resources.
+Resolve running or uncertain operations first. Retirement does not cancel a process or resolve an unknown external effect.
+Find current project authority for withdrawal. Obsolete publication authority is not sufficient or necessary for that different action.
+
+Use a new project-relative authority file with this structure and actual identities:
+
+```json
+{
+  "authorized": true,
+  "action": "retire",
+  "candidate": "rc-17",
+  "target": "production:app",
+  "manifest_sha256": "sha256:<registered-manifest-hash>"
+}
+```
+
+Use `inspect` to find the registered manifest hash. Inspection does not create storage or change coordination policy.
+Record actual stopped-writer observations and the observed external outcome in an evidence file:
+
+```json
+{
+  "format": 1,
+  "candidate": "rc-17",
+  "target": "production:app",
+  "manifest_sha256": "sha256:<registered-manifest-hash>",
+  "authority": "withdrawal-authority.json",
+  "writer_stopped": true,
+  "writer_observations": "<actual command, descendant, and wrapper observations>",
+  "external_outcome": {
+    "status": "unchanged",
+    "target_revision": "<observed-prior-target-revision>",
+    "observations": "<actual target observation and source>"
+  },
+  "reason": "<accepted change or withdrawal decision reference>"
+}
+```
+
+Use `unchanged`, `published`, `removed`, or `restored` for the observed outcome.
+For `unchanged`, set `external_outcome.target_revision` to the registered manifest's `target_revision`.
+For `published`, set it to the candidate ID, such as `rc-17`.
+For `removed` or `restored`, record the actual project revision that identifies the observed state.
+No unknown outcome permits retirement. These fields record project assertions, not independent provenance or native permissions.
+
+```text
+python <skill>/scripts/delivery.py --root <project> retire --candidate rc-17 --evidence retirement.json
+```
+
+The helper retains the evidence, current authority bytes, and prior stage records.
+It releases only resources owned by this resolved candidate.
+A retired candidate cannot start a new stage or receive selection.
+The same retirement evidence returns its original record. Different replacement evidence is rejected.
+An identical previous operation request can still retrieve its historical result without another mutation.
+Use the current selection generation to select an eligible successor.
+Observe the actual target revision for that successor. Retirement does not verify a release or roll back the target.
 
 ## Use the release entry
 

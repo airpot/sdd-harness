@@ -169,6 +169,7 @@ For this skill, use these technical nouns:
 | integration target | The branch or version that receives accepted changes. |
 | migration | A change from a version of kept data or configuration to a different version. |
 | rollout | Application of a candidate to a specified target population. |
+| retirement | Withdrawal of a fixed candidate from further execution, with retained history and resolved resource ownership. |
 | workload | The input mix and rate for checks of system behavior. |
 | contract | The accepted agreement about an interface and behavior that observations can show. |
 | consumer | A component that uses an interface from a different component. |
@@ -182,6 +183,7 @@ Use these technical verbs only for the actions in their definitions:
 | integrate | Make code changes part of an identified code baseline. |
 | deploy | Application of a candidate to its target runtime environment. |
 | restore | Reconstruction of kept computer results at a recovery location. |
+| retire | Withdraw a fixed software candidate from further execution after current authority and actual outcome checks. |
 
 These project definitions give no dictionary approval.
 The software nouns in the table use category 19 (computing).
@@ -212,7 +214,7 @@ Examine each noun in its passage. A category gives no approval for verb, adjecti
 | writer | 11, 19 | A person, agent, or process that can change the identified resource. |
 | writing policy | 15 | The project rules for language, expression, and evidence in development prose. |
 
-The three technical verbs in this section use category 2(c), computer system operations.
+The technical verbs in this section use category 2(c), computer system operations.
 The meaning of `integrate` is code integration into an identified baseline.
 Its meaning does not include a general procedure to make items part of a group.
 

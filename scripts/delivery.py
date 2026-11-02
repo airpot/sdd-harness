@@ -21,7 +21,7 @@ import sys
 import time
 import uuid
 
-from coordination import reserve, store, unreserve
+from coordination import inspect_state, reserve, store, unreserve
 
 
 def digest(data):
@@ -156,6 +156,8 @@ def candidate(state, name, root):
         raise ValueError('The candidate is not registered')
     if item['checkout'] != str(root):
         raise ValueError('Use the checkout that registered the candidate')
+    if item.get('retirement'):
+        raise ValueError('The candidate is retired. Register a new candidate')
     if item.get('invalid'):
         raise ValueError('The candidate has failed evidence. Register a new candidate')
     return item
@@ -235,6 +237,7 @@ def select(args, root):
                op['status'] in ('running', 'uncertain', 'passed') and
                not state['candidates'][op['candidate']].get('verify') and
                not state['candidates'][op['candidate']].get('invalid')
+               and not state['candidates'][op['candidate']].get('retirement')
                for op in state['operations'].values()):
             raise ValueError('The production outcome has no resolution')
         previous = state['selections'].get(manifest['target'], {})
@@ -386,6 +389,8 @@ def reconcile(args, root):
         item = state['candidates'][operation['candidate']]
         if item['checkout'] != str(root):
             raise ValueError('Use the checkout that registered the candidate')
+        if item.get('retirement'):
+            raise ValueError('The candidate is retired. Keep its recorded operations')
         original = copy.deepcopy(operation)
         manifest = item['manifest']
         if evidence['outcome'] == 'passed':
@@ -420,6 +425,68 @@ def reconcile(args, root):
         return copy.deepcopy(operation)
 
 
+def retire(args, root):
+    raw = args.evidence.read_bytes()
+    evidence = strict_json(raw)
+    with store(root) as (state, directory):
+        item = state['candidates'].get(args.candidate)
+        if not item or item['checkout'] != str(root):
+            raise ValueError('Use the checkout that registered the candidate')
+        previous = item.get('retirement')
+        if previous:
+            if previous['evidence_sha256'] != digest(raw):
+                raise ValueError('The candidate has different retirement evidence')
+            return copy.deepcopy(previous)
+        manifest = item['manifest']
+        expected = dict(candidate=args.candidate, target=manifest['target'],
+                        manifest_sha256=item['manifest_sha256'])
+        if not isinstance(evidence, dict) or evidence.get('format') != 1 or any(
+                evidence.get(key) != value for key, value in expected.items()):
+            raise ValueError('Retirement evidence must identify the fixed candidate and target')
+        if evidence.get('writer_stopped') is not True or any(
+                not isinstance(evidence.get(field), str) or not evidence[field].strip()
+                for field in ('writer_observations', 'reason')):
+            raise ValueError('Supply actual stopped-writer observations and a retirement reason')
+        outcome = evidence.get('external_outcome')
+        if not isinstance(outcome, dict) or outcome.get('status') not in (
+                'unchanged', 'published', 'removed', 'restored') or any(
+                not isinstance(outcome.get(field), str) or not outcome[field].strip()
+                for field in ('target_revision', 'observations')):
+            raise ValueError('Supply a known external outcome and actual target observations')
+        if ((outcome['status'] == 'published' and outcome['target_revision'] != args.candidate) or
+                (outcome['status'] == 'unchanged' and outcome['target_revision'] != manifest['target_revision'])):
+            raise ValueError('The observed target revision differs from the stated external outcome')
+        operations = [op for op in state['operations'].values() if op['candidate'] == args.candidate]
+        if any(op['status'] not in ('passed', 'failed') for op in operations):
+            raise ValueError('Resolve every running or uncertain operation before retirement')
+        # Withdrawal uses current project authority. The frozen publication basis
+        # can be obsolete. These assertions do not prove provenance or process exit.
+        authority_path = local_file(root, evidence.get('authority'))
+        raw_authority = authority_path.read_bytes()
+        record = strict_json(raw_authority)
+        if not isinstance(record, dict) or record.get('authorized') is not True or record.get('action') != 'retire' or any(
+                record.get(key) != value for key, value in expected.items()):
+            raise ValueError('Current project authority must authorize this candidate retirement')
+        record_directory = directory / 'delivery/retirements' / uuid.uuid4().hex
+        retirement = dict(**expected, evidence_sha256=digest(raw), evidence_path=str(args.evidence.resolve()),
+                          authority_sha256=digest(raw_authority), authority_path=str(authority_path),
+                          directory=str(record_directory), observed=time.time(),
+                          external_outcome=copy.deepcopy(outcome), reason=evidence['reason'])
+        immutable(record_directory / 'evidence.json', raw)
+        immutable(record_directory / 'authority.json', raw_authority)
+        immutable(record_directory / 'retirement.json', encode(retirement))
+        item['retirement'] = retirement
+        owned_slots = [(key, holder(item, 'rc')) for key in manifest['rc_resources']]
+        owned_slots.extend((key, holder(item, 'production')) for key in
+                           manifest['production_resources'] + ['delivery:target:' + manifest['target']])
+        owned_slots.extend(('delivery:candidate:' + args.candidate, 'delivery:operation:' + op['request'])
+                           for op in operations)
+        for key, owner in owned_slots:
+            if state['resources'].get(key) == owner:
+                del state['resources'][key]
+        return copy.deepcopy(retirement)
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, default=Path.cwd())
@@ -439,13 +506,16 @@ def main(argv=None):
     recovery = actions.add_parser('reconcile')
     recovery.add_argument('--request', required=True)
     recovery.add_argument('--evidence', type=Path, required=True)
+    retirement = actions.add_parser('retire')
+    retirement.add_argument('--candidate', required=True)
+    retirement.add_argument('--evidence', type=Path, required=True)
     actions.add_parser('inspect')
     args = parser.parse_args(argv)
     try:
         root = args.root.resolve(strict=True)
         if args.action == 'inspect':
-            with store(root) as (state, directory):
-                result = dict(state=copy.deepcopy(state), directory=str(directory))
+            state, directory = inspect_state(root)
+            result = dict(state=state, directory=str(directory))
         else:
             result = globals()[args.action](args, root)
         print(json.dumps(result, sort_keys=True, allow_nan=False))

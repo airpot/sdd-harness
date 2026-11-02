@@ -1,5 +1,16 @@
 # Repository Changes
 
+## 2026-10-31: Consistency repairs in 0.15.1
+
+Examine upstream dependency bases through the complete dependency chain. Reject cycles.
+Keep accepted task and result evidence in registry-owned storage. Preserve legacy evidence before checkout removal.
+Keep inspection separate from initialization and policy activation.
+Permit compatible read-only hook bindings without write authority.
+Preserve recovered terminal state when command or check callbacks arrive late.
+Add explicit candidate retirement with current withdrawal authority and actual stopped-writer and external-outcome observations.
+Keep historical stage success, retirement, verification, and rollback distinct.
+Keep the existing registry, Python standard library, portable installer, and ordinary independent workflow.
+
 ## 2026-10-27: Task claims and candidate gates in 0.15.0
 
 Add shared local task claims, child assignments, current ownership checks, and explicit recovery.

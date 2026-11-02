@@ -44,6 +44,25 @@ def project_path(root, value):
     return path
 
 
+def checkout_origin(root):
+    root = regular_path(root).resolve(strict=True)
+    if not root.is_dir():
+        raise ValueError('The checkout origin must be a directory')
+    try:
+        result = subprocess.run(['git', '-C', str(root), 'rev-parse', '--show-toplevel'],
+                                capture_output=True, encoding='utf-8', timeout=3)
+    except FileNotFoundError:
+        result = None
+    if result is not None and result.returncode == 0:
+        origin = regular_path(Path(result.stdout.rstrip('\r\n'))).resolve(strict=True)
+        if not root.is_relative_to(origin):
+            raise ValueError('The project root is outside the checkout origin')
+        return origin
+    if any((part / '.git').exists() for part in (root, *root.parents)):
+        raise ValueError('The Git checkout origin cannot be verified')
+    return root
+
+
 def registry(root):
     configuration = regular_path(root / '.sdd-harness/coordination.json')
     if configuration.exists():
@@ -73,6 +92,29 @@ def enabled(root):
     return (registry(root) / 'state.sqlite').exists()
 
 
+def empty_state():
+    return dict(format=1, generation=0, claims={}, tasks={}, resources={}, candidates={},
+                selections={}, operations={}, claim_runs={})
+
+
+def inspect_state(root):
+    directory = registry(root)
+    database = regular_path(directory / 'state.sqlite')
+    if not database.exists():
+        return empty_state(), directory
+    for suffix in ('-journal', '-wal', '-shm'):
+        regular_path(Path(str(database) + suffix))
+    connection = sqlite3.connect(database.as_uri() + '?mode=ro', uri=True, timeout=2)
+    try:
+        row = connection.execute('SELECT body FROM registry WHERE id=1').fetchone()
+        state = json.loads(row[0]) if row else empty_state()
+        if state.get('format') != 1:
+            raise ValueError('The registry format is not supported')
+        return state, directory
+    finally:
+        connection.close()
+
+
 @contextmanager
 def store(root):
     directory = registry(root)
@@ -85,8 +127,7 @@ def store(root):
         connection.execute('BEGIN IMMEDIATE')
         connection.execute('CREATE TABLE IF NOT EXISTS registry (id INTEGER PRIMARY KEY, body TEXT NOT NULL)')
         row = connection.execute('SELECT body FROM registry WHERE id=1').fetchone()
-        state = json.loads(row[0]) if row else dict(format=1, generation=0, claims={}, tasks={},
-            resources={}, candidates={}, selections={}, operations={}, claim_runs={})
+        state = json.loads(row[0]) if row else empty_state()
         if state.get('format') != 1:
             raise ValueError('The registry format is not supported')
         yield state, directory
@@ -143,19 +184,108 @@ def get_claim(state, token, executor=None, root=None, live=True):
     return item
 
 
-def current_basis(state, item):
-    if digest(regular_path(Path(item['task']))) != item['revision']:
+def evidence_path(item, kind):
+    source = item['task'] if kind == 'task' else item['result']['path']
+    origin = item.get('checkout_origin')
+    if origin is None:
+        if regular_path(Path(item['checkout'])).exists():
+            return regular_path(Path(source))
+        raise ValueError('The removed project has no verified checkout origin')
+    if regular_path(Path(origin)).exists():
+        return regular_path(Path(source))
+    accepted = item['status'] == 'closed' and item['disposition'] == 'accepted'
+    kept = item.get('preserved') if accepted else None
+    if kind == 'task' and not kept:
+        kept = item.get('basis_preserved')
+    if not kept or kept.get('format') != 1 or kept.get('token') != item['token']:
+        raise ValueError('The removed checkout has no kept evidence for this basis')
+    expected = item['revision'] if kind == 'task' else item['result']['sha256']
+    entry = kept[kind]
+    if entry['source'] != source or entry['sha256'] != expected:
+        raise ValueError('The kept evidence has a different source or hash')
+    return regular_path(Path(entry['path']))
+
+
+def current_basis(state, item, visiting=None):
+    visiting = set() if visiting is None else set(visiting)
+    if item['task_id'] in visiting:
+        raise ValueError('The task basis has a cycle')
+    visiting.add(item['task_id'])
+    if digest(evidence_path(item, 'task')) != item['revision']:
         raise ValueError('The accepted task revision changed')
     for dependency, basis in item.get('dependency_basis', {}).items():
         previous = state['claims'].get(state['tasks'].get(dependency))
-        if not previous or previous['token'] != basis['token'] or previous['disposition'] != 'accepted':
+        if (not previous or previous['token'] != basis['token'] or previous['status'] != 'closed'
+                or previous['disposition'] != 'accepted'):
             raise ValueError('A dependency assignment changed')
-        if digest(regular_path(Path(previous['task']))) != basis['revision'] or not previous['result']:
+        if previous['revision'] != basis['revision'] or not previous['result']:
             raise ValueError('A dependency revision changed')
-        if digest(regular_path(Path(previous['result']['path']))) != basis['result_sha256']:
+        current_basis(state, previous, visiting)
+        if (previous['result']['sha256'] != basis['result_sha256']
+                or digest(evidence_path(previous, 'result')) != basis['result_sha256']):
             raise ValueError('A dependency result changed')
     if item['parent']:
-        current_basis(state, state['claims'][item['parent']])
+        current_basis(state, state['claims'][item['parent']], visiting)
+
+
+def preserve_evidence(state, directory, item):
+    current_basis(state, item)
+    seen = set()
+
+    def keep(node, with_result):
+        key = (node['token'], with_result)
+        if key in seen:
+            return
+        seen.add(key)
+        if regular_path(Path(node['checkout'])).exists():
+            origin = str(checkout_origin(Path(node['checkout'])))
+            if node.get('checkout_origin', origin) != origin:
+                raise ValueError('The verified checkout origin changed')
+            node['checkout_origin'] = origin
+        elif not node.get('checkout_origin'):
+            raise ValueError('Preserve the checkout origin before cleanup')
+        field, folder = ('preserved', 'accepted') if with_result else ('basis_preserved', 'basis')
+        kept = dict(format=1, token=node['token'])
+        target = regular_path(directory / folder / node['token'])
+        target.mkdir(parents=True, exist_ok=True)
+        for kind in ('task', 'result') if with_result else ('task',):
+            source = node['task'] if kind == 'task' else node['result']['path']
+            expected = node['revision'] if kind == 'task' else node['result']['sha256']
+            data = evidence_path(node, kind).read_bytes()
+            if hashlib.sha256(data).hexdigest() != expected:
+                raise ValueError('The required evidence changed before preservation')
+            path = regular_path(target / (kind + '.bin'))
+            try:
+                with path.open('xb') as output:
+                    output.write(data)
+            except FileExistsError:
+                if digest(path) != expected:
+                    raise ValueError('The kept evidence changed')
+            kept[kind] = dict(source=source, path=str(path), sha256=expected)
+        if field in node and node[field] != kept:
+            raise ValueError('The kept evidence record changed')
+        node[field] = kept
+        for dependency in node.get('dependency_basis', {}):
+            keep(state['claims'][state['tasks'][dependency]], True)
+        if node['parent']:
+            keep(state['claims'][node['parent']], False)
+
+    keep(item, True)
+    current_basis(state, item)
+    if digest(evidence_path(item, 'result')) != item['result']['sha256']:
+        raise ValueError('The accepted result changed before preservation')
+    return copy.deepcopy(item)
+
+
+def preserve(args, root):
+    with store(root) as (state, directory):
+        item = state['claims'].get(args.claim)
+        if (not item or state['tasks'].get(item['task_id']) != args.claim
+                or item['status'] != 'closed' or item['disposition'] != 'accepted'
+                or item['executor'] != args.executor or Path(item['checkout']) != root
+                or not item['result']):
+            raise ValueError('Preserve only this owner\'s current accepted result')
+        return preserve_evidence(state, directory, item)
 
 
 def parents(state, token):
@@ -191,6 +321,7 @@ def claim(args, root):
     if not task.is_file() or digest(task) != args.expect_revision:
         raise ValueError('The expected task revision does not match its current bytes')
     scopes = sorted(set(str(project_path(root, value).relative_to(root)) for value in args.scope))
+    origin = str(checkout_origin(root))
     expires = interval(args.lease_seconds)
     declaration = dict(task_id=args.task_id, task=str(task), revision=args.expect_revision,
         executor=args.executor, checkout=str(root), scope=scopes, parent=args.parent,
@@ -217,9 +348,10 @@ def claim(args, root):
         dependency_basis = {}
         for dependency in args.depends_on:
             item = state['claims'].get(state['tasks'].get(dependency))
-            if not item or item['disposition'] != 'accepted' or digest(Path(item['task'])) != item['revision']:
+            if not item or item['status'] != 'closed' or item['disposition'] != 'accepted':
                 raise ValueError('A dependency has no accepted current result')
-            if not item['result'] or digest(Path(item['result']['path'])) != item['result']['sha256']:
+            current_basis(state, item, {args.task_id})
+            if not item['result'] or digest(evidence_path(item, 'result')) != item['result']['sha256']:
                 raise ValueError('A dependency result changed or is absent')
             dependency_basis[dependency] = dict(token=item['token'], revision=item['revision'], result_sha256=item['result']['sha256'])
         for token, other in state['claims'].items():
@@ -237,6 +369,7 @@ def claim(args, root):
         reserve(state, args.resource, token)
         state['generation'] += 1
         item = dict(declaration, token=token, generation=state['generation'], status='running',
+                    checkout_origin=origin,
                     disposition=None, result=None, dependency_basis=dependency_basis,
                     created=time.time(), observed=time.time(), expires=expires)
         state['claims'][token] = item
@@ -245,7 +378,7 @@ def claim(args, root):
 
 
 def update(args, root):
-    with store(root) as (state, _):
+    with store(root) as (state, directory):
         item = get_claim(state, args.claim, args.executor, root,
                          live=args.action in ('renew', 'finish'))
         if args.action == 'renew':
@@ -270,6 +403,7 @@ def update(args, root):
                         raise ValueError('The returned result changed')
                     if args.disposition == 'accepted':
                         current_basis(state, item)
+                        preserve_evidence(state, directory, item)
                 item['status'], item['disposition'] = 'closed', args.disposition
                 unreserve(state, item['token'])
             else:
@@ -283,6 +417,8 @@ def update(args, root):
                 item['status'], item['disposition'] = 'closed', 'transferred'
                 state['generation'] += 1
                 new = copy.deepcopy(item)
+                new.pop('preserved', None)
+                new.pop('basis_preserved', None)
                 new.update(token=uuid.uuid4().hex, generation=state['generation'], executor=args.to,
                            status='running', disposition=None, result=None, created=time.time(),
                            observed=time.time(), expires=None)
@@ -330,6 +466,13 @@ def run(args, root):
         outcome = 'failed'
     with store(root) as (state, _):
         record = state['claim_runs'][run_id]
+        if record['status'] != 'running':
+            observation = dict(status=outcome, exit_code=code, ended=time.time())
+            path = regular_path(logdir / ('late-observation-' + uuid.uuid4().hex + '.json'))
+            with path.open('x', encoding='utf-8') as output:
+                json.dump(observation, output)
+            record.setdefault('late_observations', []).append(dict(path=str(path), sha256=digest(path)))
+            return copy.deepcopy(record), 1
         record.update(status=outcome, exit_code=code, ended=time.time())
         if outcome != 'unknown':
             for key in record['added_resources']:
@@ -341,7 +484,7 @@ def run(args, root):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest='action', required=True)
-    for name in ('claim', 'renew', 'finish', 'close', 'transfer', 'run', 'resolve-run', 'inspect'):
+    for name in ('claim', 'renew', 'finish', 'close', 'transfer', 'run', 'resolve-run', 'preserve', 'inspect'):
         command = commands.add_parser(name)
         command.add_argument('--repo', type=Path, required=True)
         if name != 'inspect':
@@ -384,24 +527,25 @@ def main():
             result = claim(args, root)
         elif args.action == 'run':
             result, code = run(args, root)
-        elif args.action in ('inspect', 'resolve-run'):
+        elif args.action == 'preserve':
+            result = preserve(args, root)
+        elif args.action == 'inspect':
+            result, _ = inspect_state(root)
+            for item in result['claims'].values():
+                if item['status'] != 'closed' and item['expires'] is not None and item['expires'] <= time.time():
+                    item['status'] = 'suspect'
+        elif args.action == 'resolve-run':
             with store(root) as (state, _):
-                if args.action == 'inspect':
-                    result = copy.deepcopy(state)
-                    for item in result['claims'].values():
-                        if item['status'] != 'closed' and item['expires'] is not None and item['expires'] <= time.time():
-                            item['status'] = 'suspect'
-                else:
-                    item = get_claim(state, args.claim, args.executor, root, live=False)
-                    record = state['claim_runs'][args.run_id]
-                    if not args.writers_stopped or record['claim'] != item['token'] or record['status'] not in ('running', 'unknown'):
-                        raise ValueError('Resolve only this owner\'s uncertain command after writer inspection')
-                    path = project_path(root, args.result)
-                    record.update(status='resolved', resolution=dict(path=str(path), sha256=digest(path)))
-                    for key in record['added_resources']:
-                        if state['resources'].get(key) == args.claim:
-                            del state['resources'][key]
-                    result = copy.deepcopy(record)
+                item = get_claim(state, args.claim, args.executor, root, live=False)
+                record = state['claim_runs'][args.run_id]
+                if not args.writers_stopped or record['claim'] != item['token'] or record['status'] not in ('running', 'unknown'):
+                    raise ValueError('Resolve only this owner\'s uncertain command after writer inspection')
+                path = project_path(root, args.result)
+                record.update(status='resolved', resolution=dict(path=str(path), sha256=digest(path)))
+                for key in record['added_resources']:
+                    if state['resources'].get(key) == args.claim:
+                        del state['resources'][key]
+                result = copy.deepcopy(record)
         else:
             result = update(args, root)
         print(json.dumps(result, ensure_ascii=True))

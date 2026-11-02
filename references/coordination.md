@@ -16,6 +16,7 @@ Keep runtime state outside committed task records. Merged registry copies do not
 Separate clones, machines, and registry directories do not automatically share ownership control.
 For shared tasks or resources across those boundaries, use a verified project backend.
 An unavailable authority prevents conflicting mutations. Independent read-only work can continue.
+`inspect` reads a snapshot. It does not create a registry or enable shared claim checks.
 
 ## Claim an accepted assignment
 
@@ -43,7 +44,8 @@ Use `--read-only` for an assignment without write authority.
 If source changes can affect review, use a fixed snapshot for read-only assignments.
 Use `--depends-on <task-id>` for dependencies that require accepted current results.
 The helper binds dependency identities, task revisions, and result hashes.
-At controlled execution, changed dependency evidence prevents continued use of that assignment.
+At allocation, controlled execution, and acceptance, the helper examines the full dependency chain.
+Changed upstream evidence prevents continued use of downstream results. Dependency cycles prevent acceptance.
 Child assignments do not give release authority.
 
 ## Return, recover, and close
@@ -53,6 +55,26 @@ Use `finish` with a result file to record return. Return does not accept the res
 Only after result examination and actual observations of stopped writers, use `close`.
 Preserve results, logs, descendant results, and ownership history before transfer or closure.
 Resolve active children and active or uncertain commands first.
+
+At acceptance, the helper keeps task and result bytes in registry-owned storage with their hashes.
+Keep the necessary ancestor task basis without accepting an ancestor's unfinished or abandoned result.
+The helper keeps the original task and result paths in the claim history.
+While the actual original checkout exists, changed or missing source evidence still prevents dependency use.
+Removal of a nested `--repo` directory is not removal of its Git worktree.
+After checkout removal, the helper can use the retained evidence and continues to examine its dependencies.
+Keep that registry and its evidence available outside a worktree that you remove.
+
+For an accepted claim from an earlier version, use `preserve` before checkout removal:
+
+```text
+python <skill>/scripts/coordination.py preserve --repo <original-accepted-checkout> --claim <accepted-token> --executor <original-executor>
+```
+
+Use the accepted claim's `checkout` path, not a different worktree that shares its registry.
+Inspection from a related checkout can identify that original path.
+Examine its returned preservation record and hashes before removal.
+This operation does not accept changed results or restore lost legacy evidence.
+Preserve other necessary logs, descendants' results, and external artifacts with the project's archive procedure.
 
 For a lease, use a project-selected renewal interval. No universal heartbeat interval is mandatory.
 Expiry makes the claim suspect. It does not authorize takeover or prove stopped execution.
@@ -66,6 +88,10 @@ The optional `run` command keeps command evidence and resource ownership.
 On timeout or an unknown result, examine descendants and external effects before recovery.
 Use `resolve-run` only with actual outcome evidence and stopped-writer confirmation.
 This recovery also applies when a terminated wrapper leaves a `running` record.
+Confirm that commands, descendants, and wrappers cannot cause further task or external mutations.
+An observer wrapper can remain only if its remaining work is a metadata callback with no further business effects.
+If you cannot establish that condition, keep the run unresolved.
+After recovery, late callbacks keep observations separately. They cannot replace the resolution or release a newer run's resources.
 Hook checks keep a nonpassing recovered attempt before a new check or binding release.
 Do not delete locks manually or start a replacement command merely because a window closed.
 

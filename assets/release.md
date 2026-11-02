@@ -16,7 +16,7 @@ For applicable fields, use these instructions:
 - Acceptance: give references to evidence for each condition and combined validation.
   Put work without verification in a different group.
 - RC gate: identify the environment slot, owner, deployment receipt, gate version, mandatory test IDs, and completed shards.
-  Until all mandatory gates and evidence capture are completed, keep slot ownership.
+  For a continuing candidate, keep slot ownership until all mandatory gates and evidence capture are completed.
   Keep failures, cancellations, skips, flaky results, missing results, and accepted exception authority.
 - Verdict: record scope with acceptance for all conditions, acceptance for some conditions, or `blocked` results.
   Identify each mandatory condition with a `failed`, `blocked`, or `not run` result.
@@ -31,4 +31,6 @@ For applicable fields, use these instructions:
 - Execution and result: record the run reference, start and observation times, result from execution, and environment validation.
   Include the idempotency request ID, receiver checks, observed artifact digests, and outcome reconciliation.
 - Cleanup: identify temporary worktrees, activity checks, kept results, recovery validation, and native removal results.
+- Candidate withdrawal: identify current authority, stopped-writer observations, actual external outcome, retained history, and released resources.
+  Keep retirement, failed checks, verification, and rollback as different results.
 - Follow-up: write conditions that prevent progress or identify tasks for subsequent execution.

@@ -179,7 +179,8 @@ def compatible_claim_bindings(root, new, old):
             previous = coordination.get_claim(state, old['claim'], old['executor'], root, live=False)
         except ValueError:
             return True
-        return (previous['token'] in coordination.parents(state, current['parent']) or
+        return (current['read_only'] or previous['read_only'] or
+                previous['token'] in coordination.parents(state, current['parent']) or
                 current['token'] in coordination.parents(state, previous['parent']))
 
 
@@ -228,7 +229,12 @@ def end_claim_check(root, item, run_id, outcome):
     if not item.get('claim'):
         return
     with coordination.store(root) as (state, _):
-        state['claim_runs'][run_id].update(status='unknown' if outcome == 'timeout' else outcome, ended=time.time())
+        run = state['claim_runs'][run_id]
+        observation = dict(outcome=outcome, ended=time.time())
+        if run['status'] != 'running':
+            run.setdefault('late_observations', []).append(observation)
+            return
+        run.update(status='unknown' if outcome == 'timeout' else outcome, ended=observation['ended'])
 
 
 def sync_recovered_checks(root, item, directory):
@@ -238,7 +244,7 @@ def sync_recovered_checks(root, item, directory):
         for proof in item['checks'].values():
             run_id = proof.get('run_id')
             shared = state['claim_runs'].get(run_id)
-            if proof.get('outcome') != 'running' or not shared or shared['claim'] != item['claim']:
+            if proof.get('outcome') == 'recovered' or not shared or shared['claim'] != item['claim']:
                 continue
             if shared['status'] == 'resolved':
                 previous = copy.deepcopy(proof)
@@ -276,7 +282,6 @@ def check(args, root):
     except OSError as problem:
         error.write_text(str(problem), encoding='utf-8')
         outcome = 'setup-error'
-    end_claim_check(root, current, token, outcome)
     after = fingerprint(root, current['basis'])
     record_path = logs / (token + '.json')
     record = {'outcome': outcome, 'run_id': token, 'returncode': code, 'before': before, 'after': after,
@@ -285,11 +290,28 @@ def check(args, root):
               'stdout_preview': output.read_bytes()[:2048].decode('utf-8', 'replace'),
               'stderr_preview': error.read_bytes()[:2048].decode('utf-8', 'replace')}
     atomic(record_path, record)
-    with transaction(root) as (state, _):
+    with transaction(root) as (state, directory):
         item = binding(state, args.session)
         if item['identity'] != current['identity'] or item['checks'].get(args.name, {}).get('run_id') != token:
             raise ValueError('The binding changed during the check. Keep its logs without acceptance')
-        item['checks'][args.name] = record
+        sync_recovered_checks(root, item, directory)
+        if item['checks'][args.name]['outcome'] != 'recovered':
+            item['checks'][args.name] = record
+    # Keep the shared run recoverable until local process evidence is durable.
+    # Stop still checks shared activity before it can accept this local proof.
+    end_claim_check(root, current, token, outcome)
+    with transaction(root) as (state, directory):
+        item = binding(state, args.session)
+        if item['identity'] != current['identity'] or item['checks'].get(args.name, {}).get('run_id') != token:
+            raise ValueError('The binding changed during the check. Keep its logs without acceptance')
+        sync_recovered_checks(root, item, directory)
+        proof = item['checks'][args.name]
+        if proof['outcome'] == 'recovered':
+            proof.setdefault('late_observations', []).append(dict(record=str(record_path), outcome=outcome,
+                                                                 observed=time.time()))
+            record = copy.deepcopy(proof)
+            outcome = 'recovered'
+            code = code if code else 1
     return {'status': outcome, 'check': record}, code if code is not None else 1
 
 

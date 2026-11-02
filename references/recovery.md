@@ -16,6 +16,10 @@ For projects with [shared execution ownership](coordination.md), examine the cla
 Resolve active children and uncertain commands before removal.
 Preserve necessary command logs, receipts, result files, and registry references outside the checkout first.
 Only after actual observations of stopped writers, close the applicable claims.
+For accepted claims, examine the registry's retained task and result hashes before removal.
+For legacy accepted claims without retained evidence, use [the preserve operation](coordination.md#return-recover-and-close) before removal.
+Keep the registry and retained evidence outside the checkout that you remove.
+An archive of the files alone does not update a legacy claim's evidence references.
 The shared registry can remain in Git's common directory after one worktree is removed.
 Do not remove that registry or unrelated ownership records as checkout cleanup.
 

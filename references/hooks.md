@@ -50,12 +50,22 @@ For shared execution control, first obtain a current claim under [coordination r
 Add `--claim <claim-token> --executor <host:instance:session>` to the binding command.
 Use the same native session in the executor identity and `--session`.
 Keep binding scope inside the claim scope.
+Independent read-only claims can bind overlapping scopes. They do not gain write or write-capable check authority.
+Use a fixed snapshot when changes can affect a read-only review.
 If a shared registry is active, an unclaimed binding cannot satisfy controlled operations.
 Without project coordination, legacy local bindings remain available.
 Supported writes, checks, and completion examine the current claim and accepted task revision.
 Expired, transferred, closed, or mismatched claims cannot supply current authority.
 Hook release removes the local binding only.
 After the recovery conditions for the shared claim pass, close that claim.
+Registry inspection alone does not enable shared coordination or invalidate ordinary local bindings.
+After explicit check recovery, a late callback cannot make the recovered check pass.
+Keep its late observations separately. Use a new actual check for new passing evidence.
+An interrupted local evidence write must leave a shared run that permits explicit recovery.
+Local process evidence alone does not complete finalization. A shared run that is still active blocks task completion.
+This order protects new checks. It does not rewrite earlier inconsistent `passed` shared and `running` local records.
+For those legacy records, keep the evidence and use a controlled project migration before you reuse their binding.
+Apply the [wrapper and writer conditions](coordination.md#return-recover-and-close) before recovery.
 
 The checkpoint handler keeps one current checkpoint per binding and bounded event metadata.
 It runs after supported events and gives record references at startup or resume.

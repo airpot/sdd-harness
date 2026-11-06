@@ -136,7 +136,9 @@ def store(root):
         if state.get('format') not in (1, 2):
             raise ValueError('The registry format is not supported')
         yield state, directory
-        connection.execute('INSERT OR REPLACE INTO registry VALUES (1, ?)', (json.dumps(state),))
+        body = json.dumps(state)
+        if not row or body != row[0]:
+            connection.execute('INSERT OR REPLACE INTO registry VALUES (1, ?)', (body,))
         connection.commit()
     except BaseException:
         connection.rollback()

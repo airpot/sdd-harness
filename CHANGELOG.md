@@ -1,5 +1,11 @@
 # Repository Changes
 
+## 2026-11-06: Reconciliation evidence in 0.16.2
+
+- Require stopped-writer and outcome observations for a new reconciliation.
+- Return the recorded resolution for exact evidence replay. Reject different evidence for the same resolved request.
+- Describe authorized retirement after a known failure and keep the slot while effects are unresolved.
+
 ## 2026-11-06: Review and lesson evidence in 0.16.1
 
 Repeat a failed review separately when the original checks still apply.

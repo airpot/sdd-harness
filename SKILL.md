@@ -2,7 +2,7 @@
 name: sdd-harness
 description: When you change or continue a project from specifications, use this skill. Also use it for acceptance checks, worker results, release preparation, or worktree protection.
 metadata:
-  version: "0.16.1"
+  version: "0.16.2"
 ---
 
 # SDD Harness

@@ -208,8 +208,8 @@ Before use, examine support in the selected GitHub version and the actual projec
 This group does not coordinate different repositories or commands outside Actions.
 For GitLab, use the project's target-specific `resource_group` and outdated-deployment controls.
 Keep the RC slot until all mandatory gates pass and their evidence is kept, or until the applicable resolution releases the slot.
-For a known failed operation, use the failed reconciliation procedure below with actual writer-stop and outcome evidence.
-For withdrawal without a known failure, use authorized retirement. If effects are unknown, keep the slot.
+For a known failed operation, use failed reconciliation or authorized retirement with actual writer and outcome observations.
+Resolve running and uncertain operations before retirement. If effects are unknown, keep the slot.
 A production-only group cannot protect a shared RC.
 Sources: [GitHub concurrency](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency)
 and [GitLab deployment safety](https://docs.gitlab.com/ci/environments/deployment_safety/).
@@ -222,11 +222,15 @@ Do not use a new ID to retry an uncertain operation.
 Examine the actual runner, descendants, resource state, and external outcome first.
 Keep target serialization until the outcome has resolution.
 For recovery, use `reconcile --request <request-id> --evidence <resolution.json>` with `--root <project>`.
-The recovery record must identify actual stopped-writer observations and the resolved external outcome.
+For a new reconciliation, set `writer_stopped` to `true` and give an explicit `outcome`.
+Use a nonempty `observations` string to describe how you confirmed that writers stopped and how you confirmed the outcome.
 Keep the initial failure and the recovery evidence.
+Use the same evidence bytes and request ID to read the recorded result from the candidate checkout.
+The helper rejects different evidence for a resolved request. Keep additional observations in the project record.
+Exact replay also works for older records without an `observations` field.
+Update all delivery helpers that use this registry before you rely on the new checks.
 After a failed gate, use the [new candidate procedure](#use-a-new-registered-candidate-after-a-failed-gate).
-Before reconciliation, confirm stopped writers.
-Before a new candidate uses the slot from the failed operation, reconcile that operation.
+Before a new candidate uses the slot, release it by failed reconciliation or authorized retirement.
 
 A successful RC recovery uses this structure with actual observations and artifact digests:
 
@@ -250,7 +254,7 @@ Failed reconciliation does not require a receipt or a `tests` map. Keep the orig
 That outcome releases the candidate's slots and prevents its acceptance.
 Use this resolution only if project authority permits it and the failed outcome is known.
 Do not use a failed outcome to withdraw a candidate that did not fail. Use authorized retirement for that case.
-The helper records the writer-stop assertion. It cannot determine native termination from the JSON fields.
+The helper checks that the required fields are present. It cannot verify native writer termination or confirm the external outcome from these fields.
 Apply the [wrapper and writer conditions](coordination.md#return-recover-and-close) before recovery.
 After explicit resolution, later callbacks cannot replace that resolution or release a successor's resources.
 
@@ -262,7 +266,7 @@ Local registry checks and hook prose cannot enforce an external receiver.
 ## Use a new registered candidate after a failed gate
 
 1. Block selection and publication. Keep the failed operation and its available receipt and original reports.
-2. Find and correct the cause. A passing receipt does not override a missing or skipped mandatory case. Before reuse of shared resources, confirm stopped writers and resolve the failed operation with actual evidence. If its effects are unknown, do the recovery checks first.
+2. Find and correct the cause. A passing receipt does not override a missing or skipped mandatory case. Confirm that writers stopped and the outcome is known. Use failed reconciliation or [authorized retirement](#retire-a-candidate) before resource reuse.
 3. Freeze a manifest with a different candidate ID and the current artifact and gate basis. If you use the delivery helper, run `register` for the new manifest before you run RC or a gate. A different request ID for the failed candidate does not make a new candidate.
 4. Deploy the new RC and run every mandatory gate. Keep the new results with the new candidate. Check its eligibility and current authority before selection and publication.
 

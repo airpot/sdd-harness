@@ -455,17 +455,27 @@ def run(args, root):
 def reconcile(args, root):
     raw = args.evidence.read_bytes()
     evidence = strict_json(raw)
-    if not isinstance(evidence, dict) or evidence.get('writer_stopped') is not True or evidence.get('outcome') not in ('passed', 'failed'):
-        raise ValueError('Supply actual writer-stop observations and an explicit outcome')
+    evidence_sha = digest(raw)
     with store(root) as (state, _):
         operation = state['operations'].get(args.request)
-        if not operation or operation['status'] not in ('running', 'uncertain', 'failed'):
+        if not operation:
             raise ValueError('This operation has no state for reconciliation')
         item = state['candidates'][operation['candidate']]
         if item['checkout'] != str(root):
             raise ValueError('Use the checkout that registered the candidate')
+        previous = operation.get('reconciliation')
+        if previous:
+            if previous['evidence_sha256'] != evidence_sha:
+                raise ValueError('The operation has different reconciliation evidence')
+            return copy.deepcopy(operation)
+        if operation['status'] not in ('running', 'uncertain', 'failed'):
+            raise ValueError('This operation has no state for reconciliation')
         if item.get('retirement'):
             raise ValueError('The candidate is retired. Keep its recorded operations')
+        if (not isinstance(evidence, dict) or evidence.get('writer_stopped') is not True
+                or evidence.get('outcome') not in ('passed', 'failed')
+                or not isinstance(evidence.get('observations'), str) or not evidence['observations'].strip()):
+            raise ValueError('Supply writer_stopped=true, an explicit outcome, and nonempty observations')
         original = copy.deepcopy(operation)
         manifest = item['manifest']
         if evidence['outcome'] == 'passed':
@@ -496,7 +506,7 @@ def reconcile(args, root):
             unreserve(state, holder(item, 'rc'))
             unreserve(state, holder(item, 'production'))
         observed = time.time()
-        record = dict(evidence_sha256=digest(raw), evidence_path=str(args.evidence.resolve()), observed=observed)
+        record = dict(evidence_sha256=evidence_sha, evidence_path=str(args.evidence.resolve()), observed=observed)
         directory = Path(operation['directory'])
         immutable(directory / ('pre-reconcile-' + uuid.uuid4().hex + '.json'), encode(original))
         immutable(directory / ('reconcile-' + uuid.uuid4().hex + '.json'), raw)

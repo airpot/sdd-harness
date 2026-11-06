@@ -442,6 +442,13 @@ def run(args, root):
                          error=error, completed=time.time())
         if strict_gate:
             operation['gate_reports'] = reports
+            gates = {**item['gates'], args.gate: args.request}
+            if status == 'passed' and set(gates) == set(manifest['gates']):
+                try:
+                    require_gate_reports(state, {**item, 'gates': gates})
+                except (OSError, ValueError) as exc:
+                    status = 'failed'
+                    operation.update(status=status, error='Cannot verify retained gate evidence: ' + str(exc))
         if status == 'passed':
             accepted(state, item, operation)
             unreserve(state, 'delivery:operation:' + args.request)

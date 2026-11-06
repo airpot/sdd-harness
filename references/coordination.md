@@ -106,6 +106,9 @@ For arbitrary filesystem writers, isolation or confirmed termination is necessar
 The optional `run` command keeps command evidence and resource ownership.
 On timeout or an unknown result, examine descendants and external effects before recovery.
 Use `resolve-run` only with actual outcome evidence and stopped-writer confirmation.
+Use `--result` to give a UTF-8 text file in the project that records the observations.
+The helper rejects empty text and text with only whitespace. It hashes the original bytes.
+The helper cannot verify the observations.
 This recovery also applies when a terminated wrapper leaves a `running` record.
 Confirm that commands, descendants, and wrappers cannot cause further task or external mutations.
 An observer wrapper can remain only if its remaining work is a metadata callback with no further business effects.

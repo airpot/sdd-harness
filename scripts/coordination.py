@@ -595,7 +595,19 @@ def main():
                 if not args.writers_stopped or record['claim'] != item['token'] or record['status'] not in ('running', 'unknown'):
                     raise ValueError('Resolve only this owner\'s uncertain command after writer inspection')
                 path = project_path(root, args.result)
-                record.update(status='resolved', resolution=dict(path=str(path), sha256=digest(path)))
+                if not path.is_file():
+                    raise ValueError('Supply a nonempty outcome evidence file')
+                evidence = path.read_bytes()
+                try:
+                    observation = evidence.decode('utf-8-sig')
+                except UnicodeDecodeError as exc:
+                    raise ValueError('Use UTF-8 text for outcome evidence') from exc
+                if '\x00' in observation:
+                    raise ValueError('Use UTF-8 text for outcome evidence')
+                if not observation.strip():
+                    raise ValueError('Supply a nonempty outcome evidence file')
+                record.update(status='resolved', resolution=dict(
+                    path=str(path), sha256=hashlib.sha256(evidence).hexdigest()))
                 for key in record['added_resources']:
                     if state['resources'].get(key) == args.claim:
                         del state['resources'][key]

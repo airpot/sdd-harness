@@ -1,5 +1,10 @@
 # Repository Changes
 
+## 2026-11-06: Resource release evidence in 0.16.3
+
+- Check all retained mandatory reports before the final strict gate releases its RC slot.
+- Require UTF-8 outcome text that contains more than whitespace before task command recovery releases resources.
+
 ## 2026-11-06: Reconciliation evidence in 0.16.2
 
 - Require stopped-writer and outcome observations for a new reconciliation.

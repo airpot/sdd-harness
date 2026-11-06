@@ -149,7 +149,9 @@ Each required case must occur once with no failure, error, retry failure, or ski
 If a report gives suite totals, they must agree with the case results.
 Do not copy the expected ID list into a report. Get the receipt's case results from the actual execution.
 The helper keeps observed report bytes within the size limit and their SHA256 digests, including the available reports for a failed gate.
-It checks those bytes again before selection and production admission.
+When the last mandatory gate in format `2` completes, the helper checks the retained reports for all mandatory gates before it releases the RC slot.
+If a report is absent or changed, the final gate fails. The helper keeps the slot and the earlier operation records.
+It also checks the reports before selection and production admission.
 Use a trusted CI runner and storage. The run ID and report hashes do not authenticate an untrusted producer.
 
 The first format `2` registration upgrades the shared registry in the same transaction.

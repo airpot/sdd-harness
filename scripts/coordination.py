@@ -102,13 +102,18 @@ def inspect_state(root):
     database = regular_path(directory / 'state.sqlite')
     if not database.exists():
         return empty_state(), directory
+    # WAL reads can create sidecars even with mode=ro. The helper uses rollback journals.
+    with database.open('rb') as stream:
+        header = stream.read(20)
+    if header.startswith(b'SQLite format 3\x00') and 2 in header[18:20]:
+        raise ValueError('Read-only inspection does not support a registry in WAL mode')
     for suffix in ('-journal', '-wal', '-shm'):
         regular_path(Path(str(database) + suffix))
     connection = sqlite3.connect(database.as_uri() + '?mode=ro', uri=True, timeout=2)
     try:
         row = connection.execute('SELECT body FROM registry WHERE id=1').fetchone()
         state = json.loads(row[0]) if row else empty_state()
-        if state.get('format') != 1:
+        if state.get('format') not in (1, 2):
             raise ValueError('The registry format is not supported')
         return state, directory
     finally:
@@ -128,7 +133,7 @@ def store(root):
         connection.execute('CREATE TABLE IF NOT EXISTS registry (id INTEGER PRIMARY KEY, body TEXT NOT NULL)')
         row = connection.execute('SELECT body FROM registry WHERE id=1').fetchone()
         state = json.loads(row[0]) if row else empty_state()
-        if state.get('format') != 1:
+        if state.get('format') not in (1, 2):
             raise ValueError('The registry format is not supported')
         yield state, directory
         connection.execute('INSERT OR REPLACE INTO registry VALUES (1, ?)', (json.dumps(state),))
@@ -481,6 +486,45 @@ def run(args, root):
         return copy.deepcopy(record), 0 if outcome == 'passed' else 1
 
 
+def inspect_task(state, root, task_id, executor):
+    token = state['tasks'].get(task_id)
+    summary = dict(format=1, task_id=task_id, observed_checkout=str(root), status='missing',
+                   next_action='locate_task')
+    if token is None:
+        return summary
+    item = state['claims'][token]
+    expired = item['status'] != 'closed' and item['expires'] is not None and item['expires'] <= time.time()
+    runs = [dict(run_id=run_id, status=run['status'], kind=run.get('kind', 'command'), logs=run.get('logs'))
+            for run_id, run in state['claim_runs'].items()
+            if run['claim'] == token and run['status'] in ('running', 'unknown')]
+    summary.update(checkout=item['checkout'], executor=item['executor'], generation=item['generation'],
+                   status='suspect' if expired else item['status'], disposition=item['disposition'], task=item['task'],
+                   revision=item['revision'], result=item['result'], unresolved_runs=runs,
+                   resources={key: owner for key, owner in state['resources'].items()
+                              if owner == token})
+    if item['status'] == 'closed':
+        summary.update(next_action='read_closed_record', preserved=item.get('preserved'))
+    elif Path(item['checkout']) != root:
+        summary['next_action'] = 'locate_claim_checkout'
+    elif runs or expired:
+        summary['next_action'] = 'inspect_writers_and_effects'
+    elif executor != item['executor']:
+        summary['next_action'] = 'confirm_owner_and_writers'
+    else:
+        try:
+            get_claim(state, token, executor, root)
+            if item['status'] == 'returned':
+                result = project_path(root, item['result']['path'])
+                if not result.is_file() or digest(result) != item['result']['sha256']:
+                    raise ValueError('The returned result is absent or changed')
+        except (OSError, ValueError, KeyError, TypeError) as exc:
+            summary.update(next_action='examine_task_basis', reason=str(exc))
+        else:
+            summary['next_action'] = ('review_returned_result' if item['status'] == 'returned'
+                                      else 'read_task_and_check_writers')
+    return summary
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest='action', required=True)
@@ -500,6 +544,9 @@ def main():
             command.add_argument('--depends-on', action='append', default=[])
             command.add_argument('--parent')
             command.add_argument('--read-only', action='store_true')
+        if name == 'inspect':
+            command.add_argument('--task-id')
+            command.add_argument('--executor')
         if name in ('claim', 'renew'):
             command.add_argument('--lease-seconds', type=float, default=0)
         if name in ('finish', 'resolve-run'):
@@ -531,9 +578,14 @@ def main():
             result = preserve(args, root)
         elif args.action == 'inspect':
             result, _ = inspect_state(root)
-            for item in result['claims'].values():
-                if item['status'] != 'closed' and item['expires'] is not None and item['expires'] <= time.time():
-                    item['status'] = 'suspect'
+            if args.task_id is not None:
+                result = inspect_task(result, root, args.task_id, args.executor)
+            elif args.executor is not None:
+                raise ValueError('Give a task ID when you supply an executor to inspect')
+            else:
+                for item in result['claims'].values():
+                    if item['status'] != 'closed' and item['expires'] is not None and item['expires'] <= time.time():
+                        item['status'] = 'suspect'
         elif args.action == 'resolve-run':
             with store(root) as (state, _):
                 item = get_claim(state, args.claim, args.executor, root, live=False)

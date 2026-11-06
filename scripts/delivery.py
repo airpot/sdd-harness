@@ -16,12 +16,14 @@ import os
 from pathlib import Path
 import re
 import sqlite3
+import stat
 import subprocess
 import sys
 import time
 import uuid
 
-from coordination import inspect_state, reserve, store, unreserve
+from coordination import inspect_state, regular_path, reserve, store, unreserve
+import gate_reports
 
 
 def digest(data):
@@ -70,15 +72,20 @@ def local_file(root, name):
     if not isinstance(name, str) or not name or Path(name).is_absolute():
         raise ValueError('Use a project-relative file path')
     path = root / name
-    resolved = path.resolve(strict=True)
+    if not path.is_relative_to(root):
+        raise ValueError('The input is not a file inside the project')
+    current = root
+    for component in path.relative_to(root).parts:
+        current = current / component
+        info = current.lstat()
+        if stat.S_ISLNK(info.st_mode) or getattr(info, 'st_file_attributes', 0) & 0x400:
+            raise ValueError('The input path contains a link or reparse point')
+    try:
+        resolved = path.resolve(strict=True)
+    except RuntimeError as exc:
+        raise ValueError('The input path has no resolution') from exc
     if not resolved.is_relative_to(root) or not resolved.is_file():
         raise ValueError('The input is not a file inside the project')
-    for part in (path, *path.parents):
-        if part == root:
-            break
-        info = part.lstat()
-        if part.is_symlink() or getattr(info, 'st_file_attributes', 0) & 0x400:
-            raise ValueError('The input path contains a link or reparse point')
     return resolved
 
 
@@ -106,7 +113,7 @@ def fingerprints(root, manifest):
 
 
 def validate_manifest(root, manifest):
-    if not isinstance(manifest, dict) or manifest.get('format') != 1:
+    if not isinstance(manifest, dict) or type(manifest.get('format')) is not int or manifest['format'] not in (1, 2):
         raise ValueError('The manifest format is not supported')
     identifier(manifest.get('candidate'))
     if not isinstance(manifest.get('commit'), str) or not re.fullmatch(r'[a-f0-9]{40}|[a-f0-9]{64}', manifest['commit']):
@@ -145,6 +152,12 @@ def validate_manifest(root, manifest):
             raise ValueError('Mandatory test identifiers are necessary for each gate')
         if len(set(tests)) != len(tests):
             raise ValueError('Test identifiers must be unique in a gate')
+        if manifest['format'] == 2:
+            gate_reports.validate_cases(gate)
+            if any(case['file'] not in manifest['basis'] for case in gate['junit'].values()):
+                raise ValueError('Every mandatory JUnit test file must be a frozen basis input')
+        elif 'junit' in gate:
+            raise ValueError('JUnit evidence requires a format 2 candidate')
     if manifest.get('authority') not in manifest['basis']:
         raise ValueError('The authority file must be a frozen basis input')
     fingerprints(root, manifest)
@@ -169,6 +182,41 @@ def holder(item, kind):
 
 def complete(item):
     return item.get('rc') and set(item.get('gates', {})) == set(item['manifest']['gates'])
+
+
+def require_gate_reports(state, item):
+    if item['manifest']['format'] != 2:
+        return
+    for name, request in item['gates'].items():
+        op = state['operations'][request]
+        report_hashes = op.get('gate_reports', {})
+        if (op['status'] != 'passed' or op.get('stage') != 'gate' or op.get('gate') != name or
+                op.get('candidate') != item['manifest']['candidate'] or
+                op.get('manifest_sha256') != item['manifest_sha256'] or
+                set(report_hashes) != set(gate_reports.shards(item['manifest']['gates'][name]))):
+            raise ValueError('This strict gate has no applicable report evidence')
+        directory = regular_path(op['directory'])
+        for shard, expected in report_hashes.items():
+            path = local_file(directory, 'reports-observed/' + shard + '.xml')
+            if digest(gate_reports.read_report(path)) != expected:
+                raise ValueError('A retained JUnit report changed')
+
+
+def observe_gate_reports(directory, gate, retained='reports-observed'):
+    directory = regular_path(directory)
+    reports = {}
+    errors = []
+    for shard in gate_reports.shards(gate):
+        name = shard + '.xml'
+        try:
+            report = gate_reports.read_report(local_file(directory, 'reports/' + name))
+            kept = regular_path(directory / retained / name)
+            immutable(kept, report)
+            reports[shard] = digest(report)
+            gate_reports.check_report(report, directory.name, shard, gate['junit'])
+        except (OSError, ValueError) as exc:
+            errors.append(f'{shard}: {exc}')
+    return reports, errors
 
 
 def authority(root, manifest, supplied):
@@ -212,6 +260,12 @@ def register(args, root):
     manifest = strict_json(raw)
     validate_manifest(root, manifest)
     with store(root) as (state, directory):
+        if manifest['format'] == 2 and state['format'] == 1:
+            if (state['resources'] or any(c['status'] != 'closed' for c in state['claims'].values()) or
+                    any(r['status'] in ('running', 'unknown') for r in state['claim_runs'].values()) or
+                    any(op['status'] in ('running', 'uncertain') for op in state['operations'].values())):
+                raise ValueError('Resolve active claims, operations, and resource holders before a registry upgrade')
+            state['format'] = 2
         name = manifest['candidate']
         old = state['candidates'].get(name)
         if old:
@@ -233,12 +287,8 @@ def select(args, root):
         fingerprints(root, manifest)
         if not complete(item):
             raise ValueError('RC deployment and every mandatory gate must pass')
-        if any(op['stage'] in ('publish', 'verify') and op['target'] == manifest['target'] and
-               op['status'] in ('running', 'uncertain', 'passed') and
-               not state['candidates'][op['candidate']].get('verify') and
-               not state['candidates'][op['candidate']].get('invalid')
-               and not state['candidates'][op['candidate']].get('retirement')
-               for op in state['operations'].values()):
+        require_gate_reports(state, item)
+        if unresolved_production(state, manifest['target']):
             raise ValueError('The production outcome has no resolution')
         previous = state['selections'].get(manifest['target'], {})
         if previous.get('generation', 0) != args.expected:
@@ -247,6 +297,13 @@ def select(args, root):
                         target_revision=manifest['target_revision'])
         state['selections'][manifest['target']] = selected
         return copy.deepcopy(selected)
+
+
+def unresolved_production(state, target):
+    return [op for op in state['operations'].values()
+            if op['stage'] in ('publish', 'verify') and op['target'] == target and
+            op['status'] in ('running', 'uncertain', 'passed') and
+            not any(state['candidates'][op['candidate']].get(key) for key in ('verify', 'invalid', 'retirement'))]
 
 
 def admission(state, item, args, root):
@@ -267,6 +324,7 @@ def admission(state, item, args, root):
     else:
         if not complete(item):
             raise ValueError('Every mandatory gate must pass before production use')
+        require_gate_reports(state, item)
         selection_valid(state, item, args.selection)
         authority(root, manifest, args.authority)
         if args.stage == 'publish':
@@ -310,6 +368,9 @@ def run(args, root):
         admission(state, item, args, root)
         run_directory = directory / 'delivery/runs' / uuid.uuid4().hex
         run_directory.mkdir(parents=True)
+        strict_gate = manifest['format'] == 2 and args.stage == 'gate'
+        if strict_gate:
+            (run_directory / 'reports').mkdir()
         operation = dict(request=args.request, candidate=args.candidate, stage=args.stage, gate=args.gate,
                          target=manifest['target'], identity=identity, status='running', before=before,
                          manifest_sha256=item['manifest_sha256'], directory=str(run_directory),
@@ -322,9 +383,14 @@ def run(args, root):
                SDD_GATE_TESTS=json.dumps(command.get('tests', [])), SDD_MANIFEST=str(run_directory / 'input.json'),
                SDD_TARGET=manifest['target'], SDD_TARGET_REVISION=manifest['target_revision'],
                SDD_ARTIFACTS=json.dumps(manifest['artifacts']))
+    for key in ('SDD_GATE_RUN_ID', 'SDD_GATE_REPORT_DIR'):
+        env.pop(key, None)
+    if strict_gate:
+        env.update(SDD_GATE_RUN_ID=run_directory.name, SDD_GATE_REPORT_DIR=str(run_directory / 'reports'))
     error = None
     returncode = None
     receipt = None
+    reports = None
     try:
         with (run_directory / 'stdout.log').open('xb') as stdout, (run_directory / 'stderr.log').open('xb') as stderr:
             result = subprocess.run(command['argv'], cwd=root, env=env, stdout=stdout, stderr=stderr,
@@ -343,6 +409,13 @@ def run(args, root):
             receipt = observed_receipt
     except (OSError, ValueError) as exc:
         error = (error + '; ' if error else '') + str(exc)
+    if strict_gate:
+        try:
+            reports, report_errors = observe_gate_reports(run_directory, command)
+            if report_errors:
+                error = '; '.join(([error] if error else []) + report_errors)
+        except (OSError, ValueError) as exc:
+            error = (error + '; ' if error else '') + str(exc)
     try:
         after = fingerprints(root, manifest)
     except (OSError, ValueError, subprocess.SubprocessError) as exc:
@@ -354,7 +427,7 @@ def run(args, root):
         if operation['status'] != 'running':
             immutable(run_directory / ('late-observation-' + uuid.uuid4().hex + '.json'),
                       encode(dict(after=after, returncode=returncode, receipt=receipt, error=error,
-                                  observed=time.time())))
+                                  gate_reports=reports, observed=time.time())))
             return copy.deepcopy(operation)
         if args.stage in ('publish', 'verify') and not error:
             try:
@@ -367,6 +440,8 @@ def run(args, root):
         status = 'passed' if not error else ('failed' if args.stage == 'gate' and returncode is not None else 'uncertain')
         operation.update(status=status, after=after, returncode=returncode, receipt=receipt,
                          error=error, completed=time.time())
+        if strict_gate:
+            operation['gate_reports'] = reports
         if status == 'passed':
             accepted(state, item, operation)
             unreserve(state, 'delivery:operation:' + args.request)
@@ -396,6 +471,8 @@ def reconcile(args, root):
         if evidence['outcome'] == 'passed':
             if operation['status'] == 'failed' or item['invalid']:
                 raise ValueError('After a failed gate, use a new candidate')
+            if manifest['format'] == 2 and operation['stage'] == 'gate':
+                raise ValueError('An interrupted strict gate cannot reconcile as passed')
             after = fingerprints(root, manifest)
             receipt = evidence.get('receipt')
             receipt_valid(receipt, manifest, operation['stage'], operation['gate'])
@@ -406,6 +483,15 @@ def reconcile(args, root):
             operation['after'] = after
             accepted(state, item, operation)
         else:
+            if manifest['format'] == 2 and operation['stage'] == 'gate':
+                retained = 'recovery-reports-' + uuid.uuid4().hex
+                directory = Path(operation['directory'])
+                try:
+                    reports, errors = observe_gate_reports(directory, manifest['gates'][operation['gate']], retained)
+                except (OSError, ValueError) as exc:
+                    reports, errors = {}, [str(exc)]
+                operation.setdefault('recovery_gate_reports', []).append(dict(
+                    directory=str(directory / retained), reports=reports, errors=errors))
             item['invalid'] = True
             unreserve(state, holder(item, 'rc'))
             unreserve(state, holder(item, 'production'))
@@ -487,6 +573,72 @@ def retire(args, root):
         return copy.deepcopy(retirement)
 
 
+def operation_ref(op):
+    return {key: op.get(key) for key in ('request', 'candidate', 'stage', 'gate', 'status',
+                                       'directory', 'gate_reports', 'recovery_gate_reports')}
+
+
+def inspect_candidate(state, root, name):
+    summary = dict(format=1, candidate=name, observed_checkout=str(root), status='missing',
+                   next_action='locate_candidate')
+    item = state['candidates'].get(name)
+    if item is None:
+        return summary
+    manifest = item['manifest']
+    keys = set(manifest['rc_resources'] + manifest['production_resources'] +
+               ['delivery:target:' + manifest['target'], 'delivery:candidate:' + name])
+    resources = {key: owner for key, owner in state['resources'].items() if key in keys}
+    operations = [op for op in state['operations'].values() if op['candidate'] == name]
+    pending = [op for op in operations if op['status'] in ('running', 'uncertain')]
+    other = [op for op in unresolved_production(state, manifest['target']) if op['candidate'] != name]
+    selected = state['selections'].get(manifest['target'])
+    missing = sorted(set(manifest['gates']) - set(item['gates']))
+    summary.update(checkout=item['checkout'], target=manifest['target'], resources=resources,
+                   selection=selected, operations=[operation_ref(op) for op in operations],
+                   pending_gates=missing, manifest_sha256=item['manifest_sha256'], manifest_path=item['manifest_path'],
+                   retirement_directory=(item.get('retirement') or {}).get('directory'),
+                   target_blockers=[operation_ref(op) for op in other],
+                   status='retired' if item.get('retirement') else 'invalid' if item['invalid'] else
+                   'verified' if item['verify'] else 'published' if item['publish'] else
+                   'gated' if complete(item) else 'rc' if item['rc'] else 'registered')
+    if item['checkout'] != str(root):
+        summary['next_action'] = 'locate_candidate_checkout'
+    elif pending:
+        summary['next_action'] = 'inspect_writers_and_effects'
+    elif item.get('retirement') or item['verify']:
+        summary['next_action'] = 'read_completed_record'
+    elif item['invalid']:
+        summary['next_action'] = 'review_failed_candidate'
+    else:
+        try:
+            fingerprints(root, manifest)
+            require_gate_reports(state, item)
+        except (OSError, ValueError, KeyError, TypeError, subprocess.SubprocessError) as exc:
+            summary.update(next_action='examine_candidate_evidence', reason=str(exc))
+            return summary
+        rc = manifest['rc_resources']
+        prod = manifest['production_resources'] + ['delivery:target:' + manifest['target']]
+        if 'delivery:candidate:' + name in resources:
+            summary['next_action'] = 'inspect_shared_resources'
+        elif not item['rc']:
+            summary['next_action'] = ('inspect_shared_resources' if any(key in resources for key in rc)
+                                      else 'check_rc_prerequisites')
+        elif missing:
+            summary['next_action'] = ('inspect_shared_resources' if any(resources.get(key) != holder(item, 'rc') for key in rc)
+                                      else 'review_pending_gates')
+        elif other or any(resources.get(key, holder(item, 'production')) != holder(item, 'production') for key in prod):
+            summary['next_action'] = 'inspect_target_and_writers'
+        elif item['publish']:
+            summary['next_action'] = ('inspect_shared_resources' if any(
+                resources.get(key) != holder(item, 'production') for key in prod)
+                else 'check_verification_prerequisites')
+        elif not selected or selected['candidate'] != name:
+            summary['next_action'] = 'check_selection_prerequisites'
+        else:
+            summary['next_action'] = 'check_publication_authority'
+    return summary
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, default=Path.cwd())
@@ -509,13 +661,15 @@ def main(argv=None):
     retirement = actions.add_parser('retire')
     retirement.add_argument('--candidate', required=True)
     retirement.add_argument('--evidence', type=Path, required=True)
-    actions.add_parser('inspect')
+    inspection = actions.add_parser('inspect')
+    inspection.add_argument('--candidate')
     args = parser.parse_args(argv)
     try:
         root = args.root.resolve(strict=True)
         if args.action == 'inspect':
             state, directory = inspect_state(root)
-            result = dict(state=state, directory=str(directory))
+            result = (inspect_candidate(state, root, args.candidate) if args.candidate is not None
+                      else dict(state=state, directory=str(directory)))
         else:
             result = globals()[args.action](args, root)
         print(json.dumps(result, sort_keys=True, allow_nan=False))

@@ -17,6 +17,25 @@ Separate clones, machines, and registry directories do not automatically share o
 For shared tasks or resources across those boundaries, use a verified project backend.
 An unavailable authority prevents conflicting mutations. Independent read-only work can continue.
 `inspect` reads a snapshot. It does not create a registry or enable shared claim checks.
+The helper uses SQLite rollback journals. Inspection rejects an externally configured WAL registry to prevent new sidecar files.
+
+## Inspect a known task
+
+```text
+python <skill>/scripts/coordination.py inspect --repo <checkout> --task-id TASK-17
+```
+
+Give the task ID from the accepted record. Use the unfiltered `inspect` output to find records when the target is not clear.
+Do not select a task only because it is the only active task.
+The summary shows the recorded checkout, executor, generation, resource owners, result reference, and unresolved runs.
+It shows log paths when the shared record has them. For a hook check, examine the hook's check evidence.
+If you know your executor identity, supply `--executor` to compare it with the recorded identity.
+Do not copy another executor identity to continue work.
+Examine the recorded checkout and actual writers before a change of responsibility.
+If the lease expired or a command has no known outcome, examine writers and effects first.
+For a returned result, examine its basis and contents before acceptance.
+The summary gives a diagnostic action for the observed state. It does not change state or give authority.
+The execution entry must check the current claim, executor, checkout, and basis again.
 
 ## Claim an accepted assignment
 

@@ -60,6 +60,7 @@ For that new candidate, examine necessary checks again.
 Promote the tested artifacts by digest. Evidence for a rebuild is necessary even with the same commit.
 
 Use candidate-specific resources when possible.
+Before you use separate resources, verify actual separation, resource scope, and authority to use them.
 For a shared RC, reserve the actual environment and database before deployment.
 For a continuing candidate, keep the slot until every mandatory gate and evidence capture are completed.
 Do not release the slot immediately after deployment.
@@ -103,6 +104,78 @@ For publication, the receiver must check the expected target revision before mut
 Publication receipts identify the previous target revision and the observed new candidate revision.
 Verification receipts identify the target, candidate revision, and observed artifacts.
 
+## Check original gate reports
+
+Use candidate format `2` when the project requires the helper to check original case results.
+Format `1` checks the runner's receipt. A format `1` receipt does not show that the test framework ran each case.
+In format `2`, add a `junit` map to every gate. Use exactly the gate's mandatory test IDs as keys.
+For example, for a gate with one mandatory test:
+
+```json
+{
+  "tests": ["reject-duplicate"],
+  "junit": {
+    "reject-duplicate": {
+      "shard": "system",
+      "file": "tests/test_orders.py",
+      "classname": "TestOrders",
+      "name": "test_reject_duplicate"
+    }
+  }
+}
+```
+
+Keep the gate's command and timeout fields. Set the top-level manifest format to `2`.
+Use an exact file, class, and test name, including the parameter suffix when applicable.
+Use project-relative file names with forward slashes. Include each selected file in `basis`.
+On Windows, the helper converts report path separators to forward slashes. It does not match by file name alone.
+Freeze the runner, tests, configuration, data, and gate version that can affect the result.
+Use a separate shard name for each required report. Use letters, digits, underscores, or hyphens in a shard name.
+
+The helper gives the runner `SDD_GATE_REPORT_DIR` and `SDD_GATE_RUN_ID` for the current operation.
+Write one original UTF-8 JUnit XML report per required shard to `<SDD_GATE_REPORT_DIR>/<shard>.xml`.
+Use a flat `testsuite`, or `testsuites` with flat `testsuite` children. Each suite must have these properties:
+
+```xml
+<properties>
+  <property name="sdd.run_id" value="CURRENT_RUN_ID"/>
+  <property name="sdd.shard" value="system"/>
+</properties>
+```
+
+Use the current operation's run ID when you configure the test reporter. Do not put it on an old report.
+The helper supports reports up to 8 MiB each. It does not accept document type declarations or entity declarations.
+Each required case must occur once with no failure, error, retry failure, or skip.
+If a report gives suite totals, they must agree with the case results.
+Do not copy the expected ID list into a report. Get the receipt's case results from the actual execution.
+The helper keeps observed report bytes within the size limit and their SHA256 digests, including the available reports for a failed gate.
+It checks those bytes again before selection and production admission.
+Use a trusted CI runner and storage. The run ID and report hashes do not authenticate an untrusted producer.
+
+The first format `2` registration upgrades the shared registry in the same transaction.
+Before this upgrade, use current helpers in all participating sessions and hooks. Confirm that related writers stopped.
+Finish active claims and resolve operations and resource holders. Do not start a second registry for the same resources.
+After the upgrade, helpers from 0.15.1 reject that registry. Current helpers keep existing records and format `1` candidates.
+An interrupted format `2` gate cannot reconcile as passed. Examine actual writers and effects, resolve the failure, and use a new candidate.
+During failed reconciliation, the helper keeps available reports as new observations. It does not change the original report records.
+Keep old pass and failure records. Do not substitute a later report for the original operation.
+
+## Inspect a known candidate
+
+```text
+python <skill>/scripts/delivery.py --root <checkout> inspect --candidate rc-17
+```
+
+Give the candidate ID from the task or release record. Use unfiltered `inspect` if you must find the record.
+The summary shows the recorded checkout, target, selection generation, resource owners, pending gates, and evidence references.
+Use the manifest path, operation directories, and retirement directory when they apply.
+The status describes the record. A previous pass does not show that evidence is still applicable.
+Use `next_action` to find what to examine. An unknown effect requires observation before retry or release.
+The summary does not select a candidate, change state, observe a live writer, or give release authority.
+Use the execution entry to check the current selection and authority before effects.
+
+## Keep release authority
+
 The frozen authority file records the project's existing authorization. Its fields give no credentials or native permissions.
 Use the manifest's actual candidate, target, and observed target revision:
 
@@ -134,7 +207,9 @@ Use the same group across all workflows that modify that target in the repositor
 Before use, examine support in the selected GitHub version and the actual project workflow.
 This group does not coordinate different repositories or commands outside Actions.
 For GitLab, use the project's target-specific `resource_group` and outdated-deployment controls.
-Until its gates are completed or authorized retirement resolves the candidate, keep the RC slot.
+Keep the RC slot until all mandatory gates pass and their evidence is kept, or until the applicable resolution releases the slot.
+For a known failed operation, use the failed reconciliation procedure below with actual writer-stop and outcome evidence.
+For withdrawal without a known failure, use authorized retirement. If effects are unknown, keep the slot.
 A production-only group cannot protect a shared RC.
 Sources: [GitHub concurrency](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency)
 and [GitLab deployment safety](https://docs.gitlab.com/ci/environments/deployment_safety/).
@@ -149,7 +224,7 @@ Keep target serialization until the outcome has resolution.
 For recovery, use `reconcile --request <request-id> --evidence <resolution.json>` with `--root <project>`.
 The recovery record must identify actual stopped-writer observations and the resolved external outcome.
 Keep the initial failure and the recovery evidence.
-After a failed gate, use a new candidate. Do not silently replace a failure with a pass.
+After a failed gate, use the [new candidate procedure](#use-a-new-registered-candidate-after-a-failed-gate).
 Before reconciliation, confirm stopped writers.
 Before a new candidate uses the slot from the failed operation, reconcile that operation.
 
@@ -167,10 +242,14 @@ A successful RC recovery uses this structure with actual observations and artifa
 }
 ```
 
-For a gate recovery, include the full `tests` map in its receipt.
+For a passing gate reconciliation when the format permits it, include the full `tests` map in its receipt.
+An interrupted format `2` gate cannot reconcile as passed.
 For publication or verification recovery, include the target fields from the applicable stage contract.
 For a failed outcome, use `"outcome": "failed"` with actual stopped-writer and outcome observations.
+Failed reconciliation does not require a receipt or a `tests` map. Keep the original evidence that is available.
 That outcome releases the candidate's slots and prevents its acceptance.
+Use this resolution only if project authority permits it and the failed outcome is known.
+Do not use a failed outcome to withdraw a candidate that did not fail. Use authorized retirement for that case.
 The helper records the writer-stop assertion. It cannot determine native termination from the JSON fields.
 Apply the [wrapper and writer conditions](coordination.md#return-recover-and-close) before recovery.
 After explicit resolution, later callbacks cannot replace that resolution or release a successor's resources.
@@ -179,6 +258,22 @@ The receiving release entry must enforce current selection, authorization, targe
 A stored selection can still name a retired candidate. The receiver must reject that candidate before mutation.
 Native credentials and permissions determine bypass protection.
 Local registry checks and hook prose cannot enforce an external receiver.
+
+## Use a new registered candidate after a failed gate
+
+1. Block selection and publication. Keep the failed operation and its available receipt and original reports.
+2. Find and correct the cause. A passing receipt does not override a missing or skipped mandatory case. Before reuse of shared resources, confirm stopped writers and resolve the failed operation with actual evidence. If its effects are unknown, do the recovery checks first.
+3. Freeze a manifest with a different candidate ID and the current artifact and gate basis. If you use the delivery helper, run `register` for the new manifest before you run RC or a gate. A different request ID for the failed candidate does not make a new candidate.
+4. Deploy the new RC and run every mandatory gate. Keep the new results with the new candidate. Check its eligibility and current authority before selection and publication.
+
+```text
+python <skill>/scripts/delivery.py --root <project> register --manifest <new-candidate.json>
+python <skill>/scripts/delivery.py --root <project> run --candidate rc-18 --stage rc --request rc-18-deploy
+python <skill>/scripts/delivery.py --root <project> run --candidate rc-18 --stage gate --gate system --request rc-18-system
+```
+
+The example uses one gate. Use the actual new candidate, gate, and request IDs.
+An equivalent project entry must record and check the new candidate before it permits release.
 
 ## Retire a candidate
 

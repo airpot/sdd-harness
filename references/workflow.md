@@ -178,6 +178,22 @@ Examine assertion, skip, mock, discovery, and runner changes in [test integrity 
 For issues without decisions, record effects, task or owner with responsibility, resolution condition, and effect on acceptance.
 Do not use the name technical debt to remove a necessary requirement from the accepted scope.
 
+### Repeat only the failed review
+
+Keep the candidate, check results, and review decision as different records.
+Use this procedure when a review did not give a decision because the reviewer or its tool failed.
+A review that finds a defect is a decision. Correct the defect and examine the changed basis.
+
+1. Identify the failed review attempt and the cause. Make sure that the failed reviewer execution stopped. Confirm the actual outcome of the original candidate execution and any related writers. If either execution has an unknown effect, do not use this procedure until you resolve it.
+2. Compare the candidate and its scope with the original review inputs. Compare the accepted specification, check plan, configuration, and applicable environment. Examine the current parent basis and all applicable dependencies again, including indirect dependencies.
+3. Read the original check evidence. Verify its identity, contents, and applicability to the current candidate. Reuse only a check with a satisfactory result for the condition that it covers. Keep a hash or an equivalent immutable reference for important files.
+4. If all these conditions hold, start a new review attempt for the same candidate. Keep the original failure. In the new attempt, record the candidate identity, accepted specification and check plan, dependency and environment basis, and references to the original check evidence. Do not rebuild or repeat a check only because the reviewer failed.
+5. If a basis input or evidence changed, keep the original record as history. Get new results from the affected checks. If you cannot determine the affected scope, do a broader check or report the gap. Use the recovery procedure below for unknown effects. Permission for a protected replay does not make this review procedure applicable.
+
+A new review attempt does not make an old check pass. It does not accept a result or transfer authority.
+Independent work can continue within its current scope and authority.
+Check the actual combined candidate after integration. Use the [delivery rules](delivery.md) for a failed or interrupted gate and for release eligibility.
+
 ## Resolve uncertain effects
 
 A timeout or a response that you do not receive is not sufficient evidence of failure or completion.
@@ -309,6 +325,22 @@ When later validation is necessary, keep its responsible task or owner and its e
 Future lesson validation does not block current task acceptance unless it is a mandatory condition of that task.
 A lesson record does not replace a mandatory check or make a failed task accepted.
 
+### Record a lesson state
+
+If a lesson can affect later work, use these states or the project's equivalent states in the existing record:
+
+| State | Evidence and use |
+| --- | --- |
+| `trial` | The observation or hypothesis has a source. Do not give it as established guidance. Validate it within the accepted task scope before routine use. |
+| `verified` | Source evidence supports a statement in a specified scope. Before reuse, compare that scope and the latest applicable check with the current task. |
+| `guarded` | A current check detects the stated risk in the specified scope. Keep its executable reference and actual passing result. Confirm that the check still exists and that the result still applies. |
+| `superseded` | Current evidence, a correction, or an accepted decision replaces or withdraws the lesson. Keep the original evidence and link the successor when it exists. Do not give the old lesson as current guidance. |
+
+Keep the source, scope, and last applicable verification with the state. For a replacement, keep the affected scope and the successor reference.
+A record without a state still requires a source and applicability check. Do not assume it is verified.
+If a check is missing, changed, or no longer applicable, do not claim that the guard is active. Keep a narrower verified statement only if other evidence supports it. Otherwise, record a trial or superseded statement with its reason.
+A guard result does not prove that it prevented a later defect. An automated finding can be a trial lesson. It cannot change project rules, task ownership, or mandatory checks.
+
 ### Maintain the lesson and its evidence
 
 After related requirement, dependency, or environment changes, examine lesson applicability again.
@@ -337,6 +369,14 @@ If the values of the total cost of execution and the total cost of coordination 
 Keep missing measurements unknown.
 Do not give shorter execution time as a fact for all tasks.
 Model trials from different tasks are not evidence of better results for this task.
+
+For a comparison of skill versions, freeze the exact task inputs, skill contents, and evaluator rules.
+Use fresh execution contexts with the same model route, tools, permissions, and budget where possible. Record differences.
+Do not give the executor the evaluator rules or earlier answers. Give the evaluator the answers without version labels when possible.
+Repeat each task under each condition. Keep all attempts and report passes over completed attempts for each task.
+Give the planned and completed counts. Report separately whether at least one attempt passed and whether all planned attempts passed.
+Do not report that all planned attempts passed before you have evidence for all of them.
+Use executed checks for behavior when possible. Keep paper decisions, actual execution, and host effects separate.
 
 ## Keep checkpoints
 

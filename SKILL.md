@@ -2,7 +2,7 @@
 name: sdd-harness
 description: When you change or continue a project from specifications, use this skill. Also use it for acceptance checks, worker results, release preparation, or worktree protection.
 metadata:
-  version: "0.15.1"
+  version: "0.16.1"
 ---
 
 # SDD Harness
@@ -21,6 +21,9 @@ For this project work, do these steps:
 3. Examine available host observations and project records for related writer activity.
 4. If the scope has writer conflicts, use a snapshot that cannot change or a different checkout.
    If ownership has no resolution for the scope, use the same alternatives.
+
+For a known task or candidate, use the applicable [task summary](references/coordination.md#inspect-a-known-task) or [candidate summary](references/delivery.md#inspect-a-known-candidate) before you continue.
+Use the summary for diagnosis. It gives no permission to claim work or start a command.
 
 Known task ownership and related observations can be sufficient for work that you do independently.
 Proof that each host chat does no work is not mandatory.
@@ -86,6 +89,7 @@ Use the project's maintenance convention to make the record with specification a
 | Compare effectiveness of development or execution methods | [Effectiveness comparisons](references/workflow.md#compare-effectiveness) |
 | Ambiguity, contracts with conflicts, requirement coverage, changed or removed behavior, or important validation decisions | [Specification review](references/spec-review.md) |
 | Behavior changes in executable code, test-result interpretation, characterization of behavior from before the change, or assertion integrity | [Testing](references/testing.md) |
+| Failed RC gate | [Use a new registered candidate](references/delivery.md#use-a-new-registered-candidate-after-a-failed-gate) |
 | Terms for a business context, ownership of business rules, state, invariants, consistency, or coupling of boundaries that occurs again | [Domain modeling](references/domain.md) |
 | Continuation after context replacement, or a change of task responsibility | [Workflow checkpoints](references/workflow.md). If the [handoff template](assets/handoff.md) helps the task, use it. |
 | Developers or chats with cooperation and shared resources | [Collaboration](references/collaboration.md) |

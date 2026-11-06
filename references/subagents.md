@@ -162,6 +162,8 @@ Obey [workflow rules](workflow.md) and [delivery rules](delivery.md).
 
 Use accepted criteria and evidence from execution to get a decision for review disagreement.
 Do not use model votes as acceptance evidence or start more reviewers only to make their reports agree.
+If a reviewer failed without a decision, use [the failed review procedure](workflow.md#repeat-only-the-failed-review).
+Keep the worker's candidate and checks if their basis stays applicable. Record the new review attempt separately.
 Do checks again only for new changes, new evidence, or important remaining problems.
 If all available budget is used with necessary work not completed, record conditions without acceptance and the next step.
 

@@ -145,6 +145,9 @@ After document changes, use this procedure:
    Use direct reads for work that they can support.
 
 Before lesson reuse, examine its source evidence and applicability to the current task.
+Read the current [lesson state](workflow.md#record-a-lesson-state) in the project record. A search rank or index copy does not give this state.
+Omit superseded lessons from current recommendations. Read their successors or use the old records only for history.
+Identify trial lessons as unverified. Do not credit a guard without an applicable current check and an actual result.
 
 MCP is optional. Its default tool is `zvec_grep_search`.
 Before MCP queries, examine the host's tool schema and client.

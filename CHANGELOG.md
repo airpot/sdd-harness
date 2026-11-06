@@ -1,5 +1,19 @@
 # Repository Changes
 
+## 2026-11-06: Review and lesson evidence in 0.16.1
+
+Repeat a failed review separately when the original checks still apply.
+Record lesson scope, verification, and replacement in existing records.
+Add fixed comparison cases and separate evaluator criteria in the source repository.
+
+## 2026-11-06: Gate evidence and resume in 0.16.0
+
+Add optional case-level JUnit checks for fixed candidates.
+Bind each required report to the operation and retain its original bytes.
+Upgrade the registry only when active owners and effects have resolution.
+Keep older helpers from using the upgraded registry.
+Add read-only summaries for known tasks and candidates.
+
 ## 2026-10-31: Consistency repairs in 0.15.1
 
 Examine upstream dependency bases through the complete dependency chain. Reject cycles.

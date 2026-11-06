@@ -158,9 +158,15 @@ Do not silently omit cases or accept zero discovered tests.
 Unresolved flaky critical cases block acceptance.
 For other exceptions, explicit project authority, policy, and follow-up records are necessary.
 The optional delivery helper requires `passed` for every declared test.
+For a gate that must check each reported case, use [original report checks](delivery.md#check-original-gate-reports) or an equivalent project control.
+Give each mandatory case a stable ID and an exact test selector.
+In the existing test catalog or defect record, keep the requirement or defect source for each case.
+Before removal, record the accepted replacement or the reason why the case no longer applies.
 For an accepted manifest change, create a new version and examine evidence applicability again.
 Do not reduce the manifest to conceal failure.
 Keep failed attempts even after a later pass.
+If a required case did not pass, do not select or publish the candidate.
+After a failed gate, [register and check a different candidate](delivery.md#use-a-new-registered-candidate-after-a-failed-gate) when you use the delivery helper.
 Retirement preserves prior gate results. It does not make an incomplete or failed gate pass.
 Recovered checks remain nonpassing when a late callback arrives. Obtain new evidence through a new actual check.
 Before another attempt, find the cause and correct the applicable problem. Do not retry blindly.

@@ -219,12 +219,23 @@ def observe_gate_reports(directory, gate, retained='reports-observed'):
     return reports, errors
 
 
-def authority(root, manifest, supplied):
+def registration_id(item):
+    return Path(item['manifest_path']).stem
+
+
+def legacy_verification(state, item, stage):
+    published = state['operations'].get(item['publish'])
+    return stage == 'verify' and published and 'registration_id' not in published['identity']
+
+
+def authority(root, manifest, supplied, *, legacy=False):
     if supplied != manifest['authority']:
         raise ValueError('Supply the project authority file that you froze')
     record = strict_json(local_file(root, supplied).read_bytes())
     expected = dict(authorized=True, candidate=manifest['candidate'], target=manifest['target'],
                     target_revision=manifest['target_revision'])
+    if not legacy:
+        expected['artifacts'] = manifest['artifacts']
     if not isinstance(record, dict) or record.get('authorized') is not True or any(record.get(key) != value for key, value in expected.items()):
         raise ValueError('The project authority record does not authorize this release')
 
@@ -310,6 +321,11 @@ def admission(state, item, args, root):
     manifest = item['manifest']
     if args.stage != 'gate' and args.gate is not None:
         raise ValueError('The gate argument applies only to the gate stage')
+    if args.stage in ('publish', 'verify'):
+        if args.registration_id != registration_id(item):
+            raise ValueError('Supply the registration ID for this candidate')
+    elif args.registration_id is not None:
+        raise ValueError('The registration ID argument applies only to production stages')
     if args.stage == 'rc':
         if item['rc']:
             raise ValueError('This candidate has an RC deployment')
@@ -326,7 +342,7 @@ def admission(state, item, args, root):
             raise ValueError('Every mandatory gate must pass before production use')
         require_gate_reports(state, item)
         selection_valid(state, item, args.selection)
-        authority(root, manifest, args.authority)
+        authority(root, manifest, args.authority, legacy=legacy_verification(state, item, args.stage))
         if args.stage == 'publish':
             if item['publish']:
                 raise ValueError('This candidate has a publication')
@@ -355,6 +371,8 @@ def run(args, root):
     identifier(args.request)
     identity = dict(candidate=args.candidate, stage=args.stage, gate=args.gate,
                     selection=args.selection, authority=args.authority, checkout=str(root))
+    if args.registration_id is not None:
+        identity['registration_id'] = args.registration_id
     with store(root) as (state, directory):
         previous = state['operations'].get(args.request)
         if previous:
@@ -421,9 +439,12 @@ def run(args, root):
     except (OSError, ValueError, subprocess.SubprocessError) as exc:
         after = None
         error = (error + '; ' if error else '') + str(exc)
-    with store(root) as (state, _):
+    with store(root, bound_registry=directory) as (state, _):
+        operation = state['operations'].get(args.request)
+        if (not operation or operation['identity'] != identity
+                or operation['directory'] != str(run_directory)):
+            raise ValueError('The admitted delivery operation has no matching record')
         item = state['candidates'][args.candidate]
-        operation = state['operations'][args.request]
         if operation['status'] != 'running':
             immutable(run_directory / ('late-observation-' + uuid.uuid4().hex + '.json'),
                       encode(dict(after=after, returncode=returncode, receipt=receipt, error=error,
@@ -432,7 +453,7 @@ def run(args, root):
         if args.stage in ('publish', 'verify') and not error:
             try:
                 selection_valid(state, item, args.selection)
-                authority(root, manifest, args.authority)
+                authority(root, manifest, args.authority, legacy=legacy_verification(state, item, args.stage))
             except (OSError, ValueError) as exc:
                 error = str(exc)
         # A child process can start other writers. After a timeout or failed mutation,
@@ -475,11 +496,13 @@ def reconcile(args, root):
             if previous['evidence_sha256'] != evidence_sha:
                 raise ValueError('The operation has different reconciliation evidence')
             return copy.deepcopy(operation)
+        if not isinstance(evidence, dict) or evidence.get('operation_id') != Path(operation['directory']).name:
+            raise ValueError('Use the operation ID for this admitted execution in the reconciliation evidence')
         if operation['status'] not in ('running', 'uncertain', 'failed'):
             raise ValueError('This operation has no state for reconciliation')
         if item.get('retirement'):
             raise ValueError('The candidate is retired. Keep its recorded operations')
-        if (not isinstance(evidence, dict) or evidence.get('writer_stopped') is not True
+        if (evidence.get('writer_stopped') is not True
                 or evidence.get('outcome') not in ('passed', 'failed')
                 or not isinstance(evidence.get('observations'), str) or not evidence['observations'].strip()):
             raise ValueError('Supply writer_stopped=true, an explicit outcome, and nonempty observations')
@@ -495,7 +518,9 @@ def reconcile(args, root):
             receipt_valid(receipt, manifest, operation['stage'], operation['gate'])
             if operation['stage'] in ('publish', 'verify'):
                 selection_valid(state, item, operation['identity']['selection'])
-                authority(root, manifest, operation['identity']['authority'])
+                legacy = ('registration_id' not in operation['identity']
+                          or legacy_verification(state, item, operation['stage']))
+                authority(root, manifest, operation['identity']['authority'], legacy=legacy)
             operation['receipt'] = receipt
             operation['after'] = after
             accepted(state, item, operation)
@@ -542,10 +567,11 @@ def retire(args, root):
             return copy.deepcopy(previous)
         manifest = item['manifest']
         expected = dict(candidate=args.candidate, target=manifest['target'],
-                        manifest_sha256=item['manifest_sha256'])
+                        manifest_sha256=item['manifest_sha256'],
+                        registration_id=registration_id(item))
         if not isinstance(evidence, dict) or evidence.get('format') != 1 or any(
                 evidence.get(key) != value for key, value in expected.items()):
-            raise ValueError('Retirement evidence must identify the fixed candidate and target')
+            raise ValueError('Retirement evidence must identify the fixed candidate, target, and registration')
         if evidence.get('writer_stopped') is not True or any(
                 not isinstance(evidence.get(field), str) or not evidence[field].strip()
                 for field in ('writer_observations', 'reason')):
@@ -591,8 +617,10 @@ def retire(args, root):
 
 
 def operation_ref(op):
-    return {key: op.get(key) for key in ('request', 'candidate', 'stage', 'gate', 'status',
-                                       'directory', 'gate_reports', 'recovery_gate_reports')}
+    result = {key: op.get(key) for key in ('request', 'candidate', 'stage', 'gate', 'status',
+                                          'directory', 'gate_reports', 'recovery_gate_reports')}
+    result['operation_id'] = Path(op['directory']).name
+    return result
 
 
 def inspect_candidate(state, root, name):
@@ -613,6 +641,7 @@ def inspect_candidate(state, root, name):
     summary.update(checkout=item['checkout'], target=manifest['target'], resources=resources,
                    selection=selected, operations=[operation_ref(op) for op in operations],
                    pending_gates=missing, manifest_sha256=item['manifest_sha256'], manifest_path=item['manifest_path'],
+                   registration_id=registration_id(item),
                    retirement_directory=(item.get('retirement') or {}).get('directory'),
                    target_blockers=[operation_ref(op) for op in other],
                    status='retired' if item.get('retirement') else 'invalid' if item['invalid'] else
@@ -668,6 +697,7 @@ def main(argv=None):
     execution.add_argument('--gate')
     execution.add_argument('--request', required=True)
     execution.add_argument('--selection', type=int)
+    execution.add_argument('--registration-id')
     execution.add_argument('--authority')
     selection = actions.add_parser('select')
     selection.add_argument('--candidate', required=True)

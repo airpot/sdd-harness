@@ -16,6 +16,7 @@ import subprocess
 import sys
 import time
 import uuid
+from urllib.parse import quote
 
 
 def digest(path):
@@ -97,6 +98,15 @@ def empty_state():
                 selections={}, operations={}, claim_runs={})
 
 
+def existing_database_uri(database, mode):
+    if os.name == 'nt' and database.drive.startswith('\\\\?\\'):
+        # Encode the native path without interpreting its device prefix as a URI authority.
+        uri = 'file:' + quote(str(database), safe=':')
+    else:
+        uri = database.as_uri()
+    return uri + '?mode=' + mode
+
+
 def inspect_state(root):
     directory = registry(root)
     database = regular_path(directory / 'state.sqlite')
@@ -109,7 +119,7 @@ def inspect_state(root):
         raise ValueError('Read-only inspection does not support a registry in WAL mode')
     for suffix in ('-journal', '-wal', '-shm'):
         regular_path(Path(str(database) + suffix))
-    connection = sqlite3.connect(database.as_uri() + '?mode=ro', uri=True, timeout=2)
+    connection = sqlite3.connect(existing_database_uri(database, 'ro'), uri=True, timeout=2)
     try:
         row = connection.execute('SELECT body FROM registry WHERE id=1').fetchone()
         state = json.loads(row[0]) if row else empty_state()
@@ -121,13 +131,15 @@ def inspect_state(root):
 
 
 @contextmanager
-def store(root):
-    directory = registry(root)
-    directory.mkdir(parents=True, exist_ok=True)
+def store(root, *, bound_registry=None):
+    directory = registry(root) if bound_registry is None else regular_path(bound_registry)
+    if bound_registry is None:
+        directory.mkdir(parents=True, exist_ok=True)
     database = regular_path(directory / 'state.sqlite')
     for suffix in ('-journal', '-wal', '-shm'):
         regular_path(Path(str(database) + suffix))
-    connection = sqlite3.connect(database, timeout=2, isolation_level=None)
+    source = database if bound_registry is None else existing_database_uri(database, 'rw')
+    connection = sqlite3.connect(source, uri=bound_registry is not None, timeout=2, isolation_level=None)
     try:
         connection.execute('BEGIN IMMEDIATE')
         connection.execute('CREATE TABLE IF NOT EXISTS registry (id INTEGER PRIMARY KEY, body TEXT NOT NULL)')
@@ -471,8 +483,10 @@ def run(args, root):
     except OSError as problem:
         (logdir / 'launch-error.txt').write_text(str(problem), encoding='utf-8')
         outcome = 'failed'
-    with store(root) as (state, _):
-        record = state['claim_runs'][run_id]
+    with store(root, bound_registry=directory) as (state, _):
+        record = state['claim_runs'].get(run_id)
+        if not record or record['claim'] != args.claim or record['logs'] != str(logdir):
+            raise ValueError('The admitted task command has no matching record')
         if record['status'] != 'running':
             observation = dict(status=outcome, exit_code=code, ended=time.time())
             path = regular_path(logdir / ('late-observation-' + uuid.uuid4().hex + '.json'))

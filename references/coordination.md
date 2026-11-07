@@ -17,7 +17,8 @@ Separate clones, machines, and registry directories do not automatically share o
 For shared tasks or resources across those boundaries, use a verified project backend.
 An unavailable authority prevents conflicting mutations. Independent read-only work can continue.
 `inspect` reads a snapshot. It does not create a registry or enable shared claim checks.
-The helper uses SQLite rollback journals. Inspection rejects an externally configured WAL registry to prevent new sidecar files.
+The helper uses SQLite rollback journals.
+On Windows, a local registry can use an extended drive path such as `\\?\C:\project-data\registry`. Inspection rejects an externally configured WAL registry to prevent new sidecar files.
 
 ## Inspect a known task
 
@@ -113,6 +114,7 @@ This recovery also applies when a terminated wrapper leaves a `running` record.
 Confirm that commands, descendants, and wrappers cannot cause further task or external mutations.
 An observer wrapper can remain only if its remaining work is a metadata callback with no further business effects.
 If you cannot establish that condition, keep the run unresolved.
+The command callback uses the registry that admitted its run. It does not use a new registry from changed checkout configuration.
 After recovery, late callbacks keep observations separately. They cannot replace the resolution or release a newer run's resources.
 Hook checks keep a nonpassing recovered attempt before a new check or binding release.
 Do not delete locks manually or start a replacement command merely because a window closed.

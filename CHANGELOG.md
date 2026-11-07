@@ -1,5 +1,12 @@
 # Repository Changes
 
+## 2026-11-07: Registry and operation identity in 0.16.4
+
+- Finalize command callbacks in the registry and execution record that admitted them.
+- Bind new reconciliation evidence to the operation ID and new retirement authority and evidence to the registration ID.
+- Bind publication and verification to the registration. Bind new publication authority to artifact digests.
+- Keep exact replay of earlier recorded evidence.
+
 ## 2026-11-06: Resource release evidence in 0.16.3
 
 - Check all retained mandatory reports before the final strict gate releases its RC slot.

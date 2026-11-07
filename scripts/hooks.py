@@ -190,7 +190,7 @@ def claim_guard(root, item, targets=None, start=None, completed=False):
         if coordination.enabled(root):
             raise ValueError('Bind this session with the current claim for its task')
         return
-    with coordination.store(root) as (state, _):
+    with coordination.store(root) as (state, directory):
         claim = coordination.get_claim(state, token, item['executor'], root)
         if (root / item['task']) != Path(claim['task']):
             raise ValueError('The hook task differs from the shared assignment')
@@ -223,13 +223,16 @@ def claim_guard(root, item, targets=None, start=None, completed=False):
                 raise ValueError('The claim has an active or uncertain command')
             state['claim_runs'][start] = dict(id=start, claim=token, generation=claim['generation'],
                 status='running', kind='hook-check', started=time.time(), added_resources=[])
+            return directory
 
 
-def end_claim_check(root, item, run_id, outcome):
+def end_claim_check(root, item, run_id, outcome, shared_registry):
     if not item.get('claim'):
         return
-    with coordination.store(root) as (state, _):
-        run = state['claim_runs'][run_id]
+    with coordination.store(root, bound_registry=shared_registry) as (state, _):
+        run = state['claim_runs'].get(run_id)
+        if not run or run['claim'] != item['claim'] or run.get('kind') != 'hook-check':
+            raise ValueError('The admitted hook check has no matching record')
         observation = dict(outcome=outcome, ended=time.time())
         if run['status'] != 'running':
             run.setdefault('late_observations', []).append(observation)
@@ -237,10 +240,10 @@ def end_claim_check(root, item, run_id, outcome):
         run.update(status='unknown' if outcome == 'timeout' else outcome, ended=observation['ended'])
 
 
-def sync_recovered_checks(root, item, directory):
+def sync_recovered_checks(root, item, directory, shared_registry=None):
     if not item.get('claim'):
         return
-    with coordination.store(root) as (state, _):
+    with coordination.store(root, bound_registry=shared_registry) as (state, _):
         for proof in item['checks'].values():
             run_id = proof.get('run_id')
             shared = state['claim_runs'].get(run_id)
@@ -268,7 +271,7 @@ def check(args, root):
         logs = local(root, directory / 'checks')
         logs.mkdir(exist_ok=True)
         output, error = logs / (token + '.stdout'), logs / (token + '.stderr')
-        claim_guard(root, item, start=token)
+        shared_registry = claim_guard(root, item, start=token)
         item['checks'][args.name] = {'outcome': 'running', 'run_id': token, 'stable': False,
             'before': before, 'after': {}, 'stdout': str(output), 'stderr': str(error)}
     code, outcome = None, 'unknown'
@@ -294,17 +297,17 @@ def check(args, root):
         item = binding(state, args.session)
         if item['identity'] != current['identity'] or item['checks'].get(args.name, {}).get('run_id') != token:
             raise ValueError('The binding changed during the check. Keep its logs without acceptance')
-        sync_recovered_checks(root, item, directory)
+        sync_recovered_checks(root, item, directory, shared_registry)
         if item['checks'][args.name]['outcome'] != 'recovered':
             item['checks'][args.name] = record
     # Keep the shared run recoverable until local process evidence is durable.
     # Stop still checks shared activity before it can accept this local proof.
-    end_claim_check(root, current, token, outcome)
+    end_claim_check(root, current, token, outcome, shared_registry)
     with transaction(root) as (state, directory):
         item = binding(state, args.session)
         if item['identity'] != current['identity'] or item['checks'].get(args.name, {}).get('run_id') != token:
             raise ValueError('The binding changed during the check. Keep its logs without acceptance')
-        sync_recovered_checks(root, item, directory)
+        sync_recovered_checks(root, item, directory, shared_registry)
         proof = item['checks'][args.name]
         if proof['outcome'] == 'recovered':
             proof.setdefault('late_observations', []).append(dict(record=str(record_path), outcome=outcome,

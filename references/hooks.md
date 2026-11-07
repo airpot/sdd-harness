@@ -60,6 +60,7 @@ Hook release removes the local binding only.
 After the recovery conditions for the shared claim pass, close that claim.
 Registry inspection alone does not enable shared coordination or invalidate ordinary local bindings.
 After explicit check recovery, a late callback cannot make the recovered check pass.
+An in-flight check completes shared finalization and recovery synchronization in the registry that admitted it.
 Keep its late observations separately. Use a new actual check for new passing evidence.
 An interrupted local evidence write must leave a shared run that permits explicit recovery.
 Local process evidence alone does not complete finalization. A shared run that is still active blocks task completion.

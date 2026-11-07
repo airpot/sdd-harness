@@ -85,12 +85,13 @@ python <skill>/scripts/delivery.py --root <project> register --manifest <candida
 python <skill>/scripts/delivery.py --root <project> run --candidate rc-17 --stage rc --request rc-17-deploy
 python <skill>/scripts/delivery.py --root <project> run --candidate rc-17 --stage gate --gate system --request rc-17-system
 python <skill>/scripts/delivery.py --root <project> select --candidate rc-17 --expected <current-selection-generation>
-python <skill>/scripts/delivery.py --root <project> run --candidate rc-17 --stage publish --request rc-17-publish --selection <returned-generation> --authority <authority.json>
-python <skill>/scripts/delivery.py --root <project> run --candidate rc-17 --stage verify --request rc-17-verify --selection <returned-generation> --authority <authority.json>
+python <skill>/scripts/delivery.py --root <project> run --candidate rc-17 --stage publish --request rc-17-publish --selection <returned-generation> --registration-id <registration-id> --authority <authority.json>
+python <skill>/scripts/delivery.py --root <project> run --candidate rc-17 --stage verify --request rc-17-verify --selection <returned-generation> --registration-id <registration-id> --authority <authority.json>
 ```
 
 Run every named gate before selection. The example has one gate.
-Use `inspect` to find the current selection generation. An absent selection has generation zero.
+Use `inspect --candidate <candidate-id>` to find the current selection generation and registration ID.
+Give that registration ID for new publish and verify operations. An absent selection has generation zero.
 Selection uses compare-and-set semantics. A stale expected generation cannot replace the current selection.
 You can keep the selected candidate fixed. The newest commit is not mandatory for this selection.
 
@@ -170,6 +171,7 @@ python <skill>/scripts/delivery.py --root <checkout> inspect --candidate rc-17
 
 Give the candidate ID from the task or release record. Use unfiltered `inspect` if you must find the record.
 The summary shows the recorded checkout, target, selection generation, resource owners, pending gates, and evidence references.
+It gives the candidate's `registration_id` and each run's `operation_id`.
 Use the manifest path, operation directories, and retirement directory when they apply.
 The status describes the record. A previous pass does not show that evidence is still applicable.
 Use `next_action` to find what to examine. An unknown effect requires observation before retry or release.
@@ -179,17 +181,22 @@ Use the execution entry to check the current selection and authority before effe
 ## Keep release authority
 
 The frozen authority file records the project's existing authorization. Its fields give no credentials or native permissions.
-Use the manifest's actual candidate, target, and observed target revision:
+Use the manifest's actual candidate, target, observed target revision, and artifact digests:
 
 ```json
 {
   "authorized": true,
   "candidate": "rc-17",
   "target": "production:app",
-  "target_revision": "<observed-target-revision>"
+  "target_revision": "<observed-target-revision>",
+  "artifacts": {"app": "sha256:<actual-64-hex-digest>"}
 }
 ```
 
+For a new publication, the frozen authority must identify the same artifacts as the manifest.
+If a candidate from an earlier helper has no such authority and did not start publication, use a new candidate with applicable authority.
+An operation that an earlier helper admitted can reconcile with its frozen authority and the exact operation ID.
+To verify an earlier recorded publication, use its frozen authority and the current registration ID.
 Participating CI jobs must use the same authority and resource keys for the actual target.
 Separate CI runners do not automatically share this local registry.
 Use verified CI controls or a project backend for their shared targets.
@@ -219,17 +226,20 @@ and [GitLab deployment safety](https://docs.gitlab.com/ci/environments/deploymen
 ## Resolve candidate operations
 
 Keep one request ID for each operation.
-Repeated requests with the same ID retrieve its recorded state without another mutation.
+Repeated requests with the same ID in the same registry retrieve the recorded state without another mutation.
+An execution callback uses only the registry and execution record that admitted its command.
 Do not use a new ID to retry an uncertain operation.
 Examine the actual runner, descendants, resource state, and external outcome first.
 Keep target serialization until the outcome has resolution.
 For recovery, use `reconcile --request <request-id> --evidence <resolution.json>` with `--root <project>`.
-For a new reconciliation, set `writer_stopped` to `true` and give an explicit `outcome`.
+For a new reconciliation, record the exact `operation_id` from `inspect --candidate <candidate-id>`.
+Match that ID to the operation you examined. Do not reuse observations for a different operation.
+Set `writer_stopped` to `true` and give an explicit `outcome`.
 Use a nonempty `observations` string to describe how you confirmed that writers stopped and how you confirmed the outcome.
 Keep the initial failure and the recovery evidence.
 Use the same evidence bytes and request ID to read the recorded result from the candidate checkout.
 The helper rejects different evidence for a resolved request. Keep additional observations in the project record.
-Exact replay also works for older records without an `observations` field.
+Exact replay of a recorded reconciliation also works for older evidence without `operation_id` or `observations`.
 Update all delivery helpers that use this registry before you rely on the new checks.
 After a failed gate, use the [new candidate procedure](#use-a-new-registered-candidate-after-a-failed-gate).
 Before a new candidate uses the slot, release it by failed reconciliation or authorized retirement.
@@ -240,6 +250,7 @@ A successful RC recovery uses this structure with actual observations and artifa
 {
   "writer_stopped": true,
   "outcome": "passed",
+  "operation_id": "<operation-id-from-inspect>",
   "observations": "<native writer observations and actual external result reference>",
   "receipt": {
     "candidate": "rc-17",
@@ -296,11 +307,14 @@ Use a new project-relative authority file with this structure and actual identit
   "action": "retire",
   "candidate": "rc-17",
   "target": "production:app",
-  "manifest_sha256": "sha256:<registered-manifest-hash>"
+  "manifest_sha256": "sha256:<registered-manifest-hash>",
+  "registration_id": "<registration-id-from-inspect>"
 }
 ```
 
-Use `inspect` to find the registered manifest hash. Inspection does not create storage or change coordination policy.
+Use `inspect --candidate <candidate-id>` to find the registered manifest hash and registration ID.
+Use that registration ID in both the authority and evidence. Do not reuse them for a different registration.
+Inspection does not create storage or change coordination policy.
 Record actual stopped-writer observations and the observed external outcome in an evidence file:
 
 ```json
@@ -309,6 +323,7 @@ Record actual stopped-writer observations and the observed external outcome in a
   "candidate": "rc-17",
   "target": "production:app",
   "manifest_sha256": "sha256:<registered-manifest-hash>",
+  "registration_id": "<registration-id-from-inspect>",
   "authority": "withdrawal-authority.json",
   "writer_stopped": true,
   "writer_observations": "<actual command, descendant, and wrapper observations>",
@@ -334,7 +349,8 @@ python <skill>/scripts/delivery.py --root <project> retire --candidate rc-17 --e
 The helper retains the evidence, current authority bytes, and prior stage records.
 It releases only resources owned by this resolved candidate.
 A retired candidate cannot start a new stage or receive selection.
-The same retirement evidence returns its original record. Different replacement evidence is rejected.
+The same retirement evidence in the same registry returns its original record. This includes older recorded evidence without a registration ID.
+The helper rejects different evidence for a recorded retirement.
 An identical previous operation request can still retrieve its historical result without another mutation.
 Use the current selection generation to select an eligible successor.
 Observe the actual target revision for that successor. Retirement does not verify a release or roll back the target.

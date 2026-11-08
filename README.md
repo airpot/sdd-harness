@@ -1,6 +1,6 @@
 # SDD Harness
 
-面向编程 agent 的规格驱动开发技能。当前版本：**0.16.4**。默认支持独立开发，按需接入协作、子 agent、共享资源锁和发布流程。
+面向编程 agent 的规格驱动开发技能。当前版本：**0.16.5**。默认支持独立开发，按需接入协作、子 agent、共享资源锁和发布流程。
 
 - 按规格、验收条件和适用证据推进开发；支持 OpenSpec、Spec Kit 与项目既有记录。
 - 用[任务领取和只读接续](references/coordination.md)识别归属、锁、未决命令和证据。使用 worktree 时按[恢复规则](references/recovery.md)保护成果。
@@ -8,6 +8,7 @@
 - [候选恢复](references/delivery.md#resolve-candidate-operations)须记录写入者停止和结果的观察。同一证据可重读原决定；已知失败也可按授权退役。
 - 最后一关严格 gate 释放 RC 槽位前复核所有必需报告；任务命令恢复须提交含观察内容的 UTF-8 证据。
 - 命令回调只回写原登记的 registry；新恢复证据、退役材料与发布请求须绑定具体执行或登记。已记录的旧证据仍可原样重读。
+- 切换到尚未初始化的 registry 后，旧请求会被拒绝，且不留下空数据库。
 - [局部重审](references/workflow.md#repeat-only-the-failed-review)仅复用仍适用的执行证据；[经验状态](references/workflow.md#record-a-lesson-state)保留试用、已验证、防护和失效记录。
 - [项目检索](references/retrieval.md)默认准备 Zvec-Grep；不可用时记录原因并按任务需要回读原文。[原生 hook](references/hooks.md)按项目授权另行启用。
 
@@ -16,10 +17,10 @@
 仓库根目录可直接作为技能目录。Codex 用户可克隆固定版本：
 
 ```powershell
-git clone --branch sdd-harness/v0.16.4 https://github.com/airpot/sdd-harness.git "$HOME/.agents/skills/sdd-harness"
+git clone --branch sdd-harness/v0.16.5 https://github.com/airpot/sdd-harness.git "$HOME/.agents/skills/sdd-harness"
 ```
 
-也可下载 [sdd-harness-0.16.4.zip](dist/sdd-harness-0.16.4.zip) 和 [SHA-256](dist/sdd-harness-0.16.4.sha256)，解压后执行：
+也可下载 [sdd-harness-0.16.5.zip](dist/sdd-harness-0.16.5.zip) 和 [SHA-256](dist/sdd-harness-0.16.5.sha256)，解压后执行：
 
 ```text
 python sdd-harness/scripts/install.py --into "~/.agents/skills"
@@ -29,4 +30,4 @@ python sdd-harness/scripts/install.py --into "~/.agents/skills"
 
 ## 验证
 
-见[本版验证摘要](release/0.16.4-validation.md)、[发布清单](release/0.16.4-manifest.json)和[变更记录](CHANGELOG.md)。本仓库为独立分发输出，完整开发和评测证据留在源工作区。
+见[本版验证摘要](release/0.16.5-validation.md)、[发布清单](release/0.16.5-manifest.json)和[变更记录](CHANGELOG.md)。本仓库为独立分发输出，完整开发和评测证据留在源工作区。

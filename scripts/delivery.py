@@ -270,7 +270,7 @@ def register(args, root):
     raw = args.manifest.read_bytes()
     manifest = strict_json(raw)
     validate_manifest(root, manifest)
-    with store(root) as (state, directory):
+    with store(root, initialize=True) as (state, directory):
         if manifest['format'] == 2 and state['format'] == 1:
             if (state['resources'] or any(c['status'] != 'closed' for c in state['claims'].values()) or
                     any(r['status'] in ('running', 'unknown') for r in state['claim_runs'].values()) or

@@ -13,12 +13,15 @@ The helper resolves this directory through Git. A `.git` file is not necessarily
 For non-Git projects, the default is `.sdd-harness/coordination`.
 The optional project file `.sdd-harness/coordination.json` can select an absolute local directory through its `registry` field.
 Keep runtime state outside committed task records. Merged registry copies do not supply mutual exclusion.
+Commands that need an existing claim, run, or candidate reject an absent registry. They do not initialize it.
+A top-level claim without dependencies or a candidate registration can initialize a registry.
+A child claim or a claim with dependencies needs the existing registry.
 Separate clones, machines, and registry directories do not automatically share ownership control.
 For shared tasks or resources across those boundaries, use a verified project backend.
 An unavailable authority prevents conflicting mutations. Independent read-only work can continue.
 `inspect` reads a snapshot. It does not create a registry or enable shared claim checks.
 The helper uses SQLite rollback journals.
-On Windows, a local registry can use an extended drive path such as `\\?\C:\project-data\registry`. Inspection rejects an externally configured WAL registry to prevent new sidecar files.
+On Windows, a local registry can use an extended drive or local device path. Inspection rejects an externally configured WAL registry to prevent new sidecar files.
 
 ## Inspect a known task
 

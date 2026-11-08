@@ -1,5 +1,10 @@
 # Repository Changes
 
+## 2026-11-08: Reject stale requests without registry creation in 0.16.5
+
+- Open only an existing registry for commands that need a prior shared record, including claims with a parent or dependencies.
+- Keep a rejected request from creating storage or enabling shared claim checks.
+
 ## 2026-11-07: Registry and operation identity in 0.16.4
 
 - Finalize command callbacks in the registry and execution record that admitted them.

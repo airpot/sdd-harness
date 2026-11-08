@@ -228,6 +228,7 @@ and [GitLab deployment safety](https://docs.gitlab.com/ci/environments/deploymen
 Keep one request ID for each operation.
 Repeated requests with the same ID in the same registry retrieve the recorded state without another mutation.
 An execution callback uses only the registry and execution record that admitted its command.
+If the current registry has not been initialized, a request for an existing operation or candidate cannot initialize it.
 Do not use a new ID to retry an uncertain operation.
 Examine the actual runner, descendants, resource state, and external outcome first.
 Keep target serialization until the outcome has resolution.

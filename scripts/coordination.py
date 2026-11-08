@@ -99,7 +99,7 @@ def empty_state():
 
 
 def existing_database_uri(database, mode):
-    if os.name == 'nt' and database.drive.startswith('\\\\?\\'):
+    if os.name == 'nt' and database.drive.startswith(('\\\\?\\', '\\\\.\\')):
         # Encode the native path without interpreting its device prefix as a URI authority.
         uri = 'file:' + quote(str(database), safe=':')
     else:
@@ -131,18 +131,23 @@ def inspect_state(root):
 
 
 @contextmanager
-def store(root, *, bound_registry=None):
+def store(root, *, bound_registry=None, initialize=False):
     directory = registry(root) if bound_registry is None else regular_path(bound_registry)
-    if bound_registry is None:
+    if initialize and bound_registry is not None:
+        raise ValueError('An admitted operation cannot initialize a registry')
+    if initialize:
         directory.mkdir(parents=True, exist_ok=True)
     database = regular_path(directory / 'state.sqlite')
     for suffix in ('-journal', '-wal', '-shm'):
         regular_path(Path(str(database) + suffix))
-    source = database if bound_registry is None else existing_database_uri(database, 'rw')
-    connection = sqlite3.connect(source, uri=bound_registry is not None, timeout=2, isolation_level=None)
+    if not initialize and not database.is_file():
+        raise ValueError('The shared registry has not been initialized')
+    source = database if initialize else existing_database_uri(database, 'rw')
+    connection = sqlite3.connect(source, uri=not initialize, timeout=2, isolation_level=None)
     try:
         connection.execute('BEGIN IMMEDIATE')
-        connection.execute('CREATE TABLE IF NOT EXISTS registry (id INTEGER PRIMARY KEY, body TEXT NOT NULL)')
+        if initialize:
+            connection.execute('CREATE TABLE IF NOT EXISTS registry (id INTEGER PRIMARY KEY, body TEXT NOT NULL)')
         row = connection.execute('SELECT body FROM registry WHERE id=1').fetchone()
         state = json.loads(row[0]) if row else empty_state()
         if state.get('format') not in (1, 2):
@@ -345,7 +350,8 @@ def claim(args, root):
     declaration = dict(task_id=args.task_id, task=str(task), revision=args.expect_revision,
         executor=args.executor, checkout=str(root), scope=scopes, parent=args.parent,
         resources=sorted(set(args.resource)), read_only=args.read_only, depends_on=sorted(set(args.depends_on)))
-    with store(root) as (state, _):
+    initialize = not (args.parent or args.depends_on)
+    with store(root, initialize=initialize) as (state, _):
         previous = state['claims'].get(state['tasks'].get(args.task_id))
         if previous and previous['status'] != 'closed':
             if all(previous[key] == value for key, value in declaration.items()):

@@ -1,5 +1,15 @@
 # Repository Changes
 
+## 0.16.6 - 2026-11-23
+
+- Require one project MCP service with three methods and both admission Hooks. Keep registered acceptance commands and official report writes with the independent executor and existing CLI.
+- Preserve legacy migration and historical replay while binding upgraded projects to their trusted registry. Reject repository-routing overrides and missing required components.
+- Add stable reason codes and original-request recovery actions. Keep CLI fallback diagnosis read-only and same-ID replay idempotent.
+- Support default stdio and explicitly executor-owned HTTP. Missing final self evidence, abnormal return and known termination remain nonpassing regardless of a zero wrapper exit.
+- Preserve inherited host Git settings in the restricted generator without adding gate credentials or inherited handles.
+- Bind actual acceptance descendants and source/native dependencies before execution, reject custom caches and optimization, and retain actual statuses separately from child self-observations.
+- Keep live-thread refusal reachable when stderr diagnostics fail, including failure to publish a refusal. Give the nested helper suite an explicit aggregate budget while preserving each individual child deadline and checking actual exact-ID completion.
+
 ## 2026-11-08: Reject stale requests without registry creation in 0.16.5
 
 - Open only an existing registry for commands that need a prior shared record, including claims with a parent or dependencies.

@@ -114,6 +114,9 @@ Use authorized actors for positive access checks and unauthorized actors for app
 
 ## Maintain useful regressions
 
+When test infrastructure changes process environments, check both implicit inheritance and explicit child environments. Confirm that intended missing, empty, and nonempty inputs reach the actual child. Restored start/end snapshots do not prove intermediate input semantics.
+For concurrent regressions, use explicit readiness and release barriers to control the required order. A fixed sleep is not an ordering guarantee. Reap fixture subprocesses before deleting their temporary state, including on assertion failure.
+
 For each bug repair, keep the original reproducer, input, incorrect result, and accepted expected result.
 Add a reliable regression at the lowest effective test layer.
 If a system boundary caused the defect, add or extend the applicable system test.
@@ -134,6 +137,14 @@ Unless accepted changes or justified replacements remove their applicability, ke
 Track defect detection, escaped defects, runtime, and instability when these observations help maintenance.
 
 ## Freeze the full gate
+
+For long-lived acceptance services, keep child self-verification and parent exit observations separate. A missing child after-record does not identify a normal exit, exception, or forced termination. Record an execution or final-verification error when the process can still write. If the process cannot run its finalizer, retain the independently observed process identity and exit status; do not synthesize a successful child self-check. Attribute a forced exit only to a matching observed termination action or signal.
+
+Keep missing final self-verification incomplete for publication acceptance. An observed business result or a nonzero child exit without final receipts cannot satisfy a mandatory integrity check. Preserve supported business results separately. A known final-verification error remains failed; receipt loss does not establish a successful check or authorize retry.
+
+Use distinct immutable receipt locations for cleanup attempts. After a termination or receipt-publication error, independently attempt the final observation on the proved process handle. Retain ordered errors and an explicit unconfirmed cleanup disposition before releasing responsibility. Do not mark cleanup complete while the actual child remains live or its exit is unobserved. Signal only an already-proved owned process.
+
+Keep bootstrap module exemptions pinned to approved module objects. The standard-library `__mp_main__` alias may refer only to the exact approved `__main__` object. Do not exempt a foreign module by its name or claimed file path. Prefer checked named-module execution over replacing the active main module when executing a service entry point.
 
 Use the existing test catalog or project record. A second test database is not necessary.
 Before RC execution, freeze a versioned mandatory manifest with these items:
@@ -170,6 +181,65 @@ After a failed gate, [register and check a different candidate](delivery.md#use-
 Retirement preserves prior gate results. It does not make an incomplete or failed gate pass.
 Recovered checks remain nonpassing when a late callback arrives. Obtain new evidence through a new actual check.
 Before another attempt, find the cause and correct the applicable problem. Do not retry blindly.
+
+## Bind the code that acceptance executes
+
+When acceptance uses custom drivers, check the required dependency inventory before the first affected import or command.
+An inventory supplied by a producer is not proof that all required files are present.
+Check the actual runtime copies against their verified origins or archive, and check them again before recording success.
+
+A source-file digest does not identify cached bytecode that an import can execute.
+Load verified source bytes directly or use controlled execution trees and cache paths that enforce the accepted source identity.
+The Python `-B` option prevents cache writes; it does not prevent cache reads.
+Record the effective interpreter flags and cache controls.
+Use explicit errors for integrity checks, or reject optimized execution before admission; Python optimization can remove `assert` statements.
+
+Compute file digests from the actual written bytes.
+If a normalized-text digest is useful, label it separately from the raw-file digest.
+Preserve earlier records and add a dated correction instead of silently changing a frozen digest.
+
+## Own the MCP service during local acceptance
+
+For complete MCP shutdown evidence in local acceptance, keep ownership explicit.
+The existing MCP server supports an explicit `owned-http` transport in addition to its compatible stdio default.
+The independent executor starts that same service outside the Codex-owned process job; Codex connects directly to its authenticated loopback URL.
+This adds neither a relay nor a fourth tool. Keep the required Hook proofs and independent CLI gate executor.
+
+The executor supplies a fresh 64-hex `SDD_HARNESS_MCP_BEARER` only to the service and client environments.
+The service removes that credential from its environment before gate subprocesses can inherit it.
+Serve with `--transport owned-http --port 0`, retain the actual ready URL and process identity, and configure the client with the observed nonzero port.
+The ready record and possession of the bearer are not acceptance evidence.
+Keep the token value out of configuration files and retained records.
+
+After the Codex client finishes, the independent executor closes its retained owner-stdin pipe and waits for the actual service.
+Normal shutdown requires observed exit zero plus complete matching final self-verification; business results remain a separate requirement.
+Unexpected owner input, unsolicited service return, write failure and recorded force termination cannot satisfy that condition.
+An ASGI startup or shutdown failure remains an error even when the HTTP library returns without raising it.
+Keep historical unknown causes unknown. Do not relabel a host-owned stdio force-stop as healthy or substitute a turn/SessionEnd checkpoint for final process evidence.
+
+Keep the owner channel separate from the Git metadata queries in `coordination.checkout_origin`, `coordination.default_registry`, and `delivery.fingerprints`. These read-only Git children receive null stdin and retain all inherited Git configuration variables. The owner reader uses its own unbuffered duplicate descriptor, so a failed server does not leave the standard buffered input locked during interpreter exit. Verify a bind failure while the executor still holds the owner pipe open, as well as normal EOF drain.
+
+## Bind actual acceptance descendants
+
+An outer source-verification receipt does not bind a new interpreter automatically.
+For formal dependency-binding evidence, the trusted executor must bind the actual independent CLI, registered verifier, isolation launcher, and generator before their custom code or dependencies execute.
+Keep the expected entry digest, exact required inventory, candidate identity, interpreter policy, and dependency roots in a trusted launch contract.
+Check the contract and first loader bytes before compilation. Compile controlled source bytes directly, reject custom bytecode, and reject optimized execution.
+For native extensions, check the actual resolved file and loaded object. Do not exempt an entire Python package from source checks.
+
+Keep child observations separate from the parent's receipt.
+Retain role, process identity, launch-contract digest, actual dependency paths and digests, inherited Git fingerprints, and matching final evidence.
+An observed child exit zero without the required final evidence is incomplete.
+Keep checks active through Python shutdown callbacks before writing final proof.
+The repository acceptance adapter rejects live background threads without a healthy ending; the target must join them before returning.
+Its prepared command API is for ordinary subprocess launches. Pass raw argv through the guarded native launcher so that it selects low-writable self-record storage before sealing the contract.
+Use isolated dependency copies for mutation checks. Verify that changed source or native dependencies cannot reach the payload.
+Do not change shared dependencies or old frozen evidence to perform a negative check.
+
+The restricted generator keeps inherited `GIT_*` values while it excludes gate credentials and report authority from its minimal environment.
+Keep its low-integrity token, private work directory, protected destinations, and no inherited handles.
+Explicit environment changes in a test retain their stated semantics; do not clear the host environment to obtain a passing result.
+These checks establish the stated file and execution identities. They do not attest interpreter or OS builds or provide a hostile-code sandbox.
 
 ## Keep accepted test behavior
 

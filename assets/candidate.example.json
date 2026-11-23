@@ -1,5 +1,5 @@
 {
-  "format": 1,
+  "format": 3,
   "candidate": "rc-17",
   "commit": "0000000000000000000000000000000000000000",
   "artifacts": {"app": "sha256:0000000000000000000000000000000000000000000000000000000000000000"},
@@ -25,9 +25,13 @@
   },
   "gates": {
     "system": {
-      "argv": ["<project-system-runner>"],
+      "argv": ["<trusted-project-verifier>"],
       "timeout": 600,
-      "tests": ["order-save", "order-reject"]
+      "tests": ["order-save", "order-reject"],
+      "junit": {
+        "order-save": {"shard": "system", "file": "tests/system.py", "classname": "TestOrders", "name": "test_save"},
+        "order-reject": {"shard": "system", "file": "tests/system.py", "classname": "TestOrders", "name": "test_reject"}
+      }
     }
   }
 }

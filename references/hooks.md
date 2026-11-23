@@ -1,8 +1,11 @@
-# Optional Native Hooks
+# Native Hooks
 
 Use these controls only for a project with explicit hook setup authorization.
 Ordinary skill installation does not change host configuration.
 Hooks add checks at supported tool boundaries. Keep native permissions, release controls, and recovery conditions.
+Managed acceptance requires the Codex `SessionStart` and `PreToolUse` events. Use the existing handler for both.
+The first event records the native session. The second checks the current task claim and records the specific `request_gate` call.
+The [project MCP service](mcp.md) and delivery CLI require this record. The Hook alone cannot run the verifier.
 
 ## Prepare a project
 
@@ -23,6 +26,9 @@ The merge keeps unrelated entries and an exact backup. Repeated identical setup 
 Before setup, make sure that the user authorizes this configuration destination.
 Before use, examine generated commands, interpreter paths, and native trust in a fresh session.
 For Codex, use its native hook review. Configuration presence does not prove activation.
+With a format 3 registry, Codex configuration generates only the required events by default. Use `--required-only` to prepare them before registration.
+Use `--include-supplemental` or add individual supported events if the project needs them. Merge preserves existing entries.
+Start a fresh trusted Codex session after setup. Bind it to the current task claim before requesting a gate.
 
 ## Use the four handlers
 

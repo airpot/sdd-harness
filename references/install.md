@@ -13,7 +13,11 @@ For shared task claims and candidate execution, use Python's standard-library `s
 No database service or additional Python package is necessary.
 Use [task coordination](coordination.md) only when shared execution ownership is necessary.
 Use [delivery](delivery.md) for project commands and actual candidate evidence.
+The [Windows generator launcher](delivery.md#separate-generation-and-acceptance) also requires `pywin32` when you use it.
+Other scripts do not require `pywin32`. Installation does not install it.
 Installation does not activate these controls or register native hooks.
+For the [MCP service](mcp.md) required by managed acceptance, use a Python with MCP SDK 2.3.0.
+The installer does not add the SDK or configure the project.
 Python is not necessary for instructions and templates.
 
 Before directory traversal, the installer rejects symbolic links and Windows reparse points.
@@ -110,7 +114,7 @@ For example:
 > For new or changed development documents for the project, obey its writing policy.
 
 The skill does not install hooks automatically.
-For explicit project hook setup, use [optional native hooks](hooks.md).
+For authorized project Hook setup, use [native Hooks](hooks.md). Ordinary installation does not enable them.
 Keep host registration, trust, actual event execution, and successful rejection as separate checks.
 As the default procedure, do development work independently.
 Setup for tasks that you do together is optional.

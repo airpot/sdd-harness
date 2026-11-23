@@ -22,8 +22,9 @@ import sys
 import time
 import uuid
 
-from coordination import inspect_state, regular_path, reserve, store, unreserve
+from coordination import check_git_routing, enabled, inspect_state, pin_registry, regular_path, reserve, store, unreserve
 import gate_reports
+import gate_route
 
 
 def digest(data):
@@ -100,11 +101,12 @@ def command_valid(command):
 
 
 def fingerprints(root, manifest):
+    check_git_routing()
     observed = {name: digest(local_file(root, name).read_bytes()) for name in manifest['basis']}
     if observed != manifest['basis']:
         raise ValueError('An applicable basis file changed')
     result = subprocess.run(['git', '-C', str(root), 'rev-parse', '--verify', 'HEAD'],
-                            capture_output=True, text=True, timeout=5)
+                            stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=5)
     if result.returncode != 0:
         raise ValueError('Current Git commit evidence is necessary for candidate delivery')
     if result.stdout.strip() != manifest['commit']:
@@ -113,7 +115,7 @@ def fingerprints(root, manifest):
 
 
 def validate_manifest(root, manifest):
-    if not isinstance(manifest, dict) or type(manifest.get('format')) is not int or manifest['format'] not in (1, 2):
+    if not isinstance(manifest, dict) or type(manifest.get('format')) is not int or manifest['format'] not in (1, 2, 3):
         raise ValueError('The manifest format is not supported')
     identifier(manifest.get('candidate'))
     if not isinstance(manifest.get('commit'), str) or not re.fullmatch(r'[a-f0-9]{40}|[a-f0-9]{64}', manifest['commit']):
@@ -152,12 +154,12 @@ def validate_manifest(root, manifest):
             raise ValueError('Mandatory test identifiers are necessary for each gate')
         if len(set(tests)) != len(tests):
             raise ValueError('Test identifiers must be unique in a gate')
-        if manifest['format'] == 2:
+        if manifest['format'] >= 2:
             gate_reports.validate_cases(gate)
             if any(case['file'] not in manifest['basis'] for case in gate['junit'].values()):
                 raise ValueError('Every mandatory JUnit test file must be a frozen basis input')
         elif 'junit' in gate:
-            raise ValueError('JUnit evidence requires a format 2 candidate')
+            raise ValueError('JUnit evidence requires a format 2 or 3 candidate')
     if manifest.get('authority') not in manifest['basis']:
         raise ValueError('The authority file must be a frozen basis input')
     fingerprints(root, manifest)
@@ -185,7 +187,7 @@ def complete(item):
 
 
 def require_gate_reports(state, item):
-    if item['manifest']['format'] != 2:
+    if item['manifest']['format'] < 2:
         return
     for name, request in item['gates'].items():
         op = state['operations'][request]
@@ -195,6 +197,9 @@ def require_gate_reports(state, item):
                 op.get('manifest_sha256') != item['manifest_sha256'] or
                 set(report_hashes) != set(gate_reports.shards(item['manifest']['gates'][name]))):
             raise ValueError('This strict gate has no applicable report evidence')
+        if (item['manifest']['format'] == gate_route.MANAGED_FORMAT and
+                op.get('gate_route', {}).get('source') != 'mcp-and-hook'):
+            raise ValueError(gate_route.REQUIRED)
         directory = regular_path(op['directory'])
         for shard, expected in report_hashes.items():
             path = local_file(directory, 'reports-observed/' + shard + '.xml')
@@ -266,35 +271,61 @@ def receipt_valid(receipt, manifest, stage, gate):
             raise ValueError('Every mandatory test must be present and passed. For extra tests, a manifest revision is necessary')
 
 
+def require_idle_registry(state):
+    if (state['resources'] or any(c['status'] != 'closed' for c in state['claims'].values()) or
+            any(r['status'] in ('running', 'unknown') for r in state['claim_runs'].values()) or
+            any(op['status'] in ('running', 'uncertain') for op in state['operations'].values())):
+        raise ValueError('Resolve active claims, operations, and resource holders before a registry upgrade or binding')
+
+
 def register(args, root):
     raw = args.manifest.read_bytes()
     manifest = strict_json(raw)
     validate_manifest(root, manifest)
-    with store(root, initialize=True) as (state, directory):
-        if manifest['format'] == 2 and state['format'] == 1:
-            if (state['resources'] or any(c['status'] != 'closed' for c in state['claims'].values()) or
-                    any(r['status'] in ('running', 'unknown') for r in state['claim_runs'].values()) or
-                    any(op['status'] in ('running', 'uncertain') for op in state['operations'].values())):
-                raise ValueError('Resolve active claims, operations, and resource holders before a registry upgrade')
-            state['format'] = 2
+    managed = manifest['format'] == gate_route.MANAGED_FORMAT
+    if not managed and not enabled(root):
+        raise ValueError('A first delivery registration requires managed format 3')
+    with store(root, initialize=managed) as (state, directory):
         name = manifest['candidate']
         old = state['candidates'].get(name)
         if old:
             if old['manifest_sha256'] == digest(raw) and old['checkout'] == str(root):
                 return copy.deepcopy(old)
             raise ValueError('The candidate identifier has a frozen manifest')
+        if not managed and (state['format'] == gate_route.MANAGED_FORMAT or not state['candidates']):
+            raise ValueError('Register a managed format 3 candidate in this registry')
+        if manifest['format'] > state['format']:
+            require_idle_registry(state)
+            state['format'] = manifest['format']
         path = directory / 'delivery/manifests' / (uuid.uuid4().hex + '.json')
         immutable(path, raw)
         item = dict(manifest=manifest, manifest_sha256=digest(raw), manifest_path=str(path),
                     checkout=str(root), gates={}, rc=None, publish=None, verify=None, invalid=False)
+        if managed and not state.get('registry_binding'):
+            pin_registry(root, directory, state)
         state['candidates'][name] = item
         return copy.deepcopy(item)
+
+
+def bind_existing_registry(args, root):
+    if not args.registry.is_absolute():
+        raise ValueError('Supply the reviewed absolute registry path')
+    with store(root, allow_unbound=True) as (state, directory):
+        if regular_path(args.registry) != directory:
+            raise ValueError('The reviewed path does not match the configured registry')
+        if state['format'] != gate_route.MANAGED_FORMAT:
+            raise ValueError('Only an existing format 3 registry can use this binding action')
+        if not state.get('registry_binding'):
+            require_idle_registry(state)
+            pin_registry(root, directory, state)
+        return dict(status='bound', directory=str(directory))
 
 
 def select(args, root):
     with store(root) as (state, _):
         item = candidate(state, args.candidate, root)
         manifest = item['manifest']
+        require_managed_candidate(state, manifest)
         fingerprints(root, manifest)
         if not complete(item):
             raise ValueError('RC deployment and every mandatory gate must pass')
@@ -317,8 +348,14 @@ def unresolved_production(state, target):
             not any(state['candidates'][op['candidate']].get(key) for key in ('verify', 'invalid', 'retirement'))]
 
 
+def require_managed_candidate(state, manifest):
+    if state['format'] == gate_route.MANAGED_FORMAT and manifest['format'] != gate_route.MANAGED_FORMAT:
+        raise ValueError('Use a managed format 3 candidate for new delivery in this registry')
+
+
 def admission(state, item, args, root):
     manifest = item['manifest']
+    require_managed_candidate(state, manifest)
     if args.stage != 'gate' and args.gate is not None:
         raise ValueError('The gate argument applies only to the gate stage')
     if args.stage in ('publish', 'verify'):
@@ -373,11 +410,24 @@ def run(args, root):
                     selection=args.selection, authority=args.authority, checkout=str(root))
     if args.registration_id is not None:
         identity['registration_id'] = args.registration_id
-    with store(root) as (state, directory):
+    ticket = sys.stdin.readline(66).rstrip('\r\n') if getattr(args, 'gate_ticket_stdin', False) else None
+    admission_store = gate_route.route_store if ticket is not None else store
+    with admission_store(root) as (state, directory):
+        item = state['candidates'].get(args.candidate)
+        managed_gate = (item is not None and item['manifest']['format'] == gate_route.MANAGED_FORMAT
+                        and args.stage == 'gate')
+        if ticket is not None and not managed_gate:
+            raise ValueError('The gate ticket applies only to managed acceptance')
+        route = gate_route.consume(state, root, item, [args.candidate, args.gate, args.request], ticket) if managed_gate else None
         previous = state['operations'].get(args.request)
         if previous:
             if previous['identity'] != identity:
+                if managed_gate:
+                    raise gate_route.Denial('gate_request_conflict', 'The request identifier belongs to a different operation')
                 raise ValueError('The request identifier belongs to a different operation')
+            if managed_gate:
+                fingerprints(root, item['manifest'])
+                require_gate_reports(state, item)
             return copy.deepcopy(previous)
         item = candidate(state, args.candidate, root)
         manifest = copy.deepcopy(item['manifest'])
@@ -386,13 +436,15 @@ def run(args, root):
         admission(state, item, args, root)
         run_directory = directory / 'delivery/runs' / uuid.uuid4().hex
         run_directory.mkdir(parents=True)
-        strict_gate = manifest['format'] == 2 and args.stage == 'gate'
+        strict_gate = manifest['format'] >= 2 and args.stage == 'gate'
         if strict_gate:
             (run_directory / 'reports').mkdir()
         operation = dict(request=args.request, candidate=args.candidate, stage=args.stage, gate=args.gate,
                          target=manifest['target'], identity=identity, status='running', before=before,
                          manifest_sha256=item['manifest_sha256'], directory=str(run_directory),
                          started=time.time(), after=None, returncode=None, receipt=None)
+        if route:
+            operation['gate_route'] = route
         immutable(run_directory / 'input.json', encode(dict(operation=operation, manifest=manifest)))
         state['operations'][args.request] = operation
     command = manifest['gates'][args.gate] if args.stage == 'gate' else manifest['commands'][args.stage]
@@ -439,7 +491,8 @@ def run(args, root):
     except (OSError, ValueError, subprocess.SubprocessError) as exc:
         after = None
         error = (error + '; ' if error else '') + str(exc)
-    with store(root, bound_registry=directory) as (state, _):
+    writeback_store = gate_route.route_store if managed_gate else store
+    with writeback_store(root, bound_registry=directory) as (state, _):
         operation = state['operations'].get(args.request)
         if (not operation or operation['identity'] != identity
                 or operation['directory'] != str(run_directory)):
@@ -511,7 +564,7 @@ def reconcile(args, root):
         if evidence['outcome'] == 'passed':
             if operation['status'] == 'failed' or item['invalid']:
                 raise ValueError('After a failed gate, use a new candidate')
-            if manifest['format'] == 2 and operation['stage'] == 'gate':
+            if manifest['format'] >= 2 and operation['stage'] == 'gate':
                 raise ValueError('An interrupted strict gate cannot reconcile as passed')
             after = fingerprints(root, manifest)
             receipt = evidence.get('receipt')
@@ -525,7 +578,7 @@ def reconcile(args, root):
             operation['after'] = after
             accepted(state, item, operation)
         else:
-            if manifest['format'] == 2 and operation['stage'] == 'gate':
+            if manifest['format'] >= 2 and operation['stage'] == 'gate':
                 retained = 'recovery-reports-' + uuid.uuid4().hex
                 directory = Path(operation['directory'])
                 try:
@@ -623,6 +676,62 @@ def operation_ref(op):
     return result
 
 
+def gate_outcome(operation, replayed=False):
+    status = operation['status']
+    code = ('gate_outcome_unknown' if status not in ('passed', 'failed')
+            else 'gate_replayed' if replayed else 'gate_' + status)
+    return dict(status=status, **gate_route.guidance(code))
+
+
+def check_gate_evidence(state, root, item):
+    fingerprints(root, item['manifest'])
+    require_gate_reports(state, item)
+
+
+def check_retained_manifest(item):
+    try:
+        raw = Path(item['manifest_path']).read_bytes()
+        if digest(raw) == item['manifest_sha256'] and strict_json(raw) == item['manifest']:
+            return
+    except (OSError, ValueError):
+        pass
+    raise gate_route.Denial('gate_manifest_changed', 'The approved manifest changed or is unavailable.')
+
+
+def inspect_gate(state, root, candidate_id, check_name, request_id):
+    reply = dict(candidate_id=candidate_id, check_name=check_name, request_id=request_id)
+    item = gate_route.matching_gate_item(state, root, candidate_id, check_name)
+    if not item:
+        return dict(reply, status='denied', **gate_route.guidance(
+            'gate_not_approved', 'No matching managed candidate and registered check in this checkout.'))
+    guidance = gate_route.original_guidance(state, root, item, (candidate_id, check_name, request_id))
+    if guidance is not None:
+        return dict(reply, **guidance)
+    operation = state['operations'].get(request_id)
+    if item.get('retirement') or item.get('publish'):
+        if operation:
+            return dict(reply, status='historical', operation_id=Path(operation['directory']).name,
+                        recorded_status=operation['status'], **gate_route.guidance(
+                'gate_history_only', 'This is a recorded verdict for a closed candidate.'))
+        return dict(reply, status='denied', **gate_route.guidance(
+            'gate_not_approved', 'The candidate is no longer active.'))
+    if not operation:
+        return dict(reply, status='not_recorded', **gate_route.guidance(
+            'gate_request_not_recorded',
+            'No matching operation is recorded. Check the original request and its effects before any retry.'))
+    reply.update(operation_id=Path(operation['directory']).name, recorded_status=operation['status'])
+    try:
+        check_retained_manifest(item)
+        check_gate_evidence(state, root, item)
+        if operation['status'] == 'passed' and item['gates'].get(check_name) != request_id:
+            raise ValueError('This pass is not the current recorded gate result')
+    except gate_route.Denial as exc:
+        return dict(reply, status='stale', **gate_route.guidance(exc.code, str(exc)))
+    except (OSError, ValueError, KeyError, TypeError, subprocess.SubprocessError) as exc:
+        return dict(reply, status='stale', **gate_route.guidance('gate_evidence_stale', str(exc)))
+    return dict(reply, **gate_outcome(operation))
+
+
 def inspect_candidate(state, root, name):
     summary = dict(format=1, candidate=name, observed_checkout=str(root), status='missing',
                    next_action='locate_candidate')
@@ -647,7 +756,10 @@ def inspect_candidate(state, root, name):
                    status='retired' if item.get('retirement') else 'invalid' if item['invalid'] else
                    'verified' if item['verify'] else 'published' if item['publish'] else
                    'gated' if complete(item) else 'rc' if item['rc'] else 'registered')
-    if item['checkout'] != str(root):
+    if state['format'] == gate_route.MANAGED_FORMAT and manifest['format'] != gate_route.MANAGED_FORMAT:
+        summary.update(historical_status=summary['status'], status='historical',
+                       next_action='register_managed_candidate')
+    elif item['checkout'] != str(root):
         summary['next_action'] = 'locate_candidate_checkout'
     elif pending:
         summary['next_action'] = 'inspect_writers_and_effects'
@@ -691,6 +803,8 @@ def main(argv=None):
     actions = parser.add_subparsers(dest='action', required=True)
     registration = actions.add_parser('register')
     registration.add_argument('--manifest', type=Path, required=True)
+    binding = actions.add_parser('bind-registry')
+    binding.add_argument('--registry', required=True, type=Path)
     execution = actions.add_parser('run')
     execution.add_argument('--candidate', required=True)
     execution.add_argument('--stage', choices=['rc', 'gate', 'publish', 'verify'], required=True)
@@ -698,6 +812,7 @@ def main(argv=None):
     execution.add_argument('--request', required=True)
     execution.add_argument('--selection', type=int)
     execution.add_argument('--registration-id')
+    execution.add_argument('--gate-ticket-stdin', action='store_true', help=argparse.SUPPRESS)
     execution.add_argument('--authority')
     selection = actions.add_parser('select')
     selection.add_argument('--candidate', required=True)
@@ -710,17 +825,31 @@ def main(argv=None):
     retirement.add_argument('--evidence', type=Path, required=True)
     inspection = actions.add_parser('inspect')
     inspection.add_argument('--candidate')
+    inspection.add_argument('--gate')
+    inspection.add_argument('--request')
     args = parser.parse_args(argv)
+    gate_inspection = args.action == 'inspect' and (args.gate is not None or args.request is not None)
+    if gate_inspection and None in (args.candidate, args.gate, args.request):
+        parser.error('Gate inspection requires --candidate, --gate and --request together')
     try:
         root = args.root.resolve(strict=True)
-        if args.action == 'inspect':
+        if gate_inspection:
+            identity = tuple(map(identifier, (args.candidate, args.gate, args.request)))
+            state, _ = gate_route.read_registry(root)
+            result = inspect_gate(state, root, *identity)
+        elif args.action == 'inspect':
             state, directory = inspect_state(root)
             result = (inspect_candidate(state, root, args.candidate) if args.candidate is not None
                       else dict(state=state, directory=str(directory)))
+        elif args.action == 'bind-registry':
+            result = bind_existing_registry(args, root)
         else:
             result = globals()[args.action](args, root)
         print(json.dumps(result, sort_keys=True, allow_nan=False))
         return 0 if result.get('status', 'passed') == 'passed' or args.action != 'run' else 2
+    except gate_route.Denial as exc:
+        print(json.dumps(dict(error=str(exc), **gate_route.guidance(exc.code))), file=sys.stderr)
+        return 2
     except (OSError, ValueError, KeyError, TypeError, sqlite3.Error, subprocess.SubprocessError) as exc:
         print(json.dumps(dict(error=str(exc))), file=sys.stderr)
         return 2

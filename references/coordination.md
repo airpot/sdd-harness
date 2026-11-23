@@ -12,6 +12,7 @@ For linked worktrees, the default authority is Git's common directory plus `sdd-
 The helper resolves this directory through Git. A `.git` file is not necessarily a directory.
 For non-Git projects, the default is `.sdd-harness/coordination`.
 The optional project file `.sdd-harness/coordination.json` can select an absolute local directory through its `registry` field.
+For format 3 delivery, the shared CLI, MCP service and Hooks also check the [trusted registry binding](delivery.md#keep-the-registry-binding). A different directory is a different registry and cannot replace a bound one.
 Keep runtime state outside committed task records. Merged registry copies do not supply mutual exclusion.
 Commands that need an existing claim, run, or candidate reject an absent registry. They do not initialize it.
 A top-level claim without dependencies or a candidate registration can initialize a registry.
@@ -124,3 +125,16 @@ Do not delete locks manually or start a replacement command merely because a win
 
 Keep [hook limits](hooks.md), [subagent rules](subagents.md), and [delivery controls](delivery.md) for their respective boundaries.
 Only the actual receiver can enforce current authority for its mutations.
+
+## Inherited Git configuration
+
+Registry identity checks preserve inherited Git variables. They permit a bounded,
+complete indexed configuration containing only HTTPS-scoped credential helpers,
+`useHttpPath=true|false`, `proactiveAuth=auto`, or `followRedirects=false`.
+Those settings affect network authentication, not local repository discovery.
+This does not authorize invoking a credential helper or performing a remote action.
+
+Direct repository/object-store routing variables, external config files, opaque
+configuration parameters, include directives, other option names and malformed
+indexed input still stop registry access. Do not remove the registry binding to
+work around a refusal. Unknown configuration requires review.

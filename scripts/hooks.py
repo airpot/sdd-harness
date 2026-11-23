@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Use optional project hooks. Keep native permissions and release controls."""
+"""Run project hooks. Keep native permissions and release controls."""
 from __future__ import annotations
 
 import argparse
@@ -21,6 +21,7 @@ import time
 import uuid
 
 import coordination
+import gate_route
 
 STATE = Path('.sdd-harness/hooks')
 WRITES = {'write', 'edit', 'write_file', 'edit_file', 'apply_patch'}
@@ -381,6 +382,11 @@ def paths_for(event):
     return None
 
 
+def managed_gate_binding_reason():
+    return gate_route.Denial('gate_session_binding_required',
+                             'Bind this session with the current claim before a managed gate').hook_reason()
+
+
 def handle(args, root):
     raw = sys.stdin.buffer.read(1048577)
     if len(raw) > 1048576:
@@ -405,8 +411,31 @@ def handle(args, root):
     unbound_context = {'hookSpecificOutput': {'hookEventName': 'SessionStart', 'additionalContext':
                        'Native session: ' + session + '. Project: ' + str(root) +
                        '. No task binding exists for this session. Read the accepted task and bind an independent scope.'}}
-    managed = coordination.enabled(root)
+    native_gate = (args.host == 'codex' and kind == 'PreToolUse' and
+                   event.get('tool_name') == gate_route.NATIVE_TOOL)
+    native_start = args.host == 'codex' and kind == 'SessionStart'
+    try:
+        managed = coordination.enabled(root)
+        registry = gate_route.read_registry(root)[0] if managed and (native_start or native_gate) else None
+        managed_route = registry is not None and registry['format'] == gate_route.MANAGED_FORMAT
+        if managed_route and native_start:
+            gate_route.observe_start(root, session)
+        if managed_route and native_gate:
+            identity = gate_route.call_identity(event)
+            item = gate_route.matching_gate_item(registry, root, *identity[:2])
+            gate_route.block_unresolved(registry, root, item, identity)
+    except gate_route.REGISTRY_ERRORS as problem:
+        if not (native_gate or native_start):
+            raise
+        fault = problem if isinstance(problem, gate_route.Denial) else gate_route.registry_unavailable(problem)
+        if native_gate:
+            return deny(fault.hook_reason())
+        return {'hookSpecificOutput': {'hookEventName': 'SessionStart', 'additionalContext': fault.hook_reason()}}
+    if native_gate and not cwd.is_relative_to(root):
+        return deny('Use a native session in the registered checkout')
     if not (root / STATE / 'state.json').exists():
+        if native_gate and managed_route:
+            return deny(managed_gate_binding_reason())
         if managed and kind == 'PreToolUse' and event.get('tool_name', '').lower() in WRITES:
             return deny('Bind this session with the current claim for its task before writes')
         return unbound_context if kind == 'SessionStart' else {}
@@ -419,6 +448,8 @@ def handle(args, root):
                 if isinstance(command, str) and destructive(command):
                     return deny('Use the project release or recovery entry with its required controls')
         if not item:
+            if native_gate and managed_route:
+                return deny(managed_gate_binding_reason())
             if (state['bindings'] or managed) and kind == 'PreToolUse' and event.get('tool_name', '').lower() in WRITES:
                 return deny('Bind this session to an independent scope before writes')
             return unbound_context if kind == 'SessionStart' else {}
@@ -434,6 +465,8 @@ def handle(args, root):
                 claim_guard(root, item)
                 if item.get('executor') and item['executor'].split(':')[0] != args.host:
                     return deny('The hook host does not match the shared executor identity')
+                if native_gate and managed_route:
+                    gate_route.observe_call(root, session, item, event)
                 paths = paths_for(event)
                 if paths is not None:
                     if not paths or not all(isinstance(p, str) and p for p in paths):
@@ -444,7 +477,16 @@ def handle(args, root):
                         if not any(contains(scope, target) for scope in item['scope']):
                             return deny('The write target is outside this task scope')
                         claim_guard(root, item, targets=[target])
+            except gate_route.Denial as problem:
+                return deny(problem.hook_reason())
             except (OSError, ValueError, sqlite3.Error) as problem:
+                if native_gate and managed_route:
+                    if isinstance(problem, sqlite3.Error):
+                        return deny(gate_route.registry_unavailable(problem).hook_reason())
+                    try:
+                        gate_route.read_registry(root)
+                    except gate_route.Denial as fault:
+                        return deny(fault.hook_reason())
                 return deny(str(problem))
         elif kind in ('SubagentStart', 'SubagentStop'):
             worker = event.get('agent_id')
@@ -487,10 +529,12 @@ def handle(args, root):
     return {}
 
 
-def configurations(root, host):
+def configurations(root, host, required_only=False):
     script = str(Path(__file__).resolve()).replace('\\', '/')
     arguments = [sys.executable.replace('\\', '/'), script, 'handle', '--repo', str(root).replace('\\', '/'), '--host', host]
     selected = EVENTS if host == 'codex' else ['SessionStart', 'PreToolUse', 'PostToolUse', 'Stop']
+    if required_only:
+        selected = gate_route.REQUIRED_EVENTS
     groups = {}
     for event in selected:
         if host == 'zcode':
@@ -525,7 +569,10 @@ def configure(args, root):
     if args.host == 'zcode':
         hooks['enabled'] = True
         events = hooks.setdefault('events', {})
-    for event, groups in configurations(root, args.host).items():
+    required_only = getattr(args, 'required_only', False)
+    if args.host == 'codex' and not getattr(args, 'include_supplemental', False):
+        required_only = required_only or (coordination.inspect_state(root)[0]['format'] == gate_route.MANAGED_FORMAT)
+    for event, groups in configurations(root, args.host, required_only).items():
         existing = events.setdefault(event, [])
         if not isinstance(existing, list):
             raise ValueError('The existing hook event is not an array')
@@ -578,6 +625,9 @@ def main():
             target = command.add_mutually_exclusive_group(required=True)
             target.add_argument('--output')
             target.add_argument('--merge')
+            events = command.add_mutually_exclusive_group()
+            events.add_argument('--required-only', action='store_true')
+            events.add_argument('--include-supplemental', action='store_true')
     args = parser.parse_args()
     code = 0
     try:

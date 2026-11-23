@@ -2,7 +2,7 @@
 name: sdd-harness
 description: When you change or continue a project from specifications, use this skill. Also use it for acceptance checks, worker results, release preparation, or worktree protection.
 metadata:
-  version: "0.16.5"
+  version: "0.16.6"
 ---
 
 # SDD Harness
@@ -76,6 +76,16 @@ If a mandatory check has a failure or you cannot do it, give a report of the acc
 Include its next step.
 Use the project's maintenance convention to make the record with specification authority agree with changed accepted behavior.
 
+## Keep formal acceptance independent
+
+For new formal acceptance, use the [separate generator and verifier procedure](references/delivery.md#separate-generation-and-acceptance).
+Keep the acceptance criteria, checks, and official results under the verifier's control.
+Use the [required project MCP and native Hooks](references/mcp.md) for managed acceptance.
+Use a format 3 manifest for the first delivery registration.
+If either is unavailable, stop at acceptance and restore the project setup.
+Do not give the generator write access to them.
+Use the existing procedure for a registered candidate. Do not change its manifest.
+
 ## When necessary, read related instructions
 
 | Condition | Read |
@@ -84,7 +94,8 @@ Use the project's maintenance convention to make the record with specification a
 | Metrics, statistical analysis, model evaluation, or reports that use calculated results | [Data-analysis prompts and checks](assets/profiles/data-analysis.md) |
 | More than one step, architecture decisions, dependencies, or important changes to a system that the project uses | [Change workflow](references/workflow.md) |
 | Prepare project retrieval, examine document coverage, or select query tools | [Project retrieval](references/retrieval.md) |
-| Enable native hooks, examine task bindings, record check evidence, or inspect hook limits | [Optional native hooks](references/hooks.md) |
+| Configure the required project Hooks, bind a task, or enable supplemental events | [Native Hooks](references/hooks.md) |
+| Run managed acceptance through one required project MCP server | [Project MCP service](references/mcp.md) |
 | Claim a task or debt item, delegate a child assignment, or recover shared execution ownership | [Task coordination](references/coordination.md) |
 | Compare effectiveness of development or execution methods | [Effectiveness comparisons](references/workflow.md#compare-effectiveness) |
 | Ambiguity, contracts with conflicts, requirement coverage, changed or removed behavior, or important validation decisions | [Specification review](references/spec-review.md) |

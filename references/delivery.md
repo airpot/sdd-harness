@@ -48,6 +48,37 @@ Missing related dependencies prevent acceptance.
 If acceptance includes deployment, get deployment evidence.
 If acceptance does not include deployment, publication is not necessary to complete development.
 
+## Separate generation and acceptance
+
+Use separate write access and [original gate reports](#check-original-gate-reports) by default for new formal acceptance.
+The generator writes a candidate result in its work area. The verifier owns the criteria, the checks, and the gate results.
+Before generation, keep the trusted checkout, the gate scripts, the staging and report locations, and the registry outside the generator's write scope.
+The verifier stages the result, records the digest, and runs the checks with its own credentials.
+Only the verifier writes the receipt and JUnit report that the gate reads.
+Do not use a receipt or test report from the generator as acceptance evidence.
+Do not execute untrusted candidate code with the verifier's credentials. Use a separate test environment without access to the gate files and credentials.
+
+For Windows local generation, use [the restricted generator launcher](../scripts/run_generator.py) from a trusted medium integrity process.
+It starts an executable at low integrity, with no inherited handles and no gate environment variables.
+The executable starts in a new directory under `LocalLow`. Use an absolute executable path.
+List the existing trusted paths with repeated `--protect` arguments. For an output path that does not exist, give its existing protected directory.
+
+```text
+python -B <skill>/scripts/run_generator.py --protect <trusted-checkout> --protect <registry-dir> --protect <stage-dir> --timeout 600 -- <absolute-generator.exe> <args>
+```
+
+Use a Python that has `pywin32` for this launcher. It does not start the generator if it cannot set the boundary.
+Keep the protected paths and `LocalLow` on local NTFS volumes.
+Use the returned `scratch` directory to find the candidate result. The child writes its result there; the launcher does not copy it into the gate.
+Before relying on this setup, show that the generator can write in its work area and cannot replace the verifier's receipt and report.
+On another host, or when the Windows startup conditions do not apply, use a trusted CI job or another verifier environment with equivalent write separation.
+If the separation is not available, record the gap. Do not claim independent acceptance.
+
+The launcher applies only to the process that it starts. It does not change the permissions of the current agent session.
+Do not also run the generator with the verifier's permissions.
+Format 1 and 2 manifests that are already registered keep their commands, evidence rules, and registry behavior.
+For adoption with an existing workflow, register a new candidate with the new basis. Do not rewrite earlier records.
+
 ## Keep one RC candidate
 
 Before merge, validate the current combination with the integration target.
@@ -69,13 +100,15 @@ For full gate scope and test admission, use [testing rules](testing.md#freeze-th
 
 The optional [local registry](coordination.md) also supports `scripts/delivery.py` with Python standard-library modules.
 Use the project's existing release record when it supplies equivalent controls.
-The [candidate example](../assets/candidate.example.json) shows the helper's manifest structure.
+The [candidate example](../assets/candidate.example.json) uses format 3, which the CLI requires for the first delivery registration.
+A registry with task claims but no delivery history also requires format 3 for its first candidate.
+Use the required [project MCP and native Hooks](mcp.md) for a managed gate.
 Replace every placeholder and digest with actual project values before registration.
 Include applicable configuration, migrations, data, tests, and accepted specifications in `basis`.
 Include project runner files and their applicable dependencies in `basis`.
 Record the gate version in a basis file.
 Freeze each gate's full test list.
-The example commands are placeholders for project runners, not installed skill commands.
+The example commands are placeholders for project runners. Use a trusted verifier for the gate command.
 Keep secrets out of arguments, basis files, receipts, and retained logs.
 
 For an authorized project with a completed manifest, the helper sequence is:
@@ -83,17 +116,40 @@ For an authorized project with a completed manifest, the helper sequence is:
 ```text
 python <skill>/scripts/delivery.py --root <project> register --manifest <candidate.json>
 python <skill>/scripts/delivery.py --root <project> run --candidate rc-17 --stage rc --request rc-17-deploy
-python <skill>/scripts/delivery.py --root <project> run --candidate rc-17 --stage gate --gate system --request rc-17-system
+MCP sdd_harness.request_gate: {"candidate_id":"rc-17","check_name":"system","request_id":"rc-17-system"}
 python <skill>/scripts/delivery.py --root <project> select --candidate rc-17 --expected <current-selection-generation>
 python <skill>/scripts/delivery.py --root <project> run --candidate rc-17 --stage publish --request rc-17-publish --selection <returned-generation> --registration-id <registration-id> --authority <authority.json>
 python <skill>/scripts/delivery.py --root <project> run --candidate rc-17 --stage verify --request rc-17-verify --selection <returned-generation> --registration-id <registration-id> --authority <authority.json>
 ```
 
 Run every named gate before selection. The example has one gate.
+If MCP or a required Hook is unavailable, stop at the gate. Restore the project setup and check it in a fresh session.
+Direct CLI gate execution cannot supply managed admission. Keep CLI inspection and authorized operations for staging, selection, and recovery.
+The first format 3 registration upgrades an idle registry. Resolve active claims, resource holders and unresolved operations first.
+The upgraded registry preserves historical candidates and exact replay of their older CLI operations. It refuses legacy registration and new legacy delivery and selection.
+Projects that already have delivery records in format 1 or 2 can continue their legacy CLI procedure until they adopt managed acceptance.
+After upgrade, `inspect` identifies earlier candidates as historical. It retains their recorded outcome and gives `register_managed_candidate` as the next action for delivery.
 Use `inspect --candidate <candidate-id>` to find the current selection generation and registration ID.
 Give that registration ID for new publish and verify operations. An absent selection has generation zero.
 Selection uses compare-and-set semantics. A stale expected generation cannot replace the current selection.
 You can keep the selected candidate fixed. The newest commit is not mandatory for this selection.
+
+### Keep the registry binding
+
+The first format 3 registration records a directory and identity in `sdd-harness-registry-binding.json` in the Git common metadata directory. It stores the matching identity in SQLite.
+Keep the Git common metadata directory, the registry, the verifier, Python and Git under the trusted operator's control. Use the same binding from linked worktrees. Run the delivery CLI from a trusted environment without Git routing or configuration overrides, for example `GIT_DIR`, `GIT_COMMON_DIR`, or `GIT_WORK_TREE`.
+Use Git to find the common metadata. A failed lookup or timeout stops the operation; an incomplete `.git` directory does not establish a separate binding.
+A different registry pointer, or a missing or mismatched database, stops managed operations. Restore the reviewed paths and matching records before recovery. Do not remove the binding to continue.
+An already admitted legacy operation can record its result in the original registry when the project pointer is invalid. This does not admit new work.
+The binding uses an independent marker and a database transaction. If a write fails or is interrupted between them, the next operation stops on a mismatch. Use trusted backups of the marker and database to recover. This check does not identify a restored database snapshot with the same identity.
+
+For a format 3 registry created by rc.3, the trusted operator must first verify the original path and resolve active work before switching helpers. Use the exact absolute path that the project already uses:
+
+```text
+python <skill>/scripts/delivery.py --root <project> bind-registry --registry <reviewed-absolute-registry-path>
+```
+
+The command does not create a registry or accept a different pointer. Do not bind a path whose origin you cannot verify.
 
 The project runner must examine the actual deployed artifacts.
 Then, it must return a structured receipt.
@@ -107,9 +163,9 @@ Verification receipts identify the target, candidate revision, and observed arti
 
 ## Check original gate reports
 
-Use candidate format `2` when the project requires the helper to check original case results.
+Use candidate format `3` for new managed acceptance. The same JUnit rules apply to legacy format `2`.
 Format `1` checks the runner's receipt. A format `1` receipt does not show that the test framework ran each case.
-In format `2`, add a `junit` map to every gate. Use exactly the gate's mandatory test IDs as keys.
+Add a `junit` map to every format `2` or `3` gate. Use exactly the gate's mandatory test IDs as keys.
 For example, for a gate with one mandatory test:
 
 ```json
@@ -126,7 +182,7 @@ For example, for a gate with one mandatory test:
 }
 ```
 
-Keep the gate's command and timeout fields. Set the top-level manifest format to `2`.
+Keep the gate's command and timeout fields.
 Use an exact file, class, and test name, including the parameter suffix when applicable.
 Use project-relative file names with forward slashes. Include each selected file in `basis`.
 On Windows, the helper converts report path separators to forward slashes. It does not match by file name alone.

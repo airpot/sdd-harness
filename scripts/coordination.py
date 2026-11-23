@@ -10,13 +10,14 @@ import json
 import math
 import os
 from pathlib import Path
+import re
 import sqlite3
 import stat
 import subprocess
 import sys
 import time
 import uuid
-from urllib.parse import quote
+from urllib.parse import quote, urlsplit
 
 
 def digest(path):
@@ -51,7 +52,7 @@ def checkout_origin(root):
         raise ValueError('The checkout origin must be a directory')
     try:
         result = subprocess.run(['git', '-C', str(root), 'rev-parse', '--show-toplevel'],
-                                capture_output=True, encoding='utf-8', timeout=3)
+                                stdin=subprocess.DEVNULL, capture_output=True, encoding='utf-8', timeout=3)
     except FileNotFoundError:
         result = None
     if result is not None and result.returncode == 0:
@@ -64,29 +65,135 @@ def checkout_origin(root):
     return root
 
 
-def registry(root):
-    configuration = regular_path(root / '.sdd-harness/coordination.json')
-    if configuration.exists():
-        value = json.loads(configuration.read_text(encoding='utf-8'))
-        target = Path(value['registry'])
-        if not target.is_absolute():
-            raise ValueError('The shared registry path must be absolute')
-        return regular_path(target)
+def identity_neutral_git_option(key, value):
+    """Allow reviewed HTTPS auth options for local metadata queries, not arbitrary Git config."""
+    if (not isinstance(key, str) or not isinstance(value, str) or len(key) > 2048 or len(value) > 8192
+            or any(char in key + value for char in ('\0', '\r', '\n'))):
+        return False
+    match = re.fullmatch(r'(credential|http)\.(https://[^\s]+)\.([A-Za-z]+)', key, re.I)
+    if not match:
+        return False
+    section, context, option = match.groups()
+    try:
+        url = urlsplit(context)
+        if not url.hostname or url.username is not None or url.query or url.fragment:
+            return False
+    except ValueError:
+        return False
+    pair = section.lower(), option.lower()
+    if pair == ('credential', 'helper'):
+        return True  # A credential helper is not invoked by rev-parse or rev-parse --verify HEAD.
+    return value.lower() in {
+        ('credential', 'usehttppath'): ('true', 'false'),
+        ('http', 'proactiveauth'): ('auto',),
+        ('http', 'followredirects'): ('false',),
+    }.get(pair, ())
+
+
+def check_git_routing():
+    routing = {'GIT_DIR', 'GIT_COMMON_DIR', 'GIT_WORK_TREE', 'GIT_IMPLICIT_WORK_TREE', 'GIT_NAMESPACE',
+               'GIT_CEILING_DIRECTORIES', 'GIT_DISCOVERY_ACROSS_FILESYSTEM', 'GIT_OBJECT_DIRECTORY',
+               'GIT_ALTERNATE_OBJECT_DIRECTORIES', 'GIT_CONFIG', 'GIT_CONFIG_SYSTEM', 'GIT_CONFIG_GLOBAL',
+               'GIT_CONFIG_PARAMETERS'}
+    if routing.intersection(os.environ):
+        raise ValueError('Remove Git routing overrides before using the shared registry')
+    count = os.environ.get('GIT_CONFIG_COUNT', '')
+    if count != '' and (not re.fullmatch(r'0|[1-9][0-9]{0,2}', count) or int(count) > 256):
+        raise ValueError('Use a complete bounded indexed Git configuration')
+    count = int(count or 0)
+    expected = {prefix + str(index) for prefix in ('GIT_CONFIG_KEY_', 'GIT_CONFIG_VALUE_') for index in range(count)}
+    observed = {key for key in os.environ if key.startswith(('GIT_CONFIG_KEY_', 'GIT_CONFIG_VALUE_'))}
+    if observed != expected:
+        raise ValueError('Use a complete bounded indexed Git configuration')
+    for index in range(count):
+        if not identity_neutral_git_option(os.environ['GIT_CONFIG_KEY_' + str(index)],
+                                           os.environ['GIT_CONFIG_VALUE_' + str(index)]):
+            raise ValueError('Remove unreviewed Git configuration before using the shared registry')
+
+
+def default_registry(root):
+    check_git_routing()
+    metadata = regular_path(root / '.git')
     try:
         result = subprocess.run(['git', '-C', str(root), 'rev-parse', '--git-common-dir'],
-                                capture_output=True, encoding='utf-8', timeout=3)
+                                stdin=subprocess.DEVNULL, capture_output=True, encoding='utf-8', timeout=10)
     except FileNotFoundError:
-        if (root / '.git').exists():
+        if metadata.exists():
             raise ValueError('Git is necessary to resolve the shared repository registry')
         return regular_path(root / '.sdd-harness/coordination')
     if result.returncode == 0:
         common = Path(result.stdout.rstrip('\r\n'))
         if not common.is_absolute():
             common = root / common
-        return regular_path(common.resolve() / 'sdd-harness-coordination')
-    if (root / '.git').exists():
+        return regular_path(common).resolve(strict=True) / 'sdd-harness-coordination'
+    if metadata.exists():
         raise ValueError('The repository registry has no resolution. Examine Git metadata')
     return regular_path(root / '.sdd-harness/coordination')
+
+
+def registry_binding(anchor, directory):
+    if not regular_path(anchor).exists():
+        return None
+    marker = json.loads(anchor.read_text(encoding='utf-8'))
+    if (not isinstance(marker, dict) or set(marker) != {'directory', 'id'} or
+            not isinstance(marker['id'], str) or not re.fullmatch('[a-f0-9]{32}', marker['id']) or
+            not isinstance(marker['directory'], str) or Path(marker['directory']) != directory):
+        raise ValueError('The trusted registry binding does not match the configured registry')
+    return marker['id']
+
+
+def registry_route(root, bound_registry=None):
+    default = default_registry(root)
+    anchor = default.with_name('sdd-harness-registry-binding.json')
+    if bound_registry is not None and not regular_path(anchor).exists():
+        # A legacy callback completes in the registry that admitted it, even if its pointer is invalid now.
+        return regular_path(bound_registry), anchor
+    configuration = regular_path(root / '.sdd-harness/coordination.json')
+    configured = default
+    if configuration.exists():
+        configured = Path(json.loads(configuration.read_text(encoding='utf-8'))['registry'])
+        if not configured.is_absolute():
+            raise ValueError('The shared registry path must be absolute')
+    configured = regular_path(configured)
+    binding = registry_binding(anchor, configured)
+    directory = configured if bound_registry is None else regular_path(bound_registry)
+    if binding and (directory != configured or not (directory / 'state.sqlite').is_file()):
+        raise ValueError('The database for the trusted registry binding is missing or changed')
+    return directory, anchor
+
+
+def registry(root):
+    return registry_route(root)[0]
+
+
+def check_registry_binding(anchor, directory, state, *, allow_unbound=False):
+    binding = registry_binding(anchor, directory)
+    saved = state.get('registry_binding')
+    if binding:
+        if state['format'] != 3 or saved != binding:
+            raise ValueError('The database does not match the trusted registry binding')
+    elif saved or (state['format'] == 3 and not allow_unbound):
+        raise ValueError('The format 3 registry has no trusted registry binding for this repository')
+
+
+def pin_registry(root, directory, state):
+    selected, anchor = registry_route(root)
+    if selected != directory:
+        raise ValueError('The registry changed before binding')
+    binding = registry_binding(anchor, directory)
+    if binding:
+        check_registry_binding(anchor, directory, state)
+        return
+    if state.get('registry_binding'):
+        raise ValueError('The original trusted registry binding is missing')
+    identity = uuid.uuid4().hex
+    # The protected marker is exclusive. If SQLite cannot commit, the marker fails closed.
+    anchor.parent.mkdir(parents=True, exist_ok=True)
+    with anchor.open('x', encoding='utf-8') as file:
+        json.dump(dict(directory=str(directory), id=identity), file)
+        file.flush()
+        os.fsync(file.fileno())
+    state['registry_binding'] = identity
 
 
 def enabled(root):
@@ -108,7 +215,7 @@ def existing_database_uri(database, mode):
 
 
 def inspect_state(root):
-    directory = registry(root)
+    directory, anchor = registry_route(root)
     database = regular_path(directory / 'state.sqlite')
     if not database.exists():
         return empty_state(), directory
@@ -123,16 +230,17 @@ def inspect_state(root):
     try:
         row = connection.execute('SELECT body FROM registry WHERE id=1').fetchone()
         state = json.loads(row[0]) if row else empty_state()
-        if state.get('format') not in (1, 2):
+        if state.get('format') not in (1, 2, 3):
             raise ValueError('The registry format is not supported')
+        check_registry_binding(anchor, directory, state)
         return state, directory
     finally:
         connection.close()
 
 
 @contextmanager
-def store(root, *, bound_registry=None, initialize=False):
-    directory = registry(root) if bound_registry is None else regular_path(bound_registry)
+def store(root, *, bound_registry=None, initialize=False, allow_unbound=False):
+    directory, anchor = registry_route(root, bound_registry)
     if initialize and bound_registry is not None:
         raise ValueError('An admitted operation cannot initialize a registry')
     if initialize:
@@ -150,9 +258,15 @@ def store(root, *, bound_registry=None, initialize=False):
             connection.execute('CREATE TABLE IF NOT EXISTS registry (id INTEGER PRIMARY KEY, body TEXT NOT NULL)')
         row = connection.execute('SELECT body FROM registry WHERE id=1').fetchone()
         state = json.loads(row[0]) if row else empty_state()
-        if state.get('format') not in (1, 2):
+        if state.get('format') not in (1, 2, 3):
             raise ValueError('The registry format is not supported')
+        check_registry_binding(anchor, directory, state, allow_unbound=allow_unbound)
         yield state, directory
+        if state['format'] == 3 or regular_path(anchor).exists():
+            routed, _ = registry_route(root, bound_registry)
+            if routed != directory:
+                raise ValueError('The registry changed during the operation')
+            check_registry_binding(anchor, directory, state)
         body = json.dumps(state)
         if not row or body != row[0]:
             connection.execute('INSERT OR REPLACE INTO registry VALUES (1, ?)', (body,))
